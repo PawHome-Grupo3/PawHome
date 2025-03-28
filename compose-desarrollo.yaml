@@ -3,7 +3,7 @@ name: Desarrollo
 # Definimos los servicios que se ejecutarán en los contenedores Docker.
 services:
   java:
-    image: pawhome:${VERSION:-snapshot}
+    image: buenaspracticas:${VERSION:-snapshot}
     ports:
       - "${PUERTO_PRODUCCION:-8080}:8080"
     environment:
