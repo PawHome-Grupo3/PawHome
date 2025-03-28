@@ -1,7 +1,7 @@
 name: Subida a Desarrollo
 
 on:
-  pull_request:
+  push:
     branches: [ "desarrollo" ]
 
 jobs:
