@@ -1,0 +1,11 @@
+
+table {
+    background-color: #f5f5f5; /* Light gray background */
+}
+
+table th, table td {
+    background-color: #f5f5f5; /* Light gray background for table header and cells */
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #ccc;
+}

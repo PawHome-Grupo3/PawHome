@@ -1,0 +1,19 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="DATALOADProduccion" type="docker-deploy" factoryName="docker-compose.yml" server-name="Docker">
+    <deployment type="docker-compose.yml">
+      <settings>
+        <option name="envFilePath" value="" />
+        <option name="profiles">
+          <list>
+            <option value="produccionDATALOAD" />
+          </list>
+        </option>
+        <option name="removeOrphansOnComposeDown" value="false" />
+        <option name="sourceFilePath" value="compose-desarrollo.yaml" />
+      </settings>
+    </deployment>
+    <method v="2">
+      <option name="Maven.BeforeRunTask" enabled="true" file="$PROJECT_DIR$/pom.xml" goal="spring-boot:build-image -D skipTests=true" />
+    </method>
+  </configuration>
+</component>

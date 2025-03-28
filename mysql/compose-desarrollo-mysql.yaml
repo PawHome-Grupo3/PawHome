@@ -1,0 +1,40 @@
+name: Desarrollo
+
+# Definimos los servicios que se ejecutarán en los contenedores Docker.
+services:
+  java:
+    image: buenaspracticas:0.0.1-SNAPSHOT
+    ports:
+      - '8080:8080'
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/desarrollo
+      SPRING_DATASOURCE_USERNAME: appuser
+      SPRING_DATASOURCE_PASSWORD: password123
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8080/actuator/health" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: always
+
+  db:
+    image: mysql:latest
+    environment:
+      MYSQL_DATABASE: 'desarrollo'
+      MYSQL_USER: 'appuser'
+      MYSQL_PASSWORD: 'password123'
+      MYSQL_ROOT_PASSWORD: 'password123'
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+    ports:
+      - "3306:3306"
+    expose:
+      - "3306"
+    restart: always
+
+

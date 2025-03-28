@@ -1,0 +1,24 @@
+# Este archivo se utiliza para configurar los servicios de contenedores en un entorno de desarrollo, como la base de datos MySQL que interactúa con una aplicación Spring Boot.
+name: local
+services:
+  db:
+    # Imagen de Docker que se utilizará, en este caso MySQL versión 5.7
+    image: postgres:latest
+    # Indica que el contenedor se reiniciará automáticamente si falla
+    restart: always
+    environment:
+      # Nombre de la base de datos que se creará al iniciar el contenedor
+      MYSQL_DATABASE: 'localdb'
+      # Usuario que se creará para acceder a la base de datos
+      MYSQL_USER: 'localuser'
+      # Contraseña del usuario creado
+      MYSQL_PASSWORD: 'password123'
+      # Contraseña del usuario root de MySQL
+      MYSQL_ROOT_PASSWORD: 'password'
+    ports:
+      # Mapea el puerto 3306 del contenedor al puerto 3306 del anfitrión
+      - '3306:3306'
+    expose:
+      # Expone el puerto 3306 dentro del contenedor para comunicación con otros servicios
+      - '3306'
+

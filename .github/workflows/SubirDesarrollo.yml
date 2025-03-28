@@ -1,0 +1,41 @@
+name: Subida a Desarrollo
+
+on:
+  pull_request:
+    branches: [ "desarrollo" ]
+
+jobs:
+
+  # --------------------- COMPILAR, TESTEAR Y CREAR IMAGEN ---------------------
+  construir_imagen_snapshot:
+    runs-on: self-hosted
+    env:
+      VERSION: snapshot
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configurar JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+
+      - name: Compilar y ejecutar tests
+        run: mvn --batch-mode verify
+
+      - name: Construir imagen Docker con tag 'snapshot'
+        run: mvn spring-boot:build-image -DskipTests
+
+  # --------------------- DESPLEGAR EN SERVIDOR DE DESARROLLO ---------------------
+  arrancar_en_servidor_de_desarrollo:
+    needs: construir_imagen_snapshot
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Desplegar contenedor de desarrollo
+        env:
+          COMPOSE_PROJECT_NAME: buenaspracticas-dev
+          PUERTO_DESARROLLO: ${{ secrets.PUERTO_DESARROLLO }}
+        run: docker compose -f compose-desarrollo.yaml up -d
