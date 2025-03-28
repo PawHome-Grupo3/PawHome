@@ -3,7 +3,7 @@ name: Produccion
 # Definimos los servicios que se ejecutarán en los contenedores Docker.
 services:
   java:
-    image: pawhome:${VERSION:-latest}
+    image: buenaspracticas:${VERSION:-latest}
     ports:
       - "${PUERTO_PRODUCCION:-8080}:8080"
     environment:
