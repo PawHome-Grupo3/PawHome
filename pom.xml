@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.grupo3.pawHome</groupId>
-    <artifactId>pawHome</artifactId>
+    <artifactId>pawhome</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>pawHome</name>
     <description>Paw Home</description>
