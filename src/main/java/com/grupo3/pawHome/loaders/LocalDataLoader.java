@@ -95,7 +95,7 @@ public class LocalDataLoader {
     public void loadDataLocal() {
 
         log.info("Iniciando la carga de datos para el perfil local");
-        int numeroEntidades = 100;
+        int numeroEntidades = 10;
         EntidadPadre[] entidades = new EntidadPadre[numeroEntidades];
         Arrays.setAll(entidades, i -> new EntidadPadre("Entidad-" + (Integer.valueOf(i)+1)));
         repository.saveAll(Arrays.asList(entidades));
