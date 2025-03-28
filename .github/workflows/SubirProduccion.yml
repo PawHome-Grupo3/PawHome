@@ -65,5 +65,5 @@ jobs:
           VERSION: ${{ github.ref_type == 'tag' && github.ref_name || 'snapshot' }}
           MAVEN_OPTS: "-Xmx16g -XX:MaxMetaspaceSize=16G"
           PUERTO_PRODUCCION: ${{ secrets.PUERTO_PRODUCCION }}
-          COMPOSE_PROJECT_NAME: buenaspracticas-prod
+          COMPOSE_PROJECT_NAME: pawhome-prod
         run: docker compose -f compose-produccion.yaml up -d
