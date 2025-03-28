@@ -165,7 +165,7 @@
                 <configuration>
                     <image>
                         <!--suppress UnresolvedMavenProperty -->
-                        <name>buenaspracticas:${env.VERSION}</name>
+                        <name>pawhome:${env.VERSION}</name>
                     </image>
                 </configuration>
             </plugin>
