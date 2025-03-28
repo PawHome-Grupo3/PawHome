@@ -5,7 +5,7 @@ services:
   java:
     image: pawhome:${VERSION:-snapshot}
     ports:
-      - "${PUERTO_PRODUCCION:-8080}:8080"
+      - "${PUERTO_DESARROLLO:-8083}:8080"
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/produccion
       SPRING_DATASOURCE_USERNAME: produser
@@ -22,6 +22,8 @@ services:
 
   db:
     image: postgres:latest
+    ports:
+      - "${PUERTO_DB_DESARROLLO:-8083}:8080"
     environment:
       POSTGRES_DB: 'produccion'
       POSTGRES_USER: 'produser'

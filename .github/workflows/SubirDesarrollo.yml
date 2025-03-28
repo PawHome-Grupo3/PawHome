@@ -32,10 +32,10 @@ jobs:
     needs: construir_imagen_snapshot
     runs-on: self-hosted
     steps:
-      - uses: actions/checkout@v4
 
       - name: Desplegar contenedor de desarrollo
         env:
           COMPOSE_PROJECT_NAME: pawhome-dev
           PUERTO_DESARROLLO: ${{ secrets.PUERTO_DESARROLLO }}
+          PUERTO_DB_DESARROLLO: ${{ secrets.PUERTO_DB_DESARROLLO }}
         run: docker compose -f compose-desarrollo.yaml up -d
