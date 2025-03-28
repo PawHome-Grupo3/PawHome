@@ -8,7 +8,7 @@
         <version>3.4.3</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.grupo3.pawHome</groupId>
+    <groupId>com.grupo3.pawhome</groupId>
     <artifactId>pawhome</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>pawHome</name>
