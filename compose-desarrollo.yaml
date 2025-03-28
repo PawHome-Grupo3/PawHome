@@ -7,7 +7,7 @@ services:
     ports:
       - "${PUERTO_DESARROLLO}:8080"
     environment:
-      SPRING_DATASOURCE_URL: "jdbc:postgresql://db:${PUERTO_DB_DESARROLLO}/desarrollo"
+      SPRING_DATASOURCE_URL: "jdbc:postgresql://db:5432}/desarrollo"
       SPRING_DATASOURCE_USERNAME: desarrollouser
       SPRING_DATASOURCE_PASSWORD: desarrollopassword
     depends_on:
@@ -24,6 +24,8 @@ services:
     image: postgres:latest
     ports:
       - "${PUERTO_DB_DESARROLLO}:5432"
+    expose:
+      - 5432
     environment:
       POSTGRES_DB: 'desarrollo'
       POSTGRES_USER: 'desarrollouser'
