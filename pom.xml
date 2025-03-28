@@ -8,11 +8,11 @@
         <version>3.4.3</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.atm.java6</groupId>
-    <artifactId>buenaspracticas</artifactId>
+    <groupId>com.grupo3.pawHome</groupId>
+    <artifactId>pawHome</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>buenaspracticas</name>
-    <description>buenaspracticas</description>
+    <name>pawHome</name>
+    <description>Paw Home</description>
     <url/>
     <licenses>
         <license/>
