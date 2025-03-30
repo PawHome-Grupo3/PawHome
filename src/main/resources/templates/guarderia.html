@@ -14,80 +14,9 @@
 	<link rel="stylesheet" th:href="@{/css/header.css}"/>
 </head>
 <body>
-<header>
-	<nav class="navbar fixed-top navbar-expand-md px-3">
-		<a class="navbar-brand" href="#">
-			<img th:src="@{images/logoSinFondoBlanco.png}" alt="LogoEmpresa" class="logoNav d-inline-block align-text-top">
-		</a>
 
-		<button class="navbar-toggler buttonHamburguesa" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-				aria-controls="navbarNav" aria-expanded="true" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-
-		<div class="collapse navbar-collapse" id="navbarNav">
-			<ul class="navbar-nav containerNavCentral">
-				<li><a class="navbar-brand enlaceNav" href="#">Sobre Nosotros</a></li>
-
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle enlaceNav" href="#" role="button" data-bs-toggle="dropdown"
-					   aria-expanded="false">
-						Colabora
-					</a>
-
-					<ul class="dropdown-menu dropdownNav">
-						<li><a class="dropdown-item" href="#">Dona</a></li>
-						<li><a class="dropdown-item" href="#">Adopta</a></li>
-						<li><a class="dropdown-item" href="#">Apadrina</a></li>
-					</ul>
-				</li>
-
-				<li><a class="navbar-brand enlaceNav" href="#">Merchandising</a></li>
-
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle enlaceNav" href="#" role="button" data-bs-toggle="dropdown"
-					   aria-expanded="false">
-						Servicios
-					</a>
-
-					<ul class="dropdown-menu dropdownNav">
-						<li><a class="dropdown-item" href="#">Paseos solidarios</a></li>
-						<li><a class="dropdown-item" href="#">Guardería</a></li>
-						<li><a class="dropdown-item" href="#">Peluquería</a></li>
-						<li><a class="dropdown-item" href="#">Adiestramiento</a></li>
-					</ul>
-				</li>
-
-				<li><a class="navbar-brand enlaceNav" href="#">Blog</a></li>
-				<li><a class="navbar-brand enlaceNav" href="#">Contacto</a></li>
-			</ul>
-		</div>
-
-		<div class="banderas me-3">
-			<a href="?lang=es" class="btn btn-sm">
-				<img src="https://flagcdn.com/w40/es.png" alt="Español" width="30">
-			</a>
-
-			<a href="?lang=en" class="btn btn-sm">
-				<img src="https://flagcdn.com/w40/gb.png" alt="English" width="30">
-			</a>
-		</div>
-
-		<div class="dropdown">
-			<button class="btn btn-light dropdown-toggle" type="button" id="userDropdown"
-					data-bs-toggle="dropdown" aria-expanded="false">
-				<i class="fa fa-user-circle" aria-hidden="true"></i>
-				<img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Login" width="30" class="me-2">
-			</button>
-
-			<ul class="dropdown-menu dropdown-menu-end dropdownNav" aria-labelledby="userDropdown">
-				<li><a class="dropdown-item" href="#" data-bs-toggle="modal"
-					   data-bs-target="#registroModal">Registrarse</a></li>
-				<li><a class="dropdown-item" href="#" data-bs-toggle="modal"
-					   data-bs-target="#registroModal">Iniciar sesión</a></li>
-			</ul>
-		</div>
-	</nav>
+<header class="containerHeader">
+	<div th:replace="~{fragments/header :: headerFragment}"></div>
 </header>
 
 <main class="container py-5 mainContainer">
@@ -330,6 +259,10 @@
 		</div>
 	</section>
 </main>
+
+<footer>
+	<div th:replace="~{fragments/footer :: footerFragment}"></div>
+</footer>
 
 <!-- Script para controlar la seleccion de fechas -->
 <script>
