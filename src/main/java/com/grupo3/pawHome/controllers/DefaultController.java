@@ -69,10 +69,25 @@ public class DefaultController {
         return "entidadesHijas"; // View name
     }
 
+    // Metodo para mostrar pagina de inicio
     @GetMapping("")
-    public String mostrarIndex(Model model)
+    public String mostrarIndex()
     {
-        return "index"; // View name
+        return "index"; // Carga /templates/index.html
+    }
+
+    // Metodo para mostrar la pagina de la guarderia
+    @GetMapping("/guarderia")
+    public String mostrarGuarderia()
+    {
+        return "guarderia";
+    }
+
+    // Metodo para mostrar la pagina de nuestros animales
+    @GetMapping("/nuestrosAnimales")
+    public String mostrarNuestrosAnimales()
+    {
+        return "nuestrosAnimales";
     }
 
     /**

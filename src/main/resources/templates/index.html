@@ -1,94 +1,77 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
-    <title>Div con Imagen de Fondo y Navbar</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="css/index.css"/>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+		  rel="stylesheet">
+	<title>Div con Imagen de Fondo y Navbar</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+		  integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+	<link rel="stylesheet" th:href="@{/css/index.css}"/>
 </head>
 <body>
-<header class="containerHeader">
-    <nav class="navbar fixed-top navbar-expand-md px-3">
-        <a class="navbar-brand" href="#">
-            <img src="./img/logoSinFondoBlanco.png" alt="LogoEmpresa" class="logoNav d-inline-block align-text-top">
-        </a>
 
-        <button class="navbar-toggler buttonHamburguesa" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="true" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+<!-- Header -->
+<div th:replace="~{fragments/header :: headerFragment}"></div>
 
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav containerNavCentral">
-                <li> <a class="navbar-brand enlaceNav" href="#">Sobre Nosotros</a> </li>
+<div class="contenedorImagen">
+	<h2>"PORQUE CADA HISTORIA MERECE UN FINAL FELIZ"</h2>
+</div>
 
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle enlaceNav" href="#" role="button" data-bs-toggle="dropdown"
-                       aria-expanded="false">
-                        Colabora
-                    </a>
+<!--HISTORIA DE LA PROTECTORA-->
+<section class="historia d-flex justify-content-center m-4" id="historia">
+	<div id="carouselExampleIndicators" class="carousel slide historiaCarrusel">
+		<div class="carousel-indicators">
+			<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+					aria-current="true" aria-label="Slide 1"></button>
+			<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+					aria-label="Slide 2"></button>
+			<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+					aria-label="Slide 3"></button>
+		</div>
+		<div class="carousel-inner">
+			<div class="carousel-item active">
+				<img th:src="@{images/patasDePerro.jpg}" class="d-block w-100"
+					 alt="dos patas de perro apoyado sobre una madera de parquet">
+				<div class="carousel-caption">
+					<h5>Historia de la protectora</h5>
+					<p>
+						Nuestra aventura comenzó con un simple pero poderoso propósito: dar voz y hogar a aquellos que
+						no pueden pedir ayuda.
+						Con cada rescate, cada mirada agradecida y cada cola que vuelve a moverse, reafirmamos nuestro
+						compromiso de ofrecer
+						segundas oportunidades. No somos solo un refugio; somos una familia dedicada a sanar, proteger y
+						encontrar hogares
+						llenos de amor para los animales que más lo necesitan."
+					</p>
+				</div>
+			</div>
+			<div class="carousel-item">
+				<img th:src="@{images/patasDePerro.jpg}" class="d-block w-100" alt="...">
+			</div>
+			<div class="carousel-item">
+				<img th:src="@{images/patasDePerro.jpg}" class="d-block w-100" alt="...">
+			</div>
+		</div>
+		<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+				data-bs-slide="prev">
+			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			<span class="visually-hidden">Previous</span>
+		</button>
+		<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+				data-bs-slide="next">
+			<span class="carousel-control-next-icon" aria-hidden="true"></span>
+			<span class="visually-hidden">Next</span>
+		</button>
+	</div>
+</section>
+<!-- FIN HISTORIA DE LA PROTECTORA-->
 
-                    <ul class="dropdown-menu dropdownNav">
-                        <li><a class="dropdown-item" href="#">Dona</a></li>
-                        <li><a class="dropdown-item" href="#">Adopta</a></li>
-                        <li><a class="dropdown-item" href="#">Apadrina</a></li>
-                    </ul>
-                </li>
-
-                <li> <a class="navbar-brand enlaceNav" href="#">Merchandising</a> </li>
-
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle enlaceNav" href="#" role="button" data-bs-toggle="dropdown"
-                       aria-expanded="false">
-                        Servicios
-                    </a>
-
-                    <ul class="dropdown-menu dropdownNav">
-                        <li><a class="dropdown-item" href="#">Paseos solidarios</a></li>
-                        <li><a class="dropdown-item" href="#">Guardería</a></li>
-                        <li><a class="dropdown-item" href="#">Peluquería</a></li>
-                        <li><a class="dropdown-item" href="#">Adiestramiento</a></li>
-                    </ul>
-                </li>
-
-                <li> <a class="navbar-brand enlaceNav" href="#">Blog</a> </li>
-                <li> <a class="navbar-brand enlaceNav" href="#">Contacto</a> </li>
-            </ul>
-        </div>
-        <div class="banderas me-3">
-            <a href="?lang=es" class="btn btn-sm">
-                <img src="https://flagcdn.com/w40/es.png" alt="Español" width="30">
-            </a>
-
-            <a href="?lang=en" class="btn btn-sm">
-                <img src="https://flagcdn.com/w40/gb.png" alt="English" width="30">
-            </a>
-        </div>
-
-        <div class="dropdown">
-            <button class="btn btn-light dropdown-toggle" type="button" id="userDropdown"
-                    data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="fa fa-user-circle" aria-hidden="true"></i>
-                <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Login" width="30" class="me-2">
-            </button>
-
-            <ul class="dropdown-menu dropdown-menu-end dropdownNav" aria-labelledby="userDropdown">
-                <li><a class="dropdown-item" href="#" data-bs-toggle="modal"
-                       data-bs-target="#registroModal">Registrarse</a></li>
-                <li><a class="dropdown-item" href="#" data-bs-toggle="modal"
-                       data-bs-target="#registroModal">Iniciar sesión</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <h2 class="esloganHeader">"Porque cada historia <br> merece un final feliz."</h2>
-</header>
-
+<!-- Footer -->
+<div th:replace="~{fragments/footer :: footerFragment}"></div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
