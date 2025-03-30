@@ -83,6 +83,13 @@ public class DefaultController {
         return "guarderia";
     }
 
+    // Metodo para mostrar la pagina de nuestros animales
+    @GetMapping("/nuestrosAnimales")
+    public String mostrarNuestrosAnimales()
+    {
+        return "nuestrosAnimales";
+    }
+
     /**
      * Gestiona las solicitudes GET para obtener y mostrar la lista de entidades protegidas.
      * Añade las entidades obtenidas del repositorio al modelo para renderizarlas en la vista correspondiente.
