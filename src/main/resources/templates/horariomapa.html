@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" th:href="@{/css/header.css}"/>
+    <link rel="stylesheet" th:href="@{/css/horariomapa.css}"/>
     <link rel="stylesheet" th:href="@{/css/footer.css}"/>
+
     <title>Contacto</title>
 </head>
 <body>
@@ -14,24 +16,26 @@
 <div th:replace="~{fragments/header :: headerFragment}"></div>
 
 <main>
-    <section class="container text-center">
-        <div class="row p-5">
-            <div class="col-sm-8">
+    <section class="mainContainer d-flex flex-column text-center mb-3">
+        <div class="row d-flex justify-content-center mt-5 mb-5 m-5 cardFormulario">
+            <div class="col-12 col-md-8">
                 <h2>Dónde estamos</h2>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d12968.588853849347!2d-4.873474617257901!3d37.863809464195704!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2ses!4v1742065670947!5m2!1ses!2ses" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d12968.588853849347!2d-4.873474617257901!3d37.863809464195704!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2ses!4v1742065670947!5m2!1ses!2ses"
+                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
-          <div class="col-sm-4">
-            <div class="container mt-5">
-                <h2 class="text-center mb-4">Horario de atención</h2>
-                <div class="table-responsive">
-                    <table class="table table-bordered text-center">
-                        <thead class="table-success">
+            <div class="col-12 col-md-8">
+                <div class="container mt-5">
+                    <h2 class="text-center mb-4">Horario de atención</h2>
+                    <div class="table-responsive">
+                        <table class="table table-bordered text-center">
+                            <thead class="table-success">
                             <tr>
                                 <th>Día(s)</th>
                                 <th>Horario</th>
                             </tr>
-                        </thead>
-                        <tbody>
+                            </thead>
+                            <tbody class="table-light">
                             <tr>
                                 <td>Lunes - Viernes</td>
                                 <td>08:00 h - 18:00 h</td>
@@ -40,22 +44,24 @@
                                 <td>Sábado</td>
                                 <td>09:00 h - 14:00 h</td>
                             </tr>
-                            <tr class="table">
+                            <tr class="table-light">
                                 <td>Domingo</td>
                                 <td>Cerrado</td>
                             </tr>
-                        </tbody>
-                    </table>
-                    <h2 class="text-center">Contacto</h2>
-                    <button type="submit" class="btn btn-success">CONTÁCTANOS
-                        <a href="#"></a>
-                    </button>
+                            </tbody>
+                        </table>
+                        <h2 class="text-center">Contacto</h2>
+                        <button type="submit" class="btn btn-success">CONTÁCTANOS
+                            <a href="#"></a>
+                        </button>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="row p-5">
-          <div class="col-sm">
-            
+            <div class="row p-5">
+                <div class="col-sm">
+
+                </div>
+            </div>
         </div>
     </section>
 </main>

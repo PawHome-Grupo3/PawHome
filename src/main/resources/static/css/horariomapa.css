@@ -1,0 +1,21 @@
+body{
+    margin: 10px;
+    padding: 0;
+    font-family: "Inter", sans-serif;
+    overflow-x: hidden;
+}
+
+.mainContainer {
+    background-color: rgba(27, 125, 85, 0.3);
+    width: 80%;
+    max-width: 1400px;
+    margin-top: 100px;
+    padding: 20px;
+    border-radius: 20px;
+    justify-self: center;
+}
+
+.cardFormulario {
+    background-color: rgba(27, 125, 85, 0.5);
+    border-radius: 20px;
+}
