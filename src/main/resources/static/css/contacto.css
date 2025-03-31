@@ -1,9 +1,6 @@
 body{
     margin: 10px;
-    padding: 0;
-    height: auto;
     font-family: "Inter", sans-serif;
-    overflow-x: hidden;
 }
 
 .mainContainer{
