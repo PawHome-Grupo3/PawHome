@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buzón de Sugerencias</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-5">
+  <div class="card shadow-lg p-4">
+    <h2 class="text-center mb-4">Buzón de Sugerencias</h2>
+    <form>
+      <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre (Opcional)</label>
+        <input type="text" class="form-control" id="nombre" placeholder="Tu nombre">
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Correo Electrónico (Opcional)</label>
+        <input type="email" class="form-control" id="email" placeholder="tuemail@example.com">
+      </div>
+      <div class="mb-3">
+        <label for="sugerencia" class="form-label">Tu sugerencia</label>
+        <textarea class="form-control" id="sugerencia" rows="4" placeholder="Escribe tu sugerencia aquí..."></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary w-100">Enviar</button>
+    </form>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
