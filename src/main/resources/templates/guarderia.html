@@ -1,267 +1,254 @@
 <!DOCTYPE html>
-<html lang="es" th:replace="~{/layout :: contenido}">
+<html lang="es" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="~{layouts/layout.html}">">
 <head>
-<!--	<meta charset="UTF-8">-->
-<!--	<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
-<!--	<link rel="preconnect" href="https://fonts.googleapis.com">-->
-<!--	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>-->
-<!--	<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"-->
-<!--		  rel="stylesheet">-->
 	<title>Guarderia PawHome</title>
-<!--	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"-->
-<!--		  integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">-->
 	<link rel="stylesheet" th:href="@{/css/guarderia.css}"/>
-<!--	<link rel="stylesheet" th:href="@{/css/header.css}"/>-->
-<!--	<link rel="stylesheet" th:href="@{/css/footer.css}"/>-->
 </head>
 <body>
 
-<!--&lt;!&ndash; Header &ndash;&gt;-->
-<!--<div th:replace="~{fragments/header :: headerFragment}"></div>-->
+<section layout:fragment="content">
+	<section class="container py-5 mainContainer">
 
-<section class="container py-5 mainContainer">
+		<!-- Sección: Nuestra guardería-->
+		<seccion class="text-center my-4">
+			<h2 class="fw-bold">Nuestra guardería</h2>
+			<p class="fs-5">Deja tus mascotas en manos de nuestros profesionales y
+				disfruta de tu vacaciones con total tranquilidad</p>
+		</seccion>
+		<hr class="mx-auto w-100 border-2 opacity-50">
 
-	<!-- Sección: Nuestra guardería-->
-	<seccion class="text-center my-4">
-		<h2 class="fw-bold">Nuestra guardería</h2>
-		<p class="fs-5">Deja tus mascotas en manos de nuestros profesionales y
-			disfruta de tu vacaciones con total tranquilidad</p>
-	</seccion>
-	<hr class="mx-auto w-100 border-2 opacity-50">
+		<!-- Sección: Nuestras tarifas -->
+		<section class="text-center mb-5">
+			<h2 class="fw-bold">Nuestras tarifas:</h2>
+			<div class="row row-cols-1 row-cols-md-3 g-4">
+				<article class="col">
+					<div class="card p-3 shadow-sm cardGuarderia">
+						<div class="card_image">
+							<img th:src="@{images/estanciaExpres.jpg}" alt="LogoEstanciaExpress" class="imagenCard">
+						</div>
+						<h3 class="mt-3">ESTANCIA EXPRESS</h3>
+						<p class="fw-bold">18€ por noche</p>
+						<p class="">De 1 a 5 noches</p>
+						<p class="text-center">Incluye comida <br> Incluye Alojamiento <br> Incluye entretenimiento</p>
+						<button class="btn btn-success btnCard" id="btnEstanciaExpress">Seleccionar</button>
+					</div>
+				</article>
+				<article class="col">
+					<div class="card p-3 shadow-sm cardGuarderia">
+						<div class="card_image">
+							<img th:src="@{images/estanciaRelax.jpg}" alt="LogoEstanciaRelax" class="imagenCard">
+						</div>
+						<h3 class="mt-3">ESTANCIA RELAX</h3>
+						<p class="fw-bold">15€ por noche</p>
+						<p class="">De 6 a 10 noches</p>
+						<p class="text-center">Incluye comida <br> Incluye Alojamiento <br> Incluye entretenimiento</p>
+						<button class="btn btn-success btnCard" id="btnEstanciaRelax">Seleccionar</button>
+					</div>
+				</article>
+				<article class="col">
+					<div class="card p-3 shadow-sm cardGuarderia">
+						<div class="card_image">
+							<img th:src="@{images/estanciaSabatica.jpg}" alt="LogoEstanciaSabatica" class="imagenCard">
+						</div>
+						<h3 class="mt-3">ESTANCIA SABÁTICA</h3>
+						<p class="fw-bold">12€ por noche</p>
+						<p class="">A partir de 11 noches</p>
+						<p class="text-center">Incluye comida <br> Incluye Alojamiento <br> Incluye entretenimiento</p>
+						<button class="btn btn-success btnCard" id="btnEstanciaSabatica">Seleccionar</button>
+					</div>
+				</article>
+			</div>
+		</section>
+		<hr class="mx-auto w-100 border-2 opacity-50">
 
-	<!-- Sección: Nuestras tarifas -->
-	<section class="text-center mb-5">
-		<h2 class="fw-bold">Nuestras tarifas:</h2>
-		<div class="row row-cols-1 row-cols-md-3 g-4">
-			<article class="col">
-				<div class="card p-3 shadow-sm cardGuarderia">
-					<div class="card_image">
-						<img th:src="@{images/estanciaExpres.jpg}" alt="LogoEstanciaExpress" class="imagenCard">
+		<!-- Sección: Descubre nuestros bonos -->
+		<section class="text-center mb-5">
+			<h2 class="fw-bold">Descubre nuestros bonos:</h2>
+			<div class="row g-4 d-flex justify-content-center">
+				<article class="col-6 col-md-4">
+					<div class="card p-3 shadow-sm cardGuarderia">
+						<div class="card_image">
+							<img th:src="@{images/bonoLargaEstancia.jpg}" alt="BonoLargaEstancia" class="imagenCard">
+						</div>
+						<h3 class="mt-3">BONO LARGA ESTANCIA</h3>
+						<p class="fw-bold fs-1">200€</p>
+						<p class="fw-bold fs-3">20 NOCHES</p>
+						<p class="text-center">Incluye comida <br> Incluye Alojamiento <br> Incluye entretenimiento</p>
+						<p>Elige los días cuando quieras</p>
+						<button class="btn btn-success btnCard" id="btnBonoLargaEstancia">Seleccionar</button>
 					</div>
-					<h3 class="mt-3">ESTANCIA EXPRESS</h3>
-					<p class="fw-bold">18€ por noche</p>
-					<p class="">De 1 a 5 noches</p>
-					<p class="text-center">Incluye comida <br> Incluye Alojamiento <br> Incluye entretenimiento</p>
-					<button class="btn btn-success btnCard" id="btnEstanciaExpress">Seleccionar</button>
-				</div>
-			</article>
-			<article class="col">
-				<div class="card p-3 shadow-sm cardGuarderia">
-					<div class="card_image">
-						<img th:src="@{images/estanciaRelax.jpg}" alt="LogoEstanciaRelax" class="imagenCard">
+				</article>
+				<article class="col-6 col-md-4">
+					<div class="card p-3 shadow-sm cardGuarderia">
+						<div class="card_image">
+							<img th:src="@{images/bonoSoloDia.jpg}" alt="BonoSoloDia" class="imagenCard">
+						</div>
+						<h3 class="mt-3">BONO ESTANCIA SOLO DÍA</h3>
+						<p class="fw-bold fs-1">75€</p>
+						<p class="fw-bold fs-3">10 DIAS</p>
+						<p class="text-center">Incluye comida <br> Incluye Alojamiento <br> Incluye entretenimiento</p>
+						<p>Elige los días cuando quieras</p>
+						<button class="btn btn-success btnCard" id="btnBonoEstanciaSoloDia">Seleccionar</button>
 					</div>
-					<h3 class="mt-3">ESTANCIA RELAX</h3>
-					<p class="fw-bold">15€ por noche</p>
-					<p class="">De 6 a 10 noches</p>
-					<p class="text-center">Incluye comida <br> Incluye Alojamiento <br> Incluye entretenimiento</p>
-					<button class="btn btn-success btnCard" id="btnEstanciaRelax">Seleccionar</button>
-				</div>
-			</article>
-			<article class="col">
-				<div class="card p-3 shadow-sm cardGuarderia">
-					<div class="card_image">
-						<img th:src="@{images/estanciaSabatica.jpg}" alt="LogoEstanciaSabatica" class="imagenCard">
-					</div>
-					<h3 class="mt-3">ESTANCIA SABÁTICA</h3>
-					<p class="fw-bold">12€ por noche</p>
-					<p class="">A partir de 11 noches</p>
-					<p class="text-center">Incluye comida <br> Incluye Alojamiento <br> Incluye entretenimiento</p>
-					<button class="btn btn-success btnCard" id="btnEstanciaSabatica">Seleccionar</button>
-				</div>
-			</article>
-		</div>
-	</section>
-	<hr class="mx-auto w-100 border-2 opacity-50">
+				</article>
+			</div>
+		</section>
+		<hr class="mx-auto w-100 border-2 opacity-50">
 
-	<!-- Sección: Descubre nuestros bonos -->
-	<section class="text-center mb-5">
-		<h2 class="fw-bold">Descubre nuestros bonos:</h2>
-		<div class="row g-4 d-flex justify-content-center">
-			<article class="col-6 col-md-4">
-				<div class="card p-3 shadow-sm cardGuarderia">
-					<div class="card_image">
-						<img th:src="@{images/bonoLargaEstancia.jpg}" alt="BonoLargaEstancia" class="imagenCard">
-					</div>
-					<h3 class="mt-3">BONO LARGA ESTANCIA</h3>
-					<p class="fw-bold fs-1">200€</p>
-					<p class="fw-bold fs-3">20 NOCHES</p>
-					<p class="text-center">Incluye comida <br> Incluye Alojamiento <br> Incluye entretenimiento</p>
-					<p>Elige los días cuando quieras</p>
-					<button class="btn btn-success btnCard" id="btnBonoLargaEstancia">Seleccionar</button>
-				</div>
-			</article>
-			<article class="col-6 col-md-4">
-				<div class="card p-3 shadow-sm cardGuarderia">
-					<div class="card_image">
-						<img th:src="@{images/bonoSoloDia.jpg}" alt="BonoSoloDia" class="imagenCard">
-					</div>
-					<h3 class="mt-3">BONO ESTANCIA SOLO DÍA</h3>
-					<p class="fw-bold fs-1">75€</p>
-					<p class="fw-bold fs-3">10 DIAS</p>
-					<p class="text-center">Incluye comida <br> Incluye Alojamiento <br> Incluye entretenimiento</p>
-					<p>Elige los días cuando quieras</p>
-					<button class="btn btn-success btnCard" id="btnBonoEstanciaSoloDia">Seleccionar</button>
-				</div>
-			</article>
-		</div>
-	</section>
-	<hr class="mx-auto w-100 border-2 opacity-50">
+		<!-- Sección: Formulario de contacto -->
+		<section class="mb-5">
+			<h2 class="fw-bold text-center">Reserva tu estancia</h2>
+			<div class="formContainer">
+				<form class="row g-3">
+					<fieldset class="col-md-6">
+						<div class="itemSeleccion">
+							<legend class="fw-bold">Datos de la mascota</legend>
+							<label for="nombreMascota" class="form-label">Nombre de la mascota: <span
+									style="color: red">*</span></label>
+							<input type="text" id="nombreMascota" class="form-control labelForm"
+								   placeholder="-Por favor introduce el nombre de tu mascota-" required>
+						</div>
 
-	<!-- Sección: Formulario de contacto -->
-	<section class="mb-5">
-		<h2 class="fw-bold text-center">Reserva tu estancia</h2>
-		<div class="formContainer">
-			<form class="row g-3">
-				<fieldset class="col-md-6">
-					<div class="itemSeleccion">
-						<legend class="fw-bold">Datos de la mascota</legend>
-						<label for="nombreMascota" class="form-label">Nombre de la mascota: <span
-								style="color: red">*</span></label>
-						<input type="text" id="nombreMascota" class="form-control labelForm"
-							   placeholder="-Por favor introduce el nombre de tu mascota-" required>
-					</div>
+						<div class="itemSeleccion">
+							<label for="caracterMascota" class="form-label">Caracter social: <span
+									style="color: red">*</span></label>
+							<select id="caracterMascota" class="form-select labelForm" required>
+								<option value="" disabled selected>-Por favor, elige una opción-</option>
+								<option>Sociable</option>
+								<option>No sociable</option>
+							</select>
+						</div>
 
-					<div class="itemSeleccion">
-						<label for="caracterMascota" class="form-label">Caracter social: <span
-								style="color: red">*</span></label>
-						<select id="caracterMascota" class="form-select labelForm" required>
-							<option value="" disabled selected>-Por favor, elige una opción-</option>
-							<option>Sociable</option>
-							<option>No sociable</option>
-						</select>
-					</div>
+						<div class="itemSeleccion">
+							<label for="tipoMascota" class="form-label">Tipo: <span style="color: red">*</span></label>
+							<select id="tipoMascota" class="form-select labelForm" required>
+								<option value="" disabled selected>-Por favor, elige una opción-</option>
+								<option>Perro</option>
+								<option>Gato</option>
+								<option>Otro</option>
+							</select>
+						</div>
 
-					<div class="itemSeleccion">
-						<label for="tipoMascota" class="form-label">Tipo: <span style="color: red">*</span></label>
-						<select id="tipoMascota" class="form-select labelForm" required>
-							<option value="" disabled selected>-Por favor, elige una opción-</option>
-							<option>Perro</option>
-							<option>Gato</option>
-							<option>Otro</option>
-						</select>
-					</div>
+						<div class="itemSeleccion">
+							<label for="necesitaMedicacion" class="form-label">Necesita medicación: <span
+									style="color: red">*</span></label>
+							<select id="necesitaMedicacion" class="form-select labelForm" required>
+								<option value="" disabled selected>-Por favor, elige una opción-</option>
+								<option>Sí</option>
+								<option>No</option>
+							</select>
+						</div>
 
-					<div class="itemSeleccion">
-						<label for="necesitaMedicacion" class="form-label">Necesita medicación: <span
-								style="color: red">*</span></label>
-						<select id="necesitaMedicacion" class="form-select labelForm" required>
-							<option value="" disabled selected>-Por favor, elige una opción-</option>
-							<option>Sí</option>
-							<option>No</option>
-						</select>
-					</div>
+						<div class="itemSeleccion">
+							<label for="fechaEntrada" class="form-label">Fecha de entrada: <span style="color: red">*</span></label>
+							<input type="date" id="fechaEntrada" class="form-control labelForm" required>
+						</div>
 
-					<div class="itemSeleccion">
-						<label for="fechaEntrada" class="form-label">Fecha de entrada: <span style="color: red">*</span></label>
-						<input type="date" id="fechaEntrada" class="form-control labelForm" required>
-					</div>
+						<div class="itemSeleccion">
+							<label for="fechaSalida" class="form-label">Fecha de salida: <span
+									style="color: red">*</span></label>
+							<input type="date" id="fechaSalida" class="form-control labelForm" required>
+						</div>
 
-					<div class="itemSeleccion">
-						<label for="fechaSalida" class="form-label">Fecha de salida: <span
-								style="color: red">*</span></label>
-						<input type="date" id="fechaSalida" class="form-control labelForm" required>
-					</div>
+						<div class="itemSeleccion">
+							<label class="form-label fw-bold fs-5">Tarifa seleccionada: </label>
+						</div>
 
-					<div class="itemSeleccion">
-						<label class="form-label fw-bold fs-5">Tarifa seleccionada: </label>
-					</div>
+						<div class="itemSeleccion">
+							<label class="form-label fw-bold fs-3" id="precioTotal">PRECIO TOTAL: </label>
+						</div>
 
-					<div class="itemSeleccion">
-						<label class="form-label fw-bold fs-3" id="precioTotal">PRECIO TOTAL: </label>
-					</div>
+						<div class="itemSeleccion">
+							<input type="checkbox" class="" required>
+							<label class="form-label">He leído y acepto las condiciones de uso de la web,
+								el aviso legal y la política de privacidad</label>
+						</div>
 
-					<div class="itemSeleccion">
-						<input type="checkbox" class="" required>
-						<label class="form-label">He leído y acepto las condiciones de uso de la web,
-							el aviso legal y la política de privacidad</label>
-					</div>
+					</fieldset>
 
-				</fieldset>
+					<fieldset class="col-md-6">
+						<div class="itemSeleccion">
+							<legend class="fw-bold">Datos de contacto</legend>
+							<label for="nombreDueño" class="form-label">Tu nombre: <span style="color: red">*</span></label>
+							<input type="text" id="nombreDueño" class="form-control labelForm"
+								   placeholder="-Por favor introduce tu nombre-" required>
+						</div>
 
-				<fieldset class="col-md-6">
-					<div class="itemSeleccion">
-						<legend class="fw-bold">Datos de contacto</legend>
-						<label for="nombreDueño" class="form-label">Tu nombre: <span style="color: red">*</span></label>
-						<input type="text" id="nombreDueño" class="form-control labelForm"
-							   placeholder="-Por favor introduce tu nombre-" required>
-					</div>
+						<div class="itemSeleccion">
+							<label for="telefonoDueño" class="form-label">Teléfono: <span
+									style="color: red">*</span></label>
+							<input type="tel" id="telefonoDueño" class="form-control labelForm"
+								   placeholder="-Por favor introduce tu número de teléfono-" required>
+						</div>
 
-					<div class="itemSeleccion">
-						<label for="telefonoDueño" class="form-label">Teléfono: <span
-								style="color: red">*</span></label>
-						<input type="tel" id="telefonoDueño" class="form-control labelForm"
-							   placeholder="-Por favor introduce tu número de teléfono-" required>
-					</div>
+						<div class="itemSeleccion">
+							<label for="emailDueño" class="form-label">Correo electrónico: <span style="color: red">*</span></label>
+							<input type="email" id="emailDueño" class="form-control labelForm"
+								   placeholder="-Por favor introduce tu correo electrónico-" required>
+						</div>
 
-					<div class="itemSeleccion">
-						<label for="emailDueño" class="form-label">Correo electrónico: <span style="color: red">*</span></label>
-						<input type="email" id="emailDueño" class="form-control labelForm"
-							   placeholder="-Por favor introduce tu correo electrónico-" required>
-					</div>
+						<div class="itemSeleccion">
+							<label for="mensajeExtra" class="form-label">Mensaje:</label>
+							<input type="text" id="mensajeExtra" class="form-control labelForm">
+						</div>
 
-					<div class="itemSeleccion">
-						<label for="mensajeExtra" class="form-label">Mensaje:</label>
-						<input type="text" id="mensajeExtra" class="form-control labelForm">
-					</div>
+					</fieldset>
 
-				</fieldset>
+					<div class="text-center">
+						<button type="submit" class="btn btn-primary btnEnviar">RESERVAR</button>
+					</div>
+				</form>
+			</div>
+		</section>
+		<hr class="mx-auto w-100 border-2 opacity-50">
 
-				<div class="text-center">
-					<button type="submit" class="btn btn-primary btnEnviar">RESERVAR</button>
-				</div>
-			</form>
-		</div>
-	</section>
-	<hr class="mx-auto w-100 border-2 opacity-50">
-
-	<!-- Sección: otros servicios-->
-	<section class="text-center mb-5">
-		<h2 class="fw-bold">Nuestras tarifas:</h2>
-		<div class="row row-cols-1 row-cols-md-4 g-4">
-			<article class="col">
-				<div class="card p-3 shadow-sm cardGuarderia">
-					<div class="card_image">
-						<img th:src="@{images/peluqueriaCanina.jpg}" alt="LogoPeluqueria" class="imagenCard">
+		<!-- Sección: otros servicios-->
+		<section class="text-center mb-5">
+			<h2 class="fw-bold">Nuestras tarifas:</h2>
+			<div class="row row-cols-1 row-cols-md-4 g-4">
+				<article class="col">
+					<div class="card p-3 shadow-sm cardGuarderia">
+						<div class="card_image">
+							<img th:src="@{images/peluqueriaCanina.jpg}" alt="LogoPeluqueria" class="imagenCard">
+						</div>
+						<h3 class="mt-3 fs-1">PELUQUERÍA</h3>
+						<p class="fw-bold fs-3">A PARTIR DE 10€</p>
+						<button class="btn btn-success">MÁS INFO</button>
 					</div>
-					<h3 class="mt-3 fs-1">PELUQUERÍA</h3>
-					<p class="fw-bold fs-3">A PARTIR DE 10€</p>
-					<button class="btn btn-success">MÁS INFO</button>
-				</div>
-			</article>
-			<article class="col">
-				<div class="card p-3 shadow-sm cardGuarderia">
-					<div class="card_image">
-						<img th:src="@{images/adiestramiento.jpg}" alt="LogoAdiestramiento" class="imagenCard">
+				</article>
+				<article class="col">
+					<div class="card p-3 shadow-sm cardGuarderia">
+						<div class="card_image">
+							<img th:src="@{images/adiestramiento.jpg}" alt="LogoAdiestramiento" class="imagenCard">
+						</div>
+						<h3 class="mt-3 fs-1">ADIESTRAMIENTO</h3>
+						<p class="fw-bold fs-3">A PARTIR DE 15€</p>
+						<button class="btn btn-success">MÁS INFO</button>
 					</div>
-					<h3 class="mt-3 fs-1">ADIESTRAMIENTO</h3>
-					<p class="fw-bold fs-3">A PARTIR DE 15€</p>
-					<button class="btn btn-success">MÁS INFO</button>
-				</div>
-			</article>
-			<article class="col">
-				<div class="card p-3 shadow-sm cardGuarderia">
-					<div class="card_image">
-						<img th:src="@{images/veterinario.jpg}" alt="LogoVeterinario" class="imagenCard">
+				</article>
+				<article class="col">
+					<div class="card p-3 shadow-sm cardGuarderia">
+						<div class="card_image">
+							<img th:src="@{images/veterinario.jpg}" alt="LogoVeterinario" class="imagenCard">
+						</div>
+						<h3 class="mt-3 fs-1">ASESORAMIENTO VETERINARIO</h3>
+						<button class="btn btn-success">MÁS INFO</button>
 					</div>
-					<h3 class="mt-3 fs-1">ASESORAMIENTO VETERINARIO</h3>
-					<button class="btn btn-success">MÁS INFO</button>
-				</div>
-			</article>
-			<article class="col">
-				<div class="card p-3 shadow-sm cardGuarderia">
-					<div class="card_image">
-						<img th:src="@{images/asesoramientoLegal.jpg}" alt="LogoLegal" class="imagenCard">
+				</article>
+				<article class="col">
+					<div class="card p-3 shadow-sm cardGuarderia">
+						<div class="card_image">
+							<img th:src="@{images/asesoramientoLegal.jpg}" alt="LogoLegal" class="imagenCard">
+						</div>
+						<h3 class="mt-3 fs-1">ASESORAMIENTO LEGAL</h3>
+						<button class="btn btn-success">MÁS INFO</button>
 					</div>
-					<h3 class="mt-3 fs-1">ASESORAMIENTO LEGAL</h3>
-					<button class="btn btn-success">MÁS INFO</button>
-				</div>
-			</article>
-		</div>
+				</article>
+			</div>
+		</section>
 	</section>
 </section>
-
-<!-- Footer -->
-<!--<div th:replace="~{fragments/footer :: footerFragment}"></div>-->
 
 <!-- Script para controlar la seleccion de fechas -->
 <script>
@@ -359,6 +346,6 @@
         document.getElementById('fechaSalida').addEventListener('change', calcularPrecio);
     });
 </script>
-<!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>-->
+
 </body>
 </html>
