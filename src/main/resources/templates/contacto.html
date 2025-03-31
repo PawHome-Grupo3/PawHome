@@ -15,50 +15,59 @@
 <!-- Header -->
 <div th:replace="~{fragments/header :: headerFragment}"></div>
 
-<section class="mainContainer d-flex flex-column text-center">
+<section class="mainContainer d-flex flex-column text-center mb-3">
     <h2 class="fw-bold">Contáctanos</h2>
     <div class="row g-4 d-flex justify-content-center">
-        <article class="col-6 col-md-4">
-            <h2>NOSOTROS TE LLAMAMOS</h2>
+        <!---Columna izquierda--->
+        <article class="col-12 col-md-8">
+            <h3>Déjanos tu mensaje y te responderemos</h3>
             <div class="card p-3 shadow-sm cardFormulario">
                 <form>
                     <div class="mb-3">
-                        <label for="nombre" class="form-label">Tu nombre</label>
-                        <input type="text" class="form-control" id="nombre">
+                        <label for="nombreMensaje" class="form-label"><span
+                                style="color: red">*</span>Tu nombre</label>
+                        <input type="text" class="form-control" id="nombreMensaje" placeholder="Juan">
                     </div>
                     <div class="mb-3">
-                        <label for="telefono" class="form-label">Tu número de teléfono</label>
-                        <input type="tel" class="form-control" id="telefono">
+                        <label for="correo" class="form-label"><span
+                                style="color: red">*</span>Tu correo electrónico</label>
+                        <input type="email" class="form-control" id="correo" placeholder="correo@ejemplo.com">
                     </div>
                     <div class="mb-3">
-                        <label for="motivo" class="form-label">Motivo de la llamada</label>
-                        <input type="text" class="form-control" id="motivo">
+                        <label for="asunto" class="form-label"><span
+                                style="color: red">*</span>Asunto del mensaje</label>
+                        <input type="text" class="form-control" id="asunto" placeholder="Escribe aquí el asunto del mensaje">
                     </div>
-                    <button type="submit" class="btn btn-success">LLAMADME</button>
+                    <div class="mb-3">
+                        <label for="mensaje" class="form-label"><span
+                                style="color: red">*</span>Mensaje</label>
+                        <textarea class="form-control" id="mensaje" rows="4" placeholder="Escribe aquí tu mensaje..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-success">ENVIAR</button>
                 </form>
             </div>
         </article>
+        <!---Columna derecha--->
         <article class="col-6 col-md-4">
-            <h2>DÉJANOS TU MENSAJE Y TE RESPONDEREMOS</h2>
+            <h3>Nosotros te llamamos</h3>
             <div class="card p-3 shadow-sm cardFormulario">
                 <form>
                     <div class="mb-3">
-                        <label for="nombreMensaje" class="form-label">Tu nombre</label>
-                        <input type="text" class="form-control" id="nombreMensaje">
+                        <label for="nombre" class="form-label"><span
+                                style="color: red">*</span>Tu nombre</label>
+                        <input type="text" class="form-control" id="nombre" placeholder="María">
                     </div>
                     <div class="mb-3">
-                        <label for="correo" class="form-label">Tu correo electrónico</label>
-                        <input type="email" class="form-control" id="correo">
+                        <label for="telefono" class="form-label"><span
+                                style="color: red">*</span>Tu número de teléfono</label>
+                        <input type="tel" class="form-control" id="telefono" placeholder="+34 600 000 000">
                     </div>
                     <div class="mb-3">
-                        <label for="asunto" class="form-label">Asunto del mensaje</label>
-                        <input type="text" class="form-control" id="asunto">
+                        <label for="motivo" class="form-label"><span
+                                style="color: red">*</span>Motivo de la llamada</label>
+                        <input type="text" class="form-control" id="motivo" placeholder="¿Sobre qué quieres hablar?">
                     </div>
-                    <div class="mb-3">
-                        <label for="mensaje" class="form-label">Escribe aquí tu mensaje</label>
-                        <textarea class="form-control" id="mensaje" rows="4"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-success">ENVIAR</button>
+                    <button type="submit" class="btn btn-success">LLAMADME</button>
                 </form>
             </div>
         </article>

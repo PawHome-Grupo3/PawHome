@@ -5,7 +5,7 @@ body{
     overflow-x: hidden;
 }
 
-.mainContainer{
+.mainContainer {
     background-color: rgba(27, 125, 85, 0.3);
     width: 80%;
     max-width: 1400px;
@@ -15,30 +15,7 @@ body{
     justify-self: center;
 }
 
-.cardFormulario{
+.cardFormulario {
     background-color: rgba(27, 125, 85, 0.5);
     border-radius: 20px;
-}
-
-.btnCard{
-    --selected-background-color: green;
-}
-
-.itemSeleccion{
-    padding: 10px;
-}
-
-.labelForm{
-    border-radius: 10px;
-}
-
-.btnEnviar{
-    border: hidden;
-    background-color: #198754;
-    border-radius: 0.75rem;
-    width: 300px;
-}
-
-.btnEnviar:hover{
-    background-color: #157347;
 }
