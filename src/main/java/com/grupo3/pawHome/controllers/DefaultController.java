@@ -5,9 +5,7 @@ import com.grupo3.pawHome.services.EntidadHijaService;
 import com.grupo3.pawHome.services.EntidadPadreService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Controlador encargado de manejar las solicitudes relacionadas con la entidad principal.

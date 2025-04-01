@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
-layout:decorate="~{layouts/layout.html}">
+	layout:decorate="~{layouts/layout.html}"
+	  xmlns:th="http://www.thymeleaf.org" >
 <head>
-	<title>Pagina Principal Home</title>
+	<title th:text="#{page.index.title}"></title>
 	<link rel="stylesheet" th:href="@{/css/index.css}"/>
 </head>
 <body>
 
 <section layout:fragment="content">
 	<div class="contenedorImagen">
-		<h2>"PORQUE CADA HISTORIA MERECE UN FINAL FELIZ"</h2>
+		<h2 th:text="#{index.esloganInicial}"></h2>
 	</div>
 
 	<!--HISTORIA DE LA PROTECTORA-->
