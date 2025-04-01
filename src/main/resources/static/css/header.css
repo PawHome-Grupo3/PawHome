@@ -61,9 +61,8 @@ body {
     font-weight: bold;
 }
 
-.main {
-    display: flex;
-    flex-direction: column;
+.botonRegistro {
+    background-color: rgba(27, 125, 85, 0);
 }
 
 /*Cambio de vista para pantallas moviles*/
