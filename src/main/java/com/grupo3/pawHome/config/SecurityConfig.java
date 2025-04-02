@@ -95,6 +95,7 @@ public class SecurityConfig {
                         .requestMatchers("/entities").permitAll()
                         .requestMatchers("/entities/*").permitAll()
                         .requestMatchers("/css/*").permitAll()
+                        .requestMatchers("/js/*").permitAll()
                         .requestMatchers(HttpMethod.POST,"/entidades/deleteHija/*").authenticated()
                         .anyRequest().authenticated()
                 );

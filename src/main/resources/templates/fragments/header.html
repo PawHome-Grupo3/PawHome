@@ -1,69 +1,62 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Header</title>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" th:href="@{/css/header.css}"/>
+	<title th:text="#{page.header.title}"></title>
 </head>
 <header th:fragment="headerFragment">
 	<nav class="navbar fixed-top navbar-expand-md px-3">
-		<a class="navbar-brand" href="#">
+		<a class="navbar-brand" href="/">
 			<img th:src="@{images/logoSinFondoBlanco.png}" alt="LogoEmpresa" class="logoNav d-inline-block align-text-top">
 		</a>
 
 		<button class="navbar-toggler buttonHamburguesa" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-				aria-controls="navbarNav" aria-expanded="true">
+				aria-controls="navbarNav" aria-expanded="true" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 
 		<div class="collapse navbar-collapse" id="navbarNav">
 			<ul class="navbar-nav containerNavCentral">
 				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle enlaceNav" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-						Conócenos
-					</a>
+					<a class="nav-link dropdown-toggle enlaceNav" href="/#historia" data-bs-toggle="dropdown"
+					   aria-expanded="false" th:text="#{header.conocenos}"></a>
 
 					<ul class="dropdown-menu dropdownNav">
-						<li><a class="dropdown-item" href="#historia">Historia</a></li>
-						<li><a class="dropdown-item" href="#">Nuestros Animales</a></li>
-						<li><a class="dropdown-item" href="#">Actividades y Eventos</a></li>
-						<li><a class="dropdown-item" href="#">Blog</a></li>
+						<li><a class="dropdown-item" href="/#historia" th:text="#{header.historia}"></a></li>
+						<li><a class="dropdown-item" href="nuestrosAnimales" th:text="#{header.nAnimales}"></a></li>
+						<li><a class="dropdown-item" href="#" th:text="#{header.actividades}"></a></li>
+						<li><a class="dropdown-item" href="#" th:text="#{header.blog}"></a></li>
 					</ul>
 				</li>
 
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle enlaceNav" href="#" data-bs-toggle="dropdown"
-					   aria-expanded="false">
-						Colabora
+					   aria-expanded="false" th:text="#{header.colabora}">
 					</a>
 
 					<ul class="dropdown-menu dropdownNav">
-						<li><a class="dropdown-item" href="#">Dona</a></li>
-						<li><a class="dropdown-item" href="#">Adopta</a></li>
-						<li><a class="dropdown-item" href="#">Apadrina</a></li>
-						<li><a class="dropdown-item" href="#">Paseo Solidario</a></li>
+						<li><a class="dropdown-item" href="nuestrosAnimales" th:text="#{header.dona}"></a></li>
+						<li><a class="dropdown-item" href="nuestrosAnimales" th:text="#{header.adopta}"></a></li>
+						<li><a class="dropdown-item" href="#" th:text="#{header.apadrina}"></a></li>
+						<li><a class="dropdown-item" href="#" th:text="#{header.paseo}"></a></li>
 					</ul>
 				</li>
 
-				<li><a class="navbar-brand enlaceNav" href="#">Tienda</a></li>
+				<li><a class="navbar-brand enlaceNav" href="#" th:text="#{header.tienda}"></a></li>
 
 				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle enlaceNav" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-						Servicios
-					</a>
+					<a class="nav-link dropdown-toggle enlaceNav" href="#" data-bs-toggle="dropdown"
+					   aria-expanded="false" th:text="#{header.servicios}"></a>
 
 					<ul class="dropdown-menu dropdownNav">
-						<li><a class="dropdown-item" href="#">Guardería</a></li>
-						<li><a class="dropdown-item" href="#">Peluquería</a></li>
-						<li><a class="dropdown-item" href="#">Adiestramiento</a></li>
-						<li><a class="dropdown-item" href="#">Asesoramiento Veterinario</a></li>
-						<li><a class="dropdown-item" href="#">Asesoramiento Legal</a></li>
+						<li><a class="dropdown-item" href="guarderia" th:text="#{header.guarderia}"></a></li>
+						<li><a class="dropdown-item" href="" th:text="#{header.peluqueria}"></a></li>
+						<li><a class="dropdown-item" href="#" th:text="#{header.adiestramiento}"></a></li>
+						<li><a class="dropdown-item" href="#" th:text="#{header.asesoramientoV}"></a></li>
+						<li><a class="dropdown-item" href="#" th:text="#{header.asesoramientoL}"></a></li>
 					</ul>
 				</li>
 
-				<li> <a class="navbar-brand enlaceNav" href="#">Contacto</a> </li>
+				<li> <a class="navbar-brand enlaceNav" href="#" th:text="#{header.contacto}"></a> </li>
 			</ul>
 		</div>
 
@@ -77,22 +70,17 @@
 			</a>
 		</div>
 
-		<div class="dropdown">
-			<button class="btn btn-light dropdown-toggle" type="button" id="userDropdown"
-					data-bs-toggle="dropdown" aria-expanded="false">
-				<i class="fa fa-user-circle" aria-hidden="true"></i>
-				<img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Login" width="30" class="me-2">
-			</button>
-
-			<ul class="dropdown-menu dropdown-menu-end dropdownNav" aria-labelledby="userDropdown">
-				<li><a class="dropdown-item" href="#" data-bs-toggle="modal"
-					   data-bs-target="#registroModal">Registrarse</a></li>
-				<li><a class="dropdown-item" href="#" data-bs-toggle="modal"
-					   data-bs-target="#registroModal">Iniciar sesión</a></li>
-			</ul>
+		<div class="ms-auto">
+			<div class="dropdown">
+				<button class="btn dropdown-toggle botonRegistro" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+					<i class="fa fa-user-circle" aria-hidden="true"></i>
+				</button>
+				<ul class="dropdown-menu dropdown-menu-end dropdownNav" aria-labelledby="userDropdown">
+					<li><a class="dropdown-item " href="#" data-bs-toggle="modal" data-bs-target="#registroModal" th:text="#{header.registrarse}"></a></li>
+					<li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#registroModal" th:text="#{header.iniciar}"></a></li>
+				</ul>
+			</div>
 		</div>
 	</nav>
-
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </header>
 </html>

@@ -11,10 +11,9 @@ body {
 .navbar {
     top: 0;
     display: flex;
-    align-self: flex-start;
     width: 100%;
     padding: 0;
-    background-color: rgb(27 125 85 / 70%)
+    background-color: rgb(27 125 85 / 70%);
 }
 
 .nav-link {
@@ -62,13 +61,8 @@ body {
     font-weight: bold;
 }
 
-.esloganHeader {
-    position: absolute;
-    left: 3vw;
-    bottom: 3vw;
-    color: white;
-    font-size: max(5vw, 70px);
-    font-weight: bolder;
+.botonRegistro {
+    background-color: rgba(27, 125, 85, 0);
 }
 
 /*Cambio de vista para pantallas moviles*/
@@ -79,16 +73,6 @@ body {
 
     .containerNavCentral li{
         padding: 0.7em;
-    }
-
-    .esloganHeader {
-        left: 55%;
-        top: 20%;
-        font-size: 3em;
-    }
-
-    .contenedorImagen h2 {
-        top: 70%;
     }
 }
 
