@@ -1,13 +1,18 @@
-.enlaceIcono {
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    color: inherit
+.contRedesSociales {
+    margin-bottom: 16px;
 }
 
-.enlaceIcono img {
+.enlaceIcono {
+    color: inherit;
+}
+
+.imgRedes {
     width: 20px;
     margin-left: 0.5em;
+}
+
+.iconoContacto {
+    margin-bottom: 16px;
 }
 
 .copyright {

@@ -248,10 +248,25 @@
 			</div>
 		</section>
 	</section>
-</section>
+
 
 <!-- Script para controlar la seleccion de fechas -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.17.0/babel.min.js"></script>
+
 <script>
+	'use strict';
+	var dclhandler = false;
+	if (document.readyState !== 'loading') {
+		start();
+	} else {
+		dclhandler = true;
+		document.addEventListener('DOMContentLoaded', start);
+	}
+	function start() {
+		if (dclhandler) { document.removeEventListener('DOMContentLoaded', start); }
+		console.log('Start the site`s JS activities');
+	}
+
     document.addEventListener('DOMContentLoaded', function () {
         const fechaEntrada = document.getElementById('fechaEntrada');
         const fechaSalida = document.getElementById('fechaSalida');
@@ -346,6 +361,6 @@
         document.getElementById('fechaSalida').addEventListener('change', calcularPrecio);
     });
 </script>
-
+</section>
 </body>
 </html>
