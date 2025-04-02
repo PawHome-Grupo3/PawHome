@@ -62,13 +62,10 @@ body {
     font-weight: bold;
 }
 
-.esloganHeader {
-    position: absolute;
-    left: 3vw;
-    bottom: 3vw;
-    color: white;
-    font-size: max(5vw, 70px);
-    font-weight: bolder;
+
+.botonRegistro {
+    background-color: rgba(27, 125, 85, 0);
+
 }
 
 /*Cambio de vista para pantallas moviles*/
