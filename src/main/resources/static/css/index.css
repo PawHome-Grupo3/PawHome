@@ -45,6 +45,65 @@ body {
 
 /*FIN HISTORIA DE LA PROTECTORA*/
 
+.section-padding {
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+.section-bg {
+    background-color: #f0f8ff;
+}
+
+.cta-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-section::before {
+    content: "";
+    background-color: #5bc1ac;
+    border-radius: 50%;
+    position: absolute;
+    top: -100px;
+    left: -30px;
+    margin: auto;
+    width: 200px;
+    height: 200px;
+}
+
+.cta-section::after {
+    content: "";
+    border: 20px solid #597081;
+    border-radius: 50%;
+    position: absolute;
+    bottom: -100px;
+    right: 0;
+    left: 0;
+    margin: auto;
+    width: 150px;
+    height: 150px;
+}
+
+.esloganDona {
+    color:#5a6f80;
+    font-weight: 600;
+    font-size: 36px;
+}
+
+.btnHazteVoluntario {
+    background: #597081;
+    border: 2px solid transparent;
+    border-radius: 100px;
+    color: white;
+    line-height: normal;
+    padding: 20px 30px;
+    font-size: 19px;
+    font-weight: normal;
+}
+
+.btnHazteVoluntario:hover {
+    background-color: #5bc1ac;
+}
 
 /*Cambio de vista para pantallas moviles*/
 @media screen and (max-width: 768px) {
