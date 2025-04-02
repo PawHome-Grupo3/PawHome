@@ -67,7 +67,7 @@
 			<div class="row justify-content-center align-items-center">
 
 				<div class="col-lg-5 col-12 ms-auto">
-					<h2 class="mb-0 esloganDona" th:text="#{index.esloganDona}"></h2>
+					<h2 class="mb-0 esloganDona" th:utext="${#strings.replace(#messages.msg('index.esloganDona'), 'ç', '<br>')}"></h2>
 				</div>
 
 				<div class="col-lg-5 col-12">
