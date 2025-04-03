@@ -64,16 +64,16 @@
 <!--DONA Y VOLUNTARIO -->
 	<section class="cta-section section-padding section-bg">
 		<div class="container">
-			<div class="row justify-content-center align-items-center">
+			<div class="row justify-content-center align-items-center text-center">
 
-				<div class="col-lg-5 col-12 ms-auto">
+				<div class="col-md-6 col-12">
 					<h2 class="mb-0 esloganDona" th:utext="${#strings.replace(#messages.msg('index.esloganDona'), 'ç', '<br>')}"></h2>
 				</div>
 
-				<div class="col-lg-5 col-12">
-					<a href="#" class="me-4" style="color:#5a6f80;">Make a donation</a>
+				<div class="col-md-6 col-12 flex-nowrap columDona mt-3">
+					<a href="#" class="me-4" style="color:#5a6f80;" th:utext="#{dona}"></a>
 
-					<a href="#" class="custom-btn btn smoothscroll btnHazteVoluntario">Become a volunteer</a>
+					<a href="#" class="custom-btn btn smoothscroll btnHazteVoluntario" th:utext="#{index.hazteVoluntario}"></a>
 				</div>
 
 			</div>

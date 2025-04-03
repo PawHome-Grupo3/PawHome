@@ -45,6 +45,8 @@ body {
 
 /*FIN HISTORIA DE LA PROTECTORA*/
 
+
+/*SECCION CTA DONA/VOLUNTARIO*/
 .section-padding {
     padding-top: 100px;
     padding-bottom: 100px;
@@ -104,6 +106,8 @@ body {
 .btnHazteVoluntario:hover {
     background-color: #5bc1ac;
 }
+/*FIN SECCION CTA DONA/VOLUNTARIO*/
+
 
 /*Cambio de vista para pantallas moviles*/
 @media screen and (max-width: 768px) {
