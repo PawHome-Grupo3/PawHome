@@ -3,6 +3,7 @@
       layout:decorate="~{layouts/layout.html}">
 <head>
   <title th:text="#{page.index.title}"></title>
+  <link rel="stylesheet" th:href="@{/css/tienda.css}"/>
   <link rel="stylesheet" th:href="@{/css/nuestrosAnimales.css}"/>
 </head>
 <body>
@@ -10,226 +11,35 @@
 <section layout:fragment="content">
   <div class="navbar navbar-expand-md" style="background-color: white; color: black">
     <button class="navbar-toggler buttonHamburguesa" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavTienda"
-            aria-controls="navbarNav" aria-expanded="true" aria-label="Toggle navigation">
+            aria-controls="navbarNavTienda" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse d-flex justify-content-center w-100" id="navbarNavTienda">
-      <div class="justify-content-start">
-        <a href="#">Collares</a>
-        <a href="#">Tazas</a>
-        <a href="#">Camisetas</a>
-        <a href="#">Pulseras</a>
-      </div>
-
-      <form class="d-flex justify-content-end" role="search">
-        <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Buscar</button>
-      </form>
+    <div class="collapse navbar-collapse p-3" id="navbarNavTienda">
+      <ul class="navbar-nav" style="
+          display: flex;
+          width: 100%;
+          justify-content: center;
+          flex-wrap: nowrap;
+          margin: 0;
+          list-style: none;
+          ">
+        <li class="navbar-item px-2"><a href="#" class="enlaceNavTienda">Collares</a></li>
+        <li class="navbar-item px-2"><a href="#" class="enlaceNavTienda">Collares</a></li>
+        <li class="navbar-item px-2"><a href="#" class="enlaceNavTienda">Collares</a></li>
+        <li class="navbar-item px-2"><i class="fa fa-solid fa-cart-shopping "></i></li>
+      </ul>
     </div>
+
+    <form class="d-flex justify-content-end me-3" role="search">
+      <i class="fa-light fa-cart-shopping fa-beat"></i>
+      <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit">Buscar</button>
+    </form>
   </div>
 
 
+
   <div class="col-12 contenedorCards justify-content-center">
-
-    <div class="card cardAnimal">
-      <div class="card_image"><img class="imgCardAnimal" th:src="@{images/perro1Card.jpg}"
-                                   alt="foto de perro disponible para adoptar"></div>
-      <div class="card_content d-flex justify-content-center card_contentAnimal">
-        <h2 class="card_title card_titleAnimal">Comodoro</h2>
-        <p class="card_tex card_textAnimal">Macho, 2 años, vacunado</p>
-        <div class="row d-flex justify-content-center flex-nowrap">
-          <button class="botonesCardAnimal btn card_btn">Apadrina</button>
-          <button class="botonesCardAnimal btn card_btn">Adopta</button>
-        </div>
-        <div class="row d-flex justify-content-center flex-nowrap hiddenCardContent">
-          <button type="button" class="botonesCardAnimal botonesCardLeerMas btn card_btn arrow"
-                  data-bs-toggle="modal" data-bs-target="#exampleModal"> Leer Más
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <div class="card cardAnimal">
-      <div class="card_image"><img class="imgCardAnimal" th:src="@{images/perro1Card.jpg}"
-                                   alt="foto de perro disponible para adoptar"></div>
-      <div class="card_content d-flex justify-content-center card_contentAnimal">
-        <h2 class="card_title card_titleAnimal">Comodoro</h2>
-        <p class="card_tex card_textAnimal">Macho, 2 años, vacunado</p>
-        <div class="row d-flex justify-content-center flex-nowrap">
-          <button class="botonesCardAnimal btn card_btn">Apadrina</button>
-          <button class="botonesCardAnimal btn card_btn">Adopta</button>
-        </div>
-        <div class="row d-flex justify-content-center flex-nowrap hiddenCardContent">
-          <button type="button" class="botonesCardAnimal botonesCardLeerMas btn card_btn arrow"
-                  data-bs-toggle="modal" data-bs-target="#exampleModal"> Leer Más
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <div class="card cardAnimal">
-      <div class="card_image"><img class="imgCardAnimal" th:src="@{images/perro1Card.jpg}"
-                                   alt="foto de perro disponible para adoptar"></div>
-      <div class="card_content d-flex justify-content-center card_contentAnimal">
-        <h2 class="card_title card_titleAnimal">Comodoro</h2>
-        <p class="card_tex card_textAnimal">Macho, 2 años, vacunado</p>
-        <div class="row d-flex justify-content-center flex-nowrap">
-          <button class="botonesCardAnimal btn card_btn">Apadrina</button>
-          <button class="botonesCardAnimal btn card_btn">Adopta</button>
-        </div>
-        <div class="row d-flex justify-content-center flex-nowrap hiddenCardContent">
-          <button type="button" class="botonesCardAnimal botonesCardLeerMas btn card_btn arrow"
-                  data-bs-toggle="modal" data-bs-target="#exampleModal"> Leer Más
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <div class="card cardAnimal">
-      <div class="card_image"><img class="imgCardAnimal" th:src="@{images/perro1Card.jpg}"
-                                   alt="foto de perro disponible para adoptar"></div>
-      <div class="card_content d-flex justify-content-center card_contentAnimal">
-        <h2 class="card_title card_titleAnimal">Comodoro</h2>
-        <p class="card_tex card_textAnimal">Macho, 2 años, vacunado</p>
-        <div class="row d-flex justify-content-center flex-nowrap">
-          <button class="botonesCardAnimal btn card_btn">Apadrina</button>
-          <button class="botonesCardAnimal btn card_btn">Adopta</button>
-        </div>
-        <div class="row d-flex justify-content-center flex-nowrap hiddenCardContent">
-          <button type="button" class="botonesCardAnimal botonesCardLeerMas btn card_btn arrow"
-                  data-bs-toggle="modal" data-bs-target="#exampleModal"> Leer Más
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <div class="card cardAnimal">
-      <div class="card_image"><img class="imgCardAnimal" th:src="@{images/perro1Card.jpg}"
-                                   alt="foto de perro disponible para adoptar"></div>
-      <div class="card_content d-flex justify-content-center card_contentAnimal">
-        <h2 class="card_title card_titleAnimal">Comodoro</h2>
-        <p class="card_tex card_textAnimal">Macho, 2 años, vacunado</p>
-        <div class="row d-flex justify-content-center flex-nowrap">
-          <button class="botonesCardAnimal btn card_btn">Apadrina</button>
-          <button class="botonesCardAnimal btn card_btn">Adopta</button>
-        </div>
-        <div class="row d-flex justify-content-center flex-nowrap hiddenCardContent">
-          <button type="button" class="botonesCardAnimal botonesCardLeerMas btn card_btn arrow"
-                  data-bs-toggle="modal" data-bs-target="#exampleModal"> Leer Más
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <div class="card cardAnimal">
-      <div class="card_image"><img class="imgCardAnimal" th:src="@{images/perro1Card.jpg}"
-                                   alt="foto de perro disponible para adoptar"></div>
-      <div class="card_content d-flex justify-content-center card_contentAnimal">
-        <h2 class="card_title card_titleAnimal">Comodoro</h2>
-        <p class="card_tex card_textAnimal">Macho, 2 años, vacunado</p>
-        <div class="row d-flex justify-content-center flex-nowrap">
-          <button class="botonesCardAnimal btn card_btn">Apadrina</button>
-          <button class="botonesCardAnimal btn card_btn">Adopta</button>
-        </div>
-        <div class="row d-flex justify-content-center flex-nowrap hiddenCardContent">
-          <button type="button" class="botonesCardAnimal botonesCardLeerMas btn card_btn arrow"
-                  data-bs-toggle="modal" data-bs-target="#exampleModal"> Leer Más
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <div class="card cardAnimal">
-      <div class="card_image"><img class="imgCardAnimal" th:src="@{images/perro1Card.jpg}"
-                                   alt="foto de perro disponible para adoptar"></div>
-      <div class="card_content d-flex justify-content-center card_contentAnimal">
-        <h2 class="card_title card_titleAnimal">Comodoro</h2>
-        <p class="card_tex card_textAnimal">Macho, 2 años, vacunado</p>
-        <div class="row d-flex justify-content-center flex-nowrap">
-          <button class="botonesCardAnimal btn card_btn">Apadrina</button>
-          <button class="botonesCardAnimal btn card_btn">Adopta</button>
-        </div>
-        <div class="row d-flex justify-content-center flex-nowrap hiddenCardContent">
-          <button type="button" class="botonesCardAnimal botonesCardLeerMas btn card_btn arrow"
-                  data-bs-toggle="modal" data-bs-target="#exampleModal"> Leer Más
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <div class="card cardAnimal">
-      <div class="card_image"><img class="imgCardAnimal" th:src="@{images/perro1Card.jpg}"
-                                   alt="foto de perro disponible para adoptar"></div>
-      <div class="card_content d-flex justify-content-center card_contentAnimal">
-        <h2 class="card_title card_titleAnimal">Comodoro</h2>
-        <p class="card_tex card_textAnimal">Macho, 2 años, vacunado</p>
-        <div class="row d-flex justify-content-center flex-nowrap">
-          <button class="botonesCardAnimal btn card_btn">Apadrina</button>
-          <button class="botonesCardAnimal btn card_btn">Adopta</button>
-        </div>
-        <div class="row d-flex justify-content-center flex-nowrap hiddenCardContent">
-          <button type="button" class="botonesCardAnimal botonesCardLeerMas btn card_btn arrow"
-                  data-bs-toggle="modal" data-bs-target="#exampleModal"> Leer Más
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <div class="card cardAnimal">
-      <div class="card_image"><img class="imgCardAnimal" th:src="@{images/perro1Card.jpg}"
-                                   alt="foto de perro disponible para adoptar"></div>
-      <div class="card_content d-flex justify-content-center card_contentAnimal">
-        <h2 class="card_title card_titleAnimal">Comodoro</h2>
-        <p class="card_tex card_textAnimal">Macho, 2 años, vacunado</p>
-        <div class="row d-flex justify-content-center flex-nowrap">
-          <button class="botonesCardAnimal btn card_btn">Apadrina</button>
-          <button class="botonesCardAnimal btn card_btn">Adopta</button>
-        </div>
-        <div class="row d-flex justify-content-center flex-nowrap hiddenCardContent">
-          <button type="button" class="botonesCardAnimal botonesCardLeerMas btn card_btn arrow"
-                  data-bs-toggle="modal" data-bs-target="#exampleModal"> Leer Más
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <div class="card cardAnimal">
-      <div class="card_image"><img class="imgCardAnimal" th:src="@{images/perro1Card.jpg}"
-                                   alt="foto de perro disponible para adoptar"></div>
-      <div class="card_content d-flex justify-content-center card_contentAnimal">
-        <h2 class="card_title card_titleAnimal">Comodoro</h2>
-        <p class="card_tex card_textAnimal">Macho, 2 años, vacunado</p>
-        <div class="row d-flex justify-content-center flex-nowrap">
-          <button class="botonesCardAnimal btn card_btn">Apadrina</button>
-          <button class="botonesCardAnimal btn card_btn">Adopta</button>
-        </div>
-        <div class="row d-flex justify-content-center flex-nowrap hiddenCardContent">
-          <button type="button" class="botonesCardAnimal botonesCardLeerMas btn card_btn arrow"
-                  data-bs-toggle="modal" data-bs-target="#exampleModal"> Leer Más
-          </button>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="card cardAnimal">
-      <div class="card_image"><img class="imgCardAnimal" th:src="@{images/perro1Card.jpg}"
-                                   alt="foto de perro disponible para adoptar"></div>
-      <div class="card_content d-flex justify-content-center card_contentAnimal">
-        <h2 class="card_title card_titleAnimal">Comodoro</h2>
-        <p class="card_tex card_textAnimal">Macho, 2 años, vacunado</p>
-        <div class="row d-flex justify-content-center flex-nowrap">
-          <button class="botonesCardAnimal btn card_btn">Apadrina</button>
-          <button class="botonesCardAnimal btn card_btn">Adopta</button>
-        </div>
-        <div class="row d-flex justify-content-center flex-nowrap hiddenCardContent">
-          <button type="button" class="botonesCardAnimal botonesCardLeerMas btn card_btn arrow"
-                  data-bs-toggle="modal" data-bs-target="#exampleModal"> Leer Más
-          </button>
-        </div>
-      </div>
-    </div>
-
     <div class="card cardAnimal">
       <div class="card_image"><img class="imgCardAnimal" th:src="@{images/perro1Card.jpg}"
                                    alt="foto de perro disponible para adoptar"></div>
