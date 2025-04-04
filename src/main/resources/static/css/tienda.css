@@ -1,4 +1,24 @@
 .enlaceNavTienda {
     text-decoration: none;
     color: black;
+    position: relative;
+}
+
+.enlaceNavTienda::after {
+    content: ""; /* Crea el pseudo-elemento vacío */
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    height: 3px; /* Grosor de la línea */
+    width: 0; /* Línea invisible al inicio */
+    background-color: #28a745; /* Color de la línea */
+    transition-behavior: normal, normal;
+    transition-duration: 0s, 0.5s;
+    transition-timing-function: ease, ease;
+    transition-delay: 0s, 0s;
+    transition-property: all, all;
+}
+
+.enlaceNavTienda:hover::after {
+    width: 100%; /* Línea se extiende completamente al pasar el ratón */
 }

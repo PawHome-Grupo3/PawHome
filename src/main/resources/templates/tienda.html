@@ -26,12 +26,11 @@
         <li class="navbar-item px-2"><a href="#" class="enlaceNavTienda">Collares</a></li>
         <li class="navbar-item px-2"><a href="#" class="enlaceNavTienda">Collares</a></li>
         <li class="navbar-item px-2"><a href="#" class="enlaceNavTienda">Collares</a></li>
-        <li class="navbar-item px-2"><i class="fa fa-solid fa-cart-shopping "></i></li>
+        <li class="navbar-item px-2"><a class="fa-solid fa-cart-shopping" id="carritoCompra"></a></li>
       </ul>
     </div>
 
     <form class="d-flex justify-content-end me-3" role="search">
-      <i class="fa-light fa-cart-shopping fa-beat"></i>
       <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
       <button class="btn btn-outline-success" type="submit">Buscar</button>
     </form>
@@ -59,6 +58,25 @@
     </div>
   </div>
 
+<script>
+  document.addEventListener("mouseover", (event) => {
+    const target = event.target;
+
+    if (target && target.id === "carritoCompra" && !target.classList.contains("fa-bounce")) {
+      console.log("Mouse sobre el carritoCompra");
+      target.classList.add("fa-bounce"); // Añade la clase "fa-bounce"
+    }
+  }, true);
+
+  document.addEventListener("mouseleave", (event) => {
+    const target = event.target;
+
+    if (target && target.id === "carritoCompra" && target.classList.contains("fa-bounce")) {
+      console.log("Mouse fuera del carritoCompra");
+      target.classList.remove("fa-bounce"); // Elimina la clase "fa-bounce"
+    }
+  }, true);
+</script>
 </section>
 </body>
 </html>
