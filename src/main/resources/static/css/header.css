@@ -1,9 +1,3 @@
-
-body {
-    height: auto;
-    font-family: "Inter", sans-serif;
-}
-
 .buttonHamburguesa{
     background-color: white;
 }
@@ -21,8 +15,8 @@ body {
 }
 
 .logoNav {
-    width: max(4vw, 60px);
-    height: max(4vw, 60px);
+    width: max(60px);
+    height: max(60px);
 }
 
 .containerNavCentral {
@@ -74,10 +68,26 @@ body {
     .containerNavCentral li{
         padding: 0.7em;
     }
+
+    .banderas {
+        display: none;
+    }
+
+    .banderasCollapse {
+        display: block;
+    }
 }
 
 @media screen and (min-width: 768px) {
     li.dropdown:hover > ul.dropdown-menu {
         display: block;
+    }
+
+    .banderas {
+        display: block;
+    }
+
+    .banderasCollapse {
+        display: none;
     }
 }
