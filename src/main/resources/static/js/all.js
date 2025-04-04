@@ -4415,7 +4415,6 @@
         this.definitions[key] = _objectSpread2(_objectSpread2({}, this.definitions[key] || {}), additions[key]);
         defineIcons(key, additions[key]);
 
-        // TODO can we stop doing this? We can't get the icons by 'fa-solid' any longer so this probably needs to change
         const longPrefix = PREFIX_TO_LONG_STYLE[s][key];
         if (longPrefix) defineIcons(longPrefix, additions[key]);
         build();
