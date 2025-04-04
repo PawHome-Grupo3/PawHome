@@ -2,7 +2,6 @@
 body {
     margin: 0;
     padding: 0;
-    height: auto;
     font-family: "Inter", sans-serif;
     background-color: #fefefe;
 }
@@ -28,6 +27,7 @@ body {
     width: 100%;
     background: url('../images/fondoHomePerro.png') no-repeat;
     background-size: cover;
+    background-attachment: fixed;
     /*clip-path: polygon(100% 0, 100% 43%, 26% 100%, 0 100%, 0 0);*/
 }
 
