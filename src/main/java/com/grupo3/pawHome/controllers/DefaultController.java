@@ -81,12 +81,21 @@ public class DefaultController {
         return "guarderia";
     }
 
+    // Metodo para mostrar la pagina de la peluqueria
+    @GetMapping("/peluqueria")
+    public String mostrarPeluqueria()
+    {
+        return "peluqueria";
+    }
+
     // Metodo para mostrar la pagina de nuestros animales
     @GetMapping("/nuestrosAnimales")
     public String mostrarNuestrosAnimales()
     {
         return "nuestrosAnimales";
     }
+
+
 
     /**
      * Gestiona las solicitudes GET para obtener y mostrar la lista de entidades protegidas.
