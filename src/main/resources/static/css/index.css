@@ -186,10 +186,11 @@ body {
 }
 
 .custom-block-image {
-    display: block;
+    display: flex;
     width: 100%;
+    max-width: 100%;
     height: 300px;
-    object-fit: cover;
+    object-fit: contain;
 }
 
 .custom-block .custom-btn {
