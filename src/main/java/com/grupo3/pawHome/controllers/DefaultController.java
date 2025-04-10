@@ -88,6 +88,13 @@ public class DefaultController {
         return "peluqueria";
     }
 
+    // Metodo para mostrar la pagina de adiestramiento
+    @GetMapping("/adiestramiento")
+    public String mostrarAdiestramiento()
+    {
+        return "adiestramiento";
+    }
+
     // Metodo para mostrar la pagina de nuestros animales
     @GetMapping("/nuestrosAnimales")
     public String mostrarNuestrosAnimales()
