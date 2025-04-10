@@ -2,287 +2,94 @@
 <html lang="es" xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layouts/layout.html}">
 <head>
-  <title Detalle producto></title>
-  <link rel="stylesheet" th:href="@{/css/tienda/font-awesome.css}"/>
-  <link rel="stylesheet" th:href="@{/css/tienda/style.css}"/>
+  <title>Detalle Producto</title>
+  <link rel="stylesheet" th:href="@{/css/detalleProducto.css}"/>
 </head>
 <body>
 <section layout:fragment="content">
-  <!-- Product Details Section Begin -->
-  <section class="product-details spad">
+  <section class="py-5">
     <div class="container">
-      <div class="row">
-        <div class="col-lg-6">
-          <div class="product__details__pic">
-            <div class="product__details__pic__left product__thumb nice-scroll">
-              <a class="pt active" href="#product-1">
-                <img src="img/product/details/thumb-1.jpg" alt="">
-              </a>
-              <a class="pt" href="#product-2">
-                <img src="img/product/details/thumb-2.jpg" alt="">
-              </a>
-              <a class="pt" href="#product-3">
-                <img src="img/product/details/thumb-3.jpg" alt="">
-              </a>
-              <a class="pt" href="#product-4">
-                <img src="img/product/details/thumb-4.jpg" alt="">
-              </a>
-            </div>
-            <div class="product__details__slider__content">
-              <div class="product__details__pic__slider owl-carousel">
-                <img data-hash="product-1" class="product__big__img" src="img/product/details/product-1.jpg" alt="">
-                <img data-hash="product-2" class="product__big__img" src="img/product/details/product-3.jpg" alt="">
-                <img data-hash="product-3" class="product__big__img" src="img/product/details/product-2.jpg" alt="">
-                <img data-hash="product-4" class="product__big__img" src="img/product/details/product-4.jpg" alt="">
-              </div>
-            </div>
+      <div class="row gx-5">
+        <aside class="col-lg-6">
+          <div class="border rounded-4 mb-3 d-flex justify-content-center">
+            <a data-fslightbox="mygalley" class="rounded-4" target="_blank" data-type="image" href="#">
+              <img style="max-width: 100%; max-height: 100vh; margin: auto;" class="rounded-4 fit" th:src="@{images/collar.png}"  alt=""/>
+            </a>
           </div>
-        </div>
-        <div class="col-lg-6">
-          <div class="product__details__text">
-            <h3>Essential structured blazer <span>Brand: SKMEIMore Men Watches from SKMEI</span></h3>
-            <div class="rating">
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <span>( 138 reviews )</span>
+          <div class="d-flex justify-content-center mb-3">
+            <a data-fslightbox="mygalley" class="border mx-1 rounded-2 item-thumb" target="_blank" data-type="image">
+              <img width="60" height="60" class="rounded-2" th:src="@{images/collar.png}"  alt=""/>
+            </a>
+            <a data-fslightbox="mygalley" class="border mx-1 rounded-2 item-thumb" target="_blank" data-type="image">
+              <img width="60" height="60" class="rounded-2" th:src="@{images/collar.png}"  alt=""/>
+            </a>
+          </div>
+          <!-- thumbs-wrap.// -->
+          <!-- gallery-wrap .end// -->
+        </aside>
+        <main class="col-lg-6">
+          <div class="ps-lg-3">
+            <h4 class="title text-dark">Collar Básico</h4>
+            <div class="d-flex flex-row my-3">
+              <span class="text-muted"><i class="fas fa-shopping-basket fa-sm mx-1"></i>154 orders</span>
+              <span class="text-success ms-2">In stock</span>
             </div>
-            <div class="product__details__price">$ 75.0 <span>$ 83.0</span></div>
-            <p>Nemo enim ipsam voluptatem quia aspernatur aut odit aut loret fugit, sed quia consequuntur
-              magni lores eos qui ratione voluptatem sequi nesciunt.</p>
-            <div class="product__details__button">
-              <div class="quantity">
-                <span>Quantity:</span>
-                <div class="pro-qty">
-                  <input type="text" value="1">
+
+            <div class="mb-3">
+              <span class="h5">15€</span>
+              <span class="text-muted">/por unidad</span>
+            </div>
+
+            <p>
+              Ejemplo descripcion collar verde para esto sirve como queda castaña
+            </p>
+
+            <div class="row">
+              <dt class="col-3">Tipo:</dt>
+              <dd class="col-9">Regular</dd>
+
+              <dt class="col-3">Color</dt>
+              <dd class="col-9">Verde</dd>
+
+              <dt class="col-3">Material</dt>
+              <dd class="col-9">Poliester 100%</dd>
+            </div>
+
+            <hr />
+
+            <div class="row mb-4">
+              <div class="col-md-4 col-6">
+                <label class="mb-2">Talla</label>
+                <label>
+                  <select class="form-select border border-secondary" style="height: 35px;">
+                    <option>Pequeño</option>
+                    <option>M</option>
+                    <option>L</option>
+                  </select>
+                </label>
+              </div>
+              <!-- col.// -->
+              <div class="col-md-4 col-6 mb-3">
+                <label class="mb-2 d-block">Quantity</label>
+                <div class="input-group mb-3" style="width: 170px;">
+                  <button class="btn btn-white border border-secondary px-3" type="button" id="button-addon1" data-mdb-ripple-color="dark">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                  <input type="text" class="form-control text-center border border-secondary" placeholder="14" aria-label="Example text with button addon" aria-describedby="button-addon1" />
+                  <button class="btn btn-white border border-secondary px-3" type="button" id="button-addon2" data-mdb-ripple-color="dark">
+                    <i class="fas fa-plus"></i>
+                  </button>
                 </div>
               </div>
-              <a href="#" class="cart-btn"><span class="icon_bag_alt"></span> Add to cart</a>
-              <ul>
-                <li><a href="#"><span class="icon_heart_alt"></span></a></li>
-                <li><a href="#"><span class="icon_adjust-horiz"></span></a></li>
-              </ul>
             </div>
-            <div class="product__details__widget">
-              <ul>
-                <li>
-                  <span>Availability:</span>
-                  <div class="stock__checkbox">
-                    <label for="stockin">
-                      In Stock
-                      <input type="checkbox" id="stockin">
-                      <span class="checkmark"></span>
-                    </label>
-                  </div>
-                </li>
-                <li>
-                  <span>Available color:</span>
-                  <div class="color__checkbox">
-                    <label for="red">
-                      <input type="radio" name="color__radio" id="red" checked>
-                      <span class="checkmark"></span>
-                    </label>
-                    <label for="black">
-                      <input type="radio" name="color__radio" id="black">
-                      <span class="checkmark black-bg"></span>
-                    </label>
-                    <label for="grey">
-                      <input type="radio" name="color__radio" id="grey">
-                      <span class="checkmark grey-bg"></span>
-                    </label>
-                  </div>
-                </li>
-                <li>
-                  <span>Available size:</span>
-                  <div class="size__btn">
-                    <label for="xs-btn" class="active">
-                      <input type="radio" id="xs-btn">
-                      xs
-                    </label>
-                    <label for="s-btn">
-                      <input type="radio" id="s-btn">
-                      s
-                    </label>
-                    <label for="m-btn">
-                      <input type="radio" id="m-btn">
-                      m
-                    </label>
-                    <label for="l-btn">
-                      <input type="radio" id="l-btn">
-                      l
-                    </label>
-                  </div>
-                </li>
-                <li>
-                  <span>Promotions:</span>
-                  <p>Free shipping</p>
-                </li>
-              </ul>
-            </div>
+            <a href="#" class="btn btn-warning shadow-0"> Comprar </a>
+            <a href="#" class="btn btn-primary shadow-0"> <i class="me-1 fa fa-shopping-basket"></i> Añadir al carrito </a>
           </div>
-        </div>
-        <div class="col-lg-12">
-          <div class="product__details__tab">
-            <ul class="nav nav-tabs" role="tablist">
-              <li class="nav-item">
-                <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">Description</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab">Specification</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab">Reviews ( 2 )</a>
-              </li>
-            </ul>
-            <div class="tab-content">
-              <div class="tab-pane active" id="tabs-1" role="tabpanel">
-                <h6>Description</h6>
-                <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut loret fugit, sed
-                  quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt loret.
-                  Neque porro lorem quisquam est, qui dolorem ipsum quia dolor si. Nemo enim ipsam
-                  voluptatem quia voluptas sit aspernatur aut odit aut loret fugit, sed quia ipsu
-                  consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Nulla
-                  consequat massa quis enim.</p>
-                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
-                  dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes,
-                  nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium
-                  quis, sem.</p>
-              </div>
-              <div class="tab-pane" id="tabs-2" role="tabpanel">
-                <h6>Specification</h6>
-                <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut loret fugit, sed
-                  quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt loret.
-                  Neque porro lorem quisquam est, qui dolorem ipsum quia dolor si. Nemo enim ipsam
-                  voluptatem quia voluptas sit aspernatur aut odit aut loret fugit, sed quia ipsu
-                  consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Nulla
-                  consequat massa quis enim.</p>
-                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
-                  dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes,
-                  nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium
-                  quis, sem.</p>
-              </div>
-              <div class="tab-pane" id="tabs-3" role="tabpanel">
-                <h6>Reviews ( 2 )</h6>
-                <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut loret fugit, sed
-                  quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt loret.
-                  Neque porro lorem quisquam est, qui dolorem ipsum quia dolor si. Nemo enim ipsam
-                  voluptatem quia voluptas sit aspernatur aut odit aut loret fugit, sed quia ipsu
-                  consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Nulla
-                  consequat massa quis enim.</p>
-                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
-                  dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes,
-                  nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium
-                  quis, sem.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-12 text-center">
-          <div class="related__title">
-            <h5>RELATED PRODUCTS</h5>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6">
-          <div class="product__item">
-            <div class="product__item__pic set-bg" data-setbg="img/product/related/rp-1.jpg">
-              <div class="label new">New</div>
-              <ul class="product__hover">
-                <li><a href="img/product/related/rp-1.jpg" class="image-popup"><span class="arrow_expand"></span></a></li>
-                <li><a href="#"><span class="icon_heart_alt"></span></a></li>
-                <li><a href="#"><span class="icon_bag_alt"></span></a></li>
-              </ul>
-            </div>
-            <div class="product__item__text">
-              <h6><a href="#">Buttons tweed blazer</a></h6>
-              <div class="rating">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-              </div>
-              <div class="product__price">$ 59.0</div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6">
-          <div class="product__item">
-            <div class="product__item__pic set-bg" data-setbg="img/product/related/rp-2.jpg">
-              <ul class="product__hover">
-                <li><a href="img/product/related/rp-2.jpg" class="image-popup"><span class="arrow_expand"></span></a></li>
-                <li><a href="#"><span class="icon_heart_alt"></span></a></li>
-                <li><a href="#"><span class="icon_bag_alt"></span></a></li>
-              </ul>
-            </div>
-            <div class="product__item__text">
-              <h6><a href="#">Flowy striped skirt</a></h6>
-              <div class="rating">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-              </div>
-              <div class="product__price">$ 49.0</div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6">
-          <div class="product__item">
-            <div class="product__item__pic set-bg" data-setbg="img/product/related/rp-3.jpg">
-              <div class="label stockout">out of stock</div>
-              <ul class="product__hover">
-                <li><a href="img/product/related/rp-3.jpg" class="image-popup"><span class="arrow_expand"></span></a></li>
-                <li><a href="#"><span class="icon_heart_alt"></span></a></li>
-                <li><a href="#"><span class="icon_bag_alt"></span></a></li>
-              </ul>
-            </div>
-            <div class="product__item__text">
-              <h6><a href="#">Cotton T-Shirt</a></h6>
-              <div class="rating">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-              </div>
-              <div class="product__price">$ 59.0</div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6">
-          <div class="product__item">
-            <div class="product__item__pic set-bg" data-setbg="img/product/related/rp-4.jpg">
-              <ul class="product__hover">
-                <li><a href="img/product/related/rp-4.jpg" class="image-popup"><span class="arrow_expand"></span></a></li>
-                <li><a href="#"><span class="icon_heart_alt"></span></a></li>
-                <li><a href="#"><span class="icon_bag_alt"></span></a></li>
-              </ul>
-            </div>
-            <div class="product__item__text">
-              <h6><a href="#">Slim striped pocket shirt</a></h6>
-              <div class="rating">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-              </div>
-              <div class="product__price">$ 59.0</div>
-            </div>
-          </div>
-        </div>
+        </main>
       </div>
     </div>
   </section>
-  <!-- Product Details Section End -->
-
-
+  <!-- content -->
 </section>
-
 </body>
 </html>
