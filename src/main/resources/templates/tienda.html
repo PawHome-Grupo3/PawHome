@@ -10,34 +10,7 @@
 <body>
 
 <section layout:fragment="content">
-  <div class="navbar navbar-expand-md" style="background-color: white; color: black">
-    <button class="navbar-toggler buttonHamburguesa" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavTienda"
-            aria-controls="navbarNavTienda" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse p-3" id="navbarNavTienda">
-      <ul class="navbar-nav" style="
-          display: flex;
-          width: 100%;
-          justify-content: center;
-          flex-wrap: nowrap;
-          margin: 0;
-          list-style: none;
-          align-content: center;
-          ">
-        <li class="navbar-item px-md-2 py-2 align-content-center"><a href="#collares" class="enlaceNavTienda">Collares</a></li>
-        <li class="navbar-item px-md-2 py-2 align-content-center"><a href="#camisetas" class="enlaceNavTienda">Camisetas</a></li>
-        <li class="navbar-item px-md-2 py-2 align-content-center"><a href="#tazas" class="enlaceNavTienda">Tazas</a></li>
-        <li class="navbar-item px-md-2 py-2 align-content-center"><a class="fa-solid fa-cart-shopping" id="carritoCompra"></a></li>
-        <li class="navbar-item px-md-2 py-2 ms-3"><form class="d-flex justify-content-end me-3" role="search">
-          <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Buscar</button>
-        </form></li>
-      </ul>
-    </div>
-
-
-  </div>
+  <div th:replace="~{fragments/navTienda :: navTiendaFragment}"></div>
 
   <!-- COLLARES -->
   <section class="section-padding pb-0" id="collares">
@@ -308,27 +281,6 @@
     </div>
   </section>
 <!-- FIN TAZAS -->
-
-
-<script>
-  document.addEventListener("mouseover", (event) => {
-    const target = event.target;
-
-    if (target && target.id === "carritoCompra" && !target.classList.contains("fa-bounce")) {
-      console.log("Mouse sobre el carritoCompra");
-      target.classList.add("fa-bounce"); // Añade la clase "fa-bounce"
-    }
-  }, true);
-
-  document.addEventListener("mouseleave", (event) => {
-    const target = event.target;
-
-    if (target && target.id === "carritoCompra" && target.classList.contains("fa-bounce")) {
-      console.log("Mouse fuera del carritoCompra");
-      target.classList.remove("fa-bounce"); // Elimina la clase "fa-bounce"
-    }
-  }, true);
-</script>
 </section>
 </body>
 </html>
