@@ -3,6 +3,7 @@ package com.grupo3.pawHome.controllers;
 
 import com.grupo3.pawHome.services.EntidadHijaService;
 import com.grupo3.pawHome.services.EntidadPadreService;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -69,8 +70,9 @@ public class DefaultController {
 
     // Metodo para mostrar pagina de inicio
     @GetMapping("")
-    public String mostrarIndex()
+    public String mostrarIndex(Model model)
     {
+        model.addAttribute("currentLocale", LocaleContextHolder.getLocale().getDisplayName());
         return "index"; // Carga /templates/index.html
     }
 
