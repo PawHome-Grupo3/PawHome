@@ -9,13 +9,17 @@
 <section layout:fragment="content">
 
 <!--CABECERA-->
-	<div class="contenedorImagen">
+	<div class="contenedorImagen">77
+
+
+
+
 		<h2 th:text="#{index.esloganInicial}"></h2>
 	</div>
 <!--CABECERA-->
 
 	<!--HISTORIA PROTECTORA-->
-	<section class="section-padding section-bg seccionHistoria mx-5">
+	<section class="section-padding section-bg seccionHistoria mx-5" id="historia">
 
 		<div id="carouselExample" class="carousel slide carousel-fade">
 			<div class="carousel-inner">
@@ -63,7 +67,7 @@
 						<div class="row justify-content-center">
 							<div class="col-lg-10 col-md-10 col-12">
 								<div class="custom-text-box mb-lg-0">
-									<h5 class="mb-3 indexSubTitulo">Our Mission</h5>
+									<h5 class="mb-3 indexSubTitulo"></h5>
 									<p class="indexParrafo">Sed leo nisl, posuere at molestie ac, suscipit auctor quis
 										metus</p>
 								</div>
@@ -132,7 +136,7 @@
 							</div>
 
 							<div>
-								<a href="#" class="custom-btn btn btnHazteVoluntario">Donate now</a>
+								<a href="/tienda" class="custom-btn btn btnHazteVoluntario" th:utext="#{index.apoyanos}"></a>
 							</div>
 						</div>
 					</div>
@@ -153,7 +157,7 @@
 							</div>
 
 							<div>
-								<a href="#" class="custom-btn btn btnHazteVoluntario">Donate now</a>
+								<a href="/tienda" class="custom-btn btn btnHazteVoluntario" th:utext="#{index.apoyanos}"></a>
 							</div>
 						</div>
 					</div>
@@ -174,7 +178,7 @@
 							</div>
 
 							<div>
-								<a href="#" class="custom-btn btn btnHazteVoluntario">Donate now</a>
+								<a href="/tienda" class="custom-btn btn btnHazteVoluntario" th:utext="#{index.apoyanos}"></a>
 							</div>
 						</div>
 					</div>
