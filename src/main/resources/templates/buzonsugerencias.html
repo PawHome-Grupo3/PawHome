@@ -1,65 +1,56 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout.html}">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" th:href="@{/css/header.css}"/>
-  <link rel="stylesheet" th:href="@{/css/buzonsugerencias.css}"/>
-  <link rel="stylesheet" th:href="@{/css/footer.css}"/>
-  <title>Buzón de Sugerencias</title>
+    <title>Contacto</title>
+    <link rel="stylesheet" th:href="@{/css/buzonsugerencias.css}"/>
 </head>
+
 <body>
 
-<!-- Header -->
-<div th:replace="~{fragments/header :: headerFragment}"></div>
+<section layout:fragment="content">
 
+    <section class="mainContainer d-flex flex-column text-center">
+        <h2 class="fw-bold text-center">Buzón de sugerencias</h2>
+        <div class="container mt-5 mb-5">
+            <form class="row g-4 d-flex justify-content-center cardFormulario">
+                <fieldset class="col-md-12">
+                    <div class="itemSeleccion">
+                        <label for="motivoMensaje" class="form-label">¿Cuál es el motivo del mensaje?: <span
+                                style="color: red">*</span></label>
+                        <select id="motivoMensaje" class="form-select labelForm" required>
+                            <option value="" disabled selected>-Por favor, elige una opción-</option>
+                            <option>Sugerencia</option>
+                            <option>Queja</option>
+                            <option>Petición</option>
+                            <option>Felicitación</option>
+                            <option>Agradecimiento</option>
+                        </select>
+                    </div>
 
-<section class="mainContainer d-flex flex-column text-center mb-3">
-  <h2 class="fw-bold text-center">Buzón de sugerencias</h2>
-  <div class="container mt-5">
-    <form class="row g-4 d-flex justify-content-center cardFormulario">
-      <fieldset class="col-md-12">
-        <div class="itemSeleccion">
-          <label for="motivoMensaje" class="form-label">¿Cuál es el motivo del mensaje?: <span
-                  style="color: red">*</span></label>
-          <select id="motivoMensaje" class="form-select labelForm" required>
-            <option value="" disabled selected>-Por favor, elige una opción-</option>
-            <option>Sugerencia</option>
-            <option>Queja</option>
-            <option>Petición</option>
-            <option>Felicitación</option>
-            <option>Agradecimiento</option>
-          </select>
+                    <div class="itemSeleccion">
+                        <label for="destinatario" class="form-label">¿A qué o quién va dirigido?: <span
+                                style="color: red">*</span></label>
+                        <select id="destinatario" class="form-select labelForm" required>
+                            <option value="" disabled selected>-Por favor, elige una opción-</option>
+                            <option>Trabajador</option>
+                            <option>Voluntario</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="sugerencia" class="form-label">Tu sugerencia</label>
+                        <textarea class="form-control" id="sugerencia" rows="4"
+                                  placeholder="Escribe tu sugerencia aquí..."></textarea>
+                    </div>
+
+                </fieldset>
+                <div class="text-center mt-5 mb-5">
+                    <button type="submit" class="btn btn-success btnEnviar">ENVIAR</button>
+                </div>
+            </form>
         </div>
-
-        <div class="itemSeleccion">
-          <label for="destinatario" class="form-label">¿A qué o quién va dirigido?: <span
-                  style="color: red">*</span></label>
-          <select id="destinatario" class="form-select labelForm" required>
-            <option value="" disabled selected>-Por favor, elige una opción-</option>
-            <option>Trabajador</option>
-            <option>Voluntario</option>
-          </select>
-        </div>
-
-        <div class="mb-3">
-          <label for="sugerencia" class="form-label">Tu sugerencia</label>
-          <textarea class="form-control" id="sugerencia" rows="4"
-                    placeholder="Escribe tu sugerencia aquí..."></textarea>
-        </div>
-
-      </fieldset>
-      <div class="text-center mt-5 mb-5">
-        <button type="submit" class="btn btn-success btnEnviar">ENVIAR</button>
-      </div>
-    </form>
-  </div>
+    </section>
 </section>
-
-<!-- Footer -->
-<div th:replace="~{fragments/footer :: footerFragment}"></div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
