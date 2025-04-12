@@ -11,42 +11,44 @@
 <section layout:fragment="content">
 
     <section class="mainContainer d-flex flex-column text-center">
-        <h2 class="fw-bold text-center">Buzón de sugerencias</h2>
+        <h2 class="fw-bold text-center" th:utext="#{buzonsugerencias.titulo}"></h2>
         <div class="container mt-5 mb-5">
             <form class="row g-4 d-flex justify-content-center cardFormulario">
                 <fieldset class="col-md-12">
                     <div class="itemSeleccion">
-                        <label for="motivoMensaje" class="form-label">¿Cuál es el motivo del mensaje?: <span
+                        <label for="motivoMensaje" class="form-label" th:utext="#{buzonsugerencias.motivoMensaje}"><span
                                 style="color: red">*</span></label>
                         <select id="motivoMensaje" class="form-select labelForm" required>
-                            <option value="" disabled selected>-Por favor, elige una opción-</option>
-                            <option>Sugerencia</option>
-                            <option>Queja</option>
-                            <option>Petición</option>
-                            <option>Felicitación</option>
-                            <option>Agradecimiento</option>
+                            <option value="" disabled selected th:utext="#{buzonsugerencias.porFavor}"></option>
+                            <option th:utext="#{buzonsugerencias.sugerencia}"></option>
+                            <option th:utext="#{buzonsugerencias.queja}"></option>
+                            <option th:utext="#{buzonsugerencias.peticion}"></option>
+                            <option th:utext="#{buzonsugerencias.felicitacion}"></option>
+                            <option th:utext="#{buzonsugerencias.agradecimiento}"></option>
+                            <option th:utext="#{buzonsugerencias.otro}"></option>
                         </select>
                     </div>
 
                     <div class="itemSeleccion">
-                        <label for="destinatario" class="form-label">¿A qué o quién va dirigido?: <span
+                        <label for="destinatario" class="form-label" th:utext="#{buzonsugerencias.dirigido}"><span
                                 style="color: red">*</span></label>
                         <select id="destinatario" class="form-select labelForm" required>
-                            <option value="" disabled selected>-Por favor, elige una opción-</option>
-                            <option>Trabajador</option>
-                            <option>Voluntario</option>
+                            <option value="" disabled selected th:utext="#{buzonsugerencias.porFavor}"></option>
+                            <option th:utext="#{buzonsugerencias.trabajador}"></option>
+                            <option th:utext="#{buzonsugerencias.voluntario}"></option>
+                            <option th:utext="#{buzonsugerencias.otroDestinatario}"></option>
                         </select>
                     </div>
 
                     <div class="mb-3">
-                        <label for="sugerencia" class="form-label">Tu sugerencia</label>
+                        <label for="sugerencia" class="form-label" th:utext="#{buzonsugerencias.tuSugerencia}"></label>
                         <textarea class="form-control" id="sugerencia" rows="4"
                                   placeholder="Escribe tu sugerencia aquí..."></textarea>
                     </div>
 
                 </fieldset>
                 <div class="text-center mt-5 mb-5">
-                    <button type="submit" class="btn btn-success btnEnviar">ENVIAR</button>
+                    <button type="submit" class="btn btn-success btnEnviar" th:utext="#{buzonsugerencias.botonEnviar}"></button>
                 </div>
             </form>
         </div>

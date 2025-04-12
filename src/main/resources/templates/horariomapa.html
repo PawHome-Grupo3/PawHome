@@ -15,46 +15,48 @@
 
             <!---Columna mapa--->
             <div class="col-12 col-md-7 map-responsive">
-                <h2>Dónde estamos</h2>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d12968.588853849347!2d-4.873474617257901!3d37.863809464195704!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2ses!4v1742065670947!5m2!1ses!2ses"
-                        allowfullscreen=""
-                        loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"
-                        style="border:0;">
-                </iframe>
+                <h2 th:utext="#{horariomapa.dondeEstamos}"></h2>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7655.442168982219!2d-6.308505211618772!3d36.53557471122261!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd0dd15dc644339f%3A0xbf3f7066a9fc722!2sAv.%20Dr.%20G%C3%B3mez%20Ulla%2C%2013%2C%2011003%20C%C3%A1diz!5e1!3m2!1ses!2ses!4v1744491014033!5m2!1ses!2ses"
+                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
 
             <!---Tabla horario--->
             <div class="col-12 col-md-5 justify-content-center align-content-center tablaHorario">
-                <h2>Horario de atención</h2>
+                <h2 th:utext="#{horariomapa.horarioAtencion}"></h2>
                 <div class="table-responsive">
                     <table class="table table-bordered text-center">
                         <thead class="table-success">
                         <tr>
-                            <th>Día(s)</th>
-                            <th>Horario</th>
+                            <th th:utext="#{horariomapa.dias}"></th>
+                            <th th:utext="#{horariomapa.horario}"></th>
                         </tr>
                         </thead>
                         <tbody class="table-light">
                         <tr>
-                            <td>Lunes - viernes</td>
-                            <td>08:00 h - 18:00 h</td>
+                            <td th:utext="#{horariomapa.lunesViernes}"></td>
+                            <td th:utext="#{horariomapa.hora1}"></td>
                         </tr>
                         <tr>
-                            <td>Sábado</td>
-                            <td>09:00 h - 14:00 h</td>
+                            <td th:utext="#{horariomapa.sabado}"></td>
+                            <td th:utext="#{horariomapa.hora2}"></td>
                         </tr>
                         <tr class="table-light">
-                            <td>Domingo</td>
-                            <td>Cerrado</td>
+                            <td th:utext="#{horariomapa.domingo}"></td>
+                            <td th:utext="#{horariomapa.cerrado}"></td>
                         </tr>
                         </tbody>
                     </table>
                 </div>
                 <!---Botón contacto--->
                 <div>
-                    <h2>Contacto</h2>
-                    <button type="submit" class="btn btn-success">CONTÁCTANOS<a href="#"></a></button>
+                    <h2 th:utext="#{horariomapa.contacto}"></h2>
+                    <a class="btn btn-success" href="contacto" th:utext="#{horariomapa.botonContactanos}"></a>
+                </div>
+
+                <div>
+                    <h2 th:utext="#{horariomapa.dejanosSugerencia}"></h2>
+                    <a class="btn btn-success" href="buzonsugerencias" th:utext="#{horariomapa.botonSugerencias}"></a>
                 </div>
             </div>
         </div>

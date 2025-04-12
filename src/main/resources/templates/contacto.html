@@ -11,61 +11,61 @@
 <section layout:fragment="content">
 
     <section class="mainContainer d-flex flex-column text-center">
-        <h2 class="fw-bold">Contáctanos</h2>
+        <h2 class="fw-bold" th:utext="#{contacto.contactanos}"></h2>
         <div class="row d-flex justify-content-center cardFormulario mt-5 m-5">
             <!---Columna izquierda--->
             <article class="col-12 col-md-8 mt-5 mb-5">
-                <h3>Déjanos tu mensaje y te responderemos</h3>
+                <h3 th:utext="#{contacto.dejanosMensaje}"></h3>
                 <div class="card p-3 shadow-sm cardFormulario">
                     <form>
                         <div class="mb-3">
-                            <label for="nombreMensaje" class="form-label"><span
-                                    style="color: red">*</span>Tu nombre</label>
+                            <label for="nombreMensaje" class="form-label" th:utext="#{contacto.tuNombre}"><span
+                                    style="color: red">*</span></label>
                             <input type="text" class="form-control" id="nombreMensaje" placeholder="Juan">
                         </div>
                         <div class="mb-3">
-                            <label for="correo" class="form-label"><span
-                                    style="color: red">*</span>Tu correo electrónico</label>
+                            <label for="correo" class="form-label" th:utext="#{contacto.correoElectronico}"><span
+                                    style="color: red">*</span></label>
                             <input type="email" class="form-control" id="correo" placeholder="correo@ejemplo.com">
                         </div>
                         <div class="mb-3">
-                            <label for="asunto" class="form-label"><span
-                                    style="color: red">*</span>Asunto del mensaje</label>
+                            <label for="asunto" class="form-label" th:utext="#{contacto.asuntoMensaje}"><span
+                                    style="color: red">*</span></label>
                             <input type="text" class="form-control" id="asunto"
                                    placeholder="Escribe aquí el asunto del mensaje">
                         </div>
                         <div class="mb-3">
-                            <label for="mensaje" class="form-label"><span
-                                    style="color: red">*</span>Mensaje</label>
+                            <label for="mensaje" class="form-label" th:utext="#{contacto.mensaje}"><span
+                                    style="color: red">*</span></label>
                             <textarea class="form-control" id="mensaje" rows="4"
                                       placeholder="Escribe aquí tu mensaje..."></textarea>
                         </div>
-                        <button type="submit" class="btn btn-success">ENVIAR</button>
+                        <button type="submit" class="btn btn-success" th:utext="#{contacto.botonEnviar}"></button>
                     </form>
                 </div>
             </article>
             <!---Columna derecha--->
             <article class="col-6 col-md-4 mt-5 mb-5">
-                <h3>Nosotros te llamamos</h3>
+                <h3 th:utext="#{contacto.teLlamamos}"></h3>
                 <div class="card p-3 shadow-sm cardFormulario">
                     <form>
                         <div class="mb-3">
-                            <label for="nombre" class="form-label"><span
-                                    style="color: red">*</span>Tu nombre</label>
+                            <label for="nombre" class="form-label" th:utext="#{contacto.tuNombre}"><span
+                                    style="color: red">*</span></label>
                             <input type="text" class="form-control" id="nombre" placeholder="María">
                         </div>
                         <div class="mb-3">
-                            <label for="telefono" class="form-label"><span
-                                    style="color: red">*</span>Tu número de teléfono</label>
+                            <label for="telefono" class="form-label" th:utext="#{contacto.telefono}"><span
+                                    style="color: red">*</span></label>
                             <input type="tel" class="form-control" id="telefono" placeholder="+34 600 000 000">
                         </div>
                         <div class="mb-3">
-                            <label for="motivo" class="form-label"><span
-                                    style="color: red">*</span>Motivo de la llamada</label>
+                            <label for="motivo" class="form-label" th:utext="#{contacto.motivoLlamada}"><span
+                                    style="color: red">*</span></label>
                             <input type="text" class="form-control" id="motivo"
                                    placeholder="¿Sobre qué quieres hablar?">
                         </div>
-                        <button type="submit" class="btn btn-success">LLAMADME</button>
+                        <button type="submit" class="btn btn-success" th:utext="#{contacto.botonLlamadme}"></button>
                     </form>
                 </div>
             </article>
