@@ -106,6 +106,29 @@ public class DefaultController {
         return "nuestrosAnimales";
     }
 
+    // Metodo para mostrar la pagina de contacto
+    @GetMapping("/contacto")
+    public String mostrarContacto()
+    {
+        return "contacto";
+    }
+
+    // Metodo para mostrar la pagina del buzón de sugerencias
+    @GetMapping("/buzonsugerencias")
+    public String mostrarBuzonSugerencias()
+    {
+        return "buzonsugerencias";
+    }
+
+    // Metodo para mostrar la pagina del horario y el mapa
+    @GetMapping("/horariomapa")
+    public String mostrarHorarioMapa()
+    {
+        return "horariomapa";
+    }
+
+
+
     /**
      * Gestiona las solicitudes GET para obtener y mostrar la lista de entidades protegidas.
      * Añade las entidades obtenidas del repositorio al modelo para renderizarlas en la vista correspondiente.
