@@ -70,18 +70,21 @@ body {
     background-color: rgba(187, 224, 155, 0.6);
     text-color: rgb(0, 0, 0);
     font-weight: bold;
+}
 
-    h1 {
-        margin-top: 40px;
-        text-align: center;
-        font-weight: bold;
-        color: rgb(27, 125, 85);
-    }
-    h2 {
-        text-align: center;
-        font-weight: bold;
-        color: rgb(27, 125, 85);
-    }
+h1 {
+    margin-top: 40px;
+    text-align: center;
+    font-weight: bold;
+    color: rgb(27, 125, 85);
+}
+
+h2 {
+    text-align: center;
+    font-weight: bold;
+    color: rgb(27, 125, 85);
+}
+
 body::before {
     content: "";
     position: fixed;
@@ -94,4 +97,35 @@ body::before {
     background-position: center;
     filter: blur(8px);
     z-index: -1;
+}
+.v-container {
+    height: 200px;
+    width: 100%;
+    max-width: 400px;
+    position: relative;
+    margin-top: 3rem;
+}
+
+.v-btn {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+.btn-1 {
+    top: 0;
+    left: 10%;
+}
+.btn-2 {
+    top: 0;
+    right: 15%;
+}
+.btn-3 {
+    bottom: 0;
+    left: 30%;
+}
+.btn-4 {
+    bottom: 0;
+    right: 35%;
 }
