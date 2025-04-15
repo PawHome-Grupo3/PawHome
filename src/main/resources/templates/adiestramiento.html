@@ -2,80 +2,142 @@
 <html lang="es" xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
 	  layout:decorate="~{layouts/layout.html}">
 <head>
-	<title>Guarderia PawHome</title>
-	<link rel="stylesheet" th:href="@{/css/guarderia.css}"/>
+	<title>Adiestramiento PawHome</title>
+	<link rel="stylesheet" th:href="@{/css/adiestramiento.css}"/>
 </head>
 <body>
-
 <section layout:fragment="content">
+	<!-- MODAL PARA CADA SERVICIO -->
+	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h1 class="modal-title fs-5" id="exampleModalLabel">Curso para cachorros</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<div class="row mx-1">
+						<p class="textoModal m-1 p-3">
+							Un curso pensado para sentar las bases de una convivencia armoniosa entre tú y tu cachorro.
+							Aprenderás a comprender su comportamiento, establecer normas claras y construir un vínculo
+							basado en la confianza, el respeto y la responsabilidad.
+							A través de actividades prácticas y orientación personalizada, fomentarás su desarrollo hacia un
+							perro equilibrado, sociable y feliz.
+							Más que adiestramiento, es aprender a disfrutar y crecer juntos.
+						</p>
+					</div>
+					<div class="row mx-4">
+						<div class="textoModal col-6 m-0 p-1">
+							<h3 class="m-1 p-3">
+								Contexto para los propietarios:
+							</h3>
+							<ul>
+								<li>Comprender el lenguaje y comportamiento de tu cachorro.</li>
+								<li>Identificar y corregir problemas de conducta.</li>
+								<li>Desarrollar rutinas de obediencia, educación y vínculo.</li>
+								<li>Aplicar ejercicios de pre-adiestramiento y juegos estructurados.</li>
+								<li>Establecer normas de convivencia e higiene en casa.</li>
+								<li>Familiarizar al cachorro con la manipulación física y el uso de material de adiestramiento.</li>
+							</ul>
+						</div>
+						<div class="textoModal col-6 m-0 p-1">
+							<h3 class="m-1 p-3">
+								Contexto para los cachorros:
+							</h3>
+							<ul>
+								<li>Establecimiento de rutinas en casa: descanso, comida, paseos e higiene.</li>
+								<li>Evaluación individual del cachorro: carácter, conducta y socialización.</li>
+								<li>Desarrollo de la interacción con personas y otros perros.</li>
+								<li>Protocolos de juego estructurado con el dueño y otros cachorros.</li>
+								<li>Introducción a la higiene corporal: cepillado, limpieza de oídos, ojos, etc.</li>
+								<li>Inicio progresivo de sesiones de entrenamiento y clases.</li>
+							</ul>
+						</div>
+					</div>
+					<div class="textoModal">
+						<h3 class="m1 p-3">Comentarios generales:</h3>
+						<ul>
+							<li>Curso de 10 días distribuidos en 5 fines de semana, con clases de 2 horas cada día.</li>
+							<li>Dirigido a cachorros de 3 a 6 meses, sin importar la raza.</li>
+							<li>Diploma de participación para el cachorro y su dueño.</li>
+							<li>Metodología basada en refuerzos positivos y estímulos.</li>
+							<li>Ejercicios básicos: llamada, sentado, tumbado, caminar al lado, etc.</li>
+							<li>Socialización con humanos, otros perros y estímulos del entorno.</li>
+							<li>Juegos interactivos y actividades físicas con objetos variados.</li>
+						</ul>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary " data-bs-dismiss="modal">Cerrar</button>
+				</div>
+			</div>
+		</div>
+	</div>
 	<section class="container py-5 mainContainer">
 
-		<!-- Sección: Nuestra guardería-->
+		<!-- Sección: Nuestros servicios de adiestramiento-->
 		<section class="text-center">
-			<h2 class="fw-bold fs-1">Nuestra guardería</h2>
-			<p class="fs-5">Deja tus mascotas en manos de nuestros profesionales y
-				disfruta de tu vacaciones con total tranquilidad</p>
+			<h2 class="fw-bold fs-1">Nuestro Servicio de adiestramiento</h2>
+			<p class="fs-5">Aqui te presentamos nuestros servicios de adiestramiento</p>
 		</section>
 		<hr class="mx-auto w-100 border-2 opacity-50">
 
-		<!-- Sección: Nuestras tarifas -->
+		<!-- Sección: Nuestros cursos -->
 		<section class="text-center mb-5">
-			<h2 class="fw-bold">Nuestras tarifas:</h2>
-			<div class="row row-cols-1 row-cols-md-3 g-4">
-				<article class="col">
+			<h2 class="fw-bold">Nuestros cursos:</h2>
+			<div class="row g-5 d-flex justify-content-center">
+				<article class="col-6 col-md-4">
 					<div class="card p-3 shadow-sm cardGuarderia">
 						<div class="card_image">
-							<img th:src="@{images/estanciaExpres.jpg}" alt="LogoEstanciaExpress" class="imagenCard">
+							<img th:src="@{images/bonoLargaEstancia.jpg}" alt="BonoLargaEstancia" class="imagenCard">
 						</div>
-						<h3 class="mt-3 fs-3 fw-bold">ESTANCIA EXPRESS</h3>
-						<p class="fw-bold">18€ por noche</p>
-						<p class="">De 1 a 5 noches</p>
-						<p class="text-center">Incluye comida <br> Incluye Alojamiento <br> Incluye entretenimiento</p>
-						<button class="btn btn-success btnCard" id="btnEstanciaExpress">Seleccionar</button>
+						<h3 class="mt-3 fs-3 fw-bold">CURSO DE EDUCACIÓN Y PREADIESTRAMIENTO PARA CACHORROS</h3>
+						<p class="fw-bold fs-1">200€</p>
+						<p class="fw-bold fs-3">10 Sesiones</p>
+						<p class="text-center">2 Días a la semana <br> Lunes y Miércoles <br> De 17:00 a 20:00</p>
+						<button class="btn btn-success btnCard mb-3" data-bs-toggle="modal"
+								data-bs-target="#exampleModal">Más info
+						</button>
+						<button class="btn btn-success btnCard">Seleccionar</button>
 					</div>
 				</article>
-				<article class="col">
+				<article class="col-6 col-md-4">
 					<div class="card p-3 shadow-sm cardGuarderia">
 						<div class="card_image">
-							<img th:src="@{images/estanciaRelax.jpg}" alt="LogoEstanciaRelax" class="imagenCard">
+							<img th:src="@{images/bonoSoloDia.jpg}" alt="BonoSoloDia" class="imagenCard">
 						</div>
-						<h3 class="mt-3 fs-3 fw-bold">ESTANCIA RELAX</h3>
-						<p class="fw-bold">15€ por noche</p>
-						<p class="">De 6 a 10 noches</p>
-						<p class="text-center">Incluye comida <br> Incluye Alojamiento <br> Incluye entretenimiento</p>
-						<button class="btn btn-success btnCard" id="btnEstanciaRelax">Seleccionar</button>
-					</div>
-				</article>
-				<article class="col">
-					<div class="card p-3 shadow-sm cardGuarderia">
-						<div class="card_image">
-							<img th:src="@{images/estanciaSabatica.jpg}" alt="LogoEstanciaSabatica" class="imagenCard">
-						</div>
-						<h3 class="mt-3 fs-3 fw-bold">ESTANCIA SABÁTICA</h3>
-						<p class="fw-bold">12€ por noche</p>
-						<p class="">A partir de 11 noches</p>
-						<p class="text-center">Incluye comida <br> Incluye Alojamiento <br> Incluye entretenimiento</p>
-						<button class="btn btn-success btnCard" id="btnEstanciaSabatica">Seleccionar</button>
+						<h3 class="mt-3 fs-3 fw-bold">CURSO DE EDUCACIÓN Y ADIESTRAMIENTO CANINO (ADULTOS)</h3>
+						<p class="fw-bold fs-1">200€</p>
+						<p class="fw-bold fs-3">10 Sesiones</p>
+						<p class="text-center">2 Días a la semana <br> Martes y Jueves <br> De 17:00 a 20:00</p>
+						<button class="btn btn-success btnCard mb-3" data-bs-toggle="modal"
+								data-bs-target="#exampleModal">Más info
+						</button>
+						<button class="btn btn-success btnCard">Seleccionar</button>
 					</div>
 				</article>
 			</div>
 		</section>
 		<hr class="mx-auto w-100 border-2 opacity-50">
 
-		<!-- Sección: Descubre nuestros bonos -->
+		<!-- Sección: Nuestros servicios -->
 		<section class="text-center mb-5">
-			<h2 class="fw-bold">Descubre nuestros bonos:</h2>
-			<div class="row g-4 d-flex justify-content-center">
+			<h2 class="fw-bold">Nuestros servicios:</h2>
+			<div class="row g-5 d-flex justify-content-center">
 				<article class="col-6 col-md-4">
 					<div class="card p-3 shadow-sm cardGuarderia">
 						<div class="card_image">
 							<img th:src="@{images/bonoLargaEstancia.jpg}" alt="BonoLargaEstancia" class="imagenCard">
 						</div>
-						<h3 class="mt-3 fs-3 fw-bold">BONO LARGA ESTANCIA</h3>
-						<p class="fw-bold fs-1">200€</p>
-						<p class="fw-bold fs-3">20 NOCHES</p>
-						<p class="text-center">Incluye comida <br> Incluye Alojamiento <br> Incluye entretenimiento</p>
+						<h3 class="mt-3 fs-3 fw-bold">EDUCACIÓN Y ADIESTRAMIENTO A DOMICILIO</h3>
+						<p class="fw-bold fs-1">30€/Sesión</p>
+						<p class="fw-bold fs-3">Mínimo 3 sesiones</p>
+						<p class="text-center">Horario: <br> De lunes a viernes <br> De 10:00 a 12:00 <br> De 17:00 a
+							19:00</p>
 						<p>Elige los días cuando quieras</p>
+						<button class="btn btn-success btnCard mb-3" data-bs-toggle="modal"
+								data-bs-target="#exampleModal">Más info
+						</button>
 						<button class="btn btn-success btnCard" id="btnBonoLargaEstancia">Seleccionar</button>
 					</div>
 				</article>
@@ -84,11 +146,15 @@
 						<div class="card_image">
 							<img th:src="@{images/bonoSoloDia.jpg}" alt="BonoSoloDia" class="imagenCard">
 						</div>
-						<h3 class="mt-3 fs-3 fw-bold">BONO ESTANCIA SOLO DÍA</h3>
-						<p class="fw-bold fs-1">75€</p>
-						<p class="fw-bold fs-3">10 DIAS</p>
-						<p class="text-center">Incluye comida <br> Incluye Alojamiento <br> Incluye entretenimiento</p>
+						<h3 class="mt-3 fs-3 fw-bold">EDUCACIÓN Y ADIESTRAMIENTO EN EL CENTRO</h3>
+						<p class="fw-bold fs-1">20€/Sesión</p>
+						<p class="fw-bold fs-3">Mínimo 3 sesiones</p>
+						<p class="text-center">Horario: <br> De lunes a viernes <br> De 10:00 a 12:00 <br> De 17:00 a
+							19:00</p>
 						<p>Elige los días cuando quieras</p>
+						<button class="btn btn-success btnCard mb-3" data-bs-toggle="modal"
+								data-bs-target="#exampleModal">Más info
+						</button>
 						<button class="btn btn-success btnCard" id="btnBonoEstanciaSoloDia">Seleccionar</button>
 					</div>
 				</article>
@@ -213,7 +279,7 @@
 						<div class="card_image">
 							<img th:src="@{images/peluqueriaCanina.jpg}" alt="LogoPeluqueria" class="imagenCard">
 						</div>
-						<h3 class="mt-3 fs-3 fw-bold">PELUQUERÍA</h3>
+						<h3 class="mt-3 fs-3 fw-bold">GUARDERÍA</h3>
 						<p class="fs-4">A PARTIR DE 10€</p>
 						<button class="btn btn-success">MÁS INFO</button>
 					</div>
@@ -223,7 +289,7 @@
 						<div class="card_image">
 							<img th:src="@{images/adiestramiento.jpg}" alt="LogoAdiestramiento" class="imagenCard">
 						</div>
-						<h3 class="mt-3 fs-3 fw-bold">ADIESTRAMIENTO</h3>
+						<h3 class="mt-3 fs-3 fw-bold">PELUQUERÍA</h3>
 						<p class="fs-4">A PARTIR DE 15€</p>
 						<button class="btn btn-success">MÁS INFO</button>
 					</div>

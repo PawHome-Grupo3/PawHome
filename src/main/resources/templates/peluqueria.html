@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="~{layouts/layout.html}">
+<head>
+	<title>Guarderia PawHome</title>
+	<link rel="stylesheet" th:href="@{/css/peluqueria.css}"/>
+</head>
+<body>
+
+<section layout:fragment="content">
+	<section class="container py-5 mainContainer">
+
+		<!-- Sección: Nuestra guardería-->
+		<section class="text-center">
+			<h2 class="fw-bold fs-1">Nuestra peluquería</h2>
+			<p class="fs-5">texto descripcion peluqueria</p>
+		</section>
+		<hr class="mx-auto w-100 border-2 opacity-50">
+
+		<!-- Sección: Nuestros servicios para perros-->
+		<section class="text-center my-4">
+			<h2 class="fw-bold text-start fs-3 p-3 serviciosPerro">PERROS</h2>
+			<div class="row row-cols-2 row-cols-md-4 g-4 rowServicios">
+				<article class="col">
+					<h2 class="fw-bold text-start fs-3">Nuestros servicios:</h2>
+					<ul class="listaServicios text-start fs-5">
+						<li>Cepillado</li>
+						<li>Baño</li>
+						<li>Stripping</li>
+						<li>Corte a máquina</li>
+						<li>Corte a mano</li>
+						<li>Corte combinado</li>
+					</ul>
+				</article>
+
+				<article class="col">
+					<h2 class="fw-bold text-start fs-3">El baño incluye:</h2>
+					<ul class="listaBañoIncluye text-start fs-5">
+						<li>Baño y masaje</li>
+						<li>Secado</li>
+						<li>Corte de uñas</li>
+						<li>Limpieza de oídos</li>
+					</ul>
+
+					<h2 class="fw-bold text-start fs-3">El corte incluye:</h2>
+					<ul class="listaCorteIncluye text-start fs-5">
+						<li>Corte acorde a la raza</li>
+						<li>Técnica de trabajo acorde al tipo de pelo</li>
+						<li>Antiestático y perfume</li>
+					</ul>
+				</article>
+
+				<article class="col">
+					<h2 class="fw-bold text-start fs-3">Suplementos:</h2>
+					<ul class="listaCorteIncluye text-start fs-5">
+						<li>Por nudos</li>
+						<li>Baño antiparasito</li>
+						<li>Baño champú potenciador de color</li>
+						<li>Deslanado</li>
+					</ul>
+				</article>
+
+				<article class="col">
+					<h2 class="fw-bold text-start fs-3">Atendemos a todo tipo de razas y tamaños...</h2>
+					<ul class="listaTamañoAnimal text-start fs-5">
+						<li>Gigante > 35Kg</li>
+						<li>Grande 26 a 35Kg</li>
+						<li>Mediano 11 a 25Kg</li>
+						<li>Pequeño 6 a 10Kg</li>
+						<li>Juguete < 5Kg</li>
+					</ul>
+				</article>
+			</div>
+		</section>
+
+		<!-- Sección: Nuestras tarifas para perros -->
+		<section class="text-center mb-5">
+			<h2 class="fw-bold">Nuestras tarifas:</h2>
+			<div class="row row-cols-1 row-cols-md-5 g-4">
+				<article class="col">
+					<div class="card p-3 shadow-sm cardServicioPerro">
+						<div class="card_image">
+							<img th:src="@{images/estanciaExpres.jpg}" alt="LogoEstanciaExpress" class="imagenCard">
+						</div>
+						<p class="mt-3 fs-3 fw-bold">BAÑO BASICO</p>
+						<p class="fw-bold">desde 10€</p>
+						<p>Incluye: <br> Baño <br> Cepillado</p>
+						<button class="btn btn-success btnCard">Seleccionar</button>
+					</div>
+				</article>
+
+				<article class="col">
+					<div class="card p-3 shadow-sm cardServicioPerro">
+						<div class="card_image">
+							<img th:src="@{images/estanciaExpres.jpg}" alt="LogoEstanciaExpress" class="imagenCard">
+						</div>
+						<P class="mt-3 fs-3 fw-bold">BAÑO + STRIPPING</P>
+						<p class="fw-bold">desde 15€</p>
+						<p>Incluye: <br> Baño <br> Stripping <br> Cepillado</p>
+						<button class="btn btn-success btnCard">Seleccionar</button>
+					</div>
+				</article>
+
+				<article class="col">
+					<div class="card p-3 shadow-sm cardServicioPerro">
+						<div class="card_image">
+							<img th:src="@{images/estanciaExpres.jpg}" alt="LogoEstanciaExpress" class="imagenCard">
+						</div>
+						<P class="mt-3 fs-3 fw-bold">SOLO CORTE</P>
+						<p class="fw-bold">desde 15€</p>
+						<p>Incluye: <br> Corte de pelo</p>
+						<button class="btn btn-success btnCard">Seleccionar</button>
+					</div>
+				</article>
+
+				<article class="col">
+					<div class="card p-3 shadow-sm cardServicioPerro">
+						<div class="card_image">
+							<img th:src="@{images/estanciaExpres.jpg}" alt="LogoEstanciaExpress" class="imagenCard">
+						</div>
+						<P class="mt-3 fs-3 fw-bold">BAÑO + CORTE</P>
+						<p class="fw-bold">desde 20€</p>
+						<p>Incluye: <br> Baño <br> Cepillado <br> Corte de pelo</p>
+						<button class="btn btn-success btnCard">Seleccionar</button>
+					</div>
+				</article>
+
+				<article class="col">
+					<div class="card p-3 shadow-sm cardServicioPerro">
+						<div class="card_image">
+							<img th:src="@{images/estanciaExpres.jpg}" alt="LogoEstanciaExpress" class="imagenCard">
+						</div>
+						<P class="mt-3 fs-3 fw-bold">COMPLETO</P>
+						<p class="fw-bold">desde 25€</p>
+						<p>Incluye: <br> Baño <br> Stripping <br> Cepillado <br> Corte de pelo</p>
+						<button class="btn btn-success btnCard">Seleccionar</button>
+					</div>
+				</article>
+			</div>
+		</section>
+		<hr class="mx-auto w-100 border-2 opacity-50">
+
+		<!-- Sección: Nuestros servicios para gatos-->
+		<section class="text-center my-4">
+			<h2 class="fw-bold text-start fs-3 p-3 serviciosPerro">GATOS</h2>
+			<div class="row row-cols-2 row-cols-md-4 g-4 rowServicios">
+				<article class="col">
+					<h2 class="fw-bold text-start fs-3">Nuestros servicios:</h2>
+					<ul class="listaServicios text-start fs-5">
+						<li>Cepillado</li>
+						<li>Baño</li>
+						<li>Corte pelo corto</li>
+						<li>Corte pelo largo</li>
+					</ul>
+				</article>
+
+				<article class="col">
+					<h2 class="fw-bold text-start fs-3">El baño incluye:</h2>
+					<ul class="listaBañoIncluye text-start fs-5">
+						<li>Baño y masaje</li>
+						<li>Secado</li>
+						<li>Arreglo de uñas</li>
+						<li>Limpieza de oídos</li>
+					</ul>
+				</article>
+
+				<article>
+					<h2 class="fw-bold text-start fs-3">El corte incluye:</h2>
+					<ul class="listaCorteIncluye text-start fs-5">
+						<li>Corte y deslanado</li>
+						<li>Técnica de trabajo acorde al tipo de pelo</li>
+					</ul>
+				</article>
+
+				<article class="col">
+					<h2 class="fw-bold text-start fs-3">Suplementos:</h2>
+					<ul class="listaCorteIncluye text-start fs-5">
+						<li>Deslanado</li>
+						<li>Nudos</li>
+					</ul>
+				</article>
+			</div>
+		</section>
+
+		<!-- Sección: Nuestras tarifas para gatos -->
+		<section class="text-center mb-5">
+			<h2 class="fw-bold">Nuestras tarifas:</h2>
+			<div class="row row-cols-1 row-cols-md-3 g-4">
+				<article class="col">
+					<div class="card p-3 shadow-sm cardServicioPerro">
+						<div class="card_image">
+							<img th:src="@{images/estanciaExpres.jpg}" alt="LogoEstanciaExpress" class="imagenCard">
+						</div>
+						<p class="mt-3 fs-3 fw-bold">SOLO BAÑO</p>
+						<p class="fw-bold">desde 10€</p>
+						<p>Incluye: <br> Baño <br> Cepillado</p>
+						<button class="btn btn-success btnCard">Seleccionar</button>
+					</div>
+				</article>
+
+				<article class="col">
+					<div class="card p-3 shadow-sm cardServicioPerro">
+						<div class="card_image">
+							<img th:src="@{images/estanciaExpres.jpg}" alt="LogoEstanciaExpress" class="imagenCard">
+						</div>
+						<P class="mt-3 fs-3 fw-bold">SOLO CORTE</P>
+						<p class="fw-bold">desde 15€</p>
+						<p>Incluye: <br> Corte de pelo</p>
+						<button class="btn btn-success btnCard">Seleccionar</button>
+					</div>
+				</article>
+
+				<article class="col">
+					<div class="card p-3 shadow-sm cardServicioPerro">
+						<div class="card_image">
+							<img th:src="@{images/estanciaExpres.jpg}" alt="LogoEstanciaExpress" class="imagenCard">
+						</div>
+						<P class="mt-3 fs-3 fw-bold">CORTE + BAÑO</P>
+						<p class="fw-bold">desde 15€</p>
+						<p>Incluye: <br> Baño <br> Cepillado <br> Corte de pelo</p>
+						<button class="btn btn-success btnCard">Seleccionar</button>
+					</div>
+				</article>
+			</div>
+		</section>
+		<hr class="mx-auto w-100 border-2 opacity-50">
+
+		<!-- FORMULARIO RESERVA -->
+		<section class="mb-5">
+			<h2 class="fw-bold text-center">Reserva tu cita de peluquería</h2>
+			<div class="formContainer">
+				<form class="row g-3">
+					<fieldset class="col-md-6">
+						<div class="itemSeleccion">
+							<legend class="fw-bold">Datos de la mascota</legend>
+							<label for="nombreMascota" class="form-label">Nombre de la mascota: <span style="color: red">*</span></label>
+							<input type="text" id="nombreMascota" class="form-control labelForm" placeholder="-Por favor introduce el nombre de tu mascota-" required>
+						</div>
+
+						<div class="itemSeleccion">
+							<label for="caracterMascota" class="form-label">Caracter social: <span style="color: red">*</span></label>
+							<select id="caracterMascota" class="form-select labelForm" required>
+								<option value="" disabled selected>-Por favor, elige una opción-</option>
+								<option>Sociable</option>
+								<option>No sociable</option>
+							</select>
+						</div>
+
+						<div class="itemSeleccion">
+							<label for="tipoMascota" class="form-label">Tipo: <span style="color: red">*</span></label>
+							<select id="tipoMascota" class="form-select labelForm" required>
+								<option value="" disabled selected>-Por favor, elige una opción-</option>
+								<option>Perro</option>
+								<option>Gato</option>
+								<option>Otro</option>
+							</select>
+						</div>
+
+						<div class="itemSeleccion">
+							<label for="fechaReserva" class="form-label">Fecha de reserva: <span style="color: red">*</span></label>
+							<input type="date" id="fechaReserva" class="form-control labelForm" required>
+						</div>
+
+						<div class="itemSeleccion">
+							<label for="horaReserva" class="form-label">Hora de la cita: <span style="color: red">*</span></label>
+							<select id="horaReserva" class="form-select labelForm" required>
+								<option value="" disabled selected>-Por favor, elige una hora-</option>
+							</select>
+						</div>
+					</fieldset>
+
+					<fieldset class="col-md-6">
+						<div class="itemSeleccion">
+							<legend class="fw-bold">Datos de contacto</legend>
+							<label for="nombreDueño" class="form-label">Tu nombre: <span style="color: red">*</span></label>
+							<input type="text" id="nombreDueño" class="form-control labelForm" placeholder="-Por favor introduce tu nombre-" required>
+						</div>
+
+						<div class="itemSeleccion">
+							<label for="telefonoDueño" class="form-label">Teléfono: <span style="color: red">*</span></label>
+							<input type="tel" id="telefonoDueño" class="form-control labelForm" placeholder="-Por favor introduce tu número de teléfono-" required>
+						</div>
+
+						<div class="itemSeleccion">
+							<label for="emailDueño" class="form-label">Correo electrónico: <span style="color: red">*</span></label>
+							<input type="email" id="emailDueño" class="form-control labelForm" placeholder="-Por favor introduce tu correo electrónico-" required>
+						</div>
+
+						<div class="itemSeleccion">
+							<label for="mensajeExtra" class="form-label">Mensaje:</label>
+							<input type="text" id="mensajeExtra" class="form-control labelForm">
+						</div>
+					</fieldset>
+
+					<div class="itemSeleccion">
+						<label class="form-label fw-bold fs-5">Tarifa seleccionada: </label>
+					</div>
+
+					<div class="itemSeleccion">
+						<label class="form-label fw-bold fs-3" id="precioTotal">PRECIO TOTAL: </label>
+					</div>
+
+					<div class="itemSeleccion">
+						<input type="checkbox" class="" required>
+						<label class="form-label">He leído y acepto las condiciones de uso de la web, el aviso legal y la política de privacidad</label>
+					</div>
+
+					<div class="text-center">
+						<button type="submit" class="btn btn-primary btnEnviar">RESERVAR</button>
+					</div>
+				</form>
+			</div>
+		</section>
+		<hr class="mx-auto w-100 border-2 opacity-50">
+
+		<!-- Sección: otros servicios-->
+		<section class="text-center mb-1">
+			<h2 class="fw-bold">Nuestras tarifas:</h2>
+			<div class="row row-cols-1 row-cols-md-4 g-4">
+				<article class="col">
+					<div class="card p-3 shadow-sm cardServicioPerro">
+						<div class="card_image">
+							<img th:src="@{images/peluqueriaCanina.jpg}" alt="LogoPeluqueria" class="imagenCard">
+						</div>
+						<h3 class="mt-3 fs-3 fw-bold">GUARDERIA</h3>
+						<p class="fs-4">A PARTIR DE 10€</p>
+						<button class="btn btn-success">MÁS INFO</button>
+					</div>
+				</article>
+				<article class="col">
+					<div class="card p-3 shadow-sm cardServicioPerro">
+						<div class="card_image">
+							<img th:src="@{images/adiestramiento.jpg}" alt="LogoAdiestramiento" class="imagenCard">
+						</div>
+						<h3 class="mt-3 fs-3 fw-bold">ADIESTRAMIENTO</h3>
+						<p class="fs-4">A PARTIR DE 15€</p>
+						<button class="btn btn-success">MÁS INFO</button>
+					</div>
+				</article>
+				<article class="col">
+					<div class="card p-3 shadow-sm cardServicioPerro">
+						<div class="card_image">
+							<img th:src="@{images/veterinario.jpg}" alt="LogoVeterinario" class="imagenCard">
+						</div>
+						<h3 class="mt-3 fs-3 fw-bold">ASESORAMIENTO VETERINARIO</h3>
+						<button class="btn btn-success">MÁS INFO</button>
+					</div>
+				</article>
+				<article class="col">
+					<div class="card p-3 shadow-sm cardServicioPerro">
+						<div class="card_image">
+							<img th:src="@{images/asesoramientoLegal.jpg}" alt="LogoLegal" class="imagenCard">
+						</div>
+						<h3 class="mt-3 fs-3 fw-bold">ASESORAMIENTO LEGAL</h3>
+						<button class="btn btn-success">MÁS INFO</button>
+					</div>
+				</article>
+			</div>
+		</section>
+	</section>
+</section>
+
+<!-- Script para controlar fechas y horas -->
+
+</body>
+</html>
