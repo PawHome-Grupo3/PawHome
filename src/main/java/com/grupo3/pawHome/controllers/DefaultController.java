@@ -3,6 +3,7 @@ package com.grupo3.pawHome.controllers;
 
 import com.grupo3.pawHome.services.EntidadHijaService;
 import com.grupo3.pawHome.services.EntidadPadreService;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -69,9 +70,26 @@ public class DefaultController {
 
     // Metodo para mostrar pagina de inicio
     @GetMapping("")
-    public String mostrarIndex()
+    public String mostrarIndex(Model model)
     {
+        model.addAttribute("currentLocale", LocaleContextHolder.getLocale().getDisplayName());
         return "index"; // Carga /templates/index.html
+    }
+
+    @GetMapping("/detalleProducto")
+    public String mostrarDetalleProducto()
+    {
+        return "detalleProducto"; // Carga /templates/index.html
+    }
+
+    @GetMapping("/listaCarrito")
+    public String mostrarListaCarrito() { return "listaCarrito"; }
+
+    // Metodo para mostrar pagina de inicio
+    @GetMapping("/tienda")
+    public String mostrarTienda()
+    {
+        return "tienda"; // Carga /templates/tienda.html
     }
 
     // Metodo para mostrar la pagina de la guarderia
@@ -102,7 +120,26 @@ public class DefaultController {
         return "nuestrosAnimales";
     }
 
+    // Metodo para mostrar la pagina de contacto
+    @GetMapping("/contacto")
+    public String mostrarContacto()
+    {
+        return "contacto";
+    }
 
+    // Metodo para mostrar la pagina del buzón de sugerencias
+    @GetMapping("/buzonsugerencias")
+    public String mostrarBuzonSugerencias()
+    {
+        return "buzonsugerencias";
+    }
+
+    // Metodo para mostrar la pagina del horario y el mapa
+    @GetMapping("/horariomapa")
+    public String mostrarHorarioMapa()
+    {
+        return "horariomapa";
+    }
 
     /**
      * Gestiona las solicitudes GET para obtener y mostrar la lista de entidades protegidas.
@@ -130,8 +167,6 @@ public class DefaultController {
         entidadHijaService.deleteById(id);
         return "redirect:/entities";
     }
-
-
 
     /**
      * Deletes an EntidadHija entity by its ID using the EntidadHijaService.

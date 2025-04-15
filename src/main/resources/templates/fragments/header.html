@@ -41,7 +41,7 @@
 					</ul>
 				</li>
 
-				<li><a class="navbar-brand enlaceNav" href="#" th:text="#{header.tienda}"></a></li>
+				<li><a class="navbar-brand enlaceNav" href="/tienda" th:text="#{header.tienda}"></a></li>
 
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle enlaceNav" href="#" data-bs-toggle="dropdown"
@@ -56,7 +56,17 @@
 					</ul>
 				</li>
 
-				<li> <a class="navbar-brand enlaceNav" href="#" th:text="#{header.contacto}"></a> </li>
+				<li> <a class="navbar-brand enlaceNav" href="horariomapa" th:text="#{header.contacto}"></a> </li>
+
+				<li class="banderasCollapse">
+					<a href="?lang=es" class="btn btn-sm">
+						<img src="https://flagcdn.com/w40/es.png" alt="Español" width="30">
+					</a>
+
+					<a href="?lang=en" class="btn btn-sm">
+						<img src="https://flagcdn.com/w40/gb.png" alt="English" width="30">
+					</a>
+				</li>
 			</ul>
 		</div>
 
@@ -76,7 +86,7 @@
 					<i class="fa fa-user-circle" aria-hidden="true"></i>
 				</button>
 				<ul class="dropdown-menu dropdown-menu-end dropdownNav" aria-labelledby="userDropdown">
-					<li><a class="dropdown-item " href="#" data-bs-toggle="modal" data-bs-target="#registroModal" th:text="#{header.registrarse}"></a></li>
+					<li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#registroModal" th:text="#{header.registrarse}"></a></li>
 					<li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#registroModal" th:text="#{header.iniciar}"></a></li>
 				</ul>
 			</div>
