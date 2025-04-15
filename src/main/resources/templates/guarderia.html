@@ -10,27 +10,36 @@
 <section layout:fragment="content">
 	<section class="container py-5 mainContainer">
 
-		<!-- Sección: Nuestra guardería-->
-		<section class="text-center">
-			<h2 class="fw-bold fs-1">Nuestra guardería</h2>
-			<p class="fs-5">Deja tus mascotas en manos de nuestros profesionales y
-				disfruta de tu vacaciones con total tranquilidad</p>
+		<!-- Sección: Nuestra guardería sin imagen de fondo -->
+		<section class="text-center rounded-4 shadow mx-2 my-3 p-3 seccionTitulo">
+			<div class="container px-4">
+				<h2 class="fw-bold display-5 text-success-emphasis mb-3">Nuestra Guardería</h2>
+				<p class="fs-5">
+					🐾 Deja tus mascotas en manos de nuestros profesionales y disfruta de tus vacaciones con total tranquilidad. <br>
+					Cuidamos de ellos como si fueran parte de nuestra familia. 🐶💚
+				</p>
+			</div>
 		</section>
 		<hr class="mx-auto w-100 border-2 opacity-50">
 
 		<!-- Sección: Nuestras tarifas -->
 		<section class="text-center mb-5">
-			<h2 class="fw-bold">Nuestras tarifas:</h2>
+			<h2 class="text-success-emphasis fw-bold display-5 my-4">Nuestras tarifas</h2>
+
 			<div class="row row-cols-1 row-cols-md-3 g-4">
 				<article class="col">
 					<div class="card p-3 shadow-sm cardGuarderia">
 						<div class="card_image">
 							<img th:src="@{images/estanciaExpres.jpg}" alt="LogoEstanciaExpress" class="imagenCard">
 						</div>
-						<h3 class="mt-3 fs-3 fw-bold">ESTANCIA EXPRESS</h3>
-						<p class="fw-bold">18€ por noche</p>
-						<p class="">De 1 a 5 noches</p>
-						<p class="text-center">Incluye comida <br> Incluye Alojamiento <br> Incluye entretenimiento</p>
+						<h3 class="card-title mt-3 fs-4 fw-bold text-success-emphasis">ESTANCIA EXPRESS</h3>
+						<p class="fw-semibold fs-5 mb-1">18€ por noche</p>
+						<p>De 1 a 5 noches</p>
+						<ul class="list-unstyled small">
+							<li>✔️ Incluye comida</li>
+							<li>✔️ Incluye alojamiento</li>
+							<li>✔️ Incluye entretenimiento</li>
+						</ul>
 						<button class="btn btn-success btnCard" id="btnEstanciaExpress">Seleccionar</button>
 					</div>
 				</article>
@@ -39,10 +48,14 @@
 						<div class="card_image">
 							<img th:src="@{images/estanciaRelax.jpg}" alt="LogoEstanciaRelax" class="imagenCard">
 						</div>
-						<h3 class="mt-3 fs-3 fw-bold">ESTANCIA RELAX</h3>
-						<p class="fw-bold">15€ por noche</p>
-						<p class="">De 6 a 10 noches</p>
-						<p class="text-center">Incluye comida <br> Incluye Alojamiento <br> Incluye entretenimiento</p>
+						<h3 class="mt-3 fs-3 fw-bold text-success-emphasis">ESTANCIA RELAX</h3>
+						<p class="fw-semibold fs-5 mb-1">15€ por noche</p>
+						<p>De 6 a 10 noches</p>
+						<ul class="list-unstyled small">
+							<li>✔️ Incluye comida</li>
+							<li>✔️ Incluye alojamiento</li>
+							<li>✔️ Incluye entretenimiento</li>
+						</ul>
 						<button class="btn btn-success btnCard" id="btnEstanciaRelax">Seleccionar</button>
 					</div>
 				</article>
@@ -51,10 +64,14 @@
 						<div class="card_image">
 							<img th:src="@{images/estanciaSabatica.jpg}" alt="LogoEstanciaSabatica" class="imagenCard">
 						</div>
-						<h3 class="mt-3 fs-3 fw-bold">ESTANCIA SABÁTICA</h3>
-						<p class="fw-bold">12€ por noche</p>
-						<p class="">A partir de 11 noches</p>
-						<p class="text-center">Incluye comida <br> Incluye Alojamiento <br> Incluye entretenimiento</p>
+						<h3 class="mt-3 fs-3 fw-bold text-success-emphasis">ESTANCIA SABÁTICA</h3>
+						<p class="fw-semibold fs-5 mb-1">12€ por noche</p>
+						<p>A partir de 11 noches</p>
+						<ul class="list-unstyled small">
+							<li>✔️ Incluye comida</li>
+							<li>✔️ Incluye alojamiento</li>
+							<li>✔️ Incluye entretenimiento</li>
+						</ul>
 						<button class="btn btn-success btnCard" id="btnEstanciaSabatica">Seleccionar</button>
 					</div>
 				</article>
@@ -64,17 +81,22 @@
 
 		<!-- Sección: Descubre nuestros bonos -->
 		<section class="text-center mb-5">
-			<h2 class="fw-bold">Descubre nuestros bonos:</h2>
+			<h2 class="text-success-emphasis fw-bold display-5 my-4">Descubre nuestros bonos:</h2>
+
 			<div class="row g-4 d-flex justify-content-center">
 				<article class="col-6 col-md-4">
 					<div class="card p-3 shadow-sm cardGuarderia">
 						<div class="card_image">
 							<img th:src="@{images/bonoLargaEstancia.jpg}" alt="BonoLargaEstancia" class="imagenCard">
 						</div>
-						<h3 class="mt-3 fs-3 fw-bold">BONO LARGA ESTANCIA</h3>
-						<p class="fw-bold fs-1">200€</p>
+						<h3 class="mt-3 fs-3 fw-bold text-success-emphasis">BONO LARGA ESTANCIA</h3>
+						<p class="fw-semibold fs-1 mb-1">200€</p>
 						<p class="fw-bold fs-3">20 NOCHES</p>
-						<p class="text-center">Incluye comida <br> Incluye Alojamiento <br> Incluye entretenimiento</p>
+						<ul class="list-unstyled small">
+							<li>✔️ Incluye comida</li>
+							<li>✔️ Incluye alojamiento</li>
+							<li>✔️ Incluye entretenimiento</li>
+						</ul>
 						<p>Elige los días cuando quieras</p>
 						<button class="btn btn-success btnCard" id="btnBonoLargaEstancia">Seleccionar</button>
 					</div>
@@ -84,10 +106,14 @@
 						<div class="card_image">
 							<img th:src="@{images/bonoSoloDia.jpg}" alt="BonoSoloDia" class="imagenCard">
 						</div>
-						<h3 class="mt-3 fs-3 fw-bold">BONO ESTANCIA SOLO DÍA</h3>
-						<p class="fw-bold fs-1">75€</p>
+						<h3 class="mt-3 fs-3 fw-bold text-success-emphasis">BONO ESTANCIA SOLO DÍA</h3>
+						<p class="fw-semibold fs-1 mb-1">75€</p>
 						<p class="fw-bold fs-3">10 DIAS</p>
-						<p class="text-center">Incluye comida <br> Incluye Alojamiento <br> Incluye entretenimiento</p>
+						<ul class="list-unstyled small">
+							<li>✔️ Incluye comida</li>
+							<li>✔️ Incluye alojamiento</li>
+							<li>✔️ Incluye entretenimiento</li>
+						</ul>
 						<p>Elige los días cuando quieras</p>
 						<button class="btn btn-success btnCard" id="btnBonoEstanciaSoloDia">Seleccionar</button>
 					</div>
