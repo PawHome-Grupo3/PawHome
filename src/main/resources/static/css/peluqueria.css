@@ -16,7 +16,13 @@ body {
     border-radius: 20px;
 }
 
-.cardGuarderia{
+.serviciosPerro{
+    background-color: rgba(27, 125, 85, 0.6);
+    border-radius: 20px;
+    width: min-content;
+}
+
+.cardServicioPerro{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -25,18 +31,22 @@ body {
     border-radius: 20px;
 }
 
+.cardServicioPerro .btnCard{
+    margin-top: auto;
+}
+
+.cardServicioPerro p{
+    text-overflow: ellipsis;
+    text-align: center;
+    font-size: 1.25rem;
+}
+
 .imagenCard{
     height: 150px;
     width: 100%;
     max-width: 100%;
     object-fit: cover !important;
     border-radius: 20px;
-}
-
-.cardGuarderia h3{
-    text-overflow: ellipsis;
-    text-align: center;
-    font-size: 1.25rem;
 }
 
 .formContainer{

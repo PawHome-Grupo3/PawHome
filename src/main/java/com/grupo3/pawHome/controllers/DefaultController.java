@@ -99,6 +99,20 @@ public class DefaultController {
         return "guarderia";
     }
 
+    // Metodo para mostrar la pagina de la peluqueria
+    @GetMapping("/peluqueria")
+    public String mostrarPeluqueria()
+    {
+        return "peluqueria";
+    }
+
+    // Metodo para mostrar la pagina de adiestramiento
+    @GetMapping("/adiestramiento")
+    public String mostrarAdiestramiento()
+    {
+        return "adiestramiento";
+    }
+
     // Metodo para mostrar la pagina de nuestros animales
     @GetMapping("/nuestrosAnimales")
     public String mostrarNuestrosAnimales()
@@ -127,8 +141,6 @@ public class DefaultController {
         return "horariomapa";
     }
 
-
-
     /**
      * Gestiona las solicitudes GET para obtener y mostrar la lista de entidades protegidas.
      * Añade las entidades obtenidas del repositorio al modelo para renderizarlas en la vista correspondiente.
@@ -155,8 +167,6 @@ public class DefaultController {
         entidadHijaService.deleteById(id);
         return "redirect:/entities";
     }
-
-
 
     /**
      * Deletes an EntidadHija entity by its ID using the EntidadHijaService.
