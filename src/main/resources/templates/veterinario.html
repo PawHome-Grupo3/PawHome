@@ -1,10 +1,692 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es" xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="~{layouts/layout.html}">
 <head>
-	<meta charset="UTF-8">
-	<title>Title</title>
+	<title>Adiestramiento PawHome</title>
+	<link rel="stylesheet" th:href="@{/css/adiestramiento.css}"/>
 </head>
 <body>
+<section layout:fragment="content">
+	<!-- MODAL PARA CADA SERVICIO -->
+	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h1 class="modal-title fs-5" id="exampleModalLabel">Curso para cachorros</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<div class="row mx-1">
+						<p class="textoModal m-1 p-3">
+							Un curso pensado para sentar las bases de una convivencia armoniosa entre tú y tu cachorro.
+							Aprenderás a comprender su comportamiento, establecer normas claras y construir un vínculo
+							basado en la confianza, el respeto y la responsabilidad.
+							A través de actividades prácticas y orientación personalizada, fomentarás su desarrollo hacia un
+							perro equilibrado, sociable y feliz.
+							Más que adiestramiento, es aprender a disfrutar y crecer juntos.
+						</p>
+					</div>
+					<div class="row mx-4">
+						<div class="textoModal col-6 m-0 p-1">
+							<h3 class="m-1 p-3">
+								Contexto para los propietarios:
+							</h3>
+							<ul>
+								<li>Comprender el lenguaje y comportamiento de tu cachorro.</li>
+								<li>Identificar y corregir problemas de conducta.</li>
+								<li>Desarrollar rutinas de obediencia, educación y vínculo.</li>
+								<li>Aplicar ejercicios de pre-adiestramiento y juegos estructurados.</li>
+								<li>Establecer normas de convivencia e higiene en casa.</li>
+								<li>Familiarizar al cachorro con la manipulación física y el uso de material de adiestramiento.</li>
+							</ul>
+						</div>
+						<div class="textoModal col-6 m-0 p-1">
+							<h3 class="m-1 p-3">
+								Contexto para los cachorros:
+							</h3>
+							<ul>
+								<li>Establecimiento de rutinas en casa: descanso, comida, paseos e higiene.</li>
+								<li>Evaluación individual del cachorro: carácter, conducta y socialización.</li>
+								<li>Desarrollo de la interacción con personas y otros perros.</li>
+								<li>Protocolos de juego estructurado con el dueño y otros cachorros.</li>
+								<li>Introducción a la higiene corporal: cepillado, limpieza de oídos, ojos, etc.</li>
+								<li>Inicio progresivo de sesiones de entrenamiento y clases.</li>
+							</ul>
+						</div>
+					</div>
+					<div class="textoModal">
+						<h3 class="m1 p-3">Comentarios generales:</h3>
+						<ul>
+							<li>Curso de 10 días distribuidos en 5 fines de semana, con clases de 2 horas cada día.</li>
+							<li>Dirigido a cachorros de 3 a 6 meses, sin importar la raza.</li>
+							<li>Diploma de participación para el cachorro y su dueño.</li>
+							<li>Metodología basada en refuerzos positivos y estímulos.</li>
+							<li>Ejercicios básicos: llamada, sentado, tumbado, caminar al lado, etc.</li>
+							<li>Socialización con humanos, otros perros y estímulos del entorno.</li>
+							<li>Juegos interactivos y actividades físicas con objetos variados.</li>
+						</ul>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary " data-bs-dismiss="modal">Cerrar</button>
+				</div>
+			</div>
+		</div>
+	</div>
 
+	<section class="container py-5 mainContainer">
+
+		<!-- Sección: Nuestro servicio de Veterinario-->
+		<section class="text-center">
+			<h2 class="fw-bold fs-1">Nuestro Servicio de veterinario</h2>
+			<p class="fs-5">Sanamos patitas, curamos ronroneos y recetamos amor peludo a diario</p>
+		</section>
+		<hr class="mx-auto w-100 border-2 opacity-50">
+
+		<!-- Sección: Nuestros servicios generales -->
+		<section class="text-center mb-5">
+			<h2 class="fw-bold">Servicios generales:</h2>
+			<div class="row g-5 d-flex justify-content-center">
+
+				<!-- Consulta Veterinaria -->
+				<article class="col col-md-4">
+					<div class="card p-3 shadow-sm cardGuarderia">
+						<div class="card_image">
+							<img th:src="@{images/consulta.jpg}" alt="Consulta Veterinaria" class="imagenCard">
+						</div>
+						<h3 class="mt-3 fs-3 fw-bold">Consulta Veterinaria: el primer paso hacia la solución</h3>
+						<p class="fw-bold fs-1">a partir de 25€</p>
+						<p class="text-center">
+							✔️ Evaluación general del estado de salud<br>
+							🗓️ Disponible de lunes a sábado<br>
+							🐾 Ideal para chequeos, síntomas leves o dudas
+						</p>
+						<button class="btn btn-success btnCard mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Más info</button>
+						<button class="btn btn-success btnCard">Seleccionar</button>
+					</div>
+				</article>
+
+				<!-- Chequeo Preventivo -->
+				<article class="col col-md-4">
+					<div class="card p-3 shadow-sm cardGuarderia">
+						<div class="card_image">
+							<img th:src="@{images/chequeo.jpg}" alt="Chequeo Preventivo" class="imagenCard">
+						</div>
+						<h3 class="mt-3 fs-3 fw-bold">Chequeo Preventivo: mejor prevenir que curar</h3>
+						<p class="fw-bold fs-1">a partir de 35€</p>
+						<p class="text-center">
+							✔️ Revisión completa para detectar problemas a tiempo<br>
+							📆 Recomendado cada 6 meses<br>
+							🐾 Para animales sanos o mayores de edad
+						</p>
+						<button class="btn btn-success btnCard mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Más info</button>
+						<button class="btn btn-success btnCard">Seleccionar</button>
+					</div>
+				</article>
+
+				<!-- Vacunación -->
+				<article class="col col-md-4">
+					<div class="card p-3 shadow-sm cardGuarderia">
+						<div class="card_image">
+							<img th:src="@{images/vacunacion.jpg}" alt="Vacunación" class="imagenCard">
+						</div>
+						<h3 class="mt-3 fs-3 fw-bold">Vacunación: su escudo contra enfermedades</h3>
+						<p class="fw-bold fs-1">a partir de 30€</p>
+						<p class="text-center">
+							✔️ Protección frente a enfermedades comunes<br>
+							🗓️ Según calendario veterinario<br>
+							🐾 Imprescindible para cachorros y adultos
+						</p>
+						<button class="btn btn-success btnCard mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Más info</button>
+						<button class="btn btn-success btnCard">Seleccionar</button>
+					</div>
+				</article>
+
+				<!-- Desparasitación -->
+				<article class="col col-md-4">
+					<div class="card p-3 shadow-sm cardGuarderia">
+						<div class="card_image">
+							<img th:src="@{images/desparasitacion.jpg}" alt="Desparasitación" class="imagenCard">
+						</div>
+						<h3 class="mt-3 fs-3 fw-bold">Desparasitación: libre de bichitos molestos</h3>
+						<p class="fw-bold fs-1">a partir de 20€</p>
+						<p class="text-center">
+							✔️ Tratamiento interno y externo<br>
+							🔁 Recomendado cada 3 meses<br>
+							🐾 Prevención eficaz de parásitos
+						</p>
+						<button class="btn btn-success btnCard mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Más info</button>
+						<button class="btn btn-success btnCard">Seleccionar</button>
+					</div>
+				</article>
+
+				<!-- Analítica y Test de Enfermedades -->
+				<article class="col col-md-4">
+					<div class="card p-3 shadow-sm cardGuarderia">
+						<div class="card_image">
+							<img th:src="@{images/analitica.jpg}" alt="Analítica y Test" class="imagenCard">
+						</div>
+						<h3 class="mt-3 fs-3 fw-bold">Analítica y Test: saber es poder (y salud)</h3>
+						<p class="fw-bold fs-1">a partir de 45€</p>
+						<p class="text-center">
+							✔️ Diagnóstico rápido y fiable<br>
+							🧪 Incluye test de enfermedades comunes<br>
+							🐾 Recomendado ante síntomas o revisiones
+						</p>
+						<button class="btn btn-success btnCard mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Más info</button>
+						<button class="btn btn-success btnCard">Seleccionar</button>
+					</div>
+				</article>
+			</div>
+		</section>
+		<hr class="mx-auto w-100 border-2 opacity-50">
+
+		<!-- Sección: Servicios de Especialidades -->
+		<section class="text-center mb-5">
+			<h2 class="fw-bold">Especialidades veterinarias:</h2>
+			<div class="row g-5 d-flex justify-content-center">
+
+				<!-- Traumatología -->
+				<article class="col col-md-4">
+					<div class="card p-3 shadow-sm cardGuarderia">
+						<div class="card_image">
+							<img th:src="@{images/traumatologia.jpg}" alt="Traumatología" class="imagenCard">
+						</div>
+						<h3 class="mt-3 fs-3 fw-bold">Traumatología: cuidados para huesos y articulaciones</h3>
+						<p class="fw-bold fs-1">a partir de 50€</p>
+						<p class="text-center">
+							✔️ Diagnóstico y tratamiento de fracturas o cojeras<br>
+							🩺 Con revisión ortopédica especializada<br>
+							🐾 Recomendado tras caídas o lesiones
+						</p>
+						<button class="btn btn-success btnCard mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Más info</button>
+						<button class="btn btn-success btnCard">Seleccionar</button>
+					</div>
+				</article>
+
+				<!-- Oftalmología -->
+				<article class="col col-md-4">
+					<div class="card p-3 shadow-sm cardGuarderia">
+						<div class="card_image">
+							<img th:src="@{images/oftalmologia.jpg}" alt="Oftalmología" class="imagenCard">
+						</div>
+						<h3 class="mt-3 fs-3 fw-bold">Oftalmología: ver bien es vivir mejor</h3>
+						<p class="fw-bold fs-1">a partir de 50€</p>
+						<p class="text-center">
+							✔️ Revisión ocular completa y tratamiento<br>
+							👁️ Diagnóstico de infecciones oculares y cataratas<br>
+							🐾 Ideal ante enrojecimiento, secreción o cambios en la visión
+						</p>
+						<button class="btn btn-success btnCard mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Más info</button>
+						<button class="btn btn-success btnCard">Seleccionar</button>
+					</div>
+				</article>
+
+				<!-- Radiografía -->
+				<article class="col col-md-4">
+					<div class="card p-3 shadow-sm cardGuarderia">
+						<div class="card_image">
+							<img th:src="@{images/radiografia.jpg}" alt="Radiografía" class="imagenCard">
+						</div>
+						<h3 class="mt-3 fs-3 fw-bold">Radiografía: imágenes que cuentan la verdad</h3>
+						<p class="fw-bold fs-1">a partir de 40€</p>
+						<p class="text-center">
+							✔️ Evaluación interna sin dolor<br>
+							📷 Resultados rápidos y precisos<br>
+							🐾 Útil en traumatismos, control óseo o digestivo
+						</p>
+						<button class="btn btn-success btnCard mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Más info</button>
+						<button class="btn btn-success btnCard">Seleccionar</button>
+					</div>
+				</article>
+
+				<!-- Ecografía -->
+				<article class="col col-md-4">
+					<div class="card p-3 shadow-sm cardGuarderia">
+						<div class="card_image">
+							<img th:src="@{images/ecografia.jpg}" alt="Ecografía" class="imagenCard">
+						</div>
+						<h3 class="mt-3 fs-3 fw-bold">Ecografía: exploración con alta precisión</h3>
+						<p class="fw-bold fs-1">a partir de 45€</p>
+						<p class="text-center">
+							✔️ Visualización de órganos en tiempo real<br>
+							🩻 Indicado para abdomen, gestación o anomalías<br>
+							🐾 Técnica no invasiva y sin molestias
+						</p>
+						<button class="btn btn-success btnCard mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Más info</button>
+						<button class="btn btn-success btnCard">Seleccionar</button>
+					</div>
+				</article>
+			</div>
+		</section>
+		<hr class="mx-auto w-100 border-2 opacity-50">
+
+		<!-- Sección: Servicios específicos -->
+		<section class="text-center mb-5">
+			<h2 class="fw-bold">Servicios específicos:</h2>
+			<div class="row g-5 d-flex justify-content-center">
+
+				<!-- Cirugía -->
+				<article class="col col-md-4">
+					<div class="card p-3 shadow-sm cardGuarderia">
+						<div class="card_image">
+							<img th:src="@{images/cirugia.jpg}" alt="Cirugía veterinaria" class="imagenCard">
+						</div>
+						<h3 class="mt-3 fs-3 fw-bold">Cirugía veterinaria: en manos expertas</h3>
+						<p class="fw-bold fs-1">a partir de 100€</p>
+						<p class="text-center">
+							✔️ Intervenciones programadas o de urgencia<br>
+							🛡️ Bajo anestesia segura y monitorización<br>
+							🐾 Recomendado para esterilización u otros procedimientos
+						</p>
+						<button class="btn btn-success btnCard mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Más info</button>
+						<button class="btn btn-success btnCard">Seleccionar</button>
+					</div>
+				</article>
+
+				<!-- Limpieza bucodental -->
+				<article class="col col-md-4">
+					<div class="card p-3 shadow-sm cardGuarderia">
+						<div class="card_image">
+							<img th:src="@{images/bucodental.jpg}" alt="Limpieza bucodental" class="imagenCard">
+						</div>
+						<h3 class="mt-3 fs-3 fw-bold">Limpieza bucodental: sonrisa sana, vida larga</h3>
+						<p class="fw-bold fs-1">a partir de 60€</p>
+						<p class="text-center">
+							✔️ Eliminación de sarro y placa<br>
+							😁 Mejora el aliento y previene infecciones<br>
+							🐾 Requiere sedación para mayor comodidad
+						</p>
+						<button class="btn btn-success btnCard mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Más info</button>
+						<button class="btn btn-success btnCard">Seleccionar</button>
+					</div>
+				</article>
+
+				<!-- Hospitalización -->
+				<article class="col col-md-4">
+					<div class="card p-3 shadow-sm cardGuarderia">
+						<div class="card_image">
+							<img th:src="@{images/hospitalizacion.jpg}" alt="Hospitalización veterinaria" class="imagenCard">
+						</div>
+						<h3 class="mt-3 fs-3 fw-bold">Hospitalización: atención las 24 horas</h3>
+						<p class="fw-bold fs-1">a partir de 45€/día</p>
+						<p class="text-center">
+							✔️ Cuidados intensivos y seguimiento médico<br>
+							🏥 Para postoperatorios o enfermedades graves<br>
+							🐾 Vigilancia constante con personal cualificado
+						</p>
+						<button class="btn btn-success btnCard mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Más info</button>
+						<button class="btn btn-success btnCard">Seleccionar</button>
+					</div>
+				</article>
+
+				<!-- Visita a domicilio -->
+				<article class="col col-md-4">
+					<div class="card p-3 shadow-sm cardGuarderia">
+						<div class="card_image">
+							<img th:src="@{images/domicilio.jpg}" alt="Visita a domicilio" class="imagenCard">
+						</div>
+						<h3 class="mt-3 fs-3 fw-bold">Visita a domicilio: el veterinario va a ti</h3>
+						<p class="fw-bold fs-1">a partir de 30€</p>
+						<p class="text-center">
+							✔️ Consulta en la comodidad de tu hogar<br>
+							🚗 Ideal para animales nerviosos o con movilidad reducida<br>
+							🐾 Sujeto a disponibilidad y zona
+						</p>
+						<button class="btn btn-success btnCard mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Más info</button>
+						<button class="btn btn-success btnCard">Seleccionar</button>
+					</div>
+				</article>
+			</div>
+		</section>
+		<hr class="mx-auto w-100 border-2 opacity-50">
+
+		<!-- Sección: Planes y Programas -->
+		<section class="text-center mb-5">
+			<h2 class="fw-bold">Planes y programas de salud:</h2>
+			<div class="row g-5 d-flex justify-content-center">
+
+				<!-- Control Leishmania -->
+				<article class="col col-md-4">
+					<div class="card p-3 shadow-sm cardGuarderia">
+						<div class="card_image">
+							<img th:src="@{images/leishmania.jpg}" alt="Control de Leishmania" class="imagenCard">
+						</div>
+						<h3 class="mt-3 fs-3 fw-bold">Control de Leishmania: prevención todo el año</h3>
+						<p class="fw-bold fs-1">a partir de 35€</p>
+						<p class="text-center">
+							✔️ Test de diagnóstico y revisión anual<br>
+							🦟 Asesoramiento en prevención y protección<br>
+							🐾 Especialmente recomendado en zonas endémicas
+						</p>
+						<button class="btn btn-success btnCard mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Más info</button>
+						<button class="btn btn-success btnCard">Seleccionar</button>
+					</div>
+				</article>
+
+				<!-- Obesidad -->
+				<article class="col col-md-4">
+					<div class="card p-3 shadow-sm cardGuarderia">
+						<div class="card_image">
+							<img th:src="@{images/obesidad.jpg}" alt="Programa control obesidad" class="imagenCard">
+						</div>
+						<h3 class="mt-3 fs-3 fw-bold">Control de obesidad: cuerpo sano, vida feliz</h3>
+						<p class="fw-bold fs-1">a partir de 30€</p>
+						<p class="text-center">
+							✔️ Plan nutricional y seguimiento mensual<br>
+							⚖️ Evaluación de peso y condición corporal<br>
+							🐾 Mejora la calidad y esperanza de vida
+						</p>
+						<button class="btn btn-success btnCard mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Más info</button>
+						<button class="btn btn-success btnCard">Seleccionar</button>
+					</div>
+				</article>
+
+				<!-- Plan salud perros -->
+				<article class="col col-md-4">
+					<div class="card p-3 shadow-sm cardGuarderia">
+						<div class="card_image">
+							<img th:src="@{images/planSaludPerro.jpg}" alt="Plan de salud para perros" class="imagenCard">
+						</div>
+						<h3 class="mt-3 fs-3 fw-bold">Plan de salud para perros: cuídalo todo el año</h3>
+						<p class="fw-bold fs-1">a partir de 150€/año</p>
+						<p class="text-center">
+							✔️ Incluye vacunas, desparasitaciones y revisiones<br>
+							📅 Citas planificadas y recordatorios<br>
+							🐶 Diseñado para cada etapa de su vida
+						</p>
+						<button class="btn btn-success btnCard mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Más info</button>
+						<button class="btn btn-success btnCard">Seleccionar</button>
+					</div>
+				</article>
+
+				<!-- Plan salud gatos -->
+				<article class="col col-md-4">
+					<div class="card p-3 shadow-sm cardGuarderia">
+						<div class="card_image">
+							<img th:src="@{images/planSaludGato.jpg}" alt="Plan de salud para gatos" class="imagenCard">
+						</div>
+						<h3 class="mt-3 fs-3 fw-bold">Plan de salud para gatos: bienestar sin estrés</h3>
+						<p class="fw-bold fs-1">a partir de 140€/año</p>
+						<p class="text-center">
+							✔️ Revisiones, vacunas y control antiparasitario<br>
+							🐱 Seguimiento adaptado a su estilo de vida<br>
+							💚 Pensado para gatos de interior y exterior
+						</p>
+						<button class="btn btn-success btnCard mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Más info</button>
+						<button class="btn btn-success btnCard">Seleccionar</button>
+					</div>
+				</article>
+			</div>
+		</section>
+		<hr class="mx-auto w-100 border-2 opacity-50">
+
+		<!-- Sección: Formulario de contacto -->
+		<section class="mb-5">
+			<h2 class="fw-bold text-center">Reserva tu estancia</h2>
+			<div class="formContainer">
+				<form class="row g-3">
+					<fieldset class="col-md-6">
+						<div class="itemSeleccion">
+							<legend class="fw-bold">Datos de la mascota</legend>
+							<label for="nombreMascota" class="form-label">Nombre de la mascota: <span
+									style="color: red">*</span></label>
+							<input type="text" id="nombreMascota" class="form-control labelForm"
+								   placeholder="-Por favor introduce el nombre de tu mascota-" required>
+						</div>
+
+						<div class="itemSeleccion">
+							<label for="caracterMascota" class="form-label">Caracter social: <span
+									style="color: red">*</span></label>
+							<select id="caracterMascota" class="form-select labelForm" required>
+								<option value="" disabled selected>-Por favor, elige una opción-</option>
+								<option>Sociable</option>
+								<option>No sociable</option>
+							</select>
+						</div>
+
+						<div class="itemSeleccion">
+							<label for="tipoMascota" class="form-label">Tipo: <span style="color: red">*</span></label>
+							<select id="tipoMascota" class="form-select labelForm" required>
+								<option value="" disabled selected>-Por favor, elige una opción-</option>
+								<option>Perro</option>
+								<option>Gato</option>
+								<option>Otro</option>
+							</select>
+						</div>
+
+						<div class="itemSeleccion">
+							<label for="necesitaMedicacion" class="form-label">Necesita medicación: <span
+									style="color: red">*</span></label>
+							<select id="necesitaMedicacion" class="form-select labelForm" required>
+								<option value="" disabled selected>-Por favor, elige una opción-</option>
+								<option>Sí</option>
+								<option>No</option>
+							</select>
+						</div>
+
+						<div class="itemSeleccion">
+							<label for="fechaEntrada" class="form-label">Fecha de entrada: <span
+									style="color: red">*</span></label>
+							<input type="date" id="fechaEntrada" class="form-control labelForm" required>
+						</div>
+
+						<div class="itemSeleccion">
+							<label for="fechaSalida" class="form-label">Fecha de salida: <span
+									style="color: red">*</span></label>
+							<input type="date" id="fechaSalida" class="form-control labelForm" required>
+						</div>
+					</fieldset>
+
+					<fieldset class="col-md-6">
+						<div class="itemSeleccion">
+							<legend class="fw-bold">Datos de contacto</legend>
+							<label for="nombreDueño" class="form-label">Tu nombre: <span
+									style="color: red">*</span></label>
+							<input type="text" id="nombreDueño" class="form-control labelForm"
+								   placeholder="-Por favor introduce tu nombre-" required>
+						</div>
+
+						<div class="itemSeleccion">
+							<label for="telefonoDueño" class="form-label">Teléfono: <span
+									style="color: red">*</span></label>
+							<input type="tel" id="telefonoDueño" class="form-control labelForm"
+								   placeholder="-Por favor introduce tu número de teléfono-" required>
+						</div>
+
+						<div class="itemSeleccion">
+							<label for="emailDueño" class="form-label">Correo electrónico: <span
+									style="color: red">*</span></label>
+							<input type="email" id="emailDueño" class="form-control labelForm"
+								   placeholder="-Por favor introduce tu correo electrónico-" required>
+						</div>
+
+						<div class="itemSeleccion">
+							<label for="mensajeExtra" class="form-label">Mensaje:</label>
+							<input type="text" id="mensajeExtra" class="form-control labelForm">
+						</div>
+					</fieldset>
+
+					<div class="itemSeleccion">
+						<label class="form-label fw-bold fs-5">Tarifa seleccionada: </label>
+					</div>
+
+					<div class="itemSeleccion">
+						<label class="form-label fw-bold fs-3" id="precioTotal">PRECIO TOTAL: </label>
+					</div>
+
+					<div class="itemSeleccion">
+						<input type="checkbox" class="" required>
+						<label class="form-label">He leído y acepto las condiciones de uso de la web,
+							el aviso legal y la política de privacidad</label>
+					</div>
+
+					<div class="text-center">
+						<button type="submit" class="btn btn-primary btnEnviar">RESERVAR</button>
+					</div>
+				</form>
+			</div>
+		</section>
+		<hr class="mx-auto w-100 border-2 opacity-50">
+
+		<!-- Sección: otros servicios-->
+		<section class="text-center mb-1">
+			<h2 class="fw-bold">Nuestras tarifas:</h2>
+			<div class="row row-cols-1 row-cols-md-4 g-4">
+				<article class="col">
+					<div class="card p-3 shadow-sm cardGuarderia">
+						<div class="card_image">
+							<img th:src="@{images/peluqueriaCanina.jpg}" alt="LogoPeluqueria" class="imagenCard">
+						</div>
+						<h3 class="mt-3 fs-3 fw-bold">GUARDERÍA</h3>
+						<p class="fs-4">A PARTIR DE 10€</p>
+						<button class="btn btn-success">MÁS INFO</button>
+					</div>
+				</article>
+				<article class="col">
+					<div class="card p-3 shadow-sm cardGuarderia">
+						<div class="card_image">
+							<img th:src="@{images/adiestramiento.jpg}" alt="LogoAdiestramiento" class="imagenCard">
+						</div>
+						<h3 class="mt-3 fs-3 fw-bold">PELUQUERÍA</h3>
+						<p class="fs-4">A PARTIR DE 15€</p>
+						<button class="btn btn-success">MÁS INFO</button>
+					</div>
+				</article>
+				<article class="col">
+					<div class="card p-3 shadow-sm cardGuarderia">
+						<div class="card_image">
+							<img th:src="@{images/veterinario.jpg}" alt="LogoVeterinario" class="imagenCard">
+						</div>
+						<h3 class="mt-3 fs-3 fw-bold">ASESORAMIENTO VETERINARIO</h3>
+						<button class="btn btn-success">MÁS INFO</button>
+					</div>
+				</article>
+				<article class="col">
+					<div class="card p-3 shadow-sm cardGuarderia">
+						<div class="card_image">
+							<img th:src="@{images/asesoramientoLegal.jpg}" alt="LogoLegal" class="imagenCard">
+						</div>
+						<h3 class="mt-3 fs-3 fw-bold">ASESORAMIENTO LEGAL</h3>
+						<button class="btn btn-success">MÁS INFO</button>
+					</div>
+				</article>
+			</div>
+		</section>
+	</section>
+
+	<!-- Script para controlar la seleccion de fechas -->
+	<script>
+        'use strict';
+        var dclhandler = false;
+        if (document.readyState !== 'loading') {
+            start();
+        } else {
+            dclhandler = true;
+            document.addEventListener('DOMContentLoaded', start);
+        }
+
+        function start() {
+            if (dclhandler) {
+                document.removeEventListener('DOMContentLoaded', start);
+            }
+            console.log('Start the site`s JS activities');
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const fechaEntrada = document.getElementById('fechaEntrada');
+            const fechaSalida = document.getElementById('fechaSalida');
+
+
+            // Obtener la fecha actual en formato YYYY-MM-DD
+            const hoy = new Date().toISOString().split('T')[0];
+
+            // Establecer el valor mínimo para la fecha de entrada
+            fechaEntrada.min = hoy;
+
+            // Evento para actualizar la fecha mínima de salida cuando cambia la entrada
+            fechaEntrada.addEventListener('change', function () {
+                fechaSalida.min = fechaEntrada.value;
+            });
+        });
+	</script>
+
+	<!-- Script para calcular el precio dependiendo de la tarifa seleccionada -->
+	<script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const tarifas = {
+                "ESTANCIA EXPRESS": 18,
+                "ESTANCIA RELAX": 15,
+                "ESTANCIA SABÁTICA": 12,
+                "BONO LARGA ESTANCIA": 200,
+                "BONO ESTANCIA SOLO DIA": 75
+            };
+
+            let tarifaSeleccionada = "";
+            let precioPorNoche = 0;
+
+            const etiquetaTarifa = document.querySelector('.fw-bold.fs-5'); // Donde se mostrará la tarifa
+            const etiquetaPrecioTotal = document.getElementById('precioTotal');
+
+            // Botones de selección de tarifa
+            document.getElementById('btnEstanciaExpress').addEventListener('click', function () {
+                seleccionarTarifa("ESTANCIA EXPRESS");
+            });
+
+            document.getElementById('btnEstanciaRelax').addEventListener('click', function () {
+                seleccionarTarifa("ESTANCIA RELAX");
+            });
+
+            document.getElementById('btnEstanciaSabatica').addEventListener('click', function () {
+                seleccionarTarifa("ESTANCIA SABÁTICA");
+            });
+
+            document.getElementById('btnBonoLargaEstancia').addEventListener('click', function () {
+                establecerTarifaFija("BONO LARGA ESTANCIA");
+            });
+
+            document.getElementById('btnBonoEstanciaSoloDia').addEventListener('click', function () {
+                establecerTarifaFija("BONO ESTANCIA SOLO DIA");
+            });
+
+            function establecerTarifaFija(tarifa) {
+                tarifaSeleccionada = tarifa;
+                etiquetaTarifa.textContent = "Tarifa seleccionada: " + tarifa;
+                const totalFijo = tarifas[tarifa];
+                etiquetaPrecioTotal.textContent = `PRECIO TOTAL: ${totalFijo}€`;
+            }
+
+            function seleccionarTarifa(tarifa) {
+                tarifaSeleccionada = tarifa;
+                precioPorNoche = tarifas[tarifa];
+                etiquetaTarifa.textContent = "Tarifa seleccionada: " + tarifa;
+                calcularPrecio(); // Recalcular si ya hay fechas seleccionadas
+            }
+
+            // Función para calcular el precio total según las fechas
+            function calcularPrecio() {
+                const fechaEntrada = document.getElementById('fechaEntrada').value;
+                const fechaSalida = document.getElementById('fechaSalida').value;
+
+                if (fechaEntrada && fechaSalida && tarifaSeleccionada) {
+                    const inicio = new Date(fechaEntrada);
+                    const fin = new Date(fechaSalida);
+                    const noches = Math.max((fin - inicio) / (1000 * 60 * 60 * 24), 0);
+
+                    if (noches > 0) {
+                        const total = noches * precioPorNoche;
+                        etiquetaPrecioTotal.textContent = `PRECIO TOTAL: ${total}€`;
+                    } else {
+                        etiquetaPrecioTotal.textContent = "PRECIO TOTAL: ";
+                    }
+                }
+            }
+
+            // Detectar cambios en las fechas y calcular precio
+            document.getElementById('fechaEntrada').addEventListener('change', calcularPrecio);
+            document.getElementById('fechaSalida').addEventListener('change', calcularPrecio);
+        });
+	</script>
+</section>
 </body>
 </html>
