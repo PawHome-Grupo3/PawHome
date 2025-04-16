@@ -16,18 +16,22 @@ body {
     border-radius: 20px;
 }
 
+.seccionTitulo{
+    background-color: rgba(27, 125, 85, 0.1);
+}
+
 .serviciosPerro{
     background-color: rgba(27, 125, 85, 0.6);
     border-radius: 20px;
     width: min-content;
 }
 
-.cardServicioPerro{
+.cardServicio{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
-    background-color: rgba(27, 125, 85, 0.5);
+    background-color: rgba(27, 125, 85, 0.4);
     border-radius: 20px;
 }
 
@@ -50,7 +54,7 @@ body {
 }
 
 .formContainer{
-    background-color: rgba(27, 125, 85, 0.6);
+    background-color: rgba(27, 125, 85, 0.4);
     width: calc(100% - 5px);
     max-width: 1400px;
     margin: 0 auto;

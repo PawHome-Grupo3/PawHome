@@ -16,13 +16,19 @@ body {
     border-radius: 20px;
 }
 
-.cardGuarderia {
+.cardServicio {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
     background-color: rgba(27, 125, 85, 0.4);
     border-radius: 20px;
+}
+
+.cardServicio h3 {
+    text-overflow: ellipsis;
+    text-align: center;
+    font-size: 1.25rem;
 }
 
 .seccionTitulo{
@@ -35,12 +41,6 @@ body {
     max-width: 100%;
     object-fit: cover !important;
     border-radius: 20px;
-}
-
-.cardGuarderia h3 {
-    text-overflow: ellipsis;
-    text-align: center;
-    font-size: 1.25rem;
 }
 
 .formContainer {

@@ -22,6 +22,10 @@ body {
     padding: 0.2em;
 }
 
+.seccionTitulo{
+    background-color: rgba(27, 125, 85, 0.1);
+}
+
 .textoModal {
     font-size: clamp(12px, 1vw, 20px);
     background-color: rgba(27, 125, 85, 0.3);
@@ -38,12 +42,12 @@ body {
     border-radius: 20px;
 }
 
-.cardGuarderia{
+.cardServicio{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
-    background-color: rgba(27, 125, 85, 0.5);
+    background-color: rgba(27, 125, 85, 0.4);
     border-radius: 20px;
 }
 
@@ -55,14 +59,14 @@ body {
     border-radius: 20px;
 }
 
-.cardGuarderia h3{
+.cardServicio h3{
     text-overflow: ellipsis;
     text-align: center;
     font-size: 1.25rem;
 }
 
 .formContainer{
-    background-color: rgba(27, 125, 85, 0.6);
+    background-color: rgba(27, 125, 85, 0.4);
     width: calc(100% - 5px);
     max-width: 1400px;
     margin: 0 auto;
