@@ -2,7 +2,7 @@
 <html lang="es" xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
 	  layout:decorate="~{layouts/layout.html}">
 <head>
-	<title>Guarderia PawHome</title>
+	<title>Peluquería PawHome</title>
 	<link rel="stylesheet" th:href="@{/css/peluqueria.css}"/>
 </head>
 <body>
@@ -10,215 +10,503 @@
 <section layout:fragment="content">
 	<section class="container py-5 mainContainer">
 
-		<!-- Sección: Nuestra guardería-->
-		<section class="text-center">
-			<h2 class="fw-bold fs-1">Nuestra peluquería</h2>
-			<p class="fs-5">texto descripcion peluqueria</p>
+		<!-- Seccion: Nuestra peluqueria -->
+		<section class="text-center rounded-4 shadow mx-2 my-3 p-4 seccionTitulo">
+			<div class="container px-4">
+				<h2 class="fw-bold display-5 text-success-emphasis mb-3">
+					<i class="fas fa-scissors me-2"></i> Peluquería PawHome
+				</h2>
+				<p class="fs-5">
+					Cuidamos el estilo y bienestar de tu mascota con <i class="fas fa-hand-sparkles"></i> higiene, <i
+						class="fas fa-spa"></i> confort y <i class="fas fa-heart"></i> mucho cariño.
+				</p>
+			</div>
 		</section>
 		<hr class="mx-auto w-100 border-2 opacity-50">
 
-		<!-- Sección: Nuestros servicios para perros-->
-		<section class="text-center my-4">
-			<h2 class="fw-bold text-start fs-3 p-3 serviciosPerro">PERROS</h2>
-			<div class="row row-cols-2 row-cols-md-4 g-4 rowServicios">
+		<!-- Seccion: Servicios para perros: -->
+		<section class="text-center my-5">
+			<h2 class="fw-bold text-start fs-2 px-3 text-success-emphasis mb-4">
+				<i class="fas fa-dog me-2"></i>Servicios para perros</h2>
+
+			<!-- Versión para pantallas grandes -->
+			<div class="d-none d-md-flex row row-cols-1 row-cols-md-4 g-4 px-3">
+
+				<!-- Servicios -->
 				<article class="col">
-					<h2 class="fw-bold text-start fs-3">Nuestros servicios:</h2>
-					<ul class="listaServicios text-start fs-5">
-						<li>Cepillado</li>
-						<li>Baño</li>
-						<li>Stripping</li>
-						<li>Corte a máquina</li>
-						<li>Corte a mano</li>
-						<li>Corte combinado</li>
-					</ul>
+					<div class="rounded-4 shadow-sm p-3 h-100 seccionTitulo">
+						<h3 class="fw-semibold fs-4 text-start text-success mb-3">
+							<i class="fas fa-paw me-2"></i> Nuestros servicios
+						</h3>
+						<ul class="list-unstyled text-start fs-5">
+							<li><i class="fas fa-brush me-2 "></i> Cepillado</li>
+							<li><i class="fas fa-shower me-2 "></i> Baño</li>
+							<li><i class="fas fa-cut me-2 "></i> Stripping</li>
+							<li><i class="fas fa-clinic-medical me-2 "></i> Corte a máquina</li>
+							<li><i class="fas fa-hand-scissors me-2 "></i> Corte a mano</li>
+							<li><i class="fas fa-ruler-combined me-2 "></i> Corte combinado</li>
+						</ul>
+					</div>
 				</article>
 
+				<!-- Baño y corte -->
 				<article class="col">
-					<h2 class="fw-bold text-start fs-3">El baño incluye:</h2>
-					<ul class="listaBañoIncluye text-start fs-5">
-						<li>Baño y masaje</li>
-						<li>Secado</li>
-						<li>Corte de uñas</li>
-						<li>Limpieza de oídos</li>
-					</ul>
+					<div class="rounded-4 shadow-sm p-3 h-100 seccionTitulo">
+						<h3 class="fw-semibold fs-4 text-start text-success mb-3">
+							<i class="fas fa-bath me-2"></i> El baño incluye
+						</h3>
+						<ul class="list-unstyled text-start fs-5 mb-4">
+							<li><i class="fas fa-spa me-2 "></i> Baño y masaje</li>
+							<li><i class="fas fa-wind me-2 "></i> Secado</li>
+							<li><i class="fas fa-cut me-2 "></i> Corte de uñas</li>
+							<li><i class="fas fa-head-side-mask me-2 "></i> Limpieza de oídos</li>
+						</ul>
 
-					<h2 class="fw-bold text-start fs-3">El corte incluye:</h2>
-					<ul class="listaCorteIncluye text-start fs-5">
-						<li>Corte acorde a la raza</li>
-						<li>Técnica de trabajo acorde al tipo de pelo</li>
-						<li>Antiestático y perfume</li>
-					</ul>
+						<h3 class="fw-semibold fs-4 text-start text-success mb-3">
+							<i class="fas fa-scissors me-2"></i> El corte incluye
+						</h3>
+						<ul class="list-unstyled text-start fs-5">
+							<li><i class="fas fa-dog me-2 "></i> Corte acorde a la raza</li>
+							<li><i class="fas fa-dna me-2 "></i> Técnica según tipo de pelo</li>
+							<li><i class="fas fa-spray-can-sparkles me-2 "></i> Antiestático y perfume</li>
+						</ul>
+					</div>
 				</article>
 
+				<!-- Suplementos -->
 				<article class="col">
-					<h2 class="fw-bold text-start fs-3">Suplementos:</h2>
-					<ul class="listaCorteIncluye text-start fs-5">
-						<li>Por nudos</li>
-						<li>Baño antiparasito</li>
-						<li>Baño champú potenciador de color</li>
-						<li>Deslanado</li>
-					</ul>
+					<div class="rounded-4 shadow-sm p-3 h-100 seccionTitulo">
+						<h3 class="fw-semibold fs-4 text-start text-success mb-3">
+							<i class="fas fa-plus-circle me-2"></i> Suplementos
+						</h3>
+						<ul class="list-unstyled text-start fs-5">
+							<li><i class="fas fa-cut me-2 "></i> Por nudos</li>
+							<li><i class="fas fa-bug-slash me-2 "></i> Baño antiparásito</li>
+							<li><i class="fas fa-tint me-2 "></i> Champú potenciador color</li>
+							<li><i class="fas fa-feather-alt me-2 "></i> Deslanado</li>
+						</ul>
+					</div>
 				</article>
 
+				<!-- Tamaños -->
 				<article class="col">
-					<h2 class="fw-bold text-start fs-3">Atendemos a todo tipo de razas y tamaños...</h2>
-					<ul class="listaTamañoAnimal text-start fs-5">
-						<li>Gigante > 35Kg</li>
-						<li>Grande 26 a 35Kg</li>
-						<li>Mediano 11 a 25Kg</li>
-						<li>Pequeño 6 a 10Kg</li>
-						<li>Juguete < 5Kg</li>
-					</ul>
+					<div class="rounded-4 shadow-sm p-3 h-100 seccionTitulo">
+						<h3 class="fw-semibold fs-4 text-start text-success mb-3">
+							<i class="fas fa-weight me-2"></i> Tamaños atendidos
+						</h3>
+						<ul class="list-unstyled text-start fs-5">
+							<li><i class="fas fa-dog me-2 "></i> Gigante > 35kg</li>
+							<li><i class="fas fa-dog me-2 "></i> Grande 26 - 35kg</li>
+							<li><i class="fas fa-dog me-2 "></i> Mediano 11 - 25kg</li>
+							<li><i class="fas fa-dog me-2 "></i> Pequeño 6 - 10kg</li>
+							<li><i class="fas fa-dog me-2 "></i> Juguete < 5kg</li>
+						</ul>
+					</div>
 				</article>
+			</div>
+
+			<!-- Versión para pantallas pequeñas -->
+			<div class="d-md-none px-3">
+				<div class="accordion" id="accordionServiciosPerros">
+
+					<!-- Servicios -->
+					<div class="accordion-item seccionTitulo">
+						<h2 class="accordion-header" id="headingServicios">
+							<button class="accordion-button collapsed seccionTitulo" type="button"
+									data-bs-toggle="collapse"
+									data-bs-target="#collapseServicios" aria-expanded="false"
+									aria-controls="collapseServicios">
+								<i class="fas fa-paw me-2 text-success"></i> Nuestros servicios
+							</button>
+						</h2>
+						<div id="collapseServicios" class="accordion-collapse collapse"
+							 aria-labelledby="headingServicios" data-bs-parent="#accordionServiciosPerros">
+							<div class="accordion-body">
+								<ul class="list-unstyled fs-6">
+									<li><i class="fas fa-brush me-2 "></i> Cepillado</li>
+									<li><i class="fas fa-shower me-2 "></i> Baño</li>
+									<li><i class="fas fa-cut me-2 "></i> Stripping</li>
+									<li><i class="fas fa-clinic-medical me-2 "></i> Corte a máquina</li>
+									<li><i class="fas fa-hand-scissors me-2 "></i> Corte a mano</li>
+									<li><i class="fas fa-ruler-combined me-2 "></i> Corte combinado</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+					<!-- Baño y corte -->
+					<div class="accordion-item seccionTitulo">
+						<h2 class="accordion-header" id="headingBanio">
+							<button class="accordion-button collapsed seccionTitulo" type="button"
+									data-bs-toggle="collapse"
+									data-bs-target="#collapseBanio" aria-expanded="false" aria-controls="collapseBanio">
+								<i class="fas fa-bath me-2 text-success"></i> Baño y Corte
+							</button>
+						</h2>
+						<div id="collapseBanio" class="accordion-collapse collapse" aria-labelledby="headingBanio"
+							 data-bs-parent="#accordionServiciosPerros">
+							<div class="accordion-body">
+								<h6 class="fw-bold mb-2">El baño incluye:</h6>
+								<ul class="list-unstyled fs-6 mb-3">
+									<li><i class="fas fa-spa me-2 "></i> Baño y masaje</li>
+									<li><i class="fas fa-wind me-2 "></i> Secado</li>
+									<li><i class="fas fa-cut me-2 "></i> Corte de uñas</li>
+									<li><i class="fas fa-head-side-mask me-2 "></i> Limpieza de oídos</li>
+								</ul>
+								<h6 class="fw-bold mb-2">El corte incluye:</h6>
+								<ul class="list-unstyled fs-6">
+									<li><i class="fas fa-dog me-2 "></i> Corte acorde a la raza</li>
+									<li><i class="fas fa-dna me-2 "></i> Técnica según tipo de pelo</li>
+									<li><i class="fas fa-spray-can-sparkles me-2 "></i> Antiestático y perfume
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+					<!-- Suplementos -->
+					<div class="accordion-item seccionTitulo">
+						<h2 class="accordion-header" id="headingSuplementos">
+							<button class="accordion-button collapsed seccionTitulo" type="button"
+									data-bs-toggle="collapse"
+									data-bs-target="#collapseSuplementos" aria-expanded="false"
+									aria-controls="collapseSuplementos">
+								<i class="fas fa-plus-circle me-2 text-success"></i> Suplementos
+							</button>
+						</h2>
+						<div id="collapseSuplementos" class="accordion-collapse collapse"
+							 aria-labelledby="headingSuplementos" data-bs-parent="#accordionServiciosPerros">
+							<div class="accordion-body">
+								<ul class="list-unstyled fs-6">
+									<li><i class="fas fa-cut me-2 "></i> Por nudos</li>
+									<li><i class="fas fa-bug-slash me-2 "></i> Baño antiparásito</li>
+									<li><i class="fas fa-tint me-2 "></i> Champú potenciador de color</li>
+									<li><i class="fas fa-feather-alt me-2 "></i> Deslanado</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+					<!-- Tamaños -->
+					<div class="accordion-item seccionTitulo">
+						<h2 class="accordion-header" id="headingTamanios">
+							<button class="accordion-button collapsed seccionTitulo" type="button"
+									data-bs-toggle="collapse"
+									data-bs-target="#collapseTamanios" aria-expanded="false"
+									aria-controls="collapseTamanios">
+								<i class="fas fa-weight me-2 text-success"></i> Tamaños atendidos
+							</button>
+						</h2>
+						<div id="collapseTamanios" class="accordion-collapse collapse" aria-labelledby="headingTamanios"
+							 data-bs-parent="#accordionServiciosPerros">
+							<div class="accordion-body">
+								<ul class="list-unstyled fs-6">
+									<li><i class="fas fa-dog me-2 "></i> Gigante > 35kg</li>
+									<li><i class="fas fa-dog me-2 "></i> Grande 26 - 35kg</li>
+									<li><i class="fas fa-dog me-2 "></i> Mediano 11 - 25kg</li>
+									<li><i class="fas fa-dog me-2 "></i> Pequeño 6 - 10kg</li>
+									<li><i class="fas fa-dog me-2 "></i> Juguete < 5kg</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</section>
 
 		<!-- Sección: Nuestras tarifas para perros -->
 		<section class="text-center mb-5">
-			<h2 class="fw-bold">Nuestras tarifas:</h2>
+			<h2 class="fw-bold text-success-emphasis mb-4">
+				<i class="fas fa-paw me-2"></i>Nuestras tarifas para perros</h2>
 			<div class="row row-cols-1 row-cols-md-5 g-4">
+
+				<!-- CARD 1: BAÑO BÁSICO -->
 				<article class="col">
-					<div class="card p-3 shadow-sm cardServicioPerro">
-						<div class="card_image">
-							<img th:src="@{images/estanciaExpres.jpg}" alt="LogoEstanciaExpress" class="imagenCard">
+					<div class="card p-3 shadow-sm h-100 cardServicio">
+						<div class="card_image mb-2">
+							<img th:src="@{images/estanciaExpres.jpg}" alt="Baño Básico" class="imagenCard rounded-3">
 						</div>
-						<p class="mt-3 fs-3 fw-bold">BAÑO BASICO</p>
-						<p class="fw-bold">desde 10€</p>
-						<p>Incluye: <br> Baño <br> Cepillado</p>
-						<button class="btn btn-success btnCard">Seleccionar</button>
+						<h3 class="fs-4 fw-bold text-success-emphasis">BAÑO BÁSICO</h3>
+						<p class="fw-bold fs-5">desde 10€</p>
+						<ul class="list-unstyled">
+							<li><i class="fas fa-shower me-2 text-success"></i>Baño</li>
+							<li><i class="fas fa-brush me-2 text-success"></i>Cepillado</li>
+						</ul>
+						<button class="btn btn-success btnCard mt-auto">Seleccionar</button>
 					</div>
 				</article>
 
+				<!-- CARD 2: BAÑO + STRIPPING -->
 				<article class="col">
-					<div class="card p-3 shadow-sm cardServicioPerro">
-						<div class="card_image">
-							<img th:src="@{images/estanciaExpres.jpg}" alt="LogoEstanciaExpress" class="imagenCard">
+					<div class="card p-3 shadow-sm h-100 cardServicio">
+						<div class="card_image mb-2">
+							<img th:src="@{images/estanciaExpres.jpg}" alt="Baño + Stripping"
+								 class="imagenCard rounded-3">
 						</div>
-						<P class="mt-3 fs-3 fw-bold">BAÑO + STRIPPING</P>
-						<p class="fw-bold">desde 15€</p>
-						<p>Incluye: <br> Baño <br> Stripping <br> Cepillado</p>
-						<button class="btn btn-success btnCard">Seleccionar</button>
+						<h3 class="fs-4 fw-bold text-success-emphasis">BAÑO + STRIPPING</h3>
+						<p class="fw-bold fs-5">desde 15€</p>
+						<ul class="list-unstyled">
+							<li><i class="fas fa-shower me-2 text-success"></i>Baño</li>
+							<li><i class="fas fa-cut me-2 text-success"></i>Stripping</li>
+							<li><i class="fas fa-brush me-2 text-success"></i>Cepillado</li>
+						</ul>
+						<button class="btn btn-success btnCard mt-auto">Seleccionar</button>
 					</div>
 				</article>
 
+				<!-- CARD 3: SOLO CORTE -->
 				<article class="col">
-					<div class="card p-3 shadow-sm cardServicioPerro">
-						<div class="card_image">
-							<img th:src="@{images/estanciaExpres.jpg}" alt="LogoEstanciaExpress" class="imagenCard">
+					<div class="card p-3 shadow-sm h-100 cardServicio">
+						<div class="card_image mb-2">
+							<img th:src="@{images/estanciaExpres.jpg}" alt="Solo Corte" class="imagenCard rounded-3">
 						</div>
-						<P class="mt-3 fs-3 fw-bold">SOLO CORTE</P>
-						<p class="fw-bold">desde 15€</p>
-						<p>Incluye: <br> Corte de pelo</p>
-						<button class="btn btn-success btnCard">Seleccionar</button>
+						<h3 class="fs-4 fw-bold text-success-emphasis">SOLO CORTE</h3>
+						<p class="fw-bold fs-5">desde 15€</p>
+						<ul class="list-unstyled">
+							<li><i class="fas fa-scissors me-2 text-success"></i>Corte de pelo</li>
+						</ul>
+						<button class="btn btn-success btnCard mt-auto">Seleccionar</button>
 					</div>
 				</article>
 
+				<!-- CARD 4: BAÑO + CORTE -->
 				<article class="col">
-					<div class="card p-3 shadow-sm cardServicioPerro">
-						<div class="card_image">
-							<img th:src="@{images/estanciaExpres.jpg}" alt="LogoEstanciaExpress" class="imagenCard">
+					<div class="card p-3 shadow-sm h-100 cardServicio">
+						<div class="card_image mb-2">
+							<img th:src="@{images/estanciaExpres.jpg}" alt="Baño + Corte" class="imagenCard rounded-3">
 						</div>
-						<P class="mt-3 fs-3 fw-bold">BAÑO + CORTE</P>
-						<p class="fw-bold">desde 20€</p>
-						<p>Incluye: <br> Baño <br> Cepillado <br> Corte de pelo</p>
-						<button class="btn btn-success btnCard">Seleccionar</button>
+						<h3 class="fs-4 fw-bold text-success-emphasis">BAÑO + CORTE</h3>
+						<p class="fw-bold fs-5">desde 20€</p>
+						<ul class="list-unstyled">
+							<li><i class="fas fa-shower me-2 text-success"></i>Baño</li>
+							<li><i class="fas fa-brush me-2 text-success"></i>Cepillado</li>
+							<li><i class="fas fa-scissors me-2 text-success"></i>Corte de pelo</li>
+						</ul>
+						<button class="btn btn-success btnCard mt-auto">Seleccionar</button>
 					</div>
 				</article>
 
+				<!-- CARD 5: COMPLETO -->
 				<article class="col">
-					<div class="card p-3 shadow-sm cardServicioPerro">
-						<div class="card_image">
-							<img th:src="@{images/estanciaExpres.jpg}" alt="LogoEstanciaExpress" class="imagenCard">
+					<div class="card p-3 shadow-sm h-100 cardServicio">
+						<div class="card_image mb-2">
+							<img th:src="@{images/estanciaExpres.jpg}" alt="Servicio Completo"
+								 class="imagenCard rounded-3">
 						</div>
-						<P class="mt-3 fs-3 fw-bold">COMPLETO</P>
-						<p class="fw-bold">desde 25€</p>
-						<p>Incluye: <br> Baño <br> Stripping <br> Cepillado <br> Corte de pelo</p>
-						<button class="btn btn-success btnCard">Seleccionar</button>
+						<h3 class="fs-4 fw-bold text-success-emphasis">COMPLETO</h3>
+						<p class="fw-bold fs-5">desde 25€</p>
+						<ul class="list-unstyled">
+							<li><i class="fas fa-shower me-2 text-success"></i>Baño</li>
+							<li><i class="fas fa-cut me-2 text-success"></i>Stripping</li>
+							<li><i class="fas fa-brush me-2 text-success"></i>Cepillado</li>
+							<li><i class="fas fa-scissors me-2 text-success"></i>Corte de pelo</li>
+						</ul>
+						<button class="btn btn-success btnCard mt-auto">Seleccionar</button>
 					</div>
 				</article>
 			</div>
 		</section>
 		<hr class="mx-auto w-100 border-2 opacity-50">
 
-		<!-- Sección: Nuestros servicios para gatos-->
-		<section class="text-center my-4">
-			<h2 class="fw-bold text-start fs-3 p-3 serviciosPerro">GATOS</h2>
-			<div class="row row-cols-2 row-cols-md-4 g-4 rowServicios">
+		<!-- Seccion: Servicios para gatos -->
+		<section class="text-center my-5">
+			<h2 class="fw-bold text-start fs-2 px-3 text-success-emphasis mb-4">
+				<i class="fas fa-cat me-2"></i>Servicios para gatos</h2>
+
+			<!-- Versión para pantallas grandes -->
+			<div class="d-none d-md-flex row row-cols-1 row-cols-md-4 g-4 px-3">
+
+				<!-- Servicios -->
 				<article class="col">
-					<h2 class="fw-bold text-start fs-3">Nuestros servicios:</h2>
-					<ul class="listaServicios text-start fs-5">
-						<li>Cepillado</li>
-						<li>Baño</li>
-						<li>Corte pelo corto</li>
-						<li>Corte pelo largo</li>
-					</ul>
+					<div class="rounded-4 shadow-sm p-3 h-100 seccionTitulo">
+						<h3 class="fw-semibold fs-4 text-start text-success mb-3">
+							<i class="fas fa-paw me-2"></i> Nuestros servicios
+						</h3>
+						<ul class="list-unstyled text-start fs-5">
+							<li><i class="fas fa-brush me-2 "></i> Cepillado</li>
+							<li><i class="fas fa-shower me-2 "></i> Baño</li>
+							<li><i class="fas fa-cat me-2 "></i> Corte pelo corto</li>
+							<li><i class="fas fa-cat me-2 "></i> Corte pelo largo</li>
+						</ul>
+					</div>
 				</article>
 
+				<!-- Baño -->
 				<article class="col">
-					<h2 class="fw-bold text-start fs-3">El baño incluye:</h2>
-					<ul class="listaBañoIncluye text-start fs-5">
-						<li>Baño y masaje</li>
-						<li>Secado</li>
-						<li>Arreglo de uñas</li>
-						<li>Limpieza de oídos</li>
-					</ul>
+					<div class="rounded-4 shadow-sm p-3 h-100 seccionTitulo">
+						<h3 class="fw-semibold fs-4 text-start text-success mb-3">
+							<i class="fas fa-bath me-2"></i> El baño incluye
+						</h3>
+						<ul class="list-unstyled text-start fs-5 mb-4">
+							<li><i class="fas fa-spa me-2 "></i> Baño y masaje</li>
+							<li><i class="fas fa-wind me-2 "></i> Secado</li>
+							<li><i class="fas fa-cut me-2 "></i> Arreglo de uñas</li>
+							<li><i class="fas fa-ear-listen me-2 "></i> Limpieza de oídos</li>
+						</ul>
+					</div>
 				</article>
 
-				<article>
-					<h2 class="fw-bold text-start fs-3">El corte incluye:</h2>
-					<ul class="listaCorteIncluye text-start fs-5">
-						<li>Corte y deslanado</li>
-						<li>Técnica de trabajo acorde al tipo de pelo</li>
-					</ul>
+				<!-- Corte -->
+				<article class="col">
+					<div class="rounded-4 shadow-sm p-3 h-100 seccionTitulo">
+						<h3 class="fw-semibold fs-4 text-start text-success mb-3">
+							<i class="fas fa-scissors me-2"></i> El corte incluye
+						</h3>
+						<ul class="list-unstyled text-start fs-5">
+							<li><i class="fas fa-scissors me-2 "></i> Corte</li>
+							<li><i class="fas fa-feather-alt me-2 "></i> Técnica según tipo de pelo</li>
+						</ul>
+					</div>
 				</article>
 
+				<!-- Suplementos -->
 				<article class="col">
-					<h2 class="fw-bold text-start fs-3">Suplementos:</h2>
-					<ul class="listaCorteIncluye text-start fs-5">
-						<li>Deslanado</li>
-						<li>Nudos</li>
-					</ul>
+					<div class="rounded-4 shadow-sm p-3 h-100 seccionTitulo">
+						<h3 class="fw-semibold fs-4 text-start text-success mb-3">
+							<i class="fas fa-plus-circle me-2"></i> Suplementos
+						</h3>
+						<ul class="list-unstyled text-start fs-5">
+							<li><i class="fas fa-cat me-2 "></i> Deslanado</li>
+							<li><i class="fas fa-khanda me-2 "></i> Nudos</li>
+						</ul>
+					</div>
 				</article>
+			</div>
+
+			<!-- Versión para pantallas pequeñas -->
+			<div class="d-md-none px-3">
+				<div class="accordion" id="accordionServiciosGatos">
+
+					<!-- Servicios -->
+					<div class="accordion-item seccionTitulo">
+						<h2 class="accordion-header" id="headingServiciosGatos">
+							<button class="accordion-button collapsed seccionTitulo" type="button"
+									data-bs-toggle="collapse"
+									data-bs-target="#collapseServiciosGatos" aria-expanded="false"
+									aria-controls="collapseServiciosGatos">
+								<i class="fas fa-paw me-2 text-success"></i> Nuestros servicios
+							</button>
+						</h2>
+						<div id="collapseServiciosGatos" class="accordion-collapse collapse"
+							 aria-labelledby="headingServiciosGatos" data-bs-parent="#accordionServiciosGatos">
+							<div class="accordion-body">
+								<ul class="list-unstyled fs-5">
+									<li><i class="fas fa-brush me-2 "></i> Cepillado</li>
+									<li><i class="fas fa-shower me-2 "></i> Baño</li>
+									<li><i class="fas fa-cat me-2 "></i> Corte pelo corto</li>
+									<li><i class="fas fa-cat me-2 "></i> Corte pelo largo</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+					<!-- Baño y corte -->
+					<div class="accordion-item seccionTitulo">
+						<h2 class="accordion-header" id="headingBanioGatos">
+							<button class="accordion-button collapsed seccionTitulo" type="button"
+									data-bs-toggle="collapse"
+									data-bs-target="#collapseBanioGatos" aria-expanded="false"
+									aria-controls="collapseBanioGatos">
+								<i class="fas fa-bath me-2 text-success"></i> Baño y Corte
+							</button>
+						</h2>
+						<div id="collapseBanioGatos" class="accordion-collapse collapse"
+							 aria-labelledby="headingBanioGatos"
+							 data-bs-parent="#accordionServiciosGatos">
+							<div class="accordion-body">
+								<h6 class="fw-bold mb-2">El baño incluye:</h6>
+								<ul class="list-unstyled fs-5 mb-4">
+									<li><i class="fas fa-spa me-2 "></i> Baño y masaje</li>
+									<li><i class="fas fa-wind me-2 "></i> Secado</li>
+									<li><i class="fas fa-cut me-2 "></i> Arreglo de uñas</li>
+									<li><i class="fas fa-ear-listen me-2 "></i> Limpieza de oídos</li>
+								</ul>
+								<h6 class="fw-bold mb-2">El corte incluye:</h6>
+								<ul class="list-unstyled fs-5">
+									<li><i class="fas fa-scissors me-2 "></i> Corte</li>
+									<li><i class="fas fa-feather-alt me-2 "></i> Técnica según tipo de pelo</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+					<!-- Suplementos -->
+					<div class="accordion-item seccionTitulo">
+						<h2 class="accordion-header" id="headingSuplementosGatos">
+							<button class="accordion-button collapsed seccionTitulo" type="button"
+									data-bs-toggle="collapse"
+									data-bs-target="#collapseSuplementosGatos" aria-expanded="false"
+									aria-controls="collapseSuplementosGatos">
+								<i class="fas fa-plus-circle me-2 text-success"></i> Suplementos
+							</button>
+						</h2>
+						<div id="collapseSuplementosGatos" class="accordion-collapse collapse"
+							 aria-labelledby="headingSuplementosGatos" data-bs-parent="#accordionServiciosGatos">
+							<div class="accordion-body">
+								<ul class="list-unstyled fs-5">
+									<li><i class="fas fa-cat me-2 "></i> Deslanado</li>
+									<li><i class="fas fa-khanda me-2 "></i> Nudos</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+				</div>
 			</div>
 		</section>
 
 		<!-- Sección: Nuestras tarifas para gatos -->
 		<section class="text-center mb-5">
-			<h2 class="fw-bold">Nuestras tarifas:</h2>
+			<h2 class="fw-bold text-success-emphasis mb-4">
+				<i class="fas fa-cat me-2"></i>Nuestras tarifas para gatos
+			</h2>
 			<div class="row row-cols-1 row-cols-md-3 g-4">
+
+				<!-- CARD 1: SOLO BAÑO -->
 				<article class="col">
-					<div class="card p-3 shadow-sm cardServicioPerro">
-						<div class="card_image">
-							<img th:src="@{images/estanciaExpres.jpg}" alt="LogoEstanciaExpress" class="imagenCard">
+					<div class="card p-3 shadow-sm h-100 cardServicio">
+						<div class="card_image mb-2">
+							<img th:src="@{images/estanciaExpres.jpg}" alt="Solo Baño" class="imagenCard rounded-3">
 						</div>
-						<p class="mt-3 fs-3 fw-bold">SOLO BAÑO</p>
-						<p class="fw-bold">desde 10€</p>
-						<p>Incluye: <br> Baño <br> Cepillado</p>
-						<button class="btn btn-success btnCard">Seleccionar</button>
+						<h3 class="fs-5 fw-bold text-success-emphasis">SOLO BAÑO</h3>
+						<p class="fw-bold fs-5">desde 10€</p>
+						<ul class="list-unstyled">
+							<li><i class="fas fa-shower me-2 text-success"></i>Baño</li>
+							<li><i class="fas fa-brush me-2 text-success"></i>Cepillado</li>
+						</ul>
+						<button class="btn btn-success btnCard mt-auto">Seleccionar</button>
 					</div>
 				</article>
 
+				<!-- CARD 2: SOLO CORTE -->
 				<article class="col">
-					<div class="card p-3 shadow-sm cardServicioPerro">
-						<div class="card_image">
-							<img th:src="@{images/estanciaExpres.jpg}" alt="LogoEstanciaExpress" class="imagenCard">
+					<div class="card p-3 shadow-sm h-100 cardServicio">
+						<div class="card_image mb-2">
+							<img th:src="@{images/estanciaExpres.jpg}" alt="Solo Corte" class="imagenCard rounded-3">
 						</div>
-						<P class="mt-3 fs-3 fw-bold">SOLO CORTE</P>
-						<p class="fw-bold">desde 15€</p>
-						<p>Incluye: <br> Corte de pelo</p>
-						<button class="btn btn-success btnCard">Seleccionar</button>
+						<h3 class="fs-5 fw-bold text-success-emphasis">SOLO CORTE</h3>
+						<p class="fw-bold fs-5">desde 15€</p>
+						<ul class="list-unstyled">
+							<li><i class="fas fa-scissors me-2 text-success"></i>Corte de pelo</li>
+						</ul>
+						<button class="btn btn-success btnCard mt-auto">Seleccionar</button>
 					</div>
 				</article>
 
+				<!-- CARD 3: CORTE + BAÑO -->
 				<article class="col">
-					<div class="card p-3 shadow-sm cardServicioPerro">
-						<div class="card_image">
-							<img th:src="@{images/estanciaExpres.jpg}" alt="LogoEstanciaExpress" class="imagenCard">
+					<div class="card p-3 shadow-sm h-100 cardServicio">
+						<div class="card_image mb-2">
+							<img th:src="@{images/estanciaExpres.jpg}" alt="Corte + Baño" class="imagenCard rounded-3">
 						</div>
-						<P class="mt-3 fs-3 fw-bold">CORTE + BAÑO</P>
-						<p class="fw-bold">desde 15€</p>
-						<p>Incluye: <br> Baño <br> Cepillado <br> Corte de pelo</p>
-						<button class="btn btn-success btnCard">Seleccionar</button>
+						<h3 class="fs-5 fw-bold text-success-emphasis">CORTE + BAÑO</h3>
+						<p class="fw-bold fs-5">desde 15€</p>
+						<ul class="list-unstyled">
+							<li><i class="fas fa-shower me-2 text-success"></i>Baño</li>
+							<li><i class="fas fa-brush me-2 text-success"></i>Cepillado</li>
+							<li><i class="fas fa-scissors me-2 text-success"></i>Corte de pelo</li>
+						</ul>
+						<button class="btn btn-success btnCard mt-auto">Seleccionar</button>
 					</div>
 				</article>
 			</div>
@@ -227,18 +515,21 @@
 
 		<!-- FORMULARIO RESERVA -->
 		<section class="mb-5">
-			<h2 class="fw-bold text-center">Reserva tu cita de peluquería</h2>
+			<h2 class="text-success-emphasis fw-bold display-5 my-4 text-center">Reserva tu cita de peluquería</h2>
 			<div class="formContainer">
 				<form class="row g-3">
 					<fieldset class="col-md-6">
 						<div class="itemSeleccion">
 							<legend class="fw-bold">Datos de la mascota</legend>
-							<label for="nombreMascota" class="form-label">Nombre de la mascota: <span style="color: red">*</span></label>
-							<input type="text" id="nombreMascota" class="form-control labelForm" placeholder="-Por favor introduce el nombre de tu mascota-" required>
+							<label for="nombreMascota" class="form-label">Nombre de la mascota: <span
+									style="color: red">*</span></label>
+							<input type="text" id="nombreMascota" class="form-control labelForm"
+								   placeholder="-Por favor introduce el nombre de tu mascota-" required>
 						</div>
 
 						<div class="itemSeleccion">
-							<label for="caracterMascota" class="form-label">Caracter social: <span style="color: red">*</span></label>
+							<label for="caracterMascota" class="form-label">Caracter social: <span
+									style="color: red">*</span></label>
 							<select id="caracterMascota" class="form-select labelForm" required>
 								<option value="" disabled selected>-Por favor, elige una opción-</option>
 								<option>Sociable</option>
@@ -257,12 +548,14 @@
 						</div>
 
 						<div class="itemSeleccion">
-							<label for="fechaReserva" class="form-label">Fecha de reserva: <span style="color: red">*</span></label>
+							<label for="fechaReserva" class="form-label">Fecha de reserva: <span
+									style="color: red">*</span></label>
 							<input type="date" id="fechaReserva" class="form-control labelForm" required>
 						</div>
 
 						<div class="itemSeleccion">
-							<label for="horaReserva" class="form-label">Hora de la cita: <span style="color: red">*</span></label>
+							<label for="horaReserva" class="form-label">Hora de la cita: <span
+									style="color: red">*</span></label>
 							<select id="horaReserva" class="form-select labelForm" required>
 								<option value="" disabled selected>-Por favor, elige una hora-</option>
 							</select>
@@ -272,18 +565,24 @@
 					<fieldset class="col-md-6">
 						<div class="itemSeleccion">
 							<legend class="fw-bold">Datos de contacto</legend>
-							<label for="nombreDueño" class="form-label">Tu nombre: <span style="color: red">*</span></label>
-							<input type="text" id="nombreDueño" class="form-control labelForm" placeholder="-Por favor introduce tu nombre-" required>
+							<label for="nombreDueño" class="form-label">Tu nombre: <span
+									style="color: red">*</span></label>
+							<input type="text" id="nombreDueño" class="form-control labelForm"
+								   placeholder="-Por favor introduce tu nombre-" required>
 						</div>
 
 						<div class="itemSeleccion">
-							<label for="telefonoDueño" class="form-label">Teléfono: <span style="color: red">*</span></label>
-							<input type="tel" id="telefonoDueño" class="form-control labelForm" placeholder="-Por favor introduce tu número de teléfono-" required>
+							<label for="telefonoDueño" class="form-label">Teléfono: <span
+									style="color: red">*</span></label>
+							<input type="tel" id="telefonoDueño" class="form-control labelForm"
+								   placeholder="-Por favor introduce tu número de teléfono-" required>
 						</div>
 
 						<div class="itemSeleccion">
-							<label for="emailDueño" class="form-label">Correo electrónico: <span style="color: red">*</span></label>
-							<input type="email" id="emailDueño" class="form-control labelForm" placeholder="-Por favor introduce tu correo electrónico-" required>
+							<label for="emailDueño" class="form-label">Correo electrónico: <span
+									style="color: red">*</span></label>
+							<input type="email" id="emailDueño" class="form-control labelForm"
+								   placeholder="-Por favor introduce tu correo electrónico-" required>
 						</div>
 
 						<div class="itemSeleccion">
@@ -302,7 +601,8 @@
 
 					<div class="itemSeleccion">
 						<input type="checkbox" class="" required>
-						<label class="form-label">He leído y acepto las condiciones de uso de la web, el aviso legal y la política de privacidad</label>
+						<label class="form-label">He leído y acepto las condiciones de uso de la web, el aviso legal y
+							la política de privacidad</label>
 					</div>
 
 					<div class="text-center">
@@ -315,44 +615,44 @@
 
 		<!-- Sección: otros servicios-->
 		<section class="text-center mb-1">
-			<h2 class="fw-bold">Nuestras tarifas:</h2>
+			<h2 class="text-success-emphasis fw-bold display-5 my-4">Otros servicios:</h2>
 			<div class="row row-cols-1 row-cols-md-4 g-4">
 				<article class="col">
-					<div class="card p-3 shadow-sm cardServicioPerro">
+					<div class="card p-3 shadow-sm cardServicio">
 						<div class="card_image">
 							<img th:src="@{images/peluqueriaCanina.jpg}" alt="LogoPeluqueria" class="imagenCard">
 						</div>
-						<h3 class="mt-3 fs-3 fw-bold">GUARDERIA</h3>
+						<h3 class="mt-3 fs-3 fw-bold text-success-emphasis">GUARDERIA</h3>
 						<p class="fs-4">A PARTIR DE 10€</p>
-						<button class="btn btn-success">MÁS INFO</button>
+						<a th:href="@{/guarderia}" class="btn btn-success">MÁS INFO</a>
 					</div>
 				</article>
 				<article class="col">
-					<div class="card p-3 shadow-sm cardServicioPerro">
+					<div class="card p-3 shadow-sm cardServicio">
 						<div class="card_image">
 							<img th:src="@{images/adiestramiento.jpg}" alt="LogoAdiestramiento" class="imagenCard">
 						</div>
-						<h3 class="mt-3 fs-3 fw-bold">ADIESTRAMIENTO</h3>
+						<h3 class="mt-3 fs-3 fw-bold text-success-emphasis">ADIESTRAMIENTO</h3>
 						<p class="fs-4">A PARTIR DE 15€</p>
-						<button class="btn btn-success">MÁS INFO</button>
+						<a th:href="@{/adiestramiento}" class="btn btn-success">MÁS INFO</a>
 					</div>
 				</article>
 				<article class="col">
-					<div class="card p-3 shadow-sm cardServicioPerro">
+					<div class="card p-3 shadow-sm cardServicio">
 						<div class="card_image">
 							<img th:src="@{images/veterinario.jpg}" alt="LogoVeterinario" class="imagenCard">
 						</div>
-						<h3 class="mt-3 fs-3 fw-bold">ASESORAMIENTO VETERINARIO</h3>
-						<button class="btn btn-success">MÁS INFO</button>
+						<h3 class="mt-3 fs-3 fw-bold text-success-emphasis">ASESORAMIENTO VETERINARIO</h3>
+						<a th:href="@{/veterinario}" class="btn btn-success">MÁS INFO</a>
 					</div>
 				</article>
 				<article class="col">
-					<div class="card p-3 shadow-sm cardServicioPerro">
+					<div class="card p-3 shadow-sm cardServicio">
 						<div class="card_image">
 							<img th:src="@{images/asesoramientoLegal.jpg}" alt="LogoLegal" class="imagenCard">
 						</div>
-						<h3 class="mt-3 fs-3 fw-bold">ASESORAMIENTO LEGAL</h3>
-						<button class="btn btn-success">MÁS INFO</button>
+						<h3 class="mt-3 fs-3 fw-bold text-success-emphasis">ASESORAMIENTO LEGAL</h3>
+						<a th:href="@{/asesoramientoLegal}" class="btn btn-success">MÁS INFO</a>
 					</div>
 				</article>
 			</div>

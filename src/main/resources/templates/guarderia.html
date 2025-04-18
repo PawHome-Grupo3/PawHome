@@ -10,51 +10,73 @@
 <section layout:fragment="content">
 	<section class="container py-5 mainContainer">
 
-		<!-- Sección: Nuestra guardería-->
-		<section class="text-center">
-			<h2 class="fw-bold fs-1">Nuestra guardería</h2>
-			<p class="fs-5">Deja tus mascotas en manos de nuestros profesionales y
-				disfruta de tu vacaciones con total tranquilidad</p>
+		<!-- Sección: Nuestra guardería -->
+		<section class="text-center rounded-4 shadow mx-2 my-3 p-3 seccionTitulo">
+			<div class="container px-4">
+				<h2 class="fw-bold display-5 text-success-emphasis mb-3">
+					<i class="fas fa-home me-2"></i>Guardería PawHome
+				</h2>
+				<p class="fs-5">
+					<i class="fas fa-paw me-2 text-success"></i>Deja tus mascotas en manos de nuestros profesionales y disfruta de tus vacaciones con total tranquilidad. <br>
+					<i class="fas fa-heart me-2 text-success"></i>Cuidamos de ellos como si fueran parte de nuestra familia.
+					<i class="fas fa-dog ms-2 me-1 text-success"></i>
+					<i class="fas fa-cat me-1 text-success"></i>
+				</p>
+			</div>
 		</section>
 		<hr class="mx-auto w-100 border-2 opacity-50">
 
 		<!-- Sección: Nuestras tarifas -->
 		<section class="text-center mb-5">
-			<h2 class="fw-bold">Nuestras tarifas:</h2>
+			<h2 class="fw-bold text-success-emphasis mb-4">
+				<i class="fas fa-paw me-2"></i>Nuestras tarifas</h2>
+
 			<div class="row row-cols-1 row-cols-md-3 g-4">
 				<article class="col">
-					<div class="card p-3 shadow-sm cardGuarderia">
+					<div class="card p-3 shadow-sm cardServicio">
 						<div class="card_image">
 							<img th:src="@{images/estanciaExpres.jpg}" alt="LogoEstanciaExpress" class="imagenCard">
 						</div>
-						<h3 class="mt-3 fs-3 fw-bold">ESTANCIA EXPRESS</h3>
-						<p class="fw-bold">18€ por noche</p>
-						<p class="">De 1 a 5 noches</p>
-						<p class="text-center">Incluye comida <br> Incluye Alojamiento <br> Incluye entretenimiento</p>
+						<h3 class="card-title mt-3 fs-4 fw-bold text-success-emphasis">ESTANCIA EXPRESS</h3>
+						<p class="fw-bold fs-5 mb-1">18€ por noche</p>
+						<p>De 1 a 5 noches</p>
+						<ul class="list-unstyled">
+							<li><i class="fas fa-bone me-2 text-success"></i>Incluye comida</li>
+							<li><i class="fas fa-bed me-2 text-success"></i>Incluye alojamiento</li>
+							<li><i class="fas fa-futbol me-2 text-success"></i>Incluye entretenimiento</li>
+						</ul>
 						<button class="btn btn-success btnCard" id="btnEstanciaExpress">Seleccionar</button>
 					</div>
 				</article>
 				<article class="col">
-					<div class="card p-3 shadow-sm cardGuarderia">
+					<div class="card p-3 shadow-sm cardServicio">
 						<div class="card_image">
 							<img th:src="@{images/estanciaRelax.jpg}" alt="LogoEstanciaRelax" class="imagenCard">
 						</div>
-						<h3 class="mt-3 fs-3 fw-bold">ESTANCIA RELAX</h3>
-						<p class="fw-bold">15€ por noche</p>
-						<p class="">De 6 a 10 noches</p>
-						<p class="text-center">Incluye comida <br> Incluye Alojamiento <br> Incluye entretenimiento</p>
+						<h3 class="mt-3 fs-4 fw-bold text-success-emphasis">ESTANCIA RELAX</h3>
+						<p class="fw-bold fs-5 mb-1">15€ por noche</p>
+						<p>De 6 a 10 noches</p>
+						<ul class="list-unstyled">
+							<li><i class="fas fa-bone me-2 text-success"></i>Incluye comida</li>
+							<li><i class="fas fa-bed me-2 text-success"></i>Incluye alojamiento</li>
+							<li><i class="fas fa-futbol me-2 text-success"></i>Incluye entretenimiento</li>
+						</ul>
 						<button class="btn btn-success btnCard" id="btnEstanciaRelax">Seleccionar</button>
 					</div>
 				</article>
 				<article class="col">
-					<div class="card p-3 shadow-sm cardGuarderia">
+					<div class="card p-3 shadow-sm cardServicio">
 						<div class="card_image">
 							<img th:src="@{images/estanciaSabatica.jpg}" alt="LogoEstanciaSabatica" class="imagenCard">
 						</div>
-						<h3 class="mt-3 fs-3 fw-bold">ESTANCIA SABÁTICA</h3>
-						<p class="fw-bold">12€ por noche</p>
-						<p class="">A partir de 11 noches</p>
-						<p class="text-center">Incluye comida <br> Incluye Alojamiento <br> Incluye entretenimiento</p>
+						<h3 class="mt-3 fs-4 fw-bold text-success-emphasis">ESTANCIA SABÁTICA</h3>
+						<p class="fw-bold fs-5 mb-1">12€ por noche</p>
+						<p>A partir de 11 noches</p>
+						<ul class="list-unstyled">
+							<li><i class="fas fa-bone me-2 text-success"></i>Incluye comida</li>
+							<li><i class="fas fa-bed me-2 text-success"></i>Incluye alojamiento</li>
+							<li><i class="fas fa-futbol me-2 text-success"></i>Incluye entretenimiento</li>
+						</ul>
 						<button class="btn btn-success btnCard" id="btnEstanciaSabatica">Seleccionar</button>
 					</div>
 				</article>
@@ -64,30 +86,40 @@
 
 		<!-- Sección: Descubre nuestros bonos -->
 		<section class="text-center mb-5">
-			<h2 class="fw-bold">Descubre nuestros bonos:</h2>
+			<h2 class="fw-bold text-success-emphasis mb-4">
+				<i class="fas fa-gift me-2"></i>Descubre nuestros bonos:</h2>
+
 			<div class="row g-4 d-flex justify-content-center">
 				<article class="col-6 col-md-4">
-					<div class="card p-3 shadow-sm cardGuarderia">
+					<div class="card p-3 shadow-sm cardServicio">
 						<div class="card_image">
 							<img th:src="@{images/bonoLargaEstancia.jpg}" alt="BonoLargaEstancia" class="imagenCard">
 						</div>
-						<h3 class="mt-3 fs-3 fw-bold">BONO LARGA ESTANCIA</h3>
-						<p class="fw-bold fs-1">200€</p>
+						<h3 class="mt-3 fs-4 fw-bold text-success-emphasis">BONO LARGA ESTANCIA</h3>
+						<p class="fw-bold fs-3 mb-1">200€</p>
 						<p class="fw-bold fs-3">20 NOCHES</p>
-						<p class="text-center">Incluye comida <br> Incluye Alojamiento <br> Incluye entretenimiento</p>
+						<ul class="list-unstyled">
+							<li><i class="fas fa-bone me-2 text-success"></i>Incluye comida</li>
+							<li><i class="fas fa-bed me-2 text-success"></i>Incluye alojamiento</li>
+							<li><i class="fas fa-futbol me-2 text-success"></i>Incluye entretenimiento</li>
+						</ul>
 						<p>Elige los días cuando quieras</p>
 						<button class="btn btn-success btnCard" id="btnBonoLargaEstancia">Seleccionar</button>
 					</div>
 				</article>
 				<article class="col-6 col-md-4">
-					<div class="card p-3 shadow-sm cardGuarderia">
+					<div class="card p-3 shadow-sm cardServicio">
 						<div class="card_image">
 							<img th:src="@{images/bonoSoloDia.jpg}" alt="BonoSoloDia" class="imagenCard">
 						</div>
-						<h3 class="mt-3 fs-3 fw-bold">BONO ESTANCIA SOLO DÍA</h3>
-						<p class="fw-bold fs-1">75€</p>
+						<h3 class="mt-3 fs-4 fw-bold text-success-emphasis">BONO ESTANCIA SOLO DÍA</h3>
+						<p class="fw-bold fs-3 mb-1">75€</p>
 						<p class="fw-bold fs-3">10 DIAS</p>
-						<p class="text-center">Incluye comida <br> Incluye Alojamiento <br> Incluye entretenimiento</p>
+						<ul class="list-unstyled">
+							<li><i class="fas fa-bone me-2 text-success"></i>Incluye comida</li>
+							<li><i class="fas fa-bed me-2 text-success"></i>Incluye alojamiento</li>
+							<li><i class="fas fa-futbol me-2 text-success"></i>Incluye entretenimiento</li>
+						</ul>
 						<p>Elige los días cuando quieras</p>
 						<button class="btn btn-success btnCard" id="btnBonoEstanciaSoloDia">Seleccionar</button>
 					</div>
@@ -98,7 +130,7 @@
 
 		<!-- Sección: Formulario de contacto -->
 		<section class="mb-5">
-			<h2 class="fw-bold text-center">Reserva tu estancia</h2>
+			<h2 class="text-success-emphasis fw-bold display-5 my-4 text-center">Reserva tu estancia</h2>
 			<div class="formContainer">
 				<form class="row g-3">
 					<fieldset class="col-md-6">
@@ -206,44 +238,44 @@
 
 		<!-- Sección: otros servicios-->
 		<section class="text-center mb-1">
-			<h2 class="fw-bold">Nuestras tarifas:</h2>
+			<h2 class="text-success-emphasis fw-bold display-5 my-4">Otros servicios:</h2>
 			<div class="row row-cols-1 row-cols-md-4 g-4">
 				<article class="col">
-					<div class="card p-3 shadow-sm cardGuarderia">
+					<div class="card p-3 shadow-sm cardServicio">
 						<div class="card_image">
 							<img th:src="@{images/peluqueriaCanina.jpg}" alt="LogoPeluqueria" class="imagenCard">
 						</div>
-						<h3 class="mt-3 fs-3 fw-bold">PELUQUERÍA</h3>
+						<h3 class="mt-3 fs-3 fw-bold text-success-emphasis">PELUQUERÍA</h3>
 						<p class="fs-4">A PARTIR DE 10€</p>
-						<button class="btn btn-success">MÁS INFO</button>
+						<a th:href="@{/peluqueria}" class="btn btn-success">MÁS INFO</a>
 					</div>
 				</article>
 				<article class="col">
-					<div class="card p-3 shadow-sm cardGuarderia">
+					<div class="card p-3 shadow-sm cardServicio">
 						<div class="card_image">
 							<img th:src="@{images/adiestramiento.jpg}" alt="LogoAdiestramiento" class="imagenCard">
 						</div>
-						<h3 class="mt-3 fs-3 fw-bold">ADIESTRAMIENTO</h3>
+						<h3 class="mt-3 fs-3 fw-bold text-success-emphasis">ADIESTRAMIENTO</h3>
 						<p class="fs-4">A PARTIR DE 15€</p>
-						<button class="btn btn-success">MÁS INFO</button>
+						<a th:href="@{/adiestramiento}" class="btn btn-success">MÁS INFO</a>
 					</div>
 				</article>
 				<article class="col">
-					<div class="card p-3 shadow-sm cardGuarderia">
+					<div class="card p-3 shadow-sm cardServicio">
 						<div class="card_image">
 							<img th:src="@{images/veterinario.jpg}" alt="LogoVeterinario" class="imagenCard">
 						</div>
-						<h3 class="mt-3 fs-3 fw-bold">ASESORAMIENTO VETERINARIO</h3>
-						<button class="btn btn-success">MÁS INFO</button>
+						<h3 class="mt-3 fs-3 fw-bold text-success-emphasis">ASESORAMIENTO VETERINARIO</h3>
+						<a th:href="@{/veterinario}" class="btn btn-success">MÁS INFO</a>
 					</div>
 				</article>
 				<article class="col">
-					<div class="card p-3 shadow-sm cardGuarderia">
+					<div class="card p-3 shadow-sm cardServicio">
 						<div class="card_image">
 							<img th:src="@{images/asesoramientoLegal.jpg}" alt="LogoLegal" class="imagenCard">
 						</div>
-						<h3 class="mt-3 fs-3 fw-bold">ASESORAMIENTO LEGAL</h3>
-						<button class="btn btn-success">MÁS INFO</button>
+						<h3 class="mt-3 fs-3 fw-bold text-success-emphasis">ASESORAMIENTO LEGAL</h3>
+						<a th:href="@{/asesoramientoLegal}" class="btn btn-success">MÁS INFO</a>
 					</div>
 				</article>
 			</div>

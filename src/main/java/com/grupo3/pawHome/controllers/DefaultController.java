@@ -113,6 +113,20 @@ public class DefaultController {
         return "adiestramiento";
     }
 
+    // Metodo para mostrar la pagina de veterinario
+    @GetMapping("/veterinario")
+    public String mostrarVeterinario()
+    {
+        return "veterinario";
+    }
+
+    // Metodo para mostrar la pagina de asesoramiento legal
+    @GetMapping("/asesoramientoLegal")
+    public String mostrarAsesoramientoLegal()
+    {
+        return "asesoramientoLegal";
+    }
+
     // Metodo para mostrar la pagina de nuestros animales
     @GetMapping("/nuestrosAnimales")
     public String mostrarNuestrosAnimales()
