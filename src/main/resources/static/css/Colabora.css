@@ -53,7 +53,7 @@
 
 body {
     font-family: sans-serif;
-    background-color: #fdfdfd;
+    background-color: rgba(27, 125, 85, 0.58);
     margin: 0;
     padding: 0;
     display: flex;

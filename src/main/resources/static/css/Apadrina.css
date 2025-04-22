@@ -4,10 +4,10 @@ body {
     background image: url("Patasdegato.jpg");
     background-size: cover;
     background-position: center;
+    background-color: rgba(27, 125, 85, 0.58);
 
 main {
     text-align: left;
-    background-color: rgba(187, 224, 155, 0.66);
     padding: 20px;
     border-radius: 10px;
     margin: 50px auto;
