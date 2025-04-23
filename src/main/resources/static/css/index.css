@@ -1,0 +1,270 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Inter", sans-serif;
+    background-color: #fefefe;
+}
+
+.indexTitulo {
+    color:#5a6f80;
+    font-weight: 600;
+}
+
+.indexSubTitulo {
+    color:#5bc1ac;
+    font-weight: 600;
+}
+
+.indexParrafo {
+    color:#717275;
+    font-weight: 300;
+    font-size: 16px;
+}
+
+.contenedorImagen{
+    height: 100vh;
+    width: 100%;
+    background: url('../images/fondoHomePerro.png') no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    /*clip-path: polygon(100% 0, 100% 43%, 26% 100%, 0 100%, 0 0);*/
+}
+
+.contenedorImagen h2{
+    color: white;
+    font-weight: bolder;
+    position: relative;
+    top: 85%;
+    font-size: clamp(30px, 4vw, 40px);
+}
+
+/*HISTORIA*/
+
+.seccionHistoria {
+    background-color: #f0f8ff;
+}
+
+.custom-text-box {
+    background: white;
+    border-radius: 20px;
+    margin-bottom: 24px;
+    padding: 40px;
+}
+
+.custom-text-box-image {
+    border-radius: 20px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.custom-text-box-icon {
+    background: #f0f8ff;
+    border-radius: 120px;
+    color: #5bc1ac;
+    font-size: 22px;
+    text-align: center;
+    display: inline-block;
+    vertical-align: middle;
+    width: 25px;
+    height: 25px;
+    line-height: 30px;
+}
+
+.carousel-icon{
+    width:20px;
+    height: 200px;
+    border-radius: 20px;
+}
+
+.seccionHistoria:hover .carousel-icon {
+    background-color: #717275;
+}
+/*FIN HISTORIA*/
+
+/*SECCION CTA DONA/VOLUNTARIO*/
+.section-padding {
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+.section-bg {
+    background-color: #f0f8ff;
+}
+
+.cta-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-section::before {
+    content: "";
+    background-color: #5bc1ac;
+    border-radius: 50%;
+    position: absolute;
+    top: -100px;
+    left: -30px;
+    margin: auto;
+    width: 200px;
+    height: 200px;
+}
+
+.cta-section::after {
+    content: "";
+    border: 20px solid #597081;
+    border-radius: 50%;
+    position: absolute;
+    bottom: -100px;
+    right: 0;
+    left: 0;
+    margin: auto;
+    width: 150px;
+    height: 150px;
+}
+
+.esloganDona {
+    color:#5a6f80;
+    font-weight: 600;
+    font-size: 36px;
+}
+
+.btnHazteVoluntario {
+    background: #597081;
+    border: 2px solid transparent;
+    border-radius: 100px;
+    color: white;
+    line-height: normal;
+    padding: 20px 30px;
+    font-size: 19px;
+    font-weight: normal;
+}
+
+.btnHazteVoluntario:hover {
+    background-color: #5bc1ac;
+    color: white;
+}
+/*FIN SECCION CTA DONA/VOLUNTARIO*/
+
+/*TIENDA*/
+.tituloTienda {
+    color:#43718F;
+    font-weight: bold;
+    background-color: #F0F0F0;
+    border-top-left-radius: 100px;
+    border-top-right-radius: 100px;
+    padding: 10px;
+    clamp(10px, 2vw, 40px);
+}
+
+.custom-block-wrap {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.5s;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.custom-block {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.custom-block-wrap:hover {
+    box-shadow: 0 1rem 3rem rgba(0,0,0,.175);
+}
+
+.custom-block-body {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.custom-block-image {
+    display: flex;
+    width: 100%;
+    max-width: 100%;
+    height: 300px;
+    object-fit: contain;
+}
+
+.custom-block .custom-btn {
+    border-radius: 0;
+    display: block;
+}
+
+.custom-btn {
+    background: #5a6f80;
+    border: 2px solid transparent;
+    border-radius: 100px;
+    color: white;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: normal;
+    padding: 15px 25px;
+}
+
+
+/*---------------------------------------
+  CUSTOM ICON COLOR
+-----------------------------------------*/
+.custom-icon {
+    color: var(#5a6f80);
+}
+/*FIN_TIENDA*/
+
+
+/*Cambio de vista para pantallas moviles*/
+@media screen and (max-width: 768px) {
+    .containerNavCentral {
+        flex-wrap: wrap;
+    }
+
+    .containerNavCentral li{
+        padding: 0.7em;
+    }
+
+    .esloganHeader {
+        left: 55%;
+        top: 20%;
+        font-size: 3em;
+    }
+
+    .contenedorImagen h2 {
+        top: 70%;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    li.dropdown:hover > ul.dropdown-menu {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .cta-section::before {
+        width: 150px;
+        height: 150px;
+    }
+
+    .cta-section::after {
+        bottom: -60px;
+        width: 100px;
+        height: 100px;
+    }
+
+    .cta-section .row {
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+
+    .section-padding {
+        padding-top: 25px;
+        padding-bottom: 25px;
+    }
+}

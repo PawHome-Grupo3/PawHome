@@ -1,0 +1,90 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: auto;
+    font-family: "Inter", sans-serif;
+    overflow-x: hidden;
+}
+
+.mainContainer{
+    background-color: rgba(27, 125, 85, 0.3);
+    width: calc(100% - 5px);
+    max-width: 1400px;
+    margin-top: 100px;
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 20px;
+}
+
+.seccionTitulo{
+    background-color: rgba(27, 125, 85, 0.1);
+}
+
+.serviciosPerro{
+    background-color: rgba(27, 125, 85, 0.6);
+    border-radius: 20px;
+    width: min-content;
+}
+
+.cardServicio{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    background-color: rgba(27, 125, 85, 0.4);
+    border-radius: 20px;
+}
+
+.cardServicioPerro .btnCard{
+    margin-top: auto;
+}
+
+.cardServicioPerro p{
+    text-overflow: ellipsis;
+    text-align: center;
+    font-size: 1.25rem;
+}
+
+.imagenCard{
+    height: 150px;
+    width: 100%;
+    max-width: 100%;
+    object-fit: cover !important;
+    border-radius: 20px;
+}
+
+.formContainer{
+    background-color: rgba(27, 125, 85, 0.4);
+    width: calc(100% - 5px);
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 15px;
+    border-radius: 20px;
+}
+
+.btnCard{
+    --selected-background-color: green;
+}
+
+.btnCard:active{
+    background-color: #09251a;
+}
+
+.itemSeleccion{
+    padding: 10px;
+}
+
+.labelForm{
+    border-radius: 10px;
+}
+
+.btnEnviar{
+    border: hidden;
+    background-color: #198754;
+    border-radius: 0.75rem;
+    width: 300px;
+}
+
+.btnEnviar:hover{
+    background-color: #157347;
+}

@@ -1,0 +1,41 @@
+.enlaceNavTienda {
+    text-decoration: none;
+    color: #000000;
+    position: relative;
+}
+
+.enlaceNavTienda::after {
+    content: ""; /* Crea el pseudo-elemento vacío */
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    height: 3px; /* Grosor de la línea */
+    width: 0; /* Línea invisible al inicio */
+    background-color: #28a745; /* Color de la línea */
+    transition-duration: 0s, 0.5s;
+    transition-timing-function: ease, ease;
+    transition-delay: 0s, 0s;
+    transition-property: all, all;
+}
+
+.enlaceNavTienda:hover::after {
+    width: 100%; /* Línea se extiende completamente al pasar el ratón */
+}
+
+/*////////////////////////////
+/        LISTA CARRITO       /
+////////////////////////////*/
+
+.card-registration .select-input.form-control[readonly]:not([disabled]) {
+    font-size: 1rem;
+    line-height: 2.15;
+    padding-left: .75em;
+    padding-right: .75em;
+}
+
+.card-registration .select-arrow {
+    top: 13px;
+}
+/*////////////////////////////
+/     FIN_LISTA_CARRITO      /
+////////////////////////////*/

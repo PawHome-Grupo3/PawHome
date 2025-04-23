@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<title th:text="#{page.footer.tittle}"></title>
+</head>
+<!-- Footer -->
+<footer th:fragment="footerFragment" class="text-center text-lg-start bg-body-tertiary">
+	<!-- Section: Links  -->
+	<section class="links">
+		<div class="container text-center text-md-start mt-5">
+			<!-- Grid row -->
+			<div class="row mt-3">
+				<!-- Grid column -->
+				<div class="col-md-4 col-lg-4 col-xl-4 mx-auto mb-4 text-center">
+					<!-- Links -->
+					<h6 class="text-uppercase fw-bold mb-4" th:text="#{footer.redes}"></h6>
+					<div class="d-flex justify-content-center align-items-center contRedesSociales">
+						<a class="enlaceIcono" href="#" th:text="#{footer.facebook}"></a>
+						<img class="imgRedes" th:src="@{images/facebook.ico}" alt="icono facebook">
+					</div>
+
+					<div class="d-flex justify-content-center align-items-center contRedesSociales">
+						<a class="enlaceIcono" href="#" th:text="#{footer.instagram}"></a>
+						<img class="imgRedes" th:src="@{images/instagram.ico}" alt="icono facebook">
+					</div>
+
+					<div class="d-flex justify-content-center align-items-center contRedesSociales">
+						<a class="enlaceIcono" href="#" th:text="#{footer.twitter}"></a>
+						<img class="imgRedes" th:src="@{images/twitter.ico}" alt="icono facebook">
+					</div>
+
+					<div class="d-flex justify-content-center align-items-center contRedesSociales">
+						<a class="enlaceIcono" href="#" th:text="#{footer.tiktok}"></a>
+						<img class="imgRedes" th:src="@{images/tiktok.ico}" alt="icono facebook">
+					</div>
+				</div>
+				<!-- Grid column -->
+
+				<!-- Grid column -->
+				<div class="col-md-4 col-lg-4 col-xl-4 mx-auto mb-4 text-center">
+					<!-- Links -->
+					<h6 class="text-uppercase fw-bold mb-4" th:text="#{footer.enlInteres}"></h6>
+					<p>
+						<a href="#" class="enlaceIcono" th:text="#{footer.polCookies}"></a>
+					</p>
+					<p>
+						<a href="#" class="enlaceIcono" th:text="#{footer.confCookies}"></a>
+					</p>
+					<p>
+						<a href="#" class="enlaceIcono" th:text="#{footer.polPrivacidad}"></a>
+					</p>
+					<p>
+						<a href="#" class="enlaceIcono" th:text="#{footer.terminos}"></a>
+					</p>
+				</div>
+				<!-- Grid column -->
+
+				<!-- Grid column -->
+				<div class="col-md-4 col-lg-4 col-xl-4 mx-auto mb-md-0 mb-4 text-center">
+					<!-- Links -->
+					<h6 class="text-uppercase fw-bold mb-4" th:text="#{header.contacto}"></h6>
+					<div class="d-flex justify-content-center align-items-center">
+						<i class="fas fa-home me-2 iconoContacto"></i>
+						<p th:text="#{direccionEmpresa}"></p>
+					</div>
+
+					<div class="d-flex justify-content-center align-items-center">
+						<i class="fas fa-envelope me-2 mb-3"></i>
+						<p class="mb-3" th:text="#{correoEmpresa}"></p>
+					</div>
+
+					<div class="d-flex justify-content-center align-items-center">
+						<i class="fas fa-phone me-2 mb-3"></i>
+						<p class="mb-3" th:text="#{movilEmpresa}"></p>
+					</div>
+
+					<div class="d-flex justify-content-center align-items-center">
+						<i class="fas fa-print me-2 mb-3"></i>
+						<p class="mb-3" th:text="#{tlfEmpresa}"></p>
+					</div>
+				</div>
+				<!-- Grid column -->
+			</div>
+			<!-- Grid row -->
+		</div>
+	</section>
+	<!-- Section: Links  -->
+	<div class="text-center copyright p-3" th:text="#{footer.copyright}">
+		<a class="text-body" href="#" th:text="#{nombreEmpresa}"></a>
+	</div>
+</footer>
+</html>

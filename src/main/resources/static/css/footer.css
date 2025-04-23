@@ -1,0 +1,25 @@
+.contRedesSociales {
+    margin-bottom: 16px;
+}
+
+.enlaceIcono {
+    color: inherit;
+}
+
+.imgRedes {
+    width: 20px;
+    margin-left: 0.5em;
+}
+
+.iconoContacto {
+    margin-bottom: 16px;
+}
+
+.copyright {
+    background-color: rgba(0, 0, 0, 0.15);
+}
+
+.links {
+    background-color: rgba(62, 58, 58, 0.09);
+    padding: 1em;
+}

@@ -1,0 +1,93 @@
+.buttonHamburguesa{
+    background-color: white;
+}
+
+.navbar {
+    top: 0;
+    display: flex;
+    width: 100%;
+    padding: 0;
+    background-color: rgb(27 125 85 / 70%);
+}
+
+.nav-link {
+    padding: 0;
+}
+
+.logoNav {
+    width: max(60px);
+    height: max(60px);
+}
+
+.containerNavCentral {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: nowrap;
+    margin: 0;
+    list-style: none;
+}
+
+.enlaceNav {
+    color: white;
+    padding-left: 0.7em;
+    padding-right: 0.7em;
+    font-size: max(1vw, 16px);
+}
+
+.enlaceNav:hover {
+    background-color: #e3e3e3;
+    color: rgb(27 125 85);
+    font-weight: bold;
+}
+
+.dropdownNav {
+    background-color: rgb(27 125 85 / 80%);
+    border: 0.2em outset rgb(27, 115, 85);
+}
+
+.dropdownNav a {
+    color: white;
+}
+
+.dropdownNav a:hover {
+    color: #1b7d55;
+    font-weight: bold;
+}
+
+.botonRegistro {
+    background-color: rgba(27, 125, 85, 0);
+}
+
+/*Cambio de vista para pantallas moviles*/
+@media screen and (max-width: 768px) {
+    .containerNavCentral {
+        flex-wrap: wrap;
+    }
+
+    .containerNavCentral li{
+        padding: 0.7em;
+    }
+
+    .banderas {
+        display: none;
+    }
+
+    .banderasCollapse {
+        display: block;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    li.dropdown:hover > ul.dropdown-menu {
+        display: block;
+    }
+
+    .banderas {
+        display: block;
+    }
+
+    .banderasCollapse {
+        display: none;
+    }
+}
