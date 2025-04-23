@@ -12,8 +12,8 @@
         <java.version>24</java.version>
         <lombok.version>1.18.38</lombok.version>
         <sonar.coverage.exclusions>**/Application.*,**/loaders/*</sonar.coverage.exclusions>
-        <project.name>pawHome</project.name>
-        <project.groupId>com.grupo3.pawHome</project.groupId>
+        <project.name>pawhome</project.name>
+        <project.groupId>com.grupo3.pawhome</project.groupId>
     </properties>
     <groupId>${project.groupId}</groupId>
     <artifactId>${project.name}</artifactId>
