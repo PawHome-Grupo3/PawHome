@@ -1,7 +1,7 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="AplicaciónEnLocal" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
     <option name="ACTIVE_PROFILES" value="local" />
-    <module name="pawhome" />
+    <module name="PawHome" />
     <option name="SPRING_BOOT_MAIN_CLASS" value="com.grupo3.pawHome.Application" />
     <method v="2">
       <option name="Make" enabled="true" />

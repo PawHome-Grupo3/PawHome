@@ -154,6 +154,13 @@ public class DefaultController {
         return "horariomapa";
     }
 
+    // Metodo para mostrar la pagina del horario y el mapa
+    @GetMapping("/perfil")
+    public String mostrarPerfil()
+    {
+        return "perfilUsuario";
+    }
+
     /**
      * Gestiona las solicitudes GET para obtener y mostrar la lista de entidades protegidas.
      * Añade las entidades obtenidas del repositorio al modelo para renderizarlas en la vista correspondiente.
