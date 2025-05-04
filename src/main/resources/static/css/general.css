@@ -1,3 +1,279 @@
+/*//////////////////////////////////////
+//               INDEX                //
+//////////////////////////////////////*/
+
+.indexTitulo {
+    color:#5a6f80;
+    font-weight: 600;
+}
+
+.indexSubTitulo {
+    color:#5bc1ac;
+    font-weight: 600;
+}
+
+.indexParrafo {
+    color:#717275;
+    font-weight: 300;
+    font-size: 16px;
+}
+
+.contenedorImagen{
+    height: 100vh;
+    width: 100%;
+    background: url('../images/fondoHomePerro.png') no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    /*clip-path: polygon(100% 0, 100% 43%, 26% 100%, 0 100%, 0 0);*/
+}
+
+.contenedorImagen h2{
+    color: white;
+    font-weight: bolder;
+    position: relative;
+    top: 85%;
+    font-size: clamp(30px, 4vw, 40px);
+}
+
+/*HISTORIA*/
+
+.seccionHistoria {
+    background-color: #f0f8ff;
+}
+
+.custom-text-box {
+    background: white;
+    border-radius: 20px;
+    margin-bottom: 24px;
+    padding: 40px;
+}
+
+.custom-text-box-image {
+    border-radius: 20px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.custom-text-box-icon {
+    background: #f0f8ff;
+    border-radius: 120px;
+    color: #5bc1ac;
+    font-size: 22px;
+    text-align: center;
+    display: inline-block;
+    vertical-align: middle;
+    width: 25px;
+    height: 25px;
+    line-height: 30px;
+}
+
+.carousel-icon{
+    width:20px;
+    height: 200px;
+    border-radius: 20px;
+}
+
+.seccionHistoria:hover .carousel-icon {
+    background-color: #717275;
+}
+/*FIN HISTORIA*/
+
+/*SECCION CTA DONA/VOLUNTARIO*/
+.section-padding {
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+.section-bg {
+    background-color: #f0f8ff;
+}
+
+.cta-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-section::before {
+    content: "";
+    background-color: #5bc1ac;
+    border-radius: 50%;
+    position: absolute;
+    top: -100px;
+    left: -30px;
+    margin: auto;
+    width: 200px;
+    height: 200px;
+}
+
+.cta-section::after {
+    content: "";
+    border: 20px solid #597081;
+    border-radius: 50%;
+    position: absolute;
+    bottom: -100px;
+    right: 0;
+    left: 0;
+    margin: auto;
+    width: 150px;
+    height: 150px;
+}
+
+.esloganDona {
+    color:#5a6f80;
+    font-weight: 600;
+    font-size: 36px;
+}
+
+.btnHazteVoluntario {
+    background: #597081;
+    border: 2px solid transparent;
+    border-radius: 100px;
+    color: white;
+    line-height: normal;
+    padding: 20px 30px;
+    font-size: 19px;
+    font-weight: normal;
+}
+
+.btnHazteVoluntario:hover {
+    background-color: #5bc1ac;
+    color: white;
+}
+/*FIN SECCION CTA DONA/VOLUNTARIO*/
+
+/*TIENDA*/
+.tituloTienda {
+    color:#43718F;
+    font-weight: bold;
+    background-color: #F0F0F0;
+    border-top-left-radius: 100px;
+    border-top-right-radius: 100px;
+    padding: 10px;
+clamp(10px, 2vw, 40px);
+}
+
+.custom-block-wrap {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.5s;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.custom-block {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.custom-block-wrap:hover {
+    box-shadow: 0 1rem 3rem rgba(0,0,0,.175);
+}
+
+.custom-block-body {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.custom-block-image {
+    display: flex;
+    width: 100%;
+    max-width: 100%;
+    height: 300px;
+    object-fit: contain;
+}
+
+.custom-block .custom-btn {
+    border-radius: 0;
+    display: block;
+}
+
+.custom-btn {
+    background: #5a6f80;
+    border: 2px solid transparent;
+    border-radius: 100px;
+    color: white;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: normal;
+    padding: 15px 25px;
+}
+
+
+/*---------------------------------------
+  CUSTOM ICON COLOR
+-----------------------------------------*/
+.custom-icon {
+    color: var(#5a6f80);
+}
+/*FIN_TIENDA*/
+
+
+/*Cambio de vista para pantallas moviles*/
+@media screen and (max-width: 768px) {
+    .containerNavCentral {
+        flex-wrap: wrap;
+    }
+
+    .containerNavCentral li{
+        padding: 0.7em;
+    }
+
+    .esloganHeader {
+        left: 55%;
+        top: 20%;
+        font-size: 3em;
+    }
+
+    .contenedorImagen h2 {
+        top: 70%;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    li.dropdown:hover > ul.dropdown-menu {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .cta-section::before {
+        width: 150px;
+        height: 150px;
+    }
+
+    .cta-section::after {
+        bottom: -60px;
+        width: 100px;
+        height: 100px;
+    }
+
+    .cta-section .row {
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+
+    .section-padding {
+        padding-top: 25px;
+        padding-bottom: 25px;
+    }
+}
+/*//////////////////////////////////////
+//              FIN_INDEX             //
+//////////////////////////////////////*/
+
+
+
+/*//////////////////////////////////////
+//         PERFIL_USUARIO             //
+//////////////////////////////////////*/
+
 .form-control:focus {
     box-shadow: none;
     border-color: #BA68C8
@@ -39,10 +315,6 @@
     border: solid 1px #BA68C8
 }
 
-
-
-
-
 :root {
     --primary: #5bc1ac;
     --light: #F3F6F9;
@@ -59,7 +331,7 @@
 
 .navbarAside .navbar-nav .nav-link {
     padding: 7px 20px;
-    color: var(--dark);
+    color: #191C24FF;
     font-weight: 500;
     border-left: 3px solid var(--light);
     border-radius: 0 30px 30px 0;
@@ -110,6 +382,316 @@
 .navbarAside .navbar-nav .nav-link {
     margin-left: 0;
     padding: 12px 0;
-    color: var(--dark);
+    color: #191C24FF;
     outline: none;
 }
+
+/*//////////////////////////////////////
+//         FIN PERFIL_USUARIO         //
+//////////////////////////////////////*/
+
+
+
+/*////////////////////////////
+/        LISTA CARRITO       /
+////////////////////////////*/
+
+.card-registration .select-input.form-control[readonly]:not([disabled]) {
+    font-size: 1rem;
+    line-height: 2.15;
+    padding-left: .75em;
+    padding-right: .75em;
+}
+
+.card-registration .select-arrow {
+    top: 13px;
+}
+/*////////////////////////////
+/     FIN_LISTA_CARRITO      /
+////////////////////////////*/
+
+
+
+/*////////////////////////////
+/         TIENDA             /
+////////////////////////////*/
+.enlaceNavTienda {
+    text-decoration: none;
+    color: #000000;
+    position: relative;
+}
+
+.enlaceNavTienda::after {
+    content: ""; /* Crea el pseudo-elemento vacío */
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    height: 3px; /* Grosor de la línea */
+    width: 0; /* Línea invisible al inicio */
+    background-color: #28a745; /* Color de la línea */
+    transition-duration: 0s, 0.5s;
+    transition-timing-function: ease, ease;
+    transition-delay: 0s, 0s;
+    transition-property: all, all;
+}
+
+.enlaceNavTienda:hover::after {
+    width: 100%; /* Línea se extiende completamente al pasar el ratón */
+}
+
+/*////////////////////////////
+/         FIN_TIENDA         /
+////////////////////////////*/
+
+
+
+/*////////////////////////////
+/      DETALLE_PRODUCTO      /
+////////////////////////////*/
+.imgProductDetail {
+    display: flex;
+    width: 100%;
+    max-width: 100%;
+    height: 600px;
+    object-fit: contain;
+}
+
+.icon-hover:hover {
+    border-color: #3b71ca !important;
+    background-color: white !important;
+    color: #3b71ca !important;
+}
+
+.icon-hover:hover i {
+    color: #3b71ca !important;
+}
+/*////////////////////////////
+/    FIN DETALLE_PRODUCTO    /
+////////////////////////////*/
+
+
+
+/*////////////////////////////
+/    NUESTROS ANIMALES       /
+////////////////////////////*/
+.modal-content {
+    background-color: #f4faf8;
+}
+
+.modal-header h1 {
+    font-size: clamp(12px, 4vw, 40px) !important;
+}
+
+.modal-body img {
+    width: 100%;
+    max-height: 300px;
+    justify-self: center;
+    object-fit: cover;
+    padding: 0.2em;
+}
+
+.textoModal {
+    font-size: clamp(12px, 1vw, 20px);
+    background-color: rgba(27, 125, 85, 0.3);
+    border-radius: 15px;
+}
+
+.contenedorIzquierdo {
+    background-color: rgba(27, 125, 85, 0.3);
+    border-radius: 10px;
+    padding: 1.5vw;
+}
+
+.contenedorDerecho h3{
+    font-size: clamp(20px, 2vw, 35px);
+    text-align: center ;
+}
+
+.contenedorIzquierdo h2 {
+    font-size: clamp(20px, 1.3vw, 40px);
+}
+
+.contenedorIzquierdo p {
+    font-size: clamp(12px, 1vw, 40px);
+}
+
+.filtrosTop button {
+    width: 10%;
+}
+
+.main{
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.contenedorFiltros {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(27, 125, 85, 0.3);
+    border-radius: 10px;
+    padding: 1em;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.contenedorCards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.imgCardAnimal {
+    height: 175px;
+    width: 100%;
+    max-width: 100%;
+    object-fit: cover !important;
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: auto;
+}
+
+.cards_item {
+    display: flex;
+    padding: 1rem;
+    justify-content: center;
+}
+
+.cardAnimal {
+    background-color: #8db600;
+    background-image: linear-gradient(314deg, #8db600 0%, #40826d 74%);
+    border-radius: 17px;
+    display: flex;
+    overflow: hidden;
+    box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1),
+    0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+}
+
+.card_contentAnimal {
+    padding: 0.5rem;
+    height: 100%;
+    align-items: center;
+    flex-direction: column;
+}
+
+.card_titleAnimal {
+    color: #ffffff;
+    font-size: clamp(15px, 1.5vw, 40px);
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+    margin: 0;
+}
+
+.card_textAnimal {
+    color: #ffffff;
+    font-size: clamp(13px, 1vw, 20px);
+    line-height: 1.5;
+    margin-bottom: 0.8rem;
+    font-weight: 400;
+}
+
+.botonesCardAnimal {
+    background-color: #c8d6cc;
+    font-size: clamp(8px, 4vw, 12px);
+    width: 45%;
+    color: #153d2d;
+    font-weight: bolder;
+    text-transform: uppercase;
+    padding: 0.5rem;
+    cursor: pointer;
+    display: block;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
+}
+
+.botonesCardAnimal:hover {
+    background-color: #153d2d;
+    color: white;
+    font-weight: bolder;
+}
+
+.hiddenCardContent {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.3s linear;
+    width: 100%;
+}
+
+.hiddenCardContent .botonesCardLeerMas{
+    display: none;
+    width: 95%;
+}
+
+.botonesCardLeerMas {
+    margin: 0.5rem;
+    text-align: center;
+}
+
+.cardAnimal:hover .hiddenCardContent {
+    visibility: visible;
+    opacity: 1;
+    transition-delay: 0.1s;
+}
+
+.cardAnimal:hover .hiddenCardContent .botonesCardLeerMas {
+    display: block;
+    height: auto;
+}
+
+@media screen and (max-width: 639px) {
+    .cardAnimal {
+        width: 100%;
+    }
+
+    .contenedorCards {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .contenedorFiltros {
+        display: none;
+    }
+
+    .contenedorIzquierdo{
+        width: 100%;
+    }
+
+    .contenedorDerecho {
+        margin-top: 1em;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (min-width: 30rem) {
+    .cards_item {
+        width: 50%;
+    }
+}
+
+@media (min-width: 50rem) {
+    .cards_item {
+        width: 33.3333%;
+    }
+}
+
+@media (min-width: 65rem) {
+    .cards_item {
+        width: 25%;
+    }
+}
+
+/*////////////////////////////
+/   FIN NUESTROS_ANIMALES    /
+////////////////////////////*/
