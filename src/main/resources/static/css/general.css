@@ -1,4 +1,3 @@
-
 .form-control:focus {
     box-shadow: none;
     border-color: #BA68C8
@@ -38,4 +37,79 @@
     color: #fff;
     cursor: pointer;
     border: solid 1px #BA68C8
+}
+
+
+
+
+
+:root {
+    --primary: #5bc1ac;
+    --light: #F3F6F9;
+    --dark: #191C24;
+}
+
+.divAside {
+    background-color: var(--light);
+}
+
+.navbarAside {
+    width: 100%;
+}
+
+.navbarAside .navbar-nav .nav-link {
+    padding: 7px 20px;
+    color: var(--dark);
+    font-weight: 500;
+    border-left: 3px solid var(--light);
+    border-radius: 0 30px 30px 0;
+    outline: none;
+}
+
+.navbarAside .navbar-nav .nav-link:hover,
+.navbarAside .navbar-nav .nav-link.active {
+    color: var(--primary);
+    background: #FFFFFF;
+    border-color: var(--primary);
+}
+
+.navbarAside .navbar-nav .nav-link i {
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #FFFFFF;
+    border-radius: 40px;
+}
+
+.navbarAside .navbar-nav .nav-link:hover i,
+.navbarAside .navbar-nav .nav-link.active i {
+    background: var(--light);
+}
+
+.navbarAside .dropdown-toggle::after {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    border: none;
+    content: "\f107";
+    font-weight: 900;
+    transition: .5s;
+}
+
+.navbarAside .dropdown-toggle[aria-expanded=true]::after {
+    transform: rotate(-180deg);
+}
+
+.navbarAside .dropdown-item {
+    padding-left: 25px;
+    border-radius: 0 30px 30px 0;
+}
+
+.navbarAside .navbar-nav .nav-link {
+    margin-left: 0;
+    padding: 12px 0;
+    color: var(--dark);
+    outline: none;
 }

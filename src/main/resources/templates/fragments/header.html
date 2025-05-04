@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-	<title th:text="#{page.header.title}"></title>
-</head>
 <header th:fragment="headerFragment">
 	<nav class="navbar fixed-top navbar-expand-md px-3">
 		<a class="navbar-brand" href="/">
-			<img th:src="@{images/logoSinFondoBlanco.png}" alt="LogoEmpresa" class="logoNav d-inline-block align-text-top">
+			<img th:src="@{/images/logoSinFondoBlanco.png}" alt="LogoEmpresa" class="logoNav d-inline-block align-text-top">
 		</a>
 
 		<button class="navbar-toggler buttonHamburguesa" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -93,4 +88,3 @@
 		</div>
 	</nav>
 </header>
-</html>
