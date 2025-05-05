@@ -14,26 +14,83 @@
             <div th:replace="~{fragments/navbarPerfil :: navPerfilFragment}"></div>
 
             <div class="col-md-9 col-lg-10 justify-content-center">
-                <h3>Mis animales apadrinados:</h3>
-
-                <div class="card cardAnimal">
-                    <div class="card_image"><img class="imgCardAnimal" th:src="@{/images/perro1Card.jpg}"
-                                                 alt="foto de perro disponible para adoptar"></div>
-                    <div class="card_content d-flex justify-content-center card_contentAnimal">
-                        <h2 class="card_title card_titleAnimal">Comodoro</h2>
-                        <p class="card_tex card_textAnimal">Macho, 2 años, vacunado</p>
-                        <div class="row d-flex justify-content-center flex-nowrap">
-                            <button class="botonesCardAnimal btn card_btn">Apadrina</button>
-                            <button class="botonesCardAnimal btn card_btn">Adopta</button>
+                <h3 class="text-center mb-2 mt-3">Apadrinamientos Activos:</h3>
+                <div class="row gap-3 justify-content-center">
+                    <div class="card cardAnimal p-0">
+                        <div class="card_image"><img class="imgCardAnimal" th:src="@{/images/perro1Card.jpg}"
+                                                     alt="foto de perro disponible para adoptar"></div>
+                        <div class="card_content d-flex justify-content-center card_contentAnimal">
+                            <h2 class="card_title card_titleAnimal">Comodoro</h2>
+                            <p class="card_tex card_textAnimal">Fecha de renovación: 23/05/2025</p>
+                            <div class="row d-flex justify-content-center flex-nowrap">
+                                <button class="botonesCardAnimal btn card_btn" style="width: auto !important;">Cancelar Apadrinamiento</button>
+                            </div>
                         </div>
-                        <div class="row d-flex justify-content-center flex-nowrap hiddenCardContent">
-                            <button type="button" class="botonesCardAnimal botonesCardLeerMas btn card_btn arrow"
-                                    data-bs-toggle="modal" data-bs-target="#exampleModal"> Leer Más
-                            </button>
+                    </div>
+
+                    <div class="card cardAnimal p-0">
+                        <div class="card_image"><img class="imgCardAnimal" th:src="@{/images/perro1Card.jpg}"
+                                                     alt="foto de perro disponible para adoptar"></div>
+                        <div class="card_content d-flex justify-content-center card_contentAnimal">
+                            <h2 class="card_title card_titleAnimal">Comodoro</h2>
+                            <p class="card_tex card_textAnimal">Fecha de renovación: 23/05/2025</p>
+                            <div class="row d-flex justify-content-center flex-nowrap">
+                                <button class="botonesCardAnimal btn card_btn" style="width: auto !important;">Cancelar Apadrinamiento</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card cardAnimal p-0">
+                        <div class="card_image"><img class="imgCardAnimal" th:src="@{/images/perro1Card.jpg}"
+                                                     alt="foto de perro disponible para adoptar"></div>
+                        <div class="card_content d-flex justify-content-center card_contentAnimal">
+                            <h2 class="card_title card_titleAnimal">Comodoro</h2>
+                            <p class="card_tex card_textAnimal">Fecha de renovación: 23/05/2025</p>
+                            <div class="row d-flex justify-content-center flex-nowrap">
+                                <button class="botonesCardAnimal btn card_btn" style="width: auto !important;">Cancelar Apadrinamiento</button>
+                            </div>
                         </div>
                     </div>
                 </div>
 
+                <h3 class="text-center mb-1 mt-3">Apadrinamientos Inactivos:</h3>
+                <div class="row gap-3 justify-content-center">
+                    <div class="card cardAnimal p-0">
+                        <div class="card_image"><img class="imgCardAnimal" th:src="@{/images/perro1Card.jpg}"
+                                                     alt="foto de perro disponible para adoptar"></div>
+                        <div class="card_content d-flex justify-content-center card_contentAnimal">
+                            <h2 class="card_title card_titleAnimal">Comodoro</h2>
+                            <p class="card_tex card_textAnimal">Último Pago: 23/05/2025</p>
+                            <div class="row d-flex justify-content-center flex-nowrap">
+                                <button class="botonesCardAnimal btn card_btn" style="width: auto !important;">Volver a Apadrinar</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card cardAnimal p-0">
+                        <div class="card_image"><img class="imgCardAnimal" th:src="@{/images/perro1Card.jpg}"
+                                                     alt="foto de perro disponible para adoptar"></div>
+                        <div class="card_content d-flex justify-content-center card_contentAnimal">
+                            <h2 class="card_title card_titleAnimal">Comodoro</h2>
+                            <p class="card_tex card_textAnimal">Último Pago: 23/05/2025</p>
+                            <div class="row d-flex justify-content-center flex-nowrap">
+                                <button class="botonesCardAnimal btn card_btn" style="width: auto !important;">Volver a Apadrinar</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card cardAnimal p-0">
+                        <div class="card_image"><img class="imgCardAnimal" th:src="@{/images/perro1Card.jpg}"
+                                                     alt="foto de perro disponible para adoptar"></div>
+                        <div class="card_content d-flex justify-content-center card_contentAnimal">
+                            <h2 class="card_title card_titleAnimal">Comodoro</h2>
+                            <p class="card_tex card_textAnimal">Último Pago: 23/05/2025</p>
+                            <div class="row d-flex justify-content-center flex-nowrap">
+                                <button class="botonesCardAnimal btn card_btn" style="width: auto !important;">Volver a Apadrinar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
