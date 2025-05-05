@@ -167,6 +167,18 @@ public class DefaultController {
         return "perfilUsuarioEditar";
     }
 
+    @GetMapping("/perfil/puntos")
+    public String mostrarPerfilPuntos()
+    {
+        return "perfilUsuarioPuntos";
+    }
+
+    @GetMapping("/perfil/animales")
+    public String mostrarPerfilAnimales()
+    {
+        return "perfilUsuarioAnimales";
+    }
+
     /**
      * Gestiona las solicitudes GET para obtener y mostrar la lista de entidades protegidas.
      * Añade las entidades obtenidas del repositorio al modelo para renderizarlas en la vista correspondiente.
