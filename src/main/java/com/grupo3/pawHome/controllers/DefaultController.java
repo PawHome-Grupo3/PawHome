@@ -7,7 +7,6 @@ import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 /**
  * Controlador encargado de manejar las solicitudes relacionadas con la entidad principal.
  *
@@ -153,6 +152,19 @@ public class DefaultController {
     public String mostrarHorarioMapa()
     {
         return "horariomapa";
+    }
+
+    // Metodo para mostrar la pagina del horario y el mapa
+    @GetMapping("/perfil/informacion")
+    public String mostrarPerfil()
+    {
+        return "perfilUsuario";
+    }
+
+    @GetMapping("/perfil/editar")
+    public String mostrarPerfilEditar()
+    {
+        return "perfilUsuarioEditar";
     }
 
     /**
