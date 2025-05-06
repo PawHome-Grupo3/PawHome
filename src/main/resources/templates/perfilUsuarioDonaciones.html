@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout.html}">
+<head>
+    <title>Usuario Donaciones</title>
+    <link rel="stylesheet" th:href="@{/css/general.css}"/>
+</head>
+<body>
+
+<section layout:fragment="content">
+
+    <div class="row bg-white mt-5 m-0 p-0 w-100">
+        <div class="row w-100">
+            <div th:replace="~{fragments/navbarPerfil :: navPerfilFragment}"></div>
+
+            <div class="col-md-9 col-lg-10 justify-content-center">
+                <div class="row justify-content-center">
+                    <div class="container my-5">
+                        <h2 class="text-center mb-4">Tus Donaciones</h2>
+
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover text-center">
+                                <thead class="table-light">
+                                <tr>
+                                    <th>Fecha</th>
+                                    <th>Ingreso</th>
+                                    <th>Acción</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>12/01/2025</td>
+                                    <td>25€</td>
+                                    <td><a href="#" class="btn btn-sm btn-primary" style=" border-color: darkgreen!important; background-color: #5a6f80!important;">Repetir Donación</a></td>
+                                </tr>
+                                <tr>
+                                    <td>23/02/2025</td>
+                                    <td>30€</td>
+                                    <td><a href="#" class="btn btn-sm btn-primary" style=" border-color: darkgreen!important; background-color: #5a6f80!important;">Repetir Donación</a></td>
+                                </tr>
+                                <tr>
+                                    <td>14/03/2025</td>
+                                    <td>20€</td>
+                                    <td><a href="#" class="btn btn-sm btn-primary" style=" border-color: darkgreen!important; background-color: #5a6f80!important;">Repetir Donación</a></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="text-center mt-4">
+                            <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#facturaModal">
+                                Generar Factura
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="facturaModal" tabindex="-1" aria-labelledby="facturaModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="facturaModalLabel">Seleccionar Año de la Factura</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form id="facturaForm">
+                                        <div class="mb-3">
+                                            <label for="añoFactura" class="form-label">Año</label>
+                                            <select class="form-select" id="añoFactura" required>
+                                                <option value="">Selecciona un año</option>
+                                                <!-- Los años se insertarán dinámicamente aquí -->
+                                            </select>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Generar</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- JS de Bootstrap y comportamiento -->
+    <script>
+        // Simulando obtener años desde el backend
+        document.addEventListener('DOMContentLoaded', () => {
+            const años = [2023, 2024, 2025]; // Estos vendrían de una API en el futuro
+            const selectAño = document.getElementById("añoFactura");
+
+            años.forEach(año => {
+                const option = document.createElement("option");
+                option.value = año;
+                option.textContent = año;
+                selectAño.appendChild(option);
+            });
+        });
+
+        // Lógica del formulario
+        document.getElementById("facturaForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const año = document.getElementById("añoFactura").value;
+            if (año) {
+                alert(`Factura del año ${año} generada.`);
+                const modal = bootstrap.Modal.getInstance(document.getElementById('facturaModal'));
+                modal.hide();
+            }
+        });
+    </script>
+</section>
+</body>
+</html>

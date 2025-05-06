@@ -15,11 +15,144 @@
 
       <div class="col-md-9 col-lg-10 justify-content-center">
         <div class="row justify-content-center">
+          <div class="container my-5">
 
+            <!-- Puntos Totales -->
+            <div class="text-center mb-5">
+              <h2>Puntos Disponibles</h2>
+              <div id="puntosTotales" class="display-5 fw-bold text-success">0</div>
+            </div>
+
+            <!-- Tabla de Puntos Generados -->
+            <div class="mb-5">
+              <h3 class="mb-3">Historial de Puntos</h3>
+              <div class="table-responsive">
+                <table class="table table-bordered table-hover text-center">
+                  <thead class="table-light">
+                  <tr>
+                    <th>Puntos</th>
+                    <th>Fecha</th>
+                    <th>Acción</th>
+                  </tr>
+                  </thead>
+                  <tbody id="tablaPuntos">
+                  <!-- Filas generadas dinámicamente -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Sección de Vales -->
+            <div>
+              <h3 class="mb-3">Vales Disponibles para Reclamar</h3>
+              <div class="table-responsive">
+                <table class="table table-striped table-bordered text-center">
+                  <thead class="table-light">
+                  <tr>
+                    <th>Tipo de Vale</th>
+                    <th>Puntos Necesarios</th>
+                    <th>Acción</th>
+                  </tr>
+                  </thead>
+                  <tbody id="tablaVales">
+                  <!-- Vales generados dinámicamente -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
+
+  <!-- Modal de Confirmación -->
+  <div class="modal fade" id="modalConfirmacion" tabindex="-1" aria-labelledby="modalConfirmacionLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalConfirmacionLabel">Confirmar Reclamación</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body" id="modalMensaje">
+          <!-- Contenido dinámico -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-primary" id="btnConfirmarReclamo">Confirmar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const puntosGenerados = [
+      { puntos: 50, fecha: '10/01/2025', tipo: 'Donación' },
+      { puntos: 30, fecha: '15/02/2025', tipo: 'Compra Tienda' },
+      { puntos: 20, fecha: '01/03/2025', tipo: 'Paseo Solidario' },
+    ];
+
+    const valesDisponibles = [
+      { tipo: 'Descuento 5%', puntos: 100 },
+      { tipo: 'Descuento 10%', puntos: 150 },
+      { tipo: 'Descuento 15%', puntos: 250 },
+    ];
+
+    let totalPuntos = puntosGenerados.reduce((acc, item) => acc + item.puntos, 0);
+    document.getElementById('puntosTotales').textContent = totalPuntos;
+
+    const tablaPuntos = document.getElementById('tablaPuntos');
+    puntosGenerados.forEach(item => {
+      const fila = document.createElement('tr');
+      fila.innerHTML = `
+      <td>${item.puntos}</td>
+      <td>${item.fecha}</td>
+      <td>${item.tipo}</td>
+    `;
+      tablaPuntos.appendChild(fila);
+    });
+
+    const tablaVales = document.getElementById('tablaVales');
+    const modalMensaje = document.getElementById('modalMensaje');
+    let valeSeleccionado = null;
+
+    valesDisponibles.forEach(vale => {
+      const puedeReclamar = totalPuntos >= vale.puntos;
+      const fila = document.createElement('tr');
+      const btn = document.createElement('button');
+      btn.className = `btn btn-${puedeReclamar ? 'success' : 'secondary'}`;
+      btn.textContent = puedeReclamar ? 'Reclamar' : 'No disponible';
+      btn.disabled = !puedeReclamar;
+
+      if (puedeReclamar) {
+        btn.addEventListener('click', () => {
+          valeSeleccionado = vale;
+          modalMensaje.innerHTML = `¿Estás seguro que deseas reclamar el vale <strong>"${vale.tipo}"</strong> por <strong>${vale.puntos} puntos</strong>?`;
+          const modal = new bootstrap.Modal(document.getElementById('modalConfirmacion'));
+          modal.show();
+        });
+      }
+
+      fila.innerHTML = `
+      <td>${vale.tipo}</td>
+      <td>${vale.puntos}</td>
+    `;
+      const cellAccion = document.createElement('td');
+      cellAccion.appendChild(btn);
+      fila.appendChild(cellAccion);
+      tablaVales.appendChild(fila);
+    });
+
+    // Confirmación del modal
+    document.getElementById('btnConfirmarReclamo').addEventListener('click', () => {
+      if (valeSeleccionado) {
+        alert(`Vale "${valeSeleccionado.tipo}" reclamado con éxito.`);
+        const modal = bootstrap.Modal.getInstance(document.getElementById('modalConfirmacion'));
+        modal.hide();
+        // Aquí puedes hacer una llamada al backend para registrar la acción
+      }
+    });
+  </script>
 </section>
 </body>
 </html>
