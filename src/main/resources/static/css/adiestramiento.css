@@ -6,7 +6,33 @@ body {
     overflow-x: hidden;
 }
 
-.mainContainer {
+.modal-content {
+    background-color: #f4faf8;
+}
+
+.modal-header h1 {
+    font-size: clamp(12px, 4vw, 40px) !important;
+}
+
+.modal-body img {
+    width: 100%;
+    max-height: 300px;
+    justify-self: center;
+    object-fit: cover;
+    padding: 0.2em;
+}
+
+.seccionTitulo{
+    background-color: rgba(27, 125, 85, 0.1);
+}
+
+.textoModal {
+    font-size: clamp(12px, 1vw, 20px);
+    background-color: rgba(27, 125, 85, 0.3);
+    border-radius: 15px;
+}
+
+.mainContainer{
     background-color: rgba(27, 125, 85, 0.3);
     width: calc(100% - 5px);
     max-width: 1400px;
@@ -16,7 +42,7 @@ body {
     border-radius: 20px;
 }
 
-.cardServicio {
+.cardServicio{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -25,17 +51,7 @@ body {
     border-radius: 20px;
 }
 
-.cardServicio h3 {
-    text-overflow: ellipsis;
-    text-align: center;
-    font-size: 1.25rem;
-}
-
-.seccionTitulo{
-    background-color: rgba(27, 125, 85, 0.1);
-}
-
-.imagenCard {
+.imagenCard{
     height: 150px;
     width: 100%;
     max-width: 100%;
@@ -43,7 +59,13 @@ body {
     border-radius: 20px;
 }
 
-.formContainer {
+.cardServicio h3{
+    text-overflow: ellipsis;
+    text-align: center;
+    font-size: 1.25rem;
+}
+
+.formContainer{
     background-color: rgba(27, 125, 85, 0.4);
     width: calc(100% - 5px);
     max-width: 1400px;
@@ -52,29 +74,29 @@ body {
     border-radius: 20px;
 }
 
-.btnCard {
+.btnCard{
     --selected-background-color: green;
 }
 
-.btnCard:active {
+.btnCard:active{
     background-color: #09251a;
 }
 
-.itemSeleccion {
+.itemSeleccion{
     padding: 10px;
 }
 
-.labelForm {
+.labelForm{
     border-radius: 10px;
 }
 
-.btnEnviar {
+.btnEnviar{
     border: hidden;
     background-color: #198754;
     border-radius: 0.75rem;
     width: 300px;
 }
 
-.btnEnviar:hover {
+.btnEnviar:hover{
     background-color: #157347;
 }
