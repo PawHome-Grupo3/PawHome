@@ -3,10 +3,10 @@ package com.grupo3.pawHome.controllers;
 
 import com.grupo3.pawHome.services.EntidadHijaService;
 import com.grupo3.pawHome.services.EntidadPadreService;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 /**
  * Controlador encargado de manejar las solicitudes relacionadas con la entidad principal.
  *
@@ -69,9 +69,26 @@ public class DefaultController {
 
     // Metodo para mostrar pagina de inicio
     @GetMapping("")
-    public String mostrarIndex()
+    public String mostrarIndex(Model model)
     {
+        model.addAttribute("currentLocale", LocaleContextHolder.getLocale().getDisplayName());
         return "index"; // Carga /templates/index.html
+    }
+
+    @GetMapping("/detalleProducto")
+    public String mostrarDetalleProducto()
+    {
+        return "detalleProducto"; // Carga /templates/index.html
+    }
+
+    @GetMapping("/listaCarrito")
+    public String mostrarListaCarrito() { return "listaCarrito"; }
+
+    // Metodo para mostrar pagina de inicio
+    @GetMapping("/tienda")
+    public String mostrarTienda()
+    {
+        return "tienda"; // Carga /templates/tienda.html
     }
 
     // Metodo para mostrar la pagina de la guarderia
@@ -81,11 +98,95 @@ public class DefaultController {
         return "guarderia";
     }
 
+    // Metodo para mostrar la pagina de la peluqueria
+    @GetMapping("/peluqueria")
+    public String mostrarPeluqueria()
+    {
+        return "peluqueria";
+    }
+
+    // Metodo para mostrar la pagina de adiestramiento
+    @GetMapping("/adiestramiento")
+    public String mostrarAdiestramiento()
+    {
+        return "adiestramiento";
+    }
+
+    // Metodo para mostrar la pagina de veterinario
+    @GetMapping("/veterinario")
+    public String mostrarVeterinario()
+    {
+        return "veterinario";
+    }
+
+    // Metodo para mostrar la pagina de asesoramiento legal
+    @GetMapping("/asesoramientoLegal")
+    public String mostrarAsesoramientoLegal()
+    {
+        return "asesoramientoLegal";
+    }
+
     // Metodo para mostrar la pagina de nuestros animales
     @GetMapping("/nuestrosAnimales")
     public String mostrarNuestrosAnimales()
     {
         return "nuestrosAnimales";
+    }
+
+    // Metodo para mostrar la pagina de contacto
+    @GetMapping("/contacto")
+    public String mostrarContacto()
+    {
+        return "contacto";
+    }
+
+    // Metodo para mostrar la pagina del buzón de sugerencias
+    @GetMapping("/buzonsugerencias")
+    public String mostrarBuzonSugerencias()
+    {
+        return "buzonsugerencias";
+    }
+
+    // Metodo para mostrar la pagina del horario y el mapa
+    @GetMapping("/horariomapa")
+    public String mostrarHorarioMapa()
+    {
+        return "horariomapa";
+    }
+
+    // Metodo para mostrar la pagina del horario y el mapa
+    @GetMapping("/perfil/informacion")
+    public String mostrarPerfil()
+    {
+        return "perfilUsuario";
+    }
+
+    @GetMapping("/perfil/editar")
+    public String mostrarPerfilEditar()
+    {
+        return "perfilUsuarioEditar";
+    }
+
+    @GetMapping("/perfil/puntos")
+    public String mostrarPerfilPuntos()
+    { return "perfilUsuarioPuntos"; }
+
+    @GetMapping("/perfil/animales")
+    public String mostrarPerfilAnimales()
+    {
+        return "perfilUsuarioAnimales";
+    }
+
+    @GetMapping("/perfil/adopciones")
+    public String mostrarPerfilAdopciones()
+    {
+        return "perfilUsuarioAdopciones";
+    }
+
+    @GetMapping("/perfil/donaciones")
+    public String mostrarPerfilDonaciones()
+    {
+        return "perfilUsuarioDonaciones";
     }
 
     /**
@@ -114,8 +215,6 @@ public class DefaultController {
         entidadHijaService.deleteById(id);
         return "redirect:/entities";
     }
-
-
 
     /**
      * Deletes an EntidadHija entity by its ID using the EntidadHijaService.

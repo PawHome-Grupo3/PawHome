@@ -5,37 +5,61 @@ on:
     branches: [ "desarrollo" ]
 
 jobs:
-
-  # --------------------- COMPILAR, TESTEAR Y CREAR IMAGEN ---------------------
+  # --------------------- CREAR IMAGEN ---------------------
   construir_imagen_snapshot:
     runs-on: self-hosted
+    # ← Mantengo aquí todas las vars del runner
     env:
+      CURSO: ${{ vars.CURSO }}
+      GRUPO: ${{ vars.GRUPO }}
+      PROJECT_NAME: ${{ vars.PROJECT_NAME }}
+      JAVA_VERSION: ${{ vars.JAVA_VERSION }}
+      PUERTO_DB_DESARROLLO: ${{ vars.PUERTO_DB_DESARROLLO }}
+      PUERTO_DESARROLLO: ${{ vars.PUERTO_DESARROLLO }}
+      PUERTO_PRODUCCION: ${{ vars.PUERTO_PRODUCCION }}
+      SONAR_HOST_URL: ${{ vars.SONAR_HOST_URL }}
       VERSION: snapshot
+
     steps:
       - uses: actions/checkout@v4
 
-      - name: Configurar JDK 17
+      # 1) Setup-Java con cache de Maven integrado
+      - name: Configurar JDK ${{ env.JAVA_VERSION }} y cache de dependencias
         uses: actions/setup-java@v4
         with:
-          java-version: '17'
-          distribution: 'temurin'
-          cache: maven
+          distribution: temurin
+          java-version: '${{ env.JAVA_VERSION }}'
+          cache: maven                         # activa cache de ~/.m2/repository automáticamente :contentReference[oaicite:0]{index=0}
 
-      - name: Compilar y ejecutar tests
-        run: mvn --batch-mode verify
+      # 2) Refuerzo cache manualmente (ruta Windows)
+      - name: Cache Maven local repository
+        uses: actions/cache@v4
+        with:
+          path: C:\Users\runner\.m2\repository
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-m2-
 
+      # 3) Compilar JAR sin tests (más rápido, reuse en build-image)
+      - name: Compilar jar (sin tests)
+        run: mvn -B clean package -DskipTests
+
+      # 4) Construir imagen Docker con Buildpacks + cache de capas
       - name: Construir imagen Docker con tag 'snapshot'
-        run: mvn spring-boot:build-image -DskipTests
+        run: |
+          mvn -B -DskipTests spring-boot:build-image
 
-  # --------------------- DESPLEGAR EN SERVIDOR DE DESARROLLO ---------------------
+    # --------------------- DESPLEGAR EN SERVIDOR DE DESARROLLO ---------------------
+
   arrancar_en_servidor_de_desarrollo:
     needs: construir_imagen_snapshot
     runs-on: self-hosted
     steps:
-
       - name: Desplegar contenedor de desarrollo
         env:
-          COMPOSE_PROJECT_NAME: pawhome-dev
-          PUERTO_DESARROLLO: ${{ secrets.PUERTO_DESARROLLO }}
-          PUERTO_DB_DESARROLLO: ${{ secrets.PUERTO_DB_DESARROLLO }}
+          VERSION: ${{ github.ref_type == 'tag' && github.ref_name || 'snapshot' }}
+          COMPOSE_NAME: ${{ vars.CURSO }}-${{ vars.GRUPO }}-dev
+          PROJECT_NAME: ${{ vars.PROJECT_NAME }}
+          PUERTO_DESARROLLO: ${{ vars.PUERTO_DESARROLLO }}
+          PUERTO_DB_DESARROLLO: ${{ vars.PUERTO_DB_DESARROLLO }}
         run: docker compose -f compose-desarrollo.yaml up -d

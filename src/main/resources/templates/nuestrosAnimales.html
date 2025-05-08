@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+<html lang="es" xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
 	  layout:decorate="~{layouts/layout.html}">
 <head>
 	<title>Nuestros Animales</title>
-	<link rel="stylesheet" th:href="@{/css/nuestrosAnimales.css}"/>
+	<link rel="stylesheet" th:href="@{/css/general.css}"/>
 </head>
 <body>
 
 <section layout:fragment="content">
-	<div class="row m-5">
+	<div class="row m-5 pt-3">
 		<div class="col-7 contenedorIzquierdo">
 			<h2>Nuestros animales disponibles:</h2>
 			<p>Adoptar un animal de nuestro refugio no solo significa darle una segunda oportunidad a un ser que ha sufrido
@@ -132,9 +132,15 @@
 					<div class="card_content d-flex justify-content-center card_contentAnimal">
 						<h2 class="card_title card_titleAnimal">Comodoro</h2>
 						<p class="card_tex card_textAnimal">Macho, 2 años, vacunado</p>
-						<p class="card_tex card_textAnimal">Macho, 2 años, vacunado</p>
-						<p class="card_tex card_textAnimal">Macho, 2 años, vacunado</p>
-						<button class="botonesCardAnimal btn card_btn">Apadrina</button>
+						<div class="row d-flex justify-content-center flex-nowrap">
+							<button class="botonesCardAnimal btn card_btn">Apadrina</button>
+							<button class="botonesCardAnimal btn card_btn">Adopta</button>
+						</div>
+						<div class="row d-flex justify-content-center flex-nowrap hiddenCardContent">
+							<button type="button" class="botonesCardAnimal botonesCardLeerMas btn card_btn arrow"
+									data-bs-toggle="modal" data-bs-target="#exampleModal"> Leer Más
+							</button>
+						</div>
 					</div>
 				</div>
 
