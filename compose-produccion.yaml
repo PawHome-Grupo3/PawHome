@@ -1,15 +1,15 @@
-name: Produccion
+name: ${COMPOSE_NAME}
 
 # Definimos los servicios que se ejecutarán en los contenedores Docker.
 services:
   java:
-    image: pawhome:${VERSION:-0.0.1-SNAPSHOT}
+    image: ${PROJECT_NAME}:${VERSION:-latest}
     ports:
       - "${PUERTO_PRODUCCION:-8080}:8080"
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/produccion
-      SPRING_DATASOURCE_USERNAME: produser
-      SPRING_DATASOURCE_PASSWORD: prodpassword
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/producciondb
+      SPRING_DATASOURCE_USERNAME: produccionuser
+      SPRING_DATASOURCE_PASSWORD: produccionpassword
     depends_on:
       db:
         condition: service_healthy
@@ -23,11 +23,11 @@ services:
   db:
     image: postgres:latest
     environment:
-      POSTGRES_DB: 'produccion'
-      POSTGRES_USER: 'produser'
-      POSTGRES_PASSWORD: 'prodpassword'
+      POSTGRES_DB: 'producciondb'
+      POSTGRES_USER: 'produccionuser'
+      POSTGRES_PASSWORD: 'produccionpassword'
     healthcheck:
-      test: [ "CMD", "pg_isready", "-U", "produser" ]
+      test: [ "CMD", "pg_isready", "-U", "produccionuser" ]
       timeout: 20s
       retries: 10
     restart: always

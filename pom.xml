@@ -8,11 +8,18 @@
         <version>3.4.3</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.grupo3.pawHome</groupId>
-    <artifactId>pawhome</artifactId>
+    <properties>
+        <java.version>24</java.version>
+        <lombok.version>1.18.38</lombok.version>
+        <sonar.coverage.exclusions>**/Application.*,**/loaders/*</sonar.coverage.exclusions>
+        <project.name>pawhome</project.name>
+        <project.groupId>com.grupo3.pawhome</project.groupId>
+    </properties>
+    <groupId>${project.groupId}</groupId>
+    <artifactId>${project.name}</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>pawhome</name>
-    <description>Paw Home</description>
+    <name>${project.name}</name>
+    <description>${project.name}</description>
     <url/>
     <licenses>
         <license/>
@@ -26,23 +33,21 @@
         <tag/>
         <url/>
     </scm>
-    <properties>
-        <java.version>17</java.version>
-        <sonar.coverage.exclusions>**/Application.*,**/loaders/*</sonar.coverage.exclusions>
-    </properties>
     <dependencies>
-
+        <dependency>
+            <groupId>nz.net.ultraq.thymeleaf</groupId>
+            <artifactId>thymeleaf-layout-dialect</artifactId>
+            <version>3.4.0</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-rest</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.sonarsource.scanner.maven</groupId>
             <artifactId>sonar-maven-plugin</artifactId>
-            <version>5.1.0.4751</version>
+            <version>5.0.0.4389</version>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
@@ -87,7 +92,8 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <optional>true</optional>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -142,10 +148,11 @@
             <artifactId>spring-boot-maven-plugin</artifactId>
             <version>3.4.3</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.jacoco/jacoco-maven-plugin -->
         <dependency>
-            <groupId>nz.net.ultraq.thymeleaf</groupId>
-            <artifactId>thymeleaf-layout-dialect</artifactId>
-            <version>3.4.0</version>
+            <groupId>org.jacoco</groupId>
+            <artifactId>jacoco-maven-plugin</artifactId>
+            <version>0.8.13</version>
         </dependency>
     </dependencies>
     <build>
@@ -153,17 +160,16 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.14.0</version>
                 <configuration>
                     <annotationProcessorPaths>
                         <path>
-                            <groupId>org.springframework.boot</groupId>
-                            <artifactId>spring-boot-configuration-processor</artifactId>
-                        </path>
-                        <path>
                             <groupId>org.projectlombok</groupId>
                             <artifactId>lombok</artifactId>
+                            <version>${lombok.version}</version>
                         </path>
                     </annotationProcessorPaths>
+                    <release>24</release>
                 </configuration>
             </plugin>
             <plugin>
@@ -173,17 +179,16 @@
                 <configuration>
                     <image>
                         <!--suppress UnresolvedMavenProperty -->
-                        <name>pawhome:${env.VERSION}</name>
+                        <name>${project.name}:${env.VERSION}</name>
                     </image>
                 </configuration>
             </plugin>
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.12</version>
+                <version>0.8.13</version>
                 <executions>
                     <execution>
-                        <id>default-prepare-agent</id>
                         <goals>
                             <goal>prepare-agent</goal>
                         </goals>
