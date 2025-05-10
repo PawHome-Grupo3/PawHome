@@ -1,0 +1,21 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: auto;
+    font-family: "Inter", sans-serif;
+    overflow-x: hidden;
+}
+
+.mainContainer {
+    background-color: rgba(27, 125, 85, 0.3);
+    width: calc(100% - 5px);
+    max-width: 1400px;
+    margin-top: 100px;
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 20px;
+}
+
+.seccionTitulo{
+    background-color: rgba(27, 125, 85, 0.1);
+}

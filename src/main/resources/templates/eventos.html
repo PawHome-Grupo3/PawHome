@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="~{layouts/layout.html}">
+<head>
+	<title>Eventos PawHome</title>
+	<link rel="stylesheet" th:href="@{/css/eventos.css}"/>
+</head>
+<body>
+<section layout:fragment="content">
+	<section class="container py-5 mainContainer">
+		<!-- Sección de título -->
+		<section class="text-center rounded-4 shadow mx-2 my-3 p-3 seccionTitulo">
+			<div class="container px-4">
+				<h2 class="fw-bold display-5 text-success-emphasis mb-3">
+					<i class="fas fa-calendar-alt me-2"></i>Próximos Eventos
+				</h2>
+				<p class="fs-5">Descubre las actividades, talleres y encuentros que tenemos preparados para ti y tu peludo.</p>
+			</div>
+		</section>
+		<hr class="mx-auto w-100 border-2 opacity-50">
+
+		<!-- Carrusel de eventos -->
+		<div id="eventCarousel" class="carousel slide container mb-5" data-bs-ride="carousel">
+			<div class="carousel-inner rounded-4 shadow">
+
+				<!-- Evento 1 -->
+				<div class="carousel-item active">
+					<div class="d-flex justify-content-center align-items-center bg-body-tertiary text-dark" style="height: 400px;">
+						<h5 class="display-6">Cartel Evento 1</h5>
+					</div>
+					<div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded-3 p-3">
+						<h5 class="fw-bold">Jornada de Adopción</h5>
+						<p>Ven a conocer a tu futuro mejor amigo. ¡Habrá regalos y asesoramiento gratuito!</p>
+					</div>
+				</div>
+
+				<!-- Evento 2 -->
+				<div class="carousel-item">
+					<div class="d-flex justify-content-center align-items-center bg-body-tertiary text-dark" style="height: 400px;">
+						<h5 class="display-6">Cartel Evento 2</h5>
+					</div>
+					<div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded-3 p-3">
+						<h5 class="fw-bold">Taller de Primeros Auxilios para Mascotas</h5>
+						<p>Aprende a reaccionar ante emergencias con tu compañero peludo.</p>
+					</div>
+				</div>
+
+				<!-- Evento 3 -->
+				<div class="carousel-item">
+					<div class="d-flex justify-content-center align-items-center bg-body-tertiary text-dark" style="height: 400px;">
+						<h5 class="display-6">Cartel Evento 3</h5>
+					</div>
+					<div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded-3 p-3">
+						<h5 class="fw-bold">Ruta Canina Solidaria</h5>
+						<p>Disfruta de un paseo en grupo con tu perro y colabora con asociaciones locales.</p>
+					</div>
+				</div>
+
+			</div>
+			<!-- Controles -->
+			<button class="carousel-control-prev" type="button" data-bs-target="#eventCarousel" data-bs-slide="prev">
+				<span class="carousel-control-prev-icon bg-dark rounded-circle p-2" aria-hidden="true"></span>
+				<span class="visually-hidden">Anterior</span>
+			</button>
+			<button class="carousel-control-next" type="button" data-bs-target="#eventCarousel" data-bs-slide="next">
+				<span class="carousel-control-next-icon bg-dark rounded-circle p-2" aria-hidden="true"></span>
+				<span class="visually-hidden">Siguiente</span>
+			</button>
+		</div>
+
+	</section>
+</section>
+</body>
+</html>

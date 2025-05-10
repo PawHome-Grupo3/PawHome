@@ -189,6 +189,11 @@ public class DefaultController {
         return "perfilUsuarioDonaciones";
     }
 
+    @GetMapping("/eventos")
+    public String mostrarEventos(){
+        return "eventos";
+    }
+
     /**
      * Gestiona las solicitudes GET para obtener y mostrar la lista de entidades protegidas.
      * Añade las entidades obtenidas del repositorio al modelo para renderizarlas en la vista correspondiente.
