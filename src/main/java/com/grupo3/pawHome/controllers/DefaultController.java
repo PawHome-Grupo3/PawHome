@@ -189,10 +189,25 @@ public class DefaultController {
         return "perfilUsuarioDonaciones";
     }
 
+    // Metodo para mostrar la página de Final Feliz
+    @GetMapping("/finalfeliz")
+    public String mostrarFinalFeliz()
+    {
+        return "FinalFeliz";
+    }
+
+    // Metodo para mostrar la página de Reseñas
+    @GetMapping("/resenas")
+    public String mostrarResenas()
+    {
+        return "Reseñas";
+    }
+
     @GetMapping("/eventos")
     public String mostrarEventos(){
         return "eventos";
     }
+
 
     /**
      * Gestiona las solicitudes GET para obtener y mostrar la lista de entidades protegidas.

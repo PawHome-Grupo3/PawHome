@@ -1,33 +1,39 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout.html}">
 <head>
     <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="Colabora.css"/>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" th:href="@{/css/Colabora.css}"/>
+    <title>Colabora</title>
+
 </head>
 <body>
-<h1>Colabora con nuestros animales</h1>
 
-<div class="container-v">
-    <div class="fila arriba">
-        <button class="button dona">DONA
-            <span>Cada aportación, por pequeña que sea, hace una gran diferencia.</span>
-        </button>
-        <button class="button adopta">ADOPTA
-            <span>Cambia tu vida o la de uno de nuestros amigos peludos.</span>
-        </button>
-    </div>
-    <div class="fila abajo">
-        <button class="button apadrina">APADRINA
-            <span>Apadrina a uno de nuestros animales y dale una segunda oportunidad, sin necesidad de adoptar.</span>
-        </button>
-        <button class="button paseo">PASEO SOLIDARIO
-            <span>Pasea a nuestros amigos peludos, además, ¡Con cada paso haces una donación!</span>
-        </button>
-    </div>
-</div>
+<section layout:fragment="content">
 
-<h2>Cada ayuda cuenta</h2>
+    <h1>Colabora con nuestros animales</h1>
+
+    <div class="container-v">
+        <div class="fila arriba">
+            <button class="button dona">DONA
+                <span>Cada aportación, por pequeña que sea, hace una gran diferencia.</span>
+            </button>
+            <button class="button adopta">ADOPTA
+                <span>Cambia tu vida o la de uno de nuestros amigos peludos.</span>
+            </button>
+        </div>
+        <div class="fila abajo">
+            <button class="button apadrina">APADRINA
+                <span>Apadrina a uno de nuestros animales y dale una segunda oportunidad, sin necesidad de adoptar.</span>
+            </button>
+            <button class="button paseo">PASEO SOLIDARIO
+                <span>Pasea a nuestros amigos peludos, además, ¡Con cada paso haces una donación!</span>
+            </button>
+        </div>
+    </div>
+
+    <h2>Cada ayuda cuenta</h2>
+</section>
 </body>
 </html>
