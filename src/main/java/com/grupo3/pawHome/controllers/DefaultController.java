@@ -203,15 +203,6 @@ public class DefaultController {
         return "Reseñas";
     }
 
-    // Metodo para mostrar la página de Reseñas
-    @GetMapping("/colabora")
-    public String mostrarColabora()
-    {
-        return "Colabora";
-    }
-
-
-
 
 
 
