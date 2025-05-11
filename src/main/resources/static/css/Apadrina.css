@@ -1,0 +1,66 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+
+    background image: url(Patasdegato.jpg)
+    background-size: cover;
+    color: white;
+}
+
+header {
+    background-color: rgba(27, 125, 85, 0.66);
+    padding: 10px;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+}
+
+nav ul li {
+    color: white;
+    cursor: pointer;
+}
+
+.language {
+    text-align: right;
+}
+
+main {
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    background image: url("Patasdegato.jpg");
+    background-size: cover;
+    background-position: center;
+    background-color: rgba(27, 125, 85, 0.58);
+
+main {
+    text-align: left;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 50px auto;
+    max-width: 600px;
+    text-color: #1b7d55
+
+}
+
+h2 {
+    margin: 20px 0;
+
+}
+
+ol {
+    text-align: left;
+}
+
+    color: #000000;
+    text-align: center;
+}
+a {
+    color: rgb(0, 0, 0);
+
+a:hover {
+    text-decoration: rgba(27, 125, 85, 0.64)
+    }
+

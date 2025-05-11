@@ -1,0 +1,74 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background image: url("Dona.jpg");
+    background-size: cover;
+    background-position: center;
+    background-color: rgba(27, 125, 85, 0.58);
+}
+.container {
+    text-align: left;
+    background-color: rgba(187, 224, 155, 0.66);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 50px auto;
+    max-width: 600px;
+    text-color: #1b7d55
+}
+
+.columnas {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-bottom: 30px;
+}
+
+.columna {
+    flex: 1;
+    min-width: 250px;
+}
+
+.columna p {
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+
+.donacion-icono {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 15px auto;
+    background-color: rgba(187, 224, 155, 0.61);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.donacion-icono:hover {
+    transform: scale(1.1);
+}
+
+.donacion-icono img {
+    width: 60%;
+    height: auto;
+
+}
+
+h1{
+    text-align: center;
+    color: black;
+}
+h3 {
+    color: #000000;
+    text-align: center;
+}
+
+p {
+    color: #000000;
+    text-align: center;
+}

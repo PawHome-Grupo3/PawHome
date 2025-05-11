@@ -1,0 +1,54 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f5fff9;
+    color: #1b7d55;
+}
+
+header {
+    text-align: center;
+    padding: 2rem;
+    background-color: #bbe09b;
+    color: #1b7d55;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #1b7d55;
+}
+
+.galeria {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    padding: 2rem;
+}
+
+.historia {
+    background-color: #ffffff;
+    border: 2px solid #bbe09b;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(27, 125, 85, 0.15);
+    text-align: center;
+    padding-bottom: 1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.historia:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(27, 125, 85, 0.25);
+}
+
+.historia img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.historia p {
+    margin: 1rem;
+    font-size: 1rem;
+    color: #333;
+}

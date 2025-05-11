@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout.html}">
+<head>
+    <title>Perfil Usuario</title>
+    <link rel="stylesheet" th:href="@{/css/general.css}"/>
+</head>
+<body>
+<section layout:fragment="content">
+
+    <div class="row bg-white mt-5 m-0 p-0 w-100">
+        <div class="row w-100">
+            <div th:replace="~{fragments/navbarPerfil :: navPerfilFragment}"></div>
+
+            <div class="col-md-9 col-lg-10 justify-content-center">
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <div class="p-3 py-5">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h4 class="text-right">Datos de Perfil</h4>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-md-6">
+                                    <p><strong>Nombre:</strong> th:text{usuario.nombre}</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p><strong>Apellidos:</strong> Pérez Gómez</p>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-md-12 mt-1">
+                                    <p><strong>Número teléfono:</strong> +34 612 345 678</p>
+                                </div>
+                                <div class="col-md-12 mt-1">
+                                    <p><strong>Dirección 1:</strong> Calle Mayor 123</p>
+                                </div>
+                                <div class="col-md-12 mt-1">
+                                    <p><strong>Dirección 2:</strong> Piso 2, Puerta B</p>
+                                </div>
+                                <div class="col-md-12 mt-1">
+                                    <p><strong>Código Postal:</strong> 28013</p>
+                                </div>
+                                <div class="col-md-12 mt-1">
+                                    <p><strong>Estado:</strong> Madrid</p>
+                                </div>
+                                <div class="col-md-12 mt-1">
+                                    <p><strong>DNI:</strong> 12345678Z</p>
+                                </div>
+                                <div class="col-md-12 mt-1">
+                                    <p><strong>Email:</strong> juan.perez@example.com</p>
+                                </div>
+                                <div class="col-md-12 mt-1">
+                                    <p><strong>Educación:</strong> Licenciatura en Ingeniería Informática</p>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-md-6">
+                                    <p><strong>País:</strong> España</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p><strong>Región:</strong> Comunidad de Madrid</p>
+                                </div>
+                            </div>
+                            <div class="mt-5 text-center">
+                                <button class="btn btn-primary profile-button" type="button">
+                                    <a href="/perfil/editar" style="text-decoration: none; color: white;">Editar
+                                        Perfil</a>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="p-3 py-5">
+                            <div class="d-flex justify-content-between align-items-center experience">
+                                <span>Métodos de Pago</span>
+                                <span class="border px-3 p-1 add-experience"><i class="fa fa-plus"></i>&nbsp;Nuevo método de pago</span>
+                            </div>
+                            <br>
+                            <div class="col-md-12">
+                                <p><strong>Nombre Tarjeta:</strong> Juan Pérez</p>
+                            </div>
+                            <br>
+                            <div class="col-md-12">
+                                <p><strong>Número Tarjeta:</strong> 1234 5678 9012 3456</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

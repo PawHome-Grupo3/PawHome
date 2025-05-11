@@ -20,7 +20,7 @@ public class LocaleConfig implements WebMvcConfigurer {
     public MessageSource messageSource() {
         ResourceBundleMessageSource source = new ResourceBundleMessageSource();
         source.setBasenames("i18n/messages");
-        source.setDefaultEncoding("ISO-8859-1");
+        source.setDefaultEncoding("UTF-8");
         source.setUseCodeAsDefaultMessage(true);
         source.setFallbackToSystemLocale(false);
         return source;
@@ -29,7 +29,7 @@ public class LocaleConfig implements WebMvcConfigurer {
     @Bean
     public LocaleResolver localeResolver() {
         CookieLocaleResolver resolver = new CookieLocaleResolver("locale-cookie");
-        resolver.setDefaultLocale(new Locale("es", "ES"));
+        resolver.setDefaultLocale(Locale.forLanguageTag("es-ES"));
         resolver.setCookieMaxAge(Duration.ofDays(180));
         return resolver;
     }

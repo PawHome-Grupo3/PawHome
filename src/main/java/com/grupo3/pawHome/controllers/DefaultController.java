@@ -154,12 +154,94 @@ public class DefaultController {
         return "horariomapa";
     }
 
-    // Metodo para mostrar la pagina de signup
-    @GetMapping("/signup")
-    public String mostrarSignUp()
+    // Metodo para mostrar la pagina del horario y el mapa
+    @GetMapping("/perfil/informacion")
+    public String mostrarPerfil()
     {
-        return "signUp";
+        return "perfilUsuario";
     }
+
+    @GetMapping("/perfil/editar")
+    public String mostrarPerfilEditar()
+    {
+        return "perfilUsuarioEditar";
+    }
+
+    @GetMapping("/perfil/puntos")
+    public String mostrarPerfilPuntos()
+    { return "perfilUsuarioPuntos"; }
+
+    @GetMapping("/perfil/animales")
+    public String mostrarPerfilAnimales()
+    {
+        return "perfilUsuarioAnimales";
+    }
+
+    @GetMapping("/perfil/adopciones")
+    public String mostrarPerfilAdopciones()
+    {
+        return "perfilUsuarioAdopciones";
+    }
+
+    @GetMapping("/perfil/donaciones")
+    public String mostrarPerfilDonaciones()
+    {
+        return "perfilUsuarioDonaciones";
+    }
+
+    // Metodo para mostrar la página de Final Feliz
+    @GetMapping("/finalfeliz")
+    public String mostrarFinalFeliz()
+    {
+        return "FinalFeliz";
+    }
+
+    // Metodo para mostrar la página de Reseñas
+    @GetMapping("/resenas")
+    public String mostrarResenas()
+    {
+        return "Reseñas";
+    }
+
+    @GetMapping("/eventos")
+    public String mostrarEventos(){
+        return "eventos";
+    }
+
+    // Metodo para mostrar la página de Colabora
+    @GetMapping("/colabora")
+    public String mostrarColabora()
+    {
+        return "Colabora";
+    }
+
+
+    @GetMapping("/colabora/dona")
+    public String mostrarColaboraDona()
+    {
+        return "Dona";
+    }
+
+
+    @GetMapping("/colabora/apadrina")
+    public String mostrarColaboraApadrina()
+    {
+        return "Apadrina";
+    }
+
+
+    @GetMapping("/colabora/adopta")
+    public String mostrarColaboraAdopta()
+    {
+        return "Adopta";
+    }
+
+    @GetMapping("/colabora/paseosolidario")
+    public String mostrarColaboraPaseoSolidario()
+    {
+        return "PaseoSolidario";
+    }
+
 
     /**
      * Gestiona las solicitudes GET para obtener y mostrar la lista de entidades protegidas.

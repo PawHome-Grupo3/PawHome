@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="PawHome.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/PawHome.css}">
+
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-custom sticky-top px-3">
+     <a class="navbar-brand" href="#">
+    <img src="logoSinFondoBlanco.png" alt="Logo" width="60" height="55" class="d-inline-block align-text-top">
+    </a>
+      <div class="collapse navbar-collapse" id="navbarNav">>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="#Aboutus">Sobre nosotros</a>
+            </li>
+        </ul>
+      </div>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Colabora
+            </a>
+            <ul class="dropdown-menu desplegable">
+              <li><a class="dropdown-item" href="#">Dona</a></li>
+              <li><a class="dropdown-item" href="#">Adopta</a></li>
+              <li><a class="dropdown-item" href="#">Apadrina</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="#Merchandising">Merchandising</a>
+            </li>
+        </ul>
+      </div>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Servicios
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Paseos solidarios</a></li>
+              <li><a class="dropdown-item" href="#">Guardería</a></li>
+              <li><a class="dropdown-item" href="#">Peluquería</a></li>
+              <li><a class="dropdown-item" href="#">Adiestramiento</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="#Blog">Blog</a>
+            </li>
+        </ul>
+      </div>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="#Contacto">Contacto</a>
+            </li>
+        </ul>
+    </div>
+ 
+<div class="ms-auto">
+    <div class="dropdown">
+      <button class="btn btn-light dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="fa fa-user-circle" aria-hidden="true"></i>
+      </button>
+      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+        <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#registroModal">Registrarse</a></li>
+      </ul>
+    </div>
+  </div>
+  
+    </div>
+</nav>
+  <header id="hero">
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="fondoHomePerro.png" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="Perro xsi.jpg" class="d-block w-100" alt="...">
+        </div>
+            <div class="carousel-item">
+            <img src="Patas de gato.jpg" class="d-block w-100" alt="...">
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+  </header>     
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
