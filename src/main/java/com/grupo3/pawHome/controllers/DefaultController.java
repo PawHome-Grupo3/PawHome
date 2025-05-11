@@ -215,13 +215,11 @@ public class DefaultController {
         return "Colabora";
     }
 
-
     @GetMapping("/colabora/dona")
     public String mostrarColaboraDona()
     {
         return "Dona";
     }
-
 
     @GetMapping("/colabora/apadrina")
     public String mostrarColaboraApadrina()
@@ -240,6 +238,12 @@ public class DefaultController {
     public String mostrarColaboraPaseoSolidario()
     {
         return "PaseoSolidario";
+    }
+
+    @GetMapping("/registro")
+    public String mostrarRegistro()
+    {
+        return "signUp";
     }
 
 
