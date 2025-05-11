@@ -1,0 +1,83 @@
+.container-v {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+}
+
+.fila {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.fila.arriba .button {
+    transform: translateY(0);
+}
+
+.fila.abajo .button:first-child {
+    transform: translateX(-60px);
+}
+
+.fila.abajo .button:last-child {
+    transform: translateX(60px);
+}
+
+.button {
+    background-color: rgba(187, 224, 155, 0.6);
+    width: 220px;
+    padding: 12px 16px;
+    border: none;
+    border-radius: 8px;
+    color: #000;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-align: center;
+}
+
+.button span {
+    display: block;
+    font-size: 0.8rem;
+    margin-top: 5px;
+    color: #000;
+    font-weight: bold;
+}
+
+.button:hover {
+    background-color: rgba(27, 125, 85, 0.66);
+    transform: scale(1.05);
+}
+
+body {
+    font-family: sans-serif;
+    background-color: rgba(27, 125, 85, 0.58);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1, h2 {
+    text-align: center;
+    font-weight: bold;
+    color: rgb(27, 125, 85);
+    margin: 30px 0;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('imagenes/Gato.mirando.arriba.png');
+    background-size: cover;
+    background-position: center;
+    filter: blur(8px);
+    z-index: -1;
+}
