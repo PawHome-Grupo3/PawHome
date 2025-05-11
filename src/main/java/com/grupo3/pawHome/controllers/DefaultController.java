@@ -203,8 +203,10 @@ public class DefaultController {
         return "Reseñas";
     }
 
-
-
+    @GetMapping("/eventos")
+    public String mostrarEventos(){
+        return "eventos";
+    }
 
 
     /**

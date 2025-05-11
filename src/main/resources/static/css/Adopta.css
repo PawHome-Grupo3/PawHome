@@ -1,0 +1,29 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background image: url("Adoptar.jpg");
+    background-size: cover;
+    background-position: center;
+    background-color: rgba(27, 125, 85, 0.58);
+
+    main {
+        text-align: left;
+        background-color: rgba(187, 224, 155, 0.66);
+        padding: 20px;
+        border-radius: 10px;
+        margin: 50px auto;
+        max-width: 600px;
+        text-color: #1b7d55
+    }
+
+    h2 {
+        margin: 20px 0;
+        color: #000000;
+        text-align: center;
+    }
+    a {
+        color: rgb(0, 0, 0);
+
+        a:hover {
+            text-decoration: rgba(27, 125, 85, 0.64)
+        }
