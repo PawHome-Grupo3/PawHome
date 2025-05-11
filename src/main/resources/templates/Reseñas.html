@@ -1,13 +1,20 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout.html}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" th:href="@{/css/Reseñas.css}"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Reseñas</title>
+
 
 </head>
 <body>
+
+<section layout:fragment="content">
+
+
     <h2>Reseñas con historia</h2>
 </div>
 
@@ -35,6 +42,7 @@
             <i class="fa fa-paw" aria-hidden="true"></i>
         </div>
     </section>
+</section>
 
 
 </body>

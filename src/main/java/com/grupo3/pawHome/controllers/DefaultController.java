@@ -189,6 +189,33 @@ public class DefaultController {
         return "perfilUsuarioDonaciones";
     }
 
+    // Metodo para mostrar la página de Final Feliz
+    @GetMapping("/finalfeliz")
+    public String mostrarFinalFeliz()
+    {
+        return "FinalFeliz";
+    }
+
+    // Metodo para mostrar la página de Reseñas
+    @GetMapping("/resenas")
+    public String mostrarResenas()
+    {
+        return "Reseñas";
+    }
+
+    // Metodo para mostrar la página de Reseñas
+    @GetMapping("/colabora")
+    public String mostrarColabora()
+    {
+        return "Colabora";
+    }
+
+
+
+
+
+
+
     /**
      * Gestiona las solicitudes GET para obtener y mostrar la lista de entidades protegidas.
      * Añade las entidades obtenidas del repositorio al modelo para renderizarlas en la vista correspondiente.
