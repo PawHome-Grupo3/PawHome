@@ -208,6 +208,40 @@ public class DefaultController {
         return "eventos";
     }
 
+    // Metodo para mostrar la página de Colabora
+    @GetMapping("/colabora")
+    public String mostrarColabora()
+    {
+        return "Colabora";
+    }
+
+
+    @GetMapping("/colabora/dona")
+    public String mostrarColaboraDona()
+    {
+        return "Dona";
+    }
+
+
+    @GetMapping("/colabora/apadrina")
+    public String mostrarColaboraApadrina()
+    {
+        return "Apadrina";
+    }
+
+
+    @GetMapping("/colabora/adopta")
+    public String mostrarColaboraAdopta()
+    {
+        return "Adopta";
+    }
+
+    @GetMapping("/colabora/paseosolidario")
+    public String mostrarColaboraPaseoSolidario()
+    {
+        return "PaseoSolidario";
+    }
+
 
     /**
      * Gestiona las solicitudes GET para obtener y mostrar la lista de entidades protegidas.
