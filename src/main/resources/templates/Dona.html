@@ -1,12 +1,16 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout.html}">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Cómo puedes donar</title>
-    <link rel="stylesheet" href="Dona.css" />
+    <link rel="stylesheet" th:href="@{/css/Dona.css}">
+
 </head>
 <body>
+<section layout:fragment="content">
+
 <div class="overlay">
     <h1>¿Cómo puedes donar?</h1>
 
@@ -32,5 +36,6 @@
     <p>
         “Gracias a tu apoyo, podemos seguir cuidando y protegiendo a los animales que más lo necesitan. Tu ayuda marca la diferencia” </p>
 </div>
+</section>
 </body>
 </html>

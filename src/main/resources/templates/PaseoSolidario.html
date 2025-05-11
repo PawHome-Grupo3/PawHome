@@ -1,13 +1,16 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout.html}">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="stylesheet" href="PaseoSolidario.css">
+    <link rel="stylesheet" th:href="@{/css/PaseoSolidario.css}">
 
     <title>Paseo Solidario</title>
 </head>
 <body>
+<section layout:fragment="content">
+
 <div class="overlay">
     <h1>PASEO SOLIDARIO:</h1>
     <ol>
@@ -16,5 +19,6 @@
         <li><strong>Cada kilómetro</strong>, se transformará en donaciones para ayudar a nuestros peludos.</li>
     </ol>
 </div>
+</section>
 </body>
 </html>
