@@ -231,6 +231,10 @@ clamp(10px, 2vw, 40px);
         font-size: 3em;
     }
 
+    .contenedorImagen{
+        background-image: url('../images/fondoHomePerroMovil.png');
+    }
+
     .contenedorImagen h2 {
         top: 70%;
     }
