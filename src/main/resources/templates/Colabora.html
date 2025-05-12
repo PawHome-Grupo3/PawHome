@@ -7,7 +7,6 @@
     <link rel="stylesheet" th:href="@{/css/Colabora.css}">
 
     <title>Colabora</title>
-
 </head>
 <body>
 
@@ -17,24 +16,24 @@
 
     <div class="container-v">
         <div class="fila arriba">
-            <button class="button dona">DONA
+            <a th:href="@{/dona}" class="button dona">DONA
                 <span>Cada aportación, por pequeña que sea, hace una gran diferencia.</span>
-            </button>
-            <button class="button adopta">ADOPTA
+            </a>
+            <a th:href="@{/adopta}" class="button adopta">ADOPTA
                 <span>Cambia tu vida o la de uno de nuestros amigos peludos.</span>
-            </button>
+            </a>
         </div>
         <div class="fila abajo">
-            <button class="button apadrina">APADRINA
+            <a th:href="@{/apadrina}" class="button apadrina">APADRINA
                 <span>Apadrina a uno de nuestros animales y dale una segunda oportunidad, sin necesidad de adoptar.</span>
-            </button>
-            <button class="button paseo">PASEO SOLIDARIO
+            </a>
+            <a th:href="@{/paseo-solidario}" class="button paseo">PASEO SOLIDARIO
                 <span>Pasea a nuestros amigos peludos, además, ¡Con cada paso haces una donación!</span>
-            </button>
+            </a>
         </div>
     </div>
 
-<h2>Cada ayuda cuenta</h2>
+    <h2>Cada ayuda cuenta</h2>
 
 </section>
 </body>
