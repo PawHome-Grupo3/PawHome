@@ -1,7 +1,6 @@
 package com.grupo3.pawHome.controllers;
 
 import com.grupo3.pawHome.entities.Animales;
-import com.grupo3.pawHome.repositories.AnimalesRepository;
 import com.grupo3.pawHome.services.AnimalesService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

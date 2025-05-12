@@ -35,7 +35,6 @@ public class LocalDataLoader {
 
     private final EntidadPadreRepository repository;
     private final EntidadHijaRepository entidadHijaRepository;
-    private final AnimalesRepository animalesRepository;
 
     /**
      * Constructor de la clase {@code LocalDataLoader}.
@@ -53,7 +52,6 @@ public class LocalDataLoader {
     public LocalDataLoader(EntidadPadreRepository repository, EntidadHijaRepository entidadHijaRepository, AnimalesRepository animalesRepository) {
         this.repository = repository;
         this.entidadHijaRepository = entidadHijaRepository;
-        this.animalesRepository = animalesRepository;
     }
 
     /**

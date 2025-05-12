@@ -1,9 +1,7 @@
 package com.grupo3.pawHome.services;
 
 import com.grupo3.pawHome.entities.Animales;
-import com.grupo3.pawHome.entities.EntidadHija;
 import com.grupo3.pawHome.repositories.AnimalesRepository;
-import com.grupo3.pawHome.repositories.EntidadHijaRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
