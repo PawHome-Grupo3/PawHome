@@ -1,7 +1,9 @@
 package com.grupo3.pawHome.loaders;
 
 import com.grupo3.pawHome.entities.Animales;
+import com.grupo3.pawHome.entities.Apadrinar;
 import com.grupo3.pawHome.repositories.AnimalesRepository;
+import com.grupo3.pawHome.repositories.ApadrinarRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -10,9 +12,11 @@ import java.time.LocalDate;
 @Component
 public class DataLoader implements CommandLineRunner {
     private final AnimalesRepository animalesRepository;
+    private final ApadrinarRepository apadrinarRepository;
 
-    public DataLoader(AnimalesRepository animalesRepository) {
+    public DataLoader(AnimalesRepository animalesRepository, ApadrinarRepository apadrinarRepository) {
         this.animalesRepository = animalesRepository;
+        this.apadrinarRepository = apadrinarRepository;
     }
 
     @Override
@@ -49,6 +53,22 @@ public class DataLoader implements CommandLineRunner {
                 false,
                 false,
                 "/images/gato.mira.arriba.jpg"
+        ));
+
+        apadrinarRepository.save(new Apadrinar(
+                0L,
+                5.0,
+                LocalDate.of(2024, 5, 1),
+                LocalDate.of(2024, 6, 1),
+                animalesRepository.findById(1L).get()
+        ));
+
+        apadrinarRepository.save(new Apadrinar(
+                0L,
+                10.0,
+                LocalDate.of(2025, 2, 1),
+                null,
+                animalesRepository.findById(2L).get()
         ));
     }
 }

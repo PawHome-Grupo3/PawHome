@@ -31,6 +31,7 @@ public class Animales {
     @Column(name = "caracter_social")
     private boolean caracterSocial;
 
+    @Lob
     private String descripcion;
 
     private boolean genero;
@@ -50,5 +51,4 @@ public class Animales {
 
     @Column(name = "ruta_img1")
     private String rutaImg1;
-
 }
