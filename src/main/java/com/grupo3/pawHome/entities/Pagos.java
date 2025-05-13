@@ -1,20 +1,17 @@
 package com.grupo3.pawHome.entities;
 
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDate;
-
 @Getter
 @Setter
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class Factura {
+public class Pagos {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -22,17 +19,17 @@ public class Factura {
     private long id;
 
     @Column(nullable = false)
-    private long precio;
-
-    @Lob
-    private String descripcion;
+    private String autorizacion;
 
     @Column(nullable = false)
-    private LocalDate fecha;
+    private boolean estado;
 
-    @OneToOne(mappedBy = "Pagos")
-    private Pagos pagos;
+    @Column(nullable = false)
+    private String pagoscol;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "factura_id", referencedColumnName = "id")
+    private Factura idFactura;
 
 
 }
