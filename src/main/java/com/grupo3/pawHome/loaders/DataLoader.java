@@ -31,7 +31,7 @@ public class DataLoader implements CommandLineRunner {
                 LocalDate.of(2024, 4, 10),
                 true,
                 false,
-                "img/firulais.jpg"
+                "/images/perro1Card.jpg"
         ));
 
         animalesRepository.save(new Animales(
@@ -48,7 +48,7 @@ public class DataLoader implements CommandLineRunner {
                 LocalDate.of(2024, 5, 1),
                 false,
                 false,
-                "img/michi.jpg"
+                "/images/gato.mira.arriba.jpg"
         ));
     }
 }
