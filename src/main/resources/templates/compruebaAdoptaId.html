@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Donar a [[${animal.nombre}]]</title>
+  <link rel="stylesheet" th:href="@{/css/general.css}">
+</head>
+<body>
+<h1>Donar a <span th:text="${animal.nombre}">Nombre del Animal</span></h1>
+<img th:src="${animal.rutaImg1}" alt="Imagen del animal" class="img-fluid"/>
+<p th:text="${animal.descripcion}">Descripción...</p>
+
+<form action="/procesar-donacion" method="post">
+  <input type="hidden" name="animalId" th:value="${animal.id}"/>
+  <label>Monto:</label>
+  <input type="number" name="monto" required/>
+  <button type="submit">Donar</button>
+</form>
+</body>
+</html>

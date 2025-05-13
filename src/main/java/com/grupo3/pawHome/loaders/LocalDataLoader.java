@@ -2,6 +2,7 @@ package com.grupo3.pawHome.loaders;
 
 import com.grupo3.pawHome.entities.EntidadHija;
 import com.grupo3.pawHome.entities.EntidadPadre;
+import com.grupo3.pawHome.repositories.AnimalesRepository;
 import com.grupo3.pawHome.repositories.EntidadHijaRepository;
 import com.grupo3.pawHome.repositories.EntidadPadreRepository;
 import jakarta.annotation.PostConstruct;
@@ -48,7 +49,7 @@ public class LocalDataLoader {
      *                                Es utilizado para gestionar datos de la entidad hija y su relación con
      *                                la entidad padre.
      */
-    public LocalDataLoader(EntidadPadreRepository repository, EntidadHijaRepository entidadHijaRepository) {
+    public LocalDataLoader(EntidadPadreRepository repository, EntidadHijaRepository entidadHijaRepository, AnimalesRepository animalesRepository) {
         this.repository = repository;
         this.entidadHijaRepository = entidadHijaRepository;
     }
@@ -105,6 +106,8 @@ public class LocalDataLoader {
             entidadHijaRepository.save(entidadHija);
         }
         log.info("Datos de entidades cargados correctamente.");
+
+
     }
 
 
