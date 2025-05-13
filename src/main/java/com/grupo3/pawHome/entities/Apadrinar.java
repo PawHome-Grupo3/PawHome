@@ -20,11 +20,20 @@ public class Apadrinar {
 
     private double aporteMensual;
 
-    private LocalDate fecha_inicio;
+    @JoinColumn(name = "fecha_inicio")
+    private LocalDate fechaInicio;
 
-    private LocalDate fecha_baja;
+    @JoinColumn(name = "fecha_renovacion")
+    private LocalDate fechaRenovacion;
+
+    @JoinColumn(name = "fecha_baja")
+    private LocalDate fechaBaja;
 
     @ManyToOne
-    @JoinColumn(name = "animal_id")
-    private Animales animalesId;
+    @JoinColumn(name = "animal_id", referencedColumnName = "id")
+    private Animales animal;
+
+    @ManyToOne
+    @JoinColumn(name = "id_usuario", referencedColumnName = "id")
+    private Usuario usuario;
 }

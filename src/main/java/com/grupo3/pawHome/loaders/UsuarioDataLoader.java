@@ -21,18 +21,18 @@ public class UsuarioDataLoader implements CommandLineRunner {
     public void run(String... args) throws Exception {
         System.out.println("Cargando datos iniciales de usuarios...");
 
-        // Insertamos algunos usuarios de ejemplo en la base de datos
-        usuarioRepository.save(new Usuario(
-                0L,
-
-                "Juan Pérez",
-
-                "1234",
-
-                "juan.perez@example.com",
-
-                LocalDate.now())
-        );
+//        // Insertamos algunos usuarios de ejemplo en la base de datos
+//        usuarioRepository.save(new Usuario(
+//                0L,
+//
+//                "Juan Pérez",
+//
+//                "1234",
+//
+//                "juan.perez@example.com",
+//
+//                LocalDate.now())
+//        );
 
 
         System.out.println("Usuarios cargados correctamente.");
