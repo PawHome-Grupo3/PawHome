@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Controller
 public class AnimalesController {
@@ -20,7 +21,11 @@ public class AnimalesController {
 
     @GetMapping("/nuestrosAnimales")
     public String mostrarNuestrosAnimales(Model model) {
-        List<Animales> animales = animalesService.findAll();
+        List<Animales> animales = animalesService.findAll()
+                .stream()
+                .filter(a -> !a.isAnimalServicio())
+                .toList();
+
         model.addAttribute("animales", animales);
         return "nuestrosAnimales";
     }

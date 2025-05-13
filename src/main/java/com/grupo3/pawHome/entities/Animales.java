@@ -31,6 +31,7 @@ public class Animales {
     @Column(name = "caracter_social")
     private boolean caracterSocial;
 
+    @Column(length = 1000)
     private String descripcion;
 
     private boolean genero;
