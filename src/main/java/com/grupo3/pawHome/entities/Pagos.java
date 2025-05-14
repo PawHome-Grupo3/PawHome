@@ -24,12 +24,11 @@ public class Pagos {
     @Column(nullable = false)
     private boolean estado;
 
-    @Column(nullable = false)
-    private String pagoscol;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "factura_id", referencedColumnName = "id")
     private Factura idFactura;
+
 
 
 }
