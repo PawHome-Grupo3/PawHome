@@ -30,7 +30,7 @@ public class Factura {
     @Column(nullable = false)
     private LocalDate fecha;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "factura", cascade = CascadeType.ALL)
     private Pagos pagos;
 
 

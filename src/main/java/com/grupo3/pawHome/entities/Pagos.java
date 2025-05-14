@@ -25,9 +25,9 @@ public class Pagos {
     private boolean estado;
 
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "factura_id", referencedColumnName = "id")
-    private Factura idFactura;
+    private Factura factura;
 
 
 
