@@ -210,7 +210,7 @@ public class DefaultController {
 
 
     // Metodo para mostrar la página de Reseñas
-    @GetMapping("/resenas")
+    @GetMapping("resenas")
     public String mostrarResenas()
     {
         return "Reseñas";
