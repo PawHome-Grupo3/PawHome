@@ -510,6 +510,8 @@ clamp(10px, 2vw, 40px);
     font-size: clamp(12px, 1vw, 20px);
     background-color: rgba(27, 125, 85, 0.3);
     border-radius: 15px;
+    padding: 10px;
+    text-align: center;
 }
 
 .contenedorIzquierdo {

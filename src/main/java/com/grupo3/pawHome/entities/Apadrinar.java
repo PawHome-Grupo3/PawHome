@@ -20,13 +20,13 @@ public class Apadrinar {
 
     private double aporteMensual;
 
-    @JoinColumn(name = "fecha_inicio")
+    @Column(name = "fecha_inicio")
     private LocalDate fechaInicio;
 
-    @JoinColumn(name = "fecha_renovacion")
+    @Column(name = "fecha_renovacion")
     private LocalDate fechaRenovacion;
 
-    @JoinColumn(name = "fecha_baja")
+    @Column(name = "fecha_baja")
     private LocalDate fechaBaja;
 
     @ManyToOne
