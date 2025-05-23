@@ -51,4 +51,10 @@ public class Animales {
 
     @Column(name = "ruta_img1")
     private String rutaImg1;
+
+//    @Column(name = "ruta_img2")
+//    private String rutaImg2;
+//
+//    @Column(name = "ruta_img3")
+//    private String rutaImg3;
 }

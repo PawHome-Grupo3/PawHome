@@ -83,10 +83,14 @@
 							<span th:if="${animal.genero == false}">Hembra</span>
 							<span th:unless="${animal.genero == false}">Macho</span></p>
 						<div class="row d-flex justify-content-center flex-nowrap">
-							<button class="botonesCardAnimal btn card_btn">Apadrina</button>
-							<a class="botonesCardAnimal btn card_btn" th:href="@{/adopta/{id}(id=${animal.id})}">
-								Adopta
-							</a>
+							<a th:if="${animal.adoptado == false && animal.caracterSocial == true}"
+							   th:href="@{/adopta/{id}(id=${animal.id})}"
+							   class="botonesCardAnimal btn card_btn">Adopta</a>
+
+							<button th:if="${animal.adoptado == false}"
+									th:class="'btn card_btn ' + (${animal.caracterSocial} == true? 'botonesCardAnimal' : 'botonesCardAnimalApadrina')">
+								Apadrina
+							</button>
 						</div>
 						<div class="row d-flex justify-content-center flex-nowrap hiddenCardContent">
 							<button type="button" class="botonesCardAnimal botonesCardLeerMas btn card_btn arrow"

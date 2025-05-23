@@ -639,6 +639,21 @@ ul {
     margin-left: 0.5rem;
 }
 
+.botonesCardAnimalApadrina {
+    background-color: #c8d6cc;
+    font-size: clamp(8px, 4vw, 12px);
+    width: 100%;
+    color: #153d2d;
+    font-weight: bolder;
+    text-transform: uppercase;
+    padding: 0.5rem;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
+}
+
 .botonesCardAnimal:hover {
     background-color: #153d2d;
     color: white;
