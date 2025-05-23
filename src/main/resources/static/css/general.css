@@ -654,7 +654,7 @@ ul {
     margin-left: 0.5rem;
 }
 
-.botonesCardAnimal:hover {
+.botonesCardAnimal:hover,.botonesCardAnimalApadrina:hover {
     background-color: #153d2d;
     color: white;
     font-weight: bolder;

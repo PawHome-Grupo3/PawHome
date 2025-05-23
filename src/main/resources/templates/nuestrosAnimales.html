@@ -51,7 +51,9 @@
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
 					<div class="row d-flex justify-content-center flex-nowrap mx-3">
-						<button class="botonesCardAnimal btn card_btn">Apadrina</button>
+						<a id="modalBotonApadrina" class="botonesCardAnimal btn card_btn">
+							Apadrina
+						</a>
 						<a id="modalBotonAdopta" class="botonesCardAnimal btn card_btn">
 							Adopta
 						</a>
@@ -101,7 +103,9 @@
 										data-descripcion=${animal.descripcion},
 										data-peso=${animal.peso},
 										data-edad=${animal.edad},
-										data-genero=${animal.genero}"> Leer Más
+										data-genero=${animal.genero},
+										data-adoptado=${animal.adoptado},
+									    data-caracter=${animal.caracterSocial}"> Leer Más
 							</button>
 						</div>
 					</div>
@@ -117,9 +121,10 @@
 			const modalEdad = document.getElementById('modalEdad');
 			const modalGenero = document.getElementById('modalGenero');
 			const modalImagen = document.getElementById('modalImagen');
+			const modalBotonAdopta = document.getElementById('modalBotonAdopta');
+			const modalBotonApadrina = document.getElementById('modalBotonApadrina');
 
 			const leerMasBtns = document.querySelectorAll('.botonesCardLeerMas');
-			const modalBotonAdopta = document.getElementById('modalBotonAdopta');
 
 			leerMasBtns.forEach(btn => {
 				btn.addEventListener('click', () => {
@@ -130,16 +135,31 @@
 					const genero = btn.getAttribute('data-genero') === 'true' ? 'Macho' : 'Hembra';
 					const imagen = btn.getAttribute('data-imagen');
 					const id = btn.getAttribute('data-id');
+					const adoptado = btn.getAttribute('data-adoptado') === 'true';
+					const caracter = btn.getAttribute('data-caracter') === 'true';
 
+					// Set info en el modal
 					modalNombre.textContent = nombre;
 					modalDescripcion.textContent = descripcion;
 					modalPeso.textContent = peso;
 					modalEdad.textContent = edad;
 					modalGenero.textContent = genero;
 					modalImagen.setAttribute('src', imagen);
-
-					// Set href del botón Adopta en el modal
 					modalBotonAdopta.setAttribute('href', `/adopta/${id}`);
+
+					// Mostrar/ocultar botones según lógica
+					if (!adoptado && caracter) {
+						modalBotonAdopta.style.display = 'inline-block';
+						modalBotonApadrina.style.display = 'inline-block';
+						modalBotonApadrina.className = 'botonesCardAnimal btn card_btn';
+					} else if (!adoptado && !caracter) {
+						modalBotonAdopta.style.display = 'none';
+						modalBotonApadrina.style.display = 'inline-block';
+						modalBotonApadrina.className = 'botonesCardAnimalApadrina btn card_btn';
+					} else {
+						modalBotonAdopta.style.display = 'none';
+						modalBotonApadrina.style.display = 'none';
+					}
 				});
 			});
 		});
