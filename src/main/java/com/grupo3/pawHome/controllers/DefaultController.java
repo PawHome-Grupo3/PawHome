@@ -246,6 +246,12 @@ public class DefaultController {
         return "signUp";
     }
 
+    @GetMapping("/loginPawHome")
+    public String mostrarInicioSesion()
+    {
+        return "login";
+    }
+
 
     /**
      * Gestiona las solicitudes GET para obtener y mostrar la lista de entidades protegidas.

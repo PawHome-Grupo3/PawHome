@@ -2,8 +2,8 @@
 <html lang="es" xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layouts/layout.html}">
 <head>
-    <title>Contacto</title>
-    <link rel="stylesheet" th:href="@{/css/signUp.css}"/>
+    <title>Registro</title>
+    <link rel="stylesheet" th:href="@{/css/LoginSignUp.css}"/>
 </head>
 
 <body>
@@ -11,8 +11,8 @@
 <section layout:fragment="content">
 
     <div class="container mt-5">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
+        <div class="row justify-content-end">
+            <div class="col-md-6 mb-5">
                 <div class="card shadow">
                     <div class="card-header bg-success text-white text-center">
                         <h2 th:utext="#{signup.titulo}"></h2>
@@ -23,7 +23,14 @@
                                 <label for="name" class="form-label">Nombre:</label>
                                 <input type="text" class="form-control" id="name" name="name" required>
                             </div>
-
+                            <div class="mb-3">
+                                <label for="surname" class="form-label">Apellidos:</label>
+                                <input type="text" class="form-control" id="surname" name="surname" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="username" class="form-label">Nombre de usuario:</label>
+                                <input type="text" class="form-control" id="username" name="username" required>
+                            </div>
                             <div class="mb-3">
                                 <label for="email" class="form-label">Correo electrónico:</label>
                                 <input type="email" class="form-control" id="email" name="email" required>
@@ -35,12 +42,42 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="role" class="form-label">¿Cómo quieres ayudar?</label>
-                                <select class="form-select" id="role" name="role">
-                                    <option value="volunteer">Voluntario</option>
-                                    <option value="adopt">Adoptar</option>
-                                    <option value="donate">Donar</option>
-                                </select>
+                                <label for="password" class="form-label">Contraseña:</label>
+                                <input type="password" class="form-control" id="password" name="password" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="confirmPassword" class="form-label">Confirmar contraseña:</label>
+                                <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="referralCode" class="form-label">Código de referido (opcional):</label>
+                                <input type="text" class="form-control" id="referralCode" name="referralCode">
+                            </div>
+                            <div class="mb-3">
+                                <label for="terms" class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" id="terms" name="terms" required>
+                                    Acepto los términos y condiciones
+                                </label>
+                            </div>
+                            <div class="mb-3">
+                                <label for="privacyPolicy" class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" id="privacyPolicy" name="privacyPolicy" required>
+                                    Acepto la política de privacidad
+                                </label>
+                            </div>
+                            <div class="mb-3">
+                                <label for="newsletter" class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" id="newsletter" name="newsletter">
+                                    Deseo recibir el boletín informativo
+                                </label>
+                            </div>
+                            <div class="mb-3">
+                                <label for="captcha" class="form-label">Captcha:</label>
+                                <input type="text" class="form-control" id="captcha" name="captcha" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="captchaImage" class="form-label">Captcha Image:</label>
+                                <img src="captchaImageUrl" alt="Captcha Image" class="img-fluid" id="captchaImage">
                             </div>
 
                             <button type="submit" class="btn btn-success w-100">Registrarse</button>
@@ -51,7 +88,6 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </section>
 </body>
 </html>
