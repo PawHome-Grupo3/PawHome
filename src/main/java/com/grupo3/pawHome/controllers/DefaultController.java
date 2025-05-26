@@ -243,11 +243,11 @@ public class DefaultController {
     @GetMapping("/registro")
     public String mostrarRegistro()
     {
-        return "signUp";
+        return "registro";
     }
 
     @GetMapping("/loginPawHome")
-    public String mostrarInicioSesion()
+    public String mostrarLogin()
     {
         return "login";
     }

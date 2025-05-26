@@ -3,7 +3,7 @@
       layout:decorate="~{layouts/layout.html}">
 <head>
     <title>Registro</title>
-    <link rel="stylesheet" th:href="@{/css/LoginSignUp.css}"/>
+    <link rel="stylesheet" th:href="@{/css/LoginRegistro.css}"/>
 </head>
 
 <body>
@@ -15,7 +15,7 @@
             <div class="col-md-6 mb-5">
                 <div class="card shadow">
                     <div class="card-header bg-success text-white text-center">
-                        <h2 th:utext="#{signup.titulo}"></h2>
+                        <h2 th:utext="#{registro.titulo}"></h2>
                     </div>
                     <div class="card-body">
                         <form action="#" method="POST">
@@ -81,6 +81,10 @@
                             </div>
 
                             <button type="submit" class="btn btn-success w-100">Registrarse</button>
+                            <p class="mt-3 text-center">
+                                ¿Ya tienes una cuenta? <a th:href="@{/loginPawHome}">Inicia sesión</a>
+                            </p>
+
                         </form>
                     </div>
                 </div>
