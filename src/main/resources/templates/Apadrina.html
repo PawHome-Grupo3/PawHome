@@ -9,15 +9,20 @@
 
 <body>
 <section layout:fragment="content">
-<main>
-    <h2>Cómo apadrinar a uno de nuestros Paws:</h2>
-    <ol>
-        <li><a href="nuestrosAnimales.html.html"><strong>Elige a uno de nuestros amigos peludos.</strong></a></li>
-        <li> Elige tu aportación mensual (10€, 20€...) </li>
-        <li> Elige a qué va a ir destinado ese dinero (alimentación, veterinario...) </li>
-        <li> Elige tu forma de pago (Bizum o Paypal) </li>
-    </ol>
-</main>
+
+    <div class="containerImagen">
+        <div class="cuadro-transparente">
+            <h1><i>Cómo apadrinar a nuestros Paws:</i></h1>
+            <br>
+            <ol>
+                <li> Accede al formulario </li>
+                <li> Elige a uno de nuestros <a th:href="@{/nuestrosAnimales}">amigos peludos</a>.</li>
+                <li> Elige tu aportación mensual (10€, 20€...) </li>
+                <li> Elige a qué va a ir destinado ese dinero (alimentación, veterinario...) </li>
+                <li> Elige tu forma de pago (Bizum o Paypal) </li>
+            </ol>
+        </div>
+    </div>
 </section>
 </body>
 </html>
