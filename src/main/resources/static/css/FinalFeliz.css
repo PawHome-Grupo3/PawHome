@@ -20,7 +20,9 @@ h1 {
 
 .galeria {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(3, 1fr); //*Está así para que siempre haya 3 columnas, pero se puede cambiar dependiendo del tamaño de la pantalla*//
+    grid-template-rows: repeat(3, 1fr);
+    grid-gap: 1rem;
     gap: 1.5rem;
     padding: 2rem;
 }
@@ -34,6 +36,7 @@ h1 {
     text-align: center;
     padding-bottom: 1rem;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+
 }
 
 .historia:hover {

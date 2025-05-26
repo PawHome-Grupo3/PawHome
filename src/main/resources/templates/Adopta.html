@@ -9,15 +9,18 @@
 
 <body>
 <section layout:fragment="content">
-<main>
-  <h2>Cómo adoptar:</h2>
-  <ol>
-    <li><a href="nuestrosAnimales.html.html"><strong>Elige a uno de nuestros amigos peludos.</strong></a></li>
-    <li>Rellena el formulario</li>
-    <li>Reserva una entrevista</li>
 
-  </ol>
-</main>
+  <div class="containerImagen">
+    <div class="cuadro-transparente">
+      <h1><i>Adopta</i></h1>
+      <br>
+      <ol>
+        <li>Accede al formulario </li>
+        <li>Elige a uno de nuestros <a th:href="@{/nuestrosAnimales}">animales disponibles para adopción</a>.</li>
+        <li>Rellena el formulario</li>
+      </ol>
+    </div>
+  </div>
 </section>
 </body>
 </html>

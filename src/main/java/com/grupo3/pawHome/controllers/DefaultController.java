@@ -201,13 +201,6 @@ public class DefaultController {
     }
 
 
-    // Metodo para mostrar la página de Final Feliz
-    @GetMapping("/finalfeliz")
-    public String mostrarFinalFeliz()
-    {
-        return "FinalFeliz";
-    }
-
 
     // Metodo para mostrar la página de Reseñas
     @GetMapping("resenas")
@@ -251,6 +244,14 @@ public class DefaultController {
     public String mostrarColaboraPaseoSolidario()
     {
         return "PaseoSolidario";
+    }
+
+
+    // Metodo para mostrar la página de Finales Felices
+    @GetMapping("/finalfeliz")
+    public String mostrarFinalesFelices()
+    {
+        return "FinalFeliz";
     }
 
 
