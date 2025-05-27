@@ -686,6 +686,13 @@ ul {
     height: auto;
 }
 
+.disabled {
+    pointer-events: none;
+    color: grey;
+    cursor: default;
+    text-decoration: none;
+}
+
 @media screen and (max-width: 639px) {
     .cardAnimal {
         width: 100%;

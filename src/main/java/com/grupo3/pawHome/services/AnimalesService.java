@@ -3,22 +3,42 @@ package com.grupo3.pawHome.services;
 import com.grupo3.pawHome.entities.Animales;
 import com.grupo3.pawHome.repositories.AnimalesRepository;
 import jakarta.transaction.Transactional;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class AnimalesService {
     private final AnimalesRepository repository;
+    private final AnimalesRepository animalesRepository;
 
-    public AnimalesService(AnimalesRepository repository) { this.repository = repository; }
-
-    public List<Animales> findAll() {
-        return repository.findAll();
+    public AnimalesService(AnimalesRepository repository, AnimalesRepository animalesRepository) { this.repository = repository;
+        this.animalesRepository = animalesRepository;
     }
 
-    public Optional<Animales> findById(Long id) {
-        return repository.findById(id);
+    public List<Animales> findAll() { return repository.findAll(); }
+
+    public Optional<Animales> findById(int id) {return repository.findById(id);
+    }
+
+    public Page<Animales> findPaginated(Pageable pageable) {
+        int pageSize = pageable.getPageSize();
+        int currentPage = pageable.getPageNumber();
+        String sort = pageable.getSort().toString();
+        int startItem = currentPage * pageSize;
+        List<Animales> animales = animalesRepository.findAllByAnimalServicio(false);
+        List<Animales> list;
+
+        if (animales.size() < startItem) {
+            list = Collections.emptyList();
+        } else {
+            int toIndex = Math.min(startItem + pageSize, animales.size());
+            list = animales.subList(startItem, toIndex);
+        }
+
+        return new PageImpl<Animales>(list, PageRequest.of(currentPage, pageSize), animales.size());
     }
 }

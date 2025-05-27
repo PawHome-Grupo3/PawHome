@@ -20,7 +20,7 @@ public class UsuarioService {
         return repository.findAll();
     }
 
-    public Optional<Usuario> findById(Long id) {
+    public Optional<Usuario> findById(Integer id) {
         return repository.findById(id);
     }
 }

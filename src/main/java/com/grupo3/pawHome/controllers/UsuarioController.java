@@ -28,11 +28,11 @@ public class UsuarioController {
     @GetMapping("/perfil/animales")
     public String mostrarPerfilAnimales(Model model) {
 
-        Optional<Usuario> usuarioOptional = usuarioService.findById(1L);
+        Optional<Usuario> usuarioOptional = usuarioService.findById(1);
 
         if (usuarioOptional.isPresent()) {
             Usuario usuario = usuarioOptional.get();
-            List<Apadrinar> apadrinamientos = apadrinarService.findByUsuarioId(1L);
+            List<Apadrinar> apadrinamientos = apadrinarService.findByUsuarioId(1);
 
             List<Apadrinar> apadrinamientosInactivos = apadrinamientos.stream()
                     .filter(a -> a.getFechaBaja() != null)

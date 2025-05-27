@@ -2,14 +2,19 @@ package com.grupo3.pawHome.controllers;
 
 import com.grupo3.pawHome.entities.Animales;
 import com.grupo3.pawHome.services.AnimalesService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 @Controller
 public class AnimalesController {
@@ -19,19 +24,53 @@ public class AnimalesController {
         this.animalesService = animalesService;
     }
 
-    @GetMapping("/nuestrosAnimales")
-    public String mostrarNuestrosAnimales(Model model) {
-        List<Animales> animales = animalesService.findAll()
-                .stream()
-                .filter(a -> !a.isAnimalServicio())
-                .toList();
+//    @GetMapping("/nuestrosAnimales")
+//    public String mostrarNuestrosAnimalesAll(Model model) {
+//        return mostrarNuestrosAnimalesOnePage(model, 1);
+//    }
+//
+//    @GetMapping("/nuestrosAnimales/{pageNumber}")
+//    public String mostrarNuestrosAnimalesOnePage(Model model, @PathVariable("pageNumber") int currentPage) {
+//        Page<Animales> page = animalesService.findPage(currentPage);
+//        int totalPages = page.getTotalPages();
+//        long totalItems = page.getTotalElements();
+//        List<Animales> animales = page.getContent();
+//
+//        model.addAttribute("animales", animales);
+//        model.addAttribute("totalPages", totalPages);
+//        model.addAttribute("totalElements", totalItems);
+//        model.addAttribute("currentPage", currentPage);
+//        return "nuestrosAnimales";
+//    }
 
-        model.addAttribute("animales", animales);
+    @GetMapping("/nuestrosAnimales")
+    public String mostrarNuestrosAnimales(Model model,
+                                          @RequestParam("page") Optional<Integer> page,
+                                          @RequestParam("size") Optional<Integer> size,
+                                          @RequestParam("filtro") Optional<String> orden,
+                                          @RequestParam("sentido") Optional<String> sentido)
+    {
+
+        int currentPage = page.orElse(1);
+        int pageSize = size.orElse(5);
+
+        Page<Animales> animalPage = animalesService.findPaginated(PageRequest.of(currentPage - 1, pageSize));
+
+        model.addAttribute("animalPage", animalPage);
+
+        int totalPages = animalPage.getTotalPages();
+        if (totalPages > 0) {
+            List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages)
+                    .boxed()
+                    .collect(Collectors.toList());
+            model.addAttribute("pageNumbers", pageNumbers);
+        }
+
         return "nuestrosAnimales";
     }
 
     @GetMapping("/adopta/{id}")
-    public String mostrarPaginaDonacion(@PathVariable("id") Long id, Model model) {
+    public String mostrarPaginaDonacion(@PathVariable("id") int id, Model model) {
         Optional<Animales> animalOpt = animalesService.findById(id); // o animalRepository.findById(id)
 
         if (animalOpt.isPresent()) {
