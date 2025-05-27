@@ -40,11 +40,18 @@
 					<div class="row mx-1">
 						<img id="modalImagen" src="" alt="Foto del animal" class="img-fluid">
 					</div>
+					<div class="row mx-1">
+						<div class="col-12 col-md-6">
+							<img id="modalImagen2" src="" alt="Foto del animal" class="img-fluid">
+						</div>
+						<div class="col-12 col-md-6">
+							<img id="modalImagen3" src="" alt="Foto del animal" class="img-fluid">
+						</div>
+					</div>
 					<p class="textoModal m-1 p-3" id="modalDescripcion">
-						Descripción del animal...
 					</p>
 					<p class="textoModal mx-3">
-						<strong>Peso:</strong> <span id="modalPeso"></span> kg<br>
+						<strong>Peso:</strong> <span id="modalPeso"></span><br>
 						<strong>Edad:</strong> <span id="modalEdad"></span><br>
 						<strong>Género:</strong> <span id="modalGenero"></span>
 					</p>
@@ -52,7 +59,9 @@
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
 					<div class="row d-flex justify-content-center flex-nowrap mx-3">
-						<button class="botonesCardAnimal btn card_btn">Apadrina</button>
+						<a id="modalBotonApadrina" class="botonesCardAnimal btn card_btn">
+							Apadrina
+						</a>
 						<a id="modalBotonAdopta" class="botonesCardAnimal btn card_btn">
 							Adopta
 						</a>
@@ -63,31 +72,45 @@
 	</div>
 
 	<main>
-		<div class="row m-1 filtrosTop justify-content-center">
+		<div class="row m-1 filtrosTop justify-content-center flex-nowrap">
+			<ul>
+				<li th:if="${animalPage.number > 0}">
+					<a href="#" th:href="@{/nuestrosAnimales(size=${animalPage.size}, page=1)}">First &nbsp</a>
+				</li>
+			</ul>
 			<button type="button" id="grid-active-btn">
 				<i class="fas fa-th"></i>
 			</button>
 			<button type="button" id="details-active-btn">
 				<i class="fas fa-list-ul"></i>
 			</button>
+			<form class="d-flex w-50" role="search">
+				<input class="form-control me-2 w-50" type="search" placeholder="Busca por nombre" aria-label="Search"/>
+				<button class="btn btn-outline-success" type="submit">Search</button>
+			</form>
 		</div>
-		<div class="row m-3">
-			<div class="col-12 contenedorCards justify-content-center">
-				<div class="card cardAnimal" th:each="animal : ${animales}">
+
+		<div class="row m-3 justify-content-center">
+			<div class="col-12 contenedorCards">
+				<div class="card cardAnimal" th:each="animal : ${animalPage.content} ">
 					<div class="card_image">
 						<img class="imgCardAnimal" th:src="${animal.rutaImg1}" alt="foto de perro disponible para adoptar"></div>
 					<div class="card_content d-flex justify-content-center card_contentAnimal">
 						<h2 class="card_title card_titleAnimal" th:utext="${animal.nombre}"></h2>
 						<p class="card_tex card_textAnimal">
-							<span th:text="${animal.peso}"></span>,
-							<span th:text="${animal.edad}"></span>,
+							<span th:utext="${animal.peso} + 'kg'"></span>,
+							<span th:utext="${animal.edad}"></span>,
 							<span th:if="${animal.genero == false}">Hembra</span>
 							<span th:unless="${animal.genero == false}">Macho</span></p>
 						<div class="row d-flex justify-content-center flex-nowrap">
-							<button class="botonesCardAnimal btn card_btn">Apadrina</button>
-							<a class="botonesCardAnimal btn card_btn" th:href="@{/adopta/{id}(id=${animal.id})}">
-								Adopta
-							</a>
+							<a th:if="${animal.adoptado == false && animal.caracterSocial == true}"
+							   th:href="@{/adopta/{id}(id=${animal.id})}"
+							   class="botonesCardAnimal btn card_btn">Adopta</a>
+
+							<button th:if="${animal.adoptado == false}"
+									th:class="'btn card_btn ' + (${animal.caracterSocial} == true? 'botonesCardAnimal' : 'botonesCardAnimalApadrina')">
+								Apadrina
+							</button>
 						</div>
 						<div class="row d-flex justify-content-center flex-nowrap hiddenCardContent">
 							<button type="button" class="botonesCardAnimal botonesCardLeerMas btn card_btn arrow"
@@ -95,17 +118,48 @@
 									th:attr="data-id=${animal.id},
 										data-nombre=${animal.nombre},
 										data-imagen=${animal.rutaImg1},
+										data-imagen2=${animal.rutaImg2},
+										data-imagen3=${animal.rutaImg3},
 										data-descripcion=${animal.descripcion},
 										data-peso=${animal.peso},
 										data-edad=${animal.edad},
-										data-genero=${animal.genero}"> Leer Más
+										data-genero=${animal.genero},
+										data-adoptado=${animal.adoptado},
+									    data-caracter=${animal.caracterSocial}"> Leer Más
 							</button>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+
+		<div class="row">
+			<nav class="items" style="justify-items: center;">
+				<ul class="pagination text-center">
+
+					<li th:if="${animalPage.number > 0}">
+						<a href="#" th:href="@{/nuestrosAnimales(size=${animalPage.size}, page=1)}">First &nbsp</a>
+					</li>
+					<li th:if="${animalPage.number == 0}">First &nbsp</li>
+
+					<div th:if="${animalPage.totalPages > 0}" class="pagination"
+						 th:each="pageNumber : ${pageNumbers}">
+						<li th:class="${pageNumber==animalPage.number + 1} ? active">
+							<a href="#" th:href="@{/nuestrosAnimales/(size=${animalPage.size}, page=${pageNumber})}"
+							   th:text="${pageNumber} + '&nbsp'"></a>
+						</li>
+					</div>
+
+					<li th:if="${animalPage.number < animalPage.totalPages - 1}">
+						<a href="#" th:href="@{/nuestrosAnimales(size=${animalPage.size}, page=${animalPage.totalPages})}">Last</a>
+					</li>
+					<li th:if="${animalPage.number == animalPage.totalPages - 1}">&nbsp Last</li>
+				</ul>
+			</nav>
+		</div>
 	</main>
+
+
 	<script>
 		document.addEventListener('DOMContentLoaded', function () {
 			const modalNombre = document.getElementById('modalNombre');
@@ -114,9 +168,12 @@
 			const modalEdad = document.getElementById('modalEdad');
 			const modalGenero = document.getElementById('modalGenero');
 			const modalImagen = document.getElementById('modalImagen');
+			const modalImagen2 = document.getElementById('modalImagen2');
+			const modalImagen3 = document.getElementById('modalImagen3');
+			const modalBotonAdopta = document.getElementById('modalBotonAdopta');
+			const modalBotonApadrina = document.getElementById('modalBotonApadrina');
 
 			const leerMasBtns = document.querySelectorAll('.botonesCardLeerMas');
-			const modalBotonAdopta = document.getElementById('modalBotonAdopta');
 
 			leerMasBtns.forEach(btn => {
 				btn.addEventListener('click', () => {
@@ -126,17 +183,35 @@
 					const edad = btn.getAttribute('data-edad');
 					const genero = btn.getAttribute('data-genero') === 'true' ? 'Macho' : 'Hembra';
 					const imagen = btn.getAttribute('data-imagen');
+					const imagen2 = btn.getAttribute('data-imagen2');
+					const imagen3 = btn.getAttribute('data-imagen3');
 					const id = btn.getAttribute('data-id');
+					const adoptado = btn.getAttribute('data-adoptado') === 'true';
+					const caracter = btn.getAttribute('data-caracter') === 'true';
 
+					// Set info en el modal
 					modalNombre.textContent = nombre;
 					modalDescripcion.textContent = descripcion;
-					modalPeso.textContent = peso;
+					modalPeso.textContent = peso + ' kg';
 					modalEdad.textContent = edad;
 					modalGenero.textContent = genero;
 					modalImagen.setAttribute('src', imagen);
-
-					// Set href del botón Adopta en el modal
+					modalImagen2.setAttribute('src', imagen2);
+					modalImagen3.setAttribute('src', imagen3);
 					modalBotonAdopta.setAttribute('href', `/adopta/${id}`);
+
+					if (!adoptado && caracter) {
+						modalBotonAdopta.style.display = 'inline-block';
+						modalBotonApadrina.style.display = 'inline-block';
+						modalBotonApadrina.className = 'botonesCardAnimal btn card_btn';
+					} else if (!adoptado && !caracter) {
+						modalBotonAdopta.style.display = 'none';
+						modalBotonApadrina.style.display = 'inline-block';
+						modalBotonApadrina.className = 'botonesCardAnimalApadrina btn card_btn';
+					} else {
+						modalBotonAdopta.style.display = 'none';
+						modalBotonApadrina.style.display = 'none';
+					}
 				});
 			});
 		});

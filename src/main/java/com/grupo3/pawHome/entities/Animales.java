@@ -16,7 +16,7 @@ import java.time.LocalDate;
 public class Animales {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private long id;
+    private int id;
 
     @Column(nullable = false)
     private String nombre;
@@ -24,14 +24,14 @@ public class Animales {
     @Column(unique = true)
     private String chip;
 
-    private String peso;
+    private float peso;
 
     private String edad;
 
     @Column(name = "caracter_social")
     private boolean caracterSocial;
 
-    @Lob
+    @Column(length = 1000)
     private String descripcion;
 
     private boolean genero;
@@ -51,4 +51,10 @@ public class Animales {
 
     @Column(name = "ruta_img1")
     private String rutaImg1;
+
+    @Column(name = "ruta_img2")
+    private String rutaImg2;
+
+    @Column(name = "ruta_img3")
+    private String rutaImg3;
 }

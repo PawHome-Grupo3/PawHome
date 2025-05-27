@@ -164,12 +164,6 @@ public class DefaultController {
     public String mostrarPerfilPuntos()
     { return "perfilUsuarioPuntos"; }
 
-    @GetMapping("/perfil/animales")
-    public String mostrarPerfilAnimales()
-    {
-        return "perfilUsuarioAnimales";
-    }
-
     @GetMapping("/perfil/adopciones")
     public String mostrarPerfilAdopciones()
     {

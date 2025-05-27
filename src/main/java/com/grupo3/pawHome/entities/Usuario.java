@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import java.time.LocalDate;
+import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -29,7 +31,4 @@ public class Usuario {
 
     @Column(nullable = false, name = "fecha_registro")
     private LocalDate fechaRegistro;
-
-
-
 }

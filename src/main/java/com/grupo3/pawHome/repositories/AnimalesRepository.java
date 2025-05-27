@@ -1,7 +1,13 @@
 package com.grupo3.pawHome.repositories;
 
 import com.grupo3.pawHome.entities.Animales;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface AnimalesRepository extends JpaRepository<Animales, Long> {
+import java.util.List;
+
+@Repository
+public interface AnimalesRepository extends JpaRepository<Animales, Integer> {
+    List<Animales> findAllByAnimalServicio(boolean animalServicio);
 }
