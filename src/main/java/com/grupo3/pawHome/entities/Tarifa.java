@@ -31,4 +31,8 @@ public class Tarifa {
 
     @Column(name = "fecha_hasta")
     private LocalDate fechaHasta;
+
+    @ManyToOne
+    @JoinColumn(name = "producto_id", referencedColumnName = "id")
+    private Producto producto;
 }

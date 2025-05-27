@@ -2,9 +2,11 @@ package com.grupo3.pawHome.loaders;
 
 import com.grupo3.pawHome.entities.Animales;
 import com.grupo3.pawHome.entities.Apadrinar;
+import com.grupo3.pawHome.entities.Factura;
 import com.grupo3.pawHome.entities.Usuario;
 import com.grupo3.pawHome.repositories.AnimalesRepository;
 import com.grupo3.pawHome.repositories.ApadrinarRepository;
+import com.grupo3.pawHome.repositories.FacturaRepository;
 import com.grupo3.pawHome.repositories.UsuarioRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -16,39 +18,55 @@ public class DataLoader implements CommandLineRunner {
     private final AnimalesRepository animalesRepository;
     private final ApadrinarRepository apadrinarRepository;
     private final UsuarioRepository usuarioRepository;
+    private final FacturaRepository facturaRepository;
 
 
-    public DataLoader(AnimalesRepository animalesRepository, ApadrinarRepository apadrinarRepository, UsuarioRepository usuarioRepository) {
+    public DataLoader(AnimalesRepository animalesRepository, ApadrinarRepository apadrinarRepository, UsuarioRepository usuarioRepository, FacturaRepository facturaRepository) {
         this.animalesRepository = animalesRepository;
         this.apadrinarRepository = apadrinarRepository;
         this.usuarioRepository = usuarioRepository;
+        this.facturaRepository = facturaRepository;
     }
 
     @Override
     public void run(String... args) {
-        usuarioRepository.save(new Usuario(
-                0,
+        // Crear Usuarios
+        Usuario u1 = new Usuario();
+        u1.setNombre("Juan123");
+        u1.setPassword("1234");
+        u1.setEmail("a@gmail.com");
+        u1.setFechaRegistro(LocalDate.now());
+        usuarioRepository.save(u1);
 
-                "Juan Pérez",
+        Usuario u2 = new Usuario();
+        u2.setNombre("Maria456");
+        u2.setPassword("abcd");
+        u2.setEmail("maria@gmail.com");
+        u2.setFechaRegistro(LocalDate.now());
+        usuarioRepository.save(u2);
 
-                "1234",
+        // Crear Facturas para u1
+        Factura f1 = new Factura();
+        f1.setDescripcion("Compra alimento");
+        f1.setFecha(LocalDate.now());
+        f1.setPrecio(150.00);
+        f1.setUsuario(u1);  // Asocia factura a usuario
+        facturaRepository.save(f1);
 
-                "juan.perez@example.com",
+        Factura f2 = new Factura();
+        f2.setDescripcion("Consulta veterinaria");
+        f2.setFecha(LocalDate.now());
+        f2.setPrecio(200.00);
+        f2.setUsuario(u1);
+        facturaRepository.save(f2);
 
-                LocalDate.now())
-        );
-
-        usuarioRepository.save(new Usuario(
-                0,
-
-                "Paulo",
-
-                "1234",
-
-                "apulo@example.com",
-
-                LocalDate.now())
-        );
+        // Crear Facturas para u2
+        Factura f3 = new Factura();
+        f3.setDescripcion("Accesorios mascota");
+        f3.setFecha(LocalDate.now());
+        f3.setPrecio(75.00);
+        f3.setUsuario(u2);
+        facturaRepository.save(f3);
 
         animalesRepository.save(new Animales(
                 0,
@@ -242,26 +260,4 @@ public class DataLoader implements CommandLineRunner {
                 usuarioRepository.findById(1).get()
         ));
     }
-
-//    private final FacturaRepository facturaRepository;
-//    public FacturaDataLoader(FacturaRepository facturaRepository) {
-//        this.facturaRepository = facturaRepository;
-//    }
-//
-//    @Override
-//    public void run(String... args) throws Exception {
-//
-//        Factura factura1 = new Factura();
-//        factura1.setPrecio(100);
-//        factura1.setDescripcion("Factura de prueba 1");
-//        factura1.setFecha(LocalDate.now());
-//        facturaRepository.save(factura1);
-//
-//        Factura factura2 = new Factura();
-//        factura2.setPrecio(200);
-//        factura2.setDescripcion("Factura de prueba 2");
-//        factura2.setFecha(LocalDate.now());
-//        facturaRepository.save(factura2);
-//
-//    }
 }

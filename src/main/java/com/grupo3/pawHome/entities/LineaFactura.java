@@ -25,4 +25,12 @@ public class LineaFactura {
     @Column(length=300)
     private String descripcion;
 
+    @ManyToOne
+    @JoinColumn(name = "factura_id", referencedColumnName = "id")
+    private Factura factura;
+
+    @ManyToOne
+    @JoinColumn(name = "producto_id", referencedColumnName = "id")
+    private Producto producto;
+
 }
