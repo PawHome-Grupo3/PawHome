@@ -37,5 +37,8 @@ public class Producto {
     private Categoria categoria;
 
     @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<Tarifa> tarifa;
+    private List<Tarifa> tarifas;
+
+    @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Talla> tallas;
 }
