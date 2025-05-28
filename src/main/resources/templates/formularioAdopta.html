@@ -3,7 +3,7 @@
       layout:decorate="~{layouts/layout.html}">
 <head>
   <title>Formulario para adoptar</title>
-  <link rel="stylesheet" th:href="@{/css/formularioAdopta.css}"/>
+  <link rel="stylesheet" th:href="@{/css/formularios.css}"/>
 </head>
 <body>
 <section class="mb-5">
@@ -12,7 +12,7 @@
     <form class="row g-3">
       <fieldset class="col-md-6">
         <div class="itemSeleccion">
-          <legend class="fw-bold">DATOS DEL ADOPTANTE:</legend>
+          <legend class="fw-bold"><strong>DATOS DEL ADOPTANTE:</strong></legend>
           <br>
           <label for="nombreAdoptante" class="form-label">Nombre completo: <span
                   style="color: red">*</span></label>
@@ -105,7 +105,7 @@
     <form class="row g-3">
       <fieldset class="col-md-6">
         <div class="itemSeleccion">
-          <legend class="fw-bold">DATOS DE LA ADOPCIÓN:</legend>
+          <legend class="fw-bold"><strong> DATOS DE LA ADOPCIÓN:</strong></legend>
           <br>
 
           <div class="itemSeleccion">
@@ -147,13 +147,69 @@
             </label>
             <input type="text" id="caracteristicasMascota" class="form-control labelForm" required>
           </div>
+
           <div class="itemSeleccion">
-            <label for="caracteristicasMascota" class="form-label">
-              ¿Qué características busca en una mascota?</span>
+            <label for="experienciasMascota" class="form-label">
+              ¿Tienes experiencia previa con animales? Explica brevemente: </span>
             </label>
-            <input type="text" id="caracteristicasMascota" class="form-control labelForm" required>
+            <input type="text" id="experienciasMascota" class="form-control labelForm" required>
           </div>
 
+          <div class="itemSeleccion">
+            <label for="tiempoMascota" class="form-label">
+              ¿Cuánto tiempo estará solo el animal al día? </span>
+            </label>
+            <input type="text" id="tiempoMascota" class="form-control labelForm" required>
+          </div>
 
+          <div class="itemSeleccion">
+            <label for="vidaMascota" class="form-label">¿Dónde vivirá el animal?<span
+                    style="color: red">*</span></label>
+            <select id="vidaMascota" class="form-select labelForm" required>
+              <option value="" disabled selected>-Elija una opción-</option>
+              <option>Interior</option>
+              <option>Exterior</option>
+              <option>Ambas</option>
+            </select>
+          </div>
+
+          <div class="itemSeleccion">
+            <label for="veterinarioMascota" class="form-label">¿Tienes un veterinario de confianza?<span
+                    style="color: red">*</span></label>
+            <select id="veterinarioMascota" class="form-select labelForm" required>
+              <option value="" disabled selected>-Elija una opción-</option>
+              <option>Sí</option>
+              <option>No</option>
+            </select>
+          </div>
+
+          <div class="itemSeleccion">
+            <label for="visitasMascota" class="form-label">¿Autorizas visitas de seguimiento?<span
+                    style="color: red">*</span></label>
+            <select id="visitasMascota" class="form-select labelForm" required>
+              <option value="" disabled selected>-Elija una opción-</option>
+              <option>Sí</option>
+              <option>No</option>
+            </select>
+          </div>
+
+          <br>
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+          <div class="compromiso mt-4">
+            <p><strong>Compromiso:</strong></p>
+            <p class="fst-italic">
+              Declaro que los datos proporcionados son verídicos y me comprometo a brindar los cuidados necesarios al animal adoptado, respetando sus necesidades físicas, emocionales y médicas.
+            </p>
+
+            <div class="mb-3">
+              <label for="firma" class="form-label">Firma:</label>
+              <textarea id="firma" class="form-control" rows="3" placeholder="Escribe tu nombre completo" required></textarea>
+            </div>
+
+            <div class="mb-3">
+              <label for="fecha" class="form-label">Fecha:</label>
+              <input type="date" id="fecha" class="form-control" required>
+            </div>
+          </div>
 
           <hr class="mx-auto w-100 border-2 opacity-50">
