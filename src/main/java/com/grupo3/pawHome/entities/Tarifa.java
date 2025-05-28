@@ -24,6 +24,8 @@ public class Tarifa {
 
     private String descripcion;
 
+    private int cantidad;
+
     @Column(name = "precio_unitario")
     private double precioUnitario;
 

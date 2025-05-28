@@ -18,7 +18,9 @@ public class Categoria {
   @GeneratedValue(strategy= GenerationType.IDENTITY)
   private int id;
 
-  private String nombre;
+  private String talla;
+
+  private int stock;
 
   @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
   private List<Producto> productos;

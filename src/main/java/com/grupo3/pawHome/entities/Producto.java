@@ -23,6 +23,15 @@ public class Producto {
 
     private String descripcion;
 
+    @Column(name = "ruta_imagen1")
+    private String rutaImagen1;
+
+    @Column(name = "ruta_imagen2")
+    private String rutaImagen2;
+
+    @Column(name = "ruta_imagen3")
+    private String rutaImagen3;
+
     @ManyToOne
     @JoinColumn(name = "categoria_id", referencedColumnName = "id")
     private Categoria categoria;
