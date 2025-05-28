@@ -7,6 +7,7 @@ import com.grupo3.pawHome.repositories.ProductoRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductoService {
@@ -20,4 +21,6 @@ public class ProductoService {
 
     public List<Producto> findAll() { return productoRepository.findAll(); }
     public List<Producto> findByCategoria(Categoria categoria) { return productoRepository.findByCategoria(categoria);}
+
+    public Optional<Producto> findById(int id) { return productoRepository.findById(id); }
 }

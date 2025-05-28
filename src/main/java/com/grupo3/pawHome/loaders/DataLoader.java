@@ -147,6 +147,24 @@ public class DataLoader implements CommandLineRunner {
         t5.setProducto(p2);
         tallaRepository.save(t5);
 
+        Talla t6 = new Talla();
+        t6.setStock(10);
+        t6.setTallaje("unica");
+        t6.setProducto(p3);
+        tallaRepository.save(t6);
+
+        Talla t7 = new Talla();
+        t7.setStock(12);
+        t7.setTallaje("unica");
+        t7.setProducto(p4);
+        tallaRepository.save(t7);
+
+        Talla t8 = new Talla();
+        t8.setStock(15);
+        t8.setTallaje("unica");
+        t8.setProducto(p5);
+        tallaRepository.save(t8);
+
         Tarifa ta1 = new Tarifa();
         ta1.setProducto(p1);
         ta1.setCantidad(4);
