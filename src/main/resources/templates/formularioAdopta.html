@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout.html}">
+<head>
+  <title>Formulario para adoptar</title>
+  <link rel="stylesheet" th:href="@{/css/formularioAdopta.css}"/>
+</head>
+<body>
+<section class="mb-5">
+  <h2 class="text-success-emphasis fw-bold display-5 my-4 text-center">Adopta a una de nuestras mascotas</h2>
+  <div class="formContainer">
+    <form class="row g-3">
+      <fieldset class="col-md-6">
+        <div class="itemSeleccion">
+          <legend class="fw-bold">DATOS DEL ADOPTANTE:</legend>
+          <br>
+          <label for="nombreAdoptante" class="form-label">Nombre completo: <span
+                  style="color: red">*</span></label>
+          <input type="text" id="nombreAdoptante" class="form-control labelForm"
+                 placeholder="-Por favor introduzca su nombre completo-" required>
+        </div>
+
+        <div class="itemSeleccion">
+          <label for="adoptanteDNI" class="form-label">DNI: <span
+                  style="color: red">*</span></label>
+          <input type="text" id="adoptanteDNI" class="form-control labelForm"
+                 placeholder="-Por favor, introduzca su DNI-" required>
+        </div>
+
+        <div class="itemSeleccion">
+          <label for="edadAdoptante" class="form-label">Edad: <span
+                  style="color: red">*</span></label>
+          <input type="text" id="edadAdoptante" class="form-control labelForm"
+                 placeholder="-Por favor, introduzca su edad (Obligatorio +18)-" required>
+        </div>
+
+        <div class="itemSeleccion">
+          <label for="telefonoAdoptante" class="form-label">Teléfono: <span
+                  style="color: red">*</span></label>
+          <input type="text" id="telefonoAdoptante" class="form-control labelForm"
+                 placeholder="-Por favor, introduzca su teléfono-" required>
+        </div>
+
+        <div class="itemSeleccion">
+          <label for="correoAdoptante" class="form-label">Correo: <span
+                  style="color: red">*</span></label>
+          <input type="text" id="correoAdoptante" class="form-control labelForm"
+                 placeholder="-Por favor, introduzca su correo electrónico" required>
+        </div>
+
+        <div class="itemSeleccion">
+          <label for="direccionAdoptante" class="form-label">Dirección: <span
+                  style="color: red">*</span></label>
+          <input type="text" id="direccionAdoptante" class="form-control labelForm"
+                 placeholder="-Por favor, introduzca su dirección" required>
+        </div>
+
+        <div class="itemSeleccion">
+          <label for="ocupacionAdoptante" class="form-label">Ocupación: <span
+                  style="color: red">*</span></label>
+          <select id="ocupacionAdoptante" class="form-select labelForm" required>
+            <option value="" disabled selected>-Por favor, elige una opción-</option>
+            <option>En situación de desempleo</option>
+            <option>Trabajador</option>
+          </select>
+        </div>
+
+        <div class="itemSeleccion">
+          <label for="animalesAdoptante" class="form-label">¿Tiene otros animales? En el caso de que los tenga, especifique cuántos y cuáles<span
+                  style="color: red">*</span></label>
+          <select id="animalesAdoptante" class="form-select labelForm" required>
+            <option value="" disabled selected>-Elija una opción-</option>
+            <option>Sí</option>
+            <option>No</option>
+            <label for="mensajeExtra" class="form-label">--</label>
+            <input type="text" id="mensajeExtra" class="form-control labelForm">
+          </select>
+        </div>
+
+        <div class="itemSeleccion">
+          <label for="animalesAdoptante" class="form-label">¿Todas las personas de su unidad familiar están de acuerdo con la adopción?<span
+                  style="color: red">*</span></label>
+          <select id="animalesAdoptante" class="form-select labelForm" required>
+            <option value="" disabled selected>-Elija una opción-</option>
+            <option>Sí</option>
+            <option>No</option>
+          </select>
+        </div>
+
+        <div class="itemSeleccion">
+          <label for="hijosAdoptante" class="form-label">¿Tiene hijos? En el caso de que los tenga, especifique cuántos y de qué edades<span
+                  style="color: red">*</span></label>
+          <select id="hijosAdoptante" class="form-select labelForm" required>
+            <option value="" disabled selected>-Elija una opción-</option>
+            <option>Sí</option>
+            <option>No</option>
+            <label for="mensajeExtra" class="form-label">--</label>
+            <input type="text" id="mensajeExtra" class="form-control labelForm">
+          </select>
+        </div>
+</section>
+
+<section class="mb-5">
+  <div class="formContainer">
+    <form class="row g-3">
+      <fieldset class="col-md-6">
+        <div class="itemSeleccion">
+          <legend class="fw-bold">DATOS DE LA ADOPCIÓN:</legend>
+          <br>
+
+          <div class="itemSeleccion">
+            <label for="seleccionAdoptante" class="form-label">¿Prefiere adoptar un perro o un gato?<span
+                    style="color: red">*</span></label>
+            <select id="seleccionAdoptante" class="form-select labelForm" required>
+              <option value="" disabled selected>-Elija una opción-</option>
+              <option>Perro</option>
+              <option>Gato</option>
+              <option>Indiferente</option>
+            </select>
+          </div>
+
+          <div class="itemSeleccion">
+            <label for="tamañoMascota" class="form-label">Tamaño preferido del animal<span
+                    style="color: red">*</span></label>
+            <select id="tamañoMascota" class="form-select labelForm" required>
+              <option value="" disabled selected>-Elija una opción-</option>
+              <option>Pequeño</option>
+              <option>Mediano</option>
+              <option>Grande</option>
+            </select>
+          </div>
+
+          <div class="itemSeleccion">
+            <label for="sexoMascota" class="form-label">¿De qué sexo lo prefiere?<span
+                    style="color: red">*</span></label>
+            <select id="sexoMascota" class="form-select labelForm" required>
+              <option value="" disabled selected>-Elija una opción-</option>
+              <option>Hembra</option>
+              <option>Macho</option>
+              <option>Indiferente</option>
+            </select>
+          </div>
+
+          <div class="itemSeleccion">
+            <label for="caracteristicasMascota" class="form-label">
+              ¿Qué características busca en una mascota?</span>
+            </label>
+            <input type="text" id="caracteristicasMascota" class="form-control labelForm" required>
+          </div>
+          <div class="itemSeleccion">
+            <label for="caracteristicasMascota" class="form-label">
+              ¿Qué características busca en una mascota?</span>
+            </label>
+            <input type="text" id="caracteristicasMascota" class="form-control labelForm" required>
+          </div>
+
+
+
+          <hr class="mx-auto w-100 border-2 opacity-50">

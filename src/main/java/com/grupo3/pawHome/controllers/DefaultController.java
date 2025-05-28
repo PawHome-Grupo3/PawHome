@@ -240,9 +240,9 @@ public class DefaultController {
         return "Adopta";
     }
 
-    @GetMapping("/colabora/adopta/formulario.adopta")
+    @GetMapping("/colabora/adopta/formularioAdopta")
     public String mostrarformularioadopta()
-    {return "Formulario.adopta";}
+    {return "formularioAdopta";}
 
     @GetMapping("/colabora/paseosolidario")
     public String mostrarColaboraPaseoSolidario()
