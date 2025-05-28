@@ -20,7 +20,6 @@ public class ProductoController {
     public String mostrarTienda(Model model) {
         List<Categoria> categorias = categoriaService.findAll();
         model.addAttribute("categorias", categorias);
-
-        return "tienda"; // Carga /templates/tienda.html
+        return "tienda";
     }
 }

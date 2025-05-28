@@ -26,9 +26,7 @@ public class AnimalesController {
     @GetMapping("/nuestrosAnimales")
     public String mostrarNuestrosAnimales(Model model,
                                           @RequestParam("page") Optional<Integer> page,
-                                          @RequestParam("size") Optional<Integer> size,
-                                          @RequestParam("filtro") Optional<String> orden,
-                                          @RequestParam("sentido") Optional<String> sentido)
+                                          @RequestParam("size") Optional<Integer> size)
     {
 
         int currentPage = page.orElse(1);
@@ -37,6 +35,7 @@ public class AnimalesController {
         Page<Animales> animalPage = animalesService.findPaginated(PageRequest.of(currentPage - 1, pageSize));
 
         model.addAttribute("animalPage", animalPage);
+        model.addAttribute("animales", animalPage.getContent());
 
         int totalPages = animalPage.getTotalPages();
         if (totalPages > 0) {

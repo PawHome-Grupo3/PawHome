@@ -92,7 +92,8 @@
 
 		<div class="row m-3 justify-content-center">
 			<div class="col-12 contenedorCards">
-				<div class="card cardAnimal" th:each="animal : ${animalPage.getContent()}">
+				<!--/* @thymesVar id="animal" type="com.grupo3.pawHome.entities.Animales" */-->
+				<div th:each="animal : ${animales}" class="card cardAnimal">
 					<div class="card_image">
 						<img class="imgCardAnimal" th:src="${animal.rutaImg1}" alt="foto de perro disponible para adoptar"></div>
 					<div class="card_content d-flex justify-content-center card_contentAnimal">
