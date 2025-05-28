@@ -29,7 +29,4 @@ public class Producto {
 
     @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Tarifa> tarifa;
-
-    @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<LineaFactura> lineaFacturas;
 }

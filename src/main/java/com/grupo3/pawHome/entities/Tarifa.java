@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Getter
 @Setter
@@ -35,4 +36,7 @@ public class Tarifa {
     @ManyToOne
     @JoinColumn(name = "producto_id", referencedColumnName = "id")
     private Producto producto;
+
+    @OneToMany(mappedBy = "tarifa", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<LineaFactura> lineaFacturas;
 }

@@ -30,7 +30,6 @@ public class LineaFactura {
     private Factura factura;
 
     @ManyToOne
-    @JoinColumn(name = "producto_id", referencedColumnName = "id")
-    private Producto producto;
-
+    @JoinColumn(name = "tarifa_id", referencedColumnName = "id")
+    private Tarifa tarifa;
 }
