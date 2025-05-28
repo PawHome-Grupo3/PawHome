@@ -4,7 +4,6 @@ import com.grupo3.pawHome.entities.Animales;
 import com.grupo3.pawHome.services.AnimalesService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,25 +22,6 @@ public class AnimalesController {
     public AnimalesController(AnimalesService animalesService) {
         this.animalesService = animalesService;
     }
-
-//    @GetMapping("/nuestrosAnimales")
-//    public String mostrarNuestrosAnimalesAll(Model model) {
-//        return mostrarNuestrosAnimalesOnePage(model, 1);
-//    }
-//
-//    @GetMapping("/nuestrosAnimales/{pageNumber}")
-//    public String mostrarNuestrosAnimalesOnePage(Model model, @PathVariable("pageNumber") int currentPage) {
-//        Page<Animales> page = animalesService.findPage(currentPage);
-//        int totalPages = page.getTotalPages();
-//        long totalItems = page.getTotalElements();
-//        List<Animales> animales = page.getContent();
-//
-//        model.addAttribute("animales", animales);
-//        model.addAttribute("totalPages", totalPages);
-//        model.addAttribute("totalElements", totalItems);
-//        model.addAttribute("currentPage", currentPage);
-//        return "nuestrosAnimales";
-//    }
 
     @GetMapping("/nuestrosAnimales")
     public String mostrarNuestrosAnimales(Model model,

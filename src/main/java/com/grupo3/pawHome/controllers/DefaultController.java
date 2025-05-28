@@ -84,13 +84,6 @@ public class DefaultController {
     @GetMapping("/listaCarrito")
     public String mostrarListaCarrito() { return "listaCarrito"; }
 
-    // Metodo para mostrar pagina de inicio
-    @GetMapping("/tienda")
-    public String mostrarTienda()
-    {
-        return "tienda"; // Carga /templates/tienda.html
-    }
-
     // Metodo para mostrar la pagina de la guarderia
     @GetMapping("/guarderia")
     public String mostrarGuarderia()
