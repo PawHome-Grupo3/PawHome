@@ -11,25 +11,17 @@ import lombok.Setter;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name="linea_factura")
-public class LineaFactura {
+public class Talla {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(nullable = false)
     private int id;
 
-    private String nombre;
+    private String tallaje;
 
-    private int cantidad;
-
-    @Column(length=300)
-    private String descripcion;
+    private int stock;
 
     @ManyToOne
-    @JoinColumn(name = "factura_id", referencedColumnName = "id")
-    private Factura factura;
-
-    @ManyToOne
-    @JoinColumn(name = "tarifa_id", referencedColumnName = "id")
-    private Tarifa tarifa;
+    @JoinColumn(name = "producto_id", referencedColumnName = "id")
+    private Producto producto;
 }
