@@ -9,43 +9,6 @@
 <section layout:fragment="content">
     <div th:replace="~{fragments/navTienda :: navTiendaFragment}"></div>
 
-<table>
-    <thead>
-    <tr>
-        <th>Producto</th>
-        <th>Talla</th>
-        <th>Cantidad</th>
-        <th>Precio Unitario</th>
-        <th>Subtotal</th>
-        <th>Acción</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="item : ${carrito}">
-        <td th:text="${item.producto.nombre}"></td>
-        <td th:text="${item.talla.tallaje}"></td>
-        <td th:text="${item.cantidad}"></td>
-        <td th:text="${item.precioUnitario} + ' €'"></td>
-        <td th:text="${item.precioUnitario * item.cantidad} + ' €'"></td>
-        <td>
-            <form th:action="@{/tienda/carrito/eliminar}" method="post">
-                <input type="hidden" name="productoId" th:value="${item.producto.id}"/>
-                <input type="hidden" name="tallaId" th:value="${item.talla.id}"/>
-                <button type="submit">Eliminar</button>
-            </form>
-        </td>
-    </tr>
-    </tbody>
-</table>
-
-<h3>Total: <span th:text="${total} + ' €'"></span></h3>
-
-<form th:action="@{/tienda/carrito/vaciar}" method="post">
-    <button type="submit">Vaciar Carrito</button>
-</form>
-
-    <a href="/tienda">Seguir comprando</a>
-
     <section class="" style="background-color: #f4faf8;">
         <div class="container py-5">
             <div class="row d-flex justify-content-center align-items-center">
@@ -68,6 +31,7 @@
                                                 <img th:src="${item.producto.rutaImagen1}"
                                                      class="img-fluid rounded-3" alt="Imagen del producto">
                                             </a>
+
                                             <div class="col-12 col-md-2 text-center py-2 px-1">
                                                 <h6 class="text-muted"
                                                     th:utext="${item.producto.categoria.nombre}"></h6>
@@ -120,7 +84,7 @@
                                                 <h6 th:text="${#numbers.formatDecimal(item.precioUnitario * item.cantidad, 1, 2)} + ' €'"></h6>
                                             </div>
 
-                                            <div class="col-12 col-md-1 py-2" style="justify-items: center">
+                                            <div class="col-12 col-md-1 py-2 px-1" style="justify-items: center">
                                                 <form th:action="@{/tienda/carrito/eliminar}" method="post"
                                                       th:id="'form-eliminar-' + ${item.producto.id} + '-' + ${item.talla.id}">
                                                     <input type="hidden" name="productoId"
