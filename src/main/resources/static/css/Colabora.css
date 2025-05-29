@@ -5,8 +5,8 @@
     box-sizing: border-box;
 }
 
-/* --- FONDO DIFUMINADO --- */
-body::before {
+/* --- FONDO ESPECÍFICO PARA ESTA PÁGINA --- */
+.colabora-page::before {
     content: "";
     position: fixed;
     inset: 0;
@@ -16,14 +16,14 @@ body::before {
     z-index: -10;
 }
 
-/* --- ESTRUCTURA GENERAL --- */
-body {
+/* --- CONTENEDOR DE LA PÁGINA --- */
+.colabora-page {
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
     font-family: sans-serif;
-    background-color: #fdfdfd;
-    overflow-x: hidden;
+    position: relative;
+    padding: 40px 20px;
 }
 
 /* --- CONTENEDOR PRINCIPAL --- */
@@ -32,28 +32,32 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: 20px;
     width: 100%;
     max-width: 1200px;
-    padding: 300px 100px 300px 100px;
-    position: relative;
-    z-index: 1;
+    padding: 50px 20px;
     margin: 0 auto;
 }
 
 /* --- TEXTOS --- */
 h1 {
     text-align: center;
-    font-weight: bold;
-    color: rgb(27, 125, 85);
-    margin: 20px 0 10px 0;
+    font-weight: normal;
+    color: rgb(13, 58, 39);
+    margin: 0 0 20px 0;
+    font-size: 3rem;
+    font-family: 'Arial', sans-serif;
+    font-style: italic;
+    padding-top: 100px;
 }
 
 h2 {
     text-align: center;
     font-weight: bold;
-    color: rgb(27, 125, 85);
+    color: rgb(13, 58, 39);
     margin: 20px 0 10px 0;
+    font-size: 2rem;
 }
 
 /* --- ENLACES --- */
@@ -78,10 +82,17 @@ a:hover {
 
 .fila.abajo .button:first-child {
     transform: translateX(-20px);
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
 }
-
 .fila.abajo .button:last-child {
     transform: translateX(20px);
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+.fila.abajo .button:first-child:hover {
+    transform: translateX(-20px) translateY(-4px);
+}
+.fila.abajo .button:last-child:hover {
+    transform: translateX(20px) translateY(-4px);
 }
 
 /* --- BOTONES --- */
