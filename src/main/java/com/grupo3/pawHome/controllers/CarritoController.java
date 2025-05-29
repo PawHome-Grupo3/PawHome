@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -40,7 +42,7 @@ public class CarritoController {
                 .mapToDouble(item -> item.getCantidad() * item.getPrecioUnitario())
                 .sum();
 
-        model.addAttribute("total", total);
+        model.addAttribute("total", new BigDecimal(total).setScale(2, RoundingMode.HALF_UP).toPlainString());
         return "carrito"; // Thymeleaf template
     }
 
@@ -85,6 +87,35 @@ public class CarritoController {
         List<ItemCarrito> carrito = getCarrito(session);
         carrito.removeIf(item -> item.getProducto().getId() == productoId &&
                 item.getTalla().getId() == tallaId);
+        session.setAttribute("carrito", carrito);
+        return "redirect:/tienda/carrito";
+    }
+
+    @PostMapping("/tienda/carrito/actualizar")
+    public String actualizarCantidad(@RequestParam("productoId") int productoId,
+                                     @RequestParam("tallaId") int tallaId,
+                                     @RequestParam("cantidad") int cantidad,
+                                     HttpSession session) {
+        List<ItemCarrito> carrito = getCarrito(session);
+
+        // Si cantidad es 0, se elimina del carrito
+        if (cantidad <= 0) {
+            carrito.removeIf(item -> item.getProducto().getId() == productoId && item.getTalla().getId() == tallaId);
+        } else {
+            for (ItemCarrito item : carrito) {
+                if (item.getProducto().getId() == productoId && item.getTalla().getId() == tallaId) {
+                    // Verifica stock si es necesario
+                    if (cantidad <= item.getTalla().getStock()) {
+                        item.setCantidad(cantidad);
+                    } else {
+                        // Opcional: puedes enviar un error o limitar al stock máximo
+                        item.setCantidad(item.getTalla().getStock());
+                    }
+                    break;
+                }
+            }
+        }
+
         session.setAttribute("carrito", carrito);
         return "redirect:/tienda/carrito";
     }

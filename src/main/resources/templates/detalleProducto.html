@@ -75,8 +75,27 @@
                 </div>
               </div>
             </div>
-            <a href="#" class="btn btn-warning shadow-0"> Comprar </a>
-            <a href="#" class="btn btn-primary shadow-0"> <i class="me-1 fa fa-shopping-basket"></i> Añadir al carrito </a>
+            <div class="row">
+              <div class="col-4">
+                <form id="form-anadir-carrito" th:action="@{/tienda/carrito/agregar}" method="post" class="w-100">
+                  <input type="hidden" name="productoId" th:value="${producto.getId()}" />
+                  <input type="hidden" name="tallaId" id="input-tallaId" value="" />
+                  <input type="hidden" name="cantidad" id="input-cantidad" value="" />
+                  <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                  <button type="submit" class="custom-btn btn btnHazteVoluntario w-100 align-content-center">Comprar</button>
+                </form>
+              </div>
+
+              <div class="col-4">
+                <form th:action="@{/tienda/carrito/agregar}" method="post" class="w-100">
+                  <input type="hidden" name="productoId" th:value="${producto.getId()}" />
+                  <input type="hidden" name="tallaId" th:value="${producto.getTallas().getFirst().getId()}" />
+                  <input type="hidden" name="cantidad" value="1" />
+                  <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                  <button type="submit" class="custom-btn btn btnHazteVoluntario w-100 align-content-center">Añadir al carrito</button>
+                </form>
+              </div>
+            </div>
           </div>
         </main>
       </div>
@@ -201,6 +220,43 @@
       });
     });
   </script>
+
+  <script>
+    function actualizarCantidad(productoId, tallaId, cambio) {
+      const inputId = `quantityInput_${productoId}_${tallaId}`;
+      const input = document.getElementById(inputId);
+      let cantidadActual = parseInt(input.value) || 1;
+      const nuevaCantidad = cantidadActual + cambio;
+
+      if (nuevaCantidad < 1) return;
+
+      input.value = nuevaCantidad;
+
+      const form = document.getElementById(`formCantidad${productoId}${tallaId}`);
+
+      // También actualizamos el input hidden "cantidad" si existiera separado
+      const cantidadInput = form.querySelector('input[name="cantidad"]');
+      if (cantidadInput) {
+        cantidadInput.value = nuevaCantidad;
+      }
+
+      form.submit();
+    }
+  </script>
+
+  <script>
+    document.getElementById('form-anadir-carrito').addEventListener('submit', function(event) {
+      const tallaSelect = document.getElementById('talla-select');
+      const cantidadInput = document.getElementById('quantity-input');
+
+      const tallaIdHidden = document.getElementById('input-tallaId');
+      const cantidadHidden = document.getElementById('input-cantidad');
+
+      tallaIdHidden.value = tallaSelect.value;
+      cantidadHidden.value = cantidadInput.value;
+    });
+  </script>
+
 </section>
 </body>
 </html>
