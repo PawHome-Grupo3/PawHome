@@ -9,6 +9,43 @@
 <section layout:fragment="content">
     <div th:replace="~{fragments/navTienda :: navTiendaFragment}"></div>
 
+<table>
+    <thead>
+    <tr>
+        <th>Producto</th>
+        <th>Talla</th>
+        <th>Cantidad</th>
+        <th>Precio Unitario</th>
+        <th>Subtotal</th>
+        <th>Acción</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="item : ${carrito}">
+        <td th:text="${item.producto.nombre}"></td>
+        <td th:text="${item.talla.tallaje}"></td>
+        <td th:text="${item.cantidad}"></td>
+        <td th:text="${item.precioUnitario} + ' €'"></td>
+        <td th:text="${item.precioUnitario * item.cantidad} + ' €'"></td>
+        <td>
+            <form th:action="@{/tienda/carrito/eliminar}" method="post">
+                <input type="hidden" name="productoId" th:value="${item.producto.id}"/>
+                <input type="hidden" name="tallaId" th:value="${item.talla.id}"/>
+                <button type="submit">Eliminar</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<h3>Total: <span th:text="${total} + ' €'"></span></h3>
+
+<form th:action="@{/tienda/carrito/vaciar}" method="post">
+    <button type="submit">Vaciar Carrito</button>
+</form>
+
+<a href="/tienda">Seguir comprando</a>
+
     <section class="" style="background-color: #f4faf8;">
         <div class="container py-5">
             <div class="row d-flex justify-content-center align-items-center">
@@ -74,8 +111,8 @@
                                                     <i class="fas fa-minus"></i>
                                                 </button>
 
-                                                <input id="form2" min="0" name="quantity" value="1" type="number"
-                                                       class="form-control form-control-sm" />
+                                                <label for="form2"></label><input id="form2" min="0" name="quantity" value="1" type="number"
+                                                                                  class="form-control form-control-sm" />
 
                                                 <button data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
                                                         onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
@@ -108,8 +145,8 @@
                                                     <i class="fas fa-minus"></i>
                                                 </button>
 
-                                                <input id="form3" min="0" name="quantity" value="1" type="number"
-                                                       class="form-control form-control-sm" />
+                                                <label for="form3"></label><input id="form3" min="0" name="quantity" value="1" type="number"
+                                                                                  class="form-control form-control-sm" />
 
                                                 <button data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
                                                         onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
@@ -142,8 +179,8 @@
                                                     <i class="fas fa-minus"></i>
                                                 </button>
 
-                                                <input id="form4" min="0" name="quantity" value="1" type="number"
-                                                       class="form-control form-control-sm" />
+                                                <label for="form4"></label><input id="form4" min="0" name="quantity" value="1" type="number"
+                                                                                  class="form-control form-control-sm" />
 
                                                 <button data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
                                                         onclick="this.parentNode.querySelector('input[type=number]').stepUp()">

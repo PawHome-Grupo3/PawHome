@@ -32,7 +32,14 @@
 
               <div class="d-flex justify-content-center flex-row w-100 flex-nowrap align-items-stretch gap-1">
                 <a th:href="@{/tienda/producto/{id}(id=${producto.getId()})}" class="custom-btn btn btnHazteVoluntario w-100 align-content-center">Más Info</a>
-                <a th:if="${producto.getTallas()?.size() == 1 && producto.getTallas().getFirst().getTallaje().equalsIgnoreCase('unica')}" href="/tienda" class="custom-btn btn btnHazteVoluntario w-100 align-content-center">Añadir</a>
+                <form th:if="${producto.getTallas()?.size() == 1 && producto.getTallas().getFirst().getTallaje().equalsIgnoreCase('unica')}"
+                      th:action="@{/tienda/carrito/agregar}" method="post" class="w-100">
+                  <input type="hidden" name="productoId" th:value="${producto.getId()}" />
+                  <input type="hidden" name="tallaId" th:value="${producto.getTallas().getFirst().getId()}" />
+                  <input type="hidden" name="cantidad" value="1" />
+                  <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                  <button type="submit" class="custom-btn btn btnHazteVoluntario w-100 align-content-center">Añadir</button>
+                </form>
                 <div th:unless="${producto.getTallas().getFirst().getTallaje().equalsIgnoreCase('unica')}" class="dropdown w-100 align-content-center justify-content-center">
                   <button class="custom-btn btn btnHazteVoluntario w-100 align-content-center"
                           type="button" id="tallaDropdown" data-bs-toggle="dropdown" aria-expanded="false">Escoge Talla</button>
