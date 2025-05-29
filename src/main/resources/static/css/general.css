@@ -481,6 +481,18 @@ clamp(10px, 2vw, 40px);
 .icon-hover:hover i {
     color: #3b71ca !important;
 }
+
+.item-thumb {
+    cursor: pointer;
+    transition: border-color 0.3s;
+}
+.item-thumb:hover {
+    border-color: #ff9800;
+}
+.thumb-selected {
+    border-color: #ff9800 !important;
+    box-shadow: 0 0 5px #ff9800;
+}
 /*////////////////////////////
 /    FIN DETALLE_PRODUCTO    /
 ////////////////////////////*/

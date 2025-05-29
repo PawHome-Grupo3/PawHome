@@ -86,6 +86,7 @@ public class DataLoader implements CommandLineRunner {
         p1.setNombre("Collar");
         p1.setDescripcion("Dale a tu peludo amigo el mejor look con nuestro collar para perro, diseñado para brindar seguridad, confort y un toque de estilo único.");
         p1.setRutaImagen1("/images/collar.png");
+        p1.setRutaImagen2("/images/Camiseta-azul.png");
         p1.setCategoria(c1);
         productoRepository.save(p1);
 
@@ -167,11 +168,51 @@ public class DataLoader implements CommandLineRunner {
 
         Tarifa ta1 = new Tarifa();
         ta1.setProducto(p1);
-        ta1.setCantidad(4);
+        ta1.setCantidad(1);
         ta1.setPrecioUnitario(18.20);
         ta1.setFechaDesde(LocalDate.now());
         ta1.setFechaHasta(LocalDate.of(2026, 1, 1));
         tarifaRepository.save(ta1);
+
+        Tarifa ta2 = new Tarifa();
+        ta2.setProducto(p1);
+        ta2.setCantidad(1);
+        ta2.setPrecioUnitario(30.20);
+        ta2.setFechaDesde(LocalDate.of(2024, 1, 1));
+        ta2.setFechaHasta(LocalDate.of(2025, 1, 1));
+        tarifaRepository.save(ta2);
+
+        Tarifa ta6 = new Tarifa();
+        ta6.setProducto(p2);
+        ta6.setCantidad(1);
+        ta6.setPrecioUnitario(18.20);
+        ta6.setFechaDesde(LocalDate.now());
+        ta6.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(ta6);
+
+        Tarifa ta3 = new Tarifa();
+        ta3.setProducto(p3);
+        ta3.setCantidad(1);
+        ta3.setPrecioUnitario(18.20);
+        ta3.setFechaDesde(LocalDate.now());
+        ta3.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(ta3);
+
+        Tarifa ta4 = new Tarifa();
+        ta4.setProducto(p4);
+        ta4.setCantidad(1);
+        ta4.setPrecioUnitario(18.20);
+        ta4.setFechaDesde(LocalDate.now());
+        ta4.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(ta4);
+
+        Tarifa ta5 = new Tarifa();
+        ta5.setProducto(p5);
+        ta5.setCantidad(1);
+        ta5.setPrecioUnitario(18.20);
+        ta5.setFechaDesde(LocalDate.now());
+        ta5.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(ta5);
 
         Animales a1 = new Animales();
         a1.setNombre("Firulais");
