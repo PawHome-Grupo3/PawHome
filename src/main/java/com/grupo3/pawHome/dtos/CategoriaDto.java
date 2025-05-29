@@ -18,5 +18,4 @@ public class CategoriaDto implements Serializable {
     private String procesarNombre(String nombre) {
         return nombre.replaceAll("\\s+", "").toLowerCase();
     }
-
 }
