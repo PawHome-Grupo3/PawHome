@@ -1,86 +1,8 @@
-/* --- CONTENEDOR PRINCIPAL --- */
-.container-vista {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 40px;
-    width: 100%;
-    padding: 60px 40px;
-    position: relative;
-    z-index: 1;
-}
-
-/* --- FILAS DE BOTONES --- */
-.fila {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 40px;
-    width: 100%;
-    max-width: 1000px;
-}
-
-.fila.arriba .button {
-    transform: translateY(0);
-}
-
-.fila.abajo .button:first-child {
-    transform: translateX(-20px);
-}
-
-.fila.abajo .button:last-child {
-    transform: translateX(20px);
-}
-
-/* --- BOTONES --- */
-.button {
-    background-color: rgba(187, 224, 155, 0.85);
-    width: 220px;
-    padding: 20px 16px;
-    border: none;
-    border-radius: 12px;
-    color: #0b3d2b;
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: bold;
-    text-align: center;
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.button span {
-    display: block;
-    font-size: 0.85rem;
-    margin-top: 6px;
-    color: #1b1b1b;
-    font-weight: normal;
-}
-
-.button:hover {
-    background-color: rgba(27, 125, 85, 0.8);
-    color: white;
-    transform: translateY(-4px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-}
-
-/* --- TEXTO GENERAL --- */
-body {
-        font-family: sans-serif;
-        background-color: #fdfdfd;
-        margin: 0;
-        padding: 0;
-        min-height: 100vh;
-        display: block;
-        position: relative;
-    }
-
-h1, h2 {
-    text-align: center;
-    font-weight: bold;
-    color: rgb(27, 125, 85);
-    margin: 50px 0;
-    margin-top: auto;
-
+/* --- RESET UNIVERSAL --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 /* --- FONDO DIFUMINADO --- */
@@ -94,13 +16,49 @@ body::before {
     z-index: -10;
 }
 
-/* --- RESET GLOBAL --- */
-body, h1, h2, p, span, a {
+/* --- ESTRUCTURA GENERAL --- */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: sans-serif;
+    background-color: #fdfdfd;
+    overflow-x: hidden;
+}
+
+/* --- CONTENEDOR PRINCIPAL --- */
+.container-vista {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+    padding: 300px 100px 300px 100px;
+    position: relative;
+    z-index: 1;
+    margin: 0 auto;
+}
+
+/* --- TEXTOS --- */
+h1 {
+    text-align: center;
+    font-weight: bold;
+    color: rgb(27, 125, 85);
+    margin: 20px 0 10px 0;
+}
+
+h2 {
+    text-align: center;
+    font-weight: bold;
+    color: rgb(27, 125, 85);
+    margin: 20px 0 10px 0;
+}
+
+/* --- ENLACES --- */
+a {
     text-decoration: none;
-    margin-top: 30px;
-    padding-left: 30px;
-    padding-right: 30px;
-    padding: initial;
 }
 
 a:hover {
@@ -108,8 +66,53 @@ a:hover {
     color: #ffffff;
 }
 
-html, body {
-    height: 100%;
+/* --- FILAS DE BOTONES --- */
+.fila {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.fila.abajo .button:first-child {
+    transform: translateX(-20px);
+}
+
+.fila.abajo .button:last-child {
+    transform: translateX(20px);
+}
+
+/* --- BOTONES --- */
+.button {
+    background-color: rgba(187, 224, 155, 0.85);
+    width: 260px;
+    padding: 18px 20px;
+    border: none;
+    border-radius: 12px;
+    color: #0b3d2b;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+}
+
+.button span {
+    display: block;
+    font-size: 1rem;
+    margin-top: 8px;
+    color: #000000;
+}
+
+.button:hover {
+    background-color: rgba(27, 125, 85, 0.8);
+    color: white;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 /* --- RESPONSIVE --- */
