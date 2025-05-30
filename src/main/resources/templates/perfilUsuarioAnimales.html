@@ -15,27 +15,35 @@
 
             <div class="col-md-9 col-lg-10 justify-content-start">
                 <h3 class="text-center mb-2 mt-3">Apadrinamientos Activos:</h3>
-                <div class="row justify-content-center p-3 gap-3">
+                <h2 th:if="${apadrinamientosInactivos == null}" class="text-center mb-1 mt-3">(No tienes Apadrinamientos Activos)</h2>
+                <div th:unless="${apadrinamientosActivos == null}" class="row justify-content-center p-3 gap-3">
                     <div class="col-12 col-md-6 col-lg-3 card cardAnimal p-0"
                          th:each="apadrinamiento : ${apadrinamientosActivos}" style="justify-items: center">
-                        <div class="card_image"><img class="imgCardAnimal" th:src="@{/images/perro1Card.jpg}"
+                        <div class="card_image"><img class="imgCardAnimal" th:src="${apadrinamiento.animal.rutaImg1}"
                                                      alt="foto de perro disponible para adoptar"></div>
                         <div class="card_content d-flex justify-content-center card_contentAnimal">
                             <h2 class="card_title card_titleAnimal" th:utext="${apadrinamiento.animal.nombre}"></h2>
                             <p class="card_tex card_textAnimal">Fecha de renovación: <span
                                     th:utext="${apadrinamiento.fechaRenovacion}"></span></p>
                             <div class="row d-flex justify-content-center flex-nowrap">
-                                <button class="botonesCardAnimal btn card_btn"
-                                        style="width: auto !important; font-size: clamp(10px, 1.2vw, 12px); !important ">
-                                    Cancelar Apadrinamiento
-                                </button>
+                                <form action="/perfil/apadrinamientos/finalizar" method="post">
+                                    <input type="hidden" name="apadrinamientoId" th:value="${apadrinamiento.id}" />
+
+                                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+
+                                    <button type="submit" class="botonesCardAnimal btn card_btn"
+                                            style="width: auto !important; font-size: clamp(10px, 1.2vw, 12px); !important ">
+                                        Cancelar Apadrinamiento
+                                    </button>
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <h3 class="text-center mb-1 mt-3">Apadrinamientos Inactivos:</h3>
-                <div class="row justify-content-center p-3 gap-3">
+                <h2 th:if="${apadrinamientosInactivos == null}" class="text-center mb-1 mt-3">(No tienes Apadrinamientos Inactivos)</h2>
+                <div th:unless="${apadrinamientosInactivos == null}" class="row justify-content-center p-3 gap-3">
                     <div class="col-12 col-md-6 col-lg-3 card cardAnimal p-0"
                          th:each="apadrinamiento : ${apadrinamientosInactivos}" style="justify-items: center;">
                         <div class="card_image"><img class="imgCardAnimal" th:src="${apadrinamiento.animal.rutaImg1}"
@@ -46,10 +54,16 @@
                             <p class="card_tex card_textAnimal">Fecha Baja:
                                 <span th:utext="${apadrinamiento.fechaBaja}"></span></p>
                             <div class="row d-flex justify-content-center flex-nowrap">
-                                <button class="botonesCardAnimal btn card_btn"
-                                        style="width: auto !important; font-size: clamp(10px, 1.2vw, 12px); !important ">
-                                    Reactivar
-                                </button>
+                                <form action="/perfil/apadrinamientos/reactivar" method="post">
+                                    <input type="hidden" name="apadrinamientoId" th:value="${apadrinamiento.id}" />
+
+                                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+
+                                    <button type="submit" class="botonesCardAnimal btn card_btn"
+                                            style="width: auto !important; font-size: clamp(10px, 1.2vw, 12px); !important ">
+                                        Reactivar
+                                    </button>
+                                </form>
                             </div>
                         </div>
                     </div>

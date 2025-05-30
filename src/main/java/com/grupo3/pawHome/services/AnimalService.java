@@ -1,7 +1,7 @@
 package com.grupo3.pawHome.services;
 
-import com.grupo3.pawHome.entities.Animales;
-import com.grupo3.pawHome.repositories.AnimalesRepository;
+import com.grupo3.pawHome.entities.Animal;
+import com.grupo3.pawHome.repositories.AnimalRepository;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
@@ -10,24 +10,24 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class AnimalesService {
-    private final AnimalesRepository animalesRepository;
+public class AnimalService {
+    private final AnimalRepository animalRepository;
 
-    public AnimalesService(AnimalesRepository repository, AnimalesRepository animalesRepository) {
-        this.animalesRepository = animalesRepository;
+    public AnimalService(AnimalRepository animalRepository) {
+        this.animalRepository = animalRepository;
     }
 
-    public List<Animales> findAll() { return animalesRepository.findAll(); }
+    public List<Animal> findAll() { return animalRepository.findAll(); }
 
-    public Optional<Animales> findById(int id) {return animalesRepository.findById(id);
+    public Optional<Animal> findById(int id) {return animalRepository.findById(id);
     }
 
-    public Page<Animales> findPaginated(Pageable pageable) {
+    public Page<Animal> findPaginated(Pageable pageable) {
         int pageSize = pageable.getPageSize();
         int currentPage = pageable.getPageNumber();
         int startItem = currentPage * pageSize;
-        List<Animales> animales = animalesRepository.findAllByAnimalServicio(false);
-        List<Animales> list;
+        List<Animal> animales = animalRepository.findAllByAnimalServicio(false);
+        List<Animal> list;
 
         if (animales.size() < startItem) {
             list = Collections.emptyList();

@@ -1,7 +1,7 @@
 package com.grupo3.pawHome.controllers;
 
-import com.grupo3.pawHome.entities.Animales;
-import com.grupo3.pawHome.services.AnimalesService;
+import com.grupo3.pawHome.entities.Animal;
+import com.grupo3.pawHome.services.AnimalService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
@@ -17,10 +17,10 @@ import java.util.stream.IntStream;
 
 @Controller
 public class AnimalesController {
-    private final AnimalesService animalesService;
+    private final AnimalService animalService;
 
-    public AnimalesController(AnimalesService animalesService) {
-        this.animalesService = animalesService;
+    public AnimalesController(AnimalService animalService) {
+        this.animalService = animalService;
     }
 
     @GetMapping("/nuestrosAnimales")
@@ -31,7 +31,7 @@ public class AnimalesController {
         int currentPage = page.orElse(1);
         int pageSize = size.orElse(5);
 
-        Page<Animales> animalPage = animalesService.findPaginated(PageRequest.of(currentPage - 1, pageSize));
+        Page<Animal> animalPage = animalService.findPaginated(PageRequest.of(currentPage - 1, pageSize));
 
         model.addAttribute("animalPage", animalPage);
         model.addAttribute("animales", animalPage.getContent());
@@ -49,10 +49,10 @@ public class AnimalesController {
 
     @GetMapping("/adopta/{id}")
     public String mostrarPaginaDonacion(@PathVariable("id") int id, Model model) {
-        Optional<Animales> animalOpt = animalesService.findById(id); // o animalRepository.findById(id)
+        Optional<Animal> animalOpt = animalService.findById(id); // o animalRepository.findById(id)
 
         if (animalOpt.isPresent()) {
-            Animales animal = animalOpt.get();
+            Animal animal = animalOpt.get();
             model.addAttribute("animal", animal);
             return "compruebaAdoptaId"; // nombre de la vista Thymeleaf (por ejemplo: templates/dona.html)
         } else {

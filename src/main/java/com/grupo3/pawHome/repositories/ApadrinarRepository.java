@@ -4,9 +4,11 @@ import com.grupo3.pawHome.entities.Apadrinar;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
+import java.util.Set;
 
 @Repository
-public interface ApadrinarRepository extends JpaRepository<Apadrinar, Long> {
-    List<Apadrinar> findByUsuarioId(Long usuarioId);
+public interface ApadrinarRepository extends JpaRepository<Apadrinar, Integer> {
+    Set<Apadrinar> findByUsuarioIdAndFechaBajaIsNull(int usuarioId);
+
+    Set<Apadrinar> findByUsuarioIdAndFechaBajaNotNull(int usuarioId);
 }

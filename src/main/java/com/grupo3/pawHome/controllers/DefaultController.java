@@ -75,15 +75,6 @@ public class DefaultController {
         return "index"; // Carga /templates/index.html
     }
 
-    @GetMapping("/detalleProducto")
-    public String mostrarDetalleProducto()
-    {
-        return "detalleProducto"; // Carga /templates/index.html
-    }
-
-    @GetMapping("/listaCarrito")
-    public String mostrarListaCarrito() { return "listaCarrito"; }
-
     // Metodo para mostrar la pagina de la guarderia
     @GetMapping("/guarderia")
     public String mostrarGuarderia()
@@ -138,13 +129,6 @@ public class DefaultController {
     public String mostrarHorarioMapa()
     {
         return "horariomapa";
-    }
-
-    // Metodo para mostrar la pagina del horario y el mapa
-    @GetMapping("/perfil/informacion")
-    public String mostrarPerfil()
-    {
-        return "perfilUsuario";
     }
 
     @GetMapping("/perfil/editar")
