@@ -9,7 +9,7 @@ import java.time.LocalDate;
 
 @Component
 public class DataLoader implements CommandLineRunner {
-    private final AnimalesRepository animalesRepository;
+    private final AnimalRepository animalRepository;
     private final ApadrinarRepository apadrinarRepository;
     private final UsuarioRepository usuarioRepository;
     private final FacturaRepository facturaRepository;
@@ -19,8 +19,8 @@ public class DataLoader implements CommandLineRunner {
     private final TarifaRepository tarifaRepository;
 
 
-    public DataLoader(AnimalesRepository animalesRepository, ApadrinarRepository apadrinarRepository, UsuarioRepository usuarioRepository, FacturaRepository facturaRepository, ProductoRepository productoRepository, TallaRepository tallaRepository, CategoriaRepository categoriaRepository, TarifaRepository tarifaRepository) {
-        this.animalesRepository = animalesRepository;
+    public DataLoader(AnimalRepository animalRepository, ApadrinarRepository apadrinarRepository, UsuarioRepository usuarioRepository, FacturaRepository facturaRepository, ProductoRepository productoRepository, TallaRepository tallaRepository, CategoriaRepository categoriaRepository, TarifaRepository tarifaRepository) {
+        this.animalRepository = animalRepository;
         this.apadrinarRepository = apadrinarRepository;
         this.usuarioRepository = usuarioRepository;
         this.facturaRepository = facturaRepository;
@@ -214,7 +214,7 @@ public class DataLoader implements CommandLineRunner {
         ta5.setFechaHasta(LocalDate.of(2026, 1, 1));
         tarifaRepository.save(ta5);
 
-        Animales a1 = new Animales();
+        Animal a1 = new Animal();
         a1.setNombre("Firulais");
         a1.setChip("CHIP9999");
         a1.setPeso(20f);
@@ -230,9 +230,9 @@ public class DataLoader implements CommandLineRunner {
         a1.setRutaImg1("/images/perro1Card.jpg");
         a1.setRutaImg2("/images/default-example.png");
         a1.setRutaImg3("/images/default-example.png");
-        animalesRepository.save(a1);
+        animalRepository.save(a1);
 
-        Animales a2 = new Animales();
+        Animal a2 = new Animal();
         a2.setNombre("Michi");
         a2.setChip("CHIP98765");
         a2.setPeso(4f);
@@ -248,9 +248,9 @@ public class DataLoader implements CommandLineRunner {
         a2.setRutaImg1("/images/perro1.png");
         a2.setRutaImg2("/images/default-example.png");
         a2.setRutaImg3("/images/default-example.png");
-        animalesRepository.save(a2);
+        animalRepository.save(a2);
 
-        Animales a3 = new Animales();
+        Animal a3 = new Animal();
         a3.setNombre("Firulais");
         a3.setChip("CHIP10102");
         a3.setPeso(18f);
@@ -266,9 +266,9 @@ public class DataLoader implements CommandLineRunner {
         a3.setRutaImg1("/images/perro2.png");
         a3.setRutaImg2("/images/default-example.png");
         a3.setRutaImg3("/images/default-example.png");
-        animalesRepository.save(a3);
+        animalRepository.save(a3);
 
-        Animales a4 = new Animales();
+        Animal a4 = new Animal();
         a4.setNombre("Luna");
         a4.setChip("CHIP54321");
         a4.setPeso(6f);
@@ -284,9 +284,9 @@ public class DataLoader implements CommandLineRunner {
         a4.setRutaImg1("/images/perro3.png");
         a4.setRutaImg2("/images/default-example.png");
         a4.setRutaImg3("/images/default-example.png");
-        animalesRepository.save(a4);
+        animalRepository.save(a4);
 
-        Animales a5 = new Animales();
+        Animal a5 = new Animal();
         a5.setNombre("Thor");
         a5.setChip("CHIP11223");
         a5.setPeso(25f);
@@ -302,9 +302,9 @@ public class DataLoader implements CommandLineRunner {
         a5.setRutaImg1("/images/perro4.png");
         a5.setRutaImg2("/images/default-example.png");
         a5.setRutaImg3("/images/default-example.png");
-        animalesRepository.save(a5);
+        animalRepository.save(a5);
 
-        Animales a6 = new Animales();
+        Animal a6 = new Animal();
         a6.setNombre("Nube");
         a6.setChip("CHIP77889");
         a6.setPeso(3.5f);
@@ -320,9 +320,9 @@ public class DataLoader implements CommandLineRunner {
         a6.setRutaImg1("images/perro5.png");
         a6.setRutaImg2("/images/default-example.png");
         a6.setRutaImg3("/images/default-example.png");
-        animalesRepository.save(a6);
+        animalRepository.save(a6);
 
-        Animales a7 = new Animales();
+        Animal a7 = new Animal();
         a7.setNombre("Roco");
         a7.setChip("CHIP99887");
         a7.setPeso(30f);
@@ -338,21 +338,21 @@ public class DataLoader implements CommandLineRunner {
         a7.setRutaImg1("/images/perro6.png");
         a7.setRutaImg2("/images/default-example.png");
         a7.setRutaImg3("/images/default-example.png");
-        animalesRepository.save(a7);
+        animalRepository.save(a7);
 
         Apadrinar ap1 = new Apadrinar();
-        ap1.setAporteMensual(5.0);
-        ap1.setFechaInicio(LocalDate.of(2024, 5, 1));
-        ap1.setFechaRenovacion(LocalDate.of(2024, 5, 1));
+        ap1.setAporteMensual(10.0);
+        ap1.setFechaInicio(LocalDate.of(2024, 2, 22));
+        ap1.setFechaRenovacion(LocalDate.of(2025, 6, 22));
         ap1.setFechaBaja(null);
         ap1.setAnimal(a1);
         ap1.setUsuario(u1);
         apadrinarRepository.save(ap1);
 
         Apadrinar ap2 = new Apadrinar();
-        ap2.setAporteMensual(5.0);
+        ap2.setAporteMensual(10.0);
         ap2.setFechaInicio(LocalDate.of(2024, 5, 1));
-        ap2.setFechaRenovacion(LocalDate.of(2023, 6, 1));
+        ap2.setFechaRenovacion(LocalDate.of(2025, 6, 1));
         ap2.setFechaBaja(null);
         ap2.setAnimal(a2);
         ap2.setUsuario(u1);
@@ -361,7 +361,7 @@ public class DataLoader implements CommandLineRunner {
         Apadrinar ap3 = new Apadrinar();
         ap3.setAporteMensual(10.0);
         ap3.setFechaInicio(LocalDate.of(2025, 2, 1));
-        ap3.setFechaRenovacion(LocalDate.of(2025, 3, 1));
+        ap3.setFechaRenovacion(null);
         ap3.setFechaBaja(LocalDate.of(2025, 3, 1));
         ap3.setAnimal(a3);
         ap3.setUsuario(u1);
@@ -370,10 +370,10 @@ public class DataLoader implements CommandLineRunner {
         Apadrinar ap4 = new Apadrinar();
         ap4.setAporteMensual(10.0);
         ap4.setFechaInicio(LocalDate.of(2025, 2, 1));
-        ap4.setFechaRenovacion(LocalDate.of(2029, 3, 1));
-        ap4.setFechaBaja(LocalDate.of(2030, 3, 1));
+        ap4.setFechaRenovacion(LocalDate.of(2025, 6, 1));
+        ap4.setFechaBaja(null);
         ap4.setAnimal(a4);
-        ap4.setUsuario(u1);
+        ap4.setUsuario(u2);
         apadrinarRepository.save(ap4);
     }
 }

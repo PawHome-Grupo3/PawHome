@@ -13,7 +13,7 @@ import java.time.LocalDate;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class Animales {
+public class Animal {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int id;

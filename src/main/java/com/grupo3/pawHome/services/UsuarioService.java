@@ -1,10 +1,7 @@
 package com.grupo3.pawHome.services;
 
-import com.grupo3.pawHome.entities.Animales;
 import com.grupo3.pawHome.entities.Usuario;
-import com.grupo3.pawHome.repositories.AnimalesRepository;
 import com.grupo3.pawHome.repositories.UsuarioRepository;
-import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

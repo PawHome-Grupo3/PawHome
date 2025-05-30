@@ -31,7 +31,7 @@ public class Apadrinar {
 
     @ManyToOne
     @JoinColumn(name = "animal_id", referencedColumnName = "id")
-    private Animales animal;
+    private Animal animal;
 
     @ManyToOne
     @JoinColumn(name = "id_usuario", referencedColumnName = "id")
