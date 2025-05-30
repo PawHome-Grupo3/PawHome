@@ -2,7 +2,7 @@
 <html lang="es" xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layouts/layout.html}">
 <head>
-    <title>Lista Carrito</title>
+    <title th:text="#{page.carrito.title}"></title>
     <link rel="stylesheet" th:href="@{/css/general.css}"/>
 </head>
 <body>
@@ -19,8 +19,7 @@
                                 <div class="col-lg-8">
                                     <div class="p-5">
                                         <div class="d-flex justify-content-between align-items-center mb-5">
-                                            <h1 class="fw-bold mb-0">Carrito de la Compra</h1>
-                                            <h6 class="mb-0 text-muted">4 items</h6>
+                                            <h1 class="fw-bold mb-0" th:text="#{tienda.carritoDeLaCompra}"></h1>
                                         </div>
                                         <hr class="m-0">
 
@@ -29,7 +28,7 @@
                                             <a class="col-12 col-md-2 py-2 px-1" th:href="@{/tienda/producto/{id}(id=${item.producto.id})}"
                                                style="text-decoration: none; color: inherit;">
                                                 <img th:src="${item.producto.rutaImagen1}"
-                                                     class="img-fluid rounded-3" alt="Imagen del producto">
+                                                     class="img-fluid rounded-3" th:alt="'Imagen del producto ' + ${item.producto.nombre}">
                                             </a>
 
                                             <div class="col-12 col-md-2 text-center py-2 px-1">
@@ -73,7 +72,7 @@
                                                 </form>
 
                                                 <small th:id="'quantity-error-' + ${item.producto.id} + '-' + ${item.talla.id}"
-                                                       class="text-danger d-none">Cantidad inválida</small>
+                                                       class="text-danger d-none" th:text="#{tienda.cantidadInvalida}"></small>
 
                                                 <input type="hidden"
                                                        th:id="'stock-' + ${item.producto.id} + '-' + ${item.talla.id}"
@@ -103,13 +102,13 @@
 
                                         <div class="pt-5 row w-100 align-items-center">
                                             <h6 class="mb-0 col-6 col-md-4"><a href="/tienda" class="text-body">
-                                                <i class="fas fa-long-arrow-alt-left me-2"></i>Volver a la tienda</a>
+                                                <i class="fas fa-long-arrow-alt-left me-2" th:text="#{tienda.volverALaTienda}"></i></a>
                                             </h6>
                                             <form class="col-6 col-md-4" th:action="@{/tienda/carrito/vaciar}"
                                                   method="post">
                                                 <button type="submit" data-mdb-button-init data-mdb-ripple-init
                                                         class="btn btn-dark btn-block btn-lg"
-                                                        data-mdb-ripple-color="dark">Vaciar Carrito
+                                                        data-mdb-ripple-color="dark" th:text="#{tienda.vaciarCarrito}">
                                                 </button>
                                             </form>
 
@@ -118,26 +117,26 @@
                                 </div>
                                 <div class="col-lg-4 bg-body-tertiary">
                                     <div class="p-5">
-                                        <h3 class="fw-bold mb-5 mt-2 pt-1">Resumen</h3>
+                                        <h3 class="fw-bold mb-5 mt-2 pt-1" th:text="#{tienda.resumen}"></h3>
                                         <hr class="my-4">
 
-                                        <h5 class="text-uppercase mb-3">Código Descuento</h5>
+                                        <h5 class="text-uppercase mb-3" th:text="#{tienda.codigoDescuento}"></h5>
 
                                         <div class="mb-5">
                                             <div data-mdb-input-init class="form-outline">
                                                 <input type="text" id="form3Examplea2" class="form-control form-control-lg" />
-                                                <label class="form-label" for="form3Examplea2">Introduce tu código</label>
+                                                <label class="form-label" for="form3Examplea2" th:text="#{tienda.introduceTuCodigo}"></label>
                                             </div>
                                         </div>
 
                                         <hr class="my-4">
 
                                         <div class="d-flex justify-content-between mb-5">
-                                            <h5 class="text-uppercase">Precio Total</h5>
+                                            <h5 class="text-uppercase" th:text="#{tienda.precioTotal}"></h5>
                                             <h5 th:text="${total} + ' €'"></h5>
                                         </div>
 
-                                        <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-block btn-lg btnHazteVoluntario">Confirmar Compra</button>
+                                        <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-block btn-lg btnHazteVoluntario" th:text="#{tienda.confirmarCompra}"></button>
                                     </div>
                                 </div>
                             </div>
@@ -151,17 +150,15 @@
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="modalLabel">Confirmar eliminación</h5>
+                        <h5 class="modal-title" id="modalLabel" th:text="#{tienda.confirmarEliminacion}"></h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
                     </div>
 
-                    <div class="modal-body">
-                        ¿Estás seguro de que deseas eliminar este producto del carrito?
-                    </div>
+                    <div class="modal-body" th:text="#{tienda.estasSeguro}"></div>
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="button" class="btn btn-danger" onclick="confirmarEliminacion()">Eliminar</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" th:text="#{tienda.cancelar}"></button>
+                        <button type="button" class="btn btn-danger" onclick="confirmarEliminacion()" th:text="#{tienda.eliminar}"></button>
                     </div>
                 </div>
             </div>
