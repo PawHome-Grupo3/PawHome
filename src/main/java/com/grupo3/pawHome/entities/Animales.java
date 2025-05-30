@@ -57,4 +57,5 @@ public class Animales {
 
     @Column(name = "ruta_img3")
     private String rutaImg3;
+
 }

@@ -4,7 +4,6 @@ import com.grupo3.pawHome.entities.Animales;
 import com.grupo3.pawHome.services.AnimalesService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,32 +23,10 @@ public class AnimalesController {
         this.animalesService = animalesService;
     }
 
-//    @GetMapping("/nuestrosAnimales")
-//    public String mostrarNuestrosAnimalesAll(Model model) {
-//        return mostrarNuestrosAnimalesOnePage(model, 1);
-//    }
-//
-//    @GetMapping("/nuestrosAnimales/{pageNumber}")
-//    public String mostrarNuestrosAnimalesOnePage(Model model, @PathVariable("pageNumber") int currentPage) {
-//        Page<Animales> page = animalesService.findPage(currentPage);
-//        int totalPages = page.getTotalPages();
-//        long totalItems = page.getTotalElements();
-//        List<Animales> animales = page.getContent();
-//
-//        model.addAttribute("animales", animales);
-//        model.addAttribute("totalPages", totalPages);
-//        model.addAttribute("totalElements", totalItems);
-//        model.addAttribute("currentPage", currentPage);
-//        return "nuestrosAnimales";
-//    }
-
     @GetMapping("/nuestrosAnimales")
     public String mostrarNuestrosAnimales(Model model,
                                           @RequestParam("page") Optional<Integer> page,
-                                          @RequestParam("size") Optional<Integer> size,
-                                          @RequestParam("filtro") Optional<String> orden,
-                                          @RequestParam("sentido") Optional<String> sentido)
-    {
+                                          @RequestParam("size") Optional<Integer> size) {
 
         int currentPage = page.orElse(1);
         int pageSize = size.orElse(5);
@@ -57,6 +34,7 @@ public class AnimalesController {
         Page<Animales> animalPage = animalesService.findPaginated(PageRequest.of(currentPage - 1, pageSize));
 
         model.addAttribute("animalPage", animalPage);
+        model.addAttribute("animales", animalPage.getContent());
 
         int totalPages = animalPage.getTotalPages();
         if (totalPages > 0) {

@@ -1,13 +1,7 @@
 package com.grupo3.pawHome.loaders;
 
-import com.grupo3.pawHome.entities.Animales;
-import com.grupo3.pawHome.entities.Apadrinar;
-import com.grupo3.pawHome.entities.Factura;
-import com.grupo3.pawHome.entities.Usuario;
-import com.grupo3.pawHome.repositories.AnimalesRepository;
-import com.grupo3.pawHome.repositories.ApadrinarRepository;
-import com.grupo3.pawHome.repositories.FacturaRepository;
-import com.grupo3.pawHome.repositories.UsuarioRepository;
+import com.grupo3.pawHome.entities.*;
+import com.grupo3.pawHome.repositories.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -19,13 +13,21 @@ public class DataLoader implements CommandLineRunner {
     private final ApadrinarRepository apadrinarRepository;
     private final UsuarioRepository usuarioRepository;
     private final FacturaRepository facturaRepository;
+    private final ProductoRepository productoRepository;
+    private final TallaRepository tallaRepository;
+    private final CategoriaRepository categoriaRepository;
+    private final TarifaRepository tarifaRepository;
 
 
-    public DataLoader(AnimalesRepository animalesRepository, ApadrinarRepository apadrinarRepository, UsuarioRepository usuarioRepository, FacturaRepository facturaRepository) {
+    public DataLoader(AnimalesRepository animalesRepository, ApadrinarRepository apadrinarRepository, UsuarioRepository usuarioRepository, FacturaRepository facturaRepository, ProductoRepository productoRepository, TallaRepository tallaRepository, CategoriaRepository categoriaRepository, TarifaRepository tarifaRepository) {
         this.animalesRepository = animalesRepository;
         this.apadrinarRepository = apadrinarRepository;
         this.usuarioRepository = usuarioRepository;
         this.facturaRepository = facturaRepository;
+        this.productoRepository = productoRepository;
+        this.tallaRepository = tallaRepository;
+        this.categoriaRepository = categoriaRepository;
+        this.tarifaRepository = tarifaRepository;
     }
 
     @Override
@@ -68,196 +70,310 @@ public class DataLoader implements CommandLineRunner {
         f3.setUsuario(u2);
         facturaRepository.save(f3);
 
-        animalesRepository.save(new Animales(
-                0,
-                "Firulais",
-                "CHIP9999",
-                20f,
-                "2 años",
-                true,
-                "Perro muy amigable",
-                true,
-                false,
-                false,
-                LocalDate.of(2024, 4, 10),
-                true,
-                false,
-                "/images/perro1Card.jpg",
-                "/images/default-example.png",
-                "/images/default-example.png"
-        ));
+        Categoria c1 = new Categoria();
+        c1.setNombre("Collares");
+        categoriaRepository.save(c1);
 
-        animalesRepository.save(new Animales(
-                0,
-                "Michi",
-                "CHIP98789",
-                4f,
-                "1 año",
-                false,
-                "Gato tímido pero dulce",
-                false,
-                true,
-                false,
-                LocalDate.of(2024, 5, 1),
-                false,
-                false,
-                "/images/gato.mira.arriba.jpg",
-                "/images/default-example.png",
-                "/images/default-example.png"
-        ));
+        Categoria c2 = new Categoria();
+        c2.setNombre("Camisetas");
+        categoriaRepository.save(c2);
 
-        animalesRepository.save(new Animales(
-                0,
-                "Michi",
-                "CHIP98765",
-                4f,
-                "1 año",
-                false,
-                "Michi es un gato tímido pero dulce, que ha pasado por una situación difícil y está aprendiendo a confiar nuevamente en las personas. Le encanta observar desde la ventana y es muy curioso con los juguetes. Necesita un hogar tranquilo y paciente.",
-                false,
-                true,
-                false,
-                LocalDate.of(2024, 5, 1),
-                false,
-                false,
-                "/images/perro1.png",
-                "/images/default-example.png",
-                "/images/default-example.png"
-        ));
+        Categoria c3 = new Categoria();
+        c3.setNombre("Tazas");
+        categoriaRepository.save(c3);
 
-        animalesRepository.save(new Animales(
-                0,
-                "Firulais",
-                "CHIP10102",
-                18f,
-                "3 años",
-                true,
-                "Firulais es un perro muy enérgico, sociable y siempre dispuesto a jugar. Ideal para una familia con espacio o niños, disfruta de los paseos largos y se lleva bien con otros animales. Está vacunado y desparasitado, listo para ir a su nuevo hogar.",
-                true,
-                false,
-                false,
-                LocalDate.of(2023, 8, 15),
-                true,
-                false,
-                "/images/perro2.png",
-                "/images/default-example.png",
-                "/images/default-example.png"
-        ));
+        Producto p1 = new Producto();
+        p1.setNombre("Collar");
+        p1.setDescripcion("Dale a tu peludo amigo el mejor look con nuestro collar para perro, diseñado para brindar seguridad, confort y un toque de estilo único.");
+        p1.setRutaImagen1("/images/collar.png");
+        p1.setRutaImagen2("/images/Camiseta-azul.png");
+        p1.setCategoria(c1);
+        productoRepository.save(p1);
 
-        animalesRepository.save(new Animales(
-                0,
-                "Luna",
-                "CHIP54321",
-                6f,
-                "2 años",
-                true,
-                "Luna es una gata muy curiosa y activa. Le encanta explorar su entorno y encontrar rincones nuevos donde dormir la siesta. Es sociable con otros gatos y muy cariñosa con las personas una vez que toma confianza. Ideal para un hogar con ventanas soleadas.",
-                false,
-                true,
-                true,
-                LocalDate.of(2024, 2, 10),
-                true,
-                false,
-                "/images/perro3.png",
-                "/images/default-example.png",
-                "/images/default-example.png"
-        ));
+        Producto p2 = new Producto();
+        p2.setNombre("Camiseta Azul");
+        p2.setDescripcion("¿Quieres ser un héroe con estilo? Compra nuestra camiseta para que lo sepa todo el mundo");
+        p2.setRutaImagen1("/images/Camiseta-azul.png");
+        p2.setCategoria(c2);
+        productoRepository.save(p2);
 
-        animalesRepository.save(new Animales(
-                0,
-                "Thor",
-                "CHIP11223",
-                25f,
-                "4 años",
-                true,
-                "Thor es un perro de servicio entrenado, tranquilo y obediente. Tiene un gran sentido de la calma y es ideal para acompañar a personas con necesidades especiales. Se adapta bien a distintos entornos y responde perfectamente a comandos básicos y avanzados.",
-                true,
-                false,
-                true,
-                LocalDate.of(2022, 11, 5),
-                true,
-                true,
-                "/images/perro4.png",
-                "/images/default-example.png",
-                "/images/default-example.png"
-        ));
+        Producto p3 = new Producto();
+        p3.setNombre("Camiseta Héroe");
+        p3.setDescripcion("¿Quieres ser un héroe con estilo? Compra nuestra camiseta para que lo sepa todo el mundo");
+        p3.setRutaImagen1("/images/Camiseta-azul.png");
+        p3.setCategoria(c2);
+        productoRepository.save(p3);
 
-        animalesRepository.save(new Animales(
-                0,
-                "Nube",
-                "CHIP77889",
-                3.5f,
-                "6 meses",
-                false,
-                "Nube es un gatito rescatado recientemente, extremadamente juguetón y curioso. A pesar de su corta edad, ya demuestra ser muy inteligente y está en proceso de aprender a usar el rascador y el arenero. Le encantan los juguetes con plumas y perseguir sombras.",
-                false,
-                false,
-                false,
-                LocalDate.of(2024, 4, 25),
-                false,
-                false,
-                "images/perro5.png",
-                "/images/default-example.png",
-                "/images/default-example.png"
-        ));
+        Producto p4 = new Producto();
+        p4.setNombre("Camiseta Héroe v2");
+        p4.setDescripcion("¿Quieres ser un héroe con estilo? Compra nuestra camiseta para que lo sepa todo el mundo");
+        p4.setRutaImagen1("/images/Camiseta-azul.png");
+        p4.setCategoria(c2);
+        productoRepository.save(p4);
 
-        animalesRepository.save(new Animales(
-                0,
-                "Roco",
-                "CHIP99887",
-                30f,
-                "5 años",
-                true,
-                "Roco es un gran danés de carácter tranquilo, muy amigable y paciente. A pesar de su tamaño, es un gigante gentil que disfruta de la compañía humana. Ideal para personas con experiencia en razas grandes. Le gusta estar acompañado y no ladra con frecuencia.",
-                true,
-                false,
-                true,
-                LocalDate.of(2023, 1, 12),
-                true,
-                false,
-                "/images/perro6.png",
-                "/images/default-example.png",
-                "/images/default-example.png"
-        ));
+        Producto p5 = new Producto();
+        p5.setNombre("Taza todo es mejor");
+        p5.setDescripcion("Dale a tu peludo amigo el mejor look con nuestro collar para perro, diseñado para brindar seguridad, confort y un toque de estilo único.");
+        p5.setRutaImagen1("/images/taza-prueba.jpg");
+        p5.setCategoria(c3);
+        productoRepository.save(p5);
 
-        apadrinarRepository.save(new Apadrinar(
-                0,
-                5.0,
-                LocalDate.of(2024, 5, 1),
-                LocalDate.of(2025, 6, 1),
-                null,
-                animalesRepository.findById(1).get(),
-                usuarioRepository.findById(1).get()
-        ));
+        Talla t1 = new Talla();
+        t1.setStock(5);
+        t1.setTallaje("S");
+        t1.setProducto(p1);
+        tallaRepository.save(t1);
 
-        apadrinarRepository.save(new Apadrinar(
-                0,
-                5.0,
-                LocalDate.of(2024, 5, 1),
-                LocalDate.of(2023, 6, 1),
-                null,
-                animalesRepository.findById(2).get(),
-                usuarioRepository.findById(1).get()
-        ));
+        Talla t2 = new Talla();
+        t2.setStock(2);
+        t2.setTallaje("M");
+        t2.setProducto(p1);
+        tallaRepository.save(t2);
 
-        apadrinarRepository.save(new Apadrinar(
-                0,
-                10.0,
-                LocalDate.of(2025, 2, 1),
-                LocalDate.of(2025, 3, 1),
-                LocalDate.of(2025, 3, 1),
-                animalesRepository.findById(3).get(),
-                usuarioRepository.findById(1).get()
-        ));
+        Talla t3 = new Talla();
+        t3.setStock(37);
+        t3.setTallaje("L");
+        t3.setProducto(p1);
+        tallaRepository.save(t3);
 
-        apadrinarRepository.save(new Apadrinar(
-                0,
-                10.0,
-                LocalDate.of(2025, 2, 1),
-                LocalDate.of(2029, 3, 1),
-                LocalDate.of(2030, 3, 1),
-                animalesRepository.findById(4).get(),
-                usuarioRepository.findById(1).get()
-        ));
+        Talla t4 = new Talla();
+        t4.setStock(10);
+        t4.setTallaje("M");
+        t4.setProducto(p2);
+        tallaRepository.save(t4);
+
+        Talla t5 = new Talla();
+        t5.setStock(0);
+        t5.setTallaje("L");
+        t5.setProducto(p2);
+        tallaRepository.save(t5);
+
+        Talla t6 = new Talla();
+        t6.setStock(10);
+        t6.setTallaje("unica");
+        t6.setProducto(p3);
+        tallaRepository.save(t6);
+
+        Talla t7 = new Talla();
+        t7.setStock(12);
+        t7.setTallaje("unica");
+        t7.setProducto(p4);
+        tallaRepository.save(t7);
+
+        Talla t8 = new Talla();
+        t8.setStock(15);
+        t8.setTallaje("unica");
+        t8.setProducto(p5);
+        tallaRepository.save(t8);
+
+        Tarifa ta1 = new Tarifa();
+        ta1.setProducto(p1);
+        ta1.setCantidad(1);
+        ta1.setPrecioUnitario(18.20);
+        ta1.setFechaDesde(LocalDate.now());
+        ta1.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(ta1);
+
+        Tarifa ta2 = new Tarifa();
+        ta2.setProducto(p1);
+        ta2.setCantidad(1);
+        ta2.setPrecioUnitario(30.20);
+        ta2.setFechaDesde(LocalDate.of(2024, 1, 1));
+        ta2.setFechaHasta(LocalDate.of(2025, 1, 1));
+        tarifaRepository.save(ta2);
+
+        Tarifa ta6 = new Tarifa();
+        ta6.setProducto(p2);
+        ta6.setCantidad(1);
+        ta6.setPrecioUnitario(18.20);
+        ta6.setFechaDesde(LocalDate.now());
+        ta6.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(ta6);
+
+        Tarifa ta3 = new Tarifa();
+        ta3.setProducto(p3);
+        ta3.setCantidad(1);
+        ta3.setPrecioUnitario(18.20);
+        ta3.setFechaDesde(LocalDate.now());
+        ta3.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(ta3);
+
+        Tarifa ta4 = new Tarifa();
+        ta4.setProducto(p4);
+        ta4.setCantidad(1);
+        ta4.setPrecioUnitario(18.20);
+        ta4.setFechaDesde(LocalDate.now());
+        ta4.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(ta4);
+
+        Tarifa ta5 = new Tarifa();
+        ta5.setProducto(p5);
+        ta5.setCantidad(1);
+        ta5.setPrecioUnitario(18.20);
+        ta5.setFechaDesde(LocalDate.now());
+        ta5.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(ta5);
+
+        Animales a1 = new Animales();
+        a1.setNombre("Firulais");
+        a1.setChip("CHIP9999");
+        a1.setPeso(20f);
+        a1.setEdad("2 años");
+        a1.setCaracterSocial(true);
+        a1.setDescripcion("Perro muy amigable");
+        a1.setGenero(true);
+        a1.setOrigen(false);
+        a1.setAdoptado(false);
+        a1.setFechaLlegada(LocalDate.of(2024, 4, 10));
+        a1.setPaseable(true);
+        a1.setAnimalServicio(false);
+        a1.setRutaImg1("/images/perro1Card.jpg");
+        a1.setRutaImg2("/images/default-example.png");
+        a1.setRutaImg3("/images/default-example.png");
+        animalesRepository.save(a1);
+
+        Animales a2 = new Animales();
+        a2.setNombre("Michi");
+        a2.setChip("CHIP98765");
+        a2.setPeso(4f);
+        a2.setEdad("1 año");
+        a2.setCaracterSocial(false);
+        a2.setDescripcion("Michi es un gato tímido pero dulce, que ha pasado por una situación difícil y está aprendiendo a confiar nuevamente en las personas. Le encanta observar desde la ventana y es muy curioso con los juguetes. Necesita un hogar tranquilo y paciente.");
+        a2.setGenero(false);
+        a2.setOrigen(true);
+        a2.setAdoptado(false);
+        a2.setFechaLlegada(LocalDate.of(2024, 5, 1));
+        a2.setPaseable(false);
+        a2.setAnimalServicio(false);
+        a2.setRutaImg1("/images/perro1.png");
+        a2.setRutaImg2("/images/default-example.png");
+        a2.setRutaImg3("/images/default-example.png");
+        animalesRepository.save(a2);
+
+        Animales a3 = new Animales();
+        a3.setNombre("Firulais");
+        a3.setChip("CHIP10102");
+        a3.setPeso(18f);
+        a3.setEdad("3 años");
+        a3.setCaracterSocial(true);
+        a3.setDescripcion("Firulais es un perro muy enérgico, sociable y siempre dispuesto a jugar. Ideal para una familia con espacio o niños, disfruta de los paseos largos y se lleva bien con otros animales. Está vacunado y desparasitado, listo para ir a su nuevo hogar.");
+        a3.setGenero(true);
+        a3.setOrigen(false);
+        a3.setAdoptado(false);
+        a3.setFechaLlegada(LocalDate.of(2023, 8, 15));
+        a3.setPaseable(true);
+        a3.setAnimalServicio(false);
+        a3.setRutaImg1("/images/perro2.png");
+        a3.setRutaImg2("/images/default-example.png");
+        a3.setRutaImg3("/images/default-example.png");
+        animalesRepository.save(a3);
+
+        Animales a4 = new Animales();
+        a4.setNombre("Luna");
+        a4.setChip("CHIP54321");
+        a4.setPeso(6f);
+        a4.setEdad("2 años");
+        a4.setCaracterSocial(true);
+        a4.setDescripcion("Luna es una gata muy curiosa y activa. Le encanta explorar su entorno y encontrar rincones nuevos donde dormir la siesta. Es sociable con otros gatos y muy cariñosa con las personas una vez que toma confianza. Ideal para un hogar con ventanas soleadas.");
+        a4.setGenero(false);
+        a4.setOrigen(true);
+        a4.setAdoptado(true);
+        a4.setFechaLlegada(LocalDate.of(2024, 2, 10));
+        a4.setPaseable(true);
+        a4.setAnimalServicio(false);
+        a4.setRutaImg1("/images/perro3.png");
+        a4.setRutaImg2("/images/default-example.png");
+        a4.setRutaImg3("/images/default-example.png");
+        animalesRepository.save(a4);
+
+        Animales a5 = new Animales();
+        a5.setNombre("Thor");
+        a5.setChip("CHIP11223");
+        a5.setPeso(25f);
+        a5.setEdad("4 años");
+        a5.setCaracterSocial(true);
+        a5.setDescripcion("Thor es un perro de servicio entrenado, tranquilo y obediente. Tiene un gran sentido de la calma y es ideal para acompañar a personas con necesidades especiales. Se adapta bien a distintos entornos y responde perfectamente a comandos básicos y avanzados.");
+        a5.setGenero(true);
+        a5.setOrigen(false);
+        a5.setAdoptado(true);
+        a5.setFechaLlegada(LocalDate.of(2022, 11, 5));
+        a5.setPaseable(true);
+        a5.setAnimalServicio(true);
+        a5.setRutaImg1("/images/perro4.png");
+        a5.setRutaImg2("/images/default-example.png");
+        a5.setRutaImg3("/images/default-example.png");
+        animalesRepository.save(a5);
+
+        Animales a6 = new Animales();
+        a6.setNombre("Nube");
+        a6.setChip("CHIP77889");
+        a6.setPeso(3.5f);
+        a6.setEdad("6 meses");
+        a6.setCaracterSocial(false);
+        a6.setDescripcion("Nube es un gatito rescatado recientemente, extremadamente juguetón y curioso. A pesar de su corta edad, ya demuestra ser muy inteligente y está en proceso de aprender a usar el rascador y el arenero. Le encantan los juguetes con plumas y perseguir sombras.");
+        a6.setGenero(false);
+        a6.setOrigen(false);
+        a6.setAdoptado(false);
+        a6.setFechaLlegada(LocalDate.of(2024, 4, 25));
+        a6.setPaseable(false);
+        a6.setAnimalServicio(false);
+        a6.setRutaImg1("images/perro5.png");
+        a6.setRutaImg2("/images/default-example.png");
+        a6.setRutaImg3("/images/default-example.png");
+        animalesRepository.save(a6);
+
+        Animales a7 = new Animales();
+        a7.setNombre("Roco");
+        a7.setChip("CHIP99887");
+        a7.setPeso(30f);
+        a7.setEdad("5 años");
+        a7.setCaracterSocial(true);
+        a7.setDescripcion("Roco es un gran danés de carácter tranquilo, muy amigable y paciente. A pesar de su tamaño, es un gigante gentil que disfruta de la compañía humana. Ideal para personas con experiencia en razas grandes. Le gusta estar acompañado y no ladra con frecuencia.");
+        a7.setGenero(true);
+        a7.setOrigen(false);
+        a7.setAdoptado(true);
+        a7.setFechaLlegada(LocalDate.of(2023, 1, 12));
+        a7.setPaseable(true);
+        a7.setAnimalServicio(false);
+        a7.setRutaImg1("/images/perro6.png");
+        a7.setRutaImg2("/images/default-example.png");
+        a7.setRutaImg3("/images/default-example.png");
+        animalesRepository.save(a7);
+
+        Apadrinar ap1 = new Apadrinar();
+        ap1.setAporteMensual(5.0);
+        ap1.setFechaInicio(LocalDate.of(2024, 5, 1));
+        ap1.setFechaRenovacion(LocalDate.of(2024, 5, 1));
+        ap1.setFechaBaja(null);
+        ap1.setAnimal(a1);
+        ap1.setUsuario(u1);
+        apadrinarRepository.save(ap1);
+
+        Apadrinar ap2 = new Apadrinar();
+        ap2.setAporteMensual(5.0);
+        ap2.setFechaInicio(LocalDate.of(2024, 5, 1));
+        ap2.setFechaRenovacion(LocalDate.of(2023, 6, 1));
+        ap2.setFechaBaja(null);
+        ap2.setAnimal(a2);
+        ap2.setUsuario(u1);
+        apadrinarRepository.save(ap2);
+
+        Apadrinar ap3 = new Apadrinar();
+        ap3.setAporteMensual(10.0);
+        ap3.setFechaInicio(LocalDate.of(2025, 2, 1));
+        ap3.setFechaRenovacion(LocalDate.of(2025, 3, 1));
+        ap3.setFechaBaja(LocalDate.of(2025, 3, 1));
+        ap3.setAnimal(a3);
+        ap3.setUsuario(u1);
+        apadrinarRepository.save(ap3);
+
+        Apadrinar ap4 = new Apadrinar();
+        ap4.setAporteMensual(10.0);
+        ap4.setFechaInicio(LocalDate.of(2025, 2, 1));
+        ap4.setFechaRenovacion(LocalDate.of(2029, 3, 1));
+        ap4.setFechaBaja(LocalDate.of(2030, 3, 1));
+        ap4.setAnimal(a4);
+        ap4.setUsuario(u1);
+        apadrinarRepository.save(ap4);
     }
 }

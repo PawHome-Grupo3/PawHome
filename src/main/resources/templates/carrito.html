@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout.html}">
+<head>
+    <title>Lista Carrito</title>
+    <link rel="stylesheet" th:href="@{/css/general.css}"/>
+</head>
+<body>
+<section layout:fragment="content">
+    <div th:replace="~{fragments/navTienda :: navTiendaFragment}"></div>
+
+    <section class="" style="background-color: #f4faf8;">
+        <div class="container py-5">
+            <div class="row d-flex justify-content-center align-items-center">
+                <div class="col-12">
+                    <div class="card card-registration card-registration-2" style="border-radius: 20px;">
+                        <div class="card-body p-0">
+                            <div class="row g-0">
+                                <div class="col-lg-8">
+                                    <div class="p-5">
+                                        <div class="d-flex justify-content-between align-items-center mb-5">
+                                            <h1 class="fw-bold mb-0">Carrito de la Compra</h1>
+                                            <h6 class="mb-0 text-muted">4 items</h6>
+                                        </div>
+                                        <hr class="m-0">
+
+                                        <div th:each="item : ${carrito}"
+                                             class="row mb-4 d-flex align-items-center divItemCarrito">
+                                            <a class="col-12 col-md-2 py-2 px-1" th:href="@{/tienda/producto/{id}(id=${item.producto.id})}"
+                                               style="text-decoration: none; color: inherit;">
+                                                <img th:src="${item.producto.rutaImagen1}"
+                                                     class="img-fluid rounded-3" alt="Imagen del producto">
+                                            </a>
+
+                                            <div class="col-12 col-md-2 text-center py-2 px-1">
+                                                <h6 class="text-muted"
+                                                    th:utext="${item.producto.categoria.nombre}"></h6>
+                                                <h6 class="mb-0" th:utext="${item.producto.nombre}"></h6>
+                                            </div>
+
+                                            <div class="col-12 col-md-2 py-2 px-1" style="justify-items: center">
+                                                <h6 class="mb-0" th:utext="${item.precioUnitario} + ' €'"></h6>
+                                            </div>
+
+                                            <div class="col-12 col-md-3 py-2 px-1" style="justify-items: center">
+                                                <form th:action="@{/tienda/carrito/actualizar}" method="post"
+                                                      class="d-flex align-items-center">
+                                                    <input type="hidden" name="productoId"
+                                                           th:value="${item.producto.id}"/>
+                                                    <input type="hidden" name="tallaId" th:value="${item.talla.id}"/>
+                                                    <input type="hidden" th:name="${_csrf.parameterName}"
+                                                           th:value="${_csrf.token}"/>
+
+                                                    <button type="submit" name="cantidad"
+                                                            th:value="${item.cantidad - 1}"
+                                                            class="btn btn-white border border-secondary px-3">
+                                                        <i class="fas fa-minus"></i>
+                                                    </button>
+
+                                                    <label>
+                                                        <input type="text"
+                                                               readonly
+                                                               class="form-control text-center border border-secondary mx-1"
+                                                               style="width: 50px;"
+                                                               th:value="${item.cantidad}"/>
+                                                    </label>
+
+                                                    <button type="submit" name="cantidad"
+                                                            th:value="${item.cantidad + 1}"
+                                                            class="btn btn-white border border-secondary px-3">
+                                                        <i class="fas fa-plus"></i>
+                                                    </button>
+                                                </form>
+
+                                                <small th:id="'quantity-error-' + ${item.producto.id} + '-' + ${item.talla.id}"
+                                                       class="text-danger d-none">Cantidad inválida</small>
+
+                                                <input type="hidden"
+                                                       th:id="'stock-' + ${item.producto.id} + '-' + ${item.talla.id}"
+                                                       th:value="${item.talla.stock}"/>
+                                            </div>
+
+                                            <div class="col-12 col-md-2 py-2 px-1" style="justify-items: center">
+                                                <h6 th:text="${#numbers.formatDecimal(item.precioUnitario * item.cantidad, 1, 2)} + ' €'"></h6>
+                                            </div>
+
+                                            <div class="col-12 col-md-1 py-2 px-1" style="justify-items: center">
+                                                <form th:action="@{/tienda/carrito/eliminar}" method="post"
+                                                      th:id="'form-eliminar-' + ${item.producto.id} + '-' + ${item.talla.id}">
+                                                    <input type="hidden" name="productoId"
+                                                           th:value="${item.producto.id}"/>
+                                                    <input type="hidden" name="tallaId" th:value="${item.talla.id}"/>
+                                                    <input type="hidden" th:name="${_csrf.parameterName}"
+                                                           th:value="${_csrf.token}"/>
+                                                    <button type="button" class="btn btn-link p-0 text-danger"
+                                                            th:onclick="'abrirModal(\'form-eliminar-' + ${item.producto.id} + '-' + ${item.talla.id} + '\')'">
+                                                        <i class="fas fa-times"></i>
+                                                    </button>
+                                                </form>
+                                            </div>
+                                            <hr class="m-0">
+                                        </div>
+
+                                        <div class="pt-5 row w-100 align-items-center">
+                                            <h6 class="mb-0 col-6 col-md-4"><a href="/tienda" class="text-body">
+                                                <i class="fas fa-long-arrow-alt-left me-2"></i>Volver a la tienda</a>
+                                            </h6>
+                                            <form class="col-6 col-md-4" th:action="@{/tienda/carrito/vaciar}"
+                                                  method="post">
+                                                <button type="submit" data-mdb-button-init data-mdb-ripple-init
+                                                        class="btn btn-dark btn-block btn-lg"
+                                                        data-mdb-ripple-color="dark">Vaciar Carrito
+                                                </button>
+                                            </form>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 bg-body-tertiary">
+                                    <div class="p-5">
+                                        <h3 class="fw-bold mb-5 mt-2 pt-1">Resumen</h3>
+                                        <hr class="my-4">
+
+                                        <h5 class="text-uppercase mb-3">Código Descuento</h5>
+
+                                        <div class="mb-5">
+                                            <div data-mdb-input-init class="form-outline">
+                                                <input type="text" id="form3Examplea2" class="form-control form-control-lg" />
+                                                <label class="form-label" for="form3Examplea2">Introduce tu código</label>
+                                            </div>
+                                        </div>
+
+                                        <hr class="my-4">
+
+                                        <div class="d-flex justify-content-between mb-5">
+                                            <h5 class="text-uppercase">Precio Total</h5>
+                                            <h5 th:text="${total} + ' €'"></h5>
+                                        </div>
+
+                                        <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-block btn-lg btnHazteVoluntario">Confirmar Compra</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal de Confirmación -->
+        <div class="modal fade" id="modalConfirmacion" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalLabel">Confirmar eliminación</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        ¿Estás seguro de que deseas eliminar este producto del carrito?
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-danger" onclick="confirmarEliminacion()">Eliminar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                document.querySelectorAll('input[id^="quantity-input-"]').forEach(inputField => {
+                    const idParts = inputField.id.split('-');
+                    const prodId = idParts[2];
+                    const tallaId = idParts[3];
+
+                    const minusButton = document.getElementById(`button-minus-${prodId}-${tallaId}`);
+                    const plusButton = document.getElementById(`button-plus-${prodId}-${tallaId}`);
+                    const errorMsg = document.getElementById(`quantity-error-${prodId}-${tallaId}`);
+                    const stockInput = document.getElementById(`stock-${prodId}-${tallaId}`);
+                    const maxStock = parseInt(stockInput.value);
+
+                    function showError(message) {
+                        errorMsg.textContent = message;
+                        errorMsg.classList.remove('d-none');
+                    }
+
+                    function hideError() {
+                        errorMsg.classList.add('d-none');
+                    }
+
+                    function sanitizeInput() {
+                        let valueStr = inputField.value;
+                        const onlyDigits = valueStr.replace(/\D/g, '');
+
+                        if (onlyDigits !== valueStr) {
+                            inputField.value = onlyDigits;
+                            showError('Solo se permiten números.');
+                            return;
+                        }
+
+                        if (onlyDigits.length === 0) {
+                            hideError();
+                            return;
+                        }
+
+                        let value = parseInt(onlyDigits);
+
+                        if (value < 1) {
+                            showError('La cantidad debe ser al menos 1.');
+                            inputField.value = '1';
+                            return;
+                        }
+
+                        if (value > maxStock) {
+                            showError(`Solo hay ${maxStock} unidades disponibles.`);
+                            inputField.value = maxStock.toString();
+                            return;
+                        }
+
+                        hideError();
+                    }
+
+                    minusButton.addEventListener('click', () => {
+                        let currentValue = parseInt(inputField.value) || 1;
+                        if (currentValue > 1) {
+                            inputField.value = currentValue - 1;
+                            hideError();
+                        }
+                    });
+
+                    plusButton.addEventListener('click', () => {
+                        let currentValue = parseInt(inputField.value) || 1;
+                        if (currentValue < maxStock) {
+                            inputField.value = currentValue + 1;
+                            hideError();
+                        } else {
+                            showError(`No hay más stock disponible para esta talla (máx. ${maxStock}).`);
+                        }
+                    });
+
+                    inputField.addEventListener('keydown', function (e) {
+                        const allowedKeys = ['Backspace', 'ArrowLeft', 'ArrowRight', 'Tab', 'Delete'];
+                        if ((e.key >= '0' && e.key <= '9') || allowedKeys.includes(e.key)) {
+                            return;
+                        }
+                        e.preventDefault();
+                    });
+
+                    inputField.addEventListener('input', sanitizeInput);
+
+                    inputField.addEventListener('blur', () => {
+                        if (inputField.value.trim() === '') {
+                            inputField.value = '1';
+                            hideError();
+                        }
+                    });
+                });
+            });
+        </script>
+
+        <script>
+            let formAEliminar = null;
+
+            function abrirModal(formId) {
+                formAEliminar = document.getElementById(formId);
+
+                const modal = new bootstrap.Modal(document.getElementById('modalConfirmacion'));
+                modal.show();
+            }
+
+            function confirmarEliminacion() {
+                if (formAEliminar) {
+                    formAEliminar.submit();
+                }
+            }
+        </script>
+    </section>
+</section>
+</body>
+</html>

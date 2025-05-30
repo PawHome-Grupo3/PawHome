@@ -13,84 +13,250 @@
       <div class="row gx-5">
         <aside class="col-lg-6">
           <div class="border rounded-4 mb-3 d-flex justify-content-center">
-            <a data-fslightbox="mygalley" class="rounded-4" target="_blank" data-type="image" href="#">
-              <img style="max-width: 100%; max-height: 100vh; margin: auto;" class="rounded-4 fit" th:src="@{images/collar.png}"  alt=""/>
+            <!-- Imagen principal -->
+            <a data-fslightbox="mygallery" class="rounded-4" target="_blank" data-type="image" href="#" id="main-image-link">
+              <img id="main-image" style="max-width: 100%; max-height: 100vh; margin: auto;" class="rounded-4 fit"
+                   th:src="${producto.getRutaImagen1()}" alt="Producto"/>
             </a>
           </div>
-          <div class="d-flex justify-content-center mb-3">
-            <a data-fslightbox="mygalley" class="border mx-1 rounded-2 item-thumb" target="_blank" data-type="image">
-              <img width="60" height="60" class="rounded-2" th:src="@{images/collar.png}"  alt=""/>
-            </a>
-            <a data-fslightbox="mygalley" class="border mx-1 rounded-2 item-thumb" target="_blank" data-type="image">
-              <img width="60" height="60" class="rounded-2" th:src="@{images/collar.png}"  alt=""/>
-            </a>
+
+          <div class="d-flex justify-content-center mb-3" id="thumbnails">
+            <!-- Miniaturas -->
+            <img th:src="${producto.getRutaImagen1()}" class="border mx-1 rounded-2 item-thumb thumb-selected" width="60" height="60" alt="Miniatura 1" th:data-large="${producto.getRutaImagen1()}"/>
+            <img th:if="${producto.getRutaImagen2() != null}" th:src="${producto.getRutaImagen2()}" class="border mx-1 rounded-2 item-thumb" width="60" height="60" alt="Miniatura 2" th:data-large="${producto.getRutaImagen2()}"/>
+            <img th:if="${producto.getRutaImagen3() != null}" th:src="${producto.getRutaImagen3()}" class="border mx-1 rounded-2 item-thumb" width="60" height="60" alt="Miniatura 3" th:data-large="${producto.getRutaImagen3()}"/>
           </div>
-          <!-- thumbs-wrap.// -->
-          <!-- gallery-wrap .end// -->
         </aside>
         <main class="col-lg-6">
           <div class="ps-lg-3">
-            <h4 class="title text-dark">Collar Básico</h4>
+            <h4 class="title text-dark" th:utext="${producto.getNombre()}"></h4>
             <div class="d-flex flex-row my-3">
               <span class="text-muted"><i class="fas fa-shopping-basket fa-sm mx-1"></i>154 orders</span>
               <span class="text-success ms-2">In stock</span>
             </div>
 
             <div class="mb-3">
-              <span class="h5">15€</span>
+              <span class="h5" th:utext="${tarifa.getPrecioUnitario()} + ' €'"></span>
               <span class="text-muted">/por unidad</span>
             </div>
 
-            <p>
-              Ejemplo descripcion collar verde para esto sirve como queda castaña
-            </p>
-
-            <div class="row">
-              <dt class="col-3">Tipo:</dt>
-              <dd class="col-9">Regular</dd>
-
-              <dt class="col-3">Color</dt>
-              <dd class="col-9">Verde</dd>
-
-              <dt class="col-3">Material</dt>
-              <dd class="col-9">Poliester 100%</dd>
-            </div>
+            <p th:utext="${producto.getDescripcion()}"></p>
 
             <hr />
 
-            <div class="row mb-4">
-              <div class="col-md-4 col-6">
-                <label class="mb-2">Talla</label>
-                <label>
-                  <select class="form-select border border-secondary" style="height: 35px;">
-                    <option>Pequeño</option>
-                    <option>M</option>
-                    <option>L</option>
-                  </select>
-                </label>
-              </div>
-              <!-- col.// -->
-              <div class="col-md-4 col-6 mb-3">
-                <label class="mb-2 d-block">Quantity</label>
-                <div class="input-group mb-3" style="width: 170px;">
-                  <button class="btn btn-white border border-secondary px-3" type="button" id="button-addon1" data-mdb-ripple-color="dark">
-                    <i class="fas fa-minus"></i>
-                  </button>
-                  <input type="text" class="form-control text-center border border-secondary" placeholder="14" aria-label="Example text with button addon" aria-describedby="button-addon1" />
-                  <button class="btn btn-white border border-secondary px-3" type="button" id="button-addon2" data-mdb-ripple-color="dark">
-                    <i class="fas fa-plus"></i>
-                  </button>
+            <div class="row">
+              <div class="row mb-4">
+                <div class="col-md-4 col-6 mb-3">
+                  <label class="mb-2 d-block">Talla</label>
+                  <label>
+                    <select id="talla-select" class="form-select border border-secondary" style="height: 35px;">
+                      <option th:each="talla : ${producto.getTallas()}"
+                              th:if="${talla.getStock() > 0}"
+                              th:utext="${talla.getTallaje()}"
+                              th:attr="data-stock=${talla.getStock()}, value=${talla.getId()}">
+                      </option>
+                    </select>
+                  </label>
+                </div>
+                <!-- col.// -->
+                <div class="col-md-4 col-6 mb-3">
+                  <label class="mb-2 d-block">Quantity</label>
+                  <div class="input-group mb-1" style="width: 170px;">
+                    <button class="btn btn-white border border-secondary px-3" type="button" id="button-minus">
+                      <i class="fas fa-minus"></i>
+                    </button>
+                    <label for="quantity-input"></label><input type="text" id="quantity-input" class="form-control text-center border border-secondary" value="1" />
+                    <button class="btn btn-white border border-secondary px-3" type="button" id="button-plus">
+                      <i class="fas fa-plus"></i>
+                    </button>
+                  </div>
+                  <!-- Mensaje fuera del input-group -->
+                  <small id="quantity-error" class="text-danger d-none">Cantidad inválida</small>
                 </div>
               </div>
             </div>
-            <a href="#" class="btn btn-warning shadow-0"> Comprar </a>
-            <a href="#" class="btn btn-primary shadow-0"> <i class="me-1 fa fa-shopping-basket"></i> Añadir al carrito </a>
+            <div class="row">
+              <div class="col-4">
+                <form id="form-anadir-carrito" th:action="@{/tienda/carrito/agregar}" method="post" class="w-100">
+                  <input type="hidden" name="productoId" th:value="${producto.getId()}" />
+                  <input type="hidden" name="tallaId" id="input-tallaId" value="" />
+                  <input type="hidden" name="cantidad" id="input-cantidad" value="" />
+                  <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                  <button type="submit" class="custom-btn btn btnHazteVoluntario w-100 align-content-center">Comprar</button>
+                </form>
+              </div>
+
+              <div class="col-4">
+                <form th:action="@{/tienda/carrito/agregar}" method="post" class="w-100">
+                  <input type="hidden" name="productoId" th:value="${producto.getId()}" />
+                  <input type="hidden" name="tallaId" th:value="${producto.getTallas().getFirst().getId()}" />
+                  <input type="hidden" name="cantidad" value="1" />
+                  <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                  <button type="submit" class="custom-btn btn btnHazteVoluntario w-100 align-content-center">Añadir al carrito</button>
+                </form>
+              </div>
+            </div>
           </div>
         </main>
       </div>
     </div>
   </section>
-  <!-- content -->
+  <script>
+    const tallaSelect = document.getElementById('talla-select');
+    const minusButton = document.getElementById('button-minus');
+    const plusButton = document.getElementById('button-plus');
+    const inputField = document.getElementById('quantity-input');
+    const errorMsg = document.getElementById('quantity-error');
+
+    function getSelectedStock() {
+      const selectedOption = tallaSelect.options[tallaSelect.selectedIndex];
+      return parseInt(selectedOption.getAttribute('data-stock')) || 0;
+    }
+
+    function showError(message) {
+      errorMsg.textContent = message;
+      errorMsg.classList.remove('d-none');
+    }
+
+    function hideError() {
+      errorMsg.classList.add('d-none');
+    }
+
+    function sanitizeInput() {
+      let valueStr = inputField.value;
+      // Remover espacios y otros caracteres no numéricos para validar
+      const onlyDigits = valueStr.replace(/\D/g, '');
+
+      if (onlyDigits !== valueStr) {
+        // Si hay caracteres no numéricos, corregimos y mostramos error
+        inputField.value = onlyDigits;
+        showError('Solo se permiten números.');
+        return;
+      }
+
+      if (onlyDigits.length === 0) {
+        // Vacío, no mostrar error, pero no dejar vacío real (puede dejar vacío para corregir)
+        hideError();
+        return;
+      }
+
+      let value = parseInt(onlyDigits);
+      const maxStock = getSelectedStock();
+
+      if (value < 1) {
+        showError('La cantidad debe ser al menos 1.');
+        inputField.value = '1';
+        return;
+      }
+
+      if (value > maxStock) {
+        showError(`Solo hay ${maxStock} unidades disponibles.`);
+        inputField.value = maxStock.toString();
+        return;
+      }
+
+      hideError();
+    }
+
+    minusButton.addEventListener('click', () => {
+      let currentValue = parseInt(inputField.value) || 1;
+      if (currentValue > 1) {
+        inputField.value = currentValue - 1;
+        hideError();
+      }
+    });
+
+    plusButton.addEventListener('click', () => {
+      let currentValue = parseInt(inputField.value) || 1;
+      const maxStock = getSelectedStock();
+
+      if (currentValue < maxStock) {
+        inputField.value = currentValue + 1;
+        hideError();
+      } else {
+        showError(`No hay más stock disponible para esta talla (máx. ${maxStock}).`);
+        // NO llamamos a sanitizeInput() aquí para que no se oculte el mensaje
+      }
+    });
+
+    tallaSelect.addEventListener('change', () => {
+      inputField.value = 1;
+      hideError();
+    });
+
+    inputField.addEventListener('keydown', function (e) {
+      const allowedKeys = ['Backspace', 'ArrowLeft', 'ArrowRight', 'Tab', 'Delete'];
+      if ((e.key >= '0' && e.key <= '9') || allowedKeys.includes(e.key)) {
+        return;
+      }
+      e.preventDefault();
+    });
+
+    inputField.addEventListener('input', sanitizeInput);
+
+    inputField.addEventListener('blur', () => {
+      if (inputField.value.trim() === '') {
+        inputField.value = '1';
+        hideError();
+      }
+    });
+  </script>
+
+  <script>
+    const mainImage = document.getElementById('main-image');
+    const mainImageLink = document.getElementById('main-image-link');
+    const thumbnails = document.querySelectorAll('#thumbnails .item-thumb');
+
+    thumbnails.forEach(thumb => {
+      thumb.addEventListener('click', () => {
+        // Cambiar imagen principal y link
+        const largeSrc = thumb.getAttribute('data-large');
+        mainImage.src = largeSrc;
+        mainImageLink.href = largeSrc;
+
+        // Marcar miniatura seleccionada
+        thumbnails.forEach(t => t.classList.remove('thumb-selected'));
+        thumb.classList.add('thumb-selected');
+      });
+    });
+  </script>
+
+  <script>
+    function actualizarCantidad(productoId, tallaId, cambio) {
+      const inputId = `quantityInput_${productoId}_${tallaId}`;
+      const input = document.getElementById(inputId);
+      let cantidadActual = parseInt(input.value) || 1;
+      const nuevaCantidad = cantidadActual + cambio;
+
+      if (nuevaCantidad < 1) return;
+
+      input.value = nuevaCantidad;
+
+      const form = document.getElementById(`formCantidad${productoId}${tallaId}`);
+
+      // También actualizamos el input hidden "cantidad" si existiera separado
+      const cantidadInput = form.querySelector('input[name="cantidad"]');
+      if (cantidadInput) {
+        cantidadInput.value = nuevaCantidad;
+      }
+
+      form.submit();
+    }
+  </script>
+
+  <script>
+    document.getElementById('form-anadir-carrito').addEventListener('submit', function(event) {
+      const tallaSelect = document.getElementById('talla-select');
+      const cantidadInput = document.getElementById('quantity-input');
+
+      const tallaIdHidden = document.getElementById('input-tallaId');
+      const cantidadHidden = document.getElementById('input-cantidad');
+
+      tallaIdHidden.value = tallaSelect.value;
+      cantidadHidden.value = cantidadInput.value;
+    });
+  </script>
+
 </section>
 </body>
 </html>

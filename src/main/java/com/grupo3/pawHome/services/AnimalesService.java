@@ -2,7 +2,6 @@ package com.grupo3.pawHome.services;
 
 import com.grupo3.pawHome.entities.Animales;
 import com.grupo3.pawHome.repositories.AnimalesRepository;
-import jakarta.transaction.Transactional;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
@@ -12,22 +11,20 @@ import java.util.Optional;
 
 @Service
 public class AnimalesService {
-    private final AnimalesRepository repository;
     private final AnimalesRepository animalesRepository;
 
-    public AnimalesService(AnimalesRepository repository, AnimalesRepository animalesRepository) { this.repository = repository;
+    public AnimalesService(AnimalesRepository repository, AnimalesRepository animalesRepository) {
         this.animalesRepository = animalesRepository;
     }
 
-    public List<Animales> findAll() { return repository.findAll(); }
+    public List<Animales> findAll() { return animalesRepository.findAll(); }
 
-    public Optional<Animales> findById(int id) {return repository.findById(id);
+    public Optional<Animales> findById(int id) {return animalesRepository.findById(id);
     }
 
     public Page<Animales> findPaginated(Pageable pageable) {
         int pageSize = pageable.getPageSize();
         int currentPage = pageable.getPageNumber();
-        String sort = pageable.getSort().toString();
         int startItem = currentPage * pageSize;
         List<Animales> animales = animalesRepository.findAllByAnimalServicio(false);
         List<Animales> list;
@@ -39,6 +36,6 @@ public class AnimalesService {
             list = animales.subList(startItem, toIndex);
         }
 
-        return new PageImpl<Animales>(list, PageRequest.of(currentPage, pageSize), animales.size());
+        return new PageImpl<>(list, PageRequest.of(currentPage, pageSize), animales.size());
     }
 }
