@@ -1,14 +1,12 @@
 body {
-    padding-top: 80px;
-    padding-bottom: 80px;
-    margin: 90px;
-    width: 100%;
-    height: 100%;
     background-image: url('../images/fondoHomePerro.png');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+
 }
+
+
 
 .button{
     color: white;
