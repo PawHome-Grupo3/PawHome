@@ -2,7 +2,7 @@
 <html lang="es" xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
 	  layout:decorate="~{layouts/layout.html}">
 <head>
-	<title>Asesoramiento Legal PawHome</title>
+	<title th:utext="#{page.asesoramientoLegal.tittle}"></title>
 	<link rel="stylesheet" th:href="@{/css/asesoramientoLegal.css}"/>
 </head>
 <body>
@@ -21,7 +21,8 @@
 							Un curso pensado para sentar las bases de una convivencia armoniosa entre tú y tu cachorro.
 							Aprenderás a comprender su comportamiento, establecer normas claras y construir un vínculo
 							basado en la confianza, el respeto y la responsabilidad.
-							A través de actividades prácticas y orientación personalizada, fomentarás su desarrollo hacia un
+							A través de actividades prácticas y orientación personalizada, fomentarás su desarrollo
+							hacia un
 							perro equilibrado, sociable y feliz.
 							Más que adiestramiento, es aprender a disfrutar y crecer juntos.
 						</p>
@@ -37,7 +38,9 @@
 								<li>Desarrollar rutinas de obediencia, educación y vínculo.</li>
 								<li>Aplicar ejercicios de pre-adiestramiento y juegos estructurados.</li>
 								<li>Establecer normas de convivencia e higiene en casa.</li>
-								<li>Familiarizar al cachorro con la manipulación física y el uso de material de adiestramiento.</li>
+								<li>Familiarizar al cachorro con la manipulación física y el uso de material de
+									adiestramiento.
+								</li>
 							</ul>
 						</div>
 						<div class="textoModal col-6 m-0 p-1">
@@ -75,41 +78,59 @@
 	</div>
 
 	<section class="container py-5 mainContainer">
-
 		<!-- Sección: Nuestro servicio de Asesoramiento Legal-->
 		<section class="text-center rounded-4 shadow mx-2 my-3 p-4 seccionTitulo">
 			<div class="container px-4">
 				<h2 class="fw-bold display-5 text-success-emphasis mb-3">
-					<i class="fas fa-gavel me-2"></i>Asesoramiento legal PawHome</h2>
+					<i class="fas fa-gavel me-2"></i>
+					<span th:utext="#{page.asesoramientoLegal.tittle}"></span>
+				</h2>
 				<p class="fs-5">
-					<i class="fas fa-handshake me-2"></i>“Protegemos sus derechos, guiamos tus decisiones” <br>
-					Asesoramiento legal para que tú y tu peludo estéis tranquilos.</p>
+					<i class="fas fa-handshake me-2"></i>
+					<span th:utext="#{servicios.asesoramientoLegal.descripcion1}"></span><br>
+					<span th:utext="#{servicios.asesoramientoLegal.descripcion2}"></span>
+				</p>
 			</div>
 		</section>
 		<hr class="mx-auto w-100 border-2 opacity-50">
 
 		<!-- Sección: Asesoramiento Legal -->
 		<section class="text-center mb-5">
-			<h2 class="fw-bold text-success-emphasis mb-4">Asesoramiento Legal</h2>
+			<h2 class="fw-bold text-success-emphasis mb-4">
+				<span th:utext="#{header.asesoramientoL}"></span>
+			</h2>
 			<div class="row g-5 d-flex justify-content-center">
 
 				<!-- Particulares -->
 				<article class="col col-md-4">
 					<div class="card p-3 shadow-sm cardServicio">
 						<div class="card_image">
-							<img th:src="@{images/legalParticulares.jpg}" alt="Asesoramiento Particulares" class="imagenCard">
+							<img th:src="@{images/legalParticulares.jpg}" alt="Asesoramiento Particulares"
+								 class="imagenCard">
 						</div>
-						<h3 class="fs-4 fw-bold text-success-emphasis">Particulares</h3>
-						<p class="fw-bold fs-5">a partir de 30€</p>
+						<h3 class="fs-4 fw-bold text-success-emphasis">
+							<span th:utext="#{servicios.asesoramientoLegal.particulares.titulo}"></span>
+						</h3>
+						<p class="fw-bold fs-5">
+							<span th:utext="#{servicios.asesoramientoLegal.particulares.precio}"></span>
+						</p>
 						<ul class="list-unstyled ps-3">
-							<li><i class="fas fa-gavel text-success me-1"></i>Apoyo en adopciones, denuncias por maltrato, convivencia y derechos</li>
-							<li><i class="fas fa-paw text-success me-1"></i>Te acompañamos en todo el proceso legal relacionado con tus animales</li>
+							<li><i class="fas fa-gavel text-success me-1"></i>
+								<span th:utext="#{servicios.asesoramientoLegal.particulares.item1}"></span>
+							</li>
+							<li><i class="fas fa-paw text-success me-1"></i>
+								<span th:utext="#{servicios.asesoramientoLegal.particulares.item2}"></span>
+							</li>
 						</ul>
 						<div class="d-grid gap-2 mt-auto">
-							<button class="btn btn-success btnCard" data-bs-toggle="modal" data-bs-target="#exampleModal">
-								<i class="fas fa-info-circle me-1"></i> Más info
+							<button class="btn btn-success btnCard" data-bs-toggle="modal"
+									data-bs-target="#exampleModal">
+								<i class="fas fa-info-circle me-1"></i>
+								<span th:utext="#{servicios.masInfoModal}"></span>
 							</button>
-							<button class="btn btn-success btnCard">Seleccionar</button>
+							<button class="btn btn-success btnCard">
+								<span th:utext="#{servicios.botonSeleccionar}"></span>
+							</button>
 						</div>
 					</div>
 				</article>
@@ -118,19 +139,32 @@
 				<article class="col col-md-4">
 					<div class="card p-3 shadow-sm cardServicio">
 						<div class="card_image">
-							<img th:src="@{images/legalProfesionales.jpg}" alt="Asesoramiento Profesionales" class="imagenCard">
+							<img th:src="@{images/legalProfesionales.jpg}" alt="Asesoramiento Profesionales"
+								 class="imagenCard">
 						</div>
-						<h3 class="fs-4 fw-bold text-success-emphasis">Profesionales</h3>
-						<p class="fw-bold fs-5">a partir de 45€</p>
+						<h3 class="fs-4 fw-bold text-success-emphasis">
+							<span th:utext="#{servicios.asesoramientoLegal.profesionales.titulo}"></span>
+						</h3>
+						<p class="fw-bold fs-5">
+							<span th:utext="#{servicios.asesoramientoLegal.profesionales.precio}"></span>
+						</p>
 						<ul class="list-unstyled ps-3">
-							<li><i class="fas fa-briefcase text-success me-1"></i>Asesoramiento para clínicas, tiendas y profesionales del sector animal</li>
-							<li><i class="fas fa-scroll text-success me-1"></i>Normativas, contratos, protección de datos y más</li>
+							<li><i class="fas fa-briefcase text-success me-1"></i>
+								<span th:utext="#{servicios.asesoramientoLegal.profesionales.item1}"></span>
+							</li>
+							<li><i class="fas fa-scroll text-success me-1"></i>
+								<span th:utext="#{servicios.asesoramientoLegal.profesionales.item2}"></span>
+							</li>
 						</ul>
 						<div class="d-grid gap-2 mt-auto">
-							<button class="btn btn-success btnCard" data-bs-toggle="modal" data-bs-target="#exampleModal">
-								<i class="fas fa-info-circle me-1"></i> Más info
+							<button class="btn btn-success btnCard" data-bs-toggle="modal"
+									data-bs-target="#exampleModal">
+								<i class="fas fa-info-circle me-1"></i>
+								<span th:utext="#{servicios.masInfoModal}"></span>
 							</button>
-							<button class="btn btn-success btnCard">Seleccionar</button>
+							<button class="btn btn-success btnCard">
+								<span th:utext="#{servicios.botonSeleccionar}"></span>
+							</button>
 						</div>
 					</div>
 				</article>
@@ -141,17 +175,29 @@
 						<div class="card_image">
 							<img th:src="@{images/legalONG.jpg}" alt="Asesoramiento ONG" class="imagenCard">
 						</div>
-						<h3 class="fs-4 fw-bold text-success-emphasis">Entidades sin ánimo de lucro</h3>
-						<p class="fw-bold fs-5">a partir de 35€</p>
+						<h3 class="fs-4 fw-bold text-success-emphasis">
+							<span th:utext="#{servicios.asesoramientoLegal.ong.titulo}"></span>
+						</h3>
+						<p class="fw-bold fs-5">
+							<span th:utext="#{servicios.asesoramientoLegal.ong.precio}"></span>
+						</p>
 						<ul class="list-unstyled ps-3">
-							<li><i class="fas fa-hands-helping text-success me-1"></i>Ayudamos a asociaciones y protectoras con sus obligaciones legales</li>
-							<li><i class="fas fa-file-alt text-success me-1"></i>Constitución, convenios, subvenciones, campañas y más</li>
+							<li><i class="fas fa-hands-helping text-success me-1"></i>
+								<span th:utext="#{servicios.asesoramientoLegal.ong.item1}"></span>
+							</li>
+							<li><i class="fas fa-file-alt text-success me-1"></i>
+								<span th:utext="#{servicios.asesoramientoLegal.ong.item2}"></span>
+							</li>
 						</ul>
 						<div class="d-grid gap-2 mt-auto">
-							<button class="btn btn-success btnCard" data-bs-toggle="modal" data-bs-target="#exampleModal">
-								<i class="fas fa-info-circle me-1"></i> Más info
+							<button class="btn btn-success btnCard" data-bs-toggle="modal"
+									data-bs-target="#exampleModal">
+								<i class="fas fa-info-circle me-1"></i>
+								<span th:utext="#{servicios.masInfoModal}"></span>
 							</button>
-							<button class="btn btn-success btnCard">Seleccionar</button>
+							<button class="btn btn-success btnCard">
+								<span th:utext="#{servicios.botonSeleccionar}"></span>
+							</button>
 						</div>
 					</div>
 				</article>
@@ -160,19 +206,32 @@
 				<article class="col col-md-4">
 					<div class="card p-3 shadow-sm cardServicio">
 						<div class="card_image">
-							<img th:src="@{images/legalAdministraciones.jpg}" alt="Asesoramiento Administraciones" class="imagenCard">
+							<img th:src="@{images/legalAdministraciones.jpg}" alt="Asesoramiento Administraciones"
+								 class="imagenCard">
 						</div>
-						<h3 class="fs-4 fw-bold text-success-emphasis">Administraciones Públicas</h3>
-						<p class="fw-bold fs-5">a partir de 60€</p>
+						<h3 class="fs-4 fw-bold text-success-emphasis">
+							<span th:utext="#{servicios.asesoramientoLegal.administraciones.titulo}"></span>
+						</h3>
+						<p class="fw-bold fs-5">
+							<span th:utext="#{servicios.asesoramientoLegal.administraciones.precio}"></span>
+						</p>
 						<ul class="list-unstyled ps-3">
-							<li><i class="fas fa-city text-success me-1"></i>Apoyo técnico-legal en normativa municipal y gestión de colonias</li>
-							<li><i class="fas fa-clipboard-list text-success me-1"></i>Desarrollo de ordenanzas, campañas de concienciación y control animal</li>
+							<li><i class="fas fa-city text-success me-1"></i>
+								<span th:utext="#{servicios.asesoramientoLegal.administraciones.item1}"></span>
+							</li>
+							<li><i class="fas fa-clipboard-list text-success me-1"></i>
+								<span th:utext="#{servicios.asesoramientoLegal.administraciones.item2}"></span>
+							</li>
 						</ul>
 						<div class="d-grid gap-2 mt-auto">
-							<button class="btn btn-success btnCard" data-bs-toggle="modal" data-bs-target="#exampleModal">
-								<i class="fas fa-info-circle me-1"></i> Más info
+							<button class="btn btn-success btnCard" data-bs-toggle="modal"
+									data-bs-target="#exampleModal">
+								<i class="fas fa-info-circle me-1"></i>
+								<span th:utext="#{servicios.masInfoModal}"></span>
 							</button>
-							<button class="btn btn-success btnCard">Seleccionar</button>
+							<button class="btn btn-success btnCard">
+								<span th:utext="#{servicios.botonSeleccionar}"></span>
+							</button>
 						</div>
 					</div>
 				</article>
@@ -181,19 +240,32 @@
 				<article class="col col-md-4">
 					<div class="card p-3 shadow-sm cardServicio">
 						<div class="card_image">
-							<img th:src="@{images/legalUniversidades.jpg}" alt="Asesoramiento Universidades" class="imagenCard">
+							<img th:src="@{images/legalUniversidades.jpg}" alt="Asesoramiento Universidades"
+								 class="imagenCard">
 						</div>
-						<h3 class="fs-4 fw-bold text-success-emphasis">Universidades</h3>
-						<p class="fw-bold fs-5">a partir de 50€</p>
+						<h3 class="fs-4 fw-bold text-success-emphasis">
+							<span th:utext="#{servicios.asesoramientoLegal.universidades.titulo}"></span>
+						</h3>
+						<p class="fw-bold fs-5">
+							<span th:utext="#{servicios.asesoramientoLegal.universidades.precio}"></span>
+						</p>
 						<ul class="list-unstyled ps-3">
-							<li><i class="fas fa-graduation-cap text-success me-1"></i>Colaboración en proyectos de investigación y ética animal</li>
-							<li><i class="fas fa-book text-success me-1"></i>Orientación legal sobre bienestar y experimentación</li>
+							<li><i class="fas fa-graduation-cap text-success me-1"></i>
+								<span th:utext="#{servicios.asesoramientoLegal.universidades.item1}"></span>
+							</li>
+							<li><i class="fas fa-book text-success me-1"></i>
+								<span th:utext="#{servicios.asesoramientoLegal.universidades.item2}"></span>
+							</li>
 						</ul>
 						<div class="d-grid gap-2 mt-auto">
-							<button class="btn btn-success btnCard" data-bs-toggle="modal" data-bs-target="#exampleModal">
-								<i class="fas fa-info-circle me-1"></i> Más info
+							<button class="btn btn-success btnCard" data-bs-toggle="modal"
+									data-bs-target="#exampleModal">
+								<i class="fas fa-info-circle me-1"></i>
+								<span th:utext="#{servicios.masInfoModal}"></span>
 							</button>
-							<button class="btn btn-success btnCard">Seleccionar</button>
+							<button class="btn btn-success btnCard">
+								<span th:utext="#{servicios.botonSeleccionar}"></span>
+							</button>
 						</div>
 					</div>
 				</article>
@@ -202,19 +274,32 @@
 				<article class="col col-md-4">
 					<div class="card p-3 shadow-sm cardServicio">
 						<div class="card_image">
-							<img th:src="@{images/legalCentrosTec.jpg}" alt="Asesoramiento Centros Tecnológicos" class="imagenCard">
+							<img th:src="@{images/legalCentrosTec.jpg}" alt="Asesoramiento Centros Tecnológicos"
+								 class="imagenCard">
 						</div>
-						<h3 class="fs-4 fw-bold text-success-emphasis">Centros Tecnológicos</h3>
-						<p class="fw-bold fs-5">a partir de 50€</p>
+						<h3 class="fs-4 fw-bold text-success-emphasis">
+							<span th:utext="#{servicios.asesoramientoLegal.centrosTecnologicos.titulo}"></span>
+						</h3>
+						<p class="fw-bold fs-5">
+							<span th:utext="#{servicios.asesoramientoLegal.centrosTecnologicos.precio}"></span>
+						</p>
 						<ul class="list-unstyled ps-3">
-							<li><i class="fas fa-flask text-success me-1"></i>Asesoría legal en innovación relacionada con el ámbito animal</li>
-							<li><i class="fas fa-search text-success me-1"></i>Ética, patentes, legislación de productos y procesos</li>
+							<li><i class="fas fa-flask text-success me-1"></i>
+								<span th:utext="#{servicios.asesoramientoLegal.centrosTecnologicos.item1}"></span>
+							</li>
+							<li><i class="fas fa-search text-success me-1"></i>
+								<span th:utext="#{servicios.asesoramientoLegal.centrosTecnologicos.item2}"></span>
+							</li>
 						</ul>
 						<div class="d-grid gap-2 mt-auto">
-							<button class="btn btn-success btnCard" data-bs-toggle="modal" data-bs-target="#exampleModal">
-								<i class="fas fa-info-circle me-1"></i> Más info
+							<button class="btn btn-success btnCard" data-bs-toggle="modal"
+									data-bs-target="#exampleModal">
+								<i class="fas fa-info-circle me-1"></i>
+								<span th:utext="#{servicios.masInfoModal}"></span>
 							</button>
-							<button class="btn btn-success btnCard">Seleccionar</button>
+							<button class="btn btn-success btnCard">
+								<span th:utext="#{servicios.botonSeleccionar}"></span>
+							</button>
 						</div>
 					</div>
 				</article>
@@ -332,16 +417,39 @@
 
 		<!-- Sección: otros servicios-->
 		<section class="text-center mb-1">
-			<h2 class="text-success-emphasis fw-bold display-5 my-4">Otros servicios:</h2>
+			<h2 class="text-success-emphasis fw-bold display-5 my-4"
+				th:utext="#{servicios.otrosServicios}">
+			</h2>
 			<div class="row row-cols-1 row-cols-md-4 g-4">
 				<article class="col">
 					<div class="card p-3 shadow-sm cardServicio">
 						<div class="card_image">
 							<img th:src="@{images/peluqueriaCanina.jpg}" alt="LogoPeluqueria" class="imagenCard">
 						</div>
-						<h3 class="mt-3 fs-3 fw-bold text-success-emphasis">GUARDERÍA</h3>
-						<p class="fs-4">A PARTIR DE 10€</p>
-						<a th:href="@{/guarderia}" class="btn btn-success">MÁS INFO</a>
+						<h3 class="mt-3 fs-3 fw-bold text-success-emphasis"
+							th:utext="#{servicios.guarderia}">
+						</h3>
+						<p class="fs-4"
+						   th:utext="#{servicios.guarderiaApartirDe}">
+						</p>
+						<a th:href="@{/guarderia}" class="btn btn-success"
+						   th:utext="#{servicios.masInfo}">
+						</a>
+					</div>
+				</article>
+				<article class="col">
+					<div class="card p-3 shadow-sm cardServicio">
+						<div class="card_image">
+							<img th:src="@{images/peluqueriaCanina.jpg}" alt="LogoPeluqueria" class="imagenCard">
+						</div>
+						<h3 class="mt-3 fs-3 fw-bold text-success-emphasis"
+							th:utext="#{servicios.peluqueria}"></h3>
+						<p class="fs-4"
+						   th:utext="#{servicios.peluqueriaApartirDe}">
+						</p>
+						<a th:href="@{/peluqueria}" class="btn btn-success"
+						   th:utext="#{servicios.masInfo}">
+						</a>
 					</div>
 				</article>
 				<article class="col">
@@ -349,9 +457,15 @@
 						<div class="card_image">
 							<img th:src="@{images/adiestramiento.jpg}" alt="LogoAdiestramiento" class="imagenCard">
 						</div>
-						<h3 class="mt-3 fs-3 fw-bold text-success-emphasis">PELUQUERÍA</h3>
-						<p class="fs-4">A PARTIR DE 15€</p>
-						<a th:href="@{/peluqueria}" class="btn btn-success">MÁS INFO</a>
+						<h3 class="mt-3 fs-3 fw-bold text-success-emphasis"
+							th:utext="#{servicios.adiestramiento}">
+						</h3>
+						<p class="fs-4"
+						   th:utext="#{servicios.adiestramientoApartirDe}">
+						</p>
+						<a th:href="@{/adiestramiento}" class="btn btn-success"
+						   th:utext="#{servicios.masInfo}">
+						</a>
 					</div>
 				</article>
 				<article class="col">
@@ -359,17 +473,15 @@
 						<div class="card_image">
 							<img th:src="@{images/veterinario.jpg}" alt="LogoVeterinario" class="imagenCard">
 						</div>
-						<h3 class="mt-3 fs-3 fw-bold text-success-emphasis">ADIESTRAMIENTO</h3>
-						<a th:href="@{/adiestramiento}" class="btn btn-success">MÁS INFO</a>
-					</div>
-				</article>
-				<article class="col">
-					<div class="card p-3 shadow-sm cardServicio">
-						<div class="card_image">
-							<img th:src="@{images/asesoramientoLegal.jpg}" alt="LogoLegal" class="imagenCard">
-						</div>
-						<h3 class="mt-3 fs-3 fw-bold text-success-emphasis">VETERINARIO</h3>
-						<a th:href="@{/veterinario}" class="btn btn-success">MÁS INFO</a>
+						<h3 class="mt-3 fs-3 fw-bold text-success-emphasis"
+							th:utext="#{servicios.veterinario}">
+						</h3>
+						<p class="fs-4"
+						   th:utext="#{servicios.veterinarioApartirDe}">
+						</p>
+						<a th:href="@{/veterinario}" class="btn btn-success"
+						   th:utext="#{servicios.masInfo}">
+						</a>
 					</div>
 				</article>
 			</div>
