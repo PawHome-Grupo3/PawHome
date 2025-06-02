@@ -30,6 +30,8 @@ public class Usuario {
     @Column(nullable = false, name = "fecha_registro")
     private LocalDate fechaRegistro;
 
-
+    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+    private PerfilDatos perfilDatos;
 
 }

@@ -1,5 +1,6 @@
 package com.grupo3.pawHome.loaders;
 
+import com.grupo3.pawHome.entities.PerfilDatos;
 import com.grupo3.pawHome.entities.Usuario;
 import com.grupo3.pawHome.repositories.UsuarioRepository;
 import org.springframework.boot.CommandLineRunner;
@@ -22,17 +23,19 @@ public class UsuarioDataLoader implements CommandLineRunner {
         System.out.println("Cargando datos iniciales de usuarios...");
 
         // Insertamos algunos usuarios de ejemplo en la base de datos
-        usuarioRepository.save(new Usuario(
-                0L,
-
-                "Juan Pérez",
-
-                "1234",
-
-                "juan.perez@example.com",
-
-                LocalDate.now())
-        );
+//        usuarioRepository.save(new Usuario(
+//                0L,
+//
+//                "Juan Pérez",
+//
+//                "1234",
+//
+//                "juan.perez@example.com",
+//
+//                LocalDate.now(),
+//
+//                new PerfilDatos())
+//        );
 
 
         System.out.println("Usuarios cargados correctamente.");

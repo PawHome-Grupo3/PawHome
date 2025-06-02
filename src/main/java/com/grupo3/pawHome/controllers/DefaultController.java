@@ -147,13 +147,6 @@ public class DefaultController {
         return "horariomapa";
     }
 
-    // Metodo para mostrar la pagina del horario y el mapa
-    @GetMapping("/perfil/informacion")
-    public String mostrarPerfil()
-    {
-        return "perfilUsuario";
-    }
-
     @GetMapping("/perfil/editar")
     public String mostrarPerfilEditar()
     {

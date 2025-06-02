@@ -21,7 +21,7 @@
                             </div>
                             <div class="row mt-2">
                                 <div class="col-md-6">
-                                    <p><strong>Nombre:</strong> th:text{usuario.nombre}</p>
+                                    <p><strong>Nombre:</strong> <span th:text="${usuario.getPerfilDatos().getNombre()}"></span></p>
                                 </div>
                                 <div class="col-md-6">
                                     <p><strong>Apellidos:</strong> Pérez Gómez</p>
