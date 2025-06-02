@@ -234,7 +234,7 @@ public class DefaultController {
         return "Apadrina";
     }
 
-    @GetMapping("/colabora/apadrina/formularioApadrina")
+    @GetMapping("/colabora/Apadrina/formularioApadrina")
     public String mostrarformularioapadrina()
     {return "formularioApadrina";}
 

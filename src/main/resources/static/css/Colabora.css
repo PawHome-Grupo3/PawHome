@@ -41,7 +41,7 @@
 }
 
 /* --- TEXTOS --- */
-h1 {
+.texto1 {
     text-align: center;
     font-weight: normal;
     color: rgb(13, 58, 39);
@@ -52,7 +52,7 @@ h1 {
     padding-top: 100px;
 }
 
-h2 {
+.texto2 {
     text-align: center;
     font-weight: bold;
     color: rgb(13, 58, 39);
@@ -96,7 +96,7 @@ a:hover {
 }
 
 /* --- BOTONES --- */
-.button {
+.botoncolabora {
     background-color: rgba(187, 224, 155, 0.85);
     width: 260px;
     padding: 18px 20px;
@@ -112,14 +112,14 @@ a:hover {
     text-decoration: none;
 }
 
-.button span {
+.botoncolabora span {
     display: block;
     font-size: 1rem;
     margin-top: 8px;
     color: #000000;
 }
 
-.button:hover {
+.botoncolabora:hover {
     background-color: rgba(27, 125, 85, 0.8);
     color: white;
     transform: translateY(-4px);
@@ -133,7 +133,7 @@ a:hover {
         transform: translateX(0);
     }
 
-    .button {
+    .botoncolabora {
         width: 90%;
         max-width: 300px;
     }
