@@ -1,24 +1,27 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layouts/layout.html}">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="stylesheet" th:href="@{/css/PaseoSolidario.css}">
-    <title>Paseo Solidario</title>
 
+<head>
+    <link rel="stylesheet" th:href="@{/css/Paseosolidario.css}"/>
+    <title>Paseo Solidario</title>
 </head>
 <body>
 <section layout:fragment="content">
 
-<div class="containerImagen">
-    <h1>PASEO SOLIDARIO:</h1>
-    <ol>
-        <li><strong>Ven a nuestra protectora</strong> y elige a uno de nuestros perros o gatos para pasear.</li>
-        <li>Envíanos una captura de pantalla con los kilómetros recorridos cuando termines (puedes usar la app <a href="https://www.google.com/fit/" target="_blank">Google Fit</a> para poder contar los pasos).</li>
-        <li><strong>Cada kilómetro</strong>, se transformará en donaciones para ayudar a nuestros peludos.</li>
-    </ol>
-</div>
+ <div class="containerImagen">
+     <div class="cuadro-transparente">
+     <h1><i>PASEO SOLIDARIO</i></h1>
+     <br>
+     <ol>
+         <li>Accede al <a th:href="@{/colabora/paseosolidario/formularioPS}">formulario</a>.</li>
+         <li>Elige a uno de nuestros <a th:href="@{/nuestrosAnimales}">animales paseables</a>.</li>
+         <li>Ingresa la hora de salida y de llegada y haz feliz a uno o varios de nuestros peludos paseándolos.</li>
+     </ol>
+ </div>
+     <h2>"En nuestra protectora, a veces es difícil sacar a todos los perros a pasear debido a la cantidad de animales que cuidamos. Tu ayuda es vital para que cada uno de ellos reciba atención y amor, sin que tengan que pasar todo el día encerrados".</h2>
+     <h3>Att:PawHome</h3>
+ </div>
 </section>
 </body>
 </html>

@@ -1,43 +1,51 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layouts/layout.html}">
+
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Cómo puedes donar</title>
     <link rel="stylesheet" th:href="@{/css/Dona.css}">
     <title>Dona</title>
-
-
 </head>
+<br>
 <body>
 <section layout:fragment="content">
-
-<div class="overlay">
-    <h1>¿Cómo puedes donar?</h1>
-
-    <div class="columnas">
-        <div class="columna1">
-            <p>Recursos monetarios</p>
-            <div class="donacion-icono">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal" />
-            </div>
-            <div class="donacion-icono">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/2/2b/Bizum.svg" />
-            </div>
+    <div class="overlay">
+        <div class="contenido-principal">
+            <h1><b>¿Cómo puedes donar?</b></h1>
         </div>
+        <div class="columnas">
+            <div class="columna">
+                <p>Recursos monetarios</p>
 
-        <div class="columna2">
-            <p>Recursos materiales</p>
-            <div class="donacion-icono">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/9/9c/Logo_Correos_2019.svg" alt="Correos" />
+                <!-- PayPal -->
+                <a href="https://www.paypal.com/donate/?hosted_button_id=REEMPLAZA_AQUI" target="_blank" title="Donar con PayPal (mínimo 3€)">
+                    <div class="donacion-icono">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal" />
+                    </div>
+                </a>
+
+                <!-- Bizum -->
+                <a href="/donar-por-bizum" title="Instrucciones para donar con Bizum (mínimo 3€)">
+                    <div class="donacion-icono">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2b/Bizum.svg" alt="Bizum" />
+                    </div>
+                </a>
             </div>
+
+            <div class="columna">
+                <p>Recursos materiales</p>
+
+                <!-- Correos -->
+                <a href="/donaciones-materiales" title="Ver cómo donar materiales por Correos">
+                    <div class="donacion-icono">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/9/9c/Logo_Correos_2019.svg" alt="Correos" />
+                    </div>
+                </a>
+            </div>
+
+            <h3><b>“Gracias a tu apoyo, podemos seguir cuidando y protegiendo a los animales que más lo necesitan. Tu ayuda marca la diferencia”</b></h3>
         </div>
     </div>
-
-    <p>
-        “Gracias a tu apoyo, podemos seguir cuidando y protegiendo a los animales que más lo necesitan. Tu ayuda marca la diferencia” </p>
-</div>
 </section>
 </body>
 </html>

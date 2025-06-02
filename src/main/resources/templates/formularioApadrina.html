@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout.html}">
+<head>
+  <meta charset="UTF-8">
+  <title>Formulario para apadrinar</title>
+  <link rel="stylesheet" th:href="@{/css/formularios.css}"/>
+</head>
+<body>
+
+<section class="mb-5" layout:fragment="content">
+  <h2 class="text-success-emphasis fw-bold display-5 my-4 text-center">Apadrina una de nuestras mascotas</h2>
+  <div class="formContainer">
+    <form class="row g-3">
+
+      <legend class="fw-bold"><strong>DATOS DEL/LA PADRINO/MADRINA:</strong></legend>
+
+      <div class="itemSeleccion">
+        <label for="nombrePadrino" class="form-label">Nombre completo: <span style="color: red">*</span></label>
+        <input type="text" id="nombrePadrino" class="form-control labelForm" placeholder="-Por favor introduzca su nombre completo-" required>
+      </div>
+
+      <div class="itemSeleccion">
+        <label for="padrinoDNI" class="form-label">DNI: <span style="color: red">*</span></label>
+        <input type="text" id="padrinoDNI" class="form-control labelForm" placeholder="-Por favor, introduzca su DNI-" required>
+      </div>
+
+      <div class="itemSeleccion">
+        <label for="edadPadrino" class="form-label">Edad: <span style="color: red">*</span></label>
+        <input type="text" id="edadPadrino" class="form-control labelForm" placeholder="-Por favor, introduzca su edad-" required>
+      </div>
+
+      <div class="itemSeleccion">
+        <label for="telefonoPadrino" class="form-label">Teléfono: <span style="color: red">*</span></label>
+        <input type="text" id="telefonoPadrino" class="form-control labelForm" placeholder="-Por favor, introduzca su teléfono-" required>
+      </div>
+
+      <div class="itemSeleccion">
+        <label for="correoPadrino" class="form-label">Correo: <span style="color: red">*</span></label>
+        <input type="text" id="correoPadrino" class="form-control labelForm" placeholder="-Por favor, introduzca su correo electrónico" required>
+      </div>
+
+      <div class="itemSeleccion">
+        <label for="direccionPadrino" class="form-label">Dirección:</label>
+        <input type="text" id="direccionPadrino" class="form-control labelForm" placeholder="-Por favor, introduzca su dirección">
+      </div>
+
+      <div class="itemSeleccion">
+        <label for="ocupacionPadrino" class="form-label">Ocupación:<span style="color: red">*</span></label>
+        <select id="ocupacionPadrino" class="form-select labelForm" required>
+          <option value="" disabled selected>-Elija una opción-</option>
+          <option>Pequeño</option>
+          <option>Mediano</option>
+          <option>Grande</option>
+        </select>
+      </div>
+      <br>
+      <legend class="fw-bold"><strong>INFORMACIÓN DEL APADRINAMIENTO:</strong></legend>
+
+      <div class="itemSeleccion">
+        <label for="preferenciaPadrino" class="form-label">¿Tiene alguna preferencia para apadrinar? Indícalo: <span style="color: red">*</span></label>
+        <select id="preferenciaPadrino" class="form-select labelForm" required>
+          <option value="" disabled selected>-Elija una opción-</option>
+          <option>Perro</option>
+          <option>Gato</option>
+          <option>Indiferente</option>
+        </select>
+      </div>
+
+      <div class="itemSeleccion">
+        <label for="nombreMascota" class="form-label">Nombre de la mascota: <span style="color: red">*</span></label>
+        <a href="/nuestrosAnimales" target="_blank" class="enlaceMascotas">
+          Consulta la lista de animales disponibles
+        </a>
+        <input type="text" id="nombreMascota" class="form-control labelForm" placeholder="-Por favor, introduzca el nombre de la mascota elegida-" required>
+      </div>
+
+      <div class="itemSeleccion">
+        <label for="apoyoAdoptante" class="form-label">¿Qué tipo de apoyo te gustaría ofrecer? Indícalo: <span style="color: red">*</span></label>
+        <select id="apoyoAdoptante" class="form-select labelForm" required>
+          <option value="" disabled selected>-Elija una opción-</option>
+          <option>Ayuda económica mensual</option>
+          <option>Compra de alimento</option>
+          <option>Atención veterinaria</option>
+          <option>Paseo y visitas al refugio</option>
+        </select>
+      </div>
+      <br>
+      <div class="itemSeleccion">
+        <label class="form-label"><strong>Aporte mensual sugerido:</strong></label>
+        <p><em>(Puedes definir tú la cantidad, nosotros sugerimos 10€ mensuales como mínimo)</em></p>
+
+        <label for="cantidadAporte" class="form-label">Cantidad a aportar: €</label>
+        <input type="number" id="cantidadAporte" class="form-control labelForm" placeholder="Introduce la cantidad">
+
+        <br>
+
+        <label for="frecuenciaAporte" class="form-label mt-3">Frecuencia del aporte:</label>
+        <select id="frecuenciaAporte" class="form-select labelForm">
+          <option value="" disabled selected>-Selecciona una opción-</option>
+          <option value="mensual">Mensual</option>
+          <option value="trimestral">Trimestral</option>
+          <option value="unica">Única vez</option>
+        </select>
+
+        <br>
+
+        <label for="comentariosAporte" class="form-label mt-3">Comentarios adicionales:</label>
+        <textarea id="comentariosAporte" class="form-control labelForm" rows="3" placeholder="Escribe aquí cualquier información adicional..."></textarea>
+      </div>
+
+      <div class="col-12 text-center mt-4">
+        <button type="submit" class="btn btnEnviar text-white">Enviar solicitud</button>
+      </div>
+
+    </form>
+  </div>
+</section>
+</body>
+</html>

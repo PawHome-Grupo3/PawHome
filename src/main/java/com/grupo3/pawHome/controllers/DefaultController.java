@@ -67,6 +67,7 @@ public class DefaultController {
         return "entidadesHijas"; // View name
     }
 
+
     // Metodo para mostrar pagina de inicio
     @GetMapping("")
     public String mostrarIndex(Model model)
@@ -81,8 +82,10 @@ public class DefaultController {
         return "detalleProducto"; // Carga /templates/index.html
     }
 
+
     @GetMapping("/listaCarrito")
     public String mostrarListaCarrito() { return "listaCarrito"; }
+
 
     // Metodo para mostrar pagina de inicio
     @GetMapping("/tienda")
@@ -105,12 +108,14 @@ public class DefaultController {
         return "peluqueria";
     }
 
+
     // Metodo para mostrar la pagina de adiestramiento
     @GetMapping("/adiestramiento")
     public String mostrarAdiestramiento()
     {
         return "adiestramiento";
     }
+
 
     // Metodo para mostrar la pagina de veterinario
     @GetMapping("/veterinario")
@@ -119,12 +124,14 @@ public class DefaultController {
         return "veterinario";
     }
 
+
     // Metodo para mostrar la pagina de asesoramiento legal
     @GetMapping("/asesoramientoLegal")
     public String mostrarAsesoramientoLegal()
     {
         return "asesoramientoLegal";
     }
+
 
     // Metodo para mostrar la pagina de nuestros animales
     @GetMapping("/nuestrosAnimales")
@@ -133,12 +140,14 @@ public class DefaultController {
         return "nuestrosAnimales";
     }
 
+
     // Metodo para mostrar la pagina de contacto
     @GetMapping("/contacto")
     public String mostrarContacto()
     {
         return "contacto";
     }
+
 
     // Metodo para mostrar la pagina del buzón de sugerencias
     @GetMapping("/buzonsugerencias")
@@ -147,12 +156,14 @@ public class DefaultController {
         return "buzonsugerencias";
     }
 
+
     // Metodo para mostrar la pagina del horario y el mapa
     @GetMapping("/horariomapa")
     public String mostrarHorarioMapa()
     {
         return "horariomapa";
     }
+
 
     // Metodo para mostrar la pagina del horario y el mapa
     @GetMapping("/perfil/informacion")
@@ -189,15 +200,10 @@ public class DefaultController {
         return "perfilUsuarioDonaciones";
     }
 
-    // Metodo para mostrar la página de Final Feliz
-    @GetMapping("/finalfeliz")
-    public String mostrarFinalFeliz()
-    {
-        return "FinalFeliz";
-    }
+
 
     // Metodo para mostrar la página de Reseñas
-    @GetMapping("/resenas")
+    @GetMapping("resenas")
     public String mostrarResenas()
     {
         return "Reseñas";
@@ -207,6 +213,7 @@ public class DefaultController {
     public String mostrarEventos(){
         return "eventos";
     }
+
 
     // Metodo para mostrar la página de Colabora
     @GetMapping("/colabora")
@@ -227,17 +234,32 @@ public class DefaultController {
         return "Apadrina";
     }
 
+    @GetMapping("/colabora/Apadrina/formularioApadrina")
+    public String mostrarformularioapadrina()
+    {return "formularioApadrina";}
 
     @GetMapping("/colabora/adopta")
     public String mostrarColaboraAdopta()
-    {
-        return "Adopta";
-    }
+    {return "Adopta";}
+
+    @GetMapping("/colabora/adopta/formularioAdopta")
+    public String mostrarformularioadopta()
+    {return "formularioAdopta";}
 
     @GetMapping("/colabora/paseosolidario")
     public String mostrarColaboraPaseoSolidario()
+    {return "PaseoSolidario";}
+
+    @GetMapping("/colabora/paseosolidario/formularioPS")
+    public String mostrarformularioPS()
+    {return "formularioPS";}
+
+
+    // Metodo para mostrar la página de Finales Felices
+    @GetMapping("/finalfeliz")
+    public String mostrarFinalesFelices()
     {
-        return "PaseoSolidario";
+        return "FinalFeliz";
     }
 
     @GetMapping("/registro")
