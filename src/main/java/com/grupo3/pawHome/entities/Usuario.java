@@ -6,7 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import java.time.LocalDate;
-import java.util.List;
 
 @Getter
 @Setter
@@ -31,6 +30,8 @@ public class Usuario {
     @Column(nullable = false, name = "fecha_registro")
     private LocalDate fechaRegistro;
 
-    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<Factura> facturas;
+    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+    private PerfilDatos perfilDatos;
+
 }
