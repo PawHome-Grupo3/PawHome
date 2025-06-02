@@ -1,8 +1,10 @@
 package com.grupo3.pawHome.controllers;
 
 import com.grupo3.pawHome.entities.Apadrinar;
+import com.grupo3.pawHome.entities.PerfilDatos;
 import com.grupo3.pawHome.entities.Usuario;
 import com.grupo3.pawHome.services.ApadrinarService;
+import com.grupo3.pawHome.services.PerfilDatosService;
 import com.grupo3.pawHome.services.UsuarioService;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -11,6 +13,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -23,10 +26,12 @@ import java.util.Set;
 public class UsuarioController {
     private final UsuarioService usuarioService;
     private final ApadrinarService apadrinarService;
+    private final PerfilDatosService perfilDatosService;
 
-    public UsuarioController(UsuarioService usuarioService, ApadrinarService apadrinarService) {
+    public UsuarioController(UsuarioService usuarioService, ApadrinarService apadrinarService, PerfilDatosService perfilDatosService) {
         this.usuarioService = usuarioService;
         this.apadrinarService = apadrinarService;
+        this.perfilDatosService = perfilDatosService;
     }
 
     @GetMapping("/perfil/informacion")
@@ -54,6 +59,26 @@ public class UsuarioController {
         usuarioOpt.ifPresent(usuario -> model.addAttribute("usuario", usuario));
 
         return "perfilUsuarioEditar";
+    }
+
+    @PostMapping("/perfil/editar/guardar")
+    public String guardarPerfilDatos(@ModelAttribute PerfilDatos perfilDatos) {
+        Optional<Usuario> usuarioOpt = usuarioService.findById(3); // o el ID del usuario logueado
+
+        if (usuarioOpt.isPresent()) {
+            Usuario usuario = usuarioOpt.get();
+
+            // Asegúrate de establecer ambos
+            System.out.println("Usuario ID: " + perfilDatos.getUsuario().getId());
+            System.out.println("Perfil ID: " + perfilDatos.getId());
+            perfilDatos.setUsuario(usuario);
+            perfilDatos.setId(usuario.getId()); // IMPORTANTE si usas @MapsId
+
+            perfilDatosService.save(perfilDatos);
+            return "redirect:/perfil/editar";
+        }
+
+        return "redirect:/error";
     }
 
     @GetMapping("/perfil/apadrinamientos")
