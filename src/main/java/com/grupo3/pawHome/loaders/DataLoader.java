@@ -2,11 +2,11 @@ package com.grupo3.pawHome.loaders;
 
 import com.grupo3.pawHome.entities.*;
 import com.grupo3.pawHome.repositories.*;
-import com.grupo3.pawHome.entities.Animales;
+import com.grupo3.pawHome.entities.Animal;
 import com.grupo3.pawHome.entities.Apadrinar;
 import com.grupo3.pawHome.entities.PerfilDatos;
 import com.grupo3.pawHome.entities.Usuario;
-import com.grupo3.pawHome.repositories.AnimalesRepository;
+import com.grupo3.pawHome.repositories.AnimalRepository;
 import com.grupo3.pawHome.repositories.ApadrinarRepository;
 import com.grupo3.pawHome.repositories.PerfilDatosRespository;
 import com.grupo3.pawHome.repositories.UsuarioRepository;
@@ -25,11 +25,10 @@ public class DataLoader implements CommandLineRunner {
     private final TallaRepository tallaRepository;
     private final CategoriaRepository categoriaRepository;
     private final TarifaRepository tarifaRepository;
-    private final UsuarioRepository usuarioRepository;
     private final PerfilDatosRespository perfilDatosRespository;
 
 
-    public DataLoader(AnimalRepository animalRepository, ApadrinarRepository apadrinarRepository, UsuarioRepository usuarioRepository, FacturaRepository facturaRepository, ProductoRepository productoRepository, TallaRepository tallaRepository, CategoriaRepository categoriaRepository, TarifaRepository tarifaRepository) {
+    public DataLoader(AnimalRepository animalRepository, ApadrinarRepository apadrinarRepository, UsuarioRepository usuarioRepository, FacturaRepository facturaRepository, ProductoRepository productoRepository, TallaRepository tallaRepository, CategoriaRepository categoriaRepository, TarifaRepository tarifaRepository, PerfilDatosRespository perfilDatosRespository) {
         this.animalRepository = animalRepository;
         this.apadrinarRepository = apadrinarRepository;
         this.usuarioRepository = usuarioRepository;
@@ -38,7 +37,6 @@ public class DataLoader implements CommandLineRunner {
         this.tallaRepository = tallaRepository;
         this.categoriaRepository = categoriaRepository;
         this.tarifaRepository = tarifaRepository;
-        this.usuarioRepository = usuarioRepository;
         this.perfilDatosRespository = perfilDatosRespository;
     }
 
@@ -193,23 +191,6 @@ public class DataLoader implements CommandLineRunner {
 
         // Guardar usuario (gracias a CascadeType.ALL también guarda perfil)
         usuarioRepository.save(usuario);
-
-        animalesRepository.save(new Animales(
-                0L,
-                "Firulais",
-                "CHIP12345",
-                "20kg",
-                "2 años",
-                true,
-                "Perro muy amigable",
-                true,
-                false,
-                false,
-                LocalDate.of(2024, 4, 10),
-                true,
-                false,
-                "/images/perro1Card.jpg"
-        ));
 
         Talla t7 = new Talla();
         t7.setStock(12);
