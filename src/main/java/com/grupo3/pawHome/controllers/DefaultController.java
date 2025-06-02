@@ -262,6 +262,18 @@ public class DefaultController {
         return "FinalFeliz";
     }
 
+    @GetMapping("/registro")
+    public String mostrarRegistro()
+    {
+        return "registro";
+    }
+
+    @GetMapping("/loginPawHome")
+    public String mostrarLogin()
+    {
+        return "login";
+    }
+
 
     /**
      * Gestiona las solicitudes GET para obtener y mostrar la lista de entidades protegidas.

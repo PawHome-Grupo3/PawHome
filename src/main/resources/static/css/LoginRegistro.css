@@ -1,0 +1,20 @@
+body {
+    margin: 0 !important;
+    padding: 0;
+}
+
+.ContenedorPrincipal {
+    background-image: url('../images/fondoHomePerro.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.button{
+    color: white;
+}
+
+

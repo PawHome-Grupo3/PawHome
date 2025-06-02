@@ -2,11 +2,10 @@
 <html lang="es" xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
 	  layout:decorate="~{layouts/layout.html}">
 <head>
-	<title>Peluquería PawHome</title>
+	<title th:utext="#{page.peluqueria.tittle}"></title>
 	<link rel="stylesheet" th:href="@{/css/peluqueria.css}"/>
 </head>
 <body>
-
 <section layout:fragment="content">
 	<section class="container py-5 mainContainer">
 
@@ -14,11 +13,17 @@
 		<section class="text-center rounded-4 shadow mx-2 my-3 p-4 seccionTitulo">
 			<div class="container px-4">
 				<h2 class="fw-bold display-5 text-success-emphasis mb-3">
-					<i class="fas fa-scissors me-2"></i> Peluquería PawHome
+					<i class="fas fa-scissors me-2"></i>
+					<span th:utext="#{page.peluqueria.tittle}"></span>
 				</h2>
 				<p class="fs-5">
-					Cuidamos el estilo y bienestar de tu mascota con <i class="fas fa-hand-sparkles"></i> higiene, <i
-						class="fas fa-spa"></i> confort y <i class="fas fa-heart"></i> mucho cariño.
+					<span th:utext="#{servicios.peluqueria.eslogan1}"></span>
+					<i class="fas fa-hand-sparkles"></i>
+					<span th:utext="#{servicios.peluqueria.eslogan2}"></span>
+					<i class="fas fa-spa"></i>
+					<span th:utext="#{servicios.peluqueria.eslogan3}"></span>
+					<i class="fas fa-heart"></i>
+					<span th:utext="#{servicios.peluqueria.eslogan4}"></span>
 				</p>
 			</div>
 		</section>
@@ -27,7 +32,9 @@
 		<!-- Seccion: Servicios para perros: -->
 		<section class="text-center my-5">
 			<h2 class="fw-bold text-start fs-2 px-3 text-success-emphasis mb-4">
-				<i class="fas fa-dog me-2"></i>Servicios para perros</h2>
+				<i class="fas fa-dog me-2"></i>
+				<span th:utext="#{servicios.peluqueria.serviciosPerros.titulo}"></span>
+			</h2>
 
 			<!-- Versión para pantallas grandes -->
 			<div class="d-none d-md-flex row row-cols-1 row-cols-md-4 g-4 px-3">
@@ -36,15 +43,28 @@
 				<article class="col">
 					<div class="rounded-4 shadow-sm p-3 h-100 seccionTitulo">
 						<h3 class="fw-semibold fs-4 text-start text-success mb-3">
-							<i class="fas fa-paw me-2"></i> Nuestros servicios
+							<i class="fas fa-paw me-2"></i>
+							<span th:utext="#{servicios.peluqueria.nuestrosServicios.titulo}"></span>
 						</h3>
 						<ul class="list-unstyled text-start fs-5">
-							<li><i class="fas fa-brush me-2 "></i> Cepillado</li>
-							<li><i class="fas fa-shower me-2 "></i> Baño</li>
-							<li><i class="fas fa-cut me-2 "></i> Stripping</li>
-							<li><i class="fas fa-clinic-medical me-2 "></i> Corte a máquina</li>
-							<li><i class="fas fa-hand-scissors me-2 "></i> Corte a mano</li>
-							<li><i class="fas fa-ruler-combined me-2 "></i> Corte combinado</li>
+							<li><i class="fas fa-brush me-2 "></i>
+								<span th:utext="#{servicios.peluqueria.nuestrosServicios.cepillado}"></span>
+							</li>
+							<li><i class="fas fa-shower me-2 "></i>
+								<span th:utext="#{servicios.peluqueria.nuestrosServicios.banio}"></span>
+							</li>
+							<li><i class="fas fa-cut me-2 "></i>
+								<span th:utext="#{servicios.peluqueria.nuestrosServicios.stripping}"></span>
+							</li>
+							<li><i class="fas fa-clinic-medical me-2 "></i>
+								<span th:utext="#{servicios.peluqueria.nuestrosServicios.corteMaquina}"></span>
+							</li>
+							<li><i class="fas fa-hand-scissors me-2 "></i>
+								<span th:utext="#{servicios.peluqueria.nuestrosServicios.corteMano}"></span>
+							</li>
+							<li><i class="fas fa-ruler-combined me-2 "></i>
+								<span th:utext="#{servicios.peluqueria.nuestrosServicios.corteCombinado}"></span>
+							</li>
 						</ul>
 					</div>
 				</article>
@@ -53,22 +73,38 @@
 				<article class="col">
 					<div class="rounded-4 shadow-sm p-3 h-100 seccionTitulo">
 						<h3 class="fw-semibold fs-4 text-start text-success mb-3">
-							<i class="fas fa-bath me-2"></i> El baño incluye
+							<i class="fas fa-bath me-2"></i>
+							<span th:utext="#{servicios.peluqueria.banioIncluye.titulo}"></span>
 						</h3>
 						<ul class="list-unstyled text-start fs-5 mb-4">
-							<li><i class="fas fa-spa me-2 "></i> Baño y masaje</li>
-							<li><i class="fas fa-wind me-2 "></i> Secado</li>
-							<li><i class="fas fa-cut me-2 "></i> Corte de uñas</li>
-							<li><i class="fas fa-head-side-mask me-2 "></i> Limpieza de oídos</li>
+							<li><i class="fas fa-spa me-2 "></i>
+								<span th:utext="#{servicios.peluqueria.banioIncluye.banioMasaje}"></span>
+							</li>
+							<li><i class="fas fa-wind me-2 "></i>
+								<span th:utext="#{servicios.peluqueria.banioIncluye.secado}"></span>
+							</li>
+							<li><i class="fas fa-cut me-2 "></i>
+								<span th:utext="#{servicios.peluqueria.banioIncluye.uñas}"></span>
+							</li>
+							<li><i class="fas fa-head-side-mask me-2 "></i>
+								<span th:utext="#{servicios.peluqueria.banioIncluye.oidos}"></span>
+							</li>
 						</ul>
 
 						<h3 class="fw-semibold fs-4 text-start text-success mb-3">
-							<i class="fas fa-scissors me-2"></i> El corte incluye
+							<i class="fas fa-scissors me-2"></i>
+							<span th:utext="#{servicios.peluqueria.corteIncluye.titulo}"></span>
 						</h3>
 						<ul class="list-unstyled text-start fs-5">
-							<li><i class="fas fa-dog me-2 "></i> Corte acorde a la raza</li>
-							<li><i class="fas fa-dna me-2 "></i> Técnica según tipo de pelo</li>
-							<li><i class="fas fa-spray-can-sparkles me-2 "></i> Antiestático y perfume</li>
+							<li><i class="fas fa-dog me-2 "></i>
+								<span th:utext="#{servicios.peluqueria.corteIncluye.razas}"></span>
+							</li>
+							<li><i class="fas fa-dna me-2 "></i>
+								<span th:utext="#{servicios.peluqueria.corteIncluye.pelo}"></span>
+							</li>
+							<li><i class="fas fa-spray-can-sparkles me-2 "></i>
+								<span th:utext="#{servicios.peluqueria.corteIncluye.perfume}"></span>
+							</li>
 						</ul>
 					</div>
 				</article>
@@ -77,13 +113,22 @@
 				<article class="col">
 					<div class="rounded-4 shadow-sm p-3 h-100 seccionTitulo">
 						<h3 class="fw-semibold fs-4 text-start text-success mb-3">
-							<i class="fas fa-plus-circle me-2"></i> Suplementos
+							<i class="fas fa-plus-circle me-2"></i>
+							<span th:utext="#{servicios.peluqueria.suplementos.titulo}"></span>
 						</h3>
 						<ul class="list-unstyled text-start fs-5">
-							<li><i class="fas fa-cut me-2 "></i> Por nudos</li>
-							<li><i class="fas fa-bug-slash me-2 "></i> Baño antiparásito</li>
-							<li><i class="fas fa-tint me-2 "></i> Champú potenciador color</li>
-							<li><i class="fas fa-feather-alt me-2 "></i> Deslanado</li>
+							<li><i class="fas fa-cut me-2 "></i>
+								<span th:utext="#{servicios.peluqueria.suplementos.nudos}"></span>
+							</li>
+							<li><i class="fas fa-bug-slash me-2 "></i>
+								<span th:utext="#{servicios.peluqueria.suplementos.antiparasito}"></span>
+							</li>
+							<li><i class="fas fa-tint me-2 "></i>
+								<span th:utext="#{servicios.peluqueria.suplementos.champu}"></span>
+							</li>
+							<li><i class="fas fa-feather-alt me-2 "></i>
+								<span th:utext="#{servicios.peluqueria.suplementos.deslanado}"></span>
+							</li>
 						</ul>
 					</div>
 				</article>
@@ -92,14 +137,25 @@
 				<article class="col">
 					<div class="rounded-4 shadow-sm p-3 h-100 seccionTitulo">
 						<h3 class="fw-semibold fs-4 text-start text-success mb-3">
-							<i class="fas fa-weight me-2"></i> Tamaños atendidos
+							<i class="fas fa-weight me-2"></i>
+							<span th:utext="#{servicios.peluqueria.tamanos.titulo}"></span>
 						</h3>
 						<ul class="list-unstyled text-start fs-5">
-							<li><i class="fas fa-dog me-2 "></i> Gigante > 35kg</li>
-							<li><i class="fas fa-dog me-2 "></i> Grande 26 - 35kg</li>
-							<li><i class="fas fa-dog me-2 "></i> Mediano 11 - 25kg</li>
-							<li><i class="fas fa-dog me-2 "></i> Pequeño 6 - 10kg</li>
-							<li><i class="fas fa-dog me-2 "></i> Juguete < 5kg</li>
+							<li><i class="fas fa-dog me-2 "></i>
+								<span th:utext="#{servicios.peluqueria.tamanos.gigante}"></span>
+							</li>
+							<li><i class="fas fa-dog me-2 "></i>
+								<span th:utext="#{servicios.peluqueria.tamanos.grande}"></span>
+							</li>
+							<li><i class="fas fa-dog me-2 "></i>
+								<span th:utext="#{servicios.peluqueria.tamanos.mediano}"></span>
+							</li>
+							<li><i class="fas fa-dog me-2 "></i>
+								<span th:utext="#{servicios.peluqueria.tamanos.pequeno}"></span>
+							</li>
+							<li><i class="fas fa-dog me-2 "></i>
+								<span th:utext="#{servicios.peluqueria.tamanos.juguete}"></span>
+							</li>
 						</ul>
 					</div>
 				</article>
@@ -116,19 +172,32 @@
 									data-bs-toggle="collapse"
 									data-bs-target="#collapseServicios" aria-expanded="false"
 									aria-controls="collapseServicios">
-								<i class="fas fa-paw me-2 text-success"></i> Nuestros servicios
+								<i class="fas fa-paw me-2 text-success"></i>
+								<span th:utext="#{servicios.peluqueria.nuestrosServicios.titulo}"></span>
 							</button>
 						</h2>
 						<div id="collapseServicios" class="accordion-collapse collapse"
 							 aria-labelledby="headingServicios" data-bs-parent="#accordionServiciosPerros">
 							<div class="accordion-body">
-								<ul class="list-unstyled fs-6">
-									<li><i class="fas fa-brush me-2 "></i> Cepillado</li>
-									<li><i class="fas fa-shower me-2 "></i> Baño</li>
-									<li><i class="fas fa-cut me-2 "></i> Stripping</li>
-									<li><i class="fas fa-clinic-medical me-2 "></i> Corte a máquina</li>
-									<li><i class="fas fa-hand-scissors me-2 "></i> Corte a mano</li>
-									<li><i class="fas fa-ruler-combined me-2 "></i> Corte combinado</li>
+								<ul class="list-unstyled fs-5">
+									<li><i class="fas fa-brush me-2 "></i>
+										<span th:utext="#{servicios.peluqueria.nuestrosServicios.cepillado}"></span>
+									</li>
+									<li><i class="fas fa-shower me-2 "></i>
+										<span th:utext="#{servicios.peluqueria.nuestrosServicios.banio}"></span>
+									</li>
+									<li><i class="fas fa-cut me-2 "></i>
+										<span th:utext="#{servicios.peluqueria.nuestrosServicios.stripping}"></span>
+									</li>
+									<li><i class="fas fa-clinic-medical me-2 "></i>
+										<span th:utext="#{servicios.peluqueria.nuestrosServicios.corteMaquina}"></span>
+									</li>
+									<li><i class="fas fa-hand-scissors me-2 "></i>
+										<span th:utext="#{servicios.peluqueria.nuestrosServicios.corteMano}"></span>
+									</li>
+									<li><i class="fas fa-ruler-combined me-2 "></i>
+										<span th:utext="#{servicios.peluqueria.nuestrosServicios.corteCombinado}"></span>
+									</li>
 								</ul>
 							</div>
 						</div>
@@ -140,24 +209,38 @@
 							<button class="accordion-button collapsed seccionTitulo" type="button"
 									data-bs-toggle="collapse"
 									data-bs-target="#collapseBanio" aria-expanded="false" aria-controls="collapseBanio">
-								<i class="fas fa-bath me-2 text-success"></i> Baño y Corte
+								<i class="fas fa-bath me-2 text-success"></i>
+								<span th:utext="#{servicios.peluqueria.bañoYCorte}"></span>
 							</button>
 						</h2>
 						<div id="collapseBanio" class="accordion-collapse collapse" aria-labelledby="headingBanio"
 							 data-bs-parent="#accordionServiciosPerros">
 							<div class="accordion-body">
-								<h6 class="fw-bold mb-2">El baño incluye:</h6>
-								<ul class="list-unstyled fs-6 mb-3">
-									<li><i class="fas fa-spa me-2 "></i> Baño y masaje</li>
-									<li><i class="fas fa-wind me-2 "></i> Secado</li>
-									<li><i class="fas fa-cut me-2 "></i> Corte de uñas</li>
-									<li><i class="fas fa-head-side-mask me-2 "></i> Limpieza de oídos</li>
+								<h6 class="fw-bold mb-2" th:utext="#{servicios.peluqueria.banioIncluye.titulo}"></h6>
+								<ul class="list-unstyled fs-5 mb-3">
+									<li><i class="fas fa-spa me-2 "></i>
+										<span th:utext="#{servicios.peluqueria.banioIncluye.banioMasaje}"></span>
+									</li>
+									<li><i class="fas fa-wind me-2 "></i>
+										<span th:utext="#{servicios.peluqueria.banioIncluye.secado}"></span>
+									</li>
+									<li><i class="fas fa-cut me-2 "></i>
+										<span th:utext="#{servicios.peluqueria.banioIncluye.uñas}"></span>
+									</li>
+									<li><i class="fas fa-head-side-mask me-2 "></i>
+										<span th:utext="#{servicios.peluqueria.banioIncluye.oidos}"></span>
+									</li>
 								</ul>
-								<h6 class="fw-bold mb-2">El corte incluye:</h6>
-								<ul class="list-unstyled fs-6">
-									<li><i class="fas fa-dog me-2 "></i> Corte acorde a la raza</li>
-									<li><i class="fas fa-dna me-2 "></i> Técnica según tipo de pelo</li>
-									<li><i class="fas fa-spray-can-sparkles me-2 "></i> Antiestático y perfume
+								<h6 class="fw-bold mb-2" th:utext="#{servicios.peluqueria.corteIncluye.titulo}"></h6>
+								<ul class="list-unstyled fs-5">
+									<li><i class="fas fa-dog me-2 "></i>
+										<span th:utext="#{servicios.peluqueria.corteIncluye.razas}"></span>
+									</li>
+									<li><i class="fas fa-dna me-2 "></i>
+										<span th:utext="#{servicios.peluqueria.corteIncluye.pelo}"></span>
+									</li>
+									<li><i class="fas fa-spray-can-sparkles me-2 "></i>
+										<span th:utext="#{servicios.peluqueria.corteIncluye.perfume}"></span>
 									</li>
 								</ul>
 							</div>
@@ -171,17 +254,26 @@
 									data-bs-toggle="collapse"
 									data-bs-target="#collapseSuplementos" aria-expanded="false"
 									aria-controls="collapseSuplementos">
-								<i class="fas fa-plus-circle me-2 text-success"></i> Suplementos
+								<i class="fas fa-plus-circle me-2 text-success"></i>
+								<span th:utext="#{servicios.peluqueria.suplementos.titulo}"></span>
 							</button>
 						</h2>
 						<div id="collapseSuplementos" class="accordion-collapse collapse"
 							 aria-labelledby="headingSuplementos" data-bs-parent="#accordionServiciosPerros">
 							<div class="accordion-body">
-								<ul class="list-unstyled fs-6">
-									<li><i class="fas fa-cut me-2 "></i> Por nudos</li>
-									<li><i class="fas fa-bug-slash me-2 "></i> Baño antiparásito</li>
-									<li><i class="fas fa-tint me-2 "></i> Champú potenciador de color</li>
-									<li><i class="fas fa-feather-alt me-2 "></i> Deslanado</li>
+								<ul class="list-unstyled fs-5">
+									<li><i class="fas fa-cut me-2 "></i>
+										<span th:utext="#{servicios.peluqueria.suplementos.nudos}"></span>
+									</li>
+									<li><i class="fas fa-bug-slash me-2 "></i>
+										<span th:utext="#{servicios.peluqueria.suplementos.antiparasito}"></span>
+									</li>
+									<li><i class="fas fa-tint me-2 "></i>
+										<span th:utext="#{servicios.peluqueria.suplementos.champu}"></span>
+									</li>
+									<li><i class="fas fa-feather-alt me-2 "></i>
+										<span th:utext="#{servicios.peluqueria.suplementos.deslanado}"></span>
+									</li>
 								</ul>
 							</div>
 						</div>
@@ -194,18 +286,29 @@
 									data-bs-toggle="collapse"
 									data-bs-target="#collapseTamanios" aria-expanded="false"
 									aria-controls="collapseTamanios">
-								<i class="fas fa-weight me-2 text-success"></i> Tamaños atendidos
+								<i class="fas fa-weight me-2 text-success"></i>
+								<span th:utext="#{servicios.peluqueria.tamanos.titulo}"></span>
 							</button>
 						</h2>
 						<div id="collapseTamanios" class="accordion-collapse collapse" aria-labelledby="headingTamanios"
 							 data-bs-parent="#accordionServiciosPerros">
 							<div class="accordion-body">
-								<ul class="list-unstyled fs-6">
-									<li><i class="fas fa-dog me-2 "></i> Gigante > 35kg</li>
-									<li><i class="fas fa-dog me-2 "></i> Grande 26 - 35kg</li>
-									<li><i class="fas fa-dog me-2 "></i> Mediano 11 - 25kg</li>
-									<li><i class="fas fa-dog me-2 "></i> Pequeño 6 - 10kg</li>
-									<li><i class="fas fa-dog me-2 "></i> Juguete < 5kg</li>
+								<ul class="list-unstyled fs-5">
+									<li><i class="fas fa-dog me-2 "></i>
+										<span th:utext="#{servicios.peluqueria.tamanos.gigante}"></span>
+									</li>
+									<li><i class="fas fa-dog me-2 "></i>
+										G<span th:utext="#{servicios.peluqueria.tamanos.grande}"></span>
+									</li>
+									<li><i class="fas fa-dog me-2 "></i>
+										<span th:utext="#{servicios.peluqueria.tamanos.mediano}"></span>
+									</li>
+									<li><i class="fas fa-dog me-2 "></i>
+										<span th:utext="#{servicios.peluqueria.tamanos.pequeno}"></span>
+									</li>
+									<li><i class="fas fa-dog me-2 "></i>
+										<span th:utext="#{servicios.peluqueria.tamanos.juguete}"></span>
+									</li>
 								</ul>
 							</div>
 						</div>
@@ -217,22 +320,34 @@
 		<!-- Sección: Nuestras tarifas para perros -->
 		<section class="text-center mb-5">
 			<h2 class="fw-bold text-success-emphasis mb-4">
-				<i class="fas fa-paw me-2"></i>Nuestras tarifas para perros</h2>
-			<div class="row row-cols-1 row-cols-md-5 g-4">
+				<i class="fas fa-paw me-2"></i>
+				<span th:utext="#{servicios.peluqueria.tarifas.perros.titulo}"></span>
+			</h2>
 
+			<div class="row row-cols-1 row-cols-md-5 g-4">
 				<!-- CARD 1: BAÑO BÁSICO -->
 				<article class="col">
 					<div class="card p-3 shadow-sm h-100 cardServicio">
 						<div class="card_image mb-2">
 							<img th:src="@{images/estanciaExpres.jpg}" alt="Baño Básico" class="imagenCard rounded-3">
 						</div>
-						<h3 class="fs-4 fw-bold text-success-emphasis">BAÑO BÁSICO</h3>
-						<p class="fw-bold fs-5">desde 10€</p>
+						<h3 class="fs-4 fw-bold text-success-emphasis"
+							th:utext="#{servicios.peluqueria.tarifas.banoBasico}">
+						</h3>
+						<p class="fw-bold fs-5">
+							<span th:utext="#{servicios.peluqueria.tarifas.banoBasicoDesde}"></span>
+						</p>
 						<ul class="list-unstyled">
-							<li><i class="fas fa-shower me-2 text-success"></i>Baño</li>
-							<li><i class="fas fa-brush me-2 text-success"></i>Cepillado</li>
+							<li><i class="fas fa-shower me-2 text-success"></i>
+								<span th:utext="#{servicios.peluqueria.nuestrosServicios.banio}"></span>
+							</li>
+							<li><i class="fas fa-brush me-2 text-success"></i>
+								<span th:utext="#{servicios.peluqueria.nuestrosServicios.cepillado}"></span>
+							</li>
 						</ul>
-						<button class="btn btn-success btnCard mt-auto">Seleccionar</button>
+						<button class="btn btn-success btnCard mt-auto">
+							<span th:utext="#{servicios.botonSeleccionar}"></span>
+						</button>
 					</div>
 				</article>
 
@@ -243,14 +358,26 @@
 							<img th:src="@{images/estanciaExpres.jpg}" alt="Baño + Stripping"
 								 class="imagenCard rounded-3">
 						</div>
-						<h3 class="fs-4 fw-bold text-success-emphasis">BAÑO + STRIPPING</h3>
-						<p class="fw-bold fs-5">desde 15€</p>
+						<h3 class="fs-4 fw-bold text-success-emphasis"
+							th:utext="#{servicios.peluqueria.tarifas.banoStripping}">
+						</h3>
+						<p class="fw-bold fs-5">
+							<span th:utext="#{servicios.peluqueria.tarifas.banoStrippingDesde}"></span>
+						</p>
 						<ul class="list-unstyled">
-							<li><i class="fas fa-shower me-2 text-success"></i>Baño</li>
-							<li><i class="fas fa-cut me-2 text-success"></i>Stripping</li>
-							<li><i class="fas fa-brush me-2 text-success"></i>Cepillado</li>
+							<li><i class="fas fa-shower me-2 text-success"></i>
+								<span th:utext="#{servicios.peluqueria.nuestrosServicios.banio}"></span>
+							</li>
+							<li><i class="fas fa-cut me-2 text-success"></i>
+								<span th:utext="#{servicios.peluqueria.nuestrosServicios.stripping}"></span>
+							</li>
+							<li><i class="fas fa-brush me-2 text-success"></i>
+								<span th:utext="#{servicios.peluqueria.nuestrosServicios.cepillado}"></span>
+							</li>
 						</ul>
-						<button class="btn btn-success btnCard mt-auto">Seleccionar</button>
+						<button class="btn btn-success btnCard mt-auto">
+							<span th:utext="#{servicios.botonSeleccionar}"></span>
+						</button>
 					</div>
 				</article>
 
@@ -260,12 +387,20 @@
 						<div class="card_image mb-2">
 							<img th:src="@{images/estanciaExpres.jpg}" alt="Solo Corte" class="imagenCard rounded-3">
 						</div>
-						<h3 class="fs-4 fw-bold text-success-emphasis">SOLO CORTE</h3>
-						<p class="fw-bold fs-5">desde 15€</p>
+						<h3 class="fs-4 fw-bold text-success-emphasis"
+							th:utext="#{servicios.peluqueria.tarifas.soloCorte}">
+						</h3>
+						<p class="fw-bold fs-5">
+							<span th:utext="#{servicios.peluqueria.tarifas.soloCorteDesde}"></span>
+						</p>
 						<ul class="list-unstyled">
-							<li><i class="fas fa-scissors me-2 text-success"></i>Corte de pelo</li>
+							<li><i class="fas fa-scissors me-2 text-success"></i>
+								<span th:utext="#{servicios.peluqueria.nuestrosServicios.cortePelo}"></span>
+							</li>
 						</ul>
-						<button class="btn btn-success btnCard mt-auto">Seleccionar</button>
+						<button class="btn btn-success btnCard mt-auto">
+							<span th:utext="#{servicios.botonSeleccionar}"></span>
+						</button>
 					</div>
 				</article>
 
@@ -275,14 +410,26 @@
 						<div class="card_image mb-2">
 							<img th:src="@{images/estanciaExpres.jpg}" alt="Baño + Corte" class="imagenCard rounded-3">
 						</div>
-						<h3 class="fs-4 fw-bold text-success-emphasis">BAÑO + CORTE</h3>
-						<p class="fw-bold fs-5">desde 20€</p>
+						<h3 class="fs-4 fw-bold text-success-emphasis"
+							th:utext="#{servicios.peluqueria.tarifas.banoCorte}">
+						</h3>
+						<p class="fw-bold fs-5">
+							<span th:utext="#{servicios.peluqueria.tarifas.banoCorteDesde}"></span>
+						</p>
 						<ul class="list-unstyled">
-							<li><i class="fas fa-shower me-2 text-success"></i>Baño</li>
-							<li><i class="fas fa-brush me-2 text-success"></i>Cepillado</li>
-							<li><i class="fas fa-scissors me-2 text-success"></i>Corte de pelo</li>
+							<li><i class="fas fa-shower me-2 text-success"></i>
+								<span th:utext="#{servicios.peluqueria.nuestrosServicios.banio}"></span>
+							</li>
+							<li><i class="fas fa-brush me-2 text-success"></i>
+								<span th:utext="#{servicios.peluqueria.nuestrosServicios.cepillado}"></span>
+							</li>
+							<li><i class="fas fa-scissors me-2 text-success"></i>
+								<span th:utext="#{servicios.peluqueria.nuestrosServicios.cortePelo}"></span>
+							</li>
 						</ul>
-						<button class="btn btn-success btnCard mt-auto">Seleccionar</button>
+						<button class="btn btn-success btnCard mt-auto">
+							<span th:utext="#{servicios.botonSeleccionar}"></span>
+						</button>
 					</div>
 				</article>
 
@@ -293,15 +440,29 @@
 							<img th:src="@{images/estanciaExpres.jpg}" alt="Servicio Completo"
 								 class="imagenCard rounded-3">
 						</div>
-						<h3 class="fs-4 fw-bold text-success-emphasis">COMPLETO</h3>
-						<p class="fw-bold fs-5">desde 25€</p>
+						<h3 class="fs-4 fw-bold text-success-emphasis"
+							th:utext="#{servicios.peluqueria.tarifas.completo}">
+						</h3>
+						<p class="fw-bold fs-5">
+							<span th:utext="#{servicios.peluqueria.tarifas.completoDesde}"></span>
+						</p>
 						<ul class="list-unstyled">
-							<li><i class="fas fa-shower me-2 text-success"></i>Baño</li>
-							<li><i class="fas fa-cut me-2 text-success"></i>Stripping</li>
-							<li><i class="fas fa-brush me-2 text-success"></i>Cepillado</li>
-							<li><i class="fas fa-scissors me-2 text-success"></i>Corte de pelo</li>
+							<li><i class="fas fa-shower me-2 text-success"></i>
+								<span th:utext="#{servicios.peluqueria.nuestrosServicios.banio}"></span>
+							</li>
+							<li><i class="fas fa-cut me-2 text-success"></i>
+								<span th:utext="#{servicios.peluqueria.nuestrosServicios.stripping}"></span>
+							</li>
+							<li><i class="fas fa-brush me-2 text-success"></i>
+								<span th:utext="#{servicios.peluqueria.nuestrosServicios.cepillado}"></span>
+							</li>
+							<li><i class="fas fa-scissors me-2 text-success"></i>
+								<span th:utext="#{servicios.peluqueria.nuestrosServicios.cortePelo}"></span>
+							</li>
 						</ul>
-						<button class="btn btn-success btnCard mt-auto">Seleccionar</button>
+						<button class="btn btn-success btnCard mt-auto">
+							<span th:utext="#{servicios.botonSeleccionar}"></span>
+						</button>
 					</div>
 				</article>
 			</div>
@@ -311,7 +472,9 @@
 		<!-- Seccion: Servicios para gatos -->
 		<section class="text-center my-5">
 			<h2 class="fw-bold text-start fs-2 px-3 text-success-emphasis mb-4">
-				<i class="fas fa-cat me-2"></i>Servicios para gatos</h2>
+				<i class="fas fa-cat me-2"></i>
+				<span th:utext="#{servicios.peluqueria.gatos.titulo}"></span>
+			</h2>
 
 			<!-- Versión para pantallas grandes -->
 			<div class="d-none d-md-flex row row-cols-1 row-cols-md-4 g-4 px-3">
@@ -320,13 +483,22 @@
 				<article class="col">
 					<div class="rounded-4 shadow-sm p-3 h-100 seccionTitulo">
 						<h3 class="fw-semibold fs-4 text-start text-success mb-3">
-							<i class="fas fa-paw me-2"></i> Nuestros servicios
+							<i class="fas fa-paw me-2"></i>
+							<span th:utext="#{servicios.peluqueria.nuestrosServicios.titulo}"></span>
 						</h3>
 						<ul class="list-unstyled text-start fs-5">
-							<li><i class="fas fa-brush me-2 "></i> Cepillado</li>
-							<li><i class="fas fa-shower me-2 "></i> Baño</li>
-							<li><i class="fas fa-cat me-2 "></i> Corte pelo corto</li>
-							<li><i class="fas fa-cat me-2 "></i> Corte pelo largo</li>
+							<li><i class="fas fa-brush me-2 "></i>
+								<span th:utext="#{servicios.peluqueria.nuestrosServicios.cepillado}"></span>
+							</li>
+							<li><i class="fas fa-shower me-2 "></i>
+								<span th:utext="#{servicios.peluqueria.nuestrosServicios.banio}"></span>
+							</li>
+							<li><i class="fas fa-cat me-2 "></i>
+								<span th:utext="#{servicios.peluqueria.caracteristica.cortePeloCorto}"></span>
+							</li>
+							<li><i class="fas fa-cat me-2 "></i>
+								<span th:utext="#{servicios.peluqueria.caracteristica.cortePeloLargo}"></span>
+							</li>
 						</ul>
 					</div>
 				</article>
@@ -335,13 +507,22 @@
 				<article class="col">
 					<div class="rounded-4 shadow-sm p-3 h-100 seccionTitulo">
 						<h3 class="fw-semibold fs-4 text-start text-success mb-3">
-							<i class="fas fa-bath me-2"></i> El baño incluye
+							<i class="fas fa-bath me-2"></i>
+							<span th:utext="#{servicios.peluqueria.banioIncluye.titulo}"></span>
 						</h3>
 						<ul class="list-unstyled text-start fs-5 mb-4">
-							<li><i class="fas fa-spa me-2 "></i> Baño y masaje</li>
-							<li><i class="fas fa-wind me-2 "></i> Secado</li>
-							<li><i class="fas fa-cut me-2 "></i> Arreglo de uñas</li>
-							<li><i class="fas fa-ear-listen me-2 "></i> Limpieza de oídos</li>
+							<li><i class="fas fa-spa me-2 "></i>
+								<span th:utext="#{servicios.peluqueria.banioIncluye.banioMasaje}"></span>
+							</li>
+							<li><i class="fas fa-wind me-2 "></i>
+								<span th:utext="#{servicios.peluqueria.banioIncluye.secado}"></span>
+							</li>
+							<li><i class="fas fa-cut me-2 "></i>
+								<span th:utext="#{servicios.peluqueria.banioIncluye.arreglo}"></span>
+							</li>
+							<li><i class="fas fa-ear-listen me-2 "></i>
+								<span th:utext="#{servicios.peluqueria.banioIncluye.oidos}"></span>
+							</li>
 						</ul>
 					</div>
 				</article>
@@ -350,11 +531,16 @@
 				<article class="col">
 					<div class="rounded-4 shadow-sm p-3 h-100 seccionTitulo">
 						<h3 class="fw-semibold fs-4 text-start text-success mb-3">
-							<i class="fas fa-scissors me-2"></i> El corte incluye
+							<i class="fas fa-scissors me-2"></i>
+							<span th:utext="#{servicios.peluqueria.corteIncluye.titulo}"></span>
 						</h3>
 						<ul class="list-unstyled text-start fs-5">
-							<li><i class="fas fa-scissors me-2 "></i> Corte</li>
-							<li><i class="fas fa-feather-alt me-2 "></i> Técnica según tipo de pelo</li>
+							<li><i class="fas fa-scissors me-2 "></i>
+								<span th:utext="#{servicios.peluqueria.corteIncluye.razas}"></span>
+							</li>
+							<li><i class="fas fa-feather-alt me-2 "></i>
+								<span th:utext="#{servicios.peluqueria.corteIncluye.pelo}"></span>
+							</li>
 						</ul>
 					</div>
 				</article>
@@ -363,11 +549,16 @@
 				<article class="col">
 					<div class="rounded-4 shadow-sm p-3 h-100 seccionTitulo">
 						<h3 class="fw-semibold fs-4 text-start text-success mb-3">
-							<i class="fas fa-plus-circle me-2"></i> Suplementos
+							<i class="fas fa-plus-circle me-2"></i>
+							<span th:utext="#{servicios.peluqueria.suplementos.titulo}"></span>
 						</h3>
 						<ul class="list-unstyled text-start fs-5">
-							<li><i class="fas fa-cat me-2 "></i> Deslanado</li>
-							<li><i class="fas fa-khanda me-2 "></i> Nudos</li>
+							<li><i class="fas fa-cat me-2 "></i>
+								<span th:utext="#{servicios.peluqueria.suplementos.deslanado}"></span>
+							</li>
+							<li><i class="fas fa-khanda me-2 "></i>
+								<span th:utext="#{servicios.peluqueria.suplementos.nudos}"></span>
+							</li>
 						</ul>
 					</div>
 				</article>
@@ -384,17 +575,26 @@
 									data-bs-toggle="collapse"
 									data-bs-target="#collapseServiciosGatos" aria-expanded="false"
 									aria-controls="collapseServiciosGatos">
-								<i class="fas fa-paw me-2 text-success"></i> Nuestros servicios
+								<i class="fas fa-paw me-2 text-success"></i>
+								<span th:utext="#{servicios.peluqueria.nuestrosServicios.titulo}"></span>
 							</button>
 						</h2>
 						<div id="collapseServiciosGatos" class="accordion-collapse collapse"
 							 aria-labelledby="headingServiciosGatos" data-bs-parent="#accordionServiciosGatos">
 							<div class="accordion-body">
 								<ul class="list-unstyled fs-5">
-									<li><i class="fas fa-brush me-2 "></i> Cepillado</li>
-									<li><i class="fas fa-shower me-2 "></i> Baño</li>
-									<li><i class="fas fa-cat me-2 "></i> Corte pelo corto</li>
-									<li><i class="fas fa-cat me-2 "></i> Corte pelo largo</li>
+									<li><i class="fas fa-brush me-2 "></i>
+										<span th:utext="#{servicios.peluqueria.nuestrosServicios.cepillado}"></span>
+									</li>
+									<li><i class="fas fa-shower me-2 "></i>
+										<span th:utext="#{servicios.peluqueria.nuestrosServicios.banio}"></span>
+									</li>
+									<li><i class="fas fa-cat me-2 "></i>
+										<span th:utext="#{servicios.peluqueria.caracteristica.cortePeloCorto}"></span>
+									</li>
+									<li><i class="fas fa-cat me-2 "></i>
+										<span th:utext="#{servicios.peluqueria.caracteristica.cortePeloLargo}"></span>
+									</li>
 								</ul>
 							</div>
 						</div>
@@ -407,24 +607,37 @@
 									data-bs-toggle="collapse"
 									data-bs-target="#collapseBanioGatos" aria-expanded="false"
 									aria-controls="collapseBanioGatos">
-								<i class="fas fa-bath me-2 text-success"></i> Baño y Corte
+								<i class="fas fa-bath me-2 text-success"></i>
+								<span th:utext="#{servicios.peluqueria.bañoYCorte}"></span>
 							</button>
 						</h2>
 						<div id="collapseBanioGatos" class="accordion-collapse collapse"
 							 aria-labelledby="headingBanioGatos"
 							 data-bs-parent="#accordionServiciosGatos">
 							<div class="accordion-body">
-								<h6 class="fw-bold mb-2">El baño incluye:</h6>
+								<h6 class="fw-bold mb-2" th:utext="#{servicios.peluqueria.banioIncluye.titulo}"></h6>
 								<ul class="list-unstyled fs-5 mb-4">
-									<li><i class="fas fa-spa me-2 "></i> Baño y masaje</li>
-									<li><i class="fas fa-wind me-2 "></i> Secado</li>
-									<li><i class="fas fa-cut me-2 "></i> Arreglo de uñas</li>
-									<li><i class="fas fa-ear-listen me-2 "></i> Limpieza de oídos</li>
+									<li><i class="fas fa-spa me-2 "></i>
+										<span th:utext="#{servicios.peluqueria.banioIncluye.banioMasaje}"></span>
+									</li>
+									<li><i class="fas fa-wind me-2 "></i>
+										<span th:utext="#{servicios.peluqueria.banioIncluye.secado}"></span>
+									</li>
+									<li><i class="fas fa-cut me-2 "></i>
+										<span th:utext="#{servicios.peluqueria.banioIncluye.arreglo}"></span>
+									</li>
+									<li><i class="fas fa-ear-listen me-2 "></i>
+										<span th:utext="#{servicios.peluqueria.banioIncluye.oidos}"></span>
+									</li>
 								</ul>
-								<h6 class="fw-bold mb-2">El corte incluye:</h6>
+								<h6 class="fw-bold mb-2" th:utext="#{servicios.peluqueria.corteIncluye.titulo}"></h6>
 								<ul class="list-unstyled fs-5">
-									<li><i class="fas fa-scissors me-2 "></i> Corte</li>
-									<li><i class="fas fa-feather-alt me-2 "></i> Técnica según tipo de pelo</li>
+									<li><i class="fas fa-scissors me-2 "></i>
+										<span th:utext="#{servicios.peluqueria.corteIncluye.razas}"></span>
+									</li>
+									<li><i class="fas fa-feather-alt me-2 "></i>
+										<span th:utext="#{servicios.peluqueria.corteIncluye.pelo}"></span>
+									</li>
 								</ul>
 							</div>
 						</div>
@@ -437,15 +650,20 @@
 									data-bs-toggle="collapse"
 									data-bs-target="#collapseSuplementosGatos" aria-expanded="false"
 									aria-controls="collapseSuplementosGatos">
-								<i class="fas fa-plus-circle me-2 text-success"></i> Suplementos
+								<i class="fas fa-plus-circle me-2 text-success"></i>
+								<span th:utext="#{servicios.peluqueria.suplementos.titulo}"></span>
 							</button>
 						</h2>
 						<div id="collapseSuplementosGatos" class="accordion-collapse collapse"
 							 aria-labelledby="headingSuplementosGatos" data-bs-parent="#accordionServiciosGatos">
 							<div class="accordion-body">
 								<ul class="list-unstyled fs-5">
-									<li><i class="fas fa-cat me-2 "></i> Deslanado</li>
-									<li><i class="fas fa-khanda me-2 "></i> Nudos</li>
+									<li><i class="fas fa-cat me-2 "></i>
+										<span th:utext="#{servicios.peluqueria.suplementos.deslanado}"></span>
+									</li>
+									<li><i class="fas fa-khanda me-2 "></i>
+										<span th:utext="#{servicios.peluqueria.suplementos.nudos}"></span>
+									</li>
 								</ul>
 							</div>
 						</div>
@@ -458,7 +676,8 @@
 		<!-- Sección: Nuestras tarifas para gatos -->
 		<section class="text-center mb-5">
 			<h2 class="fw-bold text-success-emphasis mb-4">
-				<i class="fas fa-cat me-2"></i>Nuestras tarifas para gatos
+				<i class="fas fa-cat me-2"></i>
+				<span th:utext="#{servicios.peluqueria.tarifas.gatos.titulo}"></span>
 			</h2>
 			<div class="row row-cols-1 row-cols-md-3 g-4">
 
@@ -468,13 +687,23 @@
 						<div class="card_image mb-2">
 							<img th:src="@{images/estanciaExpres.jpg}" alt="Solo Baño" class="imagenCard rounded-3">
 						</div>
-						<h3 class="fs-5 fw-bold text-success-emphasis">SOLO BAÑO</h3>
-						<p class="fw-bold fs-5">desde 10€</p>
+						<h3 class="fs-5 fw-bold text-success-emphasis"
+							th:utext="#{servicios.peluqueria.tarifas.banoBasico}">
+						</h3>
+						<p class="fw-bold fs-5">
+							<span th:utext="#{servicios.peluqueria.tarifas.banoBasicoDesde}"></span>
+						</p>
 						<ul class="list-unstyled">
-							<li><i class="fas fa-shower me-2 text-success"></i>Baño</li>
-							<li><i class="fas fa-brush me-2 text-success"></i>Cepillado</li>
+							<li><i class="fas fa-shower me-2 text-success"></i>
+								<span th:utext="#{servicios.peluqueria.nuestrosServicios.banio}"></span>
+							</li>
+							<li><i class="fas fa-brush me-2 text-success"></i>
+								<span th:utext="#{servicios.peluqueria.nuestrosServicios.cepillado}"></span>
+							</li>
 						</ul>
-						<button class="btn btn-success btnCard mt-auto">Seleccionar</button>
+						<button class="btn btn-success btnCard mt-auto">
+							<span th:utext="#{servicios.botonSeleccionar}"></span>
+						</button>
 					</div>
 				</article>
 
@@ -484,12 +713,19 @@
 						<div class="card_image mb-2">
 							<img th:src="@{images/estanciaExpres.jpg}" alt="Solo Corte" class="imagenCard rounded-3">
 						</div>
-						<h3 class="fs-5 fw-bold text-success-emphasis">SOLO CORTE</h3>
-						<p class="fw-bold fs-5">desde 15€</p>
+						<h3 class="fs-5 fw-bold text-success-emphasis"
+							th:utext="#{servicios.peluqueria.tarifas.soloCorte}"></h3>
+						<p class="fw-bold fs-5">
+							<span th:utext="#{servicios.peluqueria.tarifas.soloCorteDesde}"></span>
+						</p>
 						<ul class="list-unstyled">
-							<li><i class="fas fa-scissors me-2 text-success"></i>Corte de pelo</li>
+							<li><i class="fas fa-scissors me-2 text-success"></i>
+								<span th:utext="#{servicios.peluqueria.nuestrosServicios.cortePelo}"></span>
+							</li>
 						</ul>
-						<button class="btn btn-success btnCard mt-auto">Seleccionar</button>
+						<button class="btn btn-success btnCard mt-auto">
+							<span th:utext="#{servicios.botonSeleccionar}"></span>
+						</button>
 					</div>
 				</article>
 
@@ -499,14 +735,25 @@
 						<div class="card_image mb-2">
 							<img th:src="@{images/estanciaExpres.jpg}" alt="Corte + Baño" class="imagenCard rounded-3">
 						</div>
-						<h3 class="fs-5 fw-bold text-success-emphasis">CORTE + BAÑO</h3>
-						<p class="fw-bold fs-5">desde 15€</p>
+						<h3 class="fs-5 fw-bold text-success-emphasis"
+							th:utext="#{servicios.peluqueria.bañoYCorte}"></h3>
+						<p class="fw-bold fs-5">
+							<span th:utext="#{servicios.peluqueria.tarifas.soloCorteDesde}"></span>
+						</p>
 						<ul class="list-unstyled">
-							<li><i class="fas fa-shower me-2 text-success"></i>Baño</li>
-							<li><i class="fas fa-brush me-2 text-success"></i>Cepillado</li>
-							<li><i class="fas fa-scissors me-2 text-success"></i>Corte de pelo</li>
+							<li><i class="fas fa-shower me-2 text-success"></i>
+								<span th:utext="#{servicios.peluqueria.nuestrosServicios.banio}"></span>
+							</li>
+							<li><i class="fas fa-brush me-2 text-success"></i>
+								<span th:utext="#{servicios.peluqueria.nuestrosServicios.cepillado}"></span>
+							</li>
+							<li><i class="fas fa-scissors me-2 text-success"></i>
+								<span th:utext="#{servicios.peluqueria.nuestrosServicios.cortePelo}"></span>
+							</li>
 						</ul>
-						<button class="btn btn-success btnCard mt-auto">Seleccionar</button>
+						<button class="btn btn-success btnCard mt-auto">
+							<span th:utext="#{servicios.botonSeleccionar}"></span>
+						</button>
 					</div>
 				</article>
 			</div>
@@ -515,7 +762,9 @@
 
 		<!-- FORMULARIO RESERVA -->
 		<section class="mb-5">
-			<h2 class="text-success-emphasis fw-bold display-5 my-4 text-center">Reserva tu cita de peluquería</h2>
+			<h2 class="text-success-emphasis fw-bold display-5 my-4 text-center"
+				th:utext="#{servicios.reservaCitaPeluqueria}">
+			</h2>
 			<div class="formContainer">
 				<form class="row g-3">
 					<fieldset class="col-md-6">
@@ -615,16 +864,24 @@
 
 		<!-- Sección: otros servicios-->
 		<section class="text-center mb-1">
-			<h2 class="text-success-emphasis fw-bold display-5 my-4">Otros servicios:</h2>
+			<h2 class="text-success-emphasis fw-bold display-5 my-4"
+				th:utext="#{servicios.otrosServicios}">
+			</h2>
 			<div class="row row-cols-1 row-cols-md-4 g-4">
 				<article class="col">
 					<div class="card p-3 shadow-sm cardServicio">
 						<div class="card_image">
 							<img th:src="@{images/peluqueriaCanina.jpg}" alt="LogoPeluqueria" class="imagenCard">
 						</div>
-						<h3 class="mt-3 fs-3 fw-bold text-success-emphasis">GUARDERIA</h3>
-						<p class="fs-4">A PARTIR DE 10€</p>
-						<a th:href="@{/guarderia}" class="btn btn-success">MÁS INFO</a>
+						<h3 class="mt-3 fs-3 fw-bold text-success-emphasis"
+							th:utext="#{servicios.guarderia}">
+						</h3>
+						<p class="fs-4"
+						   th:utext="#{servicios.guarderiaApartirDe}">
+						</p>
+						<a th:href="@{/guarderia}" class="btn btn-success"
+						   th:utext="#{servicios.masInfo}">
+						</a>
 					</div>
 				</article>
 				<article class="col">
@@ -632,9 +889,15 @@
 						<div class="card_image">
 							<img th:src="@{images/adiestramiento.jpg}" alt="LogoAdiestramiento" class="imagenCard">
 						</div>
-						<h3 class="mt-3 fs-3 fw-bold text-success-emphasis">ADIESTRAMIENTO</h3>
-						<p class="fs-4">A PARTIR DE 15€</p>
-						<a th:href="@{/adiestramiento}" class="btn btn-success">MÁS INFO</a>
+						<h3 class="mt-3 fs-3 fw-bold text-success-emphasis"
+							th:utext="#{servicios.adiestramiento}">
+						</h3>
+						<p class="fs-4"
+						   th:utext="#{servicios.adiestramientoApartirDe}">
+						</p>
+						<a th:href="@{/adiestramiento}" class="btn btn-success"
+						   th:utext="#{servicios.masInfo}">
+						</a>
 					</div>
 				</article>
 				<article class="col">
@@ -642,8 +905,15 @@
 						<div class="card_image">
 							<img th:src="@{images/veterinario.jpg}" alt="LogoVeterinario" class="imagenCard">
 						</div>
-						<h3 class="mt-3 fs-3 fw-bold text-success-emphasis">ASESORAMIENTO VETERINARIO</h3>
-						<a th:href="@{/veterinario}" class="btn btn-success">MÁS INFO</a>
+						<h3 class="mt-3 fs-3 fw-bold text-success-emphasis"
+							th:utext="#{servicios.veterinario}">
+						</h3>
+						<p class="fs-4"
+						   th:utext="#{servicios.veterinarioApartirDe}">
+						</p>
+						<a th:href="@{/veterinario}" class="btn btn-success"
+						   th:utext="#{servicios.masInfo}">
+						</a>
 					</div>
 				</article>
 				<article class="col">
@@ -651,8 +921,15 @@
 						<div class="card_image">
 							<img th:src="@{images/asesoramientoLegal.jpg}" alt="LogoLegal" class="imagenCard">
 						</div>
-						<h3 class="mt-3 fs-3 fw-bold text-success-emphasis">ASESORAMIENTO LEGAL</h3>
-						<a th:href="@{/asesoramientoLegal}" class="btn btn-success">MÁS INFO</a>
+						<h3 class="mt-3 fs-3 fw-bold text-success-emphasis"
+							th:utext="#{servicios.asesoramientoLegal}">
+						</h3>
+						<p class="fs-4"
+						   th:utext="#{servicios.asesoramientoApartirDe}">
+						</p>
+						<a th:href="@{/asesoramientoLegal}" class="btn btn-success"
+						   th:utext="#{servicios.masInfo}">
+						</a>
 					</div>
 				</article>
 			</div>

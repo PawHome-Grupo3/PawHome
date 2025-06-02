@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout.html}">
+<head>
+    <title>Inicio de sesión</title>
+    <link rel="stylesheet" th:href="@{/css/LoginRegistro.css}"/>
+</head>
+
+<body>
+
+<section layout:fragment="content">
+
+    <div class="ContenedorPrincipal">
+        <div class="container pt-5">
+            <div class="row justify-content-lg-end mt-5 p-10">
+                <div class="col-lg-4 mb-5">
+                    <div class="card shadow">
+                        <div class="card-header bg-success text-white text-center">
+                            <h2 th:utext="#{login.titulo}"></h2>
+                        </div>
+                        <div class="card-body">
+                            <form action="#" method="POST">
+
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Correo electrónico:</label>
+                                    <input type="email" class="form-control" id="email" name="email" required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="password" class="form-label">Contraseña:</label>
+                                    <input type="pass" class="form-control" id="password" name="password" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="rememberMe" class="form-check-label">
+                                        <input type="checkbox" class="form-check-input" id="rememberMe"
+                                               name="rememberMe">
+                                        Recordarme
+                                    </label>
+                                </div>
+                                <div class="text-center mt-3 w-100">
+                                    <a class="btn btn-success w-100 text-white" th:href="@{/perfilUsuario.html}"
+                                       th:utext="#{login.iniciaSesion}"></a>
+                                </div>
+
+                                <div class="text-center mt-3 w-100">
+                                    <a class="btn btn-secondary w-100 text-white" th:href="@{/registro}"
+                                       th:utext="#{login.registrate}"></a>
+                                </div>
+                                <div class="text-center mt-3 w-100">
+                                    <a th:href="@{/}" th:utext="#{login.olvidasteContrasena}"></a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+</body>
+</html>
