@@ -8,6 +8,7 @@ import com.grupo3.pawHome.entities.PerfilDatos;
 import com.grupo3.pawHome.entities.Usuario;
 import com.grupo3.pawHome.repositories.AnimalRepository;
 import com.grupo3.pawHome.repositories.ApadrinarRepository;
+import com.grupo3.pawHome.repositories.PerfilDatosRespository;
 import com.grupo3.pawHome.repositories.UsuarioRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -26,9 +27,10 @@ public class DataLoader implements CommandLineRunner {
     private final CategoriaRepository categoriaRepository;
     private final TarifaRepository tarifaRepository;
     private final PasswordEncoder passwordEncoder;
+    private final PerfilDatosRespository perfilDatosRespository;
 
 
-    public DataLoader(AnimalRepository animalRepository, ApadrinarRepository apadrinarRepository, UsuarioRepository usuarioRepository, FacturaRepository facturaRepository, ProductoRepository productoRepository, TallaRepository tallaRepository, CategoriaRepository categoriaRepository, TarifaRepository tarifaRepository, PasswordEncoder passwordEncoder) {
+    public DataLoader(AnimalRepository animalRepository, ApadrinarRepository apadrinarRepository, UsuarioRepository usuarioRepository, FacturaRepository facturaRepository, ProductoRepository productoRepository, TallaRepository tallaRepository, CategoriaRepository categoriaRepository, TarifaRepository tarifaRepository, PerfilDatosRespository perfilDatosRespository) {
         this.animalRepository = animalRepository;
         this.apadrinarRepository = apadrinarRepository;
         this.usuarioRepository = usuarioRepository;
@@ -37,7 +39,7 @@ public class DataLoader implements CommandLineRunner {
         this.tallaRepository = tallaRepository;
         this.categoriaRepository = categoriaRepository;
         this.tarifaRepository = tarifaRepository;
-        this.passwordEncoder = passwordEncoder;
+        this.perfilDatosRespository = perfilDatosRespository;
     }
 
     @Override
