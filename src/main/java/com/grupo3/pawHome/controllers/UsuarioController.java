@@ -26,10 +26,18 @@ public class UsuarioController {
 
     @GetMapping("/perfil/informacion")
     public String mostrarPerfil(Model model) {
-        Optional<Usuario> usuarioOpt = usuarioService.findById(1);
+        Optional<Usuario> usuarioOpt = usuarioService.findById(3);
         usuarioOpt.ifPresent(usuario -> model.addAttribute("usuario", usuario));
 
         return "perfilUsuario";
+    }
+
+    @GetMapping("/perfil/editar")
+    public String mostrarPerfilEditar(Model model) {
+        Optional<Usuario> usuarioOpt = usuarioService.findById(3);
+        usuarioOpt.ifPresent(usuario -> model.addAttribute("usuario", usuario));
+
+        return "perfilUsuarioEditar";
     }
 
     @GetMapping("/perfil/apadrinamientos")

@@ -131,12 +131,6 @@ public class DefaultController {
         return "horariomapa";
     }
 
-    @GetMapping("/perfil/editar")
-    public String mostrarPerfilEditar()
-    {
-        return "perfilUsuarioEditar";
-    }
-
     @GetMapping("/perfil/puntos")
     public String mostrarPerfilPuntos()
     { return "perfilUsuarioPuntos"; }
