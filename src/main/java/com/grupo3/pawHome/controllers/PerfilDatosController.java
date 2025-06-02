@@ -23,7 +23,7 @@ public class PerfilDatosController {
 
     // Metodo para mostrar la pagina del horario y el mapa
     @GetMapping("/perfil/{id}")
-    public String mostrarPerfil(@PathVariable("id") long id, Model model) {
+    public String mostrarPerfil(@PathVariable("id") int id, Model model) {
         Optional<Usuario> usuarioOpt = usuarioService.findById(id);
         if (usuarioOpt.isPresent()) {
             Usuario usuario = usuarioOpt.get();
