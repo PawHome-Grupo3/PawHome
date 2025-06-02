@@ -14,7 +14,6 @@ import lombok.Setter;
 public class PerfilDatos {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name = "usuario_id")
     private int id;
 
