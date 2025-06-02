@@ -240,9 +240,7 @@ public class DefaultController {
 
     @GetMapping("/colabora/adopta")
     public String mostrarColaboraAdopta()
-    {
-        return "Adopta";
-    }
+    {return "Adopta";}
 
     @GetMapping("/colabora/adopta/formularioAdopta")
     public String mostrarformularioadopta()
@@ -250,9 +248,11 @@ public class DefaultController {
 
     @GetMapping("/colabora/paseosolidario")
     public String mostrarColaboraPaseoSolidario()
-    {
-        return "PaseoSolidario";
-    }
+    {return "PaseoSolidario";}
+
+    @GetMapping("/colabora/paseosolidario/formularioPS")
+    public String mostrarformularioPS()
+    {return "formularioPS";}
 
 
     // Metodo para mostrar la página de Finales Felices

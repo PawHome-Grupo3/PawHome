@@ -22,18 +22,24 @@
 					</ul>
 				</li>
 
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle enlaceNav" href="/colabora" data-bs-toggle="dropdown"
-					   aria-expanded="false" th:text="#{header.colabora}"></a>
+				<li class="nav-item">
+					<div class="btn-group">
+						<a href="/colabora" class="btn btn-link nav-link enlaceNav" style="text-decoration:none;">
+							Colabora</a>
 
-					<ul class="dropdown-menu dropdownNav">
-						<li><a class="dropdown-item" href="/colabora/dona" th:text="#{header.dona}"></a></li>
-						<li><a class="dropdown-item" href="/colabora/adopta" th:text="#{header.adopta}"></a></li>
-						<li><a class="dropdown-item" href="/colabora/apadrina" th:text="#{header.apadrina}"></a></li>
-						<li><a class="dropdown-item" href="/colabora/paseosolidario" th:text="#{header.paseosolidario}"></a></li>
-					</ul>
-
+						<button type="button" class="btn btn-link nav-link dropdown-toggle dropdown-toggle-split enlaceNav"
+								data-bs-toggle="dropdown" aria-expanded="false" style="text-decoration:none;">
+							<span class="visually-hidden">Desplegar menú</span>
+						</button>
+						<ul class="dropdown-menu dropdownNav">
+							<li><a class="dropdown-item" href="/colabora/dona">Dona</a></li>
+							<li><a class="dropdown-item" href="/colabora/adopta">Adopta</a></li>
+							<li><a class="dropdown-item" href="/colabora/apadrina">Apadrina</a></li>
+							<li><a class="dropdown-item" href="/colabora/paseosolidario">Paseo solidario</a></li>
+						</ul>
+					</div>
 				</li>
+
 
 				<li><a class="navbar-brand enlaceNav" href="/tienda" th:text="#{header.tienda}"></a></li>
 

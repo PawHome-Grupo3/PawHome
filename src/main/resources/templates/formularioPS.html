@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout.html}">
+<head>
+    <link rel="stylesheet" th:href="@{/css/formularios.css}"/>
+    <title>Formulario para paseo solidario</title>
+</head>
+    <body>
+    <section class="mb-5">
+        <h2 class="text-success-emphasis fw-bold display-5 my-4 text-center">¡Apúntate a un Paseo Solidario!</h2>
+        <div class="formContainer">
+            <form class="row g-3" method="post">
+                <fieldset class="col-md-6">
+                    <legend class="fw-bold"><strong>DATOS DEL VOLUNTARIO:</strong></legend>
+                    <br>
+
+                    <div class="itemSeleccion">
+                        <label for="nombreVoluntario" class="form-label">Nombre completo: <span style="color: red">*</span></label>
+                        <input type="text" id="nombreVoluntario" class="form-control labelForm" placeholder="-Por favor introduzca su nombre completo-" required>
+                    </div>
+
+                    <div class="itemSeleccion">
+                        <label for="direccionVoluntario" class="form-label">Dirección: <span style="color: red">*</span></label>
+                        <input type="text" id="direccionVoluntario" class="form-control labelForm" placeholder="-Por favor, introduzca su dirección" required>
+                    </div>
+
+                    <div class="itemSeleccion">
+                        <label for="telefonoVoluntario" class="form-label">Teléfono: <span style="color: red">*</span></label>
+                        <input type="text" id="telefonoVoluntario" class="form-control labelForm" placeholder="-Por favor, introduzca su teléfono-" required>
+                    </div>
+
+                    <div class="itemSeleccion">
+                        <label for="correoVoluntario" class="form-label">Correo electrónico: <span style="color: red">*</span></label>
+                        <input type="email" id="correoVoluntario" class="form-control labelForm" placeholder="-Por favor, introduzca su correo electrónico-" required>
+                    </div>
+                </fieldset>
+
+                <fieldset class="col-md-6">
+                    <legend class="fw-bold"><strong>DATOS DEL PASEO:</strong></legend>
+                    <br>
+
+                    <div class="itemSeleccion">
+                        <label for="cantidadAnimales" class="form-label">¿Cuántos animales quieres sacar a paseo? <span style="color: red">*</span></label>
+                        <select id="cantidadAnimales" class="form-select labelForm" required>
+                            <option value="" disabled selected>-Elige una opción-</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3(max)</option>
+                        </select>
+                    </div>
+
+                    <div class="itemSeleccion">
+                        <label for="animalesSeleccionados" class="form-label">
+                            Selecciona el/los animal/es que quieres pasear: <span style="color: red">*</span>
+                        </label>
+                        <div>
+                            <a href="/nuestrosAnimales" target="_blank" class="btn btn-secondary btn-sm mb-2">
+                                Ver animales disponibles
+                            </a>
+                        </div>
+                        <select id="animalesSeleccionados" class="form-select labelForm" multiple required>
+                            <!-- Opciones de ejemplo, deben generarse dinámicamente -->
+                            <option value="perro1">Perro 1</option>
+                            <option value="gato1">Gato 1</option>
+                            <option value="perro2">Perro 2</option>
+                            <!-- ... -->
+                        </select>
+                        <small class="form-text text-muted">
+                            Mantén pulsada la tecla Ctrl (Windows) o Cmd (Mac) para seleccionar varios.
+                        </small>
+                    </div>
+
+                    <div class="itemSeleccion">
+                        <label for="checkin" class="form-label">Hora de recogida (Check-in): <span style="color: red">*</span></label>
+                        <input type="datetime-local" id="checkin" class="form-control labelForm" required>
+                    </div>
+
+                    <div class="itemSeleccion">
+                        <label for="checkout" class="form-label">Hora de entrega (Check-out): <span style="color: red">*</span></label>
+                        <input type="datetime-local" id="checkout" class="form-control labelForm" required>
+                    </div>
+
+                    <div class="alert alert-info mt-3">
+                        <strong>¡Recuerda!</strong> Esta acción es totalmente gratuita y solidaria. ¡Gracias por ayudar a nuestros animales!
+                    </div>
+                </fieldset>
+
+                <div class="col-12 text-center mt-4">
+                    <button type="submit" class="btn btn-primary">Reservar Paseo Solidario</button>
+                </div>
+            </form>
+        </div>
+    </section>
+    </body>
+    </html>
