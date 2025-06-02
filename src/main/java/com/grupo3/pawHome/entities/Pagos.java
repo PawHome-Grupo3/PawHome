@@ -28,7 +28,4 @@ public class Pagos {
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "factura_id", referencedColumnName = "id")
     private Factura factura;
-
-
-
 }
