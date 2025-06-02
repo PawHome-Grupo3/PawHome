@@ -16,7 +16,7 @@
       <div class="col-md-9 col-lg-10 justify-content-center">
         <div class="row justify-content-center">
           <div class="col-md-8">
-            <form th:action="@{/perfil/editar/guardar}" th:object="${usuario.perfilDatos}" method="post">
+            <form th:action="@{/perfil/guardar}" th:object="${perfilDTO}" method="post">
               <div class="p-3 py-5">
                 <h4 class="text-right">Datos de Perfil</h4>
 
@@ -73,39 +73,38 @@
               </div>
             </form>
 
-            <div th:unless="${usuario.perfilDatos == null}" class="p-3 py-5">
-              <div class="d-flex justify-content-between align-items-center mb-3">
-                <h4 class="text-right">Datos de Perfil</h4>
-              </div>
-              <div class="row mt-2">
-                <div class="col-md-6"><label class="labels">Nombre</label><input type="text" class="form-control" placeholder="first name" th:value="${usuario.perfilDatos.nombre}"></div>
-                <div class="col-md-6"><label class="labels">Apellidos</label><input type="text" class="form-control" th:value="${usuario.perfilDatos.apellidos}" placeholder="surname"></div>
-              </div>
-              <div class="row mt-3">
-                <div class="col-md-12 mt-1"><label class="labels">Numero teléfono</label><input type="text" class="form-control" placeholder="enter phone number" th:value="${usuario.perfilDatos.telefono1}"></div>
-                <div class="col-md-12 mt-1"><label class="labels">Numero teléfono 2</label><input type="text" class="form-control" placeholder="enter phone number" th:value="${usuario.perfilDatos.telefono2}"></div>
-                <div class="col-md-12 mt-1"><label class="labels">Numero teléfono 3</label><input type="text" class="form-control" placeholder="enter phone number" th:value="${usuario.perfilDatos.telefono3}"></div>
-                <div class="col-md-12 mt-1"><label class="labels">Dirección 1</label><input type="text" class="form-control" placeholder="enter address line 1" th:value="${usuario.perfilDatos.direccion}"></div>
-                <div class="col-md-12 mt-1"><label class="labels">Código Postal</label><input type="text" class="form-control" placeholder="enter codigo postal" th:value="${usuario.perfilDatos.cp}"></div>
-                <div class="col-md-12 mt-1"><label class="labels">Ciudad</label><input type="text" class="form-control" placeholder="enter cuidad" th:value="${usuario.perfilDatos.cp}"></div>
-                <div class="col-md-12 mt-1"><label class="labels">DNI</label><input type="text" class="form-control" placeholder="enter DNI" th:value="${usuario.perfilDatos.dni}"></div>
-                <div class="col-md-12 mt-1"><label class="labels">Edad</label><input type="number" class="form-control" placeholder="enter edad" th:value="${usuario.perfilDatos.edad}"></div>
-              </div>
-              <div class="row mt-3">
-                <div class="col-md-6"><label class="labels">Country</label><input type="text" class="form-control" placeholder="country" th:value="${usuario.perfilDatos.ciudad}"></div>
-                <div class="col-md-6"><label class="labels">State/Region</label><input type="text" class="form-control" value="Spain" placeholder="state"></div>
-              </div>
-              <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Guardar Cambios</button></div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="p-3 py-5">
-              <div class="d-flex justify-content-between align-items-center experience"><span>Métodos de Pago</span><span class="border px-3 p-1 add-experience"><i class="fa fa-plus"></i>&nbsp;Nuevo método de pago</span></div><br>
-              <div class="col-md-12"><label class="labels">Nombre Tarjeta</label><input type="text" class="form-control" placeholder="nombre" value=""></div> <br>
-              <div class="col-md-12"><label class="labels">Número Tarjeta</label><input type="text" class="form-control" placeholder="numero" value=""></div>
-            </div>
-          </div>
-        </div>
+<!--            <div th:unless="${usuario.perfilDatos == null}" class="p-3 py-5">-->
+<!--              <div class="d-flex justify-content-between align-items-center mb-3">-->
+<!--                <h4 class="text-right">Datos de Perfil</h4>-->
+<!--              </div>-->
+<!--              <div class="row mt-2">-->
+<!--                <div class="col-md-6"><label class="labels">Nombre</label><input type="text" class="form-control" placeholder="first name" th:value="${usuario.perfilDatos.nombre}"></div>-->
+<!--                <div class="col-md-6"><label class="labels">Apellidos</label><input type="text" class="form-control" th:value="${usuario.perfilDatos.apellidos}" placeholder="surname"></div>-->
+<!--              </div>-->
+<!--              <div class="row mt-3">-->
+<!--                <div class="col-md-12 mt-1"><label class="labels">Numero teléfono</label><input type="text" class="form-control" placeholder="enter phone number" th:value="${usuario.perfilDatos.telefono1}"></div>-->
+<!--                <div class="col-md-12 mt-1"><label class="labels">Numero teléfono 2</label><input type="text" class="form-control" placeholder="enter phone number" th:value="${usuario.perfilDatos.telefono2}"></div>-->
+<!--                <div class="col-md-12 mt-1"><label class="labels">Numero teléfono 3</label><input type="text" class="form-control" placeholder="enter phone number" th:value="${usuario.perfilDatos.telefono3}"></div>-->
+<!--                <div class="col-md-12 mt-1"><label class="labels">Dirección 1</label><input type="text" class="form-control" placeholder="enter address line 1" th:value="${usuario.perfilDatos.direccion}"></div>-->
+<!--                <div class="col-md-12 mt-1"><label class="labels">Código Postal</label><input type="text" class="form-control" placeholder="enter codigo postal" th:value="${usuario.perfilDatos.cp}"></div>-->
+<!--                <div class="col-md-12 mt-1"><label class="labels">Ciudad</label><input type="text" class="form-control" placeholder="enter cuidad" th:value="${usuario.perfilDatos.cp}"></div>-->
+<!--                <div class="col-md-12 mt-1"><label class="labels">DNI</label><input type="text" class="form-control" placeholder="enter DNI" th:value="${usuario.perfilDatos.dni}"></div>-->
+<!--                <div class="col-md-12 mt-1"><label class="labels">Edad</label><input type="number" class="form-control" placeholder="enter edad" th:value="${usuario.perfilDatos.edad}"></div>-->
+<!--              </div>-->
+<!--              <div class="row mt-3">-->
+<!--                <div class="col-md-6"><label class="labels">Country</label><input type="text" class="form-control" placeholder="country" th:value="${usuario.perfilDatos.ciudad}"></div>-->
+<!--                <div class="col-md-6"><label class="labels">State/Region</label><input type="text" class="form-control" value="Spain" placeholder="state"></div>-->
+<!--              </div>-->
+<!--              <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Guardar Cambios</button></div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="col-md-4">-->
+<!--            <div class="p-3 py-5">-->
+<!--              <div class="d-flex justify-content-between align-items-center experience"><span>Métodos de Pago</span><span class="border px-3 p-1 add-experience"><i class="fa fa-plus"></i>&nbsp;Nuevo método de pago</span></div><br>-->
+<!--              <div class="col-md-12"><label class="labels">Nombre Tarjeta</label><input type="text" class="form-control" placeholder="nombre" value=""></div> <br>-->
+<!--              <div class="col-md-12"><label class="labels">Número Tarjeta</label><input type="text" class="form-control" placeholder="numero" value=""></div>-->
+<!--            </div>-->
+<!--          </div>--></div>
       </div>
     </div>
   </div>

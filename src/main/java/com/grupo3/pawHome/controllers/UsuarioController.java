@@ -1,5 +1,6 @@
 package com.grupo3.pawHome.controllers;
 
+import com.grupo3.pawHome.dtos.PerfilDatosDTO;
 import com.grupo3.pawHome.entities.Apadrinar;
 import com.grupo3.pawHome.entities.PerfilDatos;
 import com.grupo3.pawHome.entities.Usuario;
@@ -54,31 +55,57 @@ public class UsuarioController {
     }
 
     @GetMapping("/perfil/editar")
-    public String mostrarPerfilEditar(Model model) {
-        Optional<Usuario> usuarioOpt = usuarioService.findById(3);
-        usuarioOpt.ifPresent(usuario -> model.addAttribute("usuario", usuario));
+    public String mostrarFormulario(Model model) {
+        Usuario usuario = usuarioService.findById(3).orElseThrow();
 
-        return "perfilUsuarioEditar";
-    }
+        PerfilDatosDTO dto = new PerfilDatosDTO();
 
-    @PostMapping("/perfil/editar/guardar")
-    public String guardarPerfilDatos(@ModelAttribute PerfilDatos perfilDatos) {
-        Optional<Usuario> usuarioOpt = usuarioService.findById(3); // o el ID del usuario logueado
-
-        if (usuarioOpt.isPresent()) {
-            Usuario usuario = usuarioOpt.get();
-
-            // Asegúrate de establecer ambos
-            System.out.println("Usuario ID: " + perfilDatos.getUsuario().getId());
-            System.out.println("Perfil ID: " + perfilDatos.getId());
-            perfilDatos.setUsuario(usuario);
-            perfilDatos.setId(usuario.getId()); // IMPORTANTE si usas @MapsId
-
-            perfilDatosService.save(perfilDatos);
-            return "redirect:/perfil/editar";
+        if (usuario.getPerfilDatos() != null) {
+            PerfilDatos perfil = usuario.getPerfilDatos();
+            dto.setNombre(perfil.getNombre());
+            dto.setApellidos(perfil.getApellidos());
+            dto.setEdad(perfil.getEdad());
+            dto.setDni(perfil.getDni());
+            dto.setDireccion(perfil.getDireccion());
+            dto.setCiudad(perfil.getCiudad());
+            dto.setCp(perfil.getCp());
+            dto.setTelefono1(perfil.getTelefono1());
+            dto.setTelefono2(perfil.getTelefono2());
+            dto.setTelefono3(perfil.getTelefono3());
         }
 
-        return "redirect:/error";
+        model.addAttribute("perfilDTO", dto);
+        return "perfilUsuarioEditar"; // Nombre del HTML
+    }
+
+    @PostMapping("/perfil/guardar")
+    public String guardarPerfil(@ModelAttribute("perfilDTO") PerfilDatosDTO dto) {
+        Usuario usuario = usuarioService.findById(3).orElseThrow();
+
+        PerfilDatos perfil;
+
+        if (usuario.getPerfilDatos() != null) {
+            perfil = usuario.getPerfilDatos(); // editar
+        } else {
+            perfil = new PerfilDatos(); // crear
+            perfil.setUsuario(usuario);
+            perfil.setId(usuario.getId()); // importante por @MapsId
+        }
+
+        perfil.setNombre(dto.getNombre());
+        perfil.setApellidos(dto.getApellidos());
+        perfil.setEdad(dto.getEdad());
+        perfil.setDni(dto.getDni());
+        perfil.setDireccion(dto.getDireccion());
+        perfil.setCiudad(dto.getCiudad());
+        perfil.setCp(dto.getCp());
+        perfil.setTelefono1(dto.getTelefono1());
+        perfil.setTelefono2(dto.getTelefono2());
+        perfil.setTelefono3(dto.getTelefono3());
+
+        perfilDatosService.save(perfil);
+
+        return "redirect:/perfil/editar";
     }
 
     @GetMapping("/perfil/apadrinamientos")
