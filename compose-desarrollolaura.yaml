@@ -1,0 +1,20 @@
+name: Desarrollo
+
+# Definimos los servicios que se ejecutarán en los contenedores Docker.
+services:
+  java:
+    image: pawhome:${VERSION:-snapshot}
+    ports:
+      - "${PUERTO_DESARROLLO}:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5432/postgres
+      SPRING_DATASOURCE_USERNAME: user
+      SPRING_DATASOURCE_PASSWORD: password
+
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:${PUERTO_DESARROLLO}/actuator/health" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: always
+

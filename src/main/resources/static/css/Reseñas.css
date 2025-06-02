@@ -1,0 +1,70 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: rgba(27, 125, 85, 0.58);
+    margin: 0;
+}
+
+h2 {
+    text-align: center;
+    color: #000000;
+    margin-top: 20px;
+    font-size: 2rem;
+}
+
+
+.testimonials {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    font-size: 15px;
+}
+
+.testimonial {
+    background-color: white;
+    border-radius: 10px;
+    padding: 15px;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.rating {
+    display: block;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+
+.review {
+    text-align: center;
+    margin: 20px;
+}
+
+.input-with-icon {
+    position: relative;
+    width: 80%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.input-with-icon input {
+    width: 100%;
+    padding: 10px 40px 10px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.input-with-icon i {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+    color: #888;
+    pointer-events: none;
+    font-size: 18px;
+}
+

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout.html}">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Finales Felices - Protectora</title>
+    <link rel="stylesheet" th:href="@{/css/FinalFeliz.css}"/>
+    <title>Final feliz</title>
+
+
+</head>
+<body>
+
+<section layout:fragment="content">
+
+    <header>
+        <h1>Finales Felices</h1>
+        <p>Estas son algunas de nuestras historias más conmovedoras de adopciones.</p>
+    </header>
+
+    <section class="galeria">
+        <div class="historia">
+            <img src="perro1.jpg" alt="Perro feliz con su nueva familia"/>
+            <p><strong>Luna</strong> encontró una familia amorosa que la adora.</p>
+        </div>
+        <div class="historia">
+            <img src="gato1.jpg" alt="Gato feliz en su nuevo hogar"/>
+            <p><strong>Milo</strong> ahora duerme cada noche abrazado a su humana favorita.</p>
+        </div>
+        <div class="historia">
+            <img src="perro2.jpg" alt="Perro jugando con niños"/>
+            <p><strong>Rocky</strong> juega en el jardín con sus nuevos hermanos humanos.</p>
+        </div>
+    </section>
+</section>
+</body>
+</html>
