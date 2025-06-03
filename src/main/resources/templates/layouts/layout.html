@@ -19,6 +19,31 @@
 
 <div th:replace="~{fragments/footer :: footerFragment}"></div>
 
+<!-- BOTÓN SOS -->
+<a href="tel:954 542 701" class="boton-sos" title="Emergencia SOS">
+    <img src="/images/HuesoSOS.png" alt="Botón SOS" class="img-sos">
+</a>
+
+<style>
+    .boton-sos {
+        position: fixed;
+        bottom: 30px;
+        right: 50px;
+        z-index: 900;
+        text-decoration: none;
+    }
+
+    .img-sos {
+        height: 300px;
+        width: 300px;
+        object-fit: contain;
+        transition: transform 2.0s ease;
+    }
+
+    .img-sos:hover {
+        transform: scale(1.5);
+    }
+</style>
 
 </body>
 </html>

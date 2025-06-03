@@ -11,16 +11,4 @@
       <option name="Make" enabled="true" />
     </method>
   </configuration>
-  <configuration default="false" name="AplicaciónEnLocal" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-    <option name="ACTIVE_PROFILES" value="local" />
-    <module name="PawHome" />
-    <selectedOptions>
-      <option name="environmentVariables" />
-    </selectedOptions>
-    <option name="SPRING_BOOT_MAIN_CLASS" value="com.grupo3.pawHome.Application" />
-    <option name="VM_PARAMETERS" value="--enable-native-access=ALL-UNNAMED" />
-    <method v="2">
-      <option name="Make" enabled="true" />
-    </method>
-  </configuration>
 </component>

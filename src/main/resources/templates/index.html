@@ -2,15 +2,18 @@
 <html lang="es" xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="~{layouts/layout.html}">
 <head>
-	<title th:text="#{page.index.title}"></title>
+	<title th:utext="#{page.index.title}"></title>
 	<link rel="stylesheet" th:href="@{/css/general.css}"/>
+	<link rel="stylesheet" th:href="@{/css/Colabora.css}"/>
+
+
 </head>
 <body style="margin: 0 !important;">
 <section layout:fragment="content">
 
 <!--CABECERA-->
 	<div class="contenedorImagen">
-		<h2 th:text="#{index.esloganInicial}"></h2>
+		<h2 th:utext="#{index.esloganInicial}"></h2>
 	</div>
 <!--CABECERA-->
 
@@ -188,7 +191,8 @@
 	<!-- NUESTROS SERVICIOS -->
 	<section class="container my-5">
 		<h2 class="text-center tituloTienda mb-4">
-			<i class="fas fa-paw me-2"></i>Conoce nuestros servicios
+			<i class="fas fa-paw me-2"></i>
+			<span th:text="#{index.nuestrosServicios}"></span>
 		</h2>
 		<div class="row g-4 justify-content-center">
 
@@ -196,9 +200,9 @@
 			<article class="col-12 col-md-6 col-lg-4">
 				<div class="text-center p-4 border rounded shadow-sm h-100">
 					<i class="fas fa-hotel fa-3x text-success mb-3"></i>
-					<h4 class="fw-bold mb-2">Guardería</h4>
-					<p>Un segundo hogar donde tu compañero está seguro, cuidado y feliz.</p>
-					<a href="/guarderia" class="btn btn-success mt-2">Ver más</a>
+					<h4 class="fw-bold mb-2" th:utext="#{header.guarderia}"></h4>
+					<p th:utext="#{index.esloganGuarderia}"></p>
+					<a href="/guarderia" class="btn btn-success mt-2" th:utext="#{index.verMas}"></a>
 				</div>
 			</article>
 
@@ -206,19 +210,19 @@
 			<article class="col-12 col-md-6 col-lg-4">
 				<div class="text-center p-4 border rounded shadow-sm h-100">
 					<i class="fas fa-cut fa-3x text-success mb-3"></i>
-					<h4 class="fw-bold mb-2">Peluquería</h4>
-					<p>Servicios de higiene y estética para mantener a tu mascota feliz y cuidada.</p>
-					<a href="/peluqueria" class="btn btn-success mt-2">Ver más</a>
+					<h4 class="fw-bold mb-2" th:utext="#{header.peluqueria}"></h4>
+					<p th:utext="#{index.esloganPeluqueria}"></p>
+					<a href="/peluqueria" class="btn btn-success mt-2" th:utext="#{index.verMas}"></a>
 				</div>
 			</article>
 
-			<!-- Servicio 3: Educación Canina -->
+			<!-- Servicio 3: Adiestramiento -->
 			<article class="col-12 col-md-6 col-lg-4">
 				<div class="text-center p-4 border rounded shadow-sm h-100">
 					<i class="fas fa-dog fa-3x text-success mb-3"></i>
-					<h4 class="fw-bold mb-2">Adiestramiento</h4>
-					<p>Programas para el bienestar, la socialización y la convivencia en armonía.</p>
-					<a href="/adiestramiento" class="btn btn-success mt-2">Ver más</a>
+					<h4 class="fw-bold mb-2" th:utext="#{header.adiestramiento}"></h4>
+					<p th:utext="#{index.esloganAdiestramiento}"></p>
+					<a href="/adiestramiento" class="btn btn-success mt-2" th:utext="#{index.verMas}"></a>
 				</div>
 			</article>
 
@@ -226,9 +230,9 @@
 			<article class="col-12 col-md-6 col-lg-4">
 				<div class="text-center p-4 border rounded shadow-sm h-100">
 					<i class="fas fa-stethoscope fa-3x text-success mb-3"></i>
-					<h4 class="fw-bold mb-2">Veterinario</h4>
-					<p>Cuida la salud de tu compañero peludo con atención médica profesional.</p>
-					<a href="/veterinario" class="btn btn-success mt-2">Ver más</a>
+					<h4 class="fw-bold mb-2" th:utext="#{header.veterinario}"></h4>
+					<p th:utext="#{index.esloganVeterinario}"></p>
+					<a href="/veterinario" class="btn btn-success mt-2" th:utext="#{index.verMas}"></a>
 				</div>
 			</article>
 
@@ -236,15 +240,19 @@
 			<article class="col-12 col-md-6 col-lg-4">
 				<div class="text-center p-4 border rounded shadow-sm h-100">
 					<i class="fas fa-balance-scale fa-3x text-success mb-3"></i>
-					<h4 class="fw-bold mb-2">Asesoramiento Legal</h4>
-					<p>Protegemos tus derechos y los de tus animales ante cualquier situación legal.</p>
-					<a href="/asesoramientoLegal" class="btn btn-success mt-2">Ver más</a>
+					<h4 class="fw-bold mb-2" th:utext="#{header.asesoramientoL}"></h4>
+					<p th:utext="#{index.esloganAsesoramientoLegal}"></p>
+					<a href="/asesoramientoLegal" class="btn btn-success mt-2" th:utext="#{index.verMas}"></a>
 				</div>
 			</article>
 
 		</div>
 	</section>
 	<!-- FIN NUESTROS SERVICIOS -->
+
+	<!-- COLABORA -->
+
+	<!-- FIN COLABORA -->
 
 	<!--DONA Y VOLUNTARIO -->
 	<section class="cta-section section-padding section-bg">

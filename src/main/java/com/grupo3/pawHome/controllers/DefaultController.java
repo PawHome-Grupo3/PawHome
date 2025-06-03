@@ -153,15 +153,10 @@ public class DefaultController {
         return "perfilUsuarioDonaciones";
     }
 
-    // Metodo para mostrar la página de Final Feliz
-    @GetMapping("/finalfeliz")
-    public String mostrarFinalFeliz()
-    {
-        return "FinalFeliz";
-    }
+
 
     // Metodo para mostrar la página de Reseñas
-    @GetMapping("/resenas")
+    @GetMapping("resenas")
     public String mostrarResenas()
     {
         return "Reseñas";
@@ -171,6 +166,7 @@ public class DefaultController {
     public String mostrarEventos(){
         return "eventos";
     }
+
 
     // Metodo para mostrar la página de Colabora
     @GetMapping("/colabora")
@@ -191,16 +187,44 @@ public class DefaultController {
         return "Apadrina";
     }
 
+    @GetMapping("/colabora/Apadrina/formularioApadrina")
+    public String mostrarformularioapadrina()
+    {return "formularioApadrina";}
+
     @GetMapping("/colabora/adopta")
     public String mostrarColaboraAdopta()
-    {
-        return "Adopta";
-    }
+    {return "Adopta";}
+
+    @GetMapping("/colabora/adopta/formularioAdopta")
+    public String mostrarformularioadopta()
+    {return "formularioAdopta";}
 
     @GetMapping("/colabora/paseosolidario")
     public String mostrarColaboraPaseoSolidario()
+    {return "PaseoSolidario";}
+
+    @GetMapping("/colabora/paseosolidario/formularioPS")
+    public String mostrarformularioPS()
+    {return "formularioPS";}
+
+
+    // Metodo para mostrar la página de Finales Felices
+    @GetMapping("/finalfeliz")
+    public String mostrarFinalesFelices()
     {
-        return "PaseoSolidario";
+        return "FinalFeliz";
+    }
+
+    @GetMapping("/registro")
+    public String mostrarRegistro()
+    {
+        return "registro";
+    }
+
+    @GetMapping("/loginPawHome")
+    public String mostrarLogin()
+    {
+        return "login";
     }
 
 
