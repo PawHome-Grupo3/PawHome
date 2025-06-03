@@ -27,8 +27,8 @@ public class SecurityConfig {
                         .permitAll()
                 )
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/","/nuestrosAnimales", "/login", "/css/**", "/js/**", "/images/**").permitAll()
-                        .anyRequest().authenticated()
+                        .requestMatchers("/perfil/").authenticated()
+                        .anyRequest().permitAll()
                 )
                 .logout(LogoutConfigurer::permitAll);
 
