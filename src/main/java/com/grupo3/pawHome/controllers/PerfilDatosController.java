@@ -21,7 +21,6 @@ public class PerfilDatosController {
         this.perfilDatosService = perfilDatosService;
     }
 
-    // Metodo para mostrar la pagina del horario y el mapa
     @GetMapping("/perfil/{id}")
     public String mostrarPerfil(@PathVariable("id") int id, Model model) {
         Optional<Usuario> usuarioOpt = usuarioService.findById(id);

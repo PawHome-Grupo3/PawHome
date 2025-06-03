@@ -16,7 +16,7 @@ public class PerfilDatos {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name = "usuario_id")
-    private long id;
+    private int id;
 
     @Column(nullable = false)
     private String nombre;
