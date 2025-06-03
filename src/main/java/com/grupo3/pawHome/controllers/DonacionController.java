@@ -1,4 +1,4 @@
-/* Controlador para metodos de pagos en donacion */
+/* Controlador para metodos de pagos en donacion
 
 package com.grupo3.pawHome.controllers;
 
@@ -21,3 +21,4 @@ public class DonacionController {
         return "dona";
     }
 }
+*/

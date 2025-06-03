@@ -92,6 +92,7 @@
     color: rgb(0, 0, 0);
     font-weight: 600;
     font-size: 36px;
+    z-index: 10;
 }
 
 .cta-section {
@@ -119,7 +120,6 @@
 }
 
 .btnHazteVoluntario {
-    background: rgb(13, 58, 39);
     border: 2px solid transparent;
     border-radius: 100px;
     color: white;
@@ -127,12 +127,15 @@
     padding: 20px 30px;
     font-size: 19px;
     font-weight: normal;
+    position: relative;
+    z-index: 10;
 }
 
 .btnHazteVoluntario:hover {
     background-color: rgba(27, 125, 85, 0.42);
     color: white;
 }
+
 /*FIN SECCION CTA DONA/VOLUNTARIO*/
 
 /*TIENDA*/
