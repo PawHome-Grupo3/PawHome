@@ -72,6 +72,22 @@
     cursor: pointer;
 }
 
+.btnReserva{
+    background-color: #1b7d55;
+    border: none;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 300px;
+    padding: 12px 20px;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.btnReserva:hover {
+    background-color: #157347;
+    transform: scale(1.02);
+    cursor: pointer;
+}
 
 @media (max-width: 768px) {
     .formContainer {

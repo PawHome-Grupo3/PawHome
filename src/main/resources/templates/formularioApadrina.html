@@ -3,11 +3,12 @@
       layout:decorate="~{layouts/layout.html}">
 <head>
   <meta charset="UTF-8">
-  <title>Formulario para adoptar</title>
+  <title>Formulario para apadrinar</title>
   <link rel="stylesheet" th:href="@{/css/formularios.css}"/>
 </head>
 <body>
-<section class="mb-5">
+
+<section class="mb-5" layout:fragment="content">
   <h2 class="text-success-emphasis fw-bold display-5 my-4 text-center">Apadrina una de nuestras mascotas</h2>
   <div class="formContainer">
     <form class="row g-3">

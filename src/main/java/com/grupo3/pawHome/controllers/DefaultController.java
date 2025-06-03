@@ -234,15 +234,13 @@ public class DefaultController {
         return "Apadrina";
     }
 
-    @GetMapping("/colabora/apadrina/formularioApadrina")
+    @GetMapping("/colabora/Apadrina/formularioApadrina")
     public String mostrarformularioapadrina()
     {return "formularioApadrina";}
 
     @GetMapping("/colabora/adopta")
     public String mostrarColaboraAdopta()
-    {
-        return "Adopta";
-    }
+    {return "Adopta";}
 
     @GetMapping("/colabora/adopta/formularioAdopta")
     public String mostrarformularioadopta()
@@ -250,9 +248,11 @@ public class DefaultController {
 
     @GetMapping("/colabora/paseosolidario")
     public String mostrarColaboraPaseoSolidario()
-    {
-        return "PaseoSolidario";
-    }
+    {return "PaseoSolidario";}
+
+    @GetMapping("/colabora/paseosolidario/formularioPS")
+    public String mostrarformularioPS()
+    {return "formularioPS";}
 
 
     // Metodo para mostrar la página de Finales Felices
@@ -260,6 +260,18 @@ public class DefaultController {
     public String mostrarFinalesFelices()
     {
         return "FinalFeliz";
+    }
+
+    @GetMapping("/registro")
+    public String mostrarRegistro()
+    {
+        return "registro";
+    }
+
+    @GetMapping("/loginPawHome")
+    public String mostrarLogin()
+    {
+        return "login";
     }
 
 
