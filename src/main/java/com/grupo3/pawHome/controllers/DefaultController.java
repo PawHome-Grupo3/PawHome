@@ -227,6 +227,9 @@ public class DefaultController {
         return "login";
     }
 
+    @GetMapping("/admin/animales")
+    public String mostrarAdminAnimales() {return "adminAnimales"; }
+
 
     /**
      * Gestiona las solicitudes GET para obtener y mostrar la lista de entidades protegidas.

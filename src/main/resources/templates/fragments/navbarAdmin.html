@@ -1,0 +1,34 @@
+<div th:fragment="navbarAdminFragment">
+    <!-- Botón hamburguesa para abrir el sidebar -->
+    <button class="btn btn-success btnHamburguesa justify-content-center" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarAdmin"
+            aria-controls="sidebarAdmin">
+        <span class="navbar-icon"></span>
+        Abrir menú
+    </button>
+
+    <!-- Sidebar Offcanvas -->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="sidebarAdmin" aria-labelledby="sidebarAdminLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="sidebarAdminLabel"><strong>¡Hola, administrador!</strong></h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
+        </div>
+
+        <p>Selecciona la categoría que quieras editar.</p>
+        <div class="offcanvas-body p-0">
+            <ul class="nav nav-pills flex-column mb-auto">
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Animales</a>
+                </li>
+                <li>
+                    <a href="#" class="nav-link">Usuarios</a>
+                </li>
+                <li>
+                    <a href="#" class="nav-link">Servicios</a>
+                </li>
+                <li>
+                    <a href="#" class="nav-link">Tarifas</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
