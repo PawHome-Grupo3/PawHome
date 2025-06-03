@@ -14,16 +14,16 @@ import java.util.Arrays;
 
 /**
  * Clase de configuración que se utiliza exclusivamente para el perfil "default" en entornos locales.
- *
+
  * Su propósito principal es cargar datos de ejemplo en las bases de datos asociadas a las entidades
  * {@code EntidadPadre} y {@code EntidadHija}, permitiendo la inicialización de datos útiles para pruebas
  * y desarrollo en este perfil específico.
- *
+
  * Esta clase está anotada con:
  * - {@code @Configuration}: Define esta clase como fuente de beans y configuración.
  * - {@code @Log4j2}: Habilita el uso de la biblioteca Log4j2 para registro de mensajes en los logs.
  * - {@code @Profile("default")}: Asegura que esta clase solo se cargue en el perfil "default".
- *
+
  * @see EntidadPadreRepository
  * @see EntidadHijaRepository
  */
@@ -37,10 +37,10 @@ public class LocalDataLoader {
 
     /**
      * Constructor de la clase {@code LocalDataLoader}.
-     *
+
      * Inicializa un objeto {@code LocalDataLoader} configurado con los repositorios de las entidades,
      * proporcionando la capacidad de interactuar con estas entidades en la base de datos.
-     *
+
      * @param repository              El repositorio de la entidad padre {@code EntidadPadreRepository}.
      *                                Se utiliza para realizar operaciones de persistencia, actualización,
      *                                eliminación y consulta relacionadas con la entidad padre.
@@ -58,7 +58,7 @@ public class LocalDataLoader {
      * los repositorios para entornos locales. Este método se ejecuta automáticamente
      * después de la inicialización del bean y antes de que esté disponible para uso,
      * permitiendo cargar datos iniciales necesarios para el perfil local.
-     *
+
      * Funcionalidad:
      * - Crea 10 instancias de la entidad `EntidadPadre` con nombres predefinidos.
      * - Guarda las instancias de `EntidadPadre` en el repositorio correspondiente.
@@ -67,7 +67,7 @@ public class LocalDataLoader {
      *   pertinente.
      * - Guarda las entidades hijas en el repositorio `entidadHijaRepository`.
      * - Registra mensajes informativos en el log sobre el inicio y finalización del proceso.
-     *
+
      * Proceso:
      * 1. Se define un número fijo de entidades padre (10).
      * 2. Se utiliza un array para almacenar las instancias y se inicializa con un nombre
@@ -77,16 +77,16 @@ public class LocalDataLoader {
      * 4. Para cada entidad padre, se crea una instancia de la entidad hija, se establece
      *    la relación con el padre y se guarda en el repositorio correspondiente.
      * 5. Se registran logs informativos sobre el estado del proceso.
-     *
+
      * Dependencias principales:
      * - `repository`: {@code EntidadPadreRepository}, usado para almacenar las entidades padre.
      * - `entidadHijaRepository`: {@code EntidadHijaRepository}, usado para guardar las entidades hijas.
-     *
+
      * Importante:
      * - Este método está diseñado específicamente para ser utilizado en entornos con
      *   el perfil local activo.
      * - No debe usarse en entornos de producción, ya que sobrescribirá datos existentes.
-     *
+
      * Logs:
      * - Mensaje al inicio del proceso: "Iniciando la carga de datos para el perfil local".
      * - Mensaje exitoso al finalizar: "Datos de entidades cargados correctamente."
@@ -97,7 +97,7 @@ public class LocalDataLoader {
         log.info("Iniciando la carga de datos para el perfil local");
         int numeroEntidades = 10;
         EntidadPadre[] entidades = new EntidadPadre[numeroEntidades];
-        Arrays.setAll(entidades, i -> new EntidadPadre("Entidad-" + (Integer.valueOf(i)+1)));
+        Arrays.setAll(entidades, i -> new EntidadPadre("Entidad-" + (i +1)));
         repository.saveAll(Arrays.asList(entidades));
         for (EntidadPadre entidadPadre : entidades) {
             EntidadHija entidadHija = new EntidadHija("Hija de " + entidadPadre.getNombre());
@@ -105,6 +105,8 @@ public class LocalDataLoader {
             entidadHijaRepository.save(entidadHija);
         }
         log.info("Datos de entidades cargados correctamente.");
+
+
     }
 
 
