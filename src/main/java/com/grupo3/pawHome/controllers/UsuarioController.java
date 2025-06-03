@@ -84,4 +84,9 @@ public class UsuarioController {
 
         return "redirect:/perfil/apadrinamientos";
     }
+
+    @GetMapping("/login")
+    public String login() {
+        return "login"; // Retorna la vista login.html desde /templates
+    }
 }

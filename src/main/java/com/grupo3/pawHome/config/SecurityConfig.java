@@ -42,12 +42,15 @@ public class SecurityConfig {
         http
                 .csrf(Customizer.withDefaults()) // deshabilitado para pruebas o APIs
                 .httpBasic(Customizer.withDefaults())
-                .formLogin(Customizer.withDefaults())
+                .formLogin(form -> form
+                        .loginPage("/login")
+                        .loginProcessingUrl("/login")
+                        .defaultSuccessUrl("/")
+                        .permitAll()
+                )
+
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/").permitAll()
-                        .requestMatchers("/entities").permitAll()
-                        .requestMatchers("/resources/static/css/**").permitAll()
-                        .requestMatchers("/js").permitAll()
+                        .requestMatchers("/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .logout(Customizer.withDefaults());
