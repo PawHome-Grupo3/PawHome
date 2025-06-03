@@ -8,9 +8,9 @@ import com.grupo3.pawHome.entities.PerfilDatos;
 import com.grupo3.pawHome.entities.Usuario;
 import com.grupo3.pawHome.repositories.AnimalRepository;
 import com.grupo3.pawHome.repositories.ApadrinarRepository;
-import com.grupo3.pawHome.repositories.PerfilDatosRespository;
 import com.grupo3.pawHome.repositories.UsuarioRepository;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -25,10 +25,10 @@ public class DataLoader implements CommandLineRunner {
     private final TallaRepository tallaRepository;
     private final CategoriaRepository categoriaRepository;
     private final TarifaRepository tarifaRepository;
-    private final PerfilDatosRespository perfilDatosRespository;
+    private final PasswordEncoder passwordEncoder;
 
 
-    public DataLoader(AnimalRepository animalRepository, ApadrinarRepository apadrinarRepository, UsuarioRepository usuarioRepository, FacturaRepository facturaRepository, ProductoRepository productoRepository, TallaRepository tallaRepository, CategoriaRepository categoriaRepository, TarifaRepository tarifaRepository, PerfilDatosRespository perfilDatosRespository) {
+    public DataLoader(AnimalRepository animalRepository, ApadrinarRepository apadrinarRepository, UsuarioRepository usuarioRepository, FacturaRepository facturaRepository, ProductoRepository productoRepository, TallaRepository tallaRepository, CategoriaRepository categoriaRepository, TarifaRepository tarifaRepository, PasswordEncoder passwordEncoder) {
         this.animalRepository = animalRepository;
         this.apadrinarRepository = apadrinarRepository;
         this.usuarioRepository = usuarioRepository;
@@ -37,7 +37,7 @@ public class DataLoader implements CommandLineRunner {
         this.tallaRepository = tallaRepository;
         this.categoriaRepository = categoriaRepository;
         this.tarifaRepository = tarifaRepository;
-        this.perfilDatosRespository = perfilDatosRespository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -167,7 +167,7 @@ public class DataLoader implements CommandLineRunner {
         // Crear Usuario
         Usuario usuario = new Usuario();
         usuario.setNickname("juan123");
-        usuario.setPassword("passwordSegura");
+        usuario.setPassword(passwordEncoder.encode("password")) ;
         usuario.setEmail("juan@example.com");
         usuario.setFechaRegistro(LocalDate.now());
 
