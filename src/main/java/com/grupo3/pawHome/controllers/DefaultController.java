@@ -1,8 +1,10 @@
 package com.grupo3.pawHome.controllers;
 
 
+import com.grupo3.pawHome.repositories.MetodoDonacionRepository;
 import com.grupo3.pawHome.services.EntidadHijaService;
 import com.grupo3.pawHome.services.EntidadPadreService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -315,3 +317,7 @@ public class DefaultController {
     }
 
 }
+
+
+
+
