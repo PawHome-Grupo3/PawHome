@@ -24,7 +24,6 @@
     background: url('../images/fondoHomePerro.png') no-repeat;
     background-size: cover;
     background-attachment: fixed;
-    /*clip-path: polygon(100% 0, 100% 43%, 26% 100%, 0 100%, 0 0);*/
 }
 
 .contenedorImagen h2{
@@ -75,7 +74,7 @@
 }
 
 .seccionHistoria:hover .carousel-icon {
-    background-color: #717275;
+    background-color: rgba(27, 125, 85, 0.42);
 }
 /*FIN HISTORIA*/
 
@@ -86,47 +85,41 @@
 }
 
 .section-bg {
-    background-color: #f0f8ff;
-}
-
-.cta-section {
-    position: relative;
-    overflow: hidden;
-}
-
-.cta-section::before {
-    content: "";
-    background-color: #5bc1ac;
-    border-radius: 50%;
-    position: absolute;
-    top: -100px;
-    left: -30px;
-    margin: auto;
-    width: 200px;
-    height: 200px;
-}
-
-.cta-section::after {
-    content: "";
-    border: 20px solid #597081;
-    border-radius: 50%;
-    position: absolute;
-    bottom: -100px;
-    right: 0;
-    left: 0;
-    margin: auto;
-    width: 150px;
-    height: 150px;
+    background-color: rgba(187, 224, 155, 0.58);
 }
 
 .esloganDona {
-    color:#5a6f80;
+    color: rgb(0, 0, 0);
     font-weight: 600;
     font-size: 36px;
 }
 
+.cta-section {
+    background-color: rgba(187, 224, 155, 0.58);
+    background-repeat: no-repeat;
+    background-position: top left;
+    background-size: 120px auto;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.cta-section::after {
+    content: "";
+    background-image: url('../images/huellitas.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 900px;
+    height: 355px;
+    z-index: 0;
+}
+
 .btnHazteVoluntario {
-    background: #597081;
+    background: rgb(13, 58, 39);
     border: 2px solid transparent;
     border-radius: 100px;
     color: white;
@@ -137,7 +130,7 @@
 }
 
 .btnHazteVoluntario:hover {
-    background-color: #5bc1ac;
+    background-color: rgba(27, 125, 85, 0.42);
     color: white;
 }
 /*FIN SECCION CTA DONA/VOLUNTARIO*/

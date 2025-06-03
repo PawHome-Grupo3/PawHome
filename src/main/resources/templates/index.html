@@ -6,7 +6,6 @@
 	<link rel="stylesheet" th:href="@{/css/general.css}"/>
 	<link rel="stylesheet" th:href="@{/css/Colabora.css}"/>
 
-
 </head>
 <body style="margin: 0 !important;">
 <section layout:fragment="content">
@@ -40,9 +39,9 @@
 						<div class="row justify-content-center">
 							<div class="col-lg-10 col-md-10 col-12">
 								<div class="custom-text-box mb-lg-0">
-									<h5 class="mb-3 indexSubTitulo">Our Mission</h5>
-									<p class="indexParrafo">Sed leo nisl, posuere at molestie ac, suscipit auctor quis
-										metus</p>
+									<h5 class="mb-3 indexSubTitulo">Nuestra misión</h5>
+									<p class="indexParrafo">Ser un hogar para todos los animales,
+										ya que todos lo merecen.</p>
 								</div>
 							</div>
 						</div>
@@ -51,7 +50,7 @@
 
 				<div class="row carousel-item d-flex justify-content-center">
 					<div class="carousel slide col-md-7 col-12 mb-4  align-content-center">
-						<img th:src="@{images/fondoHomePerro.png}" class="custom-text-box-image img-fluid" alt="...">
+						<img th:src="@{images/PawHomeestablecimiento.jpg}" class="custom-text-box-image img-fluid" alt="...">
 					</div>
 
 					<div class="col-md-5 col-12 align-content-md-center">
@@ -67,8 +66,8 @@
 							<div class="col-lg-10 col-md-10 col-12">
 								<div class="custom-text-box mb-lg-0">
 									<h5 class="mb-3 indexSubTitulo"></h5>
-									<p class="indexParrafo">Sed leo nisl, posuere at molestie ac, suscipit auctor quis
-										metus</p>
+									<p class="indexParrafo">Esta protectora nace de algo muy real: el amor por los animales y las ganas de hacer
+										las cosas mejor.</p>
 								</div>
 							</div>
 						</div>
@@ -93,8 +92,11 @@
 						<div class="row justify-content-center">
 							<div class="col-lg-10 col-md-10 col-12">
 								<div class="custom-text-box mb-lg-0">
-									<h5 class="mb-3 indexSubTitulo">Our Mission</h5>
-									<p class="indexParrafo">EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE</p>
+									<h5 class="mb-3 indexSubTitulo">Pawhome, un hogar para los que aún no lo tienen 🐾</h5>
+									<p class="indexParrafo">En Pawhome, rescatamos, cuidamos y damos en adopción a animales que han sido abandonados o maltratados.
+										Creemos que cada perro y gato merece una segunda oportunidad y un hogar lleno de amor.
+										Nuestro equipo de voluntarios trabaja con cariño y compromiso para que cada peludo encuentre
+										una familia que lo quiera para siempre. Pero no podemos hacerlo solos.</p>
 								</div>
 							</div>
 						</div>
@@ -110,6 +112,10 @@
 		</div>
 	</section>
 	<!--FIN HISTORIA PROTECTORA-->
+
+	<!-- INICIO COLABORA -->
+	<div th:insert="fragments/colaboraFragment :: colaboraContent"></div>
+	<!-- FIN COLABORA -->
 
 	<!--TIENDA-->
 	<section class="section-padding" id="section_3">
@@ -249,10 +255,6 @@
 		</div>
 	</section>
 	<!-- FIN NUESTROS SERVICIOS -->
-
-	<!-- COLABORA -->
-
-	<!-- FIN COLABORA -->
 
 	<!--DONA Y VOLUNTARIO -->
 	<section class="cta-section section-padding section-bg">
