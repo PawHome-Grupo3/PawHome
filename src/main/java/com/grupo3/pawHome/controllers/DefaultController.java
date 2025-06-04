@@ -207,7 +207,6 @@ public class DefaultController {
     public String mostrarformularioPS()
     {return "formularioPS";}
 
-
     // Metodo para mostrar la página de Finales Felices
     @GetMapping("/finalfeliz")
     public String mostrarFinalesFelices()
@@ -227,8 +226,14 @@ public class DefaultController {
         return "login";
     }
 
-    @GetMapping("/admin/animales")
-    public String mostrarAdminAnimales() {return "adminAnimales"; }
+    @GetMapping("/admin/usuarios")
+    public String mostrarAdminUsuarios() {return "adminUsuarios"; }
+
+    @GetMapping("/admin/servicios")
+    public String mostrarAdminServicios() {return "adminServicios"; }
+
+    @GetMapping("/admin/tarifas")
+    public String mostrarAdminTarifas() {return "adminTarifas"; }
 
 
     /**
