@@ -5,6 +5,7 @@
 	<title th:utext="#{page.index.title}"></title>
 	<link rel="stylesheet" th:href="@{/css/general.css}"/>
 	<link rel="stylesheet" th:href="@{/css/Colabora.css}"/>
+	<link rel="stylesheet" th:href="@{/css/Reseñas.css}"/>
 
 </head>
 <body style="margin: 0 !important;">
@@ -255,6 +256,12 @@
 		</div>
 	</section>
 	<!-- FIN NUESTROS SERVICIOS -->
+
+	<!-- RESEñAS -->
+	<br>
+	<div th:replace="Reseñas :: reviewsFragment"></div>
+	<!--FIN RESEñAS -->
+
 
 	<!--DONA Y VOLUNTARIO -->
 	<section class="cta-section section-padding section-bg">

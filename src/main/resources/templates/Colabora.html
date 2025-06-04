@@ -3,34 +3,36 @@
       layout:decorate="~{layouts/layout.html}">
 <head>
     <link rel="stylesheet" th:href="@{/css/Colabora.css}">
-    <title>Colabora</title>
+    <title th:text="#{colabora.titulo}">Colabora</title>
 </head>
 
 <section layout:fragment="content">
     <div class="colabora-page">
-        <h1 class="texto1">Colabora con nosotros y nuestros animales</h1>
+        <h1 class="texto1" th:text="#{colabora.titulo}">Colabora con nosotros y nuestros animales</h1>
         <div class="container-vista">
             <div class="fila arriba">
-                <a th:href="@{/colabora/dona}" class="botoncolabora">DONA
-                    <span>Cada aportación, por pequeña que sea, hace una gran diferencia.</span>
+                <a th:href="@{/colabora/dona}" class="botoncolabora">
+                    <span th:text="#{colabora.dona}">DONA</span>
+                    <span th:text="#{colabora.dona.descripcion}">Cada aportación, por pequeña que sea, hace una gran diferencia.</span>
                 </a>
-                <a th:href="@{/colabora/adopta}" class="botoncolabora">ADOPTA
-                    <span>Cambia tu vida o la de uno de nuestros amigos peludos.</span>
+                <a th:href="@{/colabora/adopta}" class="botoncolabora">
+                    <span th:text="#{colabora.adopta}">ADOPTA</span>
+                    <span th:text="#{colabora.adopta.descripcion}">Cambia tu vida o la de uno de nuestros amigos peludos.</span>
                 </a>
-
             </div>
             <div class="fila abajo">
-                <a th:href="@{/colabora/apadrina}" class="botoncolabora">APADRINA
-                    <span>Apadrina a uno de nuestros animales y dale una segunda oportunidad, sin necesidad de adoptar.</span>
+                <a th:href="@{/colabora/apadrina}" class="botoncolabora">
+                    <span th:text="#{colabora.apadrina}">APADRINA</span>
+                    <span th:text="#{colabora.apadrina.descripcion}">Apadrina a uno de nuestros animales y dale una segunda oportunidad, sin necesidad de adoptar.</span>
                 </a>
-                <a th:href="@{/colabora/paseosolidario}" class="botoncolabora">PASEO SOLIDARIO
-                    <span>Pasea con nuestros amigos peludos, ayúdanos y recibe su cariño. ¡Nosotros te lo agradeceremos aún más!</span>
+                <a th:href="@{/colabora/paseosolidario}" class="botoncolabora">
+                    <span th:text="#{colabora.paseo}">PASEO SOLIDARIO</span>
+                    <span th:text="#{colabora.paseo.descripcion}">Pasea con nuestros amigos peludos, ayúdanos y recibe su cariño. ¡Nosotros te lo agradeceremos aún más!</span>
                 </a>
             </div>
             <br>
-            <h2 class="texto2">Cada ayuda cuenta, por pequeña que sea.</h2>
+            <h2 class="texto2" th:text="#{colabora.lema}">Cada ayuda cuenta, por pequeña que sea.</h2>
         </div>
     </div>
-
 </section>
 </html>

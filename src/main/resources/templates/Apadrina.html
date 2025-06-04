@@ -3,8 +3,9 @@
       layout:decorate="~{layouts/layout.html}">
 
 <head>
+    <meta charset="UTF-8" />
     <link rel="stylesheet" th:href="@{/css/Apadrina.css}">
-    <title>Apadrina</title>
+    <title th:text="#{apadrina.titulo}">Apadrina</title>
 </head>
 
 <body>
@@ -12,14 +13,20 @@
 
     <div class="containerImagen">
         <div class="cuadro-transparente">
-            <h1><i>Cómo apadrinar a nuestros Paws:</i></h1>
+            <h1><i th:text="#{apadrina.comoApadrinar}">Cómo apadrinar a nuestros Paws:</i></h1>
             <br>
             <ol>
-                <li>Accede al <a th:href="@{/colabora/Apadrina/formularioApadrina}">formulario</a>.</li>
-                <li> Elige a uno de nuestros <a th:href="@{/nuestrosAnimales}">amigos peludos</a>.</li>
-                <li> Elige tu aportación mensual (10€, 20€...) </li>
-                <li> Elige a qué va a ir destinado ese dinero (alimentación, veterinario...) </li>
-                <li> Elige tu forma de pago (Bizum o Paypal) </li>
+                <li>
+                    <span th:text="#{apadrina.paso1}">Accede al</span>
+                    <a th:href="@{/colabora/Apadrina/formularioApadrina}" th:text="#{apadrina.formulario}">formulario</a>.
+                </li>
+                <li>
+                    <span th:text="#{apadrina.paso2}">Elige a uno de nuestros</span>
+                    <a th:href="@{/nuestrosAnimales}" th:text="#{apadrina.amigosPeludos}">amigos peludos</a>.
+                </li>
+                <li th:text="#{apadrina.paso3}">Elige tu aportación mensual (10€, 20€...)</li>
+                <li th:text="#{apadrina.paso4}">Elige a qué va a ir destinado ese dinero (alimentación, veterinario...)</li>
+                <li th:text="#{apadrina.paso5}">Elige tu forma de pago (Bizum o Paypal)</li>
             </ol>
         </div>
     </div>

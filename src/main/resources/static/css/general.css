@@ -24,6 +24,8 @@
     background: url('../images/fondoHomePerro.png') no-repeat;
     background-size: cover;
     background-attachment: fixed;
+
+
 }
 
 .contenedorImagen h2{
@@ -38,6 +40,7 @@
 
 .seccionHistoria {
     background-color: #f0f8ff;
+    margin: 0 !important;
 }
 
 .custom-text-box {
