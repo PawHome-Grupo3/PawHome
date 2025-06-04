@@ -8,10 +8,8 @@ import com.grupo3.pawHome.entities.PerfilDatos;
 import com.grupo3.pawHome.entities.Usuario;
 import com.grupo3.pawHome.repositories.AnimalRepository;
 import com.grupo3.pawHome.repositories.ApadrinarRepository;
-import com.grupo3.pawHome.repositories.PerfilDatosRespository;
 import com.grupo3.pawHome.repositories.UsuarioRepository;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -26,7 +24,6 @@ public class DataLoader implements CommandLineRunner {
     private final TallaRepository tallaRepository;
     private final CategoriaRepository categoriaRepository;
     private final TarifaRepository tarifaRepository;
-    private final PasswordEncoder passwordEncoder;
     private final PerfilDatosRespository perfilDatosRespository;
 
 
@@ -46,14 +43,14 @@ public class DataLoader implements CommandLineRunner {
     public void run(String... args) {
         // Crear Usuarios
         Usuario u1 = new Usuario();
-        u1.setNickname("Juan123");
+        u1.setNombre("Juan123");
         u1.setPassword("1234");
         u1.setEmail("a@gmail.com");
         u1.setFechaRegistro(LocalDate.now());
         usuarioRepository.save(u1);
 
         Usuario u2 = new Usuario();
-        u2.setNickname("Maria456");
+        u2.setNombre("Maria456");
         u2.setPassword("abcd");
         u2.setEmail("maria@gmail.com");
         u2.setFechaRegistro(LocalDate.now());
@@ -168,8 +165,8 @@ public class DataLoader implements CommandLineRunner {
 
         // Crear Usuario
         Usuario usuario = new Usuario();
-        usuario.setNickname("juan123");
-        usuario.setPassword(passwordEncoder.encode("password")) ;
+        usuario.setNombre("juan123");
+        usuario.setPassword("passwordSegura");
         usuario.setEmail("juan@example.com");
         usuario.setFechaRegistro(LocalDate.now());
 

@@ -7,10 +7,6 @@ import com.grupo3.pawHome.entities.Usuario;
 import com.grupo3.pawHome.services.ApadrinarService;
 import com.grupo3.pawHome.services.PerfilDatosService;
 import com.grupo3.pawHome.services.UsuarioService;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.context.SecurityContext;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,7 +15,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDate;
-import java.util.Collection;
 import java.util.Optional;
 import java.util.Set;
 
@@ -37,18 +32,7 @@ public class UsuarioController {
 
     @GetMapping("/perfil/informacion")
     public String mostrarPerfil(Model model) {
-        SecurityContext context = SecurityContextHolder.getContext();
-
-        Authentication authentication = context.getAuthentication();
-
-        String username = authentication.getName();
-
-        Object principal = authentication.getPrincipal();
-
-        Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
-        Optional<Usuario> usuarioOpt = usuarioService.findById(1);
-
-        model.addAttribute("principal", principal);
+        Optional<Usuario> usuarioOpt = usuarioService.findById(3);
         usuarioOpt.ifPresent(usuario -> model.addAttribute("usuario", usuario));
 
         return "perfilUsuario";
@@ -159,10 +143,5 @@ public class UsuarioController {
         }
 
         return "redirect:/perfil/apadrinamientos";
-    }
-
-    @GetMapping("/login")
-    public String login() {
-        return "login"; // Retorna la vista login.html desde /templates
     }
 }
