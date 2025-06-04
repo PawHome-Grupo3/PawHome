@@ -7,6 +7,7 @@ import com.grupo3.pawHome.entities.Usuario;
 import com.grupo3.pawHome.services.ApadrinarService;
 import com.grupo3.pawHome.services.PerfilDatosService;
 import com.grupo3.pawHome.services.UsuarioService;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,11 +32,11 @@ public class UsuarioController {
     }
 
     @GetMapping("/perfil/informacion")
-    public String mostrarPerfil(Model model) {
-        Optional<Usuario> usuarioOpt = usuarioService.findById(3);
-        usuarioOpt.ifPresent(usuario -> model.addAttribute("usuario", usuario));
-
+    public String mostrarPerfil(@AuthenticationPrincipal Usuario usuario, Model model) {
+        System.out.println("Usuario autenticado: " + usuario);
+        model.addAttribute("usuario", usuario);
         return "perfilUsuario";
+
     }
 
     @GetMapping("/perfil/editar")
