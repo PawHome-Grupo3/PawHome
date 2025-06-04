@@ -44,15 +44,15 @@ public class DataLoader implements CommandLineRunner {
     public void run(String... args) {
         // Crear Usuarios
         Usuario u1 = new Usuario();
-        u1.setNickname("Juan123");
-        u1.setPassword("1234");
+        u1.setNickname("Juan1234");
+        u1.setPassword(passwordEncoder.encode("123"));
         u1.setEmail("a@gmail.com");
         u1.setFechaRegistro(LocalDate.now());
         usuarioRepository.save(u1);
 
         Usuario u2 = new Usuario();
         u2.setNickname("Maria456");
-        u2.setPassword("abcd");
+        u2.setPassword(passwordEncoder.encode("123"));
         u2.setEmail("maria@gmail.com");
         u2.setFechaRegistro(LocalDate.now());
         usuarioRepository.save(u2);
