@@ -10,8 +10,11 @@ import java.util.Optional;
 @Service
 public class UsuarioService {
     private final UsuarioRepository repository;
+    private final UsuarioRepository usuarioRepository;
 
-    public UsuarioService(UsuarioRepository repository) { this.repository = repository; }
+    public UsuarioService(UsuarioRepository repository, UsuarioRepository usuarioRepository) { this.repository = repository;
+        this.usuarioRepository = usuarioRepository;
+    }
 
     public List<Usuario> findAll() {
         return repository.findAll();
@@ -20,4 +23,6 @@ public class UsuarioService {
     public Optional<Usuario> findById(Integer id) {
         return repository.findById(id);
     }
+
+    public void save(Usuario usuario) { usuarioRepository.save(usuario); }
 }

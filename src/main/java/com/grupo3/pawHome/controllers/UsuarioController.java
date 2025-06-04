@@ -1,13 +1,17 @@
 package com.grupo3.pawHome.controllers;
 
+import com.grupo3.pawHome.dtos.PerfilDatosDTO;
 import com.grupo3.pawHome.entities.Apadrinar;
+import com.grupo3.pawHome.entities.PerfilDatos;
 import com.grupo3.pawHome.entities.Usuario;
 import com.grupo3.pawHome.services.ApadrinarService;
+import com.grupo3.pawHome.services.PerfilDatosService;
 import com.grupo3.pawHome.services.UsuarioService;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -19,10 +23,12 @@ import java.util.Set;
 public class UsuarioController {
     private final UsuarioService usuarioService;
     private final ApadrinarService apadrinarService;
+    private final PerfilDatosService perfilDatosService;
 
-    public UsuarioController(UsuarioService usuarioService, ApadrinarService apadrinarService) {
+    public UsuarioController(UsuarioService usuarioService, ApadrinarService apadrinarService, PerfilDatosService perfilDatosService) {
         this.usuarioService = usuarioService;
         this.apadrinarService = apadrinarService;
+        this.perfilDatosService = perfilDatosService;
     }
 
     @GetMapping("/perfil/informacion")
@@ -30,6 +36,66 @@ public class UsuarioController {
         System.out.println("Usuario autenticado: " + usuario);
         model.addAttribute("usuario", usuario);
         return "perfilUsuario";
+
+    public String mostrarPerfil(Model model) {
+        Optional<Usuario> usuarioOpt = usuarioService.findById(3);
+        usuarioOpt.ifPresent(usuario -> model.addAttribute("usuario", usuario));
+
+        return "perfilUsuario";
+    }
+
+    @GetMapping("/perfil/editar")
+    public String mostrarFormulario(Model model) {
+        Usuario usuario = usuarioService.findById(3).orElseThrow();
+
+        PerfilDatosDTO dto = new PerfilDatosDTO();
+
+        if (usuario.getPerfilDatos() != null) {
+            PerfilDatos perfil = usuario.getPerfilDatos();
+            dto.setNombre(perfil.getNombre());
+            dto.setApellidos(perfil.getApellidos());
+            dto.setEdad(perfil.getEdad());
+            dto.setDni(perfil.getDni());
+            dto.setDireccion(perfil.getDireccion());
+            dto.setCiudad(perfil.getCiudad());
+            dto.setCp(perfil.getCp());
+            dto.setTelefono1(perfil.getTelefono1());
+            dto.setTelefono2(perfil.getTelefono2());
+            dto.setTelefono3(perfil.getTelefono3());
+        }
+
+        model.addAttribute("perfilDTO", dto);
+        return "perfilUsuarioEditar"; // Nombre del HTML
+    }
+
+    @PostMapping("/perfil/guardar")
+    public String guardarPerfil(@ModelAttribute("perfilDTO") PerfilDatosDTO dto) {
+        Usuario usuario = usuarioService.findById(3).orElseThrow();
+
+        PerfilDatos perfil;
+
+        if (usuario.getPerfilDatos() != null) {
+            perfil = usuario.getPerfilDatos(); // editar
+        } else {
+            perfil = new PerfilDatos(); // crear
+            perfil.setUsuario(usuario);
+            perfil.setId(usuario.getId()); // importante por @MapsId
+        }
+
+        perfil.setNombre(dto.getNombre());
+        perfil.setApellidos(dto.getApellidos());
+        perfil.setEdad(dto.getEdad());
+        perfil.setDni(dto.getDni());
+        perfil.setDireccion(dto.getDireccion());
+        perfil.setCiudad(dto.getCiudad());
+        perfil.setCp(dto.getCp());
+        perfil.setTelefono1(dto.getTelefono1());
+        perfil.setTelefono2(dto.getTelefono2());
+        perfil.setTelefono3(dto.getTelefono3());
+
+        perfilDatosService.save(perfil);
+
+        return "redirect:/perfil/editar";
     }
 
     @GetMapping("/perfil/apadrinamientos")
@@ -83,10 +149,5 @@ public class UsuarioController {
         }
 
         return "redirect:/perfil/apadrinamientos";
-    }
-
-    @GetMapping("/login")
-    public String login() {
-        return "login"; // Retorna la vista login.html desde /templates
     }
 }
