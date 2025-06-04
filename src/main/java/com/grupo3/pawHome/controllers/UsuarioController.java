@@ -37,11 +37,6 @@ public class UsuarioController {
         model.addAttribute("usuario", usuario);
         return "perfilUsuario";
 
-    public String mostrarPerfil(Model model) {
-        Optional<Usuario> usuarioOpt = usuarioService.findById(3);
-        usuarioOpt.ifPresent(usuario -> model.addAttribute("usuario", usuario));
-
-        return "perfilUsuario";
     }
 
     @GetMapping("/perfil/editar")
