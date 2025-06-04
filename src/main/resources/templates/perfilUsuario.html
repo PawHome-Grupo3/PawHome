@@ -15,42 +15,39 @@
             <div class="col-md-9 col-lg-10 justify-content-center">
                 <div class="row justify-content-center">
                     <div class="col-md-8">
-                        <div class="p-3 py-5">
+                        <div th:if="${usuario.getPerfilDatos() != null}" class="p-3 py-5">
                             <div class="d-flex justify-content-between align-items-center mb-3">
                                 <h4 class="text-right">Datos de Perfil</h4>
                             </div>
                             <div class="row mt-2">
                                 <div class="col-md-6">
-                                    <p><strong>Nombre:</strong> <span th:text="${usuario.nombre}"></span></p>
+                                    <p><strong>Nombre:</strong> <span th:text="${usuario.perfilDatos.getNombre()}"></span></p>
                                 </div>
                                 <div class="col-md-6">
-                                    <p><strong>Apellidos:</strong> <span>Perez Gomez</span></p>
+                                    <p><strong>Apellidos:</strong> <span th:text="${usuario.perfilDatos.apellidos}"></span></p>
                                 </div>
                             </div>
                             <div class="row mt-3">
                                 <div class="col-md-12 mt-1">
-                                    <p><strong>Número teléfono:</strong> +34 612 345 678</p>
+                                    <p><strong>Nombre Usuario:</strong> <span th:text="${usuario.nombre}"> </span></p>
                                 </div>
                                 <div class="col-md-12 mt-1">
-                                    <p><strong>Dirección 1:</strong> Calle Mayor 123</p>
+                                    <p><strong>Número teléfono:</strong> <span th:text="${usuario.perfilDatos.telefono1}"> </span></p>
                                 </div>
                                 <div class="col-md-12 mt-1">
-                                    <p><strong>Dirección 2:</strong> Piso 2, Puerta B</p>
+                                    <p><strong>Dirección 1:</strong> <span th:text="${usuario.perfilDatos.direccion}"> </span></p>
                                 </div>
                                 <div class="col-md-12 mt-1">
-                                    <p><strong>Código Postal:</strong> 28013</p>
+                                    <p><strong>Código Postal:</strong> <span th:text="${usuario.perfilDatos.cp}"> </span> </p>
                                 </div>
                                 <div class="col-md-12 mt-1">
-                                    <p><strong>Estado:</strong> Madrid</p>
+                                    <p><strong>DNI:</strong> <span th:text="${usuario.perfilDatos.dni}"> </span></p>
                                 </div>
                                 <div class="col-md-12 mt-1">
-                                    <p><strong>DNI:</strong> 12345678Z</p>
+                                    <p><strong>Email:</strong> <span th:text="${usuario.email}"></span> </p>
                                 </div>
                                 <div class="col-md-12 mt-1">
-                                    <p><strong>Email:</strong> juan.perez@example.com</p>
-                                </div>
-                                <div class="col-md-12 mt-1">
-                                    <p><strong>Educación:</strong> Licenciatura en Ingeniería Informática</p>
+                                    <p><strong>Edad:</strong> <span th:text="${usuario.perfilDatos.edad}"></span> </p>
                                 </div>
                             </div>
                             <div class="row mt-3">
@@ -58,13 +55,31 @@
                                     <p><strong>País:</strong> España</p>
                                 </div>
                                 <div class="col-md-6">
-                                    <p><strong>Región:</strong> Comunidad de Madrid</p>
+                                    <p><strong>Ciudad:</strong> <span th:text="${usuario.perfilDatos.ciudad}"> </span></p>
                                 </div>
                             </div>
                             <div class="mt-5 text-center">
                                 <button class="btn btn-primary profile-button" type="button">
-                                    <a href="/perfil/editar" style="text-decoration: none; color: white;">Editar
-                                        Perfil</a>
+                                    <a href="/perfil/editar" style="text-decoration: none; color: white;">Editar Perfil</a>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div th:unless="${usuario.getPerfilDatos() != null}" class="p-3 py-5">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h4 class="text-right">Datos de Perfil</h4>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-md-12 mt-1">
+                                    <p><strong>Nombre Usuario:</strong> <span th:text="${usuario.nombre}"> </span></p>
+                                </div>
+                                <div class="col-md-12 mt-1">
+                                    <p><strong>Email:</strong> <span th:text="${usuario.email}"></span> </p>
+                                </div>
+                            </div>
+                            <div class="mt-5 text-center">
+                                <button class="btn btn-primary profile-button" type="button">
+                                    <a href="/perfil/editar" style="text-decoration: none; color: white;">Crear Datos Perfil</a>
                                 </button>
                             </div>
                         </div>

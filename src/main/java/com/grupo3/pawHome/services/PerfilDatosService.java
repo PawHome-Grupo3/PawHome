@@ -17,4 +17,6 @@ public class PerfilDatosService {
     public Optional<PerfilDatos> findById(int id) {
         return perfilDatosRespository.findById(id);
     }
+
+    public PerfilDatos save(PerfilDatos perfilDatos) { return perfilDatosRespository.save(perfilDatos); }
 }
