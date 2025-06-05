@@ -27,9 +27,10 @@ public class DataLoader implements CommandLineRunner {
     private final TarifaRepository tarifaRepository;
     private final PerfilDatosRespository perfilDatosRespository;
     private final PasswordEncoder passwordEncoder;
+    private final MetodoPagoRepository metodoPagoRepository;
 
 
-    public DataLoader(AnimalRepository animalRepository, ApadrinarRepository apadrinarRepository, UsuarioRepository usuarioRepository, FacturaRepository facturaRepository, ProductoRepository productoRepository, TallaRepository tallaRepository, CategoriaRepository categoriaRepository, TarifaRepository tarifaRepository, PerfilDatosRespository perfilDatosRespository, PasswordEncoder passwordEncoder) {
+    public DataLoader(AnimalRepository animalRepository, ApadrinarRepository apadrinarRepository, UsuarioRepository usuarioRepository, FacturaRepository facturaRepository, ProductoRepository productoRepository, TallaRepository tallaRepository, CategoriaRepository categoriaRepository, TarifaRepository tarifaRepository, PerfilDatosRespository perfilDatosRespository, PasswordEncoder passwordEncoder, MetodoPagoRepository metodoPagoRepository) {
         this.animalRepository = animalRepository;
         this.apadrinarRepository = apadrinarRepository;
         this.usuarioRepository = usuarioRepository;
@@ -40,6 +41,7 @@ public class DataLoader implements CommandLineRunner {
         this.tarifaRepository = tarifaRepository;
         this.perfilDatosRespository = perfilDatosRespository;
         this.passwordEncoder = passwordEncoder;
+        this.metodoPagoRepository = metodoPagoRepository;
     }
 
     @Override
@@ -415,5 +417,9 @@ public class DataLoader implements CommandLineRunner {
         ap4.setAnimal(a4);
         ap4.setUsuario(u2);
         apadrinarRepository.save(ap4);
+
+//        MetodoPago mp1 = new MetodoPago();
+//        mp1.setNumero("12345678");
+//        metodoPagoRepository.save(mp1);
     }
 }

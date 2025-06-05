@@ -10,6 +10,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Collection;
 import java.util.List;
 
@@ -49,6 +51,8 @@ public class Usuario implements UserDetails {
     public String getUsername() {
         return nickname;
     }
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<MetodoPago> metodosPago = new ArrayList<>();
 
     @Override
     public String getPassword() {
@@ -78,4 +82,5 @@ public class Usuario implements UserDetails {
         //return UserDetails.super.isEnabled();
         return true;
     }
+
 }
