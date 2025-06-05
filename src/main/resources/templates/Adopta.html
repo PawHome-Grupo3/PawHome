@@ -3,8 +3,9 @@
       layout:decorate="~{layouts/layout.html}">
 
 <head>
+  <meta charset="UTF-8" />
   <link rel="stylesheet" th:href="@{/css/Adopta.css}">
-  <title>Adopta</title>
+  <title th:text="#{adopta.titulo}">Adopta</title>
 </head>
 
 <body>
@@ -12,12 +13,20 @@
 
   <div class="containerImagen">
     <div class="cuadro-transparente">
-      <h1><i>Adopta</i></h1>
+      <h1><i th:text="#{adopta.titulo}">Adopta</i></h1>
       <br>
       <ol>
-        <li>Accede al <a th:href="@{/colabora/adopta/formularioAdopta}">formulario</a>.</li>
-        <li>Elige a uno de nuestros <a th:href="@{/nuestrosAnimales}">animales disponibles para adopción</a>.</li>
-        <li>Rellénalo con sinceridad, queremos conocerte y saber si eres apto para poder cuidar bien de uno o varios de nuestros peluditos.</li>
+        <li>
+          <span th:text="#{adopta.paso1}">Accede al</span>
+          <a th:href="@{/colabora/adopta/formularioAdopta}" th:text="#{adopta.formulario}">formulario</a>.
+        </li>
+        <li>
+          <span th:text="#{adopta.paso2}">Elige a uno de nuestros</span>
+          <a th:href="@{/nuestrosAnimales}" th:text="#{adopta.animales}">animales disponibles para adopción</a>.
+        </li>
+        <li th:text="#{adopta.paso3}">
+          Rellénalo con sinceridad, queremos conocerte y saber si eres apto para poder cuidar bien de uno o varios de nuestros peluditos.
+        </li>
       </ol>
     </div>
   </div>

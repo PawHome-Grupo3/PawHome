@@ -3,20 +3,10 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    margin-top: 0 !important;
 }
 
 /* --- FONDO ESPECÍFICO PARA ESTA PÁGINA --- */
-.colabora-page::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background: url('../images/Gato.mirando.arriba.png') no-repeat center center fixed;
-    background-size: cover;
-    filter: blur(2px);
-    z-index: -10;
-}
-
-/* --- CONTENEDOR DE LA PÁGINA --- */
 .colabora-page {
     min-height: 100vh;
     display: flex;
@@ -24,6 +14,9 @@
     font-family: sans-serif;
     position: relative;
     padding: 40px 20px;
+    background: url('../images/Gato.mirando.arriba.png') no-repeat center center;
+    background-size: cover;
+    z-index: 0;
 }
 
 /* --- CONTENEDOR PRINCIPAL --- */
@@ -38,6 +31,7 @@
     max-width: 1200px;
     padding: 50px 20px;
     margin: 0 auto;
+    backdrop-filter: blur(2px);
 }
 
 /* --- TEXTOS --- */

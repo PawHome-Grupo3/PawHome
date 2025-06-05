@@ -1,70 +1,80 @@
-body {
+.reviews-section {
     font-family: Arial, sans-serif;
-    background-color: rgba(27, 125, 85, 0.58);
-    margin: 0;
+    margin: 40px 0 0 0;
+    padding-bottom: 30px;
+    background: rgba(187, 224, 155, 0.58);
+    border-radius: 18px;
 }
 
-h2 {
+.reviews-section h2 {
     text-align: center;
     color: #000000;
-    margin-top: 20px;
+    margin-top: 0;
+    margin-bottom: 30px;
     font-size: 2rem;
+    letter-spacing: 1px;
 }
 
-
-.testimonials {
+.reviews-section .testimonials {
     display: flex;
-    justify-content: space-around;
-    padding: 20px;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    padding: 20px 0;
     font-size: 15px;
 }
 
-.testimonial {
-    background-color: white;
-    border-radius: 10px;
-    padding: 15px;
-    width: 30%;
+.reviews-section .testimonial {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(27, 125, 85, 0.51);
+    padding: 18px 16px;
+    width: 320px;
+    min-width: 220px;
+    max-width: 350px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    margin-bottom: 8px;
 }
 
-.rating {
+.reviews-section .rating {
     display: block;
     font-size: 1.5rem;
     margin-bottom: 10px;
+    color: #1B7D55;
 }
 
-
-.review {
+.reviews-section .review {
     text-align: center;
-    margin: 20px;
+    margin: 30px 0 0 0;
 }
 
-.input-with-icon {
+.reviews-section .input-with-icon {
     position: relative;
     width: 80%;
     max-width: 400px;
     margin: 0 auto;
 }
 
-.input-with-icon input {
+.reviews-section .input-with-icon input {
     width: 100%;
     padding: 10px 40px 10px 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #1B7D55;
     border-radius: 5px;
     font-size: 16px;
     box-sizing: border-box;
+    background: #f8f8f8;
+    transition: border-color 0.2s;
 }
 
-.input-with-icon i {
+.reviews-section .input-with-icon i {
     position: absolute;
-    top: 50%;
     right: 12px;
+    top: 50%;
     transform: translateY(-50%);
-    color: #888;
+    color: #49b47d;
     pointer-events: none;
     font-size: 18px;
+    line-height: 1;
 }
-

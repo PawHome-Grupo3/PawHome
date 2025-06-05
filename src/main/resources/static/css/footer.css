@@ -16,10 +16,10 @@
 }
 
 .copyright {
-    background-color: rgba(0, 0, 0, 0.15);
+    background-color: rgb(255, 255, 255);
 }
 
 .links {
-    background-color: rgba(62, 58, 58, 0.09);
+    background-color: rgb(255, 255, 255);
     padding: 1em;
 }

@@ -59,6 +59,21 @@ body {
     height: auto;
 
 }
+/*Donabizum*/
+.cuadro-transparente {
+    background-color: rgba(187, 224, 155, 0.35);
+    border-radius: 15px;
+    padding: 40px 70px;
+    max-width: 1000px;
+    width: 150%;
+    text-align: center;
+    color: #000000;
+}
+
+.textobizum{
+    font-size: 30px;
+    color: #000000;
+}
 
 h1{
     text-align: center;

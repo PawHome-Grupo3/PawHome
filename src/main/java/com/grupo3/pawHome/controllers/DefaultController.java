@@ -175,6 +175,12 @@ public class DefaultController {
         return "Dona";
     }
 
+    @GetMapping("/colabora/dona/donarBizum")
+    public String mostrarColaboraDonaDonarBizum()
+    {
+        return "donarBizum";
+    }
+
     @GetMapping("/colabora/apadrina")
     public String mostrarColaboraApadrina()
     {
@@ -203,23 +209,21 @@ public class DefaultController {
 
 
     // Metodo para mostrar la página de Finales Felices
+
     @GetMapping("/finalfeliz")
     public String mostrarFinalesFelices()
-    {
-        return "FinalFeliz";
-    }
+    {return "FinalFeliz";}
+
+
+    //Metodo para mostrar registro
 
     @GetMapping("/registro")
     public String mostrarRegistro()
-    {
-        return "registro";
-    }
+    {return "registro";}
 
     @GetMapping("/loginPawHome")
     public String mostrarLogin()
-    {
-        return "login";
-    }
+    {return "login";}
 
 
     /**
@@ -262,3 +266,7 @@ public class DefaultController {
     }
 
 }
+
+
+
+
