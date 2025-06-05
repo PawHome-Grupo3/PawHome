@@ -11,6 +11,7 @@ public class PerfilDatosDTO {
     private int edad;
     private String dni;
     private String direccion;
+    private String pais;
     private String ciudad;
     private String cp;
     private String telefono1;

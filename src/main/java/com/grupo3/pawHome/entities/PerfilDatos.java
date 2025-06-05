@@ -33,6 +33,9 @@ public class PerfilDatos {
     private String direccion;
 
     @Column(nullable = false)
+    private String pais;
+
+    @Column(nullable = false)
     private String ciudad;
 
     @Column(nullable = false)
