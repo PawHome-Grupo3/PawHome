@@ -25,11 +25,11 @@ public class DataLoader implements CommandLineRunner {
     private final TallaRepository tallaRepository;
     private final CategoriaRepository categoriaRepository;
     private final TarifaRepository tarifaRepository;
-    private final PerfilDatosRespository perfilDatosRespository;
+    private final PerfilDatosRepository perfilDatosRespository;
     private final PasswordEncoder passwordEncoder;
 
 
-    public DataLoader(AnimalRepository animalRepository, ApadrinarRepository apadrinarRepository, UsuarioRepository usuarioRepository, FacturaRepository facturaRepository, ProductoRepository productoRepository, TallaRepository tallaRepository, CategoriaRepository categoriaRepository, TarifaRepository tarifaRepository, PerfilDatosRespository perfilDatosRespository, PasswordEncoder passwordEncoder) {
+    public DataLoader(AnimalRepository animalRepository, ApadrinarRepository apadrinarRepository, UsuarioRepository usuarioRepository, FacturaRepository facturaRepository, ProductoRepository productoRepository, TallaRepository tallaRepository, CategoriaRepository categoriaRepository, TarifaRepository tarifaRepository, PerfilDatosRepository perfilDatosRepository, PasswordEncoder passwordEncoder) {
         this.animalRepository = animalRepository;
         this.apadrinarRepository = apadrinarRepository;
         this.usuarioRepository = usuarioRepository;
@@ -38,7 +38,7 @@ public class DataLoader implements CommandLineRunner {
         this.tallaRepository = tallaRepository;
         this.categoriaRepository = categoriaRepository;
         this.tarifaRepository = tarifaRepository;
-        this.perfilDatosRespository = perfilDatosRespository;
+        this.perfilDatosRespository = perfilDatosRepository;
         this.passwordEncoder = passwordEncoder;
     }
 
@@ -185,7 +185,6 @@ public class DataLoader implements CommandLineRunner {
         perfil.setTelefono1("600123456");
         perfil.setTelefono2("601234567");
         perfil.setTelefono3(null); // opcional
-        perfil.setPuntosAcumulados(0);
 
         // Establecer relación bidireccional
         perfil.setUsuario(usuario);
