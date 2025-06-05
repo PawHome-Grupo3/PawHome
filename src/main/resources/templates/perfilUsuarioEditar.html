@@ -39,10 +39,11 @@
                   <div class="col-md-6 mt-1">
                     <label class="labels">País</label>
                     <select id="pais" name="pais" class="form-control" th:field="*{pais}">
-                      <option value="" disabled selected>Selecciona un país</option>
+                      <option value="" disabled th:selected="${perfilDTO.pais == null}">Selecciona un país</option>
                       <option th:each="pais : ${paises}"
                               th:value="${pais.code}"
-                              th:text="${pais.name}">
+                              th:text="${pais.name}"
+                              th:selected="${pais.code == perfilDTO.pais}">
                       </option>
                     </select>
                   </div>
@@ -51,7 +52,12 @@
                   <div class="col-md-6 mt-1">
                     <label class="labels">Ciudad</label>
                     <select id="ciudad" name="ciudad" class="form-control" th:field="*{ciudad}">
-                      <option value="" disabled selected>Selecciona una ciudad</option>
+                      <option value="" disabled th:selected="${perfilDTO.ciudad == null}">Selecciona una ciudad</option>
+                      <option th:each="ciudad : ${ciudades}"
+                              th:value="${ciudad}"
+                              th:text="${ciudad}"
+                              th:selected="${ciudad == perfilDTO.ciudad}">
+                      </option>
                     </select>
                   </div>
 
@@ -100,51 +106,58 @@
       </div>
     </div>
   </div>
+</section>
+
+<section layout:fragment="pageScripts">
   <script th:inline="javascript">
-    document.addEventListener("DOMContentLoaded", () => {
+    document.addEventListener("DOMContentLoaded", function() {
       const paisSelect = document.getElementById("pais");
       const ciudadSelect = document.getElementById("ciudad");
 
-      const paisActual = /*[['${perfilDTO != null && perfilDTO.pais != null ? perfilDTO.pais : ""}']]*/ "";
-      const ciudadActual = /*[['${perfilDTO != null && perfilDTO.ciudad != null ? perfilDTO.ciudad : ""}']]*/ "";
-      console.log("Ciudad actual cargada:", ciudadActual);
+      function cargarCiudades(paisSeleccionado) {
+        if (!paisSeleccionado) {
+          ciudadSelect.innerHTML = '<option value="" disabled selected>Selecciona una ciudad</option>';
+          return;
+        }
 
-      function cargarCiudades(paisSeleccionado, ciudadSeleccionada = '') {
-        console.log("Cargando ciudades para país:", paisSeleccionado);
-        fetch(`/api/ciudades?pais=${paisSeleccionado}`)
-                .then(res => res.text())
-                .then(data => {
+        fetch('/api/ciudades?pais=' + encodeURIComponent(paisSeleccionado))
+                .then(response => response.text())
+                .then(xmlString => {
                   const parser = new DOMParser();
-                  const xml = parser.parseFromString(data, "application/xml");
-                  const ciudades = xml.getElementsByTagName("ciudad");
+                  const xmlDoc = parser.parseFromString(xmlString, "application/xml");
+                  const ciudades = xmlDoc.getElementsByTagName("ciudad");
 
-                  ciudadSelect.innerHTML = ""; // Limpiar antes
+                  ciudadSelect.innerHTML = '';
 
-                  for (let ciudad of ciudades) {
-                    const nombre = ciudad.textContent;
+                  const defaultOption = document.createElement("option");
+                  defaultOption.value = '';
+                  defaultOption.textContent = 'Selecciona una ciudad';
+                  defaultOption.disabled = true;
+                  defaultOption.selected = true;
+                  ciudadSelect.appendChild(defaultOption);
+
+                  for (let i = 0; i < ciudades.length; i++) {
+                    const nombreCiudad = ciudades[i].textContent.trim();
+
                     const option = document.createElement("option");
-                    option.value = nombre;
-                    option.textContent = nombre;
-                    if (nombre === ciudadSeleccionada) {
-                      option.selected = true;
-                    }
+                    option.value = nombreCiudad;
+                    option.textContent = nombreCiudad;
+
                     ciudadSelect.appendChild(option);
                   }
                 })
-                .catch(err => console.error("Error al cargar ciudades:", err));
+                .catch(error => {
+                  console.error('Error cargando ciudades:', error);
+                  ciudadSelect.innerHTML = '<option value="" disabled selected>Error cargando ciudades</option>';
+                });
       }
 
-      paisSelect.addEventListener("change", () => {
-        const pais = paisSelect.value;
-        cargarCiudades(pais); // No hay ciudad seleccionada aún
+      paisSelect.addEventListener('change', function() {
+        cargarCiudades(this.value);
       });
-
-      // Si ya existe país y ciudad, cargarlas al inicio
-      if (paisActual) {
-        cargarCiudades(paisActual, ciudadActual);
-      }
     });
   </script>
 </section>
+
 </body>
 </html>
