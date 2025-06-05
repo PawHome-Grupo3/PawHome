@@ -1,0 +1,27 @@
+<div th:fragment="sidebarAdminFragment">
+    <!-- Sidebar Offcanvas -->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="sidebarAdmin" aria-labelledby="sidebarAdminLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="sidebarAdminLabel"><strong>¡Hola, administrador!</strong></h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
+        </div>
+
+        <p>Selecciona la categoría que quieras editar.</p>
+        <div class="offcanvas-body p-0">
+            <ul class="nav nav-pills flex-column mb-auto">
+                <li class="nav-item">
+                    <a href="/admin/animales" class="nav-link">Animales</a>
+                </li>
+                <li>
+                    <a href="/admin/usuarios" class="nav-link">Usuarios</a>
+                </li>
+                <li>
+                    <a href="/admin/servicios" class="nav-link">Servicios</a>
+                </li>
+                <li>
+                    <a href="/admin/tarifas" class="nav-link">Tarifas</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
