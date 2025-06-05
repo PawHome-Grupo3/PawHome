@@ -1,185 +1,150 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+<html lang="es" xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layouts/layout.html}">
 <head>
   <title>Usuario Editar</title>
   <link rel="stylesheet" th:href="@{/css/general.css}"/>
 </head>
 <body>
+
 <section layout:fragment="content">
+
   <div class="row bg-white mt-5 m-0 p-0 w-100">
     <div class="row w-100">
       <div th:replace="~{fragments/navbarPerfil :: navPerfilFragment}"></div>
+
       <div class="col-md-9 col-lg-10 justify-content-center">
         <div class="row justify-content-center">
           <div class="col-md-8">
+
+            <!-- Formulario único para simplificar -->
             <form th:action="@{/perfil/guardar}" th:object="${perfilDTO}" method="post">
               <div class="p-3 py-5">
                 <h4 class="text-right">Datos de Perfil</h4>
+
                 <div class="row mt-2">
                   <div class="col-md-6">
-                    <label class="labels">Nombre
-                      <input type="text" class="form-control" placeholder="Nombre" th:field="*{nombre}"/>
-                    </label>
+                    <label class="labels">Nombre</label>
+                    <input type="text" class="form-control" placeholder="Nombre" th:field="*{nombre}" />
                   </div>
                   <div class="col-md-6">
-                    <label class="labels">Apellidos
-                      <input type="text" class="form-control" placeholder="Apellidos" th:field="*{apellidos}"/>
-                    </label>
+                    <label class="labels">Apellidos</label>
+                    <input type="text" class="form-control" placeholder="Apellidos" th:field="*{apellidos}" />
                   </div>
                 </div>
+
+                <div class="row mt-3">
+
+                  <!-- Select País -->
+                  <div class="col-md-6 mt-1">
+                    <label class="labels">País</label>
+                    <select id="pais" name="pais" class="form-control" th:field="*{pais}">
+                      <option value="" disabled selected>Selecciona un país</option>
+                      <option th:each="pais : ${paises}"
+                              th:value="${pais.code}"
+                              th:text="${pais.name}">
+                      </option>
+                    </select>
+                  </div>
+
+                  <!-- Select Ciudad -->
+                  <div class="col-md-6 mt-1">
+                    <label class="labels">Ciudad</label>
+                    <select id="ciudad" name="ciudad" class="form-control" th:field="*{ciudad}">
+                      <option value="" disabled selected>Selecciona una ciudad</option>
+                    </select>
+                  </div>
+
+                </div>
+
                 <div class="row mt-3">
                   <div class="col-md-12 mt-1">
-                    <label class="labels">Numero teléfono
-                      <input type="text" class="form-control" th:field="*{telefono1}"/>
-                    </label>
+                    <label class="labels">Numero teléfono</label>
+                    <input type="text" class="form-control" th:field="*{telefono1}" />
                   </div>
                   <div class="col-md-12 mt-1">
-                    <label class="labels">Numero teléfono 2
-                      <input type="text" class="form-control" th:field="*{telefono2}"/>
-                    </label>
+                    <label class="labels">Numero teléfono 2</label>
+                    <input type="text" class="form-control" th:field="*{telefono2}" />
                   </div>
                   <div class="col-md-12 mt-1">
-                    <label class="labels">Numero teléfono 3
-                      <input type="text" class="form-control" th:field="*{telefono3}"/>
-                    </label>
+                    <label class="labels">Numero teléfono 3</label>
+                    <input type="text" class="form-control" th:field="*{telefono3}" />
                   </div>
                   <div class="col-md-12 mt-1">
-                    <label class="labels">Dirección 1
-                      <input type="text" class="form-control" th:field="*{direccion}"/>
-                    </label>
+                    <label class="labels">Dirección 1</label>
+                    <input type="text" class="form-control" th:field="*{direccion}" />
                   </div>
                   <div class="col-md-12 mt-1">
-                    <label class="labels">Código Postal
-                      <input type="text" class="form-control" th:field="*{cp}"/>
-                    </label>
-                  </div>
-                  <!-- Selector de país -->
-                  <div class="col-md-12 mt-1">
-                    <label class="labels">País
-                      <select id="pais-select" name="pais" th:field="*{pais}" class="form-control">
-                        <option value="">Selecciona país</option>
-                        <option th:each="pais : ${paises}"
-                                th:value="${pais.code}"
-                                th:text="${pais.name}"
-                                th:selected="${pais.code} == ${perfilDTO.pais}"></option>
-                      </select>
-                    </label>
-                  </div>
-                  <!-- Selector de ciudad -->
-                  <div class="col-md-12 mt-1">
-                    <label class="labels">Ciudad
-                      <select id="ciudad-select" name="ciudad" th:field="*{ciudad}" class="form-control">
-                        <option value="">Selecciona ciudad</option>
-                        <!-- Opciones serán cargadas dinámicamente -->
-                      </select>
-                    </label>
+                    <label class="labels">Código Postal</label>
+                    <input type="text" class="form-control" th:field="*{cp}" />
                   </div>
                   <div class="col-md-12 mt-1">
-                    <label class="labels">DNI
-                      <input type="text" class="form-control" th:field="*{dni}"/>
-                    </label>
+                    <label class="labels">DNI</label>
+                    <input type="text" class="form-control" th:field="*{dni}" />
                   </div>
                   <div class="col-md-12 mt-1">
-                    <label class="labels">Edad
-                      <input type="number" class="form-control" th:field="*{edad}"/>
-                    </label>
+                    <label class="labels">Edad</label>
+                    <input type="number" class="form-control" th:field="*{edad}" />
                   </div>
                 </div>
+
+                <!-- Guardar -->
                 <div class="mt-5 text-center">
                   <button class="btn btn-primary profile-button" type="submit">Guardar Cambios</button>
                 </div>
               </div>
             </form>
+
           </div>
         </div>
       </div>
     </div>
   </div>
-</section>
+  <script th:inline="javascript">
+    document.addEventListener("DOMContentLoaded", () => {
+      const paisSelect = document.getElementById("pais");
+      const ciudadSelect = document.getElementById("ciudad");
 
-<script th:inline="javascript">
-  /*<![CDATA[*/
-  document.addEventListener("DOMContentLoaded", function () {
-    const paisSelect = document.getElementById("pais-select");
-    const ciudadSelect = document.getElementById("ciudad-select");
+      const paisActual = /*[['${perfilDTO != null && perfilDTO.pais != null ? perfilDTO.pais : ""}']]*/ "";
+      const ciudadActual = /*[['${perfilDTO != null && perfilDTO.ciudad != null ? perfilDTO.ciudad : ""}']]*/ "";
+      console.log("Ciudad actual cargada:", ciudadActual);
 
-    // Ciudad seleccionada inicialmente (puede venir del servidor)
-    const ciudadActual = /*[[${perfilDTO.ciudad != null}]]*/ false ? '/*[[${perfilDTO.ciudad}]]*/' : '';
-    console.log("Ciudad actual inicial:", ciudadActual);
+      function cargarCiudades(paisSeleccionado, ciudadSeleccionada = '') {
+        console.log("Cargando ciudades para país:", paisSeleccionado);
+        fetch(`/api/ciudades?pais=${paisSeleccionado}`)
+                .then(res => res.text())
+                .then(data => {
+                  const parser = new DOMParser();
+                  const xml = parser.parseFromString(data, "application/xml");
+                  const ciudades = xml.getElementsByTagName("ciudad");
 
-    function cargarCiudades(paisCode) {
-      console.log("Intentando cargar ciudades para país:", paisCode);
-      if (!paisCode) {
-        console.warn("No se proporcionó código de país, limpiando ciudades");
-        ciudadSelect.innerHTML = '<option value="">Selecciona ciudad</option>';
-        return;
+                  ciudadSelect.innerHTML = ""; // Limpiar antes
+
+                  for (let ciudad of ciudades) {
+                    const nombre = ciudad.textContent;
+                    const option = document.createElement("option");
+                    option.value = nombre;
+                    option.textContent = nombre;
+                    if (nombre === ciudadSeleccionada) {
+                      option.selected = true;
+                    }
+                    ciudadSelect.appendChild(option);
+                  }
+                })
+                .catch(err => console.error("Error al cargar ciudades:", err));
       }
 
-      fetch('/api/ciudades?pais=' + paisCode)
-              .then(response => {
-                console.log("Respuesta fetch:", response);
-                if (!response.ok) {
-                  throw new Error('Respuesta no OK: ' + response.status);
-                }
-                return response.text();
-              })
-              .then(xmlText => {
-                console.log("Respuesta XML recibida:", xmlText);
+      paisSelect.addEventListener("change", () => {
+        const pais = paisSelect.value;
+        cargarCiudades(pais); // No hay ciudad seleccionada aún
+      });
 
-                const parser = new DOMParser();
-                const xmlDoc = parser.parseFromString(xmlText, "application/xml");
-
-                const parserError = xmlDoc.getElementsByTagName("parsererror");
-                if (parserError.length > 0) {
-                  console.error("Error al parsear XML:", parserError[0].textContent);
-                  return;
-                }
-
-                const ciudadNodes = xmlDoc.getElementsByTagName("ciudad");
-                console.log("Número de ciudades encontradas:", ciudadNodes.length);
-
-                ciudadSelect.innerHTML = '';
-
-                // Opción por defecto
-                const defaultOption = document.createElement('option');
-                defaultOption.value = '';
-                defaultOption.textContent = 'Selecciona ciudad';
-                ciudadSelect.appendChild(defaultOption);
-
-                for (let i = 0; i < ciudadNodes.length; i++) {
-                  const nombreCiudad = ciudadNodes[i].textContent;
-                  console.log("Ciudad encontrada:", nombreCiudad);
-
-                  const option = document.createElement('option');
-                  option.value = nombreCiudad;
-                  option.textContent = nombreCiudad;
-
-                  if (nombreCiudad === ciudadActual) {
-                    option.selected = true;
-                    console.log("Ciudad seleccionada por defecto:", nombreCiudad);
-                  }
-
-                  ciudadSelect.appendChild(option);
-                }
-              })
-              .catch(error => {
-                console.error("Error cargando ciudades:", error);
-              });
-    }
-
-    if (paisSelect.value) {
-      console.log("País preseleccionado al cargar:", paisSelect.value);
-      cargarCiudades(paisSelect.value);
-    }
-
-    paisSelect.addEventListener('change', function () {
-      console.log("País cambiado:", this.value);
-      cargarCiudades(this.value);
+      // Si ya existe país y ciudad, cargarlas al inicio
+      if (paisActual) {
+        cargarCiudades(paisActual, ciudadActual);
+      }
     });
-  });
-  /*]]>*/
-</script>
-
+  </script>
+</section>
 </body>
 </html>

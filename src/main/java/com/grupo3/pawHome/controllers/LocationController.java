@@ -20,8 +20,9 @@ public class LocationController {
     @ResponseBody
     public String getCitiesByCountry(@RequestParam("pais") String countryCode) throws Exception {
         List<String> ciudades = locationService.getCitiesForCountry(countryCode);
+        System.out.println("País recibido en controlador: " + countryCode);
+        System.out.println("Ciudades encontradas: " + ciudades);
 
-        // Construir XML manualmente
         StringBuilder xml = new StringBuilder();
         xml.append("<ciudades>");
         for (String ciudad : ciudades) {

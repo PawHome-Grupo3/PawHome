@@ -64,7 +64,7 @@ public class UsuarioController {
             dto.setTelefono1(perfil.getTelefono1());
             dto.setTelefono2(perfil.getTelefono2());
             dto.setTelefono3(perfil.getTelefono3());
-            dto.setPais(perfil.getPais()); // Código ISO del país
+            dto.setPais(perfil.getPais());
         }
 
         model.addAttribute("perfilDTO", dto);
