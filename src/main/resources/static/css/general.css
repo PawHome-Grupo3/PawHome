@@ -24,8 +24,6 @@
     background: url('../images/fondoHomePerro.png') no-repeat;
     background-size: cover;
     background-attachment: fixed;
-
-
 }
 
 .contenedorImagen h2{
@@ -142,6 +140,10 @@
 /*FIN SECCION CTA DONA/VOLUNTARIO*/
 
 /*TIENDA*/
+.navTiendaFragment {
+
+}
+
 .tituloTienda {
     color:#43718F;
     font-weight: bold;
@@ -414,9 +416,18 @@ clamp(10px, 2vw, 40px);
     padding-right: .75em;
 }
 
+.divItemCarrito {
+    transition: box-shadow 0.3s ease;
+}
+
 .card-registration .select-arrow {
     top: 13px;
 }
+
+.divItemCarrito:hover{
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* sombra leve */
+}
+
 /*////////////////////////////
 /     FIN_LISTA_CARRITO      /
 ////////////////////////////*/
@@ -476,6 +487,18 @@ clamp(10px, 2vw, 40px);
 .icon-hover:hover i {
     color: #3b71ca !important;
 }
+
+.item-thumb {
+    cursor: pointer;
+    transition: border-color 0.3s;
+}
+.item-thumb:hover {
+    border-color: #ff9800;
+}
+.thumb-selected {
+    border-color: #ff9800 !important;
+    box-shadow: 0 0 5px #ff9800;
+}
 /*////////////////////////////
 /    FIN DETALLE_PRODUCTO    /
 ////////////////////////////*/
@@ -505,6 +528,8 @@ clamp(10px, 2vw, 40px);
     font-size: clamp(12px, 1vw, 20px);
     background-color: rgba(27, 125, 85, 0.3);
     border-radius: 15px;
+    padding: 10px;
+    text-align: center;
 }
 
 .contenedorIzquierdo {
@@ -632,7 +657,22 @@ ul {
     margin-left: 0.5rem;
 }
 
-.botonesCardAnimal:hover {
+.botonesCardAnimalApadrina {
+    background-color: #c8d6cc;
+    font-size: clamp(8px, 4vw, 12px);
+    width: 100%;
+    color: #153d2d;
+    font-weight: bolder;
+    text-transform: uppercase;
+    padding: 0.5rem;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
+}
+
+.botonesCardAnimal:hover,.botonesCardAnimalApadrina:hover {
     background-color: #153d2d;
     color: white;
     font-weight: bolder;
@@ -662,6 +702,13 @@ ul {
 
 .cardAnimal:hover .hiddenCardContent .botonesCardLeerMas {
     height: auto;
+}
+
+.disabled {
+    pointer-events: none;
+    color: grey;
+    cursor: default;
+    text-decoration: none;
 }
 
 @media screen and (max-width: 639px) {

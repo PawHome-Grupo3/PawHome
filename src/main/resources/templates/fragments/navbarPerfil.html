@@ -1,9 +1,6 @@
 <div th:fragment="navPerfilFragment" class=" col-md-3 col-lg-2 divAside p-0">
-    <nav class="navbar navbarAside bg-light navbar-light flex-column justify-content-start">
-        <a href="/perfil/informacion" class="navbar-brand mx-4 mb-3">
-            <h3 class="text-primary">Perfil</h3>
-        </a>
-        <div class="d-flex align-items-center ms-4 mb-4 divAside">
+    <nav class="navbar navbarAside bg-light navbar-light flex-column justify-content-start p-2">
+        <div class="d-flex align-items-center divAside m-1">
             <div class="position-relative">
                 <img th:src="@{/images/twitter.ico}" class="custom-block-image img-fluid" alt="" style="max-height: 50px; max-width: 50px;">
                 <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
@@ -17,7 +14,7 @@
             <a href="/perfil/informacion" class="nav-item nav-link"><span th:utext="#{navPerfil.informacion}"></span></a>
             <a href="/perfil/editar" class="nav-item nav-link"><i class="fa fa-th me-2"></i><span th:utext="#{navPerfil.editar}"></span></a>
             <a href="/perfil/puntos" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i><span th:utext="#{navPerfil.puntos}"></span></a>
-            <a href="/perfil/animales" class="nav-item nav-link"><i class="fa fa-table me-2"></i><span th:utext="#{navPerfil.apadrinamientos}"></span></a>
+            <a href="/perfil/apadrinamientos" class="nav-item nav-link"><i class="fa fa-table me-2"></i><span th:utext="#{navPerfil.apadrinamientos}"></span></a>
             <a href="/perfil/adopciones" class="nav-item nav-link"><i class="fa fa-table me-2"></i><span th:utext="#{navPerfil.adopciones}"></span></a>
             <a href="/perfil/donaciones" class="nav-item nav-link"><i class="fa fa-table me-2"></i><span th:utext="#{navPerfil.donaciones}"></span></a>
         </div>

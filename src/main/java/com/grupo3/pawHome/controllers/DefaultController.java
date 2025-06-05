@@ -9,21 +9,21 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 /**
  * Controlador encargado de manejar las solicitudes relacionadas con la entidad principal.
- *
+
  * Este controlador utiliza la anotación {@code @Controller} para ser detectado como un componente
  * Spring MVC y maneja solicitudes HTTP. Su objetivo principal es gestionar las operaciones
  * necesarias para mostrar una lista de entidades en la vista correspondiente.
- *
+
  * Anotaciones importantes:
  * - {@code @Controller}: Indica que esta clase se comporta como un controlador Spring MVC.
  * - {@code @PreAuthorize}: Define que el acceso a ciertos métodos esté restringido
  *   según las reglas de autorización establecidas.
- *
+
  * Dependencias:
  * - {@code EntidadPadreRepository}: Interfaz del repositorio que permite interactuar con
  *   la base de datos para operaciones de persistencia y consulta relacionadas con
  *   la entidad padre.
- *
+
  * Métodos principales:
  * - {@code listEntities}: Maneja solicitudes GET a la URL "/entities", recupera los
  *   datos de las entidades desde la base de datos y los pasa al modelo para mostrarlos
@@ -67,31 +67,12 @@ public class DefaultController {
         return "entidadesHijas"; // View name
     }
 
-
     // Metodo para mostrar pagina de inicio
     @GetMapping("")
     public String mostrarIndex(Model model)
     {
         model.addAttribute("currentLocale", LocaleContextHolder.getLocale().getDisplayName());
         return "index"; // Carga /templates/index.html
-    }
-
-    @GetMapping("/detalleProducto")
-    public String mostrarDetalleProducto()
-    {
-        return "detalleProducto"; // Carga /templates/index.html
-    }
-
-
-    @GetMapping("/listaCarrito")
-    public String mostrarListaCarrito() { return "listaCarrito"; }
-
-
-    // Metodo para mostrar pagina de inicio
-    @GetMapping("/tienda")
-    public String mostrarTienda()
-    {
-        return "tienda"; // Carga /templates/tienda.html
     }
 
     // Metodo para mostrar la pagina de la guarderia
@@ -108,14 +89,12 @@ public class DefaultController {
         return "peluqueria";
     }
 
-
     // Metodo para mostrar la pagina de adiestramiento
     @GetMapping("/adiestramiento")
     public String mostrarAdiestramiento()
     {
         return "adiestramiento";
     }
-
 
     // Metodo para mostrar la pagina de veterinario
     @GetMapping("/veterinario")
@@ -124,22 +103,12 @@ public class DefaultController {
         return "veterinario";
     }
 
-
     // Metodo para mostrar la pagina de asesoramiento legal
     @GetMapping("/asesoramientoLegal")
     public String mostrarAsesoramientoLegal()
     {
         return "asesoramientoLegal";
     }
-
-
-    // Metodo para mostrar la pagina de nuestros animales
-    @GetMapping("/nuestrosAnimales")
-    public String mostrarNuestrosAnimales()
-    {
-        return "nuestrosAnimales";
-    }
-
 
     // Metodo para mostrar la pagina de contacto
     @GetMapping("/contacto")
@@ -148,14 +117,12 @@ public class DefaultController {
         return "contacto";
     }
 
-
     // Metodo para mostrar la pagina del buzón de sugerencias
     @GetMapping("/buzonsugerencias")
     public String mostrarBuzonSugerencias()
     {
         return "buzonsugerencias";
     }
-
 
     // Metodo para mostrar la pagina del horario y el mapa
     @GetMapping("/horariomapa")
@@ -164,29 +131,9 @@ public class DefaultController {
         return "horariomapa";
     }
 
-
-    // Metodo para mostrar la pagina del horario y el mapa
-    @GetMapping("/perfil/informacion")
-    public String mostrarPerfil()
-    {
-        return "perfilUsuario";
-    }
-
-    @GetMapping("/perfil/editar")
-    public String mostrarPerfilEditar()
-    {
-        return "perfilUsuarioEditar";
-    }
-
     @GetMapping("/perfil/puntos")
     public String mostrarPerfilPuntos()
     { return "perfilUsuarioPuntos"; }
-
-    @GetMapping("/perfil/animales")
-    public String mostrarPerfilAnimales()
-    {
-        return "perfilUsuarioAnimales";
-    }
 
     @GetMapping("/perfil/adopciones")
     public String mostrarPerfilAdopciones()
