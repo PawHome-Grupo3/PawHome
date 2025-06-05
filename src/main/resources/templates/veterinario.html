@@ -7,75 +7,1304 @@
 </head>
 <body>
 <section layout:fragment="content">
-	<!-- MODAL PARA CADA SERVICIO -->
-	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<!-- Modal: Consulta Veterinaria -->
+	<div class="modal fade" id="consultaVeterinariaModal" tabindex="-1" aria-labelledby="consultaVeterinariaLabel" aria-hidden="true">
 		<div class="modal-dialog modal-lg modal-dialog-centered">
 			<div class="modal-content">
+
+				<!-- Header -->
 				<div class="modal-header">
-					<h1 class="modal-title fs-5" id="exampleModalLabel">Curso para cachorros</h1>
-					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					<h1 class="modal-title fs-5" id="consultaVeterinariaLabel">Consulta Veterinaria: el primer paso hacia la solución</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
 				</div>
+
+				<!-- Body -->
 				<div class="modal-body">
-					<div class="row mx-1">
-						<p class="textoModal m-1 p-3">
-							Un curso pensado para sentar las bases de una convivencia armoniosa entre tú y tu cachorro.
-							Aprenderás a comprender su comportamiento, establecer normas claras y construir un vínculo
-							basado en la confianza, el respeto y la responsabilidad.
-							A través de actividades prácticas y orientación personalizada, fomentarás su desarrollo
-							hacia un
-							perro equilibrado, sociable y feliz.
-							Más que adiestramiento, es aprender a disfrutar y crecer juntos.
-						</p>
-					</div>
-					<div class="row mx-4">
-						<div class="textoModal col-6 m-0 p-1">
-							<h3 class="m-1 p-3">
-								Contexto para los propietarios:
-							</h3>
+					<div class="container-fluid px-4">
+
+						<!-- Bloque 1 – Descripción general -->
+						<div class="row mx-1">
+							<p class="textoModal m-1 p-3">
+								En <strong>PawHome</strong>, la consulta es el punto de partida esencial para trazar un plan de acción.
+								Durante la visita realizamos una anamnesis y una exploración física detallada que permite detectar
+								signos de enfermedad o malestar (masas, ganglios inflamados, encías pálidas, etc.).<br>
+								Combinamos la información aportada por la familia con los hallazgos clínicos para diseñar un plan
+								diagnóstico y terapéutico personalizado para cada paciente.
+							</p>
+						</div>
+
+						<!-- Bloque 2 – Dos columnas -->
+						<div class="row mx-4 align-items-start">
+							<!-- Columna 1 -->
+							<div class="textoModal col-md-5 m-1 p-1">
+								<h3 class="m-1 p-3">Lo que incluye la consulta:</h3>
+								<ul>
+									<li>Anamnesis detallada del historial clínico y hábitos.</li>
+									<li>Exploración física completa en busca de signos visibles o dolor.</li>
+									<li>Propuesta inicial de abordaje: pruebas, tratamientos y cuidados en casa.</li>
+								</ul>
+							</div>
+							<!-- Columna 2 -->
+							<div class="textoModal col-md-5 m-1 p-1">
+								<h3 class="m-1 p-3">Tipos de consulta:</h3>
+								<ul>
+									<li><strong>General</strong>: primera visita de cachorros, vómitos, diarreas, picores, apatía, etc.</li>
+									<li><strong>Seguimiento</strong>: control de patologías crónicas (leishmaniosis, ERC, diabetes…).</li>
+									<li><strong>Especialista</strong>: oftalmología y traumatología (fracturas, luxaciones, hernias…).</li>
+									<li><strong>Revisión</strong>: post-operatorios o fase aguda de patologías.</li>
+								</ul>
+							</div>
+						</div>
+
+						<!-- Bloque 3 – Precios -->
+						<div class="textoModal">
+							<h3 class="m-1 p-3">Tarifas 2025:</h3>
 							<ul>
-								<li>Comprender el lenguaje y comportamiento de tu cachorro.</li>
-								<li>Identificar y corregir problemas de conducta.</li>
-								<li>Desarrollar rutinas de obediencia, educación y vínculo.</li>
-								<li>Aplicar ejercicios de pre-adiestramiento y juegos estructurados.</li>
-								<li>Establecer normas de convivencia e higiene en casa.</li>
-								<li>Familiarizar al cachorro con la manipulación física y el uso de material de
-									adiestramiento.
-								</li>
+								<li>Consulta veterinaria completa: <strong>32 €</strong>.</li>
+								<li>Consulta de revisión (tras una completa): <strong>8 €</strong>.</li>
+								<li>Consulta de especialidad (oftalmología / traumatología): <strong>55 €</strong>.</li>
 							</ul>
 						</div>
-						<div class="textoModal col-6 m-0 p-1">
-							<h3 class="m-1 p-3">
-								Contexto para los cachorros:
-							</h3>
+
+						<!-- Bloque 4 – Comentarios finales -->
+						<div class="textoModal">
+							<h3 class="m-1 p-3">¡Te esperamos en PawHome!</h3>
 							<ul>
-								<li>Establecimiento de rutinas en casa: descanso, comida, paseos e higiene.</li>
-								<li>Evaluación individual del cachorro: carácter, conducta y socialización.</li>
-								<li>Desarrollo de la interacción con personas y otros perros.</li>
-								<li>Protocolos de juego estructurado con el dueño y otros cachorros.</li>
-								<li>Introducción a la higiene corporal: cepillado, limpieza de oídos, ojos, etc.</li>
-								<li>Inicio progresivo de sesiones de entrenamiento y clases.</li>
+								<li>No subestimes la importancia de una consulta veterinaria preventiva.</li>
+								<li>Agenda tu cita y garantiza la salud de tu compañero desde el primer momento.</li>
 							</ul>
 						</div>
-					</div>
-					<div class="textoModal">
-						<h3 class="m1 p-3">Comentarios generales:</h3>
-						<ul>
-							<li>Curso de 10 días distribuidos en 5 fines de semana, con clases de 2 horas cada día.</li>
-							<li>Dirigido a cachorros de 3 a 6 meses, sin importar la raza.</li>
-							<li>Diploma de participación para el cachorro y su dueño.</li>
-							<li>Metodología basada en refuerzos positivos y estímulos.</li>
-							<li>Ejercicios básicos: llamada, sentado, tumbado, caminar al lado, etc.</li>
-							<li>Socialización con humanos, otros perros y estímulos del entorno.</li>
-							<li>Juegos interactivos y actividades físicas con objetos variados.</li>
-						</ul>
 					</div>
 				</div>
+				<!-- Footer -->
 				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary " data-bs-dismiss="modal">Cerrar</button>
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
 				</div>
 			</div>
 		</div>
 	</div>
+
+	<!-- Modal: Chequeo Preventivo -->
+	<div class="modal fade" id="chequeoPreventivoModal" tabindex="-1" aria-labelledby="chequeoPreventivoLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg modal-dialog-centered">
+			<div class="modal-content">
+
+				<!-- Header -->
+				<div class="modal-header">
+					<h1 class="modal-title fs-5" id="chequeoPreventivoLabel">Chequeo Preventivo</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+				</div>
+
+				<!-- Body -->
+				<div class="modal-body">
+					<div class="container-fluid px-4">
+
+						<!-- Bloque 1 – Descripción general -->
+						<div class="row mx-1">
+							<p class="textoModal m-1 p-3">
+								El chequeo general de <strong>PawHome</strong> es un protocolo clínico diseñado para detectar
+								patologías en fases iniciales o incluso asintomáticas. Adaptamos cada chequeo a la edad, especie e
+								historial médico del paciente, seleccionando los biomarcadores y pruebas diagnósticas más
+								relevantes para ofrecer una evaluación completa y precisa de su salud.
+							</p>
+						</div>
+
+						<!-- Bloque 2 – Dos columnas (detección precoz) -->
+						<div class="row mx-4 align-items-start">
+							<!-- Perros -->
+							<div class="textoModal col-md-5 m-1 p-1">
+								<h3 class="m-1 p-3">Detección precoz en perros</h3>
+								<ul>
+									<li><strong>Jóvenes:</strong> infecciones gastrointestinales y respiratorias, alergias
+										alimentarias, giardiasis.</li>
+									<li><strong>Senior:</strong> insuficiencia renal, problemas hepáticos, artritis, enfermedades
+										cardíacas crónicas.</li>
+								</ul>
+							</div>
+							<!-- Gatos -->
+							<div class="textoModal col-md-5 m-1 p-1">
+								<h3 class="m-1 p-3">Detección precoz en gatos</h3>
+								<ul>
+									<li><strong>Jóvenes:</strong> leucemia felina (FeLV), virus de inmunodeficiencia felina
+										(FIV), alergias y problemas digestivos.</li>
+									<li><strong>Senior:</strong> enfermedad renal crónica, hipertiroidismo, diabetes y otros
+										trastornos metabólicos.</li>
+								</ul>
+							</div>
+						</div>
+
+						<!-- Bloque 3 – Importancia de la prevención -->
+						<div class="textoModal">
+							<h3 class="m-1 p-3">Por qué elegir el chequeo preventivo</h3>
+							<ul>
+								<li>Detecta enfermedades antes de que aparezcan síntomas graves.</li>
+								<li>Permite intervenir a tiempo y mejorar el pronóstico.</li>
+								<li>Ayuda a planificar cuidados personalizados según la etapa de vida.</li>
+								<li>Es una inversión a largo plazo en la salud y calidad de vida de tu compañero.</li>
+							</ul>
+						</div>
+
+						<!-- Bloque 4 – Llamada a la acción -->
+						<div class="textoModal">
+							<h3 class="m-1 p-3">¡Chequea a tu pequeño en PawHome!</h3>
+							<ul>
+								<li>Conoce su estado de salud general y controla su evolución periódicamente.</li>
+								<li>Nuestro equipo te acompañará con un trato cercano y respetuoso.</li>
+								<li>Contáctanos y asegura muchos años de bienestar a tu lado.</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!-- Footer -->
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Modal: Vacunación -->
+	<div class="modal fade" id="vacunacionModal" tabindex="-1" aria-labelledby="vacunacionLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg modal-dialog-centered">
+			<div class="modal-content">
+
+				<!-- Header -->
+				<div class="modal-header">
+					<h1 class="modal-title fs-5" id="vacunacionLabel">Vacunación</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+				</div>
+
+				<!-- Body -->
+				<div class="modal-body">
+					<div class="container-fluid px-4">
+
+						<!-- Bloque 1 – Introducción -->
+						<div class="row mx-1">
+							<p class="textoModal m-1 p-3">
+								Cada especie tiene sus propias necesidades de vacunación, debido a los diferentes agentes patógenos que pueden afectarlas. En <strong>PawHome</strong>, seguimos protocolos específicos para perros y gatos, asegurando una protección eficaz frente a las enfermedades más comunes y peligrosas para su salud.
+							</p>
+						</div>
+
+						<!-- Bloque 2 – Dos columnas: perros y gatos -->
+						<div class="row mx-4 align-items-start">
+							<!-- Perros -->
+							<div class="textoModal col-md-5 m-1 p-1">
+								<h3 class="m-1 p-3">Vacunación en Perros</h3>
+								<ul>
+									<li>Parvovirus</li>
+									<li>Leptospira</li>
+									<li>Hepatitis</li>
+									<li>Tos de las perreras</li>
+									<li>Leishmaniasis</li>
+								</ul>
+							</div>
+							<!-- Gatos -->
+							<div class="textoModal col-md-5 m-1 p-1">
+								<h3 class="m-1 p-3">Vacunación en Gatos</h3>
+								<ul>
+									<li>Herpesvirus</li>
+									<li>Calicivirus</li>
+									<li>Leucemia felina (FeLV)</li>
+								</ul>
+							</div>
+						</div>
+
+						<!-- Bloque 3 – Protocolo primer año -->
+						<div class="textoModal">
+							<h3 class="m-1 p-3">Protocolo durante el primer año de vida</h3>
+							<p>Durante los primeros meses es esencial fortalecer su sistema inmunológico con vacunas polivalentes:</p>
+							<ul>
+								<li><strong>Perros:</strong> vacuna contra la parvovirosis, refuerzo con vacuna heptavalente y vacunación antirrábica.</li>
+								<li><strong>Gatos:</strong> 2 dosis de trivalente, 2 de leucemia felina y vacunación antirrábica.</li>
+								<li><strong>Rabia:</strong> solo se administra una vez implantado el microchip, para registrarlo en SIAMU.</li>
+								<li><strong>Frecuencia:</strong> visitas cada 15 días para desarrollar inmunidad de forma eficaz.</li>
+							</ul>
+						</div>
+
+						<!-- Bloque 4 – Vacunación en adultos -->
+						<div class="textoModal">
+							<h3 class="m-1 p-3">Vacunación en la etapa adulta</h3>
+							<ul>
+								<li>Revacunación anual para mantener la inmunidad activa.</li>
+								<li>Seguimiento completo de vacunas polivalentes y específicas.</li>
+								<li>Planes personalizados según estilo de vida, edad y entorno del peludo.</li>
+							</ul>
+						</div>
+
+						<!-- Bloque 5 – Llamada a la acción -->
+						<div class="textoModal">
+							<h3 class="m-1 p-3">En <strong>PawHome</strong>, te asesoramos</h3>
+							<ul>
+								<li>Infórmate sobre las vacunas más adecuadas para tu pequeño.</li>
+								<li>Traza con nosotros un plan vacunal completo y personalizado.</li>
+								<li>¡Pide cita y protege a tu compañero desde hoy mismo!</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!-- Footer -->
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Modal: Desparasitación -->
+	<div class="modal fade" id="desparasitacionModal" tabindex="-1" aria-labelledby="desparasitacionLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg modal-dialog-centered">
+			<div class="modal-content">
+
+				<!-- Header -->
+				<div class="modal-header">
+					<h1 class="modal-title fs-5" id="desparasitacionLabel">Desparasitación</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+				</div>
+
+				<!-- Body -->
+				<div class="modal-body">
+					<div class="container-fluid px-4">
+
+						<!-- Introducción -->
+						<div class="row mx-1">
+							<p class="textoModal m-1 p-3">
+								En <strong>PawHome</strong>, cuidamos de la salud de tu perrhijo o gathijo mediante la desparasitación interna y externa, una parte esencial de la medicina preventiva para garantizar su bienestar y calidad de vida.
+							</p>
+						</div>
+
+						<!-- Desparasitación Interna -->
+						<div class="textoModal">
+							<h3 class="m-1 p-3">Desparasitación Interna 🐱🐶</h3>
+							<ul>
+								<li>Protege contra lombrices intestinales, tenias y gusanos.</li>
+								<li>Evita problemas digestivos y de salud general.</li>
+								<li>Tratamientos adaptados a cada especie y peso corporal.</li>
+								<li>Frecuencia recomendada: cada 3 meses.</li>
+							</ul>
+						</div>
+
+						<!-- Desparasitación Externa -->
+						<div class="textoModal">
+							<h3 class="m-1 p-3">Desparasitación Externa 🐈🐩</h3>
+							<ul>
+								<li>Previene pulgas, garrapatas y mosquitos.</li>
+								<li>Protección adaptada a la especie y peso del peludo.</li>
+								<li>Uso combinado de pipetas y collares antiparasitarios en época de calor.</li>
+								<li>Frecuencia según el nivel de exposición al exterior.</li>
+							</ul>
+						</div>
+
+						<!-- Cierre y llamada a la acción -->
+						<div class="textoModal">
+							<h3 class="m-1 p-3">Protégele y protege tu hogar</h3>
+							<ul>
+								<li>Evita riesgos para tu mascota y tu familia con un plan antiparasitario personalizado.</li>
+								<li>Recibe recordatorios para que no se te pase ninguna dosis.</li>
+								<li>Contáctanos y agenda su próxima visita para mantenerlo siempre protegido.</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!-- Footer -->
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Modal: Analíticas y Tests de Laboratorio -->
+	<div class="modal fade" id="analiticasTestsModal" tabindex="-1" aria-labelledby="analiticasTestsLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg modal-dialog-centered">
+			<div class="modal-content">
+
+				<!-- Header -->
+				<div class="modal-header">
+					<h1 class="modal-title fs-5" id="analiticasTestsLabel">Analíticas y Tests de Laboratorio</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+				</div>
+
+				<!-- Body -->
+				<div class="modal-body">
+					<div class="container-fluid px-4">
+
+						<!-- Bloque 1 – Descripción general -->
+						<div class="row mx-1">
+							<p class="textoModal m-1 p-3">
+								En <strong>PawHome</strong> contamos con un laboratorio propio equipado con tecnología Idexx,
+								referencia mundial en diagnóstico veterinario. Realizamos bioquímica, hemograma y tests rápidos
+								para conocer el estado de salud de tu compañero y detectar enfermedades de forma precisa y
+								temprana.
+							</p>
+						</div>
+
+						<!-- Bloque 2 – Dos columnas: chequeos y bioquímica/hemograma -->
+						<div class="row mx-4 align-items-start">
+							<!-- Chequeos preventivos -->
+							<div class="textoModal col-md-5 m-1 p-1">
+								<h3 class="m-1 p-3">Chequeos preventivos</h3>
+								<ul>
+									<li>Al menos una vez al año para detectar problemas ocultos.</li>
+									<li>En pacientes senior, cada 6 meses para un control más estrecho.</li>
+									<li>Permiten intervenir antes de que aparezcan síntomas clínicos.</li>
+								</ul>
+							</div>
+							<!-- Bioquímica y hemograma -->
+							<div class="textoModal col-md-5 m-1 p-1">
+								<h3 class="m-1 p-3">Bioquímica y Hemograma</h3>
+								<ul>
+									<li><strong>Bioquímica:</strong> evalúa hígado, riñones, páncreas y metabolismo.</li>
+									<li>Detecta insuficiencia renal, problemas hepáticos y pancreatitis.</li>
+									<li><strong>Hemograma:</strong> analiza glóbulos rojos, blancos y plaquetas.</li>
+									<li>Revela anemia, infecciones, inflamación y alteraciones inmunológicas.</li>
+								</ul>
+							</div>
+						</div>
+
+						<!-- Bloque 3 – Tests rápidos -->
+						<div class="textoModal">
+							<h3 class="m-1 p-3">Tests rápidos: diagnóstico inmediato</h3>
+							<ul>
+								<li><strong>FeLV / FIV:</strong> leucemia e inmunodeficiencia felina.</li>
+								<li><strong>Parvo-Corona-Giardias:</strong> patologías gastrointestinales en cachorros.</li>
+								<li><strong>4DX:</strong> ehrlichiosis, anaplasmosis, leishmaniasis y dirofilaria.</li>
+								<li>Resultados en minutos para iniciar tratamiento sin demoras.</li>
+							</ul>
+						</div>
+
+						<!-- Bloque 4 – Valor añadido -->
+						<div class="textoModal">
+							<h3 class="m-1 p-3">Valor añadido de nuestro laboratorio</h3>
+							<ul>
+								<li>Resultados al momento: decisiones rápidas y precisas.</li>
+								<li>Colaboración con laboratorios externos para pruebas especializadas.</li>
+								<li>Diagnóstico diferencial contrastado cuando es necesario.</li>
+							</ul>
+						</div>
+
+						<!-- Bloque 5 – Llamada a la acción -->
+						<div class="textoModal">
+							<h3 class="m-1 p-3">Reserva tu cita en <strong>PawHome</strong></h3>
+							<ul>
+								<li>Programa un chequeo preventivo o solicita información sobre nuestras pruebas.</li>
+								<li>Estamos comprometidos con la salud y el bienestar de tu compañero.</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!-- Footer -->
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Modal: Traumatología -->
+	<div class="modal fade" id="traumatologiaModal" tabindex="-1" aria-labelledby="traumatologiaLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg modal-dialog-centered">
+			<div class="modal-content">
+
+				<!-- Header -->
+				<div class="modal-header">
+					<h1 class="modal-title fs-5" id="traumatologiaLabel">Traumatología Veterinaria</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+				</div>
+
+				<!-- Body -->
+				<div class="modal-body">
+					<div class="container-fluid px-4">
+
+						<!-- Bloque 1 – Descripción general -->
+						<div class="row mx-1">
+							<p class="textoModal m-1 p-3">
+								En <strong>PawHome</strong> disponemos de un servicio especializado en traumatología para
+								diagnosticar y tratar quirúrgicamente las patologías del aparato locomotor de perros y gatos.
+								Nuestro equipo de posgrado evalúa cada caso, define el abordaje quirúrgico y acompaña al paciente
+								desde el diagnóstico hasta la recuperación completa.
+							</p>
+						</div>
+
+						<!-- Bloque 2 – Dos columnas: patologías y señales de alerta -->
+						<div class="row mx-4 align-items-start">
+							<!-- Patologías más frecuentes -->
+							<div class="textoModal col-md-5 m-1 p-1">
+								<h3 class="m-1 p-3">Patologías que tratamos</h3>
+								<ul>
+									<li>Fracturas óseas</li>
+									<li>Luxaciones articulares</li>
+									<li>Ruptura de ligamentos (cruzado anterior, etc.)</li>
+									<li>Displasia de cadera y codo</li>
+									<li>Artrosis y enfermedades degenerativas</li>
+									<li>Malformaciones congénitas</li>
+									<li>Lesiones tendinosas o musculares</li>
+									<li>Necrosis avascular (Legg-Calvé-Perthes)</li>
+								</ul>
+							</div>
+							<!-- Cuándo acudir al traumatólogo -->
+							<div class="textoModal col-md-5 m-1 p-1">
+								<h3 class="m-1 p-3">¿Cuándo acudir?</h3>
+								<ul>
+									<li>Cojera repentina o dolor al caminar.</li>
+									<li>Inflamación o deformidad articular.</li>
+									<li>Dificultad para levantarse o subir escaleras.</li>
+									<li>Caídas, accidentes o golpes fuertes.</li>
+									<li>Diagnóstico previo de displasia o artrosis.</li>
+									<li>Lesiones que no mejoran con tratamientos habituales.</li>
+								</ul>
+							</div>
+						</div>
+
+						<!-- Bloque 3 – Cirugía y fracturas -->
+						<div class="textoModal">
+							<h3 class="m-1 p-3">Resolución quirúrgica de fracturas</h3>
+							<ul>
+								<li>Presupuestos personalizados según placas, tornillos y abordaje necesario.</li>
+								<li>Uso de material de titanio para mayor durabilidad y biocompatibilidad.</li>
+								<li>Quirófano equipado con protocolos anestésicos avanzados y monitorización constante.</li>
+								<li>Requerimos radiografías, analíticas y pruebas previas para planificar la cirugía.</li>
+							</ul>
+						</div>
+
+						<!-- Bloque 4 – Acompañamiento integral -->
+						<div class="textoModal">
+							<h3 class="m-1 p-3">Acompañamiento en todo el proceso</h3>
+							<ul>
+								<li>Comunicación continua por teléfono o WhatsApp para resolver cualquier duda.</li>
+								<li>Planes de rehabilitación y control del dolor personalizados.</li>
+								<li>Revisiones postoperatorias hasta la recuperación total en casa.</li>
+							</ul>
+						</div>
+
+						<!-- Bloque 5 – Llamada a la acción -->
+						<div class="textoModal">
+							<h3 class="m-1 p-3">¿Necesitas más información?</h3>
+							<ul>
+								<li>Contacta con <strong>PawHome</strong> para una valoración especializada.</li>
+								<li>Ofrecemos diagnóstico preciso y tratamiento a medida.</li>
+								<li>Garantizamos el máximo bienestar para tu compañero.</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!-- Footer -->
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Modal: Oftalmología -->
+	<div class="modal fade" id="oftalmologiaModal" tabindex="-1" aria-labelledby="oftalmologiaLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg modal-dialog-centered">
+			<div class="modal-content">
+
+				<!-- Header -->
+				<div class="modal-header">
+					<h1 class="modal-title fs-5" id="oftalmologiaLabel">Oftalmología Veterinaria</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+				</div>
+
+				<!-- Body -->
+				<div class="modal-body">
+					<div class="container-fluid px-4">
+
+						<!-- Bloque 1 – Descripción general -->
+						<div class="row mx-1">
+							<p class="textoModal m-1 p-3">
+								En <strong>PawHome</strong> contamos con un servicio especializado en oftalmología
+								veterinaria para diagnosticar y tratar enfermedades oculares en perros y gatos.
+								Gracias a nuestra formación avanzada y equipo especializado, ofrecemos soluciones
+								personalizadas para preservar o mejorar la salud visual de tu compañero.
+							</p>
+						</div>
+
+						<!-- Bloque 2 – Dos columnas: patologías y síntomas de alerta -->
+						<div class="row mx-4 align-items-start">
+							<!-- Patologías tratadas -->
+							<div class="textoModal col-md-5 m-1 p-1">
+								<h3 class="m-1 p-3">Patologías oculares comunes</h3>
+								<ul>
+									<li>Cataratas</li>
+									<li>Úlceras corneales</li>
+									<li>Conjuntivitis (infecciosa o alérgica)</li>
+									<li>Glaucoma</li>
+									<li>Entropión</li>
+									<li>Prolapso de la glándula del tercer párpado (ojo de cereza)</li>
+									<li>Luxación del cristalino</li>
+									<li>Ojo seco (queratoconjuntivitis seca)</li>
+								</ul>
+							</div>
+							<!-- Cuándo acudir al oftalmólogo -->
+							<div class="textoModal col-md-5 m-1 p-1">
+								<h3 class="m-1 p-3">¿Cuándo acudir?</h3>
+								<ul>
+									<li>Lagrimeo excesivo</li>
+									<li>Ojos rojos o inflamados</li>
+									<li>Opacidad o cambio en el color del ojo</li>
+									<li>Cambios en la visión o choques con objetos</li>
+									<li>Molestias al parpadear o rascado ocular</li>
+								</ul>
+							</div>
+						</div>
+
+						<!-- Bloque 3 – Diagnóstico y tratamiento -->
+						<div class="textoModal">
+							<h3 class="m-1 p-3">Diagnóstico y tratamiento personalizado</h3>
+							<ul>
+								<li>Realizamos tonometría para medir la presión ocular (glaucoma).</li>
+								<li>Exploramos el fondo del ojo con oftalmoscopia.</li>
+								<li>Tratamientos médicos con colirios y pomadas personalizados.</li>
+								<li>Cirugías oculares en casos complejos como entropión o prolapso glandular.</li>
+							</ul>
+						</div>
+
+						<!-- Bloque 4 – Acompañamiento y comunicación -->
+						<div class="textoModal">
+							<h3 class="m-1 p-3">Acompañamiento y comunicación continua</h3>
+							<ul>
+								<li>Explicación clara del diagnóstico y las opciones terapéuticas.</li>
+								<li>Presupuestos detallados en caso de intervención quirúrgica.</li>
+								<li>Seguimiento postoperatorio y contacto directo por WhatsApp.</li>
+							</ul>
+						</div>
+
+						<!-- Bloque 5 – Quirófano y equipamiento -->
+						<div class="textoModal">
+							<h3 class="m-1 p-3">Equipamiento especializado</h3>
+							<ul>
+								<li>Quirófano adaptado para cirugía oftalmológica con los más altos estándares.</li>
+								<li>Uso de materiales de alta calidad para garantizar la seguridad y eficacia.</li>
+							</ul>
+						</div>
+
+						<!-- Bloque 6 – Llamada a la acción -->
+						<div class="textoModal">
+							<h3 class="m-1 p-3">¿Notas algo raro en sus ojitos?</h3>
+							<ul>
+								<li>Contáctanos si detectas cualquier alteración ocular en tu peludo.</li>
+								<li>En <strong>PawHome</strong>, cuidamos de su visión con experiencia y cariño.</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!-- Footer -->
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Modal: Diagnóstico por Imagen -->
+	<div class="modal fade" id="imagenModal" tabindex="-1" aria-labelledby="imagenLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg modal-dialog-centered">
+			<div class="modal-content">
+
+				<!-- Header -->
+				<div class="modal-header">
+					<h1 class="modal-title fs-5" id="imagenLabel">Diagnóstico por Imagen</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+				</div>
+
+				<!-- Body -->
+				<div class="modal-body">
+					<div class="container-fluid px-4">
+
+						<!-- Bloque 1 – Introducción -->
+						<div class="row mx-1">
+							<p class="textoModal m-1 p-3">
+								Las pruebas de imagen en <strong>PawHome</strong> son una herramienta clave para detectar patologías
+								que no pueden diagnosticarse mediante una simple exploración. Gracias a estas pruebas, evitamos
+								las suposiciones y obtenemos una visión clara de lo que realmente está ocurriendo en el organismo
+								de tu peludo.
+							</p>
+						</div>
+
+						<!-- Bloque 2 – Por qué son importantes -->
+						<div class="textoModal">
+							<h3 class="m-1 p-3">¿Por qué son necesarias las pruebas de imagen?</h3>
+							<ul>
+								<li>Un mismo síntoma puede deberse a múltiples causas.</li>
+								<li>Permiten conocer el origen real de una patología.</li>
+								<li>Complementan los análisis clínicos y la exploración física.</li>
+								<li>Aportan una visión más completa para un tratamiento certero.</li>
+							</ul>
+						</div>
+
+						<!-- Bloque 3 – Evaluación y responsabilidad -->
+						<div class="textoModal">
+							<h3 class="m-1 p-3">Evaluación completa y enfoque profesional</h3>
+							<ul>
+								<li>Las pruebas siempre se realizan bajo indicación veterinaria.</li>
+								<li>Se integran en un proceso diagnóstico estructurado (anamnesis + exploración física).</li>
+								<li>Son parte del estándar de calidad y responsabilidad profesional de <strong>PawHome</strong>.</li>
+							</ul>
+						</div>
+
+						<!-- Bloque 4 – Pruebas externas y colaboración -->
+						<div class="textoModal">
+							<h3 class="m-1 p-3">Red de colaboración especializada</h3>
+							<ul>
+								<li>Colaboramos con profesionales externos para realizar pruebas como ecocardiografías, TAC o resonancias.</li>
+								<li>Recibimos informes detallados para continuar el tratamiento sin demoras.</li>
+								<li>Somos centro de referencia para otras clínicas sin instalaciones de imagen.</li>
+							</ul>
+						</div>
+
+						<!-- Bloque 5 – Llamada a la acción -->
+						<div class="textoModal">
+							<h3 class="m-1 p-3">¿Necesitas un diagnóstico preciso?</h3>
+							<ul>
+								<li>Contáctanos si tu peque necesita una evaluación más completa.</li>
+								<li>En <strong>PawHome</strong>, apostamos por diagnósticos claros, seguros y responsables.</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!-- Footer -->
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Modal: Ecografía -->
+	<div class="modal fade" id="ecografiaModal" tabindex="-1" aria-labelledby="ecografiaLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg modal-dialog-centered">
+			<div class="modal-content">
+
+				<!-- Header -->
+				<div class="modal-header">
+					<h1 class="modal-title fs-5" id="ecografiaLabel">Ecografía Veterinaria</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+				</div>
+
+				<!-- Body -->
+				<div class="modal-body">
+					<div class="container-fluid px-4">
+
+						<!-- Introducción -->
+						<div class="row mx-1">
+							<p class="textoModal m-1 p-3">
+								En <strong>PawHome</strong>, utilizamos la ecografía como herramienta diagnóstica clave, sin radiación
+								y con imágenes en tiempo real. Nos permite detectar masas, cuerpos extraños, inflamaciones y otros
+								problemas internos con un altísimo nivel de precisión.
+							</p>
+						</div>
+
+						<!-- Qué se puede ver -->
+						<div class="textoModal">
+							<h3 class="m-1 p-3">¿Qué podemos ver con una ecografía?</h3>
+							<ul>
+								<li>Órganos internos como el hígado, riñones, vejiga, bazo y páncreas.</li>
+								<li>Presencia de tumores, cálculos, cuerpos extraños o piometra.</li>
+								<li>Inflamaciones, obstrucciones u otras alteraciones estructurales.</li>
+							</ul>
+						</div>
+
+						<!-- Abordaje clínico -->
+						<div class="textoModal">
+							<h3 class="m-1 p-3">Parte del abordaje terapéutico</h3>
+							<ul>
+								<li>La ecografía se realiza tras anamnesis y exploración clínica.</li>
+								<li>Permite confirmar hipótesis o descubrir el origen de síntomas como vómitos o dolor abdominal.</li>
+							</ul>
+						</div>
+
+						<!-- Tecnología y seguridad -->
+						<div class="textoModal">
+							<h3 class="m-1 p-3">Ecógrafo avanzado y protocolo seguro</h3>
+							<ul>
+								<li>Disponemos de uno de los ecógrafos más avanzados del sector veterinario.</li>
+								<li>La prueba suele requerir sedación para asegurar la calidad de las imágenes.</li>
+								<li>Aplicamos protocolos prequirúrgicos seguros (analítica y/o radiografía).</li>
+							</ul>
+						</div>
+
+						<!-- Especialización -->
+						<div class="textoModal">
+							<h3 class="m-1 p-3">Equipo especializado en diagnóstico por imagen</h3>
+							<ul>
+								<li>El estudio ecográfico es realizado por personal con formación específica en diagnóstico por imagen y ecocardiografía.</li>
+								<li>La interpretación de las imágenes se realiza con rigor y precisión.</li>
+							</ul>
+						</div>
+
+						<!-- Informe -->
+						<div class="textoModal">
+							<h3 class="m-1 p-3">Informe detallado para la familia</h3>
+							<ul>
+								<li>Tras la ecografía, entregamos un informe escrito con conclusiones e imágenes clave.</li>
+								<li>Guardarlo es importante para el seguimiento clínico de tu peludo.</li>
+							</ul>
+						</div>
+
+						<!-- Llamado a la acción -->
+						<div class="textoModal">
+							<h3 class="m-1 p-3">¿Tu pequeño no termina de mejorar?</h3>
+							<ul>
+								<li>Contáctanos si necesitas una ecografía o tienes dudas sobre su diagnóstico.</li>
+								<li>En <strong>PawHome</strong>, contamos con la tecnología y el equipo humano para ayudarte.</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!-- Footer -->
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Modal: Cirugía Veterinaria y Castración -->
+	<div class="modal fade" id="cirugiaModal" tabindex="-1" aria-labelledby="cirugiaLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg modal-dialog-centered">
+			<div class="modal-content">
+
+				<!-- Header -->
+				<div class="modal-header">
+					<h1 class="modal-title fs-5" id="cirugiaLabel">Cirugía Veterinaria y Castración</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+				</div>
+
+				<!-- Body -->
+				<div class="modal-body">
+					<div class="container-fluid px-4">
+
+						<!-- Bloque 1 – Introducción -->
+						<div class="row mx-1">
+							<p class="textoModal m-1 p-3">
+								En <strong>PawHome</strong>, la seguridad y el bienestar de tu pequeño son nuestra máxima prioridad en cada intervención quirúrgica.
+								Trabajamos en un entorno controlado, con un equipo especializado y bajo los estándares de seguridad más exigentes.
+							</p>
+						</div>
+
+						<!-- Bloque 2 – Dos columnas: protocolo prequirúrgico y su importancia -->
+						<div class="row mx-4 align-items-start">
+							<!-- Protocolo prequirúrgico -->
+							<div class="textoModal col-md-5 m-1 p-1">
+								<h3 class="m-1 p-3">Protocolo prequirúrgico</h3>
+								<ul>
+									<li>Analítica completa para evaluar hígado y riñones.</li>
+									<li>Radiografía torácica para valorar pulmones y tamaño cardiaco.</li>
+									<li>Ajuste del tipo de anestesia según resultados.</li>
+									<li>Posibilidad de posponer la cirugía si detectamos riesgos.</li>
+								</ul>
+							</div>
+							<!-- ¿Por qué es tan importante? -->
+							<div class="textoModal col-md-5 m-1 p-1">
+								<h3 class="m-1 p-3">¿Por qué es tan importante?</h3>
+								<ul>
+									<li>La anestesia supone un esfuerzo para hígado y riñones.</li>
+									<li>Detecta alteraciones silenciosas que podrían complicar la cirugía.</li>
+									<li>Permite modificar el plan quirúrgico para maximizar la seguridad.</li>
+								</ul>
+							</div>
+						</div>
+
+						<!-- Bloque 3 – Seguridad en quirófano y bienestar postoperatorio -->
+						<div class="textoModal">
+							<h3 class="m-1 p-3">Seguridad en el quirófano</h3>
+							<ul>
+								<li>Quirófano totalmente equipado con anestesia inhalatoria y bisturí eléctrico.</li>
+								<li>Monitorización constante de constantes vitales.</li>
+								<li>Analgesia, antiinflamatorios y antibióticos durante y después de la intervención.</li>
+								<li>Hospitalización controlada las primeras horas para vigilar su recuperación.</li>
+							</ul>
+						</div>
+
+						<!-- Bloque 4 – Acompañamiento a la familia -->
+						<div class="textoModal">
+							<h3 class="m-1 p-3">Acompañamiento a la familia</h3>
+							<ul>
+								<li>Explicaciones detalladas del procedimiento y presupuesto previo.</li>
+								<li>Seguimiento cercano por WhatsApp durante la recuperación en casa.</li>
+								<li>Consulta de revisión incluida para comprobar cicatrización y estado general.</li>
+							</ul>
+						</div>
+
+						<!-- Bloque 5 – Tipos de cirugía y costes -->
+						<div class="textoModal">
+							<h3 class="m-1 p-3">Tipos de cirugía y costes</h3>
+							<ul>
+								<li>El precio depende de la zona, tejido, técnica, tiempo quirúrgico y peso del paciente.</li>
+								<li>Para cirugías preventivas (castración) el coste se estima según sexo y peso.</li>
+								<li>Contacta con nosotros para un presupuesto personalizado sin compromiso.</li>
+							</ul>
+						</div>
+
+						<!-- Bloque 6 – Experiencia y llamada a la acción -->
+						<div class="textoModal">
+							<h3 class="m-1 p-3">Más de 20 años de experiencia</h3>
+							<ul>
+								<li>Equipo quirúrgico con amplia trayectoria y formación continua.</li>
+								<li>Profesionalidad que garantiza intervenciones seguras y efectivas.</li>
+								<li>¿Necesitas valoración quirúrgica? En <strong>PawHome</strong> tu peludo está en las mejores manos.</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!-- Footer -->
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Modal: Limpieza Bucodental -->
+	<div class="modal fade" id="limpiezaBucodentalModal" tabindex="-1" aria-labelledby="limpiezaBucodentalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg modal-dialog-centered">
+			<div class="modal-content">
+
+				<!-- Header -->
+				<div class="modal-header">
+					<h1 class="modal-title fs-5" id="limpiezaBucodentalLabel">Limpieza Bucodental</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+				</div>
+
+				<!-- Body -->
+				<div class="modal-body">
+					<div class="container-fluid px-4">
+
+						<!-- Introducción -->
+						<div class="row mx-1">
+							<p class="textoModal m-1 p-3">
+								La <strong>limpieza bucodental</strong> es clave para prevenir problemas como halitosis, enfermedades de encías, sarro o la caída precoz de dientes. Además, las bacterias bucales pueden afectar a órganos vitales como el corazón.
+								Una limpieza al año mejora el bienestar y calidad de vida de tu peludo.
+							</p>
+						</div>
+
+						<!-- Procedimiento -->
+						<div class="textoModal">
+							<h3 class="m-1 p-3">¿Cómo se realiza?</h3>
+							<ul>
+								<li>Se realiza en quirófano, bajo sedación.</li>
+								<li>Incluye protocolo prequirúrgico:
+									<ul>
+										<li>Analítica hepática y renal.</li>
+										<li>Radiografía torácica.</li>
+									</ul>
+								</li>
+								<li>Este protocolo puede hacerse el mismo día o antes, según prefieras.</li>
+							</ul>
+						</div>
+
+						<!-- Riesgos y decisiones -->
+						<div class="textoModal">
+							<h3 class="m-1 p-3">¿Y si hay alteraciones?</h3>
+							<ul>
+								<li>Si detectamos algo anormal, suspendemos la limpieza para proteger su salud.</li>
+								<li>Te informamos y valoramos juntos los resultados antes de seguir.</li>
+							</ul>
+						</div>
+
+						<!-- Detalles técnicos -->
+						<div class="textoModal">
+							<h3 class="m-1 p-3">Duración y tecnología</h3>
+							<ul>
+								<li>La limpieza dura unos 45 minutos (depende del sarro y estado dental).</li>
+								<li>Usamos ultrasonidos, la tecnología más avanzada y respetuosa con el esmalte.</li>
+								<li>En casos de enfermedad periodontal, pueden desprenderse piezas dentales.</li>
+							</ul>
+						</div>
+
+						<!-- Recuperación -->
+						<div class="textoModal">
+							<h3 class="m-1 p-3">Recuperación</h3>
+							<ul>
+								<li>Revertimos la anestesia tras la intervención.</li>
+								<li>Te llamamos para informarte y mantenerte tranquilo.</li>
+								<li>Durante su recuperación, estará vigilado en la zona de hospitalización con lámpara de calor y atención continua.</li>
+								<li>Volverá a casa cuando esté completamente recuperado, normalmente en pocas horas.</li>
+							</ul>
+						</div>
+
+						<!-- Acompañamiento y confianza -->
+						<div class="textoModal">
+							<h3 class="m-1 p-3">Acompañamiento y seguridad</h3>
+							<ul>
+								<li>Te explicamos todo el procedimiento con claridad y te acompañamos en cada paso.</li>
+								<li>Seguimos protocolos estrictos y seguros.</li>
+								<li>Tu peludo estará en las mejores manos.</li>
+							</ul>
+						</div>
+
+						<!-- Llamado a la acción -->
+						<div class="textoModal">
+							<p class="m-1 p-3">
+								<strong>¿Quieres valorar el estado de salud bucodental de tu pequeño?</strong>
+								Contáctanos. En <strong>PawHome</strong>, cuidamos su salud oral con la mejor tecnología y un equipo profesional y cercano.
+							</p>
+						</div>
+					</div>
+				</div>
+				<!-- Footer -->
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Modal: Hospitalización -->
+	<div class="modal fade" id="hospitalizacionModal" tabindex="-1" aria-labelledby="hospitalizacionLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg modal-dialog-centered">
+			<div class="modal-content">
+
+				<!-- Header -->
+				<div class="modal-header">
+					<h1 class="modal-title fs-5" id="hospitalizacionLabel">Hospitalización</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+				</div>
+
+				<!-- Body -->
+				<div class="modal-body">
+					<div class="container-fluid px-4">
+
+						<!-- Introducción -->
+						<div class="row mx-1">
+							<p class="textoModal m-1 p-3">
+								Nuestro servicio de hospitalización veterinaria ofrece cuidados especializados para pacientes que necesitan atención controlada, ya sea para estabilización, recuperación postquirúrgica o administración de medicación intravenosa.
+							</p>
+						</div>
+
+						<!-- Instalaciones y equipamiento -->
+						<div class="textoModal">
+							<h3 class="m-1 p-3">Instalaciones y equipamiento avanzado</h3>
+							<ul>
+								<li>Espacios adaptados a distintos tamaños para la comodidad de tu peludo.</li>
+								<li>Bomba de infusión para dosificación precisa y segura de medicación.</li>
+								<li>Coordinación rigurosa del equipo veterinario y auxiliar para supervisión constante.</li>
+							</ul>
+						</div>
+
+						<!-- Pruebas complementarias -->
+						<div class="textoModal">
+							<h3 class="m-1 p-3">Pruebas complementarias y evolución</h3>
+							<ul>
+								<li>Realizamos analíticas, ecografías y otras pruebas para monitorizar la evolución.</li>
+								<li>Informamos a la familia antes de cualquier prueba y facilitamos presupuesto exacto.</li>
+							</ul>
+						</div>
+
+						<!-- Acompañamiento a la familia -->
+						<div class="textoModal">
+							<h3 class="m-1 p-3">Acompañamiento constante a la familia</h3>
+							<ul>
+								<li>Llamadas diarias y envío de fotos y vídeos vía WhatsApp para manteneros cerca.</li>
+								<li>Protocolo de visitas para que podáis abrazar y comprobar la evolución de vuestro peque.</li>
+							</ul>
+						</div>
+
+						<!-- Equipo profesional y humano -->
+						<div class="textoModal">
+							<h3 class="m-1 p-3">Equipo profesional y humano</h3>
+							<ul>
+								<li>Atención profesional y cariñosa para que tu compañero se sienta cómodo y protegido.</li>
+								<li>Acompañamiento continuo para que estéis informados y tranquilos en todo momento.</li>
+							</ul>
+						</div>
+
+						<!-- Llamado a la acción -->
+						<div class="textoModal">
+							<p class="m-1 p-3">
+								<strong>¿Tu peque necesita hospitalización o tienes alguna consulta?</strong> Contacta con nosotros. En <strong>PawHome</strong>, cuidamos de tu peludo y te acompañamos siempre.
+							</p>
+						</div>
+					</div>
+				</div>
+				<!-- Footer -->
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Modal: Visita a domicilio -->
+	<div class="modal fade" id="visitaDomicilioModal" tabindex="-1" aria-labelledby="visitaDomicilioLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg modal-dialog-centered">
+			<div class="modal-content">
+
+				<!-- Header -->
+				<div class="modal-header">
+					<h1 class="modal-title fs-5" id="visitaDomicilioLabel">Visitas Veterinarias a Domicilio</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+				</div>
+
+				<!-- Body -->
+				<div class="modal-body">
+					<div class="container-fluid px-4">
+
+						<!-- Introducción -->
+						<div class="row mx-1">
+							<p class="textoModal m-1 p-3">
+								Entendemos que puede ser complicado trasladar a tu peludo a la clínica. Nuestro servicio de visitas a domicilio ofrece atención veterinaria profesional y cercana en la comodidad de tu hogar, ideal para personas mayores, con movilidad reducida o peludos grandes.
+							</p>
+							<p class="textoModal m-1 p-3">
+								Las visitas las realiza nuestro veterinario director, quien programará la visita en una fecha y hora acordadas contigo.
+							</p>
+						</div>
+
+						<!-- Servicios -->
+						<div class="textoModal">
+							<h3 class="m-1 p-3">Servicios Veterinarios a Domicilio</h3>
+							<ul>
+								<li>Exploración y anamnesis para evaluar el estado general de salud.</li>
+								<li>Vacunación y desparasitación.</li>
+								<li>Identificación con microchip.</li>
+								<li>Extracción de sangre para análisis y test rápidos.</li>
+								<li>Tratamientos inyectables según prescripción veterinaria.</li>
+							</ul>
+							<p class="m-1 p-3">
+								Algunas pruebas diagnósticas requieren equipo especializado que solo disponemos en clínica, por lo que no siempre es posible realizar un diagnóstico completo durante la visita a domicilio.
+							</p>
+						</div>
+
+						<!-- Trato personalizado -->
+						<div class="textoModal">
+							<h3 class="m-1 p-3">Un trato personalizado y cómodo</h3>
+							<p class="m-1 p-3">
+								Nos esforzamos en ofrecer un trato cercano, adaptado a las necesidades de tu peludo en su entorno habitual, garantizando una atención profesional y delicada.
+							</p>
+						</div>
+
+						<!-- Llamado a la acción -->
+						<div class="textoModal">
+							<p class="m-1 p-3">
+								<strong>¿No puedes acudir a la clínica?</strong> Contáctanos para programar una visita veterinaria a domicilio. En <strong>PawHome</strong>, llevamos el cuidado veterinario a la puerta de tu casa para cuidar de tu peludo.
+							</p>
+						</div>
+					</div>
+				</div>
+				<!-- Footer -->
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Modal: Control de Leishmania -->
+	<div class="modal fade" id="controlLeishmaniaModal" tabindex="-1" aria-labelledby="controlLeishmaniaLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg modal-dialog-centered">
+			<div class="modal-content">
+
+				<!-- Header -->
+				<div class="modal-header">
+					<h1 class="modal-title fs-5" id="controlLeishmaniaLabel">Programa de Control de Leishmania</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+				</div>
+
+				<!-- Body -->
+				<div class="modal-body">
+					<div class="container-fluid px-4">
+
+						<!-- Introducción -->
+						<div class="textoModal m-1 p-3">
+							<p>
+								La leishmaniosis canina es una enfermedad causada por el parásito <strong>Leishmania Infantum</strong>, transmitida por la picadura de mosquitos flebótomos infectados. Afecta principalmente al sistema inmunitario del perro, con síntomas como pérdida de peso, heridas en la piel, fiebre y daños en órganos vitales si no se controla.
+							</p>
+						</div>
+
+						<!-- Importancia -->
+						<div class="textoModal m-1 p-3">
+							<h3>Importancia del control y beneficios del seguimiento periódico</h3>
+							<p>
+								La leishmaniosis puede estabilizarse y mantenerse bajo control mediante un manejo adecuado y monitorización continua. Las visitas y controles permiten detectar cambios en la salud, identificar recaídas y ajustar tratamientos. Las analíticas periódicas son clave para evaluar la capacidad inmunitaria de tu peludo.
+							</p>
+						</div>
+
+						<!-- Programa -->
+						<div class="textoModal m-1 p-3">
+							<h3>Programa de Control Leishmania: ¿En qué consiste?</h3>
+							<p><strong>Fase de Estabilización:</strong> Una vez diagnosticada, se monitoriza la evolución, controlan síntomas y se realizan analíticas para evaluar el impacto de la enfermedad. Esta fase requiere seguimiento y tratamiento intensivo para asegurar la respuesta inmunitaria.</p>
+							<p><strong>Fase de Mantenimiento:</strong> Tras estabilizar al paciente, se realizan controles y analíticas periódicas para fortalecer el organismo y prevenir recaídas, ajustando el tratamiento preventivo para mejorar la calidad de vida.</p>
+						</div>
+
+						<!-- Riesgos -->
+						<div class="textoModal m-1 p-3">
+							<h3>Riesgos de no controlar la enfermedad</h3>
+							<p>
+								La falta de control puede provocar infecciones secundarias, insuficiencia renal, problemas hepáticos e incluso poner en riesgo la vida del peludo. El seguimiento y tratamiento adecuados son fundamentales para evitar complicaciones.
+							</p>
+						</div>
+
+						<!-- Llamado a la acción -->
+						<div class="textoModal m-1 p-3">
+							<p>
+								<strong>Protégele:</strong> Si tu peludo ha sido diagnosticado con leishmaniosis o tienes dudas, contáctanos. En <strong>PawHome</strong> ofrecemos un programa completo y personalizado para cuidar su salud.
+							</p>
+						</div>
+					</div>
+				</div>
+				<!-- Footer -->
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Modal: Control de Obesidad -->
+	<div class="modal fade" id="controlObesidadModal" tabindex="-1" aria-labelledby="controlObesidadLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg modal-dialog-centered">
+			<div class="modal-content">
+
+				<!-- Header -->
+				<div class="modal-header">
+					<h1 class="modal-title fs-5" id="controlObesidadLabel">Programa de Control de Obesidad</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+				</div>
+
+				<!-- Body -->
+				<div class="modal-body">
+					<div class="container-fluid px-4">
+
+						<!-- Introducción -->
+						<div class="textoModal m-1 p-3">
+							<p>
+								Hoy día son numerosos los peludos que llegan a consulta con problemas derivados de una alimentación inadecuada y hábitos poco saludables. Estos problemas nutricionales acortan la vida de nuestros canhijos y afectan gravemente su calidad de vida. Desde la Medicina Preventiva, promovemos servicios veterinarios que protejan la salud de nuestros peques.
+							</p>
+							<p>
+								Por ello, hemos creado el <strong>Programa Obesity</strong>, dirigido a perros con sobrepeso.
+							</p>
+						</div>
+
+						<!-- ¿En qué consiste? -->
+						<div class="textoModal m-1 p-3">
+							<h3>¿En qué consiste un programa de nutrición?</h3>
+							<p>
+								Permite conocer los requerimientos nutricionales, establecer dosis adecuadas de comida y aprender actividades que optimicen el desarrollo físico. Así, el peludo mantendrá un peso saludable y evitará enfermedades relacionadas con el sobrepeso, como problemas articulares, cardiovasculares y diabetes.
+							</p>
+						</div>
+
+						<!-- 5 pilares -->
+						<div class="textoModal m-1 p-3">
+							<h3>Los 5 pilares fundamentales del Programa Obesity:</h3>
+							<ul>
+								<li><strong>Evaluación:</strong> Hábitos alimenticios, entorno, enfermedades previas y nivel de actividad física.</li>
+								<li><strong>Información:</strong> Asesoramiento nutricional según especie, edad y condición.</li>
+								<li><strong>Acción:</strong> Estrategias para cambiar hábitos y alcanzar objetivos.</li>
+								<li><strong>Control:</strong> Consultas periódicas con exploración, mediciones y pesaje.</li>
+								<li><strong>Seguimiento:</strong> Acompañamiento continuo para dudas, motivación y prevención de recaídas.</li>
+							</ul>
+						</div>
+
+						<!-- Evaluación y cuotas -->
+						<div class="textoModal m-1 p-3">
+							<h3>Evaluación inicial y seguimiento</h3>
+							<p>
+								El programa comienza con una evaluación minuciosa para definir objetivos y estrategias. Tras completar el cuestionario, recibirás un dossier con acciones a implementar y una consulta de control. La cuota mensual incluye consultas de seguimiento, acciones específicas y acompañamiento hasta alcanzar el peso ideal.
+							</p>
+						</div>
+
+						<!-- Llamado a la acción -->
+						<div class="textoModal m-1 p-3">
+							<p>
+								<strong>¿Tu peque sufre sobrepeso?</strong> Consúltanos. El Programa Obesity se adapta al ritmo de cada perro. ¡No permitas que la obesidad acorte la vida de tu precioso!
+							</p>
+						</div>
+					</div>
+				</div>
+				<!-- Footer -->
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Modal: Plan de Salud Anual para Perros -->
+	<div class="modal fade" id="planSaludPerrosModal" tabindex="-1" aria-labelledby="planSaludAnualLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg modal-dialog-centered">
+			<div class="modal-content">
+
+				<!-- Header -->
+				<div class="modal-header">
+					<h1 class="modal-title fs-5" id="planSaludAnualLabel">Plan de Salud Anual para Perros</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+				</div>
+
+				<!-- Body -->
+				<div class="modal-body">
+					<div class="container-fluid px-4">
+
+						<!-- Introducción y ventajas -->
+						<div class="textoModal m-1 p-3">
+							<h3>Ventajas extra al contratar un Plan de Salud Puppy:</h3>
+							<ul>
+								<li><strong>Tu peque viene más feliz a consulta:</strong> El Plan de Salud ayuda a que el cachorro se acostumbre desde pequeño a la clínica, reduciendo su ansiedad. Esto facilita que identifiquemos cualquier síntoma de malestar o dolor y podamos llevar un seguimiento más controlado de su salud y desarrollo.</li>
+								<li><strong>Clientes VIP (Very Important Pet):</strong> Te confeccionamos un calendario anual de visitas para que no tengas que preocuparte por recordar fechas importantes. Nosotros te avisaremos con antelación y estaréis siempre atendidos vía WhatsApp. En PawHome, tu canhijo y tú tenéis prioridad.</li>
+								<li><strong>Consultas generales ilimitadas:</strong> Durante todo el año, las consultas generales fuera del plan están incluidas sin coste adicional, ahorrándote el precio de cada visita.</li>
+							</ul>
+						</div>
+
+						<!-- Llamado a la acción -->
+						<div class="textoModal m-1 p-3">
+							<p>
+								👩‍🔬 <strong>Pídenos información:</strong> Ven a la clínica o llámanos para que te expliquemos todos los detalles y ventajas de contratar un Plan de Salud, para que tu precioso viva sano y feliz durante muchos años.
+							</p>
+						</div>
+					</div>
+				</div>
+				<!-- Footer -->
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Modal: Plan de Salud Anual para Gatos -->
+	<div class="modal fade" id="planSaludGatosModal" tabindex="-1" aria-labelledby="planSaludAnualGatosLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg modal-dialog-centered">
+			<div class="modal-content">
+
+				<!-- Header -->
+				<div class="modal-header">
+					<h1 class="modal-title fs-5" id="planSaludAnualGatosLabel">Plan de Salud Anual para Gatos</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+				</div>
+
+				<!-- Body -->
+				<div class="modal-body">
+					<div class="container-fluid px-4">
+
+						<!-- Introducción y ventajas -->
+						<div class="textoModal m-1 p-3">
+							<h3>Ventajas extra al contratar un Plan de Salud para gatos:</h3>
+							<ul>
+								<li><strong>Tu peque viene más feliz a consulta:</strong> El Plan de Salud ayuda a que el gato se acostumbre desde pequeño a la clínica, reduciendo su ansiedad. Esto facilita que podamos detectar síntomas tempranos y llevar un seguimiento más controlado de su salud y desarrollo.</li>
+								<li><strong>Clientes VIP (Very Important Pet):</strong> Te confeccionamos un calendario anual de visitas para que no tengas que preocuparte por recordar fechas importantes. Nosotros te avisaremos con antelación y estaréis siempre atendidos vía WhatsApp. En PawHome, tu canhijo y tú tenéis prioridad.</li>
+								<li><strong>Consultas generales ilimitadas:</strong> Durante todo el año, las consultas generales fuera del plan están incluidas sin coste adicional, ahorrándote el precio de cada visita.</li>
+							</ul>
+						</div>
+
+						<!-- Llamado a la acción -->
+						<div class="textoModal m-1 p-3">
+							<p>
+								👩‍🔬 <strong>Pídenos información:</strong> Ven a la clínica o llámanos para que te expliquemos todos los detalles y ventajas de contratar un Plan de Salud, para que tu precioso viva sano y feliz durante muchos años.
+							</p>
+						</div>
+
+					</div>
+				</div>
+
+				<!-- Footer -->
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
 
 	<section class="container py-5 mainContainer">
 		<!-- Sección: Nuestro servicio de Veterinario -->
@@ -126,7 +1355,7 @@
 						</ul>
 						<div class="d-grid gap-2 mt-auto">
 							<button class="btn btn-success btnCard" data-bs-toggle="modal"
-									data-bs-target="#exampleModal">
+									data-bs-target="#consultaVeterinariaModal">
 								<i class="fas fa-info-circle me-1"></i>
 								<span th:utext="#{servicios.masInfoModal}"></span>
 							</button>
@@ -162,7 +1391,7 @@
 						</ul>
 						<div class="d-grid gap-2 mt-auto">
 							<button class="btn btn-success btnCard" data-bs-toggle="modal"
-									data-bs-target="#exampleModal">
+									data-bs-target="#chequeoPreventivoModal">
 								<i class="fas fa-info-circle me-1"></i>
 								<span th:utext="#{servicios.masInfoModal}"></span>
 							</button>
@@ -198,7 +1427,7 @@
 						</ul>
 						<div class="d-grid gap-2 mt-auto">
 							<button class="btn btn-success btnCard" data-bs-toggle="modal"
-									data-bs-target="#exampleModal">
+									data-bs-target="#vacunacionModal">
 								<i class="fas fa-info-circle me-1"></i>
 								<span th:utext="#{servicios.masInfoModal}"></span>
 							</button>
@@ -234,7 +1463,7 @@
 						</ul>
 						<div class="d-grid gap-2 mt-auto">
 							<button class="btn btn-success btnCard" data-bs-toggle="modal"
-									data-bs-target="#exampleModal">
+									data-bs-target="#desparasitacionModal">
 								<i class="fas fa-info-circle me-1"></i>
 								<span th:utext="#{servicios.masInfoModal}"></span>
 							</button>
@@ -270,7 +1499,7 @@
 						</ul>
 						<div class="d-grid gap-2 mt-auto">
 							<button class="btn btn-success btnCard" data-bs-toggle="modal"
-									data-bs-target="#exampleModal">
+									data-bs-target="#analiticasTestsModal">
 								<i class="fas fa-info-circle me-1"></i>
 								<span th:utext="#{servicios.masInfoModal}"></span>
 							</button>
@@ -317,7 +1546,7 @@
 						</ul>
 						<div class="d-grid gap-2 mt-auto">
 							<button class="btn btn-success btnCard" data-bs-toggle="modal"
-									data-bs-target="#exampleModal">
+									data-bs-target="#traumatologiaModal">
 								<i class="fas fa-info-circle me-1"></i>
 								<span th:utext="#{servicios.masInfoModal}"></span>
 							</button>
@@ -353,7 +1582,7 @@
 						</ul>
 						<div class="d-grid gap-2 mt-auto">
 							<button class="btn btn-success btnCard" data-bs-toggle="modal"
-									data-bs-target="#exampleModal">
+									data-bs-target="#oftalmologiaModal">
 								<i class="fas fa-info-circle me-1"></i>
 								<span th:utext="#{servicios.masInfoModal}"></span>
 							</button>
@@ -389,7 +1618,7 @@
 						</ul>
 						<div class="d-grid gap-2 mt-auto">
 							<button class="btn btn-success btnCard" data-bs-toggle="modal"
-									data-bs-target="#exampleModal">
+									data-bs-target="#imagenModal">
 								<i class="fas fa-info-circle me-1"></i>
 								<span th:utext="#{servicios.masInfoModal}"></span>
 							</button>
@@ -425,7 +1654,7 @@
 						</ul>
 						<div class="d-grid gap-2 mt-auto">
 							<button class="btn btn-success btnCard" data-bs-toggle="modal"
-									data-bs-target="#exampleModal">
+									data-bs-target="#ecografiaModal">
 								<i class="fas fa-info-circle me-1"></i>
 								<span th:utext="#{servicios.masInfoModal}"></span>
 							</button>
@@ -472,7 +1701,7 @@
 						</ul>
 						<div class="d-grid gap-2 mt-auto">
 							<button class="btn btn-success btnCard" data-bs-toggle="modal"
-									data-bs-target="#exampleModal">
+									data-bs-target="#cirugiaModal">
 								<i class="fas fa-info-circle me-1"></i>
 								<span th:utext="#{servicios.masInfoModal}"></span>
 							</button>
@@ -508,7 +1737,7 @@
 						</ul>
 						<div class="d-grid gap-2 mt-auto">
 							<button class="btn btn-success btnCard" data-bs-toggle="modal"
-									data-bs-target="#exampleModal">
+									data-bs-target="#limpiezaBucodentalModal">
 								<i class="fas fa-info-circle me-1"></i>
 								<span th:utext="#{servicios.masInfoModal}"></span>
 							</button>
@@ -545,7 +1774,7 @@
 						</ul>
 						<div class="d-grid gap-2 mt-auto">
 							<button class="btn btn-success btnCard" data-bs-toggle="modal"
-									data-bs-target="#exampleModal">
+									data-bs-target="#hospitalizacionModal">
 								<i class="fas fa-info-circle me-1"></i>
 								<span th:utext="#{servicios.masInfoModal}"></span>
 							</button>
@@ -581,7 +1810,7 @@
 						</ul>
 						<div class="d-grid gap-2 mt-auto">
 							<button class="btn btn-success btnCard" data-bs-toggle="modal"
-									data-bs-target="#exampleModal">
+									data-bs-target="#visitaDomicilioModal">
 								<i class="fas fa-info-circle me-1"></i>
 								<span th:utext="#{servicios.masInfoModal}"></span>
 							</button>
@@ -628,7 +1857,7 @@
 						</ul>
 						<div class="d-grid gap-2 mt-auto">
 							<button class="btn btn-success btnCard" data-bs-toggle="modal"
-									data-bs-target="#exampleModal">
+									data-bs-target="#controlLeishmaniaModal">
 								<i class="fas fa-info-circle me-1"></i>
 								<span th:utext="#{servicios.masInfoModal}"></span>
 							</button>
@@ -664,7 +1893,7 @@
 						</ul>
 						<div class="d-grid gap-2 mt-auto">
 							<button class="btn btn-success btnCard" data-bs-toggle="modal"
-									data-bs-target="#exampleModal">
+									data-bs-target="#controlObesidadModal">
 								<i class="fas fa-info-circle me-1"></i>
 								<span th:utext="#{servicios.masInfoModal}"></span>
 							</button>
@@ -701,7 +1930,7 @@
 						</ul>
 						<div class="d-grid gap-2 mt-auto">
 							<button class="btn btn-success btnCard" data-bs-toggle="modal"
-									data-bs-target="#exampleModal">
+									data-bs-target="#planSaludPerrosModal">
 								<i class="fas fa-info-circle me-1"></i>
 								<span th:utext="#{servicios.masInfoModal}"></span>
 							</button>
@@ -737,7 +1966,7 @@
 						</ul>
 						<div class="d-grid gap-2 mt-auto">
 							<button class="btn btn-success btnCard" data-bs-toggle="modal"
-									data-bs-target="#exampleModal">
+									data-bs-target="#planSaludGatosModal">
 								<i class="fas fa-info-circle me-1"></i>
 								<span th:utext="#{servicios.masInfoModal}"></span>
 							</button>
