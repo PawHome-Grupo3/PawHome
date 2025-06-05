@@ -1,25 +1,27 @@
-
-body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Arial', sans-serif;
-    background image: url("Dona.jpg");
+.dona-body {
+    margin-top: 0 !important;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: sans-serif;
+    position: relative;
+    padding: 40px 20px;
+    background: url('../images/Dona.jpg');
     background-size: cover;
-    background-position: center;
+    z-index: 0;
     background-color: rgba(27, 125, 85, 0.58);
 }
 
-.container {
-    text-align: left;
-    background-color: rgba(187, 224, 155, 0.66);
-    padding: 20px;
-    border-radius: 10px;
-    margin: 50px auto;
-    max-width: 600px;
-    text-color: #1b7d55
+.dona-content {
+    min-height: 70vh;
 }
 
-.columnas {
+.dona-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.dona-columnas {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -27,18 +29,19 @@ body {
     margin-bottom: 30px;
 }
 
-.columna {
+.dona-columna {
     flex: 1;
     min-width: 250px;
 }
 
-.columna p {
+.dona-columna p {
     font-weight: bold;
     margin-bottom: 15px;
+    color: #000000;
+    text-align: center;
 }
 
-
-.donacion-icono {
+.dona-icono {
     width: 100px;
     height: 100px;
     margin: 0 auto 15px auto;
@@ -50,17 +53,16 @@ body {
     transition: transform 0.3s ease;
 }
 
-.donacion-icono:hover {
+.dona-icono:hover {
     transform: scale(1.1);
 }
 
-.donacion-icono img {
+.dona-icono img {
     width: 60%;
     height: auto;
-
 }
-/*Donabizum*/
-.cuadro-transparente {
+
+.dona-cuadro-transparente {
     background-color: rgba(187, 224, 155, 0.35);
     border-radius: 15px;
     padding: 40px 70px;
@@ -70,21 +72,21 @@ body {
     color: #000000;
 }
 
-.textobizum{
+.dona-textobizum {
     font-size: 30px;
     color: #000000;
 }
 
-h1{
-    text-align: center;
+.dona-header h1 {
     color: black;
 }
-h3 {
+
+.dona-gracias {
     color: #000000;
     text-align: center;
 }
 
-p {
+.dona-content p {
     color: #000000;
     text-align: center;
 }
