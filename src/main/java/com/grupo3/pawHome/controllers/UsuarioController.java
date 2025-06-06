@@ -9,12 +9,14 @@ import com.grupo3.pawHome.services.ApadrinarService;
 import com.grupo3.pawHome.services.LocationService;
 import com.grupo3.pawHome.services.PerfilDatosService;
 import com.grupo3.pawHome.services.UsuarioService;
+import jakarta.validation.Valid;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -105,7 +107,8 @@ public class UsuarioController {
     }
 
     @PostMapping("/perfil/guardar")
-    public String guardarPerfil(@AuthenticationPrincipal Usuario authUsuario, @ModelAttribute("perfilDTO") PerfilDatosDTO dto) {
+    public String guardarPerfil(@AuthenticationPrincipal Usuario authUsuario,
+                                @ModelAttribute("perfilDTO") PerfilDatosDTO dto) {
 
         Usuario usuario = usuarioService.findById(authUsuario.getId())
                 .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
@@ -114,7 +117,7 @@ public class UsuarioController {
 
         if (perfil == null) {
             perfil = new PerfilDatos();
-            perfil.setUsuario(usuario); // importante para la relación
+            perfil.setUsuario(usuario);
         }
 
         perfil.setNombre(dto.getNombre());
@@ -122,7 +125,7 @@ public class UsuarioController {
         perfil.setEdad(dto.getEdad());
         perfil.setDni(dto.getDni());
         perfil.setDireccion(dto.getDireccion());
-        perfil.setPais(dto.getPais());  // Asignar el código país recibido
+        perfil.setPais(dto.getPais());
         perfil.setCiudad(dto.getCiudad());
         perfil.setCp(dto.getCp());
         perfil.setTelefono1(dto.getTelefono1());
