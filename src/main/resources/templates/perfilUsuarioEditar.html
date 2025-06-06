@@ -4,6 +4,13 @@
 <head>
   <title>Usuario Editar</title>
   <link rel="stylesheet" th:href="@{/css/general.css}"/>
+  <style>
+    .error-message {
+      color: red;
+      font-size: 0.9em;
+      margin-top: 3px;
+    }
+  </style>
 </head>
 <body>
 
@@ -16,42 +23,285 @@
       <div class="col-md-9 col-lg-10 justify-content-center">
         <div class="row justify-content-center">
           <div class="col-md-8">
-            <div class="p-3 py-5">
-              <div class="d-flex justify-content-between align-items-center mb-3">
+
+            <!-- Formulario con novalidate para validar solo con JS -->
+            <form id="perfilForm" th:action="@{/perfil/guardar}" th:object="${perfilDTO}" method="post" novalidate>
+              <div class="p-3 py-5">
                 <h4 class="text-right">Datos de Perfil</h4>
+
+                <div class="row mt-2">
+                  <div class="col-md-6">
+                    <label class="labels" for="nombre">Nombre</label>
+                    <input type="text" id="nombre" class="form-control" placeholder="Nombre" th:field="*{nombre}" required pattern="^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$" />
+                    <div class="error-message" id="error-nombre"></div>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="labels" for="apellidos">Apellidos</label>
+                    <input type="text" id="apellidos" class="form-control" placeholder="Apellidos" th:field="*{apellidos}" required pattern="^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$" />
+                    <div class="error-message" id="error-apellidos"></div>
+                  </div>
+                </div>
+
+                <div class="row mt-3">
+
+                  <div class="col-md-6 mt-1">
+                    <label class="labels" for="pais">País</label>
+                    <select id="pais" name="pais" class="form-control" th:field="*{pais}" required>
+                      <option value="" disabled th:selected="${perfilDTO.pais == null}">Selecciona un país</option>
+                      <option th:each="pais : ${paises}"
+                              th:value="${pais.code}"
+                              th:text="${pais.name}"
+                              th:selected="${pais.code == perfilDTO.pais}">
+                      </option>
+                    </select>
+                    <div class="error-message" id="error-pais"></div>
+                  </div>
+
+                  <div class="col-md-6 mt-1">
+                    <label class="labels" for="ciudad">Ciudad</label>
+                    <select id="ciudad" name="ciudad" class="form-control" th:field="*{ciudad}" required>
+                      <option value="" disabled th:selected="${perfilDTO.ciudad == null}">Selecciona una ciudad</option>
+                      <option th:each="ciudad : ${ciudades}"
+                              th:value="${ciudad}"
+                              th:text="${ciudad}"
+                              th:selected="${ciudad == perfilDTO.ciudad}">
+                      </option>
+                    </select>
+                    <div class="error-message" id="error-ciudad"></div>
+                  </div>
+
+                </div>
+
+                <div class="row mt-3">
+                  <div class="col-md-12 mt-1">
+                    <label class="labels" for="telefono1">Número teléfono</label>
+                    <input type="tel" id="telefono1" class="form-control" th:field="*{telefono1}" required
+                           pattern="^((\+?\d{1,4}[\s\-]?)?(\d{9}))$" />
+                    <div class="error-message" id="error-telefono1"></div>
+                  </div>
+                  <div class="col-md-12 mt-1">
+                    <label class="labels" for="telefono2">Número teléfono 2</label>
+                    <input type="tel" id="telefono2" class="form-control" th:field="*{telefono2}"
+                           pattern="^((\+?\d{1,4}[\s\-]?)?(\d{9}))?$" />
+                    <div class="error-message" id="error-telefono2"></div>
+                  </div>
+                  <div class="col-md-12 mt-1">
+                    <label class="labels" for="telefono3">Número teléfono 3</label>
+                    <input type="tel" id="telefono3" class="form-control" th:field="*{telefono3}"
+                           pattern="^((\+?\d{1,4}[\s\-]?)?(\d{9}))?$" />
+                    <div class="error-message" id="error-telefono3"></div>
+                  </div>
+                  <div class="col-md-12 mt-1">
+                    <label class="labels" for="direccion">Dirección 1</label>
+                    <input type="text" id="direccion" class="form-control" th:field="*{direccion}" required />
+                    <div class="error-message" id="error-direccion"></div>
+                  </div>
+                  <div class="col-md-12 mt-1">
+                    <label class="labels" for="cp">Código Postal</label>
+                    <input type="text" id="cp" class="form-control" th:field="*{cp}" required pattern="^\d{4,6}$" />
+                    <div class="error-message" id="error-cp"></div>
+                  </div>
+                  <div class="col-md-12 mt-1">
+                    <label class="labels" for="dni">DNI</label>
+                    <input type="text" id="dni" class="form-control" th:field="*{dni}" required pattern="^\d{8}[A-Za-z]$" />
+                    <div class="error-message" id="error-dni"></div>
+                  </div>
+                  <div class="col-md-12 mt-1">
+                    <label class="labels" for="edad">Edad</label>
+                    <input type="number" id="edad" class="form-control" th:field="*{edad}" required min="17" max="119" />
+                    <div class="error-message" id="error-edad"></div>
+                  </div>
+                </div>
+
+                <!-- Guardar -->
+                <div class="mt-5 text-center">
+                  <button th:if="${perfilDTO.getNombre() == null}" class="btn btn-primary profile-button" type="submit">Crear Perfil</button>
+                  <button th:unless="${perfilDTO.getNombre() == null}" class="btn btn-primary profile-button" type="submit">Guardar Cambios</button>
+                </div>
               </div>
-              <div class="row mt-2">
-                <div class="col-md-6"><label class="labels">Nombre</label><input type="text" class="form-control" placeholder="first name" value=""></div>
-                <div class="col-md-6"><label class="labels">Apellidos</label><input type="text" class="form-control" value="" placeholder="surname"></div>
-              </div>
-              <div class="row mt-3">
-                <div class="col-md-12 mt-1"><label class="labels">Numero teléfono</label><input type="text" class="form-control" placeholder="enter phone number" value=""></div>
-                <div class="col-md-12 mt-1"><label class="labels">Dirección 1</label><input type="text" class="form-control" placeholder="enter address line 1" value=""></div>
-                <div class="col-md-12 mt-1"><label class="labels">Dirección 2</label><input type="text" class="form-control" placeholder="enter address line 2" value=""></div>
-                <div class="col-md-12 mt-1"><label class="labels">Código Postal</label><input type="text" class="form-control" placeholder="enter address line 2" value=""></div>
-                <div class="col-md-12 mt-1"><label class="labels">Estado</label><input type="text" class="form-control" placeholder="enter aestado" value=""></div>
-                <div class="col-md-12 mt-1"><label class="labels">DNI</label><input type="text" class="form-control" placeholder="enter DNI" value=""></div>
-                <div class="col-md-12 mt-1"><label class="labels">Email</label><input type="text" class="form-control" placeholder="enter email id" value=""></div>
-                <div class="col-md-12 mt-1"><label class="labels">Education</label><input type="text" class="form-control" placeholder="education" value=""></div>
-              </div>
-              <div class="row mt-3">
-                <div class="col-md-6"><label class="labels">Country</label><input type="text" class="form-control" placeholder="country" value=""></div>
-                <div class="col-md-6"><label class="labels">State/Region</label><input type="text" class="form-control" value="" placeholder="state"></div>
-              </div>
-              <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Guardar Cambios</button></div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="p-3 py-5">
-              <div class="d-flex justify-content-between align-items-center experience"><span>Métodos de Pago</span><span class="border px-3 p-1 add-experience"><i class="fa fa-plus"></i>&nbsp;Nuevo método de pago</span></div><br>
-              <div class="col-md-12"><label class="labels">Nombre Tarjeta</label><input type="text" class="form-control" placeholder="nombre" value=""></div> <br>
-              <div class="col-md-12"><label class="labels">Número Tarjeta</label><input type="text" class="form-control" placeholder="numero" value=""></div>
-            </div>
+            </form>
+
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<section layout:fragment="pageScripts">
+  <script th:inline="javascript">
+    document.addEventListener("DOMContentLoaded", function() {
+      const paisSelect = document.getElementById("pais");
+      const ciudadSelect = document.getElementById("ciudad");
+
+      function cargarCiudades(paisSeleccionado) {
+        if (!paisSeleccionado) {
+          ciudadSelect.innerHTML = '<option value="" disabled selected>Selecciona una ciudad</option>';
+          return;
+        }
+
+        fetch('/api/ciudades?pais=' + encodeURIComponent(paisSeleccionado))
+                .then(response => response.text())
+                .then(xmlString => {
+                  const parser = new DOMParser();
+                  const xmlDoc = parser.parseFromString(xmlString, "application/xml");
+                  const ciudades = xmlDoc.getElementsByTagName("ciudad");
+
+                  ciudadSelect.innerHTML = '';
+
+                  const defaultOption = document.createElement("option");
+                  defaultOption.value = '';
+                  defaultOption.textContent = 'Selecciona una ciudad';
+                  defaultOption.disabled = true;
+                  defaultOption.selected = true;
+                  ciudadSelect.appendChild(defaultOption);
+
+                  for (let i = 0; i < ciudades.length; i++) {
+                    const nombreCiudad = ciudades[i].textContent.trim();
+
+                    const option = document.createElement("option");
+                    option.value = nombreCiudad;
+                    option.textContent = nombreCiudad;
+
+                    ciudadSelect.appendChild(option);
+                  }
+                })
+                .catch(error => {
+                  console.error('Error cargando ciudades:', error);
+                  ciudadSelect.innerHTML = '<option value="" disabled selected>Error cargando ciudades</option>';
+                });
+      }
+
+      paisSelect.addEventListener('change', function() {
+        cargarCiudades(this.value);
+      });
+    });
+  </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const form = document.getElementById("perfilForm");
+
+      function mostrarError(element, mensaje) {
+        const errorDiv = document.getElementById('error-' + element.id);
+        errorDiv.textContent = mensaje;
+        element.classList.add('is-invalid');
+      }
+
+      function limpiarErrores() {
+        const errores = document.querySelectorAll('.error-message');
+        errores.forEach(e => e.textContent = '');
+        const inputs = form.querySelectorAll('.is-invalid');
+        inputs.forEach(i => i.classList.remove('is-invalid'));
+      }
+
+      form.addEventListener("submit", function(e) {
+        e.preventDefault();
+        limpiarErrores();
+
+        let valido = true;
+
+        // Nombre (obligatorio, solo letras)
+        const nombre = form.querySelector('#nombre');
+        if (!nombre.value.trim()) {
+          mostrarError(nombre, 'El nombre es obligatorio');
+          valido = false;
+        } else if (!/^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/.test(nombre.value.trim())) {
+          mostrarError(nombre, 'El nombre solo puede contener letras y espacios');
+          valido = false;
+        }
+
+        // Apellidos (igual que nombre)
+        const apellidos = form.querySelector('#apellidos');
+        if (!apellidos.value.trim()) {
+          mostrarError(apellidos, 'Los apellidos son obligatorios');
+          valido = false;
+        } else if (!/^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/.test(apellidos.value.trim())) {
+          mostrarError(apellidos, 'Los apellidos solo pueden contener letras y espacios');
+          valido = false;
+        }
+
+        // País (obligatorio)
+        const pais = form.querySelector('#pais');
+        if (!pais.value) {
+          mostrarError(pais, 'Debes seleccionar un país');
+          valido = false;
+        }
+
+        // Ciudad (obligatorio)
+        const ciudad = form.querySelector('#ciudad');
+        if (!ciudad.value) {
+          mostrarError(ciudad, 'Debes seleccionar una ciudad');
+          valido = false;
+        }
+
+        // Telefono 1 (obligatorio, formato español)
+        const telefono1 = form.querySelector('#telefono1');
+        if (!telefono1.value.trim()) {
+          mostrarError(telefono1, 'El teléfono es obligatorio');
+          valido = false;
+        } else if (!/^(\+?\d{1,4}[\s\-]?)?\d{9}$/.test(telefono1.value.trim())) {
+          mostrarError(telefono1, 'Número de teléfono nó válido, debe seguir el formato 123456789 o +34 123456789');
+          valido = false;
+        }
+
+        // Telefono 2 y 3 (opcionales, si hay valor validar formato)
+        const telefono2 = form.querySelector('#telefono2');
+        if (telefono2.value.trim() && !/^(\+?\d{1,4}[\s\-]?)?\d{9}$/.test(telefono2.value.trim())) {
+          mostrarError(telefono2, 'Número de teléfono nó válido, debe seguir el formato 123456789 o +34 123456789');
+          valido = false;
+        }
+        const telefono3 = form.querySelector('#telefono3');
+        if (telefono3.value.trim() && !/^(\+?\d{1,4}[\s\-]?)?\d{9}$/.test(telefono3.value.trim())) {
+          mostrarError(telefono3, 'Número de teléfono nó válido, debe seguir el formato 123456789 o +34 123456789');
+          valido = false;
+        }
+
+        // Dirección (obligatoria)
+        const direccion = form.querySelector('#direccion');
+        if (!direccion.value.trim()) {
+          mostrarError(direccion, 'La dirección es obligatoria');
+          valido = false;
+        }
+
+        // Código Postal (obligatorio, solo números)
+        const cp = form.querySelector('#cp');
+        if (!cp.value.trim()) {
+          mostrarError(cp, 'El código postal es obligatorio');
+          valido = false;
+        } else if (!/^\d+$/.test(cp.value.trim())) {
+          mostrarError(cp, 'El código postal solo debe contener números');
+          valido = false;
+        }
+
+        // DNI (obligatorio, formato español 8 números + letra mayúscula)
+        const dni = form.querySelector('#dni');
+        if (!dni.value.trim()) {
+          mostrarError(dni, 'El DNI es obligatorio');
+          valido = false;
+        } else if (!/^\d{8}[A-Z]$/.test(dni.value.trim().toUpperCase())) {
+          mostrarError(dni, 'El DNI debe tener 8 números y una letra mayúscula, ej: 12345678A');
+          valido = false;
+        }
+
+        // Edad (obligatoria, entre 16 y 120)
+        const edad = form.querySelector('#edad');
+        const edadVal = Number(edad.value);
+        if (!edad.value.trim()) {
+          mostrarError(edad, 'La edad es obligatoria');
+          valido = false;
+        } else if (isNaN(edadVal) || edadVal < 16 || edadVal > 120) {
+          mostrarError(edad, 'La edad debe estar entre 16 y 120 años');
+          valido = false;
+        }
+
+        if (valido) {
+          form.submit();
+        }
+      });
+    });
+  </script>
+</section>
+
 </body>
 </html>

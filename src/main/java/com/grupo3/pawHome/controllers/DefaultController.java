@@ -131,12 +131,6 @@ public class DefaultController {
         return "horariomapa";
     }
 
-    @GetMapping("/perfil/editar")
-    public String mostrarPerfilEditar()
-    {
-        return "perfilUsuarioEditar";
-    }
-
     @GetMapping("/perfil/puntos")
     public String mostrarPerfilPuntos()
     { return "perfilUsuarioPuntos"; }
@@ -181,6 +175,12 @@ public class DefaultController {
         return "Dona";
     }
 
+    @GetMapping("/colabora/dona/donarBizum")
+    public String mostrarColaboraDonaDonarBizum()
+    {
+        return "donarBizum";
+    }
+
     @GetMapping("/colabora/apadrina")
     public String mostrarColaboraApadrina()
     {
@@ -208,23 +208,21 @@ public class DefaultController {
     {return "formularioPS";}
 
     // Metodo para mostrar la página de Finales Felices
+
     @GetMapping("/finalfeliz")
     public String mostrarFinalesFelices()
-    {
-        return "FinalFeliz";
-    }
+    {return "FinalFeliz";}
+
+
+    //Metodo para mostrar registro
 
     @GetMapping("/registro")
     public String mostrarRegistro()
-    {
-        return "registro";
-    }
+    {return "registro";}
 
     @GetMapping("/loginPawHome")
     public String mostrarLogin()
-    {
-        return "login";
-    }
+    {return "login";}
 
     @GetMapping("/admin/usuarios")
     public String mostrarAdminUsuarios() {return "adminUsuarios"; }
@@ -272,3 +270,7 @@ public class DefaultController {
     }
 
 }
+
+
+
+

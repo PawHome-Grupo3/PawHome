@@ -3,48 +3,65 @@
       layout:decorate="~{layouts/layout.html}">
 
 <head>
+    <meta charset="UTF-8" />
     <link rel="stylesheet" th:href="@{/css/Dona.css}">
-    <title>Dona</title>
+    <title th:text="#{dona.titulo}">Dona</title>
 </head>
-<br>
-<body>
-<section layout:fragment="content">
-    <div class="overlay">
-        <div class="contenido-principal">
-            <h1><b>¿Cómo puedes donar?</b></h1>
+
+<body class="dona-body">
+<section layout:fragment="content" class="dona-content">
+    <div class="dona-overlay">
+
+        <!-- Título principal -->
+        <div class="dona-header">
+            <h1><b th:text="#{dona.comoDonar}">¿Cómo puedes donar?</b></h1>
         </div>
-        <div class="columnas">
-            <div class="columna">
-                <p>Recursos monetarios</p>
+
+        <!-- Sección de iconos -->
+        <div class="dona-columnas">
+            <!-- Columna recursos monetarios -->
+            <div class="dona-columna">
+                <p th:text="#{dona.recursos.monetarios}">Recursos monetarios</p>
 
                 <!-- PayPal -->
-                <a href="https://www.paypal.com/donate/?hosted_button_id=REEMPLAZA_AQUI" target="_blank" title="Donar con PayPal (mínimo 3€)">
-                    <div class="donacion-icono">
+                <a href="https://www.paypal.com/donate/?hosted_button_id=REEMPLAZA_AQUI"
+                   target="_blank"
+                   th:title="#{dona.paypal.titulo}">
+                    <div class="dona-icono">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal" />
                     </div>
                 </a>
 
                 <!-- Bizum -->
-                <a href="/donar-por-bizum" title="Instrucciones para donar con Bizum (mínimo 3€)">
-                    <div class="donacion-icono">
+                <a th:href="@{/colabora/dona/donarBizum}" th:title="#{dona.bizum.titulo}">
+                    <div class="dona-icono">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/2/2b/Bizum.svg" alt="Bizum" />
                     </div>
                 </a>
             </div>
 
-            <div class="columna">
-                <p>Recursos materiales</p>
+            <!-- Columna recursos materiales -->
+            <div class="dona-columna">
+                <p th:text="#{dona.recursos.materiales}">Recursos materiales</p>
 
                 <!-- Correos -->
-                <a href="/donaciones-materiales" title="Ver cómo donar materiales por Correos">
-                    <div class="donacion-icono">
+                <a href="/donaciones-materiales" th:title="#{dona.correos.titulo}">
+                    <div class="dona-icono">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/9/9c/Logo_Correos_2019.svg" alt="Correos" />
                     </div>
                 </a>
             </div>
-
-            <h3><b>“Gracias a tu apoyo, podemos seguir cuidando y protegiendo a los animales que más lo necesitan. Tu ayuda marca la diferencia”</b></h3>
         </div>
+
+        <!-- Mensaje de agradecimiento -->
+        <h3 class="dona-gracias">
+            <b th:text="#{dona.gracias}">
+                Gracias a tu apoyo, podemos seguir cuidando y protegiendo a los animales que más lo necesitan.
+                br>
+                ¡Tu ayuda marca la diferencia!
+            </b>
+        </h3>
+
     </div>
 </section>
 </body>

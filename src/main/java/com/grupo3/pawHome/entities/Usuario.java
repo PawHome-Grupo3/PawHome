@@ -10,6 +10,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Collection;
 import java.util.List;
 
@@ -19,7 +21,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class Usuario implements UserDetails {
+public class Usuario implements UserDetails, Serializable {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int id;
@@ -36,8 +38,7 @@ public class Usuario implements UserDetails {
     @Column(nullable = false, name = "fecha_registro")
     private LocalDate fechaRegistro;
 
-    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
-    @PrimaryKeyJoinColumn
+    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
     private PerfilDatos perfilDatos;
 
     @Override
@@ -49,6 +50,8 @@ public class Usuario implements UserDetails {
     public String getUsername() {
         return nickname;
     }
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<MetodoPago> metodosPago = new ArrayList<>();
 
     @Override
     public String getPassword() {
@@ -78,4 +81,5 @@ public class Usuario implements UserDetails {
         //return UserDetails.super.isEnabled();
         return true;
     }
+
 }

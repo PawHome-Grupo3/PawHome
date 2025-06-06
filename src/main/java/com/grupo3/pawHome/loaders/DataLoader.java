@@ -25,10 +25,13 @@ public class DataLoader implements CommandLineRunner {
     private final TallaRepository tallaRepository;
     private final CategoriaRepository categoriaRepository;
     private final TarifaRepository tarifaRepository;
+    private final PerfilDatosRepository perfilDatosRespository;
     private final PasswordEncoder passwordEncoder;
+    private final MetodoPagoRepository metodoPagoRepository;
 
 
-    public DataLoader(AnimalRepository animalRepository, ApadrinarRepository apadrinarRepository, UsuarioRepository usuarioRepository, FacturaRepository facturaRepository, ProductoRepository productoRepository, TallaRepository tallaRepository, CategoriaRepository categoriaRepository, TarifaRepository tarifaRepository, PasswordEncoder passwordEncoder) {
+    public DataLoader(AnimalRepository animalRepository, ApadrinarRepository apadrinarRepository, UsuarioRepository usuarioRepository, FacturaRepository facturaRepository, ProductoRepository productoRepository, TallaRepository tallaRepository, CategoriaRepository categoriaRepository, TarifaRepository tarifaRepository, PerfilDatosRespository perfilDatosRespository, PasswordEncoder passwordEncoder, MetodoPagoRepository metodoPagoRepository) {
+
         this.animalRepository = animalRepository;
         this.apadrinarRepository = apadrinarRepository;
         this.usuarioRepository = usuarioRepository;
@@ -37,22 +40,24 @@ public class DataLoader implements CommandLineRunner {
         this.tallaRepository = tallaRepository;
         this.categoriaRepository = categoriaRepository;
         this.tarifaRepository = tarifaRepository;
+        this.perfilDatosRespository = perfilDatosRepository;
         this.passwordEncoder = passwordEncoder;
+        this.metodoPagoRepository = metodoPagoRepository;
     }
 
     @Override
     public void run(String... args) {
         // Crear Usuarios
         Usuario u1 = new Usuario();
-        u1.setNickname("Juan123");
-        u1.setPassword("1234");
+        u1.setNickname("Juan1234");
+        u1.setPassword(passwordEncoder.encode("123"));
         u1.setEmail("a@gmail.com");
         u1.setFechaRegistro(LocalDate.now());
         usuarioRepository.save(u1);
 
         Usuario u2 = new Usuario();
         u2.setNickname("Maria456");
-        u2.setPassword("abcd");
+        u2.setPassword(passwordEncoder.encode("123"));
         u2.setEmail("maria@gmail.com");
         u2.setFechaRegistro(LocalDate.now());
         usuarioRepository.save(u2);
@@ -167,7 +172,7 @@ public class DataLoader implements CommandLineRunner {
         // Crear Usuario
         Usuario usuario = new Usuario();
         usuario.setNickname("juan123");
-        usuario.setPassword(passwordEncoder.encode("password")) ;
+        usuario.setPassword(passwordEncoder.encode("1234"));
         usuario.setEmail("juan@example.com");
         usuario.setFechaRegistro(LocalDate.now());
 
@@ -178,12 +183,12 @@ public class DataLoader implements CommandLineRunner {
         perfil.setEdad(30);
         perfil.setDni("12345678A");
         perfil.setDireccion("Calle Mayor 123");
+        perfil.setPais("España");
         perfil.setCiudad("Madrid");
         perfil.setCp("28001");
         perfil.setTelefono1("600123456");
         perfil.setTelefono2("601234567");
         perfil.setTelefono3(null); // opcional
-        perfil.setPuntosAcumulados(0);
 
         // Establecer relación bidireccional
         perfil.setUsuario(usuario);
@@ -413,5 +418,9 @@ public class DataLoader implements CommandLineRunner {
         ap4.setAnimal(a4);
         ap4.setUsuario(u2);
         apadrinarRepository.save(ap4);
+
+//        MetodoPago mp1 = new MetodoPago();
+//        mp1.setNumero("12345678");
+//        metodoPagoRepository.save(mp1);
     }
 }
