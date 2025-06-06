@@ -232,10 +232,6 @@ public class DefaultController {
     @GetMapping("/admin/servicios")
     public String mostrarAdminServicios() {return "adminServicios"; }
 
-    @GetMapping("/admin/tarifas")
-    public String mostrarAdminTarifas() {return "adminTarifas"; }
-
-
     /**
      * Gestiona las solicitudes GET para obtener y mostrar la lista de entidades protegidas.
      * Añade las entidades obtenidas del repositorio al modelo para renderizarlas en la vista correspondiente.
