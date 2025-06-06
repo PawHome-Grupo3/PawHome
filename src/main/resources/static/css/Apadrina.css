@@ -60,9 +60,10 @@ ol {
     color: #000000;
     position: relative;
     z-index: 1;
-    width: 90%;
+    width: 98%;
     line-height: 1.8;
-    padding-left: 10px;
+    padding-left: 30px;
+    max-width: 1050px;
 }
 
 a {

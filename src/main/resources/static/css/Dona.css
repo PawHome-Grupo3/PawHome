@@ -1,15 +1,23 @@
-.dona-body {
-    margin-top: 0 !important;
+body {
+    margin: 0;
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
     font-family: sans-serif;
     position: relative;
-    padding: 40px 20px;
-    background: url('../images/Dona.jpg');
+    background: url('../images/Dona.jpg') no-repeat center center fixed;
     background-size: cover;
     z-index: 0;
-    background-color: rgba(27, 125, 85, 0.58);
+}
+
+.dona-overlay {
+    background-color: rgba(27, 125, 85, 0.45);
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 80px;
+    box-sizing: border-box;
 }
 
 .dona-content {
@@ -27,11 +35,13 @@
     flex-wrap: wrap;
     gap: 40px;
     margin-bottom: 30px;
+    font-size: 1.2em;
 }
 
 .dona-columna {
     flex: 1;
     min-width: 250px;
+    font-size: 1.2em;
 }
 
 .dona-columna p {
@@ -42,8 +52,8 @@
 }
 
 .dona-icono {
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     margin: 0 auto 15px auto;
     background-color: rgba(187, 224, 155, 0.61);
     border-radius: 50%;
@@ -78,15 +88,50 @@
 }
 
 .dona-header h1 {
-    color: black;
+    color: #000000;
+    font-size: 2.5em;
+    margin-bottom: 40px;
 }
 
 .dona-gracias {
     color: #000000;
-    text-align: center;
+    font-size: 1.6em;
+    max-width: 1000px;
+    margin-top: 30px;
 }
 
 .dona-content p {
     color: #000000;
     text-align: center;
+}
+-------------------------------------------------------------------------
+
+.dona-bizum-codigo {
+    font-size: 2.5rem;
+    color: #ffffff;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.8);
+    margin: 20px 0;
+    font-weight: bold;
+}
+
+.dona-cuadro-transparente {
+    background-color: rgba(187, 224, 155, 0.35);
+    border-radius: 15px;
+    padding: 40px 60px;
+    max-width: 800px;
+    width: 90%;
+    text-align: center;
+    margin: 0 auto;
+    color: #000;
+}
+
+.dona-textobizum {
+    font-size: 1.5rem;
+    color: #000000;
+    margin: 20px 0;
+}
+
+.dona-icono img {
+    width: 80%;
+    height: auto;
 }

@@ -7,15 +7,22 @@
     <link rel="stylesheet" th:href="@{/css/Dona.css}">
     <title th:text="#{dona.titulo}">Dona</title>
 </head>
+
 <body class="dona-body">
 <section layout:fragment="content" class="dona-content">
     <div class="dona-overlay">
+
+        <!-- Título principal -->
         <div class="dona-header">
             <h1><b th:text="#{dona.comoDonar}">¿Cómo puedes donar?</b></h1>
         </div>
+
+        <!-- Sección de iconos -->
         <div class="dona-columnas">
+            <!-- Columna recursos monetarios -->
             <div class="dona-columna">
                 <p th:text="#{dona.recursos.monetarios}">Recursos monetarios</p>
+
                 <!-- PayPal -->
                 <a href="https://www.paypal.com/donate/?hosted_button_id=REEMPLAZA_AQUI"
                    target="_blank"
@@ -24,6 +31,7 @@
                         <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal" />
                     </div>
                 </a>
+
                 <!-- Bizum -->
                 <a th:href="@{/colabora/dona/donarBizum}" th:title="#{dona.bizum.titulo}">
                     <div class="dona-icono">
@@ -31,8 +39,11 @@
                     </div>
                 </a>
             </div>
+
+            <!-- Columna recursos materiales -->
             <div class="dona-columna">
                 <p th:text="#{dona.recursos.materiales}">Recursos materiales</p>
+
                 <!-- Correos -->
                 <a href="/donaciones-materiales" th:title="#{dona.correos.titulo}">
                     <div class="dona-icono">
@@ -40,12 +51,17 @@
                     </div>
                 </a>
             </div>
-            <h3 class="dona-gracias">
-                <b th:text="#{dona.gracias}">
-                    “Gracias a tu apoyo, podemos seguir cuidando y protegiendo a los animales que más lo necesitan. Tu ayuda marca la diferencia”
-                </b>
-            </h3>
         </div>
+
+        <!-- Mensaje de agradecimiento -->
+        <h3 class="dona-gracias">
+            <b th:text="#{dona.gracias}">
+                Gracias a tu apoyo, podemos seguir cuidando y protegiendo a los animales que más lo necesitan.
+                br>
+                ¡Tu ayuda marca la diferencia!
+            </b>
+        </h3>
+
     </div>
 </section>
 </body>
