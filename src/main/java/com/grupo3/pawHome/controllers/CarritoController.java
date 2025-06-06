@@ -1,13 +1,18 @@
 package com.grupo3.pawHome.controllers;
 
+import com.grupo3.pawHome.dtos.ProductRequest;
+import com.grupo3.pawHome.dtos.StripeResponse;
 import com.grupo3.pawHome.entities.Producto;
 import com.grupo3.pawHome.entities.Talla;
 import com.grupo3.pawHome.entities.Tarifa;
 import com.grupo3.pawHome.dtos.ItemCarritoDTO;
 import com.grupo3.pawHome.services.ProductoService;
+import com.grupo3.pawHome.services.StripeService;
 import com.grupo3.pawHome.services.TallaService;
 import com.grupo3.pawHome.services.TarifaService;
 import jakarta.servlet.http.HttpSession;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,11 +31,13 @@ public class CarritoController {
     private final ProductoService productoService;
     private final TarifaService tarifaService;
     private final TallaService tallaService;
+    private final StripeService stripeService;
 
-    public CarritoController(ProductoService productoService, TarifaService tarifaService, TallaService tallaService) {
+    public CarritoController(ProductoService productoService, TarifaService tarifaService, TallaService tallaService, StripeService stripeService) {
         this.productoService = productoService;
         this.tarifaService = tarifaService;
         this.tallaService = tallaService;
+        this.stripeService = stripeService;
     }
 
     @GetMapping("/tienda/carrito")
@@ -135,6 +142,25 @@ public class CarritoController {
             return nuevoCarrito;
         }
         return (List<ItemCarritoDTO>) carrito;
+    }
+
+    @PostMapping("/tienda/carrito/checkout")
+    public ResponseEntity<StripeResponse> checkoutDesdeCarrito(HttpSession session) {
+        List<ItemCarritoDTO> carrito = getCarrito(session);
+
+        if (carrito.isEmpty()) {
+            return ResponseEntity.badRequest().body(
+                    StripeResponse.builder()
+                            .status("FAILED")
+                            .message("El carrito está vacío.")
+                            .build()
+            );
+        }
+
+        List<ProductRequest> productRequests = stripeService.convertirCarritoAProductRequests(carrito);
+        StripeResponse stripeResponse = stripeService.checkoutProducts(productRequests);
+
+        return ResponseEntity.status(HttpStatus.OK).body(stripeResponse);
     }
 }
 

@@ -1,5 +1,6 @@
 package com.grupo3.pawHome.services;
 
+import com.grupo3.pawHome.dtos.ItemCarritoDTO;
 import com.grupo3.pawHome.dtos.ProductRequest;
 import com.grupo3.pawHome.dtos.StripeResponse;
 import com.stripe.Stripe;
@@ -63,6 +64,17 @@ public class StripeService {
                     .message("Stripe error: " + e.getMessage())
                     .build();
         }
+    }
+
+    public List<ProductRequest> convertirCarritoAProductRequests(List<ItemCarritoDTO> carrito) {
+        return carrito.stream()
+                .map(item -> new ProductRequest(
+                        (long) (item.getPrecioUnitario() * 100), // Stripe trabaja con centavos
+                        (long) item.getCantidad(),
+                        item.getProducto().getNombre(),
+                        "usd" // Puedes usar item.getProducto().getMoneda() si tienes eso
+                ))
+                .toList();
     }
 
 }
