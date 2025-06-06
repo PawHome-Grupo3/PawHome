@@ -25,12 +25,12 @@ public class DataLoader implements CommandLineRunner {
     private final TallaRepository tallaRepository;
     private final CategoriaRepository categoriaRepository;
     private final TarifaRepository tarifaRepository;
-    private final PerfilDatosRepository perfilDatosRespository;
+    private final PerfilDatosRepository perfilDatosRepository;
     private final PasswordEncoder passwordEncoder;
     private final MetodoPagoRepository metodoPagoRepository;
 
 
-    public DataLoader(AnimalRepository animalRepository, ApadrinarRepository apadrinarRepository, UsuarioRepository usuarioRepository, FacturaRepository facturaRepository, ProductoRepository productoRepository, TallaRepository tallaRepository, CategoriaRepository categoriaRepository, TarifaRepository tarifaRepository, PerfilDatosRespository perfilDatosRespository, PasswordEncoder passwordEncoder, MetodoPagoRepository metodoPagoRepository) {
+    public DataLoader(AnimalRepository animalRepository, ApadrinarRepository apadrinarRepository, UsuarioRepository usuarioRepository, FacturaRepository facturaRepository, ProductoRepository productoRepository, TallaRepository tallaRepository, CategoriaRepository categoriaRepository, TarifaRepository tarifaRepository, PerfilDatosRepository perfilDatosRepository, PasswordEncoder passwordEncoder, MetodoPagoRepository metodoPagoRepository) {
 
         this.animalRepository = animalRepository;
         this.apadrinarRepository = apadrinarRepository;
@@ -40,7 +40,7 @@ public class DataLoader implements CommandLineRunner {
         this.tallaRepository = tallaRepository;
         this.categoriaRepository = categoriaRepository;
         this.tarifaRepository = tarifaRepository;
-        this.perfilDatosRespository = perfilDatosRepository;
+        this.perfilDatosRepository = perfilDatosRepository;
         this.passwordEncoder = passwordEncoder;
         this.metodoPagoRepository = metodoPagoRepository;
     }
