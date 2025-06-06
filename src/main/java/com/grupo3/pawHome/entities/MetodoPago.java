@@ -12,7 +12,7 @@ public class MetodoPago {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
     private String numero;
 
     @ManyToOne

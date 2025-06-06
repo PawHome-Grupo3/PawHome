@@ -23,7 +23,7 @@ public class StripeService {
 
         SessionCreateParams.Builder paramsBuilder = SessionCreateParams.builder()
                 .setMode(SessionCreateParams.Mode.PAYMENT)
-                .setSuccessUrl("http://localhost:8080/success")
+                .setSuccessUrl("http://localhost:8080/success?session_id={CHECKOUT_SESSION_ID}")
                 .setCancelUrl("http://localhost:8080/cancel");
 
         for (ProductRequest productRequest : productRequests) {
@@ -69,10 +69,10 @@ public class StripeService {
     public List<ProductRequest> convertirCarritoAProductRequests(List<ItemCarritoDTO> carrito) {
         return carrito.stream()
                 .map(item -> new ProductRequest(
-                        (long) (item.getPrecioUnitario() * 100), // Stripe trabaja con centavos
+                        (long) (item.getPrecioUnitario() * 100),
                         (long) item.getCantidad(),
                         item.getProducto().getNombre(),
-                        "usd" // Puedes usar item.getProducto().getMoneda() si tienes eso
+                        "eur"
                 ))
                 .toList();
     }

@@ -2,17 +2,13 @@ package com.grupo3.pawHome.controllers;
 
 import com.grupo3.pawHome.dtos.ProductRequest;
 import com.grupo3.pawHome.dtos.StripeResponse;
-import com.grupo3.pawHome.entities.Producto;
-import com.grupo3.pawHome.entities.Talla;
-import com.grupo3.pawHome.entities.Tarifa;
+import com.grupo3.pawHome.entities.*;
 import com.grupo3.pawHome.dtos.ItemCarritoDTO;
-import com.grupo3.pawHome.services.ProductoService;
-import com.grupo3.pawHome.services.StripeService;
-import com.grupo3.pawHome.services.TallaService;
-import com.grupo3.pawHome.services.TarifaService;
+import com.grupo3.pawHome.services.*;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,12 +28,21 @@ public class CarritoController {
     private final TarifaService tarifaService;
     private final TallaService tallaService;
     private final StripeService stripeService;
+    private final PagoService pagoService;
+    private final UsuarioService usuarioService;
 
-    public CarritoController(ProductoService productoService, TarifaService tarifaService, TallaService tallaService, StripeService stripeService) {
+    public CarritoController(ProductoService productoService,
+                             TarifaService tarifaService,
+                             TallaService tallaService,
+                             StripeService stripeService,
+                             PagoService pagoService,
+                             UsuarioService usuarioService) {
         this.productoService = productoService;
         this.tarifaService = tarifaService;
         this.tallaService = tallaService;
         this.stripeService = stripeService;
+        this.pagoService = pagoService;
+        this.usuarioService = usuarioService;
     }
 
     @GetMapping("/tienda/carrito")
@@ -60,16 +65,17 @@ public class CarritoController {
                                    HttpSession session) {
         Optional<Producto> productoOpt = productoService.findById(productoId);
         Optional<Talla> tallaOpt = tallaService.findById(tallaId);
-        double precio = tarifaService.findTopByProductoIdOrderByFechaDesdeDesc(productoId)
-                .map(Tarifa::getPrecioUnitario).orElse(0.0);
+        Optional<Tarifa> tarifaOpt = tarifaService.findTopByProductoIdOrderByFechaDesdeDesc(productoId);
 
-        if (productoOpt.isPresent() && tallaOpt.isPresent()) {
+        if (productoOpt.isPresent() && tallaOpt.isPresent() && tarifaOpt.isPresent()) {
             Producto producto = productoOpt.get();
             Talla talla = tallaOpt.get();
+            Tarifa tarifa = tarifaOpt.get();
+
+            double precio = tarifa.getPrecioUnitario();
 
             List<ItemCarritoDTO> carrito = getCarrito(session);
 
-            // Verifica si ya existe ese producto+talla
             Optional<ItemCarritoDTO> existente = carrito.stream()
                     .filter(item -> item.getProducto().getId() == productoId &&
                             item.getTalla().getId() == tallaId)
@@ -78,7 +84,7 @@ public class CarritoController {
             if (existente.isPresent()) {
                 existente.get().setCantidad(existente.get().getCantidad() + cantidad);
             } else {
-                carrito.add(new ItemCarritoDTO(producto, talla, cantidad, precio));
+                carrito.add(new ItemCarritoDTO(producto, talla, cantidad, precio, tarifa));
             }
 
             session.setAttribute("carrito", carrito);
@@ -105,7 +111,6 @@ public class CarritoController {
                                      HttpSession session) {
         List<ItemCarritoDTO> carrito = getCarrito(session);
 
-        // Si cantidad es 0, se elimina del carrito
         if (cantidad <= 0) {
             carrito.removeIf(item -> item.getProducto().getId() == productoId && item.getTalla().getId() == tallaId);
         } else {
@@ -145,7 +150,19 @@ public class CarritoController {
     }
 
     @PostMapping("/tienda/carrito/checkout")
-    public ResponseEntity<StripeResponse> checkoutDesdeCarrito(HttpSession session) {
+    public ResponseEntity<StripeResponse> checkoutDesdeCarrito(
+            @AuthenticationPrincipal Usuario usuario,
+            HttpSession session
+    ) {
+        if (usuario == null) {
+            return ResponseEntity.badRequest().body(
+                    StripeResponse.builder()
+                            .status("FAILED")
+                            .message("Usuario no autenticado.")
+                            .build()
+            );
+        }
+
         List<ItemCarritoDTO> carrito = getCarrito(session);
 
         if (carrito.isEmpty()) {
@@ -156,6 +173,14 @@ public class CarritoController {
                             .build()
             );
         }
+
+        Pago pago = new Pago();
+        pago.setUsuario(usuario);
+        pago.setEstado(false);
+        pago.setAutorizacion("pendiente");
+
+        session.setAttribute("carritoCompra", carrito);
+        session.setAttribute("pagoId", pagoService.save(pago).getId());
 
         List<ProductRequest> productRequests = stripeService.convertirCarritoAProductRequests(carrito);
         StripeResponse stripeResponse = stripeService.checkoutProducts(productRequests);
