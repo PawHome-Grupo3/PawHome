@@ -220,15 +220,14 @@ public class DefaultController {
     public String mostrarRegistro()
     {return "registro";}
 
+    //Metodo para mostrar login
+
     @GetMapping("/loginPawHome")
     public String mostrarLogin()
     {return "login";}
 
     @GetMapping("/admin/usuarios")
     public String mostrarAdminUsuarios() {return "adminUsuarios"; }
-
-    @GetMapping("/admin/servicios")
-    public String mostrarAdminServicios() {return "adminServicios"; }
 
     /**
      * Gestiona las solicitudes GET para obtener y mostrar la lista de entidades protegidas.
