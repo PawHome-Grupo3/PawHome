@@ -14,8 +14,8 @@ import lombok.Setter;
 public class PerfilDatos {
 
     @Id
-    @Column(name = "usuario_id")
-    private int id;
+    @Column(name = "usuario_id", nullable = false)
+    private Integer usuarioId;
 
     @Column(nullable = false)
     private String nombre;
@@ -45,11 +45,8 @@ public class PerfilDatos {
 
     private String telefono3;
 
-    @Column(columnDefinition = "INT DEFAULT 0", name = "puntos_acumulados")
-    private int puntosAcumulados;
-
     @OneToOne
-    @MapsId
+    @MapsId  // Indica que usuarioId viene de usuario.id
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;
 }

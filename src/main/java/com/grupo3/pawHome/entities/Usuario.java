@@ -21,7 +21,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class Usuario implements UserDetails {
+public class Usuario implements UserDetails, Serializable {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int id;
@@ -38,8 +38,7 @@ public class Usuario implements UserDetails {
     @Column(nullable = false, name = "fecha_registro")
     private LocalDate fechaRegistro;
 
-    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
-    @PrimaryKeyJoinColumn
+    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
     private PerfilDatos perfilDatos;
 
     @Override
