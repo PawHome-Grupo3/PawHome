@@ -25,7 +25,6 @@ body {
     background: url('../images/Adoptar.jpg') no-repeat center center fixed;
     background-size: cover;
     z-index: -2;
-
 }
 
 .containerImagen::after {
@@ -41,8 +40,8 @@ body {
 .cuadro-transparente {
     background-color: rgba(187, 224, 155, 0.35);
     border-radius: 15px;
-    padding: 40px 60px;
-    max-width: 1000px;
+    padding: 60px 60px;
+    max-width: 1050px;
     width: 80%;
     text-align: left;
 }
@@ -60,14 +59,14 @@ ol {
     color: #000000;
     position: relative;
     z-index: 1;
-    width: 90%;
+    width: 97%;
     line-height: 1.8;
     padding-left: 10px;
 }
 
 a {
     color: rgb(0, 0, 0);
-    text-decoration: strong;
+
 }
 
 a:hover {
