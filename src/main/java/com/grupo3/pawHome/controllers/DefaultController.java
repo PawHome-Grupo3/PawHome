@@ -147,8 +147,6 @@ public class DefaultController {
         return "perfilUsuarioDonaciones";
     }
 
-
-
     // Metodo para mostrar la página de Reseñas
     @GetMapping("resenas")
     public String mostrarResenas()
@@ -225,6 +223,20 @@ public class DefaultController {
     public String mostrarLogin()
     {return "login";}
 
+    @GetMapping("/success")
+    public String success(){
+        return "success";
+    }
+
+    @GetMapping("/cancel")
+    public String cancel(){
+        return "cancel";
+    }
+
+    @GetMapping("/compra")
+    public String pruebaCompra(){
+        return "pruebaCompra";
+    }
 
     /**
      * Gestiona las solicitudes GET para obtener y mostrar la lista de entidades protegidas.

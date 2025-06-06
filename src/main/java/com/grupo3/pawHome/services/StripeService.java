@@ -1,0 +1,68 @@
+package com.grupo3.pawHome.services;
+
+import com.grupo3.pawHome.dtos.ProductRequest;
+import com.grupo3.pawHome.dtos.StripeResponse;
+import com.stripe.Stripe;
+import com.stripe.exception.StripeException;
+import com.stripe.model.checkout.Session;
+import com.stripe.param.checkout.SessionCreateParams;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class StripeService {
+
+    @Value("${stripe.secretKey}")
+    private String secretKey;
+
+    public StripeResponse checkoutProducts(List<ProductRequest> productRequests) {
+        Stripe.apiKey = secretKey;
+
+        SessionCreateParams.Builder paramsBuilder = SessionCreateParams.builder()
+                .setMode(SessionCreateParams.Mode.PAYMENT)
+                .setSuccessUrl("http://localhost:8080/success")
+                .setCancelUrl("http://localhost:8080/cancel");
+
+        for (ProductRequest productRequest : productRequests) {
+            SessionCreateParams.LineItem.PriceData.ProductData productData =
+                    SessionCreateParams.LineItem.PriceData.ProductData.builder()
+                            .setName(productRequest.getName())
+                            .build();
+
+            SessionCreateParams.LineItem.PriceData priceData =
+                    SessionCreateParams.LineItem.PriceData.builder()
+                            .setCurrency(productRequest.getCurrency() != null ? productRequest.getCurrency() : "USD")
+                            .setUnitAmount(productRequest.getAmount())
+                            .setProductData(productData)
+                            .build();
+
+            SessionCreateParams.LineItem lineItem =
+                    SessionCreateParams.LineItem.builder()
+                            .setQuantity(productRequest.getQuantity())
+                            .setPriceData(priceData)
+                            .build();
+
+            paramsBuilder.addLineItem(lineItem);
+        }
+
+        try {
+            Session session = Session.create(paramsBuilder.build());
+
+            return StripeResponse.builder()
+                    .status("SUCCESS")
+                    .message("Payment session created")
+                    .sessionId(session.getId())
+                    .sessionUrl(session.getUrl())
+                    .build();
+        } catch (StripeException e) {
+            e.printStackTrace();
+            return StripeResponse.builder()
+                    .status("FAILED")
+                    .message("Stripe error: " + e.getMessage())
+                    .build();
+        }
+    }
+
+}
