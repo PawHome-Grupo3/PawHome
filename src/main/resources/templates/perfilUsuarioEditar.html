@@ -115,7 +115,8 @@
 
                 <!-- Guardar -->
                 <div class="mt-5 text-center">
-                  <button class="btn btn-primary profile-button" type="submit">Guardar Cambios</button>
+                  <button th:if="${perfilDTO.getNombre() == null}" class="btn btn-primary profile-button" type="submit">Crear Perfil</button>
+                  <button th:unless="${perfilDTO.getNombre() == null}" class="btn btn-primary profile-button" type="submit">Guardar Cambios</button>
                 </div>
               </div>
             </form>
