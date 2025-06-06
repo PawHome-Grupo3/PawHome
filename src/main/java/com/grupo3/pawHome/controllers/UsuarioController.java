@@ -1,25 +1,27 @@
 package com.grupo3.pawHome.controllers;
 
+import com.grupo3.pawHome.dtos.CountryDTO;
 import com.grupo3.pawHome.dtos.PerfilDatosDTO;
 import com.grupo3.pawHome.entities.Apadrinar;
 import com.grupo3.pawHome.entities.PerfilDatos;
 import com.grupo3.pawHome.entities.Usuario;
-import com.grupo3.pawHome.repositories.UsuarioRepository;
 import com.grupo3.pawHome.services.ApadrinarService;
+import com.grupo3.pawHome.services.LocationService;
 import com.grupo3.pawHome.services.PerfilDatosService;
 import com.grupo3.pawHome.services.UsuarioService;
+import jakarta.validation.Valid;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -28,13 +30,14 @@ public class UsuarioController {
     private final UsuarioService usuarioService;
     private final ApadrinarService apadrinarService;
     private final PerfilDatosService perfilDatosService;
-    private final UsuarioRepository usuarioRepository;
+    private final LocationService locationService;
 
-    public UsuarioController(UsuarioService usuarioService, ApadrinarService apadrinarService, PerfilDatosService perfilDatosService, UsuarioRepository usuarioRepository) {
+
+    public UsuarioController(UsuarioService usuarioService, ApadrinarService apadrinarService, PerfilDatosService perfilDatosService, LocationService locationService) {
         this.usuarioService = usuarioService;
         this.apadrinarService = apadrinarService;
         this.perfilDatosService = perfilDatosService;
-        this.usuarioRepository = usuarioRepository;
+        this.locationService = locationService;
     }
 
     @GetMapping("/perfil/informacion")
@@ -44,12 +47,15 @@ public class UsuarioController {
     }
 
     @GetMapping("/perfil/editar")
-    public String mostrarFormulario(@AuthenticationPrincipal Usuario usuario, Model model) {
+    public String mostrarFormulario(@AuthenticationPrincipal Usuario usuario,
+                                    @RequestParam(value = "paisSeleccionado", required = false) String paisSeleccionado,
+                                    Model model) throws Exception {
 
         PerfilDatosDTO dto = new PerfilDatosDTO();
 
         if (usuario.getPerfilDatos() != null) {
             PerfilDatos perfil = usuario.getPerfilDatos();
+
             dto.setNombre(perfil.getNombre());
             dto.setApellidos(perfil.getApellidos());
             dto.setEdad(perfil.getEdad());
@@ -60,55 +66,83 @@ public class UsuarioController {
             dto.setTelefono1(perfil.getTelefono1());
             dto.setTelefono2(perfil.getTelefono2());
             dto.setTelefono3(perfil.getTelefono3());
-            model.addAttribute("perfilDTO", dto);
-        }
-        else{
-            model.addAttribute("perfilDTO", dto);
+            dto.setPais(perfil.getPais());
+
+            model.addAttribute("ciudadSeleccionada", dto.getCiudad());
+        } else {
+            System.out.println("No hay perfilDatos asociado al usuario");
         }
 
-        return "perfilUsuarioEditar"; // Nombre del HTML
+        model.addAttribute("perfilDTO", dto);
+
+        // Lista de países
+        List<CountryDTO> paises = locationService.getAllCountries();
+        model.addAttribute("paises", paises);
+        System.out.println("Cargados países: " + paises.size());
+
+        // Determinar el país base
+        String pais = (paisSeleccionado != null && !paisSeleccionado.isBlank())
+                ? paisSeleccionado
+                : dto.getPais();
+        model.addAttribute("paisSeleccionado", pais);
+
+        // Lista de ciudades para el país
+        if (pais != null && !pais.isBlank()) {
+            try {
+                List<String> ciudades = locationService.getCitiesForCountry(pais);
+                model.addAttribute("ciudades", ciudades);
+                System.out.println("País seleccionado: " + pais + " -> ciudades cargadas: " + ciudades.size());
+            } catch (Exception e) {
+                System.out.println("Error obteniendo ciudades para país: " + pais);
+                e.printStackTrace();
+                model.addAttribute("ciudades", Collections.emptyList());
+            }
+        } else {
+            System.out.println("No se seleccionó país, lista de ciudades vacía");
+            model.addAttribute("ciudades", Collections.emptyList());
+        }
+
+        System.out.println("======== FIN mostrarFormulario ========");
+        return "perfilUsuarioEditar";
     }
 
     @PostMapping("/perfil/guardar")
-    public String guardarPerfil(@AuthenticationPrincipal Usuario authUsuario, @ModelAttribute("perfilDTO") PerfilDatosDTO dto) {
+    public String guardarPerfil(@AuthenticationPrincipal Usuario authUsuario,
+                                @ModelAttribute("perfilDTO") PerfilDatosDTO dto) {
 
         Usuario usuario = usuarioService.findById(authUsuario.getId())
                 .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
 
+        PerfilDatos perfil = usuario.getPerfilDatos();
 
-        Optional<Usuario> userOpt = usuarioService.findById(usuario.getId());
-
-        PerfilDatos perfil = new PerfilDatos();
-
-        if (userOpt.isPresent()) {
-            Usuario managedUser = userOpt.get();
-            perfil = managedUser.getPerfilDatos();
-
-            if (perfil == null) {
-                perfil = new PerfilDatos();
-                perfil.setUsuario(managedUser); // importante
-            }
-
-            perfil.setNombre(dto.getNombre());
-            perfil.setApellidos(dto.getApellidos());
-            perfil.setEdad(dto.getEdad());
-            perfil.setDni(dto.getDni());
-            perfil.setDireccion(dto.getDireccion());
-            perfil.setCiudad(dto.getCiudad());
-            perfil.setCp(dto.getCp());
-            perfil.setTelefono1(dto.getTelefono1());
-            perfil.setTelefono2(dto.getTelefono2());
-            perfil.setTelefono3(dto.getTelefono3());
-            managedUser.setPerfilDatos(perfil);
-
-            usuarioRepository.save(managedUser);
-
-            Usuario usuarioActualizado = usuarioService.findById(authUsuario.getId())
-                    .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
-
-            Authentication newAuth = new UsernamePasswordAuthenticationToken(usuarioActualizado, usuarioActualizado.getPassword(), usuarioActualizado.getAuthorities());
-            SecurityContextHolder.getContext().setAuthentication(newAuth);
+        if (perfil == null) {
+            perfil = new PerfilDatos();
+            perfil.setUsuario(usuario);
         }
+
+        perfil.setNombre(dto.getNombre());
+        perfil.setApellidos(dto.getApellidos());
+        perfil.setEdad(dto.getEdad());
+        perfil.setDni(dto.getDni());
+        perfil.setDireccion(dto.getDireccion());
+        perfil.setPais(dto.getPais());
+        perfil.setCiudad(dto.getCiudad());
+        perfil.setCp(dto.getCp());
+        perfil.setTelefono1(dto.getTelefono1());
+        perfil.setTelefono2(dto.getTelefono2());
+        perfil.setTelefono3(dto.getTelefono3());
+
+        usuario.setPerfilDatos(perfil);
+
+        usuarioService.save(usuario);
+
+        PerfilDatos perfilGuardado = usuario.getPerfilDatos();
+
+        Usuario usuarioActualizado = usuarioService.findById(authUsuario.getId())
+                .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+
+        Authentication newAuth = new UsernamePasswordAuthenticationToken(usuarioActualizado, usuarioActualizado.getPassword(), usuarioActualizado.getAuthorities());
+        SecurityContextHolder.getContext().setAuthentication(newAuth);
 
         return "redirect:/perfil/editar";
     }
@@ -167,4 +201,5 @@ public class UsuarioController {
     public String login() {
         return "login";
     }
+
 }
