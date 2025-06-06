@@ -180,6 +180,7 @@ public class DataLoader implements CommandLineRunner {
         perfil.setEdad(30);
         perfil.setDni("12345678A");
         perfil.setDireccion("Calle Mayor 123");
+        perfil.setPais("España");
         perfil.setCiudad("Madrid");
         perfil.setCp("28001");
         perfil.setTelefono1("600123456");

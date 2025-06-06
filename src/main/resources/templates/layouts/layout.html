@@ -8,6 +8,26 @@
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
     <link rel="stylesheet" th:href="@{/css/header.css}"/>
     <link rel="stylesheet" th:href="@{/css/footer.css}"/>
+    <style>
+        .boton-sos {
+            position: fixed;
+            bottom: 30px;
+            right: 50px;
+            z-index: 900;
+            text-decoration: none;
+        }
+
+        .img-sos {
+            height: 300px;
+            width: 300px;
+            object-fit: contain;
+            transition: transform 2.0s ease;
+        }
+
+        .img-sos:hover {
+            transform: scale(1.5);
+        }
+    </style>
 </head>
 <body>
 <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
@@ -17,6 +37,7 @@
 
 <section layout:fragment="content"></section>
 
+
 <div th:replace="~{fragments/footer :: footerFragment}"></div>
 
 <!-- BOTÓN SOS -->
@@ -24,26 +45,6 @@
     <img src="/images/HueSOS.png" alt="Botón SOS" class="img-sos">
 </a>
 
-<style>
-    .boton-sos {
-        position: fixed;
-        bottom: 30px;
-        right: 50px;
-        z-index: 900;
-        text-decoration: none;
-    }
-
-    .img-sos {
-        height: 300px;
-        width: 300px;
-        object-fit: contain;
-        transition: transform 2.0s ease;
-    }
-
-    .img-sos:hover {
-        transform: scale(1.5);
-    }
-</style>
-
+<div layout:fragment="pageScripts"></div>
 </body>
 </html>
