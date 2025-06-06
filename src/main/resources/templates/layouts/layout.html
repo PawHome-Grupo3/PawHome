@@ -45,7 +45,57 @@
     <img src="/images/HueSOS.png" alt="Botón SOS" class="img-sos">
 </a>
 
-<div layout:fragment="pageScripts"></div>
+<style>
+    .boton-sos {
+        position: fixed;
+        bottom: 30px;
+        right: 50px;
+        z-index: 900;
+        text-decoration: none;
+    }
+
+    .img-sos {
+        height: 250px;
+        width: 250px;
+        object-fit: contain;
+        transition: transform 1.2s ease;
+    }
+
+    .img-sos:hover {
+        transform: scale(1.5);
+    }
+
+    @media (max-width: 768px) {
+        .img-sos {
+            height: 120px;
+            width: 120px;
+        }
+
+        .boton-sos {
+            right: 20px;
+            bottom: 20px;
+        }
+    }
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const sosButton = document.getElementById("sos-button");
+
+        // Verifica si es móvil
+        const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+        if (isMobile) {
+            // En móviles: llamada directa al 112
+            sosButton.href = "tel:112";
+        } else {
+            // En escritorio: redirige a la página informativa
+            sosButton.href = "https://www.google.com/search?q=112+emergencias";
+            sosButton.target = "_blank";
+        }
+    });
+</script>
+
   
 </body>
 </html>
