@@ -3,7 +3,7 @@ package com.grupo3.pawHome.controllers;
 import com.grupo3.pawHome.entities.Producto;
 import com.grupo3.pawHome.entities.Talla;
 import com.grupo3.pawHome.entities.Tarifa;
-import com.grupo3.pawHome.item.ItemCarrito;
+import com.grupo3.pawHome.dtos.ItemCarritoDTO;
 import com.grupo3.pawHome.services.ProductoService;
 import com.grupo3.pawHome.services.TallaService;
 import com.grupo3.pawHome.services.TarifaService;
@@ -35,7 +35,7 @@ public class CarritoController {
 
     @GetMapping("/tienda/carrito")
     public String verCarrito(HttpSession session, Model model) {
-        List<ItemCarrito> carrito = getCarrito(session);
+        List<ItemCarritoDTO> carrito = getCarrito(session);
         model.addAttribute("carrito", carrito);
 
         double total = carrito.stream()
@@ -60,10 +60,10 @@ public class CarritoController {
             Producto producto = productoOpt.get();
             Talla talla = tallaOpt.get();
 
-            List<ItemCarrito> carrito = getCarrito(session);
+            List<ItemCarritoDTO> carrito = getCarrito(session);
 
             // Verifica si ya existe ese producto+talla
-            Optional<ItemCarrito> existente = carrito.stream()
+            Optional<ItemCarritoDTO> existente = carrito.stream()
                     .filter(item -> item.getProducto().getId() == productoId &&
                             item.getTalla().getId() == tallaId)
                     .findFirst();
@@ -71,7 +71,7 @@ public class CarritoController {
             if (existente.isPresent()) {
                 existente.get().setCantidad(existente.get().getCantidad() + cantidad);
             } else {
-                carrito.add(new ItemCarrito(producto, talla, cantidad, precio));
+                carrito.add(new ItemCarritoDTO(producto, talla, cantidad, precio));
             }
 
             session.setAttribute("carrito", carrito);
@@ -84,7 +84,7 @@ public class CarritoController {
     public String eliminarDelCarrito(@RequestParam("productoId") int productoId,
                                      @RequestParam("tallaId") int tallaId,
                                      HttpSession session) {
-        List<ItemCarrito> carrito = getCarrito(session);
+        List<ItemCarritoDTO> carrito = getCarrito(session);
         carrito.removeIf(item -> item.getProducto().getId() == productoId &&
                 item.getTalla().getId() == tallaId);
         session.setAttribute("carrito", carrito);
@@ -96,13 +96,13 @@ public class CarritoController {
                                      @RequestParam("tallaId") int tallaId,
                                      @RequestParam("cantidad") int cantidad,
                                      HttpSession session) {
-        List<ItemCarrito> carrito = getCarrito(session);
+        List<ItemCarritoDTO> carrito = getCarrito(session);
 
         // Si cantidad es 0, se elimina del carrito
         if (cantidad <= 0) {
             carrito.removeIf(item -> item.getProducto().getId() == productoId && item.getTalla().getId() == tallaId);
         } else {
-            for (ItemCarrito item : carrito) {
+            for (ItemCarritoDTO item : carrito) {
                 if (item.getProducto().getId() == productoId && item.getTalla().getId() == tallaId) {
                     // Verifica stock si es necesario
                     if (cantidad <= item.getTalla().getStock()) {
@@ -127,14 +127,14 @@ public class CarritoController {
     }
 
     @SuppressWarnings("unchecked")
-    private List<ItemCarrito> getCarrito(HttpSession session) {
+    private List<ItemCarritoDTO> getCarrito(HttpSession session) {
         Object carrito = session.getAttribute("carrito");
         if (carrito == null) {
-            List<ItemCarrito> nuevoCarrito = new ArrayList<>();
+            List<ItemCarritoDTO> nuevoCarrito = new ArrayList<>();
             session.setAttribute("carrito", nuevoCarrito);
             return nuevoCarrito;
         }
-        return (List<ItemCarrito>) carrito;
+        return (List<ItemCarritoDTO>) carrito;
     }
 }
 

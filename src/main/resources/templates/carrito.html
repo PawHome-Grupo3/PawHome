@@ -47,8 +47,8 @@
                                                     <input type="hidden" name="productoId"
                                                            th:value="${item.producto.id}"/>
                                                     <input type="hidden" name="tallaId" th:value="${item.talla.id}"/>
-                                                    <input type="hidden" th:name="${_csrf.parameterName}"
-                                                           th:value="${_csrf.token}"/>
+<!--                                                    <input type="hidden" th:name="${_csrf.parameterName}"-->
+<!--                                                           th:value="${_csrf.token}"/>-->
 
                                                     <button type="submit" name="cantidad"
                                                             th:value="${item.cantidad - 1}"
@@ -89,8 +89,8 @@
                                                     <input type="hidden" name="productoId"
                                                            th:value="${item.producto.id}"/>
                                                     <input type="hidden" name="tallaId" th:value="${item.talla.id}"/>
-                                                    <input type="hidden" th:name="${_csrf.parameterName}"
-                                                           th:value="${_csrf.token}"/>
+<!--                                                    <input type="hidden" th:name="${_csrf.parameterName}"-->
+<!--                                                           th:value="${_csrf.token}"/>-->
                                                     <button type="button" class="btn btn-link p-0 text-danger"
                                                             th:onclick="'abrirModal(\'form-eliminar-' + ${item.producto.id} + '-' + ${item.talla.id} + '\')'">
                                                         <i class="fas fa-times"></i>
