@@ -14,6 +14,7 @@ public class TallaService {
         this.tallaRepository = tallaRepository;
     }
 
-
     public Optional<Talla> findById(int tallaId) { return tallaRepository.findById(tallaId); }
+
+    public Talla save(Talla talla) { return tallaRepository.save(talla); }
 }

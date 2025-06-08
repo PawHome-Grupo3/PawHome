@@ -14,7 +14,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
@@ -28,21 +27,15 @@ public class CarritoController {
     private final TarifaService tarifaService;
     private final TallaService tallaService;
     private final StripeService stripeService;
-    private final PagoService pagoService;
-    private final UsuarioService usuarioService;
 
     public CarritoController(ProductoService productoService,
                              TarifaService tarifaService,
                              TallaService tallaService,
-                             StripeService stripeService,
-                             PagoService pagoService,
-                             UsuarioService usuarioService) {
+                             StripeService stripeService) {
         this.productoService = productoService;
         this.tarifaService = tarifaService;
         this.tallaService = tallaService;
         this.stripeService = stripeService;
-        this.pagoService = pagoService;
-        this.usuarioService = usuarioService;
     }
 
     @GetMapping("/tienda/carrito")
@@ -116,11 +109,9 @@ public class CarritoController {
         } else {
             for (ItemCarritoDTO item : carrito) {
                 if (item.getProducto().getId() == productoId && item.getTalla().getId() == tallaId) {
-                    // Verifica stock si es necesario
                     if (cantidad <= item.getTalla().getStock()) {
                         item.setCantidad(cantidad);
                     } else {
-                        // Opcional: puedes enviar un error o limitar al stock máximo
                         item.setCantidad(item.getTalla().getStock());
                     }
                     break;
@@ -158,7 +149,7 @@ public class CarritoController {
             return ResponseEntity.badRequest().body(
                     StripeResponse.builder()
                             .status("FAILED")
-                            .message("Usuario no autenticado.")
+                            .message("Usuario no autenticado. Por favor inicia sesión")
                             .build()
             );
         }
@@ -174,13 +165,8 @@ public class CarritoController {
             );
         }
 
-        Pago pago = new Pago();
-        pago.setUsuario(usuario);
-        pago.setEstado(false);
-        pago.setAutorizacion("pendiente");
-
+        session.setAttribute("motivo", "Compra en Tienda");
         session.setAttribute("carritoCompra", carrito);
-        session.setAttribute("pagoId", pagoService.save(pago).getId());
 
         List<ProductRequest> productRequests = stripeService.convertirCarritoAProductRequests(carrito);
         StripeResponse stripeResponse = stripeService.checkoutProducts(productRequests);

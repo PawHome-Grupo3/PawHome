@@ -9,7 +9,6 @@ import com.stripe.model.checkout.Session;
 import com.stripe.param.checkout.SessionCreateParams;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service
@@ -76,5 +75,4 @@ public class StripeService {
                 ))
                 .toList();
     }
-
 }
