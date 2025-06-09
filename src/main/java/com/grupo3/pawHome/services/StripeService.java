@@ -1,5 +1,6 @@
 package com.grupo3.pawHome.services;
 
+import com.grupo3.pawHome.config.StripeConfig;
 import com.grupo3.pawHome.dtos.ItemCarritoDTO;
 import com.grupo3.pawHome.dtos.ProductRequest;
 import com.grupo3.pawHome.dtos.StripeResponse;
@@ -7,18 +8,20 @@ import com.stripe.Stripe;
 import com.stripe.exception.StripeException;
 import com.stripe.model.checkout.Session;
 import com.stripe.param.checkout.SessionCreateParams;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
 public class StripeService {
 
-    @Value("${stripe.secretKey}")
-    private String secretKey;
+    private final StripeConfig stripeConfig;
+
+    public StripeService(StripeConfig stripeConfig) {
+        this.stripeConfig = stripeConfig;
+    }
 
     public StripeResponse checkoutProducts(List<ProductRequest> productRequests) {
-        Stripe.apiKey = secretKey;
+        Stripe.apiKey = stripeConfig.getSecretKey();
 
         SessionCreateParams.Builder paramsBuilder = SessionCreateParams.builder()
                 .setMode(SessionCreateParams.Mode.PAYMENT)

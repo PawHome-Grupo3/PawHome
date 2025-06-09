@@ -6,7 +6,6 @@ import com.grupo3.pawHome.dtos.StripeResponse;
 import com.grupo3.pawHome.entities.*;
 import com.grupo3.pawHome.services.*;
 import com.grupo3.pawHome.util.SessionUtils;
-import com.stripe.Stripe;
 import com.stripe.exception.StripeException;
 import com.stripe.model.checkout.Session;
 import jakarta.servlet.http.HttpSession;
@@ -93,7 +92,6 @@ public class ProductCheckoutController {
         factura.setUsuario(usuario);
         facturaService.save(factura);
 
-        Stripe.apiKey = "sk_test_51RWyBgRXrrBHAtjR0rBoi8CYT9zyaKncktYEV95cpRMfObDpDxcJCkyUaGuWMomwyHEVn6EMSr1chZiHAusAn3sV00lsOuxBfI";
         Session sessionStripe = Session.retrieve(sessionId);
 
         String paymentIntentId = sessionStripe.getPaymentIntent();

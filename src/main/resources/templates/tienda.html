@@ -33,7 +33,7 @@
               <div class="d-flex justify-content-center flex-row w-100 flex-nowrap align-items-stretch gap-1">
                 <a th:href="@{/tienda/producto/{id}(id=${producto.getId()})}" class="custom-btn btn btnHazteVoluntario w-100 align-content-center" th:text="#{tienda.leerMas}"></a>
 
-                <form th:if="${producto.getTallas()?.size() == 1 && producto.getTallas().getFirst().getTallaje().equalsIgnoreCase('unica')}"
+                <form th:if="${producto.getTallas().getFirst().getStock() > 1 && producto.getTallas().getFirst().getTallaje().equalsIgnoreCase('unica')}"
                       th:action="@{/tienda/carrito/agregar}" method="post" class="w-100">
                   <input type="hidden" name="productoId" th:value="${producto.getId()}" />
                   <input type="hidden" name="tallaId" th:value="${producto.getTallas().getFirst().getId()}" />

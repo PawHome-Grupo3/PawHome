@@ -29,12 +29,7 @@ public class ProductoController {
     @GetMapping("/tienda")
     public String mostrarTienda(Model model) {
         List<Categoria> categorias = categoriaService.findAll();
-        for (Categoria categoria : categorias) {
-            System.out.println(categoria.getNombre());
-            for (Producto producto : categoria.getProductos()) {
-                System.out.println(producto.getNombre());
-            }
-        }
+
         model.addAttribute("categorias", categorias);
         return "tienda";
     }
