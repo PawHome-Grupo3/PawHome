@@ -11,12 +11,12 @@ import lombok.Setter;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class Pagos {
+public class Pago {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(nullable = false)
-    private long id;
+    private Integer id;
 
     @Column(nullable = false)
     private String autorizacion;
@@ -24,6 +24,9 @@ public class Pagos {
     @Column(nullable = false)
     private boolean estado;
 
+    @ManyToOne
+    @JoinColumn(name = "usuario_id", referencedColumnName = "id")
+    private Usuario usuario;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "factura_id", referencedColumnName = "id")

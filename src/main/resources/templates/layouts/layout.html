@@ -8,6 +8,26 @@
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
     <link rel="stylesheet" th:href="@{/css/header.css}"/>
     <link rel="stylesheet" th:href="@{/css/footer.css}"/>
+    <style>
+        .boton-sos {
+            position: fixed;
+            bottom: 30px;
+            right: 50px;
+            z-index: 900;
+            text-decoration: none;
+        }
+
+        .img-sos {
+            height: 300px;
+            width: 300px;
+            object-fit: contain;
+            transition: transform 2.0s ease;
+        }
+
+        .img-sos:hover {
+            transform: scale(1.5);
+        }
+    </style>
 </head>
 <body>
 <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
@@ -17,10 +37,11 @@
 
 <section layout:fragment="content"></section>
 
+
 <div th:replace="~{fragments/footer :: footerFragment}"></div>
 
 <!-- BOTÓN SOS -->
-<a href="tel:954 542 701" class="boton-sos" title="Emergencia SOS">
+<a id="sos-button" class="boton-sos" title="Emergencia SOS">
     <img src="/images/HueSOS.png" alt="Botón SOS" class="img-sos">
 </a>
 
@@ -34,16 +55,47 @@
     }
 
     .img-sos {
-        height: 300px;
-        width: 300px;
+        height: 250px;
+        width: 250px;
         object-fit: contain;
-        transition: transform 2.0s ease;
+        transition: transform 1.2s ease;
     }
 
     .img-sos:hover {
         transform: scale(1.5);
     }
+
+    @media (max-width: 768px) {
+        .img-sos {
+            height: 120px;
+            width: 120px;
+        }
+
+        .boton-sos {
+            right: 20px;
+            bottom: 20px;
+        }
+    }
 </style>
 
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const sosButton = document.getElementById("sos-button");
+
+        // Verifica si es móvil
+        const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+        if (isMobile) {
+            // En móviles: llamada directa al 112
+            sosButton.href = "tel:112";
+        } else {
+            // En escritorio: redirige a la página informativa
+            sosButton.href = "https://www.google.com/search?q=112+emergencias";
+            sosButton.target = "_blank";
+        }
+    });
+</script>
+
+  
 </body>
 </html>

@@ -25,11 +25,13 @@ public class DataLoader implements CommandLineRunner {
     private final TallaRepository tallaRepository;
     private final CategoriaRepository categoriaRepository;
     private final TarifaRepository tarifaRepository;
-    private final PerfilDatosRepository perfilDatosRespository;
+    private final PerfilDatosRepository perfilDatosRepository;
     private final PasswordEncoder passwordEncoder;
+    private final MetodoPagoRepository metodoPagoRepository;
 
 
-    public DataLoader(AnimalRepository animalRepository, ApadrinarRepository apadrinarRepository, UsuarioRepository usuarioRepository, FacturaRepository facturaRepository, ProductoRepository productoRepository, TallaRepository tallaRepository, CategoriaRepository categoriaRepository, TarifaRepository tarifaRepository, PerfilDatosRepository perfilDatosRepository, PasswordEncoder passwordEncoder) {
+    public DataLoader(AnimalRepository animalRepository, ApadrinarRepository apadrinarRepository, UsuarioRepository usuarioRepository, FacturaRepository facturaRepository, ProductoRepository productoRepository, TallaRepository tallaRepository, CategoriaRepository categoriaRepository, TarifaRepository tarifaRepository, PerfilDatosRepository perfilDatosRepository, PasswordEncoder passwordEncoder, MetodoPagoRepository metodoPagoRepository) {
+
         this.animalRepository = animalRepository;
         this.apadrinarRepository = apadrinarRepository;
         this.usuarioRepository = usuarioRepository;
@@ -38,8 +40,9 @@ public class DataLoader implements CommandLineRunner {
         this.tallaRepository = tallaRepository;
         this.categoriaRepository = categoriaRepository;
         this.tarifaRepository = tarifaRepository;
-        this.perfilDatosRespository = perfilDatosRepository;
+        this.perfilDatosRepository = perfilDatosRepository;
         this.passwordEncoder = passwordEncoder;
+        this.metodoPagoRepository = metodoPagoRepository;
     }
 
     @Override
@@ -180,6 +183,7 @@ public class DataLoader implements CommandLineRunner {
         perfil.setEdad(30);
         perfil.setDni("12345678A");
         perfil.setDireccion("Calle Mayor 123");
+        perfil.setPais("España");
         perfil.setCiudad("Madrid");
         perfil.setCp("28001");
         perfil.setTelefono1("600123456");
@@ -414,5 +418,9 @@ public class DataLoader implements CommandLineRunner {
         ap4.setAnimal(a4);
         ap4.setUsuario(u2);
         apadrinarRepository.save(ap4);
+
+//        MetodoPago mp1 = new MetodoPago();
+//        mp1.setNumero("12345678");
+//        metodoPagoRepository.save(mp1);
     }
 }

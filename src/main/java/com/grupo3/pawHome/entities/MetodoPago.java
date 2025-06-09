@@ -1,22 +1,26 @@
 package com.grupo3.pawHome.entities;
-
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-@Entity
 @Getter
 @Setter
-@Table(name = "metodos_pago")
+@Entity
+
+@Table(name = "metodo_pago")
 public class MetodoPago {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
+    private String numero;
 
-    private String tipo;        // 'monetario' o 'material'
-    private String nombre;      // PayPal, Bizum, Correos
-    private String url;
-    private String descripcion;
+    @ManyToOne
+    @JoinColumn(referencedColumnName = "id",name = "tipo_pago_id")
+    private TipoPago tipoPago;
+
+    @ManyToOne
+    @JoinColumn(referencedColumnName = "id",name = "usuario_id")
+    private Usuario usuario;
 
 }

@@ -10,19 +10,19 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.Collection;
 import java.util.List;
+import java.util.Collection;
 
 @Getter
 @Setter
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-
+@Table(name = "usuario")
 public class Usuario implements UserDetails, Serializable {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     @Column(nullable = false, unique = true)
     private String nickname;
@@ -38,6 +38,12 @@ public class Usuario implements UserDetails, Serializable {
 
     @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
     private PerfilDatos perfilDatos;
+
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<MetodoPago> metodosPago;
+
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Pago> Pago;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -77,4 +83,5 @@ public class Usuario implements UserDetails, Serializable {
         //return UserDetails.super.isEnabled();
         return true;
     }
+
 }

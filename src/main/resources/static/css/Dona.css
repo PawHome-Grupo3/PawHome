@@ -1,46 +1,59 @@
-
 body {
     margin: 0;
-    padding: 0;
-    font-family: 'Arial', sans-serif;
-    background image: url("Dona.jpg");
+    min-height: 100vh;
+    font-family: sans-serif;
+    position: relative;
+    background: url('../images/Dona.jpg') no-repeat center center fixed;
     background-size: cover;
-    background-position: center;
-    background-color: rgba(27, 125, 85, 0.58);
+    z-index: 0;
 }
 
-.container {
-    text-align: left;
-    background-color: rgba(187, 224, 155, 0.66);
-    padding: 20px;
-    border-radius: 10px;
-    margin: 50px auto;
-    max-width: 600px;
-    text-color: #1b7d55
+.dona-overlay {
+    background-color: rgba(27, 125, 85, 0.45);
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 80px;
+    box-sizing: border-box;
 }
 
-.columnas {
+.dona-content {
+    min-height: 70vh;
+}
+
+.dona-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.dona-columnas {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     gap: 40px;
     margin-bottom: 30px;
+    font-size: 1.2em;
 }
 
-.columna {
+.dona-columna {
     flex: 1;
     min-width: 250px;
+    font-size: 1.2em;
 }
 
-.columna p {
+.dona-columna p {
     font-weight: bold;
     margin-bottom: 15px;
+    color: #000000;
+    text-align: center;
 }
 
-
-.donacion-icono {
-    width: 100px;
-    height: 100px;
+.dona-icono {
+    width: 150px;
+    height: 150px;
     margin: 0 auto 15px auto;
     background-color: rgba(187, 224, 155, 0.61);
     border-radius: 50%;
@@ -50,17 +63,16 @@ body {
     transition: transform 0.3s ease;
 }
 
-.donacion-icono:hover {
+.dona-icono:hover {
     transform: scale(1.1);
 }
 
-.donacion-icono img {
+.dona-icono img {
     width: 60%;
     height: auto;
-
 }
-/*Donabizum*/
-.cuadro-transparente {
+
+.dona-cuadro-transparente {
     background-color: rgba(187, 224, 155, 0.35);
     border-radius: 15px;
     padding: 40px 70px;
@@ -70,21 +82,56 @@ body {
     color: #000000;
 }
 
-.textobizum{
+.dona-textobizum {
     font-size: 30px;
     color: #000000;
 }
 
-h1{
-    text-align: center;
-    color: black;
-}
-h3 {
+.dona-header h1 {
     color: #000000;
-    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 40px;
 }
 
-p {
+.dona-gracias {
+    color: #000000;
+    font-size: 1.6em;
+    max-width: 1000px;
+    margin-top: 30px;
+}
+
+.dona-content p {
     color: #000000;
     text-align: center;
+}
+-------------------------------------------------------------------------
+
+.dona-bizum-codigo {
+    font-size: 2.5rem;
+    color: #ffffff;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.8);
+    margin: 20px 0;
+    font-weight: bold;
+}
+
+.dona-cuadro-transparente {
+    background-color: rgba(187, 224, 155, 0.35);
+    border-radius: 15px;
+    padding: 40px 60px;
+    max-width: 800px;
+    width: 90%;
+    text-align: center;
+    margin: 0 auto;
+    color: #000;
+}
+
+.dona-textobizum {
+    font-size: 1.5rem;
+    color: #000000;
+    margin: 20px 0;
+}
+
+.dona-icono img {
+    width: 80%;
+    height: auto;
 }
