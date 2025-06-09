@@ -21,8 +21,8 @@ public class AdminProdServController {
     public String listarProdServ(Model model) {
         model.addAttribute("productos", productoRepository.findAll());
         model.addAttribute("producto", new Producto()); // Formulario vacío para crear
-        model.addAttribute("tallas", tallaRepository.findAll());
-        model.addAttribute("talla", new Talla()); // Formulario vacío para crear talla
+//        model.addAttribute("tallas", tallaRepository.findAll());
+//        model.addAttribute("talla", new Talla()); // Formulario vacío para crear talla
         return "adminProdServ";
     }
 
@@ -33,20 +33,20 @@ public class AdminProdServController {
         return "redirect:/admin/prodserv";
     }
 
-    // Guardar talla (nueva o editada)
-    @PostMapping("/guardar")
-    public String guardarTalla(@ModelAttribute("talla") Talla talla) {
-        tallaRepository.save(talla);
-        return "redirect:/admin/prodserv";
-    }
+//    // Guardar talla (nueva o editada)
+//    @PostMapping("/guardar")
+//    public String guardarTalla(@ModelAttribute("talla") Talla talla) {
+//        tallaRepository.save(talla);
+//        return "redirect:/admin/prodserv";
+//    }
 
     // Editar productos y servicios (rellena el formulario con los datos del producto o de la talla)
     @GetMapping("/editar/{id}")
-    public String editarTarifa(@PathVariable Integer id, Model model) {
+    public String editarProducto(@PathVariable Integer id, Model model) {
         model.addAttribute("productos", productoRepository.findAll());
         model.addAttribute("producto", productoRepository.findById(id).orElse(new Producto())); // Formulario relleno
-        model.addAttribute("tallas", tallaRepository.findAll());
-        model.addAttribute("talla", tallaRepository.findById(id).orElse(new Talla())); // Formulario relleno
+//        model.addAttribute("tallas", tallaRepository.findAll());
+//        model.addAttribute("talla", tallaRepository.findById(id).orElse(new Talla())); // Formulario relleno
         return "adminProdServ";
     }
 
@@ -57,10 +57,10 @@ public class AdminProdServController {
         return "redirect:/admin/prodserv";
     }
 
-    // Eliminar talla
-    @GetMapping("/eliminar/{id}")
-    public String eliminarTalla(@PathVariable Integer id) {
-        tallaRepository.deleteById(id);
-        return "redirect:/admin/prodserv";
-    }
+//    // Eliminar talla
+//    @GetMapping("/eliminar/{id}")
+//    public String eliminarTalla(@PathVariable Integer id) {
+//        tallaRepository.deleteById(id);
+//        return "redirect:/admin/prodserv";
+//    }
 }

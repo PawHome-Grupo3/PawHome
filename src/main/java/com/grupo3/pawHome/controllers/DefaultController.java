@@ -213,7 +213,6 @@ public class DefaultController {
     public String mostrarFinalesFelices()
     {return "FinalFeliz";}
 
-
     //Metodo para mostrar registro
 
     @GetMapping("/registro")
@@ -225,9 +224,6 @@ public class DefaultController {
     @GetMapping("/loginPawHome")
     public String mostrarLogin()
     {return "login";}
-
-    @GetMapping("/admin/usuarios")
-    public String mostrarAdminUsuarios() {return "adminUsuarios"; }
 
     /**
      * Gestiona las solicitudes GET para obtener y mostrar la lista de entidades protegidas.
