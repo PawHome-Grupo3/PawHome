@@ -27,15 +27,17 @@ public class CarritoController {
     private final TarifaService tarifaService;
     private final TallaService tallaService;
     private final StripeService stripeService;
+    private final UsuarioService usuarioService;
 
     public CarritoController(ProductoService productoService,
                              TarifaService tarifaService,
                              TallaService tallaService,
-                             StripeService stripeService) {
+                             StripeService stripeService, UsuarioService usuarioService) {
         this.productoService = productoService;
         this.tarifaService = tarifaService;
         this.tallaService = tallaService;
         this.stripeService = stripeService;
+        this.usuarioService = usuarioService;
     }
 
     @GetMapping("/tienda/carrito")
@@ -168,9 +170,19 @@ public class CarritoController {
         session.setAttribute("motivo", "Compra en Tienda");
 
         List<ProductRequest> productRequests = stripeService.convertirCarritoAProductRequests(carrito);
-        StripeResponse stripeResponse = stripeService.checkoutProducts(productRequests);
-
-        return ResponseEntity.status(HttpStatus.OK).body(stripeResponse);
+        Optional<Usuario> user = usuarioService.findById(usuario.getId());
+        if (user.isPresent()) {
+            StripeResponse stripeResponse = stripeService.checkoutProducts(productRequests, user.get().getStripeCustomerId());
+            return ResponseEntity.status(HttpStatus.OK).body(stripeResponse);
+        }
+        else{
+            return ResponseEntity.badRequest().body(
+                    StripeResponse.builder()
+                            .status("FAILED")
+                            .message("Usuario no autenticado. Por favor inicia sesión")
+                            .build()
+            );
+        }
     }
 }
 

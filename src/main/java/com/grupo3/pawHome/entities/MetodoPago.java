@@ -8,7 +8,6 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-
 @Table(name = "metodo_pago")
 public class MetodoPago {
 

@@ -15,6 +15,8 @@ import com.stripe.model.SetupIntent;
 import com.stripe.param.CustomerCreateParams;
 import com.stripe.param.SetupIntentCreateParams;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -84,5 +86,11 @@ public class MetodoPagoService {
         tipoPago.ifPresent(metodoPago::setTipoPago);
 
         metodoPagoRepository.save(metodoPago);
+    }
+
+    public List<MetodoPago> findAllByUsuario(Usuario usuario) { return metodoPagoRepository.findAllByUsuario(usuario); }
+
+    public MetodoPago findByStripePaymentMethodId(String stripePaymentMethodId) {
+        return metodoPagoRepository.findByStripePaymentMethodId(stripePaymentMethodId);
     }
 }

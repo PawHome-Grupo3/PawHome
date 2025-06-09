@@ -14,7 +14,7 @@
 
             <div class="col-md-9 col-lg-10 justify-content-center">
                 <div class="row justify-content-center">
-                    <div class="col-md-8">
+                    <div class="col-md-12">
                         <div th:if="${usuario.getPerfilDatos() != null}" class="p-3 py-5">
                             <div class="d-flex justify-content-between align-items-center mb-3">
                                 <h4 class="text-right">Datos de Perfil</h4>
@@ -84,20 +84,19 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-12">
                         <div class="p-3 py-5">
-                            <div class="d-flex justify-content-between align-items-center experience">
+                            <div class="d-flex justify-content-center align-items-center experience">
                                 <span>Métodos de Pago</span>
                                 <a type="button" th:href="@{/perfil/metodo-pago/anadir}" class="border px-3 p-1 add-experience"><i class="fa fa-plus"></i>&nbsp;Nuevo método de pago</a>
                             </div>
-                            <br>
-                            <div class="col-md-12">
-                                <p><strong>Nombre Tarjeta:</strong> Juan Pérez</p>
-                            </div>
-                            <br>
-                            <div class="col-md-12">
-                                <p><strong>Número Tarjeta:</strong> 1234 5678 9012 3456</p>
-                            </div>
+                        </div>
+                        <div th:if="${metodosPago != null}" th:each="metodoPago : ${metodosPago}">
+                            <p>Nombre Titular: <span th:text="${metodoPago.getNombreTitular()}"></span></p>
+                            <p>Alias: <span th:text="${metodoPago.alias}"></span></p>
+                            <p>Marca: <span th:text="${metodoPago.marcaTarjeta}"></span></p>
+                            <p>Año expiración: <span th:text="${metodoPago.expAnio}"></span></p>
+                            <p>Mes expiración: <span th:text="${metodoPago.expMes}"></span></p>
                         </div>
                     </div>
                 </div>

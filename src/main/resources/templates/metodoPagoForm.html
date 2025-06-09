@@ -1,13 +1,9 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<html lang="es" xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout.html}">
 <head>
     <meta charset="UTF-8">
     <title>Añadir Tarjeta de Crédito</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script th:inline="javascript">
-        const stripePublicKey = /*[[${stripePublicKey}]]*/ 'pk_test_dummy';
-        const clientSecret = /*[[${clientSecret}]]*/ 'cs_test_dummy';
-    </script>
     <style>
         #card-element {
             border: 1px solid #ced4da;
@@ -21,6 +17,7 @@
     </style>
 </head>
 <body class="container py-5">
+<section layout:fragment="content">
 <h2>Añadir Tarjeta de Crédito</h2>
 <form id="payment-form" class="mt-4">
     <div class="mb-3">
@@ -29,21 +26,24 @@
     </div>
 
     <div class="mb-3">
+        <label for="nombreTitular" class="form-label">Nombre del titular</label>
+        <input type="text" id="nombreTitular" name="nombreTitular" class="form-control" placeholder="Nombre completo" required>
+    </div>
+
+    <div class="mb-3">
         <label for="card-element" class="form-label">Detalles de la tarjeta</label>
         <div id="card-element"></div>
         <div id="card-errors" role="alert"></div>
     </div>
 
-    <div class="mb-3">
-        <label for="nombreTitular" class="form-label">Nombre del titular</label>
-        <input type="text" id="nombreTitular" name="nombreTitular" class="form-control" placeholder="Nombre completo" required>
-    </div>
-
     <button id="submit-button" class="btn btn-primary" type="submit">Guardar tarjeta</button>
 </form>
-
-<script src="https://js.stripe.com/v3/"></script>
-<script>
+<script th:inline="javascript">
+    const stripePublicKey = /*[[${stripePublicKey}]]*/ 'pk_test_dummy';
+    const clientSecret = /*[[${clientSecret}]]*/ 'cs_test_dummy';
+</script>
+<script th:inline="javascript" th:src="'https://js.stripe.com/v3/'"></script>
+<script th:inline="javascript">
     const stripe = Stripe(stripePublicKey);
     const elements = stripe.elements();
     const cardElement = elements.create('card');
@@ -101,5 +101,6 @@
         }
     });
 </script>
+</section>
 </body>
 </html>

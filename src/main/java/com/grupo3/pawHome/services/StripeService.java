@@ -20,13 +20,15 @@ public class StripeService {
         this.stripeConfig = stripeConfig;
     }
 
-    public StripeResponse checkoutProducts(List<ProductRequest> productRequests) {
+    public StripeResponse checkoutProducts(List<ProductRequest> productRequests, String customerId) {
         Stripe.apiKey = stripeConfig.getSecretKey();
 
         SessionCreateParams.Builder paramsBuilder = SessionCreateParams.builder()
                 .setMode(SessionCreateParams.Mode.PAYMENT)
                 .setSuccessUrl("http://localhost:8080/success?session_id={CHECKOUT_SESSION_ID}")
                 .setCancelUrl("http://localhost:8080/cancel");
+
+        paramsBuilder.setCustomer(customerId);
 
         for (ProductRequest productRequest : productRequests) {
             SessionCreateParams.LineItem.PriceData.ProductData productData =
