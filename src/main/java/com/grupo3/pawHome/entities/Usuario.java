@@ -36,6 +36,9 @@ public class Usuario implements UserDetails, Serializable {
     @Column(nullable = false, name = "fecha_registro")
     private LocalDate fechaRegistro;
 
+    @Column(name = "stripe_customer_id")
+    private String stripeCustomerId;
+
     @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
     private PerfilDatos perfilDatos;
 
