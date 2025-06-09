@@ -29,6 +29,7 @@ public class ProductoController {
     @GetMapping("/tienda")
     public String mostrarTienda(Model model) {
         List<Categoria> categorias = categoriaService.findAll();
+
         model.addAttribute("categorias", categorias);
         return "tienda";
     }

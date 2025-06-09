@@ -28,6 +28,7 @@ public class SecurityConfig {
                 )
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/perfil/**").authenticated()
+                        .requestMatchers("/product/v1/checkout").permitAll()
                         .anyRequest().permitAll()
                 )
                 .logout(LogoutConfigurer::permitAll);

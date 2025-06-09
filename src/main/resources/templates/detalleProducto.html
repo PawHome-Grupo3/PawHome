@@ -80,7 +80,7 @@
                   <input type="hidden" name="productoId" th:value="${producto.getId()}" />
                   <input type="hidden" name="tallaId" id="input-tallaId" value="" />
                   <input type="hidden" name="cantidad" id="input-cantidad" value="" />
-                  <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+<!--                  <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />-->
                   <button type="submit" class="custom-btn btn btnHazteVoluntario w-100 align-content-center" th:text="#{tienda.comprar}"></button>
                 </form>
               </div>
@@ -90,7 +90,7 @@
                   <input type="hidden" name="productoId" th:value="${producto.getId()}" />
                   <input type="hidden" name="tallaId" th:value="${producto.getTallas().getFirst().getId()}" />
                   <input type="hidden" name="cantidad" value="1" />
-                  <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+<!--                  <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />-->
                   <button type="submit" class="custom-btn btn btnHazteVoluntario w-100 align-content-center" th:text="#{tienda.anadirAlCarrito}"></button>
                 </form>
               </div>
