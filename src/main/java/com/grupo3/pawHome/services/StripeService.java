@@ -26,9 +26,26 @@ public class StripeService {
         SessionCreateParams.Builder paramsBuilder = SessionCreateParams.builder()
                 .setMode(SessionCreateParams.Mode.PAYMENT)
                 .setSuccessUrl("http://localhost:8080/success?session_id={CHECKOUT_SESSION_ID}")
-                .setCancelUrl("http://localhost:8080/cancel");
-
-        paramsBuilder.setCustomer(customerId);
+                .setCancelUrl("http://localhost:8080/cancel")
+                .setCustomer(customerId)
+                .setPaymentIntentData(
+                        SessionCreateParams.PaymentIntentData.builder()
+                                .setSetupFutureUsage(SessionCreateParams.PaymentIntentData.SetupFutureUsage.OFF_SESSION)
+                                .build()
+                )
+                .setAllowPromotionCodes(true)
+                .setCustomerUpdate(SessionCreateParams.CustomerUpdate.builder()
+                        .setAddress(SessionCreateParams.CustomerUpdate.Address.AUTO)
+                        .build())
+                .setPaymentMethodOptions(
+                        SessionCreateParams.PaymentMethodOptions.builder()
+                                .setCard(
+                                        SessionCreateParams.PaymentMethodOptions.Card.builder()
+                                                .setSetupFutureUsage(SessionCreateParams.PaymentMethodOptions.Card.SetupFutureUsage.OFF_SESSION)
+                                                .build()
+                                ).build()
+                )
+                .addPaymentMethodType(SessionCreateParams.PaymentMethodType.CARD); // SOLO UNA VEZ
 
         for (ProductRequest productRequest : productRequests) {
             SessionCreateParams.LineItem.PriceData.ProductData productData =

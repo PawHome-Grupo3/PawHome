@@ -36,6 +36,9 @@ public class MetodoPago {
     @Column(name = "exp_anio")
     private Integer expAnio;
 
+    @Column(name = "finger_print")
+    private String fingerPrint;
+
     private boolean activo = true;
 
     @ManyToOne

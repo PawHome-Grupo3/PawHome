@@ -13,5 +13,5 @@ public interface MetodoPagoRepository extends JpaRepository<MetodoPago, Integer>
 
     List<MetodoPago> findAllByUsuario(Usuario usuario);
 
-    MetodoPago findByStripePaymentMethodId(String stripePaymentMethodId);
+    MetodoPago findByFingerPrintAndUsuario(String fingerPrint, Usuario usuario);
 }

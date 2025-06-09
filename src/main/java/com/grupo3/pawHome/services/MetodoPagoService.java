@@ -15,6 +15,7 @@ import com.stripe.model.SetupIntent;
 import com.stripe.param.CustomerCreateParams;
 import com.stripe.param.SetupIntentCreateParams;
 import org.springframework.stereotype.Service;
+import com.stripe.param.PaymentMethodAttachParams;
 
 import java.util.List;
 import java.util.Optional;
@@ -71,6 +72,10 @@ public class MetodoPagoService {
 
         PaymentMethod method = PaymentMethod.retrieve(paymentMethodId);
 
+        method.attach(PaymentMethodAttachParams.builder()
+                .setCustomer(usuario.getStripeCustomerId())
+                .build());
+
         MetodoPago metodoPago = new MetodoPago();
         metodoPago.setStripePaymentMethodId(method.getId());
         metodoPago.setMarcaTarjeta(method.getCard().getBrand());
@@ -81,6 +86,7 @@ public class MetodoPagoService {
         metodoPago.setUsuario(usuario);
         metodoPago.setAlias(alias);
         metodoPago.setActivo(true);
+        metodoPago.setFingerPrint(method.getCard().getFingerprint());
 
         Optional<TipoPago> tipoPago = tipoPagoRepository.findByNombreContains("Tarjeta Credito");
         tipoPago.ifPresent(metodoPago::setTipoPago);
@@ -90,7 +96,9 @@ public class MetodoPagoService {
 
     public List<MetodoPago> findAllByUsuario(Usuario usuario) { return metodoPagoRepository.findAllByUsuario(usuario); }
 
-    public MetodoPago findByStripePaymentMethodId(String stripePaymentMethodId) {
-        return metodoPagoRepository.findByStripePaymentMethodId(stripePaymentMethodId);
+    public MetodoPago findByFingerPrintAndUsuario(String fingerprint, Usuario usuario) {
+        return metodoPagoRepository.findByFingerPrintAndUsuario(fingerprint, usuario);
     }
+
+    public MetodoPago save(MetodoPago metodoPago) { return metodoPagoRepository.save(metodoPago); }
 }

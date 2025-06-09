@@ -29,18 +29,20 @@ public class ProductCheckoutController {
     private final TallaService tallaService;
     private final UsuarioService usuarioService;
     private final MetodoPagoService metodoPagoService;
+    private final TipoPagoService tipoPagoService;
 
     public ProductCheckoutController(StripeService stripeService,
                                      PagoService pagoService,
                                      FacturaService facturaService,
                                      TallaService tallaService,
-                                     UsuarioService usuarioService, MetodoPagoService metodoPagoService) {
+                                     UsuarioService usuarioService, MetodoPagoService metodoPagoService, TipoPagoService tipoPagoService) {
         this.stripeService = stripeService;
         this.pagoService = pagoService;
         this.facturaService = facturaService;
         this.tallaService = tallaService;
         this.usuarioService = usuarioService;
         this.metodoPagoService = metodoPagoService;
+        this.tipoPagoService = tipoPagoService;
     }
 
     @PostMapping("/product/v1/checkout")
@@ -110,22 +112,56 @@ public class ProductCheckoutController {
         factura.setUsuario(usuario);
         facturaService.save(factura);
 
+        // --- Stripe: obtener PaymentMethod y su fingerprint ---
         Session sessionStripe = Session.retrieve(sessionId);
         String paymentIntentId = sessionStripe.getPaymentIntent();
-        System.out.println(paymentIntentId);
         PaymentIntent paymentIntent = PaymentIntent.retrieve(paymentIntentId);
-        System.out.println(paymentIntent);
         String stripePaymentMethodId = paymentIntent.getPaymentMethod();
-        System.out.println(stripePaymentMethodId);
 
-        MetodoPago metodoPago = metodoPagoService.findByStripePaymentMethodId(stripePaymentMethodId);
+        // Recupera el PaymentMethod de Stripe para obtener la fingerprint
+        com.stripe.model.PaymentMethod paymentMethod = com.stripe.model.PaymentMethod.retrieve(stripePaymentMethodId);
+        String fingerprint = paymentMethod.getCard().getFingerprint();
+
+        // Busca en tu base de datos por fingerprint para evitar duplicados
+        MetodoPago metodoPago = metodoPagoService.findByFingerPrintAndUsuario(fingerprint, usuario);
+
+        if (metodoPago == null) {
+            // Si no existe, crea uno nuevo
+            metodoPago = new MetodoPago();
+            metodoPago.setStripePaymentMethodId(paymentMethod.getId());
+            metodoPago.setMarcaTarjeta(paymentMethod.getCard().getBrand());
+            metodoPago.setUltimosDigitos(paymentMethod.getCard().getLast4());
+            metodoPago.setExpMes(paymentMethod.getCard().getExpMonth().intValue());
+            metodoPago.setExpAnio(paymentMethod.getCard().getExpYear().intValue());
+            metodoPago.setNombreTitular(paymentMethod.getBillingDetails().getName());
+            metodoPago.setUsuario(usuario);
+            metodoPago.setAlias("Tarjeta Stripe");
+            metodoPago.setActivo(true);
+            metodoPago.setFingerPrint(fingerprint); // Necesitas este campo en tu entidad
+
+            // Opcional: asigna tipo de pago si lo tienes en tu modelo
+            Optional<TipoPago> tipoPago = tipoPagoService.findByNombreContains("Tarjeta Credito");
+            tipoPago.ifPresent(metodoPago::setTipoPago);
+
+            metodoPagoService.save(metodoPago);
+        } else {
+            // Si existe, actualiza el ID si ha cambiado y márcalo como activo
+            metodoPago.setStripePaymentMethodId(paymentMethod.getId());
+            metodoPago.setActivo(true);
+            metodoPagoService.save(metodoPago);
+        }
 
         Pago pago = new Pago();
         pago.setEstado(true);
         pago.setAutorizacion(paymentIntentId);
         pago.setFactura(factura);
         pago.setUsuario(usuario);
-        if(metodoPago != null) pago.setMetodoPago(metodoPago);
+
+        if (metodoPago != null) {
+            pago.setMetodoPago(metodoPago);
+        } else {
+            System.out.println("MetodoPago no encontrado para el ID: " + stripePaymentMethodId);
+        }
 
         pagoService.save(pago);
 
