@@ -10,7 +10,7 @@ import java.util.List;
 @Component("sessionUtils")
 public class SessionUtils {
     public static List<ItemCarritoDTO> obtenerCarritoSeguro(HttpSession session) {
-        Object obj = session.getAttribute("carritoCompra");
+        Object obj = session.getAttribute("carrito");
 
         if (obj instanceof List<?>) {
             List<?> lista = (List<?>) obj;

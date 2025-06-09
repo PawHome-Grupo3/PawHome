@@ -14,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -47,13 +48,13 @@ public class ProductCheckoutController {
     }
 
     @GetMapping("/success")
-    public String procesarPagoExitoso(@RequestParam("session_id") String sessionId,
-                                      @AuthenticationPrincipal Usuario usuario,
-                                      HttpSession session) throws StripeException {
+    public RedirectView procesarPagoExitoso(@RequestParam("session_id") String sessionId,
+                                            @AuthenticationPrincipal Usuario usuario,
+                                            HttpSession session) throws StripeException {
 
         List<ItemCarritoDTO> carrito = SessionUtils.obtenerCarritoSeguro(session);
 
-        if (usuario == null || carrito.isEmpty()) { return "error"; }
+        if (usuario == null || carrito.isEmpty()) { return new RedirectView("/cancel"); }
 
         Factura factura = new Factura();
         factura.setUsuario(usuario);
@@ -105,9 +106,15 @@ public class ProductCheckoutController {
 
         pagoService.save(pago);
 
-        session.removeAttribute("carritoCompra");
+        session.removeAttribute("carrito");
 
-        return "success";
+        return new RedirectView("/pago-correcto");
+    }
+
+    @GetMapping("/cancel")
+    public RedirectView procesarPagoIncorrecto(){
+
+        return new RedirectView("/pago-incorrecto");
     }
 }
 

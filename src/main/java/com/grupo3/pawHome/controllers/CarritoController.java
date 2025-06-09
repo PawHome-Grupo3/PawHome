@@ -48,7 +48,7 @@ public class CarritoController {
                 .sum();
 
         model.addAttribute("total", new BigDecimal(total).setScale(2, RoundingMode.HALF_UP).toPlainString());
-        return "carrito"; // Thymeleaf template
+        return "carrito";
     }
 
     @PostMapping("/tienda/carrito/agregar")
@@ -166,7 +166,6 @@ public class CarritoController {
         }
 
         session.setAttribute("motivo", "Compra en Tienda");
-        session.setAttribute("carritoCompra", carrito);
 
         List<ProductRequest> productRequests = stripeService.convertirCarritoAProductRequests(carrito);
         StripeResponse stripeResponse = stripeService.checkoutProducts(productRequests);
