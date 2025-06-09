@@ -16,7 +16,7 @@ import java.time.LocalDate;
 public class Apadrinar {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     private double aporteMensual;
 

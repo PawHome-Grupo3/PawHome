@@ -147,8 +147,6 @@ public class DefaultController {
         return "perfilUsuarioDonaciones";
     }
 
-
-
     // Metodo para mostrar la página de Reseñas
     @GetMapping("resenas")
     public String mostrarResenas()
@@ -189,42 +187,35 @@ public class DefaultController {
 
     @GetMapping("/colabora/Apadrina/formularioApadrina")
     public String mostrarformularioapadrina()
-    {return "formularioApadrina";}
+    { return "formularioApadrina"; }
 
     @GetMapping("/colabora/adopta")
     public String mostrarColaboraAdopta()
-    {return "Adopta";}
+    { return "Adopta"; }
 
     @GetMapping("/colabora/adopta/formularioAdopta")
     public String mostrarformularioadopta()
-    {return "formularioAdopta";}
+    { return "formularioAdopta"; }
 
     @GetMapping("/colabora/paseosolidario")
     public String mostrarColaboraPaseoSolidario()
-    {return "PaseoSolidario";}
+    { return "PaseoSolidario"; }
 
     @GetMapping("/colabora/paseosolidario/formularioPS")
     public String mostrarformularioPS()
-    {return "formularioPS";}
-
-
-    // Metodo para mostrar la página de Finales Felices
+    { return "formularioPS"; }
 
     @GetMapping("/finalfeliz")
     public String mostrarFinalesFelices()
-    {return "FinalFeliz";}
-
-
-    //Metodo para mostrar registro
+    { return "FinalFeliz"; }
 
     @GetMapping("/registro")
     public String mostrarRegistro()
-    {return "registro";}
+    { return "registro"; }
 
     @GetMapping("/loginPawHome")
     public String mostrarLogin()
-    {return "login";}
-
+    { return "login"; }
 
     /**
      * Gestiona las solicitudes GET para obtener y mostrar la lista de entidades protegidas.

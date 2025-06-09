@@ -8,13 +8,14 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
+@Table(name = "tipo_pago")
 public class TipoPago {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     private String nombre;
 
     @OneToMany(mappedBy = "tipoPago", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<MetodoPago> metodosPago;
+    private List<MetodoPago> metodoPago;
 }

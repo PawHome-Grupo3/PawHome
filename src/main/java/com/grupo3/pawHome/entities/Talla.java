@@ -15,7 +15,7 @@ public class Talla {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(nullable = false)
-    private int id;
+    private Integer id;
 
     private String tallaje;
 

@@ -47,8 +47,8 @@
                                                     <input type="hidden" name="productoId"
                                                            th:value="${item.producto.id}"/>
                                                     <input type="hidden" name="tallaId" th:value="${item.talla.id}"/>
-                                                    <input type="hidden" th:name="${_csrf.parameterName}"
-                                                           th:value="${_csrf.token}"/>
+<!--                                                    <input type="hidden" th:name="${_csrf.parameterName}"-->
+<!--                                                           th:value="${_csrf.token}"/>-->
 
                                                     <button type="submit" name="cantidad"
                                                             th:value="${item.cantidad - 1}"
@@ -89,8 +89,8 @@
                                                     <input type="hidden" name="productoId"
                                                            th:value="${item.producto.id}"/>
                                                     <input type="hidden" name="tallaId" th:value="${item.talla.id}"/>
-                                                    <input type="hidden" th:name="${_csrf.parameterName}"
-                                                           th:value="${_csrf.token}"/>
+<!--                                                    <input type="hidden" th:name="${_csrf.parameterName}"-->
+<!--                                                           th:value="${_csrf.token}"/>-->
                                                     <button type="button" class="btn btn-link p-0 text-danger"
                                                             th:onclick="'abrirModal(\'form-eliminar-' + ${item.producto.id} + '-' + ${item.talla.id} + '\')'">
                                                         <i class="fas fa-times"></i>
@@ -136,7 +136,13 @@
                                             <h5 th:text="${total} + ' €'"></h5>
                                         </div>
 
-                                        <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-block btn-lg btnHazteVoluntario" th:text="#{tienda.confirmarCompra}"></button>
+                                        <form id="checkoutForm" method="post" th:action="@{/tienda/carrito/checkout}">
+                                            <button type="submit"
+                                                    class="btn btn-block btn-lg btnHazteVoluntario"
+                                                    style="background-color: #007b5e;"
+                                                    th:text="#{tienda.confirmarCompra}">
+                                            </button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -271,6 +277,34 @@
                     formAEliminar.submit();
                 }
             }
+        </script>
+
+        <script>
+            document.getElementById('checkoutForm').addEventListener('submit', async function (event) {
+                event.preventDefault();
+
+                const form = event.target;
+
+                try {
+                    const response = await fetch(form.action, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    });
+
+                    const data = await response.json();
+
+                    if (data.status === 'SUCCESS') {
+                        window.location.href = data.sessionUrl;
+                    } else {
+                        alert("Error al iniciar el pago: " + data.message);
+                    }
+                } catch (error) {
+                    console.error("Error al conectar con el servidor:", error);
+                    alert("No se pudo procesar el pago.");
+                }
+            });
         </script>
     </section>
 </section>
