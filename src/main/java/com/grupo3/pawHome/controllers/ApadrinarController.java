@@ -104,7 +104,7 @@ public class ApadrinarController {
         pago.setUsuario(usuario);
         pagoService.save(pago);
 
-        model.addAttribute("mensaje", "¡Apadrinamiento exitoso!");
+        model.addAttribute("animal", animal);
         return "apadrinamientoExitoso";
     }
 }
