@@ -10,7 +10,6 @@ import com.stripe.exception.StripeException;
 import com.stripe.model.PaymentIntent;
 import com.stripe.model.checkout.Session;
 import jakarta.servlet.http.HttpSession;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
@@ -35,7 +34,9 @@ public class ProductCheckoutController {
                                      PagoService pagoService,
                                      FacturaService facturaService,
                                      TallaService tallaService,
-                                     UsuarioService usuarioService, MetodoPagoService metodoPagoService, TipoPagoService tipoPagoService) {
+                                     UsuarioService usuarioService,
+                                     MetodoPagoService metodoPagoService,
+                                     TipoPagoService tipoPagoService) {
         this.stripeService = stripeService;
         this.pagoService = pagoService;
         this.facturaService = facturaService;
@@ -46,21 +47,32 @@ public class ProductCheckoutController {
     }
 
     @PostMapping("/product/v1/checkout")
-    public ResponseEntity<StripeResponse> checkoutProducts(@RequestBody List<ProductRequest> productRequests,
-                                                           @AuthenticationPrincipal Usuario usuario) {
-        Optional<Usuario> user = usuarioService.findById(usuario.getId());
-        if (user.isPresent()) {
-            StripeResponse stripeResponse = stripeService.checkoutProducts(productRequests, user.get().getStripeCustomerId());
-            return ResponseEntity
-                    .status(HttpStatus.OK)
-                    .body(stripeResponse);
-        }
+    public ResponseEntity<StripeResponse> checkoutProducts(
+            @RequestBody List<ProductRequest> productRequests,
+            @AuthenticationPrincipal Usuario usuarioAutenticado
+    ) {
+        try {
+            Optional<Usuario> userOptional = usuarioService.findById(usuarioAutenticado.getId());
+            if (userOptional.isEmpty()) {
+                return ResponseEntity.badRequest().body(
+                        StripeResponse.builder()
+                                .status("FAILED")
+                                .message("Usuario no autenticado. Por favor inicia sesión")
+                                .build()
+                );
+            }
 
-        else {
-            return ResponseEntity.badRequest().body(
+            String customerId = usuarioService.ensureStripeCustomerExists(userOptional.get());
+
+            StripeResponse stripeResponse = stripeService.checkoutProducts(productRequests, customerId);
+
+            return ResponseEntity.ok(stripeResponse);
+
+        } catch (StripeException e) {
+            return ResponseEntity.internalServerError().body(
                     StripeResponse.builder()
                             .status("FAILED")
-                            .message("Usuario no autenticado. Por favor inicia sesión")
+                            .message("Error en Stripe: " + e.getMessage())
                             .build()
             );
         }

@@ -5,6 +5,7 @@ import com.grupo3.pawHome.dtos.StripeResponse;
 import com.grupo3.pawHome.entities.*;
 import com.grupo3.pawHome.dtos.ItemCarritoDTO;
 import com.grupo3.pawHome.services.*;
+import com.stripe.exception.StripeException;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -146,7 +147,7 @@ public class CarritoController {
     public ResponseEntity<StripeResponse> checkoutDesdeCarrito(
             @AuthenticationPrincipal Usuario usuario,
             HttpSession session
-    ) {
+    ) throws StripeException {
         if (usuario == null) {
             return ResponseEntity.badRequest().body(
                     StripeResponse.builder()
@@ -172,7 +173,8 @@ public class CarritoController {
         List<ProductRequest> productRequests = stripeService.convertirCarritoAProductRequests(carrito);
         Optional<Usuario> user = usuarioService.findById(usuario.getId());
         if (user.isPresent()) {
-            StripeResponse stripeResponse = stripeService.checkoutProducts(productRequests, user.get().getStripeCustomerId());
+            String customerId = usuarioService.ensureStripeCustomerExists(user.get());
+            StripeResponse stripeResponse = stripeService.checkoutProducts(productRequests, customerId);
             return ResponseEntity.status(HttpStatus.OK).body(stripeResponse);
         }
         else{
