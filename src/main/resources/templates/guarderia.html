@@ -87,7 +87,8 @@
 					</div>
 				</article>
 				<article class="col">
-					<div class="card p-3 shadow-sm cardServicio" data-precio="12" data-min-dias="11" data-max-dias="999">
+					<div class="card p-3 shadow-sm cardServicio" data-precio="12" data-min-dias="11"
+						 data-max-dias="999">
 						<div class="card_image">
 							<img th:src="@{images/estanciaSabatica.jpg}" alt="LogoEstanciaSabatica" class="imagenCard">
 						</div>
@@ -242,22 +243,25 @@
 							<legend class="fw-bold">Datos de contacto</legend>
 							<label for="nombreDueño" class="form-label">Tu nombre: <span
 									style="color: red">*</span></label>
-							<input type="text" id="nombreDueño" class="form-control labelForm"
-								   placeholder="-Por favor introduce tu nombre-" required>
+							<input th:value="${usuario != null} ? ${usuario.getPerfilDatos().getNombre()} : ''"
+								   type="text" id="nombreDueño" class="form-control labelForm"
+								   placeholder="-Por favor introduce tu nombre-" disabled>
 						</div>
 
 						<div class="itemSeleccion">
 							<label for="telefonoDueño" class="form-label">Teléfono: <span
 									style="color: red">*</span></label>
-							<input type="tel" id="telefonoDueño" class="form-control labelForm"
-								   placeholder="-Por favor introduce tu número de teléfono-" required>
+							<input th:value="${usuario != null} ? ${usuario.getPerfilDatos().telefono1} : ''" type="tel"
+								   id="telefonoDueño" class="form-control labelForm"
+								   placeholder="-Por favor introduce tu número de teléfono-" disabled>
 						</div>
 
 						<div class="itemSeleccion">
 							<label for="emailDueño" class="form-label">Correo electrónico: <span
 									style="color: red">*</span></label>
-							<input type="email" id="emailDueño" class="form-control labelForm"
-								   placeholder="-Por favor introduce tu correo electrónico-" required>
+							<input th:value="${usuario != null} ? ${usuario.getEmail()} : ''" type="email"
+								   id="emailDueño" class="form-control labelForm"
+								   placeholder="-Por favor introduce tu correo electrónico-" disabled>
 						</div>
 
 						<div class="itemSeleccion">
@@ -280,10 +284,11 @@
 						<label class="form-label">He leído y acepto las condiciones de uso de la web,
 							el aviso legal y la política de privacidad</label>
 					</div>
-
-					<div class="text-center">
-						<button type="submit" class="btn btn-primary btnEnviar">RESERVAR</button>
-					</div>
+				</form>
+				<form id="checkoutGuarderia" method="post" th:action="@{/guarderia/checkoutGuarderia}">
+					<input type="hidden" id="nombreProducto" name="nombreProducto">
+					<input type="hidden" id="cantidadDias" name="cantidadDias">
+					<button type="submit" class="btn btn-primary btnEnviar">RESERVAR</button>
 				</form>
 			</div>
 		</section>
@@ -352,8 +357,9 @@
 
 	<div id="errorDias" class="text-danger mt-1"></div>
 
+	<!-- Script para controlar la seleccion y gestion de dias -->
 	<script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const btns = document.querySelectorAll('.btnCard');
             const tarifaSpan = document.getElementById('tarifaSeleccionada');
             const precioTotal = document.getElementById('precioTotal');
@@ -450,7 +456,7 @@
 
             // Evento para seleccionar una tarifa o bono
             btns.forEach(btn => {
-                btn.addEventListener('click', function(e) {
+                btn.addEventListener('click', function (e) {
                     e.preventDefault();
 
                     const card = btn.closest('.cardServicio');
@@ -533,8 +539,58 @@
             } else {
                 fechaSalida.min = hoy;
             }
+
+            document.getElementById('checkoutGuarderia').addEventListener('submit', async function(event) {
+                event.preventDefault();
+
+                const form = event.target;
+
+                // Validar selección
+                if (!tarifaSeleccionada) {
+                    alert("Selecciona una tarifa o bono antes de reservar.");
+                    return;
+                }
+
+                // Obtener nombre y cantidad de días
+                const nombreProducto = tarifaSeleccionada.nombre;
+                let cantidadDias = 1;
+                if (!esBono && fechaEntrada.value && fechaSalida.value) {
+                    cantidadDias = calcularDias(new Date(fechaEntrada.value), new Date(fechaSalida.value));
+                }
+
+                // Prepara datos para enviar como JSON
+                const formData = {
+                    nombreProducto: nombreProducto,
+                    cantidadDias: cantidadDias
+                };
+
+                try {
+                    const response = await fetch(form.action, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(formData)
+                    });
+
+                    const data = await response.json();
+
+                    console.log(data);
+                    console.log("sessionUrl:", data.sessionUrl);
+                    console.log("sessionurl:", data.sessionurl);
+                    console.log("url:", data.url);
+
+                    if (data.status === "SUCCESS") {
+                        window.location.href = data.sessionUrl; // Redirige a Stripe
+                    } else {
+                        alert("Error en la reserva: " + (data.message || "Sin mensaje"));
+                    }
+                } catch (error) {
+                    console.error("Error:", error);
+                    alert("Error al procesar la reserva");
+                }
+            });
         });
 	</script>
+
 
 </section>
 </body>

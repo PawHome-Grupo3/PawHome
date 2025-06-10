@@ -101,6 +101,10 @@ body {
     --selected-background-color: green;
 }
 
+.tarifaSeleccionada{}
+
+.precioTotal{}
+
 .btnCard:active {
     background-color: #09251a;
 }

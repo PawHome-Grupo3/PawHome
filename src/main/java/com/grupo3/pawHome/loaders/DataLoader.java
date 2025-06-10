@@ -97,6 +97,10 @@ public class DataLoader implements CommandLineRunner {
         c3.setNombre("Tazas");
         categoriaRepository.save(c3);
 
+        Categoria c4 = new Categoria();
+        c4.setNombre("Guarderia");
+        categoriaRepository.save(c4);
+
         Producto p1 = new Producto();
         p1.setNombre("Collar");
         p1.setDescripcion("Dale a tu peludo amigo el mejor look con nuestro collar para perro, diseñado para brindar seguridad, confort y un toque de estilo único.");
@@ -132,6 +136,39 @@ public class DataLoader implements CommandLineRunner {
         p5.setRutaImagen1("/images/taza-prueba.jpg");
         p5.setCategoria(c3);
         productoRepository.save(p5);
+
+        Producto p6 = new Producto();
+        p6.setNombre("ESTANCIA EXPRESS");
+        p6.setCategoria(c4);
+        productoRepository.save(p6);
+
+        Tarifa tExpress = new Tarifa();
+        tExpress.setProducto(p6);
+        tExpress.setCantidad(1);
+        tExpress.setPrecioUnitario(18.00);
+        tExpress.setFechaDesde(LocalDate.now());
+        tExpress.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tExpress);
+
+        Producto p7 = new Producto();
+        p7.setNombre("ESTANCIA RELAX");
+        p7.setCategoria(c4);
+        productoRepository.save(p7);
+
+        Producto p8 = new Producto();
+        p8.setNombre("ESTANCIA SABATICA");
+        p8.setCategoria(c4);
+        productoRepository.save(p8);
+
+        Producto p9 = new Producto();
+        p9.setNombre("BONO LARGA ESTANCIA");
+        p9.setCategoria(c4);
+        productoRepository.save(p9);
+
+        Producto p10 = new Producto();
+        p10.setNombre("BONO SOLO DIA");
+        p10.setCategoria(c4);
+        productoRepository.save(p10);
 
         Talla t1 = new Talla();
         t1.setStock(5);

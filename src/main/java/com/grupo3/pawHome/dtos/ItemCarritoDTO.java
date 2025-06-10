@@ -16,4 +16,10 @@ public class ItemCarritoDTO {
     private int cantidad;
     private double precioUnitario;
     private Tarifa tarifa;
+
+    public ItemCarritoDTO(Producto producto, int cantidad, double precioUnitario) {
+        this.producto = producto;
+        this.cantidad = cantidad;
+        this.precioUnitario = precioUnitario;
+    }
 }
