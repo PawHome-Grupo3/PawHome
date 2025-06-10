@@ -3,7 +3,6 @@ package com.grupo3.pawHome.services;
 import com.grupo3.pawHome.entities.Apadrinar;
 import com.grupo3.pawHome.repositories.ApadrinarRepository;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -12,7 +11,9 @@ import java.util.Set;
 public class ApadrinarService {
     private final ApadrinarRepository apadrinarRepository;
 
-    public ApadrinarService(ApadrinarRepository repository) { this.apadrinarRepository = repository; }
+    public ApadrinarService(ApadrinarRepository repository) {
+        this.apadrinarRepository = repository;
+    }
 
     public List<Apadrinar> findAll() {
         return apadrinarRepository.findAll();
@@ -29,4 +30,5 @@ public class ApadrinarService {
     }
 
     public Apadrinar save(Apadrinar apadrinamiento) { return apadrinarRepository.save(apadrinamiento); }
+
 }

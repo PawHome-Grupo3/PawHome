@@ -11,4 +11,5 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties(prefix = "stripe")
 public class StripeConfig {
     private String secretKey;
+    private String publicKey;
 }

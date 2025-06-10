@@ -58,4 +58,7 @@ public class Animal {
     @Column(name = "ruta_img3")
     private String rutaImg3;
 
+    @Column(name = "stripe_product_id")
+    private String stripeProductId;
+
 }
