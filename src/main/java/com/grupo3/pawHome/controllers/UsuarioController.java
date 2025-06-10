@@ -108,7 +108,6 @@ public class UsuarioController {
             model.addAttribute("ciudades", Collections.emptyList());
         }
 
-        System.out.println("======== FIN mostrarFormulario ========");
         return "perfilUsuarioEditar";
     }
 

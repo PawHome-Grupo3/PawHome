@@ -49,14 +49,14 @@ public class AnimalesController {
 
     @GetMapping("/adopta/{id}")
     public String mostrarPaginaDonacion(@PathVariable("id") int id, Model model) {
-        Optional<Animal> animalOpt = animalService.findById(id); // o animalRepository.findById(id)
+        Optional<Animal> animalOpt = animalService.findById(id);
 
         if (animalOpt.isPresent()) {
             Animal animal = animalOpt.get();
             model.addAttribute("animal", animal);
-            return "compruebaAdoptaId"; // nombre de la vista Thymeleaf (por ejemplo: templates/dona.html)
+            return "compruebaAdoptaId";
         } else {
-            return "redirect:/error"; // o cualquier página de error
+            return "redirect:/error";
         }
     }
 

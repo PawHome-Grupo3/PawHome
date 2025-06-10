@@ -5,6 +5,7 @@ import com.grupo3.pawHome.dtos.StripeResponse;
 import com.grupo3.pawHome.entities.*;
 import com.grupo3.pawHome.dtos.ItemCarritoDTO;
 import com.grupo3.pawHome.services.*;
+import com.grupo3.pawHome.util.SecurityUtil;
 import com.stripe.exception.StripeException;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.http.HttpStatus;
@@ -29,16 +30,18 @@ public class CarritoController {
     private final TallaService tallaService;
     private final StripeService stripeService;
     private final UsuarioService usuarioService;
+    private final SecurityUtil securityUtil;
 
     public CarritoController(ProductoService productoService,
                              TarifaService tarifaService,
                              TallaService tallaService,
-                             StripeService stripeService, UsuarioService usuarioService) {
+                             StripeService stripeService, UsuarioService usuarioService, SecurityUtil securityUtil) {
         this.productoService = productoService;
         this.tarifaService = tarifaService;
         this.tallaService = tallaService;
         this.stripeService = stripeService;
         this.usuarioService = usuarioService;
+        this.securityUtil = securityUtil;
     }
 
     @GetMapping("/tienda/carrito")
@@ -173,8 +176,9 @@ public class CarritoController {
         List<ProductRequest> productRequests = stripeService.convertirCarritoAProductRequests(carrito);
         Optional<Usuario> user = usuarioService.findById(usuario.getId());
         if (user.isPresent()) {
-            String customerId = usuarioService.ensureStripeCustomerExists(user.get());
-            StripeResponse stripeResponse = stripeService.checkoutProducts(productRequests, customerId);
+            Usuario userCustomerId = usuarioService.ensureStripeCustomerExists(user.get());
+            StripeResponse stripeResponse = stripeService.checkoutProducts(productRequests, userCustomerId.getStripeCustomerId());
+            securityUtil.updateAuthenticatedUser(userCustomerId);
             return ResponseEntity.status(HttpStatus.OK).body(stripeResponse);
         }
         else{

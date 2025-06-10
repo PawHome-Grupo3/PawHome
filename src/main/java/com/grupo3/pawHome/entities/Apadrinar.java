@@ -29,6 +29,9 @@ public class Apadrinar {
     @Column(name = "fecha_baja")
     private LocalDate fechaBaja;
 
+    @Column(name = "stripe_subscription_id")
+    private String stripeSubscriptionId;
+
     @ManyToOne
     @JoinColumn(name = "animal_id", referencedColumnName = "id")
     private Animal animal;

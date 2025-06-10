@@ -7,7 +7,6 @@ import lombok.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class GuardarMetodoPagoRequest {
-    private String paymentMethodId;
-    private String alias;
+public class SubscriptionRequest {
+    private double aporteMensual;
 }
