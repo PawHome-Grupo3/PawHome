@@ -3,11 +3,14 @@ package com.grupo3.pawHome.controllers;
 import com.grupo3.pawHome.dtos.ItemCarritoDTO;
 import com.grupo3.pawHome.dtos.ProductRequest;
 import com.grupo3.pawHome.dtos.StripeResponse;
+import com.grupo3.pawHome.dtos.SubscriptionRequest;
 import com.grupo3.pawHome.entities.*;
 import com.grupo3.pawHome.services.*;
+import com.grupo3.pawHome.util.SecurityUtil;
 import com.grupo3.pawHome.util.SessionUtils;
 import com.stripe.exception.StripeException;
 import com.stripe.model.PaymentIntent;
+import com.stripe.model.Price;
 import com.stripe.model.checkout.Session;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.http.ResponseEntity;
@@ -29,6 +32,8 @@ public class ProductCheckoutController {
     private final UsuarioService usuarioService;
     private final MetodoPagoService metodoPagoService;
     private final TipoPagoService tipoPagoService;
+    private final SecurityUtil securityUtil;
+    private final AnimalService animalService;
 
     public ProductCheckoutController(StripeService stripeService,
                                      PagoService pagoService,
@@ -36,7 +41,9 @@ public class ProductCheckoutController {
                                      TallaService tallaService,
                                      UsuarioService usuarioService,
                                      MetodoPagoService metodoPagoService,
-                                     TipoPagoService tipoPagoService) {
+                                     TipoPagoService tipoPagoService,
+                                     SecurityUtil securityUtil,
+                                     AnimalService animalService) {
         this.stripeService = stripeService;
         this.pagoService = pagoService;
         this.facturaService = facturaService;
@@ -44,6 +51,8 @@ public class ProductCheckoutController {
         this.usuarioService = usuarioService;
         this.metodoPagoService = metodoPagoService;
         this.tipoPagoService = tipoPagoService;
+        this.securityUtil = securityUtil;
+        this.animalService = animalService;
     }
 
     @PostMapping("/product/v1/checkout")
@@ -62,9 +71,10 @@ public class ProductCheckoutController {
                 );
             }
 
-            String customerId = usuarioService.ensureStripeCustomerExists(userOptional.get());
+            Usuario userCustomerId = usuarioService.ensureStripeCustomerExists(userOptional.get());
+            securityUtil.updateAuthenticatedUser(userCustomerId);
 
-            StripeResponse stripeResponse = stripeService.checkoutProducts(productRequests, customerId);
+            StripeResponse stripeResponse = stripeService.checkoutProducts(productRequests, userCustomerId.getStripeCustomerId());
 
             return ResponseEntity.ok(stripeResponse);
 
@@ -186,6 +196,40 @@ public class ProductCheckoutController {
     public RedirectView procesarPagoIncorrecto(){
 
         return new RedirectView("/pago-incorrecto");
+    }
+
+    @PostMapping("/apadrinar/{id}/checkout-suscripcion")
+    public ResponseEntity<StripeResponse> checkoutApadrinamiento(
+            @PathVariable("id") Integer animalId,
+            @RequestBody SubscriptionRequest request,
+            @AuthenticationPrincipal Usuario usuarioAutenticado
+    ) throws StripeException {
+        Optional<Usuario> userOptional = usuarioService.findById(usuarioAutenticado.getId());
+        if (userOptional.isEmpty()) {
+            return ResponseEntity.badRequest().body(
+                    StripeResponse.builder()
+                            .status("FAILED")
+                            .message("Usuario no autenticado. Por favor inicia sesión")
+                            .build()
+            );
+        }
+        Usuario usuario = userOptional.get();
+        usuarioService.ensureStripeCustomerExists(usuario);
+
+        Animal animal = animalService.findById(animalId)
+                .orElseThrow(() -> new IllegalArgumentException("Animal no encontrado"));
+
+        if (animal.getStripeProductId() == null || animal.getStripeProductId().isEmpty()) {
+            String productId = stripeService.createStripeProductForAnimal(animal);
+            animal.setStripeProductId(productId);
+            animalService.save(animal);
+        }
+
+        Price price = stripeService.getOrCreatePriceId(request.getAporteMensual(), animal);
+
+        StripeResponse stripeResponse = stripeService.checkoutSubscription(price, usuario.getStripeCustomerId());
+
+        return ResponseEntity.ok(stripeResponse);
     }
 }
 

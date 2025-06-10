@@ -36,7 +36,7 @@ public class UsuarioService {
 
     public void save(Usuario usuario) { usuarioRepository.save(usuario); }
 
-    public String ensureStripeCustomerExists(Usuario usuario) throws StripeException {
+    public Usuario ensureStripeCustomerExists(Usuario usuario) throws StripeException {
         if (usuario.getStripeCustomerId() == null) {
             Stripe.apiKey = stripeConfig.getSecretKey();
 
@@ -49,6 +49,6 @@ public class UsuarioService {
             usuario.setStripeCustomerId(customer.getId());
             usuarioRepository.save(usuario);
         }
-        return usuario.getStripeCustomerId();
+        return usuario;
     }
 }

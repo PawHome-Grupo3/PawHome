@@ -1,6 +1,7 @@
 package com.grupo3.pawHome.util;
 
 import com.grupo3.pawHome.dtos.ItemCarritoDTO;
+import com.grupo3.pawHome.entities.Animal;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Component;
 
@@ -28,5 +29,12 @@ public class SessionUtils {
         }
 
         return new ArrayList<>();
+    }
+
+    public static Animal obtenerAnimalSeguro(HttpSession session) {
+        Object obj = session.getAttribute("animal");
+
+        if (obj instanceof Animal) { return (Animal) obj; }
+        else{ return new Animal(); }
     }
 }
