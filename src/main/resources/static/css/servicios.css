@@ -22,17 +22,17 @@ body {
     padding: 0.2em;
 }
 
-.seccionTitulo{
-    background-color: rgba(27, 125, 85, 0.1);
-}
-
 .textoModal {
     font-size: clamp(12px, 1vw, 20px);
     background-color: rgba(27, 125, 85, 0.3);
     border-radius: 15px;
 }
 
-.mainContainer{
+.seccionTitulo{
+    background-color: rgba(27, 125, 85, 0.1);
+}
+
+.mainContainer {
     background-color: rgba(27, 125, 85, 0.3);
     width: calc(100% - 5px);
     max-width: 1400px;
@@ -42,7 +42,7 @@ body {
     border-radius: 20px;
 }
 
-.cardServicio{
+.cardServicio {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -51,7 +51,36 @@ body {
     border-radius: 20px;
 }
 
-.imagenCard{
+.cardServicio.selected {
+    background-color: #198754 !important; /* Color más oscuro, puedes cambiarlo */
+    color: #fff;
+    border: 2px solid #145c32;
+    transition: background 0.2s;
+}
+
+.cardServicio.selected .card-title,
+.cardServicio.selected .fa,
+.cardServicio.selected .form-label {
+    color: #fff !important;
+}
+
+.cardServicio h3 {
+    text-overflow: ellipsis;
+    text-align: center;
+    font-size: 1.25rem;
+}
+
+.cardServicioPerro .btnCard{
+    margin-top: auto;
+}
+
+.cardServicioPerro p{
+    text-overflow: ellipsis;
+    text-align: center;
+    font-size: 1.25rem;
+}
+
+.imagenCard {
     height: 150px;
     width: 100%;
     max-width: 100%;
@@ -59,13 +88,7 @@ body {
     border-radius: 20px;
 }
 
-.cardServicio h3{
-    text-overflow: ellipsis;
-    text-align: center;
-    font-size: 1.25rem;
-}
-
-.formContainer{
+.formContainer {
     background-color: rgba(27, 125, 85, 0.4);
     width: calc(100% - 5px);
     max-width: 1400px;
@@ -74,29 +97,29 @@ body {
     border-radius: 20px;
 }
 
-.btnCard{
+.btnCard {
     --selected-background-color: green;
 }
 
-.btnCard:active{
+.btnCard:active {
     background-color: #09251a;
 }
 
-.itemSeleccion{
+.itemSeleccion {
     padding: 10px;
 }
 
-.labelForm{
+.labelForm {
     border-radius: 10px;
 }
 
-.btnEnviar{
+.btnEnviar {
     border: hidden;
     background-color: #198754;
     border-radius: 0.75rem;
     width: 300px;
 }
 
-.btnEnviar:hover{
+.btnEnviar:hover {
     background-color: #157347;
 }
