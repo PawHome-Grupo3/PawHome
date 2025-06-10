@@ -3,20 +3,16 @@ package com.grupo3.pawHome.controllers;
 import com.grupo3.pawHome.dtos.CountryDTO;
 import com.grupo3.pawHome.dtos.PerfilDatosDTO;
 import com.grupo3.pawHome.entities.Apadrinar;
+import com.grupo3.pawHome.entities.MetodoPago;
 import com.grupo3.pawHome.entities.PerfilDatos;
 import com.grupo3.pawHome.entities.Usuario;
-import com.grupo3.pawHome.services.ApadrinarService;
-import com.grupo3.pawHome.services.LocationService;
-import com.grupo3.pawHome.services.PerfilDatosService;
-import com.grupo3.pawHome.services.UsuarioService;
-import jakarta.validation.Valid;
+import com.grupo3.pawHome.services.*;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -29,20 +25,30 @@ import java.util.Set;
 public class UsuarioController {
     private final UsuarioService usuarioService;
     private final ApadrinarService apadrinarService;
-    private final PerfilDatosService perfilDatosService;
     private final LocationService locationService;
+    private final MetodoPagoService metodoPagoService;
 
 
-    public UsuarioController(UsuarioService usuarioService, ApadrinarService apadrinarService, PerfilDatosService perfilDatosService, LocationService locationService) {
+    public UsuarioController(UsuarioService usuarioService,
+                             ApadrinarService apadrinarService,
+                             LocationService locationService,
+                             MetodoPagoService metodoPagoService) {
         this.usuarioService = usuarioService;
         this.apadrinarService = apadrinarService;
-        this.perfilDatosService = perfilDatosService;
         this.locationService = locationService;
+        this.metodoPagoService = metodoPagoService;
     }
 
     @GetMapping("/perfil/informacion")
     public String mostrarPerfil(@AuthenticationPrincipal Usuario usuario, Model model) {
         model.addAttribute("usuario", usuario);
+        List<MetodoPago> metodoPagos = metodoPagoService.findAllByUsuario(usuario);
+        if(metodoPagos.isEmpty()){
+            model.addAttribute("metodosPago", null);
+        }
+        else{
+            model.addAttribute("metodosPago", metodoPagos);
+        }
         return "perfilUsuario";
     }
 
@@ -135,8 +141,6 @@ public class UsuarioController {
         usuario.setPerfilDatos(perfil);
 
         usuarioService.save(usuario);
-
-        PerfilDatos perfilGuardado = usuario.getPerfilDatos();
 
         Usuario usuarioActualizado = usuarioService.findById(authUsuario.getId())
                 .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));

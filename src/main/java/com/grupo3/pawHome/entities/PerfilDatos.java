@@ -33,7 +33,6 @@ public class PerfilDatos {
 
     private String pais;
 
-    @Column(nullable = false)
     private String ciudad;
 
     @Column(nullable = false)

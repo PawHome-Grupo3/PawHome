@@ -31,4 +31,8 @@ public class Pago {
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "factura_id", referencedColumnName = "id")
     private Factura factura;
+
+    @ManyToOne
+    @JoinColumn(referencedColumnName = "id",name = "metodo_pago_id")
+    private MetodoPago metodoPago;
 }
