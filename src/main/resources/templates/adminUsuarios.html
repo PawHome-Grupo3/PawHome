@@ -10,51 +10,128 @@
 
 <section layout:fragment="content">
 
-    <div class="container mt-5 m-5">
-        <h1>Gestión de Usuarios</h1>
+<!--    <div class="container">-->
+<!--        <h1>Gestión de usuarios</h1>-->
 
-        <!-- Formulario Crear/Editar -->
-        <form th:action="@{/admin/usuarios/guardar}" th:object="${usuario}" method="post" class="row g-3 mb-4">
-            <input type="hidden" th:field="*{id}"/>
-            <div class="col-md-2">
-                <input type="text" th:field="*{nickname}" class="form-control" placeholder="Nombre de usuario" required>
-            </div>
-            <div class="col-md-1">
-                <input type="number" th:field="*{email}" class="form-control" placeholder="Correo electrónico" required>
-            </div>
-            <div class="col-md-2">
-                <button type="submit" class="btn btn-success w-100"
-                        th:text="*{id} != null ? 'Actualizar' : 'Guardar'">Guardar
-                </button>
-            </div>
-        </form>
+<!--        &lt;!&ndash; Formulario Crear/Editar &ndash;&gt;-->
+<!--        <form th:action="@{/admin/usuarios/guardar}" th:object="${usuario}" method="post" class="row g-3 mb-4">-->
+<!--            <input type="hidden" th:field="*{id}"/>-->
+<!--            <div class="col-md-2">-->
+<!--                <input type="text" th:field="*{nickname}" class="form-control" placeholder="Nombre de usuario" required>-->
+<!--            </div>-->
+<!--            <div class="col-md-1">-->
+<!--                <input type="number" th:field="*{email}" class="form-control" placeholder="Correo electrónico" required>-->
+<!--            </div>-->
+<!--            <div class="col-md-2">-->
+<!--                <button type="submit" class="btn btn-success w-100"-->
+<!--                        th:text="*{id} != null ? 'Actualizar' : 'Guardar'">Guardar-->
+<!--                </button>-->
+<!--            </div>-->
+<!--        </form>-->
 
-        <!-- Tabla de Usuarios -->
+<!--        &lt;!&ndash; Tabla de Usuarios &ndash;&gt;-->
+<!--        <table class="table table-striped table-bordered">-->
+<!--            <thead class="table-dark">-->
+<!--            <tr>-->
+<!--                <th>ID</th>-->
+<!--                <th>Nombre de usuario</th>-->
+<!--                <th>Correo electrónico</th>-->
+<!--                <th>Datos del perfil</th>-->
+<!--            </tr>-->
+<!--            </thead>-->
+<!--            <tbody>-->
+<!--            <tr th:each="usuario, iterStat : ${usuarios}">-->
+<!--                <td th:text="${iterStat.count}"></td>-->
+<!--                <td th:text="${usuario.nickname}"></td>-->
+<!--                <td th:text="${usuario.email}"></td>-->
+<!--                <td>-->
+<!--                    <a th:href="@{'/admin/usuarios/perfil/' + ${usuario.getPerfilDatos()}}" class="btn btn-info btn-sm">Ver Perfil</a>-->
+<!--                <td>-->
+<!--                    <a th:href="@{'/admin/usuarios/editar/' + ${usuario.id}}" class="btn btn-warning btn-sm">Editar</a>-->
+<!--                    <a th:href="@{'/admin/usuarios/eliminar/' + ${usuario.id}}" class="btn btn-danger btn-sm"-->
+<!--                       onclick="return confirm('¿Eliminar este usuario?')">Eliminar</a>-->
+<!--                </td>-->
+<!--            </tr>-->
+<!--            </tbody>-->
+<!--        </table>-->
+<!--    </div>-->
+
+    <div class="container">
+        <h1>Gestión de usuarios</h1>
+
         <table class="table table-striped table-bordered">
             <thead class="table-dark">
             <tr>
-                <th>ID</th>
+                <th>#</th>
                 <th>Nombre de usuario</th>
                 <th>Correo electrónico</th>
-                <th>Datos del perfil</th>
+                <th>Perfil</th>
+                <th>Acciones</th>
             </tr>
             </thead>
             <tbody>
-            <tr th:each="usuario, iterStat : ${usuarios}">
-                <td th:text="${iterStat.count}"></td>
-                <td th:text="${usuario.nickname}"></td>
-                <td th:text="${usuario.email}"></td>
-                <td>
-                    <a th:href="@{'/admin/usuarios/perfil/' + ${usuario.getPerfilDatos()}}" class="btn btn-info btn-sm">Ver Perfil</a>
-                <td>
-                    <a th:href="@{'/admin/usuarios/editar/' + ${usuario.id}}" class="btn btn-warning btn-sm">Editar</a>
-                    <a th:href="@{'/admin/usuarios/eliminar/' + ${usuario.id}}" class="btn btn-danger btn-sm"
-                       onclick="return confirm('¿Eliminar este usuario?')">Eliminar</a>
-                </td>
+            <tr th:each="usuario, iterStat : ${usuarios}" th:id="'fila-' + ${usuario.id}">
+                <form th:action="@{/admin/usuarios/guardar}" method="post" th:object="${usuario}">
+                    <input type="hidden" th:field="*{id}"/>
+
+                    <td th:text="${iterStat.count}"></td>
+
+                    <!-- Celda de nickname -->
+                    <td>
+                        <span th:text="*{nickname}" class="texto-nickname"></span>
+                        <input type="text" th:field="*{nickname}" class="form-control form-control-sm d-none input-nickname" required/>
+                    </td>
+
+                    <!-- Celda de email -->
+                    <td>
+                        <span th:text="*{email}" class="texto-email"></span>
+                        <input type="email" th:field="*{email}" class="form-control form-control-sm d-none input-email" required/>
+                    </td>
+
+                    <!-- Ver perfil -->
+                    <td>
+                        <a th:href="@{'/admin/usuarios/perfil/' + ${usuario.getPerfilDatos()}}" class="btn btn-info btn-sm">Ver Perfil</a>
+                    </td>
+
+                    <!-- Botones -->
+                    <td>
+                        <div class="d-flex gap-1">
+                            <button type="button" class="btn btn-warning btn-sm" th:attr="onclick='activarEdicion(' + ${usuario.id} + ')'">Editar</button>
+                            <button type="submit" class="btn btn-success btn-sm d-none btn-guardar">Guardar</button>
+                            <button type="button" class="btn btn-secondary btn-sm d-none btn-cancelar" th:attr="onclick='cancelarEdicion(' + ${usuario.id} + ')'">Cancelar</button>
+                            <a th:href="@{'/admin/usuarios/eliminar/' + ${usuario.id}}" class="btn btn-danger btn-sm"
+                               onclick="return confirm('¿Eliminar este usuario?')">Eliminar</a>
+                        </div>
+                    </td>
+                </form>
             </tr>
             </tbody>
         </table>
     </div>
+
+    <script>
+        function activarEdicion(id) {
+            const fila = document.getElementById(`fila-${id}`);
+            fila.querySelector('.texto-nickname').classList.add('d-none');
+            fila.querySelector('.texto-email').classList.add('d-none');
+            fila.querySelector('.input-nickname').classList.remove('d-none');
+            fila.querySelector('.input-email').classList.remove('d-none');
+
+            fila.querySelector('.btn-guardar').classList.remove('d-none');
+            fila.querySelector('.btn-cancelar').classList.remove('d-none');
+        }
+
+        function cancelarEdicion(id) {
+            const fila = document.getElementById(`fila-${id}`);
+            fila.querySelector('.texto-nickname').classList.remove('d-none');
+            fila.querySelector('.texto-email').classList.remove('d-none');
+            fila.querySelector('.input-nickname').classList.add('d-none');
+            fila.querySelector('.input-email').classList.add('d-none');
+
+            fila.querySelector('.btn-guardar').classList.add('d-none');
+            fila.querySelector('.btn-cancelar').classList.add('d-none');
+        }
+    </script>
 </section>
 </body>
 </html>
