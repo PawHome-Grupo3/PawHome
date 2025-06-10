@@ -5,6 +5,8 @@ import com.grupo3.pawHome.dtos.StripeResponse;
 import com.grupo3.pawHome.entities.*;
 import com.grupo3.pawHome.dtos.ItemCarritoDTO;
 import com.grupo3.pawHome.services.*;
+import com.grupo3.pawHome.util.SecurityUtil;
+import com.stripe.exception.StripeException;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,15 +29,19 @@ public class CarritoController {
     private final TarifaService tarifaService;
     private final TallaService tallaService;
     private final StripeService stripeService;
+    private final UsuarioService usuarioService;
+    private final SecurityUtil securityUtil;
 
     public CarritoController(ProductoService productoService,
                              TarifaService tarifaService,
                              TallaService tallaService,
-                             StripeService stripeService) {
+                             StripeService stripeService, UsuarioService usuarioService, SecurityUtil securityUtil) {
         this.productoService = productoService;
         this.tarifaService = tarifaService;
         this.tallaService = tallaService;
         this.stripeService = stripeService;
+        this.usuarioService = usuarioService;
+        this.securityUtil = securityUtil;
     }
 
     @GetMapping("/tienda/carrito")
@@ -144,7 +150,7 @@ public class CarritoController {
     public ResponseEntity<StripeResponse> checkoutDesdeCarrito(
             @AuthenticationPrincipal Usuario usuario,
             HttpSession session
-    ) {
+    ) throws StripeException {
         if (usuario == null) {
             return ResponseEntity.badRequest().body(
                     StripeResponse.builder()
@@ -168,9 +174,21 @@ public class CarritoController {
         session.setAttribute("motivo", "Compra en Tienda");
 
         List<ProductRequest> productRequests = stripeService.convertirCarritoAProductRequests(carrito);
-        StripeResponse stripeResponse = stripeService.checkoutProducts(productRequests);
-
-        return ResponseEntity.status(HttpStatus.OK).body(stripeResponse);
+        Optional<Usuario> user = usuarioService.findById(usuario.getId());
+        if (user.isPresent()) {
+            Usuario userCustomerId = usuarioService.ensureStripeCustomerExists(user.get());
+            StripeResponse stripeResponse = stripeService.checkoutProducts(productRequests, userCustomerId.getStripeCustomerId());
+            securityUtil.updateAuthenticatedUser(userCustomerId);
+            return ResponseEntity.status(HttpStatus.OK).body(stripeResponse);
+        }
+        else{
+            return ResponseEntity.badRequest().body(
+                    StripeResponse.builder()
+                            .status("FAILED")
+                            .message("Usuario no autenticado. Por favor inicia sesión")
+                            .build()
+            );
+        }
     }
 }
 

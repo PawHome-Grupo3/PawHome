@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Añadir Tarjeta de Crédito</title>
+    <style>
+        #card-element {
+            border: 1px solid #ced4da;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        #card-errors {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body class="container py-5">
+<section layout:fragment="content">
+<h2>Añadir Tarjeta de Crédito</h2>
+<form id="payment-form" class="mt-4">
+    <div class="mb-3">
+        <label for="alias" class="form-label">Alias para la tarjeta</label>
+        <input type="text" id="alias" name="alias" class="form-control" placeholder="Ej: Tarjeta Personal" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="nombreTitular" class="form-label">Nombre del titular</label>
+        <input type="text" id="nombreTitular" name="nombreTitular" class="form-control" placeholder="Nombre completo" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="card-element" class="form-label">Detalles de la tarjeta</label>
+        <div id="card-element"></div>
+        <div id="card-errors" role="alert"></div>
+    </div>
+
+    <button id="submit-button" class="btn btn-primary" type="submit">Guardar tarjeta</button>
+</form>
+<script th:inline="javascript">
+    const stripePublicKey = /*[[${stripePublicKey}]]*/ 'pk_test_dummy';
+    const clientSecret = /*[[${clientSecret}]]*/ 'cs_test_dummy';
+</script>
+<script th:inline="javascript" th:src="'https://js.stripe.com/v3/'"></script>
+<script th:inline="javascript">
+    const stripe = Stripe(stripePublicKey);
+    const elements = stripe.elements();
+    const cardElement = elements.create('card');
+    cardElement.mount('#card-element');
+
+    const form = document.getElementById('payment-form');
+    const errorElement = document.getElementById('card-errors');
+
+    form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        const nombreTitular = document.getElementById('nombreTitular').value;
+        const alias = document.getElementById('alias').value;
+
+        const { setupIntent, error } = await stripe.confirmCardSetup(
+            clientSecret,
+            {
+                payment_method: {
+                    card: cardElement,
+                    billing_details: {
+                        name: nombreTitular  // <-- aquí pasamos el nombre del titular
+                    }
+                }
+            }
+        );
+
+        if (error) {
+            errorElement.textContent = error.message;
+        } else {
+            // Crear y enviar el formulario manualmente
+            const hiddenForm = document.createElement('form');
+            hiddenForm.method = 'POST';
+            hiddenForm.action = '/perfil/metodo-pago/guardar';
+
+            const aliasInput = document.createElement('input');
+            aliasInput.type = 'hidden';
+            aliasInput.name = 'alias';
+            aliasInput.value = alias;
+            hiddenForm.appendChild(aliasInput);
+
+            const nombreInput = document.createElement('input');
+            nombreInput.type = 'hidden';
+            nombreInput.name = 'nombreTitular';
+            nombreInput.value = nombreTitular;
+            hiddenForm.appendChild(nombreInput);
+
+            const paymentMethodInput = document.createElement('input');
+            paymentMethodInput.type = 'hidden';
+            paymentMethodInput.name = 'paymentMethodId';
+            paymentMethodInput.value = setupIntent.payment_method;
+            hiddenForm.appendChild(paymentMethodInput);
+
+            document.body.appendChild(hiddenForm);
+            hiddenForm.submit();
+        }
+    });
+</script>
+</section>
+</body>
+</html>

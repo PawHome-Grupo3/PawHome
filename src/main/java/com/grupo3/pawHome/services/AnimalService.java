@@ -19,8 +19,7 @@ public class AnimalService {
 
     public List<Animal> findAll() { return animalRepository.findAll(); }
 
-    public Optional<Animal> findById(int id) {return animalRepository.findById(id);
-    }
+    public Optional<Animal> findById(int id) { return animalRepository.findById(id); }
 
     public Page<Animal> findPaginated(Pageable pageable) {
         int pageSize = pageable.getPageSize();
@@ -38,4 +37,6 @@ public class AnimalService {
 
         return new PageImpl<>(list, PageRequest.of(currentPage, pageSize), animales.size());
     }
+
+    public Animal save(Animal animal) { return animalRepository.save(animal); }
 }
