@@ -75,20 +75,6 @@ public class DefaultController {
         return "index"; // Carga /templates/index.html
     }
 
-    // Metodo para mostrar la pagina de la peluqueria
-    @GetMapping("/peluqueria")
-    public String mostrarPeluqueria()
-    {
-        return "peluqueria";
-    }
-
-    // Metodo para mostrar la pagina de adiestramiento
-    @GetMapping("/adiestramiento")
-    public String mostrarAdiestramiento()
-    {
-        return "adiestramiento";
-    }
-
     // Metodo para mostrar la pagina de veterinario
     @GetMapping("/veterinario")
     public String mostrarVeterinario()
