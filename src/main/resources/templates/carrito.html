@@ -169,144 +169,213 @@
                 </div>
             </div>
         </div>
+    </section>
 
-        <script>
-            document.addEventListener('DOMContentLoaded', () => {
-                document.querySelectorAll('input[id^="quantity-input-"]').forEach(inputField => {
-                    const idParts = inputField.id.split('-');
-                    const prodId = idParts[2];
-                    const tallaId = idParts[3];
+    <!-- Modal alerta animal visualmente mejorado -->
+    <div class="modal fade" id="alertaAnimal" tabindex="-1" aria-labelledby="alertaAnimalLabel" aria-hidden="true"
+         data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content text-center shadow-lg border-0 rounded-4" style="background-color: #e9f9ef;">
 
-                    const minusButton = document.getElementById(`button-minus-${prodId}-${tallaId}`);
-                    const plusButton = document.getElementById(`button-plus-${prodId}-${tallaId}`);
-                    const errorMsg = document.getElementById(`quantity-error-${prodId}-${tallaId}`);
-                    const stockInput = document.getElementById(`stock-${prodId}-${tallaId}`);
-                    const maxStock = parseInt(stockInput.value);
+                <div class="modal-header border-0">
+                    <h5 class="modal-title w-100 fs-4 fw-bold" id="alertaAnimalLabel" style="
+            color: #218838;
+            text-shadow: 0 1px 1px rgba(0,0,0,0.1);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+                        🐾 ¡Ups! Necesitas iniciar sesión
+                    </h5>
+                </div>
 
-                    function showError(message) {
-                        errorMsg.textContent = message;
-                        errorMsg.classList.remove('d-none');
+                <div class="modal-body fs-5 px-4" style="
+          color: #155724;
+          font-weight: 500;
+          font-family: 'Segoe UI', sans-serif;
+      ">
+                    <p>
+                        Para continuar con la donación, por favor inicia sesión.<br>
+                    </p>
+                    <div class="mt-2">
+                        <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png"
+                             class="img-icono-animal"
+                             alt="Huella animal"/>
+                    </div>
+                </div>
+
+                <div class="modal-footer justify-content-center border-0">
+                    <button id="btnLogin" type="button" class="btn px-4 py-2 fw-semibold" style="
+            border-radius: 30px;
+            background-color: #28a745;
+            color: white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        " onmouseover="this.style.backgroundColor='#218838'" onmouseout="this.style.backgroundColor='#28a745'">
+                        Ir al login
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('input[id^="quantity-input-"]').forEach(inputField => {
+                const idParts = inputField.id.split('-');
+                const prodId = idParts[2];
+                const tallaId = idParts[3];
+
+                const minusButton = document.getElementById(`button-minus-${prodId}-${tallaId}`);
+                const plusButton = document.getElementById(`button-plus-${prodId}-${tallaId}`);
+                const errorMsg = document.getElementById(`quantity-error-${prodId}-${tallaId}`);
+                const stockInput = document.getElementById(`stock-${prodId}-${tallaId}`);
+                const maxStock = parseInt(stockInput.value);
+
+                function showError(message) {
+                    errorMsg.textContent = message;
+                    errorMsg.classList.remove('d-none');
+                }
+
+                function hideError() {
+                    errorMsg.classList.add('d-none');
+                }
+
+                function sanitizeInput() {
+                    let valueStr = inputField.value;
+                    const onlyDigits = valueStr.replace(/\D/g, '');
+
+                    if (onlyDigits !== valueStr) {
+                        inputField.value = onlyDigits;
+                        showError('Solo se permiten números.');
+                        return;
                     }
 
-                    function hideError() {
-                        errorMsg.classList.add('d-none');
+                    if (onlyDigits.length === 0) {
+                        hideError();
+                        return;
                     }
 
-                    function sanitizeInput() {
-                        let valueStr = inputField.value;
-                        const onlyDigits = valueStr.replace(/\D/g, '');
+                    let value = parseInt(onlyDigits);
 
-                        if (onlyDigits !== valueStr) {
-                            inputField.value = onlyDigits;
-                            showError('Solo se permiten números.');
-                            return;
-                        }
+                    if (value < 1) {
+                        showError('La cantidad debe ser al menos 1.');
+                        inputField.value = '1';
+                        return;
+                    }
 
-                        if (onlyDigits.length === 0) {
-                            hideError();
-                            return;
-                        }
+                    if (value > maxStock) {
+                        showError(`Solo hay ${maxStock} unidades disponibles.`);
+                        inputField.value = maxStock.toString();
+                        return;
+                    }
 
-                        let value = parseInt(onlyDigits);
+                    hideError();
+                }
 
-                        if (value < 1) {
-                            showError('La cantidad debe ser al menos 1.');
-                            inputField.value = '1';
-                            return;
-                        }
-
-                        if (value > maxStock) {
-                            showError(`Solo hay ${maxStock} unidades disponibles.`);
-                            inputField.value = maxStock.toString();
-                            return;
-                        }
-
+                minusButton.addEventListener('click', () => {
+                    let currentValue = parseInt(inputField.value) || 1;
+                    if (currentValue > 1) {
+                        inputField.value = currentValue - 1;
                         hideError();
                     }
+                });
 
-                    minusButton.addEventListener('click', () => {
-                        let currentValue = parseInt(inputField.value) || 1;
-                        if (currentValue > 1) {
-                            inputField.value = currentValue - 1;
-                            hideError();
-                        }
-                    });
+                plusButton.addEventListener('click', () => {
+                    let currentValue = parseInt(inputField.value) || 1;
+                    if (currentValue < maxStock) {
+                        inputField.value = currentValue + 1;
+                        hideError();
+                    } else {
+                        showError(`No hay más stock disponible para esta talla (máx. ${maxStock}).`);
+                    }
+                });
 
-                    plusButton.addEventListener('click', () => {
-                        let currentValue = parseInt(inputField.value) || 1;
-                        if (currentValue < maxStock) {
-                            inputField.value = currentValue + 1;
-                            hideError();
-                        } else {
-                            showError(`No hay más stock disponible para esta talla (máx. ${maxStock}).`);
-                        }
-                    });
+                inputField.addEventListener('keydown', function (e) {
+                    const allowedKeys = ['Backspace', 'ArrowLeft', 'ArrowRight', 'Tab', 'Delete'];
+                    if ((e.key >= '0' && e.key <= '9') || allowedKeys.includes(e.key)) {
+                        return;
+                    }
+                    e.preventDefault();
+                });
 
-                    inputField.addEventListener('keydown', function (e) {
-                        const allowedKeys = ['Backspace', 'ArrowLeft', 'ArrowRight', 'Tab', 'Delete'];
-                        if ((e.key >= '0' && e.key <= '9') || allowedKeys.includes(e.key)) {
-                            return;
-                        }
-                        e.preventDefault();
-                    });
+                inputField.addEventListener('input', sanitizeInput);
 
-                    inputField.addEventListener('input', sanitizeInput);
-
-                    inputField.addEventListener('blur', () => {
-                        if (inputField.value.trim() === '') {
-                            inputField.value = '1';
-                            hideError();
-                        }
-                    });
+                inputField.addEventListener('blur', () => {
+                    if (inputField.value.trim() === '') {
+                        inputField.value = '1';
+                        hideError();
+                    }
                 });
             });
-        </script>
+        });
+    </script>
 
-        <script>
-            let formAEliminar = null;
+    <script>
+        let formAEliminar = null;
 
-            function abrirModal(formId) {
-                formAEliminar = document.getElementById(formId);
+        function abrirModal(formId) {
+            formAEliminar = document.getElementById(formId);
 
-                const modal = new bootstrap.Modal(document.getElementById('modalConfirmacion'));
-                modal.show();
+            const modal = new bootstrap.Modal(document.getElementById('modalConfirmacion'));
+            modal.show();
+        }
+
+        function confirmarEliminacion() {
+            if (formAEliminar) {
+                formAEliminar.submit();
             }
+        }
+    </script>
 
-            function confirmarEliminacion() {
-                if (formAEliminar) {
-                    formAEliminar.submit();
-                }
-            }
-        </script>
+    <script>
+        document.getElementById('checkoutForm').addEventListener('submit', async function (event) {
+            event.preventDefault();
 
-        <script>
-            document.getElementById('checkoutForm').addEventListener('submit', async function (event) {
-                event.preventDefault();
+            const form = event.target;
 
-                const form = event.target;
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
 
-                try {
-                    const response = await fetch(form.action, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        }
-                    });
+                const data = await response.json();
 
-                    const data = await response.json();
-
-                    if (data.status === 'SUCCESS') {
-                        window.location.href = data.sessionUrl;
+                if (data.status === 'SUCCESS') {
+                    window.location.href = data.sessionUrl;
+                } else {
+                    if (data.message.includes("no autenticado")) {
+                        mostrarAlertaAnimal(data.message);
                     } else {
                         alert("Error al iniciar el pago: " + data.message);
                     }
-                } catch (error) {
-                    console.error("Error al conectar con el servidor:", error);
-                    alert("No se pudo procesar el pago.");
                 }
+            } catch (error) {
+                console.error("Error al conectar con el servidor:", error);
+                alert("No se pudo procesar el pago.");
+            }
+        });
+
+        function mostrarAlertaAnimal() {
+            const alertaModalEl = document.getElementById('alertaAnimal');
+            const alertaModal = new bootstrap.Modal(alertaModalEl, {
+                backdrop: 'static',
+                keyboard: false
             });
-        </script>
-    </section>
+
+            alertaModal.show();
+
+            const timerId = setTimeout(() => {
+                window.location.href = "/login";
+            }, 4000);
+
+            document.getElementById('btnLogin').addEventListener("click", () => {
+                clearTimeout(timerId);
+                window.location.href = "/login";
+            });
+        }
+    </script>
 </section>
 </body>
 </html>

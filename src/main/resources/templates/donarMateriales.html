@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout.html}">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Donar Materiales</title>
+    <link rel="stylesheet" th:href="@{/css/Dona.css}">
+    <style>
+        body {
+            background: linear-gradient(135deg, #e9fbe5 0%, #ffffff 100%);
+            min-height: 100vh;
+            color: #205c2e;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+        .donar-section {
+            max-width: 600px;
+            margin: 60px auto;
+            background: rgba(255,255,255,0.95);
+            border-radius: 24px;
+            box-shadow: 0 8px 32px rgba(32,92,46,0.10);
+            padding: 40px 30px 32px 30px;
+            animation: fadeIn 1.3s ease;
+            margin-top: 100px;
+        }
+        .donar-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .donar-header h1 {
+            font-weight: 700;
+            color: #26734d;
+            letter-spacing: 1px;
+        }
+        .donar-lista {
+            background: #e3ffe6;
+            border-radius: 12px;
+            padding: 18px 24px;
+            margin-top: 24px;
+            box-shadow: 0 2px 8px rgba(32,92,46,0.05);
+        }
+        .donar-lista ul {
+            margin-bottom: 0;
+        }
+        .donar-lista li {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            color: #205c2e;
+        }
+        .donar-info {
+            font-size: 1.15rem;
+            margin-bottom: 20px;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(40px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+        .icono-animal {
+            display: block;
+            margin: 0 auto 18px auto;
+            width: 68px;
+            filter: drop-shadow(0 2px 8px #bdf7c5);
+        }
+    </style>
+    <link rel="stylesheet" th:href="@{/css/Dona.css}">
+</head>
+
+<body class="dona-body">
+<section layout:fragment="content" class="dona-content"><section class="donar-section shadow">
+    <div class="donar-header">
+        <h1>¡Dona Alimentos y Ayuda a Nuestros Animales!</h1>
+    </div>
+    <div class="donar-info">
+        Puedes acercarte a nuestro refugio y donar cualquier tipo de alimento o material que ayude a mejorar la vida de nuestros animales.
+        <br>
+        ¡Toda ayuda es bienvenida!
+    </div>
+    <div class="donar-lista">
+        <strong>¿Qué necesitamos especialmente?</strong>
+        <ul>
+            <li>Pienso seco y húmedo para perros y gatos</li>
+            <li>Arroz, pasta y latas de comida</li>
+            <li>Snacks y premios para animales</li>
+            <li>Mantas y toallas limpias</li>
+            <li>Camas y transportines</li>
+            <li>Productos de limpieza (lejía, detergente, papel absorbente)</li>
+            <li>Juguetes resistentes</li>
+            <li>Collares, correas y arneses</li>
+            <li>Arenas para gatos</li>
+            <li>Comederos y bebederos</li>
+        </ul>
+    </div>
+    <div class="text-center mt-4">
+        <span style="color:#26734d; font-weight:600;">¡Gracias por tu solidaridad!</span>
+    </div>
+</section>
+    <!-- Bootstrap JS (no enlaces externos, solo para efectos si se requiere) -->
+    <script>
+        // Efecto adicional opcional: resaltar lista al pasar el mouse
+        document.querySelector('.donar-lista').addEventListener('mouseenter', function() {
+            this.style.boxShadow = '0 4px 24px #bdf7c5';
+        });
+        document.querySelector('.donar-lista').addEventListener('mouseleave', function() {
+            this.style.boxShadow = '0 2px 8px rgba(32,92,46,0.05)';
+        });
+    </script>
+</section>
+</body>
+</html>
