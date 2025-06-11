@@ -155,20 +155,52 @@ public class DataLoader implements CommandLineRunner {
         p7.setCategoria(c4);
         productoRepository.save(p7);
 
+        Tarifa tRelax = new Tarifa();
+        tRelax.setProducto(p7);
+        tRelax.setCantidad(1);
+        tRelax.setPrecioUnitario(15.00);
+        tRelax.setFechaDesde(LocalDate.now());
+        tRelax.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tRelax);
+
         Producto p8 = new Producto();
-        p8.setNombre("ESTANCIA SABATICA");
+        p8.setNombre("ESTANCIA SABÁTICA");
         p8.setCategoria(c4);
         productoRepository.save(p8);
+
+        Tarifa tSabatica = new Tarifa();
+        tSabatica.setProducto(p8);
+        tSabatica.setCantidad(1);
+        tSabatica.setPrecioUnitario(12.00);
+        tSabatica.setFechaDesde(LocalDate.now());
+        tSabatica.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tSabatica);
 
         Producto p9 = new Producto();
         p9.setNombre("BONO LARGA ESTANCIA");
         p9.setCategoria(c4);
         productoRepository.save(p9);
 
+        Tarifa bonoLargaEstancia = new Tarifa();
+        bonoLargaEstancia.setProducto(p9);
+        bonoLargaEstancia.setCantidad(1);
+        bonoLargaEstancia.setPrecioUnitario(200.00);
+        bonoLargaEstancia.setFechaDesde(LocalDate.now());
+        bonoLargaEstancia.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(bonoLargaEstancia);
+
         Producto p10 = new Producto();
-        p10.setNombre("BONO SOLO DIA");
+        p10.setNombre("BONO ESTANCIA SOLO DÍA");
         p10.setCategoria(c4);
         productoRepository.save(p10);
+
+        Tarifa bonoSoloDia = new Tarifa();
+        bonoSoloDia.setProducto(p10);
+        bonoSoloDia.setCantidad(1);
+        bonoSoloDia.setPrecioUnitario(75.00);
+        bonoSoloDia.setFechaDesde(LocalDate.now());
+        bonoSoloDia.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(bonoSoloDia);
 
         Talla t1 = new Talla();
         t1.setStock(5);
