@@ -4,17 +4,13 @@ import com.grupo3.pawHome.dtos.ItemCarritoDTO;
 import com.grupo3.pawHome.dtos.ProductRequest;
 import com.grupo3.pawHome.dtos.StripeResponse;
 import com.grupo3.pawHome.entities.Producto;
-import com.grupo3.pawHome.entities.Talla;
-import com.grupo3.pawHome.entities.Tarifa;
 import com.grupo3.pawHome.entities.Usuario;
 import com.grupo3.pawHome.services.ProductoService;
 import com.grupo3.pawHome.services.StripeService;
-import com.grupo3.pawHome.services.TarifaService;
 import com.grupo3.pawHome.services.UsuarioService;
 import com.grupo3.pawHome.util.SecurityUtil;
 import com.stripe.exception.StripeException;
 import jakarta.servlet.http.HttpSession;
-import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -47,50 +43,6 @@ public class GuarderiaController {
         model.addAttribute("usuario", usuario);
         return "guarderia";
     }
-
-//    @PostMapping("/guarderia/checkoutGuarderia")
-//    public ResponseEntity<StripeResponse> checkoutDesdeGuarderia(
-//            @AuthenticationPrincipal Usuario usuario,
-//            @RequestBody GuarderiaCheckoutRequest request, // Nuevo DTO
-//            HttpSession session) throws StripeException {
-//
-//        if (usuario == null) {
-//            return ResponseEntity.badRequest().body(
-//                    StripeResponse.builder()
-//                            .status("FAILED")
-//                            .message("Usuario no autenticado")
-//                            .build());
-//        }
-//
-//        Optional<Producto> producto = productoService.findByNombre(request.nombreProducto());
-//
-//        if (producto.isEmpty()) {
-//            return ResponseEntity.badRequest().body(
-//                    StripeResponse.builder()
-//                            .status("FAILED")
-//                            .message("Producto no encontrado")
-//                            .build());
-//        }
-//
-//        // Crear ítem de carrito específico para guardería
-//        List<ItemCarritoDTO> items = Arrays.asList(
-//                new ItemCarritoDTO(
-//                        producto.get(),
-//                        request.cantidadDias(),
-//                        producto.get().getTarifas().getFirst().getPrecioUnitario() // Obtener última tarifa
-//                )
-//        );
-//
-//        // Proceso de Stripe (igual que en tienda)
-//        List<ProductRequest> productRequests = stripeService.convertirCarritoAProductRequests(items);
-//        Usuario user = usuarioService.ensureStripeCustomerExists(usuario);
-//        StripeResponse response = stripeService.checkoutProducts(
-//                productRequests,
-//                user.getStripeCustomerId()
-//        );
-//        log.info("Estamos ok");
-//        return ResponseEntity.status(HttpStatus.OK).body(response);
-//    }
 
     @PostMapping("/guarderia/checkoutGuarderia")
     public ResponseEntity<StripeResponse> checkoutDesdeGuarderia(
