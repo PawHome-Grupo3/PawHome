@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -93,18 +94,21 @@ public class ProductCheckoutController {
                                             @AuthenticationPrincipal Usuario usuario,
                                             HttpSession session) throws StripeException {
 
-        List<ItemCarritoDTO> carrito = SessionUtils.obtenerCarritoSeguro(session);
-
-        if (usuario == null || carrito.isEmpty()) { return new RedirectView("/cancel"); }
+        String descripcion = (session.getAttribute("motivo") == null)? "" : session.getAttribute("motivo").toString();
 
         Factura factura = new Factura();
         factura.setUsuario(usuario);
         factura.setFecha(LocalDate.now());
-
-        String descripcion = (session.getAttribute("motivo") == null)? "" : session.getAttribute("motivo").toString();
         factura.setDescripcion(descripcion);
 
+        List<LineaFactura> lineas = new ArrayList<>();
+
         if(descripcion.equals("Compra en Tienda")){
+
+            List<ItemCarritoDTO> carrito = SessionUtils.obtenerCarritoSeguro(session);
+
+            if (carrito.isEmpty()) { return new RedirectView("/cancel"); }
+
             for (ItemCarritoDTO item : carrito) {
                 Optional<Talla> talla = tallaService.findById(item.getTalla().getId());
                 if (talla.isPresent()) {
@@ -113,26 +117,55 @@ public class ProductCheckoutController {
                     tallaService.save(t);
                 }
             }
+
+            double total = carrito.stream()
+                    .mapToDouble(item -> item.getPrecioUnitario() * item.getCantidad())
+                    .sum();
+            factura.setPrecio(total);
+
+            lineas = carrito.stream().map(item -> {
+                LineaFactura linea = new LineaFactura();
+                linea.setNombre(item.getProducto().getNombre());
+                linea.setCantidad(item.getCantidad());
+                linea.setDescripcion(item.getProducto().getDescripcion());
+                linea.setTarifa(item.getTarifa());
+                linea.setFactura(factura);
+                return linea;
+            }).toList();
+
+            factura.setLineaFacturas(lineas);
+            session.removeAttribute("carrito");
         }
 
-        double total = carrito.stream()
-                .mapToDouble(item -> item.getPrecioUnitario() * item.getCantidad())
-                .sum();
-        factura.setPrecio(total);
+        if(descripcion.equals("Donacion")){
+            Double precio = (Double) session.getAttribute("precio");
 
-        List<LineaFactura> lineas = carrito.stream().map(item -> {
             LineaFactura linea = new LineaFactura();
+            linea.setNombre("Donacion");
+            linea.setDescripcion("Donacion - " + precio  + "€");
+            linea.setCantidad(1);
+            linea.setFactura(factura);
+
+            lineas.add(linea);
+
+            factura.setPrecio(precio);
+            factura.setLineaFacturas(lineas);
+        }
+
+        if(descripcion.equals("Servicio")){
+            LineaFactura linea = new LineaFactura();
+            ItemCarritoDTO item = (ItemCarritoDTO) session.getAttribute("itemServicio");
+            double precioTotal = item.getCantidad()*item.getPrecioUnitario();
             linea.setNombre(item.getProducto().getNombre());
             linea.setCantidad(item.getCantidad());
             linea.setDescripcion(item.getProducto().getDescripcion());
-            linea.setTarifa(item.getTarifa());
             linea.setFactura(factura);
-            return linea;
-        }).toList();
 
-        factura.setLineaFacturas(lineas);
-        factura.setUsuario(usuario);
-        facturaService.save(factura);
+            lineas.add(linea);
+
+            factura.setPrecio(precioTotal);
+            factura.setLineaFacturas(lineas);
+        }
 
         // --- Stripe: obtener PaymentMethod y su fingerprint ---
         Session sessionStripe = Session.retrieve(sessionId);
@@ -179,15 +212,13 @@ public class ProductCheckoutController {
         pago.setFactura(factura);
         pago.setUsuario(usuario);
 
-        if (metodoPago != null) {
-            pago.setMetodoPago(metodoPago);
-        } else {
-            System.out.println("MetodoPago no encontrado para el ID: " + stripePaymentMethodId);
-        }
+        pago.setMetodoPago(metodoPago);
 
+        facturaService.save(factura);
         pagoService.save(pago);
 
-        session.removeAttribute("carrito");
+
+        session.removeAttribute("motivo");
 
         return new RedirectView("/pago-correcto");
     }

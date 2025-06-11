@@ -75,13 +75,6 @@ public class DefaultController {
         return "index"; // Carga /templates/index.html
     }
 
-    // Metodo para mostrar la pagina de la guarderia
-    @GetMapping("/guarderia")
-    public String mostrarGuarderia()
-    {
-        return "guarderia";
-    }
-
     // Metodo para mostrar la pagina de la peluqueria
     @GetMapping("/peluqueria")
     public String mostrarPeluqueria()
@@ -165,12 +158,6 @@ public class DefaultController {
     public String mostrarColabora()
     {
         return "Colabora";
-    }
-
-    @GetMapping("/colabora/dona")
-    public String mostrarColaboraDona()
-    {
-        return "Dona";
     }
 
     @GetMapping("/colabora/dona/donarBizum")
