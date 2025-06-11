@@ -508,6 +508,19 @@ clamp(10px, 2vw, 40px);
 /*////////////////////////////
 /    NUESTROS ANIMALES       /
 ////////////////////////////*/
+.cardAnimal {
+    width: 100%;
+    max-width: 320px;
+    background-color: #A8D5BA;
+    background-image: linear-gradient(314deg, #6BAF92 0%, #A8D5BA 74%);
+    border-radius: 17px;
+    border-color: #3B6E57;
+    overflow: hidden;
+    box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1),
+    0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+    transition: all 0.5s ease;
+}
+
 .modal-content {
     background-color: #f4faf8;
 }
@@ -575,8 +588,11 @@ ul {
 
 .contenedorCards {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+    justify-items: center; /* Centra las cards dentro de las columnas */
+    padding: 1rem 0;
 }
 
 .cards {
@@ -767,4 +783,56 @@ ul {
     width: 50px !important;
     height: auto !important;
     animation: bounce 1.5s infinite !important ;
+}
+
+/* Bloque exterior del panel de filtros */
+.table-sort-panel {
+    background-color: #e6f3ea; /* verde muy claro */
+    border: 1px solid #c2dfcc;
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Tabla sin bordes y con centro visual */
+.table-sort-panel .table {
+    margin-bottom: 0;
+}
+
+/* Encabezado visualmente agradable */
+.table-sort-panel thead.thead-light {
+    background-color: transparent;
+}
+
+/* Cada cabecera */
+.table-sort-panel th {
+    text-align: center;
+    padding: 12px;
+    border: none;
+}
+
+/* Estilo de los enlaces de orden */
+.table-sort-panel th a {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #A8D5BA;
+    color: #1c3d2e;
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.table-sort-panel th a:hover {
+    background-color: #6BAF92;
+    color: white;
+}
+
+/* Estilo común de los iconos */
+.table-sort-panel th span.fas {
+    margin-left: 8px;
+    color: #2d5c40;
+    font-size: 1.1rem;
+    vertical-align: middle;
 }

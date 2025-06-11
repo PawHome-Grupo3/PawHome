@@ -2,7 +2,15 @@
   <a th:href="@{'/nuestrosAnimales?' + ${keyword!=null && keyword!=''? 'keyword=' + keyword + '&' : ''}
                 + 'page=' + ${currentPage} + '&size=' + ${pageSize}
                 + ${sortField!=null ? '&sort=' + field + ',' + (sortField == field ? reverseSortDirection : sortDirection) : ''}}">
-    [[${label}]] </a>
+    [[${label}]]
+  </a>
   <span th:if="${sortField == field}"
-    th:class="${sortDirection == 'asc' ? 'fas fa-arrow-down-short-wide' : 'fas fa-arrow-down-wide-short'}"></span>
+        th:title="${sortDirection == 'asc' ? 'Orden descendente' : 'Orden ascendente'}"
+        th:class="${sortDirection == 'asc'
+                    ? (field == 'nombre' || field == 'genero'
+                        ? 'fas fa-sort-alpha-down'
+                        : 'fas fa-sort-numeric-down')
+                    : (field == 'nombre' || field == 'genero'
+                        ? 'fas fa-sort-alpha-up'
+                        : 'fas fa-sort-numeric-up')}"></span>
 </th>

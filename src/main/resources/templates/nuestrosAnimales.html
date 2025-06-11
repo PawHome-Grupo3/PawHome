@@ -28,6 +28,105 @@
 
 	</div>
 
+	<main>
+		<div class="container">
+			<!-- Sorting -->
+			<div class="row justify-content-center mb-3">
+				<div class="col-12 col-md-10">
+					<div class="table-sort-panel">
+						<table class="table table-borderless text-center table-sort-panel">
+							<thead class="thead-light">
+							<tr>
+								<th class="px-2" data-field="nombre" th:replace="fragments/sorting :: sorting('nombre','Nombre')"></th>
+								<th class="px-2" data-field="fechaNacimiento" th:replace="fragments/sorting :: sorting('fechaNacimiento','Edad')"></th>
+								<th class="px-2" data-field="peso" th:replace="fragments/sorting :: sorting('peso','Peso')"></th>
+								<th class="px-2" data-field="genero" th:replace="fragments/sorting :: sorting('genero','Genero')"></th>
+							</tr>
+							</thead>
+						</table>
+					</div>
+				</div>
+			</div>
+
+			<!-- Cards -->
+			<div class="row justify-content-center">
+				<!--/* @thymesVar id="animal" type="com.grupo3.pawHome.entities.Animal" */-->
+				<div th:each="animal : ${animales}" class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4 d-flex justify-content-center">
+					<div class="card cardAnimal">
+						<div class="card_image">
+							<img class="imgCardAnimal" th:src="${animal.rutaImg1}" alt="foto de perro disponible para adoptar">
+						</div>
+						<div class="card_content d-flex justify-content-center card_contentAnimal">
+							<h2 class="card_title card_titleAnimal" th:utext="${animal.nombre}"></h2>
+							<p class="card_tex card_textAnimal">
+								<span th:utext="${animal.peso} + 'kg'"></span>,
+								<span th:utext="${animal.edad}"></span>,
+								<span th:if="${animal.genero == false}">Hembra</span>
+								<span th:unless="${animal.genero == false}">Macho</span></p>
+							<div class="row d-flex justify-content-center flex-nowrap">
+								<a th:if="${animal.adoptado == false && animal.caracterSocial == true}"
+								   th:href="@{/adopta/{id}(id=${animal.id})}"
+								   class="botonesCardAnimal btn card_btn">Adopta</a>
+
+								<a th:if="${animal.adoptado == false}"
+								   th:href="@{/apadrinar/{id}(id=${animal.id})}"
+								   th:class="'btn card_btn ' + (${animal.caracterSocial} == true? 'botonesCardAnimal' : 'botonesCardAnimalApadrina')">
+									Apadrina
+								</a>
+							</div>
+							<div class="row d-flex justify-content-center flex-nowrap hiddenCardContent">
+								<button type="button" class="botonesCardAnimal botonesCardLeerMas btn card_btn arrow"
+										data-bs-toggle="modal" data-bs-target="#exampleModal"
+										th:attr="data-id=${animal.id},
+											data-nombre=${animal.nombre},
+											data-imagen=${animal.rutaImg1},
+											data-imagen2=${animal.rutaImg2},
+											data-imagen3=${animal.rutaImg3},
+											data-descripcion=${animal.descripcion},
+											data-peso=${animal.peso},
+											data-fechaNacimiento=${animal.fechaNacimiento},
+											data-genero=${animal.genero},
+											data-adoptado=${animal.adoptado},
+											data-caracter=${animal.caracterSocial}"> Leer Más
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Bloque de paginación -->
+			<div class="row justify-content-center mt-4">
+				<nav aria-label="Pagination" th:if="${totalPages > 0}">
+					<ul class="pagination justify-content-center">
+						<li class="page-item" th:classappend="${currentPage == 1} ? 'disabled'">
+							<a th:replace="fragments/paging :: paging(1, '<<', 'First Page')"></a>
+						</li>
+						<li class="page-item font-weight-bold" th:classappend="${currentPage == 1} ? 'disabled'">
+							<a th:replace="fragments/paging :: paging(${currentPage - 1}, 'Prev', 'Previous Page')"></a>
+						</li>
+						<li class="page-item disabled" th:if="${currentPage - 2 > 1}">
+							<a class="page-link" href="#">...</a>
+						</li>
+						<li class="page-item" th:classappend="${page == currentPage} ? 'active'"
+							th:each="page : ${#numbers.sequence(currentPage > 2 ? currentPage - 2 : 1, currentPage + 2 < totalPages ? currentPage + 2 : totalPages)}">
+							<a th:replace="fragments/paging :: paging(${page}, ${page}, 'Page ' + ${page})"></a>
+						</li>
+						<li class="page-item disabled" th:if="${currentPage + 2 < totalPages}">
+							<a class="page-link" href="#">...</a>
+						</li>
+						<li class="page-item font-weight-bold" th:classappend="${currentPage == totalPages} ? 'disabled'">
+							<a th:replace="fragments/paging :: paging(${currentPage + 1},'Next', 'Next Page')"></a>
+						</li>
+						<li class="page-item" th:classappend="${currentPage == totalPages} ? 'disabled'">
+							<a th:replace="fragments/paging :: paging(${totalPages}, '>>', 'Last Page')"></a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</main>
+
 	<!-- Modal único -->
 	<div class="modal fade" id="exampleModal" tabindex="-1" aria-hidden="true">
 		<div class="modal-dialog modal-lg modal-dialog-centered">
@@ -70,92 +169,6 @@
 			</div>
 		</div>
 	</div>
-
-	<main>
-		<thead class="thead-light">
-		<tr>
-			<th class="px-2" th:replace="fragments/sorting :: sorting('nombre','Nombre')"></th>
-			<th class="px-2" th:replace="fragments/sorting :: sorting('fechaNacimiento','Edad')"></th>
-			<th class="px-2" th:replace="fragments/sorting :: sorting('peso','Peso')"></th>
-			<th class="px-2" th:replace="fragments/sorting :: sorting('genero','Genero')"></th>
-		</tr>
-		</thead>
-
-		<div class="row m-3 justify-content-center">
-			<div class="col-12 contenedorCards">
-                <!--/* @thymesVar id="animal" type="com.grupo3.pawHome.entities.Animal" */-->
-				<div th:each="animal : ${animales}" class="card cardAnimal">
-					<div class="card_image">
-						<img class="imgCardAnimal" th:src="${animal.rutaImg1}" alt="foto de perro disponible para adoptar"></div>
-					<div class="card_content d-flex justify-content-center card_contentAnimal">
-						<h2 class="card_title card_titleAnimal" th:utext="${animal.nombre}"></h2>
-						<p class="card_tex card_textAnimal">
-							<span th:utext="${animal.peso} + 'kg'"></span>,
-							<span th:utext="${animal.edad}"></span>,
-							<span th:if="${animal.genero == false}">Hembra</span>
-							<span th:unless="${animal.genero == false}">Macho</span></p>
-						<div class="row d-flex justify-content-center flex-nowrap">
-							<a th:if="${animal.adoptado == false && animal.caracterSocial == true}"
-							   th:href="@{/adopta/{id}(id=${animal.id})}"
-							   class="botonesCardAnimal btn card_btn">Adopta</a>
-
-							<a th:if="${animal.adoptado == false}"
-							   th:href="@{/apadrinar/{id}(id=${animal.id})}"
-							   th:class="'btn card_btn ' + (${animal.caracterSocial} == true? 'botonesCardAnimal' : 'botonesCardAnimalApadrina')">
-								Apadrina
-							</a>
-						</div>
-						<div class="row d-flex justify-content-center flex-nowrap hiddenCardContent">
-							<button type="button" class="botonesCardAnimal botonesCardLeerMas btn card_btn arrow"
-									data-bs-toggle="modal" data-bs-target="#exampleModal"
-									th:attr="data-id=${animal.id},
-										data-nombre=${animal.nombre},
-										data-imagen=${animal.rutaImg1},
-										data-imagen2=${animal.rutaImg2},
-										data-imagen3=${animal.rutaImg3},
-										data-descripcion=${animal.descripcion},
-										data-peso=${animal.peso},
-										data-fechaNacimiento=${animal.fechaNacimiento},
-										data-genero=${animal.genero},
-										data-adoptado=${animal.adoptado},
-									    data-caracter=${animal.caracterSocial}"> Leer Más
-							</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="row">
-			<nav aria-label="Pagination" th:if="${totalPages > 0}">
-				<ul class="pagination justify-content-center">
-					<li class="page-item" th:classappend="${currentPage == 1} ? 'disabled'">
-						<a th:replace="fragments/paging :: paging(1, '<<', 'First Page')"></a>
-					</li>
-					<li class="page-item font-weight-bold" th:classappend="${currentPage == 1} ? 'disabled'">
-						<a th:replace="fragments/paging :: paging(${currentPage - 1}, 'Prev', 'Previous Page')"></a>
-					</li>
-					<li class="page-item disabled" th:if="${currentPage - 2 > 1}">
-						<a class="page-link" href="#">...</a>
-					</li>
-					<li class="page-item" th:classappend="${page == currentPage} ? 'active'"
-						th:each="page : ${#numbers.sequence(currentPage > 2 ? currentPage - 2 : 1, currentPage + 2 < totalPages ? currentPage + 2 : totalPages)}">
-						<a th:replace="fragments/paging :: paging(${page}, ${page}, 'Page ' + ${page})"></a>
-					</li>
-					<li class="page-item disabled" th:if="${currentPage + 2 < totalPages}">
-						<a class="page-link" href="#">...</a>
-					</li>
-					<li class="page-item font-weight-bold" th:classappend="${currentPage == totalPages} ? 'disabled'">
-						<a th:replace="fragments/paging :: paging(${currentPage + 1},'Next', 'Next Page')"></a>
-					</li>
-					<li class="page-item" th:classappend="${currentPage == totalPages} ? 'disabled'">
-						<a th:replace="fragments/paging :: paging(${totalPages}, '>>', 'Last Page')"></a>
-					</li>
-				</ul>
-			</nav>
-		</div>
-	</main>
-
 
 	<script>
 		document.addEventListener('DOMContentLoaded', function () {
