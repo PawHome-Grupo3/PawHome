@@ -152,6 +152,21 @@ public class ProductCheckoutController {
             factura.setLineaFacturas(lineas);
         }
 
+        if(descripcion.equals("Servicio")){
+            LineaFactura linea = new LineaFactura();
+            ItemCarritoDTO item = (ItemCarritoDTO) session.getAttribute("itemServicio");
+            double precioTotal = item.getCantidad()*item.getPrecioUnitario();
+            linea.setNombre(item.getProducto().getNombre());
+            linea.setCantidad(item.getCantidad());
+            linea.setDescripcion(item.getProducto().getDescripcion());
+            linea.setFactura(factura);
+
+            lineas.add(linea);
+
+            factura.setPrecio(precioTotal);
+            factura.setLineaFacturas(lineas);
+        }
+
         // --- Stripe: obtener PaymentMethod y su fingerprint ---
         Session sessionStripe = Session.retrieve(sessionId);
         String paymentIntentId = sessionStripe.getPaymentIntent();
