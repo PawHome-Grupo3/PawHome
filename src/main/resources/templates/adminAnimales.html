@@ -14,7 +14,7 @@
         <h1>Gestión de animales</h1>
         <!-- Tabla de Animales -->
         <table class="table table-striped table-bordered">
-            <thead class="table-dark">
+            <thead class="table-success">
             <tr>
                 <th>ID</th>
                 <th>Nombre</th>
@@ -38,15 +38,19 @@
                 <td th:text="${animal.chip}"></td>
                 <td th:text="${animal.peso}"></td>
                 <td th:text="${animal.edad}"></td>
-                <td th:text="${animal.caracterSocial}"></td>
+                <td th:if="${animal.caracterSocial}"><span>Amigable</span></td>
+                <td th:unless="${animal.caracterSocial}"><span>No amigable</span></td>
                 <td th:text="${animal.descripcion}"></td>
-                <td th:text="${animal.genero}"></td>
+                <td th:if="${animal.genero}"><span>Macho</span></td>
+                <td th:unless="${animal.genero}"><span>Hembra</span></td>
                 <td th:text="${animal.origen}"></td>
-                <td th:text="${animal.adoptado}"></td>
+                <td th:if="${animal.adoptado}"><span>Sí</span></td>
+                <td th:unless="${animal.adoptado}"><span>No</span></td>
                 <td th:text="${animal.fechaLlegada}"></td>
-                <td th:text="${animal.paseable}"></td>
+                <td th:if="${animal.paseable}"><span>Sí</span></td>
+                <td th:unless="${animal.paseable}"><span>No</span></td>
                 <td>
-                    <a th:href="@{/admin/animales/editar/{id}(id=${animal.id})}" class="btn btn-warning btn-sm">Editar</a>
+                    <a th:href="@{/admin/animales/editar/{id}(id=${animal.id})}" class="btn btn-success btn-sm">Editar</a>
                     <a th:href="@{'/admin/animales/eliminar/' + ${animal.id}}" class="btn btn-danger btn-sm"
                        onclick="return confirm('¿Eliminar este animal?')">Eliminar</a>
                 </td>

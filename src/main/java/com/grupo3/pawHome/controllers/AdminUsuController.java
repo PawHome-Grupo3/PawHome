@@ -1,7 +1,9 @@
 package com.grupo3.pawHome.controllers;
 
+import com.grupo3.pawHome.dtos.EditarUsuarioPerfilDTO;
 import com.grupo3.pawHome.entities.Usuario;
 import com.grupo3.pawHome.repositories.UsuarioRepository;
+import com.grupo3.pawHome.services.EditarUsuarioPerfilService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +15,8 @@ public class AdminUsuController {
 
     @Autowired
     private UsuarioRepository usuarioRepository;
+    @Autowired
+    private EditarUsuarioPerfilService editarUsuarioPerfilService;
 
     @GetMapping
     public String listarUsuarios(Model model) {
@@ -31,9 +35,18 @@ public class AdminUsuController {
     // Editar usuario (rellena el formulario con los datos del usuario)
     @GetMapping("/editar/{id}")
     public String editarUsuario(@PathVariable Integer id, Model model) {
-        model.addAttribute("usuarios", usuarioRepository.findAll());
-        model.addAttribute("usuario", usuarioRepository.findById(id).orElse(new Usuario())); // Formulario relleno
-        return "adminUsuarios";
+        EditarUsuarioPerfilDTO dto = editarUsuarioPerfilService.obtenerDtoDesdeUsuario(id);
+        model.addAttribute("usuario", dto);
+        return "editarAdminUsuarios";
+    }
+
+    @PostMapping("/actualizar/{id}")
+    public String actualizarUsuario(
+            @PathVariable Integer id,
+            @ModelAttribute EditarUsuarioPerfilDTO dto) {
+
+        editarUsuarioPerfilService.actualizarDesdeDto(id, dto);
+        return "redirect:/admin/usuarios";
     }
 
     // Eliminar usuario

@@ -10,59 +10,13 @@
 
 <section layout:fragment="content">
 
-<!--    <div class="container">-->
-<!--        <h1>Gestión de usuarios</h1>-->
-
-<!--        &lt;!&ndash; Formulario Crear/Editar &ndash;&gt;-->
-<!--        <form th:action="@{/admin/usuarios/guardar}" th:object="${usuario}" method="post" class="row g-3 mb-4">-->
-<!--            <input type="hidden" th:field="*{id}"/>-->
-<!--            <div class="col-md-2">-->
-<!--                <input type="text" th:field="*{nickname}" class="form-control" placeholder="Nombre de usuario" required>-->
-<!--            </div>-->
-<!--            <div class="col-md-1">-->
-<!--                <input type="number" th:field="*{email}" class="form-control" placeholder="Correo electrónico" required>-->
-<!--            </div>-->
-<!--            <div class="col-md-2">-->
-<!--                <button type="submit" class="btn btn-success w-100"-->
-<!--                        th:text="*{id} != null ? 'Actualizar' : 'Guardar'">Guardar-->
-<!--                </button>-->
-<!--            </div>-->
-<!--        </form>-->
-
-<!--        &lt;!&ndash; Tabla de Usuarios &ndash;&gt;-->
-<!--        <table class="table table-striped table-bordered">-->
-<!--            <thead class="table-dark">-->
-<!--            <tr>-->
-<!--                <th>ID</th>-->
-<!--                <th>Nombre de usuario</th>-->
-<!--                <th>Correo electrónico</th>-->
-<!--                <th>Datos del perfil</th>-->
-<!--            </tr>-->
-<!--            </thead>-->
-<!--            <tbody>-->
-<!--            <tr th:each="usuario, iterStat : ${usuarios}">-->
-<!--                <td th:text="${iterStat.count}"></td>-->
-<!--                <td th:text="${usuario.nickname}"></td>-->
-<!--                <td th:text="${usuario.email}"></td>-->
-<!--                <td>-->
-<!--                    <a th:href="@{'/admin/usuarios/perfil/' + ${usuario.getPerfilDatos()}}" class="btn btn-info btn-sm">Ver Perfil</a>-->
-<!--                <td>-->
-<!--                    <a th:href="@{'/admin/usuarios/editar/' + ${usuario.id}}" class="btn btn-warning btn-sm">Editar</a>-->
-<!--                    <a th:href="@{'/admin/usuarios/eliminar/' + ${usuario.id}}" class="btn btn-danger btn-sm"-->
-<!--                       onclick="return confirm('¿Eliminar este usuario?')">Eliminar</a>-->
-<!--                </td>-->
-<!--            </tr>-->
-<!--            </tbody>-->
-<!--        </table>-->
-<!--    </div>-->
-
     <div class="container">
         <h1>Gestión de usuarios</h1>
-
+        <!-- Tabla de Usuarios -->
         <table class="table table-striped table-bordered">
-            <thead class="table-dark">
+            <thead class="table-success">
             <tr>
-                <th>#</th>
+                <th>ID</th>
                 <th>Nombre de usuario</th>
                 <th>Correo electrónico</th>
                 <th>Perfil</th>
@@ -70,67 +24,100 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="usuario, iterStat : ${usuarios}" th:id="'fila-' + ${usuario.id}">
-                <form th:action="@{/admin/usuarios/guardar}" method="post" th:object="${usuario}">
-                    <input type="hidden" th:field="*{id}"/>
-
-                    <td th:text="${iterStat.count}"></td>
-
-                    <!-- Celda de nickname -->
-                    <td>
-                        <span th:text="*{nickname}" class="texto-nickname"></span>
-                        <input type="text" th:field="*{nickname}" class="form-control form-control-sm d-none input-nickname" required/>
-                    </td>
-
-                    <!-- Celda de email -->
-                    <td>
-                        <span th:text="*{email}" class="texto-email"></span>
-                        <input type="email" th:field="*{email}" class="form-control form-control-sm d-none input-email" required/>
-                    </td>
-
-                    <!-- Ver perfil -->
-                    <td>
-                        <a th:href="@{'/admin/usuarios/perfil/' + ${usuario.getPerfilDatos()}}" class="btn btn-info btn-sm">Ver Perfil</a>
-                    </td>
-
-                    <!-- Botones -->
-                    <td>
-                        <div class="d-flex gap-1">
-                            <button type="button" class="btn btn-warning btn-sm" th:attr="onclick='activarEdicion(' + ${usuario.id} + ')'">Editar</button>
-                            <button type="submit" class="btn btn-success btn-sm d-none btn-guardar">Guardar</button>
-                            <button type="button" class="btn btn-secondary btn-sm d-none btn-cancelar" th:attr="onclick='cancelarEdicion(' + ${usuario.id} + ')'">Cancelar</button>
-                            <a th:href="@{'/admin/usuarios/eliminar/' + ${usuario.id}}" class="btn btn-danger btn-sm"
-                               onclick="return confirm('¿Eliminar este usuario?')">Eliminar</a>
-                        </div>
-                    </td>
-                </form>
+            <tr th:each="usuario : ${usuarios}">
+                <td th:text="${usuario.id}"></td>
+                <td th:text="${usuario.nickname}"></td>
+                <td th:text="${usuario.email}"></td>
+                <td th:if="${usuario.perfilDatos}">
+                    <button type="button" class="btn btn-success btn-sm"
+                            data-bs-toggle="modal"
+                            data-bs-target="#perfilModal"
+                            th:attr="data-nombre=${usuario.perfilDatos.nombre},
+                             data-apellidos=${usuario.perfilDatos.apellidos},
+                             data-edad=${usuario.perfilDatos.edad},
+                             data-dni=${usuario.perfilDatos.dni},
+                             data-direccion=${usuario.perfilDatos.direccion},
+                             data-pais=${usuario.perfilDatos.pais},
+                             data-ciudad=${usuario.perfilDatos.ciudad},
+                             data-cp=${usuario.perfilDatos.cp},
+                             data-telefono1=${usuario.perfilDatos.telefono1},
+                             data-telefono2=${usuario.perfilDatos.telefono2},
+                             data-telefono3=${usuario.perfilDatos.telefono3}">
+                        Ver Perfil
+                    </button>
+                </td>
+                <td th:unless="${usuario.perfilDatos}">
+                    <span class="text-muted">Sin perfil</span>
+                </td>
+                <td>
+                    <a th:href="@{/admin/usuarios/editar/{id}(id=${usuario.id})}"
+                       class="btn btn-success btn-sm">Editar</a>
+                    <a th:href="@{'/admin/usuarios/eliminar/' + ${usuario.id}}" class="btn btn-danger btn-sm"
+                       onclick="return confirm('¿Eliminar este usuario?')">Eliminar</a>
+                </td>
             </tr>
             </tbody>
         </table>
+        <!-- Modal único -->
+        <div class="modal fade" id="perfilModal" tabindex="-1" aria-labelledby="perfilModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Perfil del Usuario</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Nombre:</strong> <span id="nombre"></span></p>
+                        <p><strong>Apellidos:</strong> <span id="apellidos"></span></p>
+                        <p><strong>Edad:</strong> <span id="modalEdad"></span></p>
+                        <p><strong>DNI:</strong> <span id="dni"></span></p>
+                        <p><strong>Dirección:</strong> <span id="direccion"></span></p>
+                        <p><strong>País:</strong> <span id="pais"></span></p>
+                        <p><strong>Ciudad:</strong> <span id="ciudad"></span></p>
+                        <p><strong>CP:</strong> <span id="cp"></span></p>
+                        <p><strong>Teléfono 1:</strong> <span id="telefono1"></span></p>
+                        <p><strong>Teléfono 2:</strong> <span id="telefono2"></span></p>
+                        <p><strong>Teléfono 3:</strong> <span id="telefono3"></span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
     <script>
-        function activarEdicion(id) {
-            const fila = document.getElementById(`fila-${id}`);
-            fila.querySelector('.texto-nickname').classList.add('d-none');
-            fila.querySelector('.texto-email').classList.add('d-none');
-            fila.querySelector('.input-nickname').classList.remove('d-none');
-            fila.querySelector('.input-email').classList.remove('d-none');
+        document.addEventListener('DOMContentLoaded', function () {
+            const perfilModal = document.getElementById('perfilModal');
 
-            fila.querySelector('.btn-guardar').classList.remove('d-none');
-            fila.querySelector('.btn-cancelar').classList.remove('d-none');
-        }
+            // Elementos dentro del modal que vas a rellenar
+            const nombre = document.getElementById('nombre');
+            const apellidos = document.getElementById('apellidos');
+            const modalEdad = document.getElementById('modalEdad');
+            const dni = document.getElementById('dni');
+            const direccion = document.getElementById('direccion');
+            const pais = document.getElementById('pais');
+            const ciudad = document.getElementById('ciudad');
+            const cp = document.getElementById('cp');
+            const telefono1 = document.getElementById('telefono1');
+            const telefono2 = document.getElementById('telefono2');
+            const telefono3 = document.getElementById('telefono3');
 
-        function cancelarEdicion(id) {
-            const fila = document.getElementById(`fila-${id}`);
-            fila.querySelector('.texto-nickname').classList.remove('d-none');
-            fila.querySelector('.texto-email').classList.remove('d-none');
-            fila.querySelector('.input-nickname').classList.add('d-none');
-            fila.querySelector('.input-email').classList.add('d-none');
+            perfilModal.addEventListener('show.bs.modal', function (event) {
+                // El botón que disparó el modal
+                const button = event.relatedTarget;
 
-            fila.querySelector('.btn-guardar').classList.add('d-none');
-            fila.querySelector('.btn-cancelar').classList.add('d-none');
-        }
+                nombre.textContent = button.getAttribute('data-nombre');
+                apellidos.textContent = button.getAttribute('data-apellidos');
+                modalEdad.textContent = button.getAttribute('data-edad');
+                dni.textContent = button.getAttribute('data-dni');
+                direccion.textContent = button.getAttribute('data-direccion');
+                pais.textContent = button.getAttribute('data-pais');
+                ciudad.textContent = button.getAttribute('data-ciudad');
+                cp.textContent = button.getAttribute('data-cp');
+                telefono1.textContent = button.getAttribute('data-telefono1');
+                telefono2.textContent = button.getAttribute('data-telefono2');
+                telefono3.textContent = button.getAttribute('data-telefono3');
+            });
+        });
+
     </script>
 </section>
 </body>
