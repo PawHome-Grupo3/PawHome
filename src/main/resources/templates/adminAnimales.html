@@ -12,53 +12,6 @@
 
     <div class="container">
         <h1>Gestión de animales</h1>
-
-        <!-- Formulario Crear/Editar -->
-        <form th:action="@{/admin/animales/guardar}" th:object="${animal}" method="post" class="row g-3 mb-4">
-            <input type="hidden" th:field="*{id}"/>
-            <div class="col-md-3">
-                <input type="text" th:field="*{nombre}" class="form-control" placeholder="Nombre" required>
-            </div>
-            <div class="col-md-2">
-                <input type="text" th:field="*{chip}" class="form-control" placeholder="Chip">
-            </div>
-            <div class="col-md-1">
-                <input type="number" th:field="*{peso}" class="form-control" placeholder="Peso">
-            </div>
-            <div class="col-md-1">
-                <input type="number" th:field="*{edad}" class="form-control" placeholder="Edad">
-            </div>
-            <div class="col-md-2">
-                <input type="text" th:field="*{caracterSocial}" class="form-control" placeholder="Carácter social">
-            </div>
-            <div class="col-md-3">
-                <input type="text" th:field="*{descripcion}" class="form-control" placeholder="Descripción">
-            </div>
-            <div class="col-md-2">
-                <input type="text" th:field="*{genero}" class="form-control" placeholder="Género">
-            </div>
-            <div class="col-md-2">
-                <input type="text" th:field="*{origen}" class="form-control" placeholder="Origen">
-            </div>
-            <div class="col-md-2">
-                <input type="text" th:field="*{adoptado}" class="form-control" placeholder="Estado adopción">
-            </div>
-            <div class="col-md-2">
-                <input type="date" th:field="*{fechaLlegada}" class="form-control" placeholder="Fecha llegada">
-            </div>
-            <div class="col-md-2">
-                <select th:field="*{paseable}" class="form-control">
-                    <option th:value="true">Sí</option>
-                    <option th:value="false">No</option>
-                </select>
-            </div>
-            <div class="col-md-2">
-                <button type="submit" class="btn btn-success w-100"
-                        th:text="*{id} != null ? 'Actualizar' : 'Guardar'">Guardar
-                </button>
-            </div>
-        </form>
-
         <!-- Tabla de Animales -->
         <table class="table table-striped table-bordered">
             <thead class="table-dark">
@@ -79,8 +32,8 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="animal, iterStat : ${animales}">
-                <td th:text="${iterStat.count}"></td>
+            <tr th:each="animal : ${animales}">
+                <td th:text="${animal.id}"></td>
                 <td th:text="${animal.nombre}"></td>
                 <td th:text="${animal.chip}"></td>
                 <td th:text="${animal.peso}"></td>
@@ -91,9 +44,9 @@
                 <td th:text="${animal.origen}"></td>
                 <td th:text="${animal.adoptado}"></td>
                 <td th:text="${animal.fechaLlegada}"></td>
-                <td th:text="${animal.paseable ? 'Sí' : 'No'}"></td>
+                <td th:text="${animal.paseable}"></td>
                 <td>
-                    <a th:href="@{'/admin/animales/editar/' + ${animal.id}}" class="btn btn-warning btn-sm">Editar</a>
+                    <a th:href="@{/admin/animales/editar/{id}(id=${animal.id})}" class="btn btn-warning btn-sm">Editar</a>
                     <a th:href="@{'/admin/animales/eliminar/' + ${animal.id}}" class="btn btn-danger btn-sm"
                        onclick="return confirm('¿Eliminar este animal?')">Eliminar</a>
                 </td>

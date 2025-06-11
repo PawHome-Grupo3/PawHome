@@ -31,9 +31,16 @@ public class AdminAnimalesController {
     // Editar animal (rellena el formulario con los datos del animal)
     @GetMapping("/editar/{id}")
     public String editarAnimal(@PathVariable Integer id, Model model) {
-        model.addAttribute("animales", animalRepository.findAll());
-        model.addAttribute("animal", animalRepository.findById(id).orElse(new Animal())); // Formulario relleno
-        return "adminAnimales";
+        Animal animal = animalRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Animal no encontrado con ID: " + id));
+        model.addAttribute("animal", animal); // Formulario relleno
+        return "editarAdminAnimales";
+    }
+
+    @PostMapping("/actualizar/{id}")
+    public String actualizarAnimal(@ModelAttribute("animal") Animal animal) {
+        animalRepository.save(animal);
+        return "redirect:/admin/animales";
     }
 
     // Eliminar animal
