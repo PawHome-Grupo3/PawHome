@@ -52,7 +52,7 @@
 					</p>
 					<p class="textoModal mx-3">
 						<strong>Peso:</strong> <span id="modalPeso"></span><br>
-						<strong>Edad:</strong> <span id="modalEdad"></span><br>
+						<strong>FechaNacimiento:</strong> <span id="modalFechaNacimiento"></span><br>
 						<strong>Género:</strong> <span id="modalGenero"></span>
 					</p>
 				</div>
@@ -72,23 +72,14 @@
 	</div>
 
 	<main>
-		<div class="row m-1 filtrosTop justify-content-center flex-nowrap">
-			<ul>
-				<li th:if="${animalPage.number > 0}">
-					<a href="#" th:href="@{/nuestrosAnimales(size=${animalPage.size}, page=1)}">First &nbsp</a>
-				</li>
-			</ul>
-			<button type="button" id="grid-active-btn">
-				<i class="fas fa-th"></i>
-			</button>
-			<button type="button" id="details-active-btn">
-				<i class="fas fa-list-ul"></i>
-			</button>
-			<form class="d-flex w-50" role="search">
-				<input class="form-control me-2 w-50" type="search" placeholder="Busca por nombre" aria-label="Search"/>
-				<button class="btn btn-outline-success" type="submit">Search</button>
-			</form>
-		</div>
+		<thead class="thead-light">
+		<tr>
+			<th class="px-2" th:replace="fragments/sorting :: sorting('id','Id')"></th>
+			<th class="px-2" th:replace="fragments/sorting :: sorting('nombre','Nombre')"></th>
+			<th class="px-2" th:replace="fragments/sorting :: sorting('fechaNacimiento','FechaNacimiento')"></th>
+			<th class="px-2" th:replace="fragments/sorting :: sorting('peso','Peso')"></th>
+		</tr>
+		</thead>
 
 		<div class="row m-3 justify-content-center">
 			<div class="col-12 contenedorCards">
@@ -124,7 +115,7 @@
 										data-imagen3=${animal.rutaImg3},
 										data-descripcion=${animal.descripcion},
 										data-peso=${animal.peso},
-										data-edad=${animal.edad},
+										data-fechaNacimiento=${animal.fechaNacimiento},
 										data-genero=${animal.genero},
 										data-adoptado=${animal.adoptado},
 									    data-caracter=${animal.caracterSocial}"> Leer Más
@@ -136,24 +127,30 @@
 		</div>
 
 		<div class="row">
-			<nav class="items" style="justify-items: center;">
-				<ul class="pagination text-center">
-
-					<li th:if="${animalPage.number > 0}">
-						<a th:href="@{/nuestrosAnimales(size=${animalPage.size}, page=1)}">First &nbsp</a>
+			<nav aria-label="Pagination" th:if="${totalPages > 0}">
+				<ul class="pagination justify-content-center">
+					<li class="page-item" th:classappend="${currentPage == 1} ? 'disabled'">
+						<a th:replace="fragments/paging :: paging(1, '<<', 'First Page')"></a>
 					</li>
-					<li th:if="${animalPage.number == 0}">First &nbsp</li>
-
-					<li th:if="${animalPage.totalPages > 0}" class="pagination"
-						 th:each="pageNumber : ${pageNumbers}" th:class="${pageNumber==animalPage.number + 1} ? active">
-							<a th:href="@{/nuestrosAnimales(size=${animalPage.size}, page=${pageNumber})}"
-							   th:utext="${pageNumber} + '&nbsp'"></a>
+					<li class="page-item font-weight-bold" th:classappend="${currentPage == 1} ? 'disabled'">
+						<a th:replace="fragments/paging :: paging(${currentPage - 1}, 'Prev', 'Previous Page')"></a>
 					</li>
-
-					<li th:if="${animalPage.number < animalPage.totalPages - 1}">
-						<a th:href="@{/nuestrosAnimales(size=${animalPage.size}, page=${animalPage.totalPages})}">Last</a>
+					<li class="page-item disabled" th:if="${currentPage - 2 > 1}">
+						<a class="page-link" href="#">...</a>
 					</li>
-					<li th:if="${animalPage.number == animalPage.totalPages - 1}">&nbsp Last</li>
+					<li class="page-item" th:classappend="${page == currentPage} ? 'active'"
+						th:each="page : ${#numbers.sequence(currentPage > 2 ? currentPage - 2 : 1, currentPage + 2 < totalPages ? currentPage + 2 : totalPages)}">
+						<a th:replace="fragments/paging :: paging(${page}, ${page}, 'Page ' + ${page})"></a>
+					</li>
+					<li class="page-item disabled" th:if="${currentPage + 2 < totalPages}">
+						<a class="page-link" href="#">...</a>
+					</li>
+					<li class="page-item font-weight-bold" th:classappend="${currentPage == totalPages} ? 'disabled'">
+						<a th:replace="fragments/paging :: paging(${currentPage + 1},'Next', 'Next Page')"></a>
+					</li>
+					<li class="page-item" th:classappend="${currentPage == totalPages} ? 'disabled'">
+						<a th:replace="fragments/paging :: paging(${totalPages}, '>>', 'Last Page')"></a>
+					</li>
 				</ul>
 			</nav>
 		</div>
@@ -165,7 +162,7 @@
 			const modalNombre = document.getElementById('modalNombre');
 			const modalDescripcion = document.getElementById('modalDescripcion');
 			const modalPeso = document.getElementById('modalPeso');
-			const modalEdad = document.getElementById('modalEdad');
+			const modalFechaNacimiento = document.getElementById('modalFechaNacimiento');
 			const modalGenero = document.getElementById('modalGenero');
 			const modalImagen = document.getElementById('modalImagen');
 			const modalImagen2 = document.getElementById('modalImagen2');
@@ -180,7 +177,7 @@
 					const nombre = btn.getAttribute('data-nombre');
 					const descripcion = btn.getAttribute('data-descripcion');
 					const peso = btn.getAttribute('data-peso');
-					const edad = btn.getAttribute('data-edad');
+					const fechaNacimiento = btn.getAttribute('data-fechaNacimiento');
 					const genero = btn.getAttribute('data-genero') === 'true' ? 'Macho' : 'Hembra';
 					const imagen = btn.getAttribute('data-imagen');
 					const imagen2 = btn.getAttribute('data-imagen2');
@@ -193,7 +190,7 @@
 					modalNombre.textContent = nombre;
 					modalDescripcion.textContent = descripcion;
 					modalPeso.textContent = peso + ' kg';
-					modalEdad.textContent = edad;
+					modalFechaNacimiento.textContent = fechaNacimiento;
 					modalGenero.textContent = genero;
 					modalImagen.setAttribute('src', imagen);
 					modalImagen2.setAttribute('src', imagen2);
