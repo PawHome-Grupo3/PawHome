@@ -13,8 +13,4 @@ public class ProductRequest {
     private String name;
     private String currency;
 
-    public ProductRequest(String nombreProducto, int cantidadDias) {
-        this.name = nombreProducto;
-        this.quantity = (long)cantidadDias;
-    }
 }

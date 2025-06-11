@@ -23,7 +23,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,14 +31,12 @@ import java.util.Optional;
 public class GuarderiaController {
     private final UsuarioService usuarioService;
     private final ProductoService productoService;
-    private final TarifaService tarifaService;
     private final StripeService stripeService;
     private final SecurityUtil securityUtil;
 
-    public GuarderiaController(UsuarioService usuarioService, ProductoService productoService, TarifaService tarifaService, StripeService stripeService, SecurityUtil securityUtil) {
+    public GuarderiaController(UsuarioService usuarioService, ProductoService productoService, StripeService stripeService, SecurityUtil securityUtil) {
         this.usuarioService = usuarioService;
         this.productoService = productoService;
-        this.tarifaService = tarifaService;
         this.stripeService = stripeService;
         this.securityUtil = securityUtil;
     }
@@ -54,58 +51,45 @@ public class GuarderiaController {
 //    @PostMapping("/guarderia/checkoutGuarderia")
 //    public ResponseEntity<StripeResponse> checkoutDesdeGuarderia(
 //            @AuthenticationPrincipal Usuario usuario,
-//            @RequestParam("nombreProducto") String nombreProducto,
-//            @RequestParam("cantidadDias") int cantidadDias) throws StripeException {
-//        System.out.println("Entrando al metodo checkoutDesdeGuarderia");
+//            @RequestBody GuarderiaCheckoutRequest request, // Nuevo DTO
+//            HttpSession session) throws StripeException {
+//
 //        if (usuario == null) {
 //            return ResponseEntity.badRequest().body(
 //                    StripeResponse.builder()
 //                            .status("FAILED")
-//                            .message("Usuario no autenticado. Por favor inicia sesión")
-//                            .build()
-//            );
+//                            .message("Usuario no autenticado")
+//                            .build());
 //        }
 //
-//        Optional<Producto> productoOpt = productoService.findByNombre(nombreProducto);
+//        Optional<Producto> producto = productoService.findByNombre(request.nombreProducto());
 //
-//        if(productoOpt.isPresent()) {
-//            Producto producto = productoOpt.get();
-//            Optional<Tarifa> tarifaOpt = tarifaService.findTopByProductoIdOrderByFechaDesdeDesc(producto.getId());
-//            System.out.println("Tenemos el producto: " + producto.getNombre());
-//            if (tarifaOpt.isPresent()) {
-//                Tarifa tarifa = tarifaOpt.get();
-//
-//                List<ItemCarritoDTO> itemCarrito = Arrays.asList(
-//                        new ItemCarritoDTO(
-//                                producto,
-//                                cantidadDias,
-//                                tarifa.getPrecioUnitario()
-//                        ));
-//
-//                List<ProductRequest> productRequests = stripeService.convertirCarritoAProductRequests(itemCarrito);
-//                Optional<Usuario> user = usuarioService.findById(usuario.getId());
-//                if (user.isPresent()) {
-//                    log.info("Nombre producto: {} / cantidad de dias: {}", nombreProducto, cantidadDias);
-//                    Usuario userCustomerId = usuarioService.ensureStripeCustomerExists(user.get());
-//                    StripeResponse stripeResponse = stripeService.checkoutProducts(productRequests, userCustomerId.getStripeCustomerId());
-//                    securityUtil.updateAuthenticatedUser(userCustomerId);
-//                    return ResponseEntity.status(HttpStatus.OK).body(stripeResponse);
-//                } else {
-//                    return ResponseEntity.badRequest().body(
-//                            StripeResponse.builder()
-//                                    .status("FAILED")
-//                                    .message("Usuario no autenticado. Por favor inicia sesión")
-//                                    .build()
-//                    );
-//                }
-//            }
+//        if (producto.isEmpty()) {
+//            return ResponseEntity.badRequest().body(
+//                    StripeResponse.builder()
+//                            .status("FAILED")
+//                            .message("Producto no encontrado")
+//                            .build());
 //        }
-//        return ResponseEntity.badRequest().body(
-//                StripeResponse.builder()
-//                        .status("FAILED")
-//                        .message("Error en la reserva de guarderia")
-//                        .build()
+//
+//        // Crear ítem de carrito específico para guardería
+//        List<ItemCarritoDTO> items = Arrays.asList(
+//                new ItemCarritoDTO(
+//                        producto.get(),
+//                        request.cantidadDias(),
+//                        producto.get().getTarifas().getFirst().getPrecioUnitario() // Obtener última tarifa
+//                )
 //        );
+//
+//        // Proceso de Stripe (igual que en tienda)
+//        List<ProductRequest> productRequests = stripeService.convertirCarritoAProductRequests(items);
+//        Usuario user = usuarioService.ensureStripeCustomerExists(usuario);
+//        StripeResponse response = stripeService.checkoutProducts(
+//                productRequests,
+//                user.getStripeCustomerId()
+//        );
+//        log.info("Estamos ok");
+//        return ResponseEntity.status(HttpStatus.OK).body(response);
 //    }
 
     @PostMapping("/guarderia/checkoutGuarderia")
@@ -133,22 +117,25 @@ public class GuarderiaController {
         }
 
         // Crear ítem de carrito específico para guardería
-        List<ItemCarritoDTO> items = Arrays.asList(
+        ItemCarritoDTO items =
                 new ItemCarritoDTO(
                         producto.get(),
                         request.cantidadDias(),
                         producto.get().getTarifas().getFirst().getPrecioUnitario() // Obtener última tarifa
-                )
+
         );
 
         // Proceso de Stripe (igual que en tienda)
-        List<ProductRequest> productRequests = stripeService.convertirCarritoAProductRequests(items);
+        ProductRequest productRequest = new ProductRequest((long)(items.getPrecioUnitario()*100), (long) items.getCantidad(), items.getProducto().getNombre(), "eur");
+        List<ProductRequest> productRequests = List.of(productRequest);
         Usuario user = usuarioService.ensureStripeCustomerExists(usuario);
         StripeResponse response = stripeService.checkoutProducts(
                 productRequests,
                 user.getStripeCustomerId()
         );
-        log.info("Estamos ok");
+        securityUtil.updateAuthenticatedUser(user);
+        session.setAttribute("motivo", "Servicio");
+        session.setAttribute("itemServicio", items);
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 

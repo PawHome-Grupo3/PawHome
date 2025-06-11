@@ -573,11 +573,6 @@
 
                     const data = await response.json();
 
-                    console.log(data);
-                    console.log("sessionUrl:", data.sessionUrl);
-                    console.log("sessionurl:", data.sessionurl);
-                    console.log("url:", data.url);
-
                     if (data.status === "SUCCESS") {
                         window.location.href = data.sessionUrl; // Redirige a Stripe
                     } else {
@@ -590,8 +585,6 @@
             });
         });
 	</script>
-
-
 </section>
 </body>
 </html>
