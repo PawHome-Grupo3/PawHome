@@ -33,6 +33,12 @@ public class ColaboraController {
         this.securityUtil = securityUtil;
     }
 
+    @GetMapping("/colabora/donaciones-materiales")
+    public String mostrarColaboraDonaMateriales()
+    {
+        return "donarMateriales";
+    }
+
     @GetMapping("/colabora/dona")
     public String mostrarColaboraDona()
     {
