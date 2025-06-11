@@ -30,7 +30,7 @@ public class Factura {
     @Column(nullable = false)
     private LocalDate fecha;
 
-    @OneToMany(mappedBy = "factura", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "factura", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<LineaFactura> lineaFacturas;
 
     @ManyToOne
