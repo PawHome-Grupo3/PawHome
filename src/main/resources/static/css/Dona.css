@@ -135,3 +135,9 @@ body {
     width: 80%;
     height: auto;
 }
+
+.img-icono-animal {
+    width: 50px !important;
+    height: auto !important;
+    animation: bounce 1.5s infinite !important ;
+}
