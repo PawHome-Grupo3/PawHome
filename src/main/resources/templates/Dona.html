@@ -24,9 +24,7 @@
                 <p th:text="#{dona.recursos.monetarios}">Recursos monetarios</p>
 
                 <!-- PayPal -->
-                <a href="https://www.paypal.com/donate/?hosted_button_id=REEMPLAZA_AQUI"
-                   target="_blank"
-                   th:title="#{dona.paypal.titulo}">
+                <a href="#" data-bs-toggle="modal" data-bs-target="#paypalModal" th:title="#{dona.paypal.titulo}">
                     <div class="dona-icono">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal" />
                     </div>
@@ -63,6 +61,90 @@
         </h3>
 
     </div>
+
+    <!-- Modal PayPal (ahora usa Stripe) -->
+    <div class="modal fade" id="paypalModal" tabindex="-1" aria-labelledby="paypalModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title" id="paypalModalLabel">Donar vía Stripe</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+
+                <form id="checkoutForm">
+                    <div class="modal-body text-center">
+
+                        <label for="cantidad" class="form-label">¿Cuánto deseas donar? (EUR)</label>
+                        <div class="input-group w-50 mx-auto">
+                            <input type="number" class="form-control" id="cantidad" name="cantidad" min="0.01" step="0.01" value="5" required>
+                            <span class="input-group-text">€</span>
+                            <div class="invalid-feedback">Introduce una cantidad válida mayor a 0.</div>
+                        </div>
+
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success">Donar ahora</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const input = document.getElementById("cantidad");
+            const form = document.getElementById("checkoutForm");
+
+            // Solo permitir números y punto decimal
+            input.addEventListener("keypress", function (e) {
+                const char = String.fromCharCode(e.which);
+                if (!/[0-9.]|\./.test(char)) {
+                    e.preventDefault();
+                }
+            });
+
+            form.addEventListener("submit", async function (e) {
+                e.preventDefault();
+
+                const cantidad = parseFloat(input.value);
+
+                if (isNaN(cantidad) || cantidad <= 0) {
+                    input.classList.add("is-invalid");
+                    return;
+                } else {
+                    input.classList.remove("is-invalid");
+                }
+
+                try {
+                    const response = await fetch("/colabora/dona/checkout", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            cantidad: cantidad
+                        })
+                    });
+
+                    const data = await response.json();
+
+                    if (data.status === "SUCCESS") {
+                        window.location.href = data.sessionUrl;
+                    } else {
+                        alert("Error al iniciar el pago: " + data.message);
+                    }
+
+                } catch (error) {
+                    console.error("Error al conectar con el servidor:", error);
+                    alert("No se pudo procesar el pago.");
+                }
+            });
+        });
+    </script>
 </section>
 </body>
 </html>

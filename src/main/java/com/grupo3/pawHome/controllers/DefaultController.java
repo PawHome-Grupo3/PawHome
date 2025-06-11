@@ -167,12 +167,6 @@ public class DefaultController {
         return "Colabora";
     }
 
-    @GetMapping("/colabora/dona")
-    public String mostrarColaboraDona()
-    {
-        return "Dona";
-    }
-
     @GetMapping("/colabora/dona/donarBizum")
     public String mostrarColaboraDonaDonarBizum()
     {
