@@ -10,6 +10,6 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CountryDTO {
-    private String code;
-    private String name;
+    private String codigo;
+    private String nombre;
 }
