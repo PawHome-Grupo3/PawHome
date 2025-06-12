@@ -4,6 +4,12 @@
 <head>
 	<title>Nuestros Animales</title>
 	<link rel="stylesheet" th:href="@{/css/general.css}"/>
+	<style>
+		.dropdown-menu .dropdown-item:hover {
+			background-color: white !important;
+			color: #14532d !important;
+		}
+	</style>
 </head>
 <body>
 
@@ -34,16 +40,185 @@
 			<div class="row justify-content-center mb-3">
 				<div class="col-12 col-md-10">
 					<div class="table-sort-panel">
-						<table class="table table-borderless text-center table-sort-panel">
-							<thead class="thead-light">
-							<tr>
-								<th class="px-2" data-field="nombre" th:replace="fragments/sorting :: sorting('nombre','Nombre')"></th>
-								<th class="px-2" data-field="fechaNacimiento" th:replace="fragments/sorting :: sorting('fechaNacimiento','Edad')"></th>
-								<th class="px-2" data-field="peso" th:replace="fragments/sorting :: sorting('peso','Peso')"></th>
-								<th class="px-2" data-field="genero" th:replace="fragments/sorting :: sorting('genero','Genero')"></th>
-							</tr>
-							</thead>
-						</table>
+						<!-- Escritorio: Botones de orden + selector -->
+						<div class="d-none d-md-flex flex-wrap justify-content-between gap-2 mb-2">
+
+							<!-- Botón: Nombre -->
+							<div class="flex-fill text-center" style="min-width: 120px;">
+								<button type="button"
+										class="btn w-100 text-success fw-bold d-inline-flex align-items-center justify-content-center gap-1 text-decoration-none bg-success bg-opacity-25 rounded-pill px-3 py-1"
+										onclick="sortBy('nombre')">
+									Nombre
+									<i class="fa-solid"
+									   th:classappend="${sortField == 'nombre'} ? (sortDirection == 'asc' ? ' fa-sort-alpha-down' : ' fa-sort-alpha-up') : ''"
+									   th:title="${sortDirection == 'asc' ? 'Orden descendente' : 'Orden ascendente'}"></i>
+								</button>
+							</div>
+
+							<!-- Botón: Edad -->
+							<div class="flex-fill text-center" style="min-width: 120px;">
+								<button type="button"
+										class="btn w-100 text-success fw-bold d-inline-flex align-items-center justify-content-center gap-1 text-decoration-none bg-success bg-opacity-25 rounded-pill px-3 py-1"
+										onclick="sortBy('fechaNacimiento')">
+									Edad
+									<i class="fa-solid"
+									   th:classappend="${sortField == 'fechaNacimiento'} ? (sortDirection == 'asc' ? ' fa-sort-numeric-down' : ' fa-sort-numeric-up') : ''"
+									   th:title="${sortDirection == 'asc' ? 'Orden descendente' : 'Orden ascendente'}"></i>
+								</button>
+							</div>
+
+							<!-- Botón: Peso -->
+							<div class="flex-fill text-center" style="min-width: 120px;">
+								<button type="button"
+										class="btn w-100 text-success fw-bold d-inline-flex align-items-center justify-content-center gap-1 text-decoration-none bg-success bg-opacity-25 rounded-pill px-3 py-1"
+										onclick="sortBy('peso')">
+									Peso
+									<i class="fa-solid"
+									   th:classappend="${sortField == 'peso'} ? (sortDirection == 'asc' ? ' fa-sort-numeric-down' : ' fa-sort-numeric-up') : ''"
+									   th:title="${sortDirection == 'asc' ? 'Orden descendente' : 'Orden ascendente'}"></i>
+								</button>
+							</div>
+
+							<!-- Botón: Género -->
+							<div class="flex-fill text-center" style="min-width: 120px;">
+								<button type="button"
+										class="btn w-100 text-success fw-bold d-inline-flex align-items-center justify-content-center gap-1 text-decoration-none bg-success bg-opacity-25 rounded-pill px-3 py-1"
+										onclick="sortBy('genero')">
+									Género
+									<i class="fa-solid"
+									   th:classappend="${sortField == 'genero'} ? (sortDirection == 'asc' ? ' fa-sort-alpha-down' : ' fa-sort-alpha-up') : ''"
+									   th:title="${sortDirection == 'asc' ? 'Orden descendente' : 'Orden ascendente'}"></i>
+								</button>
+							</div>
+
+							<!-- Selector de cantidad -->
+							<div class="text-center" style="min-width: 150px;">
+								<form th:action="@{/nuestrosAnimales}" method="get" id="pageSizeFormDesktop" class="mb-0">
+									<input type="hidden" name="keyword" th:value="${keyword}" />
+									<input type="hidden" name="adoptado" th:value="${adoptado}" />
+									<input type="hidden" name="sort" th:value="${sortField + ',' + sortDirection}" />
+
+									<div class="d-flex align-items-center bg-success bg-opacity-25 rounded-pill px-2 py-1 shadow-sm">
+										<i class="fa-solid fa-list-ol me-2 text-success"></i>
+										<select name="size"
+												class="form-select form-select-sm border-0 bg-transparent text-center fw-bold text-success"
+												onchange="document.getElementById('pageSizeFormDesktop').submit()"
+												style="min-width: 60px;">
+											<option th:value="5" th:selected="${pageSize == 5}">5</option>
+											<option th:value="10" th:selected="${pageSize == 10}">10</option>
+											<option th:value="15" th:selected="${pageSize == 15}">15</option>
+											<option th:value="20" th:selected="${pageSize == 20}">20</option>
+										</select>
+									</div>
+								</form>
+							</div>
+
+						</div>
+
+						<!-- Móvil: Dropdown original -->
+						<div class="d-md-none w-100">
+							<!-- Selector de cantidad -->
+							<div class="mb-2 d-flex justify-content-center">
+								<form th:action="@{/nuestrosAnimales}" method="get" id="pageSizeFormMobile" class="mb-0">
+									<input type="hidden" name="keyword" th:value="${keyword}" />
+									<input type="hidden" name="adoptado" th:value="${adoptado}" />
+									<input type="hidden" name="sort" th:value="${sortField + ',' + sortDirection}" />
+
+									<div class="d-flex align-items-center bg-success bg-opacity-25 rounded-pill px-2 py-1 shadow-sm">
+										<i class="fa-solid fa-list-ol me-2 text-success"></i>
+										<select name="size" class="form-select form-select-sm border-0 bg-transparent text-center fw-bold text-success"
+												onchange="document.getElementById('pageSizeFormMobile').submit()"
+												style="width: auto; min-width: 30px;">
+											<option th:value="5" th:selected="${pageSize == 5}">5</option>
+											<option th:value="10" th:selected="${pageSize == 10}">10</option>
+											<option th:value="15" th:selected="${pageSize == 15}">15</option>
+											<option th:value="20" th:selected="${pageSize == 20}">20</option>
+										</select>
+									</div>
+								</form>
+							</div>
+
+							<!-- Menú desplegable de ordenamiento -->
+							<div class="dropdown text-center">
+								<button class="btn bg-success bg-opacity-25 text-success shadow-sm rounded-pill fw-bold px-4"
+										type="button" id="dropdownSortMobile" data-bs-toggle="dropdown" aria-expanded="false">
+									Ordenar por
+									<i class="fa-solid"
+									   th:classappend="${sortDirection == 'asc'} ? ' fa-arrow-up' : ' fa-arrow-down'"></i>
+								</button>
+
+								<ul class="dropdown-menu mx-auto mt-2 shadow-sm text-center border-0"
+									style="background-color: #198754; min-width: 200px;"
+									aria-labelledby="dropdownSortMobile">
+
+									<li>
+										<a class="dropdown-item fw-semibold text-white"
+										   th:classappend="${sortField == 'nombre'} ? ' active bg-white bg-opacity-25 text-white fw-bold' : ''"
+										   href="#" onclick="sortBy('nombre')">Nombre</a>
+									</li>
+									<li>
+										<a class="dropdown-item fw-semibold text-white"
+										   th:classappend="${sortField == 'fechaNacimiento'} ? ' active bg-white bg-opacity-25 text-white fw-bold' : ''"
+										   href="#" onclick="sortBy('fechaNacimiento')">Edad</a>
+									</li>
+									<li>
+										<a class="dropdown-item fw-semibold text-white"
+										   th:classappend="${sortField == 'peso'} ? ' active bg-white bg-opacity-25 text-white fw-bold' : ''"
+										   href="#" onclick="sortBy('peso')">Peso</a>
+									</li>
+									<li>
+										<a class="dropdown-item fw-semibold text-white"
+										   th:classappend="${sortField == 'genero'} ? ' active bg-white bg-opacity-25 text-white fw-bold' : ''"
+										   href="#" onclick="sortBy('genero')">Género</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+			<div class="row justify-content-center mb-4">
+				<div class="col-12 col-md-10">
+					<div class="table-sort-panel">
+						<form id="filtroForm" th:action="@{/nuestrosAnimales}" method="get"
+							  class="d-flex flex-column flex-md-row justify-content-center align-items-center gap-3 flex-wrap">
+
+							<!-- Campo de búsqueda -->
+							<input type="text" name="keyword" th:value="${keyword}" placeholder="Buscar por nombre"
+								   class="form-control flex-grow-1"
+								   style="min-width: 200px; max-width: 220px;" />
+
+							<!-- Filtro por adoptado -->
+							<select name="adoptado" class="form-select" style="width: 160px;">
+								<option th:value="null" th:selected="${adoptado == null}">Todos</option>
+								<option th:value="true" th:selected="${adoptado == 'true'}">Adoptados</option>
+								<option th:value="false" th:selected="${adoptado == 'false'}">Sin Adoptar</option>
+							</select>
+
+							<!-- Filtro por raza -->
+							<select name="razaId" id="razaSelect" class="form-select" style="width: 180px;"
+									onchange="onRazaChange()">
+								<option th:value="null" th:selected="${razaId == null}">Todas las razas</option>
+								<option th:each="raza : ${razas}" th:value="${raza.id}" th:text="${raza.nombre}"
+										th:selected="${razaId != null and razaId == raza.id}"></option>
+							</select>
+
+							<!-- Filtro por especie (si hay especies cargadas) -->
+							<select name="especieId" id="especieSelect" class="form-select" style="width: 180px;"
+									th:if="${especies != null}">
+								<option th:value="null" th:selected="${especieId == null}">Todas las especies</option>
+								<option th:each="especie : ${especies}" th:value="${especie.id}" th:text="${especie.nombre}"
+										th:selected="${especieId != null and especieId == especie.id}"></option>
+							</select>
+
+							<!-- Botón Filtrar -->
+							<button type="submit" class="btn fw-bold"
+									style="min-width: 100px; background-color: #198754; color: white;">
+								Filtrar
+							</button>
+						</form>
 					</div>
 				</div>
 			</div>
@@ -51,18 +226,34 @@
 			<!-- Cards -->
 			<div class="row justify-content-center">
 				<!--/* @thymesVar id="animal" type="com.grupo3.pawHome.entities.Animal" */-->
-				<div th:each="animal : ${animales}" class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4 d-flex justify-content-center">
+				<div th:each="animal : ${animales}"
+					 class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4 d-flex justify-content-center">
 					<div class="card cardAnimal">
 						<div class="card_image">
-							<img class="imgCardAnimal" th:src="${animal.rutaImg1}" alt="foto de perro disponible para adoptar">
+							<img class="imgCardAnimal" th:src="${animal.rutaImg1}"
+								 alt="foto de perro disponible para adoptar">
 						</div>
 						<div class="card_content d-flex justify-content-center card_contentAnimal">
-							<h2 class="card_title card_titleAnimal" th:utext="${animal.nombre}"></h2>
-							<p class="card_tex card_textAnimal">
-								<span th:utext="${animal.peso} + 'kg'"></span>,
-								<span th:utext="${animal.edad}"></span>,
-								<span th:if="${animal.genero == false}">Hembra</span>
-								<span th:unless="${animal.genero == false}">Macho</span></p>
+							<h2 class="card_title card_titleAnimal pb-3" th:utext="${animal.nombre}"></h2>
+							<div class="d-flex flex-wrap justify-content-center gap-2 mb-2 card_badges">
+								<!-- Peso -->
+								<span class="badgeCard">
+									<i class="fas fa-weight-hanging me-1"></i>
+									<span th:text="${animal.peso} + ' kg'">8 kg</span>
+								</span>
+
+								<!-- Edad -->
+								<span class="badgeCard">
+									<i class="fas fa-birthday-cake me-1"></i>
+									<span th:text="${animal.edad}">2 años</span>
+								</span>
+
+								<!-- Género -->
+								<span class="badgeCard">
+									<i class="fas fa-venus-mars me-1"></i>
+									<span th:text="${animal.genero == false ? 'Hembra' : 'Macho'}">Hembra</span>
+								</span>
+							</div>
 							<div class="row d-flex justify-content-center flex-nowrap">
 								<a th:if="${animal.adoptado == false && animal.caracterSocial == true}"
 								   th:href="@{/adopta/{id}(id=${animal.id})}"
@@ -169,6 +360,41 @@
 			</div>
 		</div>
 	</div>
+
+	<!-- Script para resetear especie y página al cambiar raza -->
+	<script>
+		function onRazaChange() {
+			const form = document.getElementById("filtroForm");
+
+			// Resetear selector de especie
+			const especieSelect = document.getElementById("especieSelect");
+			if (especieSelect) {
+				especieSelect.selectedIndex = 0;
+			}
+
+			// Eliminar parámetro de paginación si existe
+			const pageInput = document.createElement("input");
+			pageInput.type = "hidden";
+			pageInput.name = "page";
+			pageInput.value = "1";
+			form.appendChild(pageInput);
+
+			form.submit();
+		}
+	</script>
+
+	<script>
+		function sortBy(field) {
+			const url = new URL(window.location.href);
+			const currentSort = url.searchParams.get("sort") || "id,asc";
+			const currentField = currentSort.split(',')[0];
+			const currentDirection = currentSort.split(',')[1];
+
+			const direction = (currentField === field && currentDirection === "asc") ? "desc" : "asc";
+			url.searchParams.set("sort", `${field},${direction}`);
+			window.location.href = url.toString();
+		}
+	</script>
 
 	<script>
 		document.addEventListener('DOMContentLoaded', function () {

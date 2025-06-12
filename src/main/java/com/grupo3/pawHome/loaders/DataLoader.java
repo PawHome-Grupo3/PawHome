@@ -26,6 +26,8 @@ public class DataLoader implements CommandLineRunner {
     private final CategoriaRepository categoriaRepository;
     private final TarifaRepository tarifaRepository;
     private final PasswordEncoder passwordEncoder;
+    private final RazaRepository razaRepository;
+    private final EspecieRepository especieRepository;
 
 
     public DataLoader(AnimalRepository animalRepository,
@@ -36,7 +38,7 @@ public class DataLoader implements CommandLineRunner {
                       TallaRepository tallaRepository,
                       CategoriaRepository categoriaRepository,
                       TarifaRepository tarifaRepository,
-                      PasswordEncoder passwordEncoder) {
+                      PasswordEncoder passwordEncoder, RazaRepository razaRepository, EspecieRepository especieRepository) {
 
         this.animalRepository = animalRepository;
         this.apadrinarRepository = apadrinarRepository;
@@ -47,6 +49,8 @@ public class DataLoader implements CommandLineRunner {
         this.categoriaRepository = categoriaRepository;
         this.tarifaRepository = tarifaRepository;
         this.passwordEncoder = passwordEncoder;
+        this.razaRepository = razaRepository;
+        this.especieRepository = especieRepository;
     }
 
     @Override
@@ -330,8 +334,31 @@ public class DataLoader implements CommandLineRunner {
         ta5.setFechaHasta(LocalDate.of(2026, 1, 1));
         tarifaRepository.save(ta5);
 
+        Raza raza = new Raza();
+        raza.setNombre("Perro");
+        razaRepository.save(raza);
+
+        Raza raza2 = new Raza();
+        raza2.setNombre("Gato");
+        razaRepository.save(raza2);
+
+        Especie e1 = new Especie();
+        e1.setNombre("Malinois");
+        e1.setRaza(raza);
+        especieRepository.save(e1);
+
+        Especie e3 = new Especie();
+        e3.setNombre("Dálmata");
+        e3.setRaza(raza);
+        especieRepository.save(e3);
+
+        Especie e2 = new Especie();
+        e2.setNombre("Esfinge");
+        e2.setRaza(raza2);
+        especieRepository.save(e2);
+
         Animal a1 = new Animal();
-        a1.setNombre("Firulais");
+        a1.setNombre("Comodoro");
         a1.setChip("CHIP9999");
         a1.setPeso(20f);
         a1.setFechaNacimiento(LocalDate.of(2020, 6, 11));
@@ -346,7 +373,10 @@ public class DataLoader implements CommandLineRunner {
         a1.setRutaImg1("/images/perro1Card.jpg");
         a1.setRutaImg2("/images/default-example.png");
         a1.setRutaImg3("/images/default-example.png");
+        a1.setEspecie(e1);
         animalRepository.save(a1);
+
+
 
         Animal a2 = new Animal();
         a2.setNombre("Michi");
@@ -364,6 +394,7 @@ public class DataLoader implements CommandLineRunner {
         a2.setRutaImg1("/images/perro1.png");
         a2.setRutaImg2("/images/default-example.png");
         a2.setRutaImg3("/images/default-example.png");
+        a2.setEspecie(e2);
         animalRepository.save(a2);
 
         Animal a3 = new Animal();
@@ -382,6 +413,7 @@ public class DataLoader implements CommandLineRunner {
         a3.setRutaImg1("/images/perro2.png");
         a3.setRutaImg2("/images/default-example.png");
         a3.setRutaImg3("/images/default-example.png");
+        a3.setEspecie(e2);
         animalRepository.save(a3);
 
         Animal a4 = new Animal();
@@ -400,6 +432,7 @@ public class DataLoader implements CommandLineRunner {
         a4.setRutaImg1("/images/perro3.png");
         a4.setRutaImg2("/images/default-example.png");
         a4.setRutaImg3("/images/default-example.png");
+        a4.setEspecie(e3);
         animalRepository.save(a4);
 
         Animal a5 = new Animal();
@@ -418,6 +451,7 @@ public class DataLoader implements CommandLineRunner {
         a5.setRutaImg1("/images/perro4.png");
         a5.setRutaImg2("/images/default-example.png");
         a5.setRutaImg3("/images/default-example.png");
+        a5.setEspecie(e3);
         animalRepository.save(a5);
 
         Animal a6 = new Animal();
@@ -436,6 +470,7 @@ public class DataLoader implements CommandLineRunner {
         a6.setRutaImg1("images/perro5.png");
         a6.setRutaImg2("/images/default-example.png");
         a6.setRutaImg3("/images/default-example.png");
+        a6.setEspecie(e3);
         animalRepository.save(a6);
 
         Animal a7 = new Animal();

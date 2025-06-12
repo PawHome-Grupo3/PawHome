@@ -727,6 +727,28 @@ ul {
     text-decoration: none;
 }
 
+.card_badges .badgeCard {
+    background-color: #ffffffcc; /* Blanco con ligera opacidad */
+    color: #1F2D2B;
+    font-weight: 600;
+    font-size: clamp(12px, 1vw, 14px);
+    padding: 0.35em 0.75em;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3em;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: background-color 0.3s ease;
+}
+
+.card_badges .badgeCard i {
+    color: #3B6E57; /* Verde bosque (oscuro) */
+}
+
+.cardAnimal:hover .card_badges .badgeCard {
+    background-color: #c8d6cc; /* Mismo color que botones hover */
+}
+
 @media screen and (max-width: 639px) {
     .cardAnimal {
         width: 100%;
@@ -835,4 +857,10 @@ ul {
     color: #2d5c40;
     font-size: 1.1rem;
     vertical-align: middle;
+}
+
+@media (min-width: 768px) {
+    .table-sort-panel form > * {
+        margin-right: 10px;
+    }
 }

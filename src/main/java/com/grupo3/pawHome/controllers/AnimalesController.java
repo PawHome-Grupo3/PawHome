@@ -2,8 +2,12 @@ package com.grupo3.pawHome.controllers;
 
 import com.grupo3.pawHome.dtos.AnimalDto;
 import com.grupo3.pawHome.entities.Animal;
+import com.grupo3.pawHome.entities.Especie;
+import com.grupo3.pawHome.entities.Raza;
 import com.grupo3.pawHome.services.AnimalMapperService;
 import com.grupo3.pawHome.services.AnimalService;
+import com.grupo3.pawHome.services.EspecieService;
+import com.grupo3.pawHome.services.RazaService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -21,20 +25,38 @@ import java.util.Optional;
 public class AnimalesController {
     private final AnimalService animalService;
     private final AnimalMapperService animalMapperService;
+    private final RazaService razaService;
+    private final EspecieService especieService;
 
     public AnimalesController(AnimalService animalService,
-                              AnimalMapperService animalMapperService) {
+                              AnimalMapperService animalMapperService,
+                              RazaService razaService, EspecieService especieService) {
         this.animalService = animalService;
         this.animalMapperService = animalMapperService;
+        this.razaService = razaService;
+        this.especieService = especieService;
     }
 
     @GetMapping("/nuestrosAnimales")
     public String mostrarNuestrosAnimales(Model model,
                                           @RequestParam(required = false) String keyword,
+                                          @RequestParam(required = false) String adoptado,
                                           @RequestParam(defaultValue = "1") int page,
-                                          @RequestParam(defaultValue = "6") int size,
+                                          @RequestParam(defaultValue = "5") int size,
+                                          @RequestParam(required = false) Integer razaId,
+                                          @RequestParam(required = false) Integer especieId,
                                           @RequestParam(defaultValue = "id,asc") String[] sort){
         try {
+            List<Raza> razas = razaService.findAll();
+            model.addAttribute("razas", razas);
+
+            if (razaId != null) {
+                List<Especie> especies = especieService.findByRazaId(razaId);
+                model.addAttribute("especies", especies);
+                model.addAttribute("razaId", razaId);
+            }
+            model.addAttribute("especieId", especieId);
+
             List<Animal> animales;
 
             String sortField = sort[0];
@@ -45,13 +67,7 @@ public class AnimalesController {
 
             Pageable pageable = PageRequest.of(page - 1, size, Sort.by(order));
 
-            Page<Animal> pageAns;
-            if (keyword == null) {
-                pageAns = animalService.findAllByAnimalServicioIsFalse(pageable);
-            } else {
-                pageAns = animalService.findByTitleContainingIgnoreCase(keyword, pageable);
-                model.addAttribute("keyword", keyword);
-            }
+            Page<Animal> pageAns = animalService.buscarAnimalesConFiltros(keyword, adoptado, razaId, especieId, pageable);
 
             animales = pageAns.getContent();
             AnimalDto animalDto;
@@ -70,6 +86,7 @@ public class AnimalesController {
             model.addAttribute("sortField", sortField);
             model.addAttribute("sortDirection", sortDirection);
             model.addAttribute("reverseSortDirection", sortDirection.equals("asc") ? "desc" : "asc");
+            model.addAttribute("adoptado", adoptado);
         } catch (Exception e) {
             model.addAttribute("message", e.getMessage());
         }
