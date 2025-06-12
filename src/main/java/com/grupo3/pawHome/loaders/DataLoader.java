@@ -26,12 +26,18 @@ public class DataLoader implements CommandLineRunner {
     private final TallaRepository tallaRepository;
     private final CategoriaRepository categoriaRepository;
     private final TarifaRepository tarifaRepository;
-    private final PerfilDatosRepository perfilDatosRepository;
     private final PasswordEncoder passwordEncoder;
-    private final MetodoPagoRepository metodoPagoRepository;
 
 
-    public DataLoader(AnimalRepository animalRepository, ApadrinarRepository apadrinarRepository, UsuarioRepository usuarioRepository, FacturaRepository facturaRepository, ProductoRepository productoRepository, TallaRepository tallaRepository, CategoriaRepository categoriaRepository, TarifaRepository tarifaRepository, PerfilDatosRepository perfilDatosRepository, PasswordEncoder passwordEncoder, MetodoPagoRepository metodoPagoRepository) {
+    public DataLoader(AnimalRepository animalRepository,
+                      ApadrinarRepository apadrinarRepository,
+                      UsuarioRepository usuarioRepository,
+                      FacturaRepository facturaRepository,
+                      ProductoRepository productoRepository,
+                      TallaRepository tallaRepository,
+                      CategoriaRepository categoriaRepository,
+                      TarifaRepository tarifaRepository,
+                      PasswordEncoder passwordEncoder) {
 
         this.animalRepository = animalRepository;
         this.apadrinarRepository = apadrinarRepository;
@@ -41,9 +47,7 @@ public class DataLoader implements CommandLineRunner {
         this.tallaRepository = tallaRepository;
         this.categoriaRepository = categoriaRepository;
         this.tarifaRepository = tarifaRepository;
-        this.perfilDatosRepository = perfilDatosRepository;
         this.passwordEncoder = passwordEncoder;
-        this.metodoPagoRepository = metodoPagoRepository;
     }
 
     @Override
@@ -331,7 +335,7 @@ public class DataLoader implements CommandLineRunner {
         a1.setNombre("Firulais");
         a1.setChip("CHIP9999");
         a1.setPeso(20f);
-        a1.setEdad("2 años");
+        a1.setFechaNacimiento(LocalDate.of(2020, 6, 11));
         a1.setCaracterSocial(true);
         a1.setDescripcion("Perro muy amigable");
         a1.setGenero(true);
@@ -349,7 +353,7 @@ public class DataLoader implements CommandLineRunner {
         a2.setNombre("Michi");
         a2.setChip("CHIP98765");
         a2.setPeso(4f);
-        a2.setEdad("1 año");
+        a2.setFechaNacimiento(LocalDate.of(2024, 6, 11));
         a2.setCaracterSocial(false);
         a2.setDescripcion("Michi es un gato tímido pero dulce, que ha pasado por una situación difícil y está aprendiendo a confiar nuevamente en las personas. Le encanta observar desde la ventana y es muy curioso con los juguetes. Necesita un hogar tranquilo y paciente.");
         a2.setGenero(false);
@@ -367,7 +371,7 @@ public class DataLoader implements CommandLineRunner {
         a3.setNombre("Firulais");
         a3.setChip("CHIP10102");
         a3.setPeso(18f);
-        a3.setEdad("3 años");
+        a3.setFechaNacimiento(LocalDate.of(2025, 6, 1));
         a3.setCaracterSocial(true);
         a3.setDescripcion("Firulais es un perro muy enérgico, sociable y siempre dispuesto a jugar. Ideal para una familia con espacio o niños, disfruta de los paseos largos y se lleva bien con otros animales. Está vacunado y desparasitado, listo para ir a su nuevo hogar.");
         a3.setGenero(true);
@@ -385,7 +389,7 @@ public class DataLoader implements CommandLineRunner {
         a4.setNombre("Luna");
         a4.setChip("CHIP54321");
         a4.setPeso(6f);
-        a4.setEdad("2 años");
+        a4.setFechaNacimiento(LocalDate.of(2018, 7, 21));
         a4.setCaracterSocial(true);
         a4.setDescripcion("Luna es una gata muy curiosa y activa. Le encanta explorar su entorno y encontrar rincones nuevos donde dormir la siesta. Es sociable con otros gatos y muy cariñosa con las personas una vez que toma confianza. Ideal para un hogar con ventanas soleadas.");
         a4.setGenero(false);
@@ -403,7 +407,7 @@ public class DataLoader implements CommandLineRunner {
         a5.setNombre("Thor");
         a5.setChip("CHIP11223");
         a5.setPeso(25f);
-        a5.setEdad("4 años");
+        a5.setFechaNacimiento(LocalDate.of(2025, 6, 2));
         a5.setCaracterSocial(true);
         a5.setDescripcion("Thor es un perro de servicio entrenado, tranquilo y obediente. Tiene un gran sentido de la calma y es ideal para acompañar a personas con necesidades especiales. Se adapta bien a distintos entornos y responde perfectamente a comandos básicos y avanzados.");
         a5.setGenero(true);
@@ -421,7 +425,7 @@ public class DataLoader implements CommandLineRunner {
         a6.setNombre("Nube");
         a6.setChip("CHIP77889");
         a6.setPeso(3.5f);
-        a6.setEdad("6 meses");
+        a6.setFechaNacimiento(LocalDate.of(2022, 2, 2));
         a6.setCaracterSocial(false);
         a6.setDescripcion("Nube es un gatito rescatado recientemente, extremadamente juguetón y curioso. A pesar de su corta edad, ya demuestra ser muy inteligente y está en proceso de aprender a usar el rascador y el arenero. Le encantan los juguetes con plumas y perseguir sombras.");
         a6.setGenero(false);
@@ -439,7 +443,7 @@ public class DataLoader implements CommandLineRunner {
         a7.setNombre("Roco");
         a7.setChip("CHIP99887");
         a7.setPeso(30f);
-        a7.setEdad("5 años");
+        a7.setFechaNacimiento(LocalDate.of(2021, 8, 5));
         a7.setCaracterSocial(true);
         a7.setDescripcion("Roco es un gran danés de carácter tranquilo, muy amigable y paciente. A pesar de su tamaño, es un gigante gentil que disfruta de la compañía humana. Ideal para personas con experiencia en razas grandes. Le gusta estar acompañado y no ladra con frecuencia.");
         a7.setGenero(true);
@@ -488,9 +492,5 @@ public class DataLoader implements CommandLineRunner {
         ap4.setAnimal(a4);
         ap4.setUsuario(u2);
         apadrinarRepository.save(ap4);
-
-//        MetodoPago mp1 = new MetodoPago();
-//        mp1.setNumero("12345678");
-//        metodoPagoRepository.save(mp1);
     }
 }

@@ -5,7 +5,6 @@ import com.grupo3.pawHome.repositories.AnimalRepository;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,24 +18,15 @@ public class AnimalService {
 
     public List<Animal> findAll() { return animalRepository.findAll(); }
 
+    public Page<Animal> findAll(Pageable pageable) { return animalRepository.findAll(pageable); }
+
     public Optional<Animal> findById(int id) { return animalRepository.findById(id); }
 
-    public Page<Animal> findPaginated(Pageable pageable) {
-        int pageSize = pageable.getPageSize();
-        int currentPage = pageable.getPageNumber();
-        int startItem = currentPage * pageSize;
-        List<Animal> animales = animalRepository.findAllByAnimalServicio(false);
-        List<Animal> list;
-
-        if (animales.size() < startItem) {
-            list = Collections.emptyList();
-        } else {
-            int toIndex = Math.min(startItem + pageSize, animales.size());
-            list = animales.subList(startItem, toIndex);
-        }
-
-        return new PageImpl<>(list, PageRequest.of(currentPage, pageSize), animales.size());
-    }
-
     public Animal save(Animal animal) { return animalRepository.save(animal); }
+
+    public Page<Animal> findByTitleContainingIgnoreCase(String keyword, Pageable pageable) { return animalRepository.findByNombreContainingIgnoreCase(keyword, pageable);}
+
+    public Page<Animal> findAllByAnimalServicioIsFalse(Pageable pageable) {
+        return animalRepository.findAllByAnimalServicioIsFalse(pageable);
+    }
 }
