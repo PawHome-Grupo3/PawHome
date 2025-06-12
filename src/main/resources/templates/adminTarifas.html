@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layoutAdmin.html}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gestión de tarifas</title>
+</head>
+<body>
+
+<section layout:fragment="content">
+
+    <div class="container">
+        <h1>Gestión de tarifas</h1>
+
+        <!-- Formulario Crear/Editar -->
+        <form th:action="@{/admin/tarifas/guardar}" th:object="${tarifa}" method="post" class="row g-3 mb-4">
+            <input type="hidden" th:field="*{id}"/>
+            <div class="col-md-3">
+                <input type="text" th:field="*{nombre}" class="form-control" placeholder="Nombre" required>
+            </div>
+            <div class="col-md-2">
+                <input type="text" th:field="*{descripcion}" class="form-control" placeholder="Descripción">
+            </div>
+            <div class="col-md-1">
+                <input type="number" th:field="*{cantidad}" class="form-control" placeholder="Cantidad">
+            </div>
+            <div class="col-md-1">
+                <input type="number" th:field="*{precioUnitario}" class="form-control" placeholder="Precio Unitario">
+            </div>
+            <div class="col-md-2">
+                <input type="text" th:field="*{fechaDesde}" class="form-control" placeholder="Fecha desde">
+            </div>
+            <div class="col-md-3">
+                <input type="text" th:field="*{fechaHasta}" class="form-control" placeholder="Fecha hasta">
+            </div>
+            <div class="col-md-2">
+                <input type="text" th:field="*{producto}" class="form-control" placeholder="Producto">
+            </div>
+            <div class="col-md-2">
+                <input type="text" th:field="*{lineaFacturas}" class="form-control" placeholder="Línea factura">
+            </div>
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-success w-100"
+                        th:text="*{id} != null ? 'Actualizar' : 'Guardar'">Guardar
+                </button>
+            </div>
+        </form>
+
+        <!-- Tabla de Tarifas -->
+        <table class="table table-striped table-bordered">
+            <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Cantidad</th>
+                <th>Precio unitario</th>
+                <th>Fecha desde</th>
+                <th>Fecha hasta</th>
+                <th>Producto</th>
+                <th>Línea factura</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="tarifa, iterStat : ${tarifas}">
+                <td th:text="${iterStat.count}"></td>
+                <td th:text="${tarifa.nombre}"></td>
+                <td th:text="${tarifa.descripcion}"></td>
+                <td th:text="${tarifa.precioUnitario}"></td>
+                <td th:text="${tarifa.fechaDesde}"></td>
+                <td th:text="${tarifa.fechaHasta}"></td>
+                <td th:text="${tarifa.producto}"></td>
+                <td th:text="${tarifa.lineaFacturas}"></td>
+                <td>
+                    <a th:href="@{'/admin/tarifas/editar/' + ${tarifa.id}}" class="btn btn-warning btn-sm">Editar</a>
+                    <a th:href="@{'/admin/tarifas/eliminar/' + ${tarifa.id}}" class="btn btn-danger btn-sm"
+                       onclick="return confirm('¿Eliminar esta tarifa?')">Eliminar</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+</body>
+</html>

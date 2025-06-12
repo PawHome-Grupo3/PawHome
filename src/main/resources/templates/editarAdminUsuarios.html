@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layoutAdmin.html}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Editar usuario</title>
+</head>
+<body>
+
+<section layout:fragment="content">
+
+    <div class="container">
+        <div class="card shadow-lg">
+            <div class="card-header bg-success text-white">
+                <h4 class="mb-0">Editar usuario</h4>
+            </div>
+            <div class="card-body">
+                <form th:action="@{/admin/usuarios/actualizar/{id}(id=${usuario.id})}" th:object="${usuario}" method="post">
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="nickname" class="form-label">Nombre de usuario</label>
+                            <input type="text" th:field="*{nickname}" class="form-control" id="nickname" required maxlength="50">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="email" class="form-label">Correo electrónico</label>
+                            <input type="email" th:field="*{email}" class="form-control" id="email" required maxlength="100">
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <input type="text" th:field="*{nombre}" class="form-control" id="nombre" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="apellidos" class="form-label">Apellidos</label>
+                        <input type="text" th:field="*{apellidos}" class="form-control" id="apellidos" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="edad" class="form-label">Edad</label>
+                        <input type="number" th:field="*{edad}" class="form-control" id="edad" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="dni" class="form-label">DNI</label>
+                        <input type="text" th:field="*{dni}" class="form-control" id="dni" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="direccion" class="form-label">Dirección</label>
+                        <input type="text" th:field="*{direccion}" class="form-control" id="direccion" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="pais" class="form-label">País</label>
+                        <input type="text" th:field="*{pais}" class="form-control" id="pais">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="ciudad" class="form-label">Ciudad</label>
+                        <input type="text" th:field="*{ciudad}" class="form-control" id="ciudad">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="cp" class="form-label">Código Postal</label>
+                        <input type="text" th:field="*{cp}" class="form-control" id="cp" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="telefono1" class="form-label">Teléfono 1</label>
+                        <input type="text" th:field="*{telefono1}" class="form-control" id="telefono1" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="telefono2" class="form-label">Teléfono 2</label>
+                        <input type="text" th:field="*{telefono2}" class="form-control" id="telefono2">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="telefono3" class="form-label">Teléfono 3</label>
+                        <input type="text" th:field="*{telefono3}" class="form-control" id="telefono3">
+                    </div>
+
+                    <div class="d-flex justify-content-end">
+                        <button type="submit" class="btn btn-success me-2">Guardar cambios</button>
+                        <input type="hidden" th:field="*{id}" />
+                        <a th:href="@{/admin/usuarios}" class="btn btn-secondary">Cancelar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+</section>
+</body>
+</html>

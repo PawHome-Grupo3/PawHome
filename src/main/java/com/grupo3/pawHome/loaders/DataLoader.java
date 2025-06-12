@@ -9,6 +9,7 @@ import com.grupo3.pawHome.entities.Usuario;
 import com.grupo3.pawHome.repositories.AnimalRepository;
 import com.grupo3.pawHome.repositories.ApadrinarRepository;
 import com.grupo3.pawHome.repositories.UsuarioRepository;
+import com.grupo3.pawHome.repositories.PerfilDatosRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
