@@ -39,7 +39,6 @@ public class Animal {
 
     private boolean origen;
 
-    @Column(nullable = false, columnDefinition = "BOOLEAN DEFAULT FALSE")
     private boolean adoptado;
 
     @Column(name = "fecha_llegada")
@@ -62,4 +61,7 @@ public class Animal {
     @Column(name = "stripe_product_id")
     private String stripeProductId;
 
+    @ManyToOne
+    @JoinColumn(name = "especie_id", referencedColumnName = "id")
+    private Especie especie;
 }
