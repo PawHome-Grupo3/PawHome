@@ -1,47 +1,77 @@
 package com.grupo3.pawHome.controllers;
 
+import com.grupo3.pawHome.dtos.AnimalDto;
 import com.grupo3.pawHome.entities.Animal;
+import com.grupo3.pawHome.services.AnimalMapperService;
 import com.grupo3.pawHome.services.AnimalService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
-
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 @Controller
 public class AnimalesController {
     private final AnimalService animalService;
+    private final AnimalMapperService animalMapperService;
 
-    public AnimalesController(AnimalService animalService) {
+    public AnimalesController(AnimalService animalService,
+                              AnimalMapperService animalMapperService) {
         this.animalService = animalService;
+        this.animalMapperService = animalMapperService;
     }
 
     @GetMapping("/nuestrosAnimales")
     public String mostrarNuestrosAnimales(Model model,
-                                          @RequestParam("page") Optional<Integer> page,
-                                          @RequestParam("size") Optional<Integer> size) {
+                                          @RequestParam(required = false) String keyword,
+                                          @RequestParam(defaultValue = "1") int page,
+                                          @RequestParam(defaultValue = "6") int size,
+                                          @RequestParam(defaultValue = "id,asc") String[] sort){
+        try {
+            List<Animal> animales;
 
-        int currentPage = page.orElse(1);
-        int pageSize = size.orElse(5);
+            String sortField = sort[0];
+            String sortDirection = sort[1];
 
-        Page<Animal> animalPage = animalService.findPaginated(PageRequest.of(currentPage - 1, pageSize));
+            Sort.Direction direction = sortDirection.equals("desc") ? Sort.Direction.DESC : Sort.Direction.ASC;
+            Sort.Order order = new Sort.Order(direction, sortField);
 
-        model.addAttribute("animalPage", animalPage);
-        model.addAttribute("animales", animalPage.getContent());
+            Pageable pageable = PageRequest.of(page - 1, size, Sort.by(order));
 
-        int totalPages = animalPage.getTotalPages();
-        if (totalPages > 0) {
-            List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages)
-                    .boxed()
-                    .collect(Collectors.toList());
-            model.addAttribute("pageNumbers", pageNumbers);
+            Page<Animal> pageAns;
+            if (keyword == null) {
+                pageAns = animalService.findAllByAnimalServicioIsFalse(pageable);
+            } else {
+                pageAns = animalService.findByTitleContainingIgnoreCase(keyword, pageable);
+                model.addAttribute("keyword", keyword);
+            }
+
+            animales = pageAns.getContent();
+            AnimalDto animalDto;
+            List<AnimalDto> animalDtos = new ArrayList<>();
+
+            for (Animal animal : animales) {
+                animalDto = animalMapperService.toDto(animal);
+                animalDtos.add(animalDto);
+            }
+
+            model.addAttribute("animales", animalDtos);
+            model.addAttribute("currentPage", pageAns.getNumber() + 1);
+            model.addAttribute("totalItems", pageAns.getTotalElements());
+            model.addAttribute("totalPages", pageAns.getTotalPages());
+            model.addAttribute("pageSize", size);
+            model.addAttribute("sortField", sortField);
+            model.addAttribute("sortDirection", sortDirection);
+            model.addAttribute("reverseSortDirection", sortDirection.equals("asc") ? "desc" : "asc");
+        } catch (Exception e) {
+            model.addAttribute("message", e.getMessage());
         }
 
         return "nuestrosAnimales";
