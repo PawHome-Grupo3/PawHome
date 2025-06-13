@@ -286,6 +286,110 @@ public class DataLoader implements CommandLineRunner {
         tBañoAntiparasito.setFechaHasta(LocalDate.of(2026, 1, 1));
         tarifaRepository.save(tBañoAntiparasito);
 
+        Producto pChampuColor = new Producto();
+        pChampuColor.setNombre("Champú potenciador de color");
+        pChampuColor.setCategoria(cPeluqueria);
+        productoRepository.save(pChampuColor);
+
+        Tarifa tChampuColor = new Tarifa();
+        tChampuColor.setProducto(pChampuColor);
+        tChampuColor.setCantidad(1);
+        tChampuColor.setPrecioUnitario(10.00);
+        tChampuColor.setFechaDesde(LocalDate.now());
+        tChampuColor.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tChampuColor);
+
+        Producto pBañoMedico = new Producto();
+        pBañoMedico.setNombre("Baño medicado o spa para pieles sensibles");
+        pBañoMedico.setCategoria(cPeluqueria);
+        productoRepository.save(pBañoMedico);
+
+        Tarifa tBañoMedico = new Tarifa();
+        tBañoMedico.setProducto(pBañoMedico);
+        tBañoMedico.setCantidad(1);
+        tBañoMedico.setPrecioUnitario(15.00);
+        tBañoMedico.setFechaDesde(LocalDate.now());
+        tBañoMedico.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tBañoMedico);
+
+        Producto pNudos = new Producto();
+        pNudos.setNombre("Por nudos");
+        pNudos.setCategoria(cPeluqueria);
+        productoRepository.save(pNudos);
+
+        Tarifa tNudos = new Tarifa();
+        tNudos.setProducto(pNudos);
+        tNudos.setCantidad(1);
+        tNudos.setPrecioUnitario(7.00);
+        tNudos.setFechaDesde(LocalDate.now());
+        tNudos.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tNudos);
+
+        Producto pDeslanado = new Producto();
+        pDeslanado.setNombre("Deslanado");
+        pDeslanado.setCategoria(cPeluqueria);
+        productoRepository.save(pDeslanado);
+
+        Tarifa tDeslanado = new Tarifa();
+        tDeslanado.setProducto(pDeslanado);
+        tDeslanado.setCantidad(1);
+        tDeslanado.setPrecioUnitario(7.00);
+        tDeslanado.setFechaDesde(LocalDate.now());
+        tDeslanado.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tDeslanado);
+
+        Producto pRetoqueExtra = new Producto();
+        pRetoqueExtra.setNombre("Retoque extra en patas y cara");
+        pRetoqueExtra.setCategoria(cPeluqueria);
+        productoRepository.save(pRetoqueExtra);
+
+        Tarifa tRetoqueExtra = new Tarifa();
+        tRetoqueExtra.setProducto(pRetoqueExtra);
+        tRetoqueExtra.setCantidad(1);
+        tRetoqueExtra.setPrecioUnitario(5.00);
+        tRetoqueExtra.setFechaDesde(LocalDate.now());
+        tRetoqueExtra.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tRetoqueExtra);
+
+        Producto pAntiolor = new Producto();
+        pAntiolor.setNombre("Tratamiento antiolor con aceites esenciales");
+        pAntiolor.setCategoria(cPeluqueria);
+        productoRepository.save(pAntiolor);
+
+        Tarifa tAntiolor = new Tarifa();
+        tAntiolor.setProducto(pAntiolor);
+        tAntiolor.setCantidad(1);
+        tAntiolor.setPrecioUnitario(10.00);
+        tAntiolor.setFechaDesde(LocalDate.now());
+        tAntiolor.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tAntiolor);
+
+        Producto pHidratacion = new Producto();
+        pHidratacion.setNombre("Hidratación de almohadillas");
+        pHidratacion.setCategoria(cPeluqueria);
+        productoRepository.save(pHidratacion);
+
+        Tarifa tHidratacion = new Tarifa();
+        tHidratacion.setProducto(pHidratacion);
+        tHidratacion.setCantidad(1);
+        tHidratacion.setPrecioUnitario(7.00);
+        tHidratacion.setFechaDesde(LocalDate.now());
+        tHidratacion.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tHidratacion);
+
+        Producto pPerfumeEspecial = new Producto();
+        pPerfumeEspecial.setNombre("Aplicación de perfume especial");
+        pPerfumeEspecial.setCategoria(cPeluqueria);
+        productoRepository.save(pPerfumeEspecial);
+
+        Tarifa tPerfumeEspecial = new Tarifa();
+        tPerfumeEspecial.setProducto(pPerfumeEspecial);
+        tPerfumeEspecial.setCantidad(1);
+        tPerfumeEspecial.setPrecioUnitario(5.00);
+        tPerfumeEspecial.setFechaDesde(LocalDate.now());
+        tPerfumeEspecial.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tPerfumeEspecial);
+
         Producto pJuguete = new Producto();
         pJuguete.setNombre("Juguete < 5kg");
         pJuguete.setCategoria(cPeluqueria);
@@ -298,6 +402,58 @@ public class DataLoader implements CommandLineRunner {
         tJuguete.setFechaDesde(LocalDate.now());
         tJuguete.setFechaHasta(LocalDate.of(2026, 1, 1));
         tarifaRepository.save(tJuguete);
+
+        Producto pPequeño = new Producto();
+        pPequeño.setNombre("Pequeño 6 - 10kg");
+        pPequeño.setCategoria(cPeluqueria);
+        productoRepository.save(pPequeño);
+
+        Tarifa tPequeño = new Tarifa();
+        tPequeño.setProducto(pPequeño);
+        tPequeño.setCantidad(1);
+        tPequeño.setPrecioUnitario(6.00);
+        tPequeño.setFechaDesde(LocalDate.now());
+        tPequeño.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tPequeño);
+
+        Producto pMediano = new Producto();
+        pMediano.setNombre("Mediano 11 - 25kg");
+        pMediano.setCategoria(cPeluqueria);
+        productoRepository.save(pMediano);
+
+        Tarifa tMediano = new Tarifa();
+        tMediano.setProducto(pMediano);
+        tMediano.setCantidad(1);
+        tMediano.setPrecioUnitario(9.00);
+        tMediano.setFechaDesde(LocalDate.now());
+        tMediano.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tMediano);
+
+        Producto pGrande = new Producto();
+        pGrande.setNombre("Grande 26 - 35kg");
+        pGrande.setCategoria(cPeluqueria);
+        productoRepository.save(pGrande);
+
+        Tarifa tGrande = new Tarifa();
+        tGrande.setProducto(pGrande);
+        tGrande.setCantidad(1);
+        tGrande.setPrecioUnitario(12.00);
+        tGrande.setFechaDesde(LocalDate.now());
+        tGrande.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tGrande);
+
+        Producto pGigante = new Producto();
+        pGigante.setNombre("Gigante > 35kg");
+        pGigante.setCategoria(cPeluqueria);
+        productoRepository.save(pGigante);
+
+        Tarifa tGigante = new Tarifa();
+        tGigante.setProducto(pGigante);
+        tGigante.setCantidad(1);
+        tGigante.setPrecioUnitario(15.00);
+        tGigante.setFechaDesde(LocalDate.now());
+        tGigante.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tGigante);
 
         // Fin productos peluqueria
         // Productos Adiestramiento

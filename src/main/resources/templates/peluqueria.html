@@ -992,7 +992,7 @@
 	<script>
         document.addEventListener('DOMContentLoaded', function () {
             // Elementos
-            const tarifaCards = document.querySelectorAll('.cardServicio');
+            const btns = document.querySelectorAll('.btnCard');
             const tarifaSpan = document.getElementById('tarifaSeleccionada');
             const precioTotal = document.getElementById('precioTotal');
             const suplementosCheckboxes = document.getElementById('suplementosCheckboxes');
@@ -1008,7 +1008,7 @@
             // Precios de suplementos
             const preciosSuplementos = {
                 'Por nudos': 7,
-                'Baño antiparasito': 10,
+                'Baño antiparásito': 10,
                 'Champú potenciador de color': 10,
                 'Deslanado': 7,
                 'Baño medicado o spa para pieles sensibles': 15,
@@ -1029,11 +1029,6 @@
 
             let tarifaSeleccionada = null;
 
-            // Deselecciona todas las cards
-            function deseleccionarTarifas() {
-                tarifaCards.forEach(card => card.classList.remove('selected'));
-            }
-
             // Genera los checkboxes de suplementos según la tarifa base
             function actualizarSuplementos() {
                 suplementosCheckboxes.innerHTML = '<label class="form-label fw-bold">Suplementos:</label>';
@@ -1050,7 +1045,9 @@
 
                     let opciones = [];
                     if (todo || mas) {
-                        opciones.push({value: 'Baño antiparasito', label: 'Baño antiparasito (+10€)'});
+                        opciones.push({
+							value: 'Baño antiparásito',
+							label: 'Baño antiparásito (+10€)'});
                         opciones.push({
                             value: 'Champú potenciador de color',
                             label: 'Champú potenciador de color (+10€)'
@@ -1078,7 +1075,9 @@
                             label: 'Aplicación de perfume especial (+5€)'
                         });
                     } else if (incluyeBanio) {
-                        opciones.push({value: 'Baño antiparasito', label: 'Baño antiparasito (+10€)'});
+                        opciones.push({
+							value: 'Baño antiparásito',
+							label: 'Baño antiparásito (+10€)'});
                         opciones.push({
                             value: 'Champú potenciador de color',
                             label: 'Champú potenciador de color (+10€)'
@@ -1194,10 +1193,11 @@
             }
 
             // Evento click para las tarifas base
-            tarifaCards.forEach(card => {
-                const btn = card.querySelector('.btnCard');
+            btns.forEach(btn => {
                 btn.addEventListener('click', function (e) {
                     e.preventDefault();
+
+                    const card = btn.closest('.cardServicio');
 
                     // Si ya está seleccionada, deselecciona
                     if (card.classList.contains('selected')) {
@@ -1213,7 +1213,7 @@
                     }
 
                     // Deselecciona otras y selecciona esta
-                    deseleccionarTarifas();
+                    document.querySelectorAll('.cardServicio.selected').forEach(c => c.classList.remove('selected'));
                     card.classList.add('selected');
 
                     // Obtener datos de la tarifa
@@ -1256,8 +1256,10 @@
             tamanoPerroSelect.disabled = true;
 
             // Al pulsar el botón de reservar
-            document.getElementById('checkoutPeluqueria').addEventListener('submit', async function(event) {
+            document.getElementById('checkoutPeluqueria').addEventListener('submit', async function (event) {
                 event.preventDefault();
+
+                const form = event.target;
 
                 // 1. Tarifa base
                 const productos = [];
@@ -1282,27 +1284,23 @@
                 };
 
                 try {
-                    const response = await fetch(event.target.action, {
+                    const response = await fetch(form.action, {
                         method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
+                        headers: {'Content-Type': 'application/json'},
                         body: JSON.stringify(formData)
                     });
 
-                    if (!response.ok) {
-                        // Aquí puedes ver el error HTTP
-                        const text = await response.text();
-                        console.error("Respuesta error:", response.status, text);
-                        alert("Error HTTP: " + response.status);
-                        return;
-                    }
-
                     const data = await response.json();
-                    console.log("Respuesta JSON:", data);
+
+                    if (data.status === "SUCCESS") {
+                        window.location.href = data.sessionUrl; // Redirige a Stripe
+                    } else {
+                        alert("Error en la reserva: " + (data.message || "Sin mensaje"));
+                    }
                 } catch (error) {
                     console.error("Error:", error);
                     alert("Error al procesar la reserva");
                 }
-
             });
         });
 	</script>
