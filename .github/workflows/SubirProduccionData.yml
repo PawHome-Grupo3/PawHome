@@ -75,4 +75,4 @@ jobs:
           PROJECT_NAME: ${{ vars.PROJECT_NAME }}
           VERSION: ${{ github.ref_type == 'tag' && github.ref_name || 'snapshot' }}
           PUERTO_PRODUCCION: ${{ vars.PUERTO_PRODUCCION }}
-        run: docker compose -f compose-produccion-datacompose-produccion.yaml.yaml up -d
+        run: docker compose -f compose-produccion-datacompose-produccion.yaml up -d
