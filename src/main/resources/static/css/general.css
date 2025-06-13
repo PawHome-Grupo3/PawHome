@@ -1054,7 +1054,6 @@ clamp(10px, 2vw, 40px);
 /      DETALLE_PRODUCTO      /
 ////////////////////////////*/
 /* Fondo y container general */
-/* Fondo y container general */
 .detalleProducto-bg {
     background: linear-gradient(120deg, #eafaf1 0%, #f4faf8 100%);
     min-height: 100vh;
@@ -1081,9 +1080,7 @@ clamp(10px, 2vw, 40px);
     border-radius: 30px;
     box-shadow: 0 4px 24px rgba(67, 113, 143, 0.13);
     overflow: hidden;
-    min-height: 300px;
-    max-width: 480px;
-    width: 100%;
+    min-height: 360px;
     transition: box-shadow 0.3s;
     position: relative;
 }
@@ -1101,7 +1098,6 @@ clamp(10px, 2vw, 40px);
     transform: scale(1.04) rotate(-2deg);
     box-shadow: 0 8px 32px rgba(67, 113, 143, 0.18);
 }
-
 /* Icono de zoom */
 .detalleProducto-img-zoom {
     position: absolute;
@@ -1130,9 +1126,6 @@ clamp(10px, 2vw, 40px);
 
 /* Miniaturas */
 .detalleProducto-thumbs {
-    width: 100%;
-    justify-content: center;
-    align-items: center;
     gap: 0.6rem;
     margin-top: 0.5rem;
 }
@@ -1163,15 +1156,8 @@ clamp(10px, 2vw, 40px);
 
 /* Columna de detalles */
 .detalleProducto-main {
-    min-height: 48px;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    white-space: nowrap;
-    width: 100%;
-    margin-bottom: 0.5rem;
-    font-size: 1.07rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
 }
 .detalleProducto-main h4.title {
     font-size: 2.1rem;
@@ -1196,8 +1182,6 @@ clamp(10px, 2vw, 40px);
     color: #27632a;
     background: #f7fafc;
     transition: border 0.2s;
-    text-align: center;
-    text-align-last: center;
 }
 .detalleProducto-main .form-select:focus {
     border-color: #43718F;
@@ -1240,11 +1224,6 @@ clamp(10px, 2vw, 40px);
     box-shadow: 0 2px 8px rgba(67,113,143,0.12);
     border: none;
     transition: background 0.2s, color 0.2s, box-shadow 0.2s;
-    min-height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
 }
 .btnHazteVoluntario:hover, .btnHazteVoluntario:focus {
     background: linear-gradient(90deg, #ff9800 0%, #43718F 100%);
@@ -1260,12 +1239,6 @@ clamp(10px, 2vw, 40px);
     }
     .detalleProducto-mainImg {
         min-height: 220px;
-    }
-}
-@media (max-width: 767px) {
-    .detalleProducto-main {
-        min-height: 42px;
-        font-size: 1rem;
     }
 }
 /*////////////////////////////
