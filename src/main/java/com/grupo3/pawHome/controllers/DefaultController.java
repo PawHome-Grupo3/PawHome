@@ -16,13 +16,6 @@ public class DefaultController {
         return "index"; // Carga /templates/index.html
     }
 
-    // Metodo para mostrar la pagina de veterinario
-    @GetMapping("/veterinario")
-    public String mostrarVeterinario()
-    {
-        return "veterinario";
-    }
-
     // Metodo para mostrar la pagina de asesoramiento legal
     @GetMapping("/asesoramientoLegal")
     public String mostrarAsesoramientoLegal()

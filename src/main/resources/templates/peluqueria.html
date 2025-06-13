@@ -117,17 +117,32 @@
 							<span th:utext="#{servicios.peluqueria.suplementos.titulo}"></span>
 						</h3>
 						<ul class="list-unstyled text-start fs-5">
-							<li><i class="fas fa-cut me-2 "></i>
-								<span th:utext="#{servicios.peluqueria.suplementos.nudos}"></span>
-							</li>
 							<li><i class="fas fa-bug-slash me-2 "></i>
 								<span th:utext="#{servicios.peluqueria.suplementos.antiparasito}"></span>
 							</li>
 							<li><i class="fas fa-tint me-2 "></i>
 								<span th:utext="#{servicios.peluqueria.suplementos.champu}"></span>
 							</li>
-							<li><i class="fas fa-feather-alt me-2 "></i>
+							<li><i class="fas fa-hand-holding-medical me-2 "></i>
+								<span th:utext="#{servicios.peluqueria.suplementos.bañoMedico}"></span>
+							</li>
+							<li><i class="fas fa-cut me-2 "></i>
+								<span th:utext="#{servicios.peluqueria.suplementos.nudos}"></span>
+							</li>
+							<li><i class="fas fa-wind me-2 "></i>
 								<span th:utext="#{servicios.peluqueria.suplementos.deslanado}"></span>
+							</li>
+							<li><i class="fas fa-paw me-2 "></i>
+								<span th:utext="#{servicios.peluqueria.suplementos.patasCara}"></span>
+							</li>
+							<li><i class="fas fa-spa me-2 "></i>
+								<span th:utext="#{servicios.peluqueria.suplementos.antiolor}"></span>
+							</li>
+							<li><i class="fas fa-shoe-prints me-2 "></i>
+								<span th:utext="#{servicios.peluqueria.suplementos.almohadillas}"></span>
+							</li>
+							<li><i class="fas fa-spray-can-sparkles me-2 "></i>
+								<span th:utext="#{servicios.peluqueria.suplementos.perfume}"></span>
 							</li>
 						</ul>
 					</div>
@@ -262,17 +277,32 @@
 							 aria-labelledby="headingSuplementos" data-bs-parent="#accordionServiciosPerros">
 							<div class="accordion-body">
 								<ul class="list-unstyled fs-5">
-									<li><i class="fas fa-cut me-2 "></i>
-										<span th:utext="#{servicios.peluqueria.suplementos.nudos}"></span>
-									</li>
 									<li><i class="fas fa-bug-slash me-2 "></i>
 										<span th:utext="#{servicios.peluqueria.suplementos.antiparasito}"></span>
 									</li>
 									<li><i class="fas fa-tint me-2 "></i>
 										<span th:utext="#{servicios.peluqueria.suplementos.champu}"></span>
 									</li>
-									<li><i class="fas fa-feather-alt me-2 "></i>
+									<li><i class="fas fa-hand-holding-medical me-2 "></i>
+										<span th:utext="#{servicios.peluqueria.suplementos.bañoMedico}"></span>
+									</li>
+									<li><i class="fas fa-cut me-2 "></i>
+										<span th:utext="#{servicios.peluqueria.suplementos.nudos}"></span>
+									</li>
+									<li><i class="fas fa-wind me-2 "></i>
 										<span th:utext="#{servicios.peluqueria.suplementos.deslanado}"></span>
+									</li>
+									<li><i class="fas fa-paw me-2 "></i>
+										<span th:utext="#{servicios.peluqueria.suplementos.patasCara}"></span>
+									</li>
+									<li><i class="fas fa-spa me-2 "></i>
+										<span th:utext="#{servicios.peluqueria.suplementos.antiolor}"></span>
+									</li>
+									<li><i class="fas fa-shoe-prints me-2 "></i>
+										<span th:utext="#{servicios.peluqueria.suplementos.almohadillas}"></span>
+									</li>
+									<li><i class="fas fa-spray-can-sparkles me-2 "></i>
+										<span th:utext="#{servicios.peluqueria.suplementos.perfume}"></span>
 									</li>
 								</ul>
 							</div>
@@ -470,295 +500,295 @@
 		<hr class="mx-auto w-100 border-2 opacity-50">
 
 		<!-- Seccion: Servicios para gatos -->
-<!--		<section class="text-center my-5">-->
-<!--			<h2 class="fw-bold text-start fs-2 px-3 text-success-emphasis mb-4">-->
-<!--				<i class="fas fa-cat me-2"></i>-->
-<!--				<span th:utext="#{servicios.peluqueria.gatos.titulo}"></span>-->
-<!--			</h2>-->
+		<!--		<section class="text-center my-5">-->
+		<!--			<h2 class="fw-bold text-start fs-2 px-3 text-success-emphasis mb-4">-->
+		<!--				<i class="fas fa-cat me-2"></i>-->
+		<!--				<span th:utext="#{servicios.peluqueria.gatos.titulo}"></span>-->
+		<!--			</h2>-->
 
-<!--			&lt;!&ndash; Versión para pantallas grandes &ndash;&gt;-->
-<!--			<div class="d-none d-md-flex row row-cols-1 row-cols-md-4 g-4 px-3">-->
+		<!--			&lt;!&ndash; Versión para pantallas grandes &ndash;&gt;-->
+		<!--			<div class="d-none d-md-flex row row-cols-1 row-cols-md-4 g-4 px-3">-->
 
-<!--				&lt;!&ndash; Servicios &ndash;&gt;-->
-<!--				<article class="col">-->
-<!--					<div class="rounded-4 shadow-sm p-3 h-100 seccionTitulo">-->
-<!--						<h3 class="fw-semibold fs-4 text-start text-success mb-3">-->
-<!--							<i class="fas fa-paw me-2"></i>-->
-<!--							<span th:utext="#{servicios.peluqueria.nuestrosServicios.titulo}"></span>-->
-<!--						</h3>-->
-<!--						<ul class="list-unstyled text-start fs-5">-->
-<!--							<li><i class="fas fa-brush me-2 "></i>-->
-<!--								<span th:utext="#{servicios.peluqueria.nuestrosServicios.cepillado}"></span>-->
-<!--							</li>-->
-<!--							<li><i class="fas fa-shower me-2 "></i>-->
-<!--								<span th:utext="#{servicios.peluqueria.nuestrosServicios.banio}"></span>-->
-<!--							</li>-->
-<!--							<li><i class="fas fa-cat me-2 "></i>-->
-<!--								<span th:utext="#{servicios.peluqueria.caracteristica.cortePeloCorto}"></span>-->
-<!--							</li>-->
-<!--							<li><i class="fas fa-cat me-2 "></i>-->
-<!--								<span th:utext="#{servicios.peluqueria.caracteristica.cortePeloLargo}"></span>-->
-<!--							</li>-->
-<!--						</ul>-->
-<!--					</div>-->
-<!--				</article>-->
+		<!--				&lt;!&ndash; Servicios &ndash;&gt;-->
+		<!--				<article class="col">-->
+		<!--					<div class="rounded-4 shadow-sm p-3 h-100 seccionTitulo">-->
+		<!--						<h3 class="fw-semibold fs-4 text-start text-success mb-3">-->
+		<!--							<i class="fas fa-paw me-2"></i>-->
+		<!--							<span th:utext="#{servicios.peluqueria.nuestrosServicios.titulo}"></span>-->
+		<!--						</h3>-->
+		<!--						<ul class="list-unstyled text-start fs-5">-->
+		<!--							<li><i class="fas fa-brush me-2 "></i>-->
+		<!--								<span th:utext="#{servicios.peluqueria.nuestrosServicios.cepillado}"></span>-->
+		<!--							</li>-->
+		<!--							<li><i class="fas fa-shower me-2 "></i>-->
+		<!--								<span th:utext="#{servicios.peluqueria.nuestrosServicios.banio}"></span>-->
+		<!--							</li>-->
+		<!--							<li><i class="fas fa-cat me-2 "></i>-->
+		<!--								<span th:utext="#{servicios.peluqueria.caracteristica.cortePeloCorto}"></span>-->
+		<!--							</li>-->
+		<!--							<li><i class="fas fa-cat me-2 "></i>-->
+		<!--								<span th:utext="#{servicios.peluqueria.caracteristica.cortePeloLargo}"></span>-->
+		<!--							</li>-->
+		<!--						</ul>-->
+		<!--					</div>-->
+		<!--				</article>-->
 
-<!--				&lt;!&ndash; Baño &ndash;&gt;-->
-<!--				<article class="col">-->
-<!--					<div class="rounded-4 shadow-sm p-3 h-100 seccionTitulo">-->
-<!--						<h3 class="fw-semibold fs-4 text-start text-success mb-3">-->
-<!--							<i class="fas fa-bath me-2"></i>-->
-<!--							<span th:utext="#{servicios.peluqueria.banioIncluye.titulo}"></span>-->
-<!--						</h3>-->
-<!--						<ul class="list-unstyled text-start fs-5 mb-4">-->
-<!--							<li><i class="fas fa-spa me-2 "></i>-->
-<!--								<span th:utext="#{servicios.peluqueria.banioIncluye.banioMasaje}"></span>-->
-<!--							</li>-->
-<!--							<li><i class="fas fa-wind me-2 "></i>-->
-<!--								<span th:utext="#{servicios.peluqueria.banioIncluye.secado}"></span>-->
-<!--							</li>-->
-<!--							<li><i class="fas fa-cut me-2 "></i>-->
-<!--								<span th:utext="#{servicios.peluqueria.banioIncluye.arreglo}"></span>-->
-<!--							</li>-->
-<!--							<li><i class="fas fa-ear-listen me-2 "></i>-->
-<!--								<span th:utext="#{servicios.peluqueria.banioIncluye.oidos}"></span>-->
-<!--							</li>-->
-<!--						</ul>-->
-<!--					</div>-->
-<!--				</article>-->
+		<!--				&lt;!&ndash; Baño &ndash;&gt;-->
+		<!--				<article class="col">-->
+		<!--					<div class="rounded-4 shadow-sm p-3 h-100 seccionTitulo">-->
+		<!--						<h3 class="fw-semibold fs-4 text-start text-success mb-3">-->
+		<!--							<i class="fas fa-bath me-2"></i>-->
+		<!--							<span th:utext="#{servicios.peluqueria.banioIncluye.titulo}"></span>-->
+		<!--						</h3>-->
+		<!--						<ul class="list-unstyled text-start fs-5 mb-4">-->
+		<!--							<li><i class="fas fa-spa me-2 "></i>-->
+		<!--								<span th:utext="#{servicios.peluqueria.banioIncluye.banioMasaje}"></span>-->
+		<!--							</li>-->
+		<!--							<li><i class="fas fa-wind me-2 "></i>-->
+		<!--								<span th:utext="#{servicios.peluqueria.banioIncluye.secado}"></span>-->
+		<!--							</li>-->
+		<!--							<li><i class="fas fa-cut me-2 "></i>-->
+		<!--								<span th:utext="#{servicios.peluqueria.banioIncluye.arreglo}"></span>-->
+		<!--							</li>-->
+		<!--							<li><i class="fas fa-ear-listen me-2 "></i>-->
+		<!--								<span th:utext="#{servicios.peluqueria.banioIncluye.oidos}"></span>-->
+		<!--							</li>-->
+		<!--						</ul>-->
+		<!--					</div>-->
+		<!--				</article>-->
 
-<!--				&lt;!&ndash; Corte &ndash;&gt;-->
-<!--				<article class="col">-->
-<!--					<div class="rounded-4 shadow-sm p-3 h-100 seccionTitulo">-->
-<!--						<h3 class="fw-semibold fs-4 text-start text-success mb-3">-->
-<!--							<i class="fas fa-scissors me-2"></i>-->
-<!--							<span th:utext="#{servicios.peluqueria.corteIncluye.titulo}"></span>-->
-<!--						</h3>-->
-<!--						<ul class="list-unstyled text-start fs-5">-->
-<!--							<li><i class="fas fa-scissors me-2 "></i>-->
-<!--								<span th:utext="#{servicios.peluqueria.corteIncluye.razas}"></span>-->
-<!--							</li>-->
-<!--							<li><i class="fas fa-feather-alt me-2 "></i>-->
-<!--								<span th:utext="#{servicios.peluqueria.corteIncluye.pelo}"></span>-->
-<!--							</li>-->
-<!--						</ul>-->
-<!--					</div>-->
-<!--				</article>-->
+		<!--				&lt;!&ndash; Corte &ndash;&gt;-->
+		<!--				<article class="col">-->
+		<!--					<div class="rounded-4 shadow-sm p-3 h-100 seccionTitulo">-->
+		<!--						<h3 class="fw-semibold fs-4 text-start text-success mb-3">-->
+		<!--							<i class="fas fa-scissors me-2"></i>-->
+		<!--							<span th:utext="#{servicios.peluqueria.corteIncluye.titulo}"></span>-->
+		<!--						</h3>-->
+		<!--						<ul class="list-unstyled text-start fs-5">-->
+		<!--							<li><i class="fas fa-scissors me-2 "></i>-->
+		<!--								<span th:utext="#{servicios.peluqueria.corteIncluye.razas}"></span>-->
+		<!--							</li>-->
+		<!--							<li><i class="fas fa-feather-alt me-2 "></i>-->
+		<!--								<span th:utext="#{servicios.peluqueria.corteIncluye.pelo}"></span>-->
+		<!--							</li>-->
+		<!--						</ul>-->
+		<!--					</div>-->
+		<!--				</article>-->
 
-<!--				&lt;!&ndash; Suplementos &ndash;&gt;-->
-<!--				<article class="col">-->
-<!--					<div class="rounded-4 shadow-sm p-3 h-100 seccionTitulo">-->
-<!--						<h3 class="fw-semibold fs-4 text-start text-success mb-3">-->
-<!--							<i class="fas fa-plus-circle me-2"></i>-->
-<!--							<span th:utext="#{servicios.peluqueria.suplementos.titulo}"></span>-->
-<!--						</h3>-->
-<!--						<ul class="list-unstyled text-start fs-5">-->
-<!--							<li><i class="fas fa-cat me-2 "></i>-->
-<!--								<span th:utext="#{servicios.peluqueria.suplementos.deslanado}"></span>-->
-<!--							</li>-->
-<!--							<li><i class="fas fa-khanda me-2 "></i>-->
-<!--								<span th:utext="#{servicios.peluqueria.suplementos.nudos}"></span>-->
-<!--							</li>-->
-<!--						</ul>-->
-<!--					</div>-->
-<!--				</article>-->
-<!--			</div>-->
+		<!--				&lt;!&ndash; Suplementos &ndash;&gt;-->
+		<!--				<article class="col">-->
+		<!--					<div class="rounded-4 shadow-sm p-3 h-100 seccionTitulo">-->
+		<!--						<h3 class="fw-semibold fs-4 text-start text-success mb-3">-->
+		<!--							<i class="fas fa-plus-circle me-2"></i>-->
+		<!--							<span th:utext="#{servicios.peluqueria.suplementos.titulo}"></span>-->
+		<!--						</h3>-->
+		<!--						<ul class="list-unstyled text-start fs-5">-->
+		<!--							<li><i class="fas fa-cat me-2 "></i>-->
+		<!--								<span th:utext="#{servicios.peluqueria.suplementos.deslanado}"></span>-->
+		<!--							</li>-->
+		<!--							<li><i class="fas fa-khanda me-2 "></i>-->
+		<!--								<span th:utext="#{servicios.peluqueria.suplementos.nudos}"></span>-->
+		<!--							</li>-->
+		<!--						</ul>-->
+		<!--					</div>-->
+		<!--				</article>-->
+		<!--			</div>-->
 
-<!--			&lt;!&ndash; Versión para pantallas pequeñas &ndash;&gt;-->
-<!--			<div class="d-md-none px-3">-->
-<!--				<div class="accordion" id="accordionServiciosGatos">-->
+		<!--			&lt;!&ndash; Versión para pantallas pequeñas &ndash;&gt;-->
+		<!--			<div class="d-md-none px-3">-->
+		<!--				<div class="accordion" id="accordionServiciosGatos">-->
 
-<!--					&lt;!&ndash; Servicios &ndash;&gt;-->
-<!--					<div class="accordion-item seccionTitulo">-->
-<!--						<h2 class="accordion-header" id="headingServiciosGatos">-->
-<!--							<button class="accordion-button collapsed seccionTitulo" type="button"-->
-<!--									data-bs-toggle="collapse"-->
-<!--									data-bs-target="#collapseServiciosGatos" aria-expanded="false"-->
-<!--									aria-controls="collapseServiciosGatos">-->
-<!--								<i class="fas fa-paw me-2 text-success"></i>-->
-<!--								<span th:utext="#{servicios.peluqueria.nuestrosServicios.titulo}"></span>-->
-<!--							</button>-->
-<!--						</h2>-->
-<!--						<div id="collapseServiciosGatos" class="accordion-collapse collapse"-->
-<!--							 aria-labelledby="headingServiciosGatos" data-bs-parent="#accordionServiciosGatos">-->
-<!--							<div class="accordion-body">-->
-<!--								<ul class="list-unstyled fs-5">-->
-<!--									<li><i class="fas fa-brush me-2 "></i>-->
-<!--										<span th:utext="#{servicios.peluqueria.nuestrosServicios.cepillado}"></span>-->
-<!--									</li>-->
-<!--									<li><i class="fas fa-shower me-2 "></i>-->
-<!--										<span th:utext="#{servicios.peluqueria.nuestrosServicios.banio}"></span>-->
-<!--									</li>-->
-<!--									<li><i class="fas fa-cat me-2 "></i>-->
-<!--										<span th:utext="#{servicios.peluqueria.caracteristica.cortePeloCorto}"></span>-->
-<!--									</li>-->
-<!--									<li><i class="fas fa-cat me-2 "></i>-->
-<!--										<span th:utext="#{servicios.peluqueria.caracteristica.cortePeloLargo}"></span>-->
-<!--									</li>-->
-<!--								</ul>-->
-<!--							</div>-->
-<!--						</div>-->
-<!--					</div>-->
+		<!--					&lt;!&ndash; Servicios &ndash;&gt;-->
+		<!--					<div class="accordion-item seccionTitulo">-->
+		<!--						<h2 class="accordion-header" id="headingServiciosGatos">-->
+		<!--							<button class="accordion-button collapsed seccionTitulo" type="button"-->
+		<!--									data-bs-toggle="collapse"-->
+		<!--									data-bs-target="#collapseServiciosGatos" aria-expanded="false"-->
+		<!--									aria-controls="collapseServiciosGatos">-->
+		<!--								<i class="fas fa-paw me-2 text-success"></i>-->
+		<!--								<span th:utext="#{servicios.peluqueria.nuestrosServicios.titulo}"></span>-->
+		<!--							</button>-->
+		<!--						</h2>-->
+		<!--						<div id="collapseServiciosGatos" class="accordion-collapse collapse"-->
+		<!--							 aria-labelledby="headingServiciosGatos" data-bs-parent="#accordionServiciosGatos">-->
+		<!--							<div class="accordion-body">-->
+		<!--								<ul class="list-unstyled fs-5">-->
+		<!--									<li><i class="fas fa-brush me-2 "></i>-->
+		<!--										<span th:utext="#{servicios.peluqueria.nuestrosServicios.cepillado}"></span>-->
+		<!--									</li>-->
+		<!--									<li><i class="fas fa-shower me-2 "></i>-->
+		<!--										<span th:utext="#{servicios.peluqueria.nuestrosServicios.banio}"></span>-->
+		<!--									</li>-->
+		<!--									<li><i class="fas fa-cat me-2 "></i>-->
+		<!--										<span th:utext="#{servicios.peluqueria.caracteristica.cortePeloCorto}"></span>-->
+		<!--									</li>-->
+		<!--									<li><i class="fas fa-cat me-2 "></i>-->
+		<!--										<span th:utext="#{servicios.peluqueria.caracteristica.cortePeloLargo}"></span>-->
+		<!--									</li>-->
+		<!--								</ul>-->
+		<!--							</div>-->
+		<!--						</div>-->
+		<!--					</div>-->
 
-<!--					&lt;!&ndash; Baño y corte &ndash;&gt;-->
-<!--					<div class="accordion-item seccionTitulo">-->
-<!--						<h2 class="accordion-header" id="headingBanioGatos">-->
-<!--							<button class="accordion-button collapsed seccionTitulo" type="button"-->
-<!--									data-bs-toggle="collapse"-->
-<!--									data-bs-target="#collapseBanioGatos" aria-expanded="false"-->
-<!--									aria-controls="collapseBanioGatos">-->
-<!--								<i class="fas fa-bath me-2 text-success"></i>-->
-<!--								<span th:utext="#{servicios.peluqueria.bañoYCorte}"></span>-->
-<!--							</button>-->
-<!--						</h2>-->
-<!--						<div id="collapseBanioGatos" class="accordion-collapse collapse"-->
-<!--							 aria-labelledby="headingBanioGatos"-->
-<!--							 data-bs-parent="#accordionServiciosGatos">-->
-<!--							<div class="accordion-body">-->
-<!--								<h6 class="fw-bold mb-2" th:utext="#{servicios.peluqueria.banioIncluye.titulo}"></h6>-->
-<!--								<ul class="list-unstyled fs-5 mb-4">-->
-<!--									<li><i class="fas fa-spa me-2 "></i>-->
-<!--										<span th:utext="#{servicios.peluqueria.banioIncluye.banioMasaje}"></span>-->
-<!--									</li>-->
-<!--									<li><i class="fas fa-wind me-2 "></i>-->
-<!--										<span th:utext="#{servicios.peluqueria.banioIncluye.secado}"></span>-->
-<!--									</li>-->
-<!--									<li><i class="fas fa-cut me-2 "></i>-->
-<!--										<span th:utext="#{servicios.peluqueria.banioIncluye.arreglo}"></span>-->
-<!--									</li>-->
-<!--									<li><i class="fas fa-ear-listen me-2 "></i>-->
-<!--										<span th:utext="#{servicios.peluqueria.banioIncluye.oidos}"></span>-->
-<!--									</li>-->
-<!--								</ul>-->
-<!--								<h6 class="fw-bold mb-2" th:utext="#{servicios.peluqueria.corteIncluye.titulo}"></h6>-->
-<!--								<ul class="list-unstyled fs-5">-->
-<!--									<li><i class="fas fa-scissors me-2 "></i>-->
-<!--										<span th:utext="#{servicios.peluqueria.corteIncluye.razas}"></span>-->
-<!--									</li>-->
-<!--									<li><i class="fas fa-feather-alt me-2 "></i>-->
-<!--										<span th:utext="#{servicios.peluqueria.corteIncluye.pelo}"></span>-->
-<!--									</li>-->
-<!--								</ul>-->
-<!--							</div>-->
-<!--						</div>-->
-<!--					</div>-->
+		<!--					&lt;!&ndash; Baño y corte &ndash;&gt;-->
+		<!--					<div class="accordion-item seccionTitulo">-->
+		<!--						<h2 class="accordion-header" id="headingBanioGatos">-->
+		<!--							<button class="accordion-button collapsed seccionTitulo" type="button"-->
+		<!--									data-bs-toggle="collapse"-->
+		<!--									data-bs-target="#collapseBanioGatos" aria-expanded="false"-->
+		<!--									aria-controls="collapseBanioGatos">-->
+		<!--								<i class="fas fa-bath me-2 text-success"></i>-->
+		<!--								<span th:utext="#{servicios.peluqueria.bañoYCorte}"></span>-->
+		<!--							</button>-->
+		<!--						</h2>-->
+		<!--						<div id="collapseBanioGatos" class="accordion-collapse collapse"-->
+		<!--							 aria-labelledby="headingBanioGatos"-->
+		<!--							 data-bs-parent="#accordionServiciosGatos">-->
+		<!--							<div class="accordion-body">-->
+		<!--								<h6 class="fw-bold mb-2" th:utext="#{servicios.peluqueria.banioIncluye.titulo}"></h6>-->
+		<!--								<ul class="list-unstyled fs-5 mb-4">-->
+		<!--									<li><i class="fas fa-spa me-2 "></i>-->
+		<!--										<span th:utext="#{servicios.peluqueria.banioIncluye.banioMasaje}"></span>-->
+		<!--									</li>-->
+		<!--									<li><i class="fas fa-wind me-2 "></i>-->
+		<!--										<span th:utext="#{servicios.peluqueria.banioIncluye.secado}"></span>-->
+		<!--									</li>-->
+		<!--									<li><i class="fas fa-cut me-2 "></i>-->
+		<!--										<span th:utext="#{servicios.peluqueria.banioIncluye.arreglo}"></span>-->
+		<!--									</li>-->
+		<!--									<li><i class="fas fa-ear-listen me-2 "></i>-->
+		<!--										<span th:utext="#{servicios.peluqueria.banioIncluye.oidos}"></span>-->
+		<!--									</li>-->
+		<!--								</ul>-->
+		<!--								<h6 class="fw-bold mb-2" th:utext="#{servicios.peluqueria.corteIncluye.titulo}"></h6>-->
+		<!--								<ul class="list-unstyled fs-5">-->
+		<!--									<li><i class="fas fa-scissors me-2 "></i>-->
+		<!--										<span th:utext="#{servicios.peluqueria.corteIncluye.razas}"></span>-->
+		<!--									</li>-->
+		<!--									<li><i class="fas fa-feather-alt me-2 "></i>-->
+		<!--										<span th:utext="#{servicios.peluqueria.corteIncluye.pelo}"></span>-->
+		<!--									</li>-->
+		<!--								</ul>-->
+		<!--							</div>-->
+		<!--						</div>-->
+		<!--					</div>-->
 
-<!--					&lt;!&ndash; Suplementos &ndash;&gt;-->
-<!--					<div class="accordion-item seccionTitulo">-->
-<!--						<h2 class="accordion-header" id="headingSuplementosGatos">-->
-<!--							<button class="accordion-button collapsed seccionTitulo" type="button"-->
-<!--									data-bs-toggle="collapse"-->
-<!--									data-bs-target="#collapseSuplementosGatos" aria-expanded="false"-->
-<!--									aria-controls="collapseSuplementosGatos">-->
-<!--								<i class="fas fa-plus-circle me-2 text-success"></i>-->
-<!--								<span th:utext="#{servicios.peluqueria.suplementos.titulo}"></span>-->
-<!--							</button>-->
-<!--						</h2>-->
-<!--						<div id="collapseSuplementosGatos" class="accordion-collapse collapse"-->
-<!--							 aria-labelledby="headingSuplementosGatos" data-bs-parent="#accordionServiciosGatos">-->
-<!--							<div class="accordion-body">-->
-<!--								<ul class="list-unstyled fs-5">-->
-<!--									<li><i class="fas fa-cat me-2 "></i>-->
-<!--										<span th:utext="#{servicios.peluqueria.suplementos.deslanado}"></span>-->
-<!--									</li>-->
-<!--									<li><i class="fas fa-khanda me-2 "></i>-->
-<!--										<span th:utext="#{servicios.peluqueria.suplementos.nudos}"></span>-->
-<!--									</li>-->
-<!--								</ul>-->
-<!--							</div>-->
-<!--						</div>-->
-<!--					</div>-->
+		<!--					&lt;!&ndash; Suplementos &ndash;&gt;-->
+		<!--					<div class="accordion-item seccionTitulo">-->
+		<!--						<h2 class="accordion-header" id="headingSuplementosGatos">-->
+		<!--							<button class="accordion-button collapsed seccionTitulo" type="button"-->
+		<!--									data-bs-toggle="collapse"-->
+		<!--									data-bs-target="#collapseSuplementosGatos" aria-expanded="false"-->
+		<!--									aria-controls="collapseSuplementosGatos">-->
+		<!--								<i class="fas fa-plus-circle me-2 text-success"></i>-->
+		<!--								<span th:utext="#{servicios.peluqueria.suplementos.titulo}"></span>-->
+		<!--							</button>-->
+		<!--						</h2>-->
+		<!--						<div id="collapseSuplementosGatos" class="accordion-collapse collapse"-->
+		<!--							 aria-labelledby="headingSuplementosGatos" data-bs-parent="#accordionServiciosGatos">-->
+		<!--							<div class="accordion-body">-->
+		<!--								<ul class="list-unstyled fs-5">-->
+		<!--									<li><i class="fas fa-cat me-2 "></i>-->
+		<!--										<span th:utext="#{servicios.peluqueria.suplementos.deslanado}"></span>-->
+		<!--									</li>-->
+		<!--									<li><i class="fas fa-khanda me-2 "></i>-->
+		<!--										<span th:utext="#{servicios.peluqueria.suplementos.nudos}"></span>-->
+		<!--									</li>-->
+		<!--								</ul>-->
+		<!--							</div>-->
+		<!--						</div>-->
+		<!--					</div>-->
 
-<!--				</div>-->
-<!--			</div>-->
-<!--		</section>-->
+		<!--				</div>-->
+		<!--			</div>-->
+		<!--		</section>-->
 
-<!--		&lt;!&ndash; Sección: Nuestras tarifas para gatos &ndash;&gt;-->
-<!--		<section class="text-center mb-5">-->
-<!--			<h2 class="fw-bold text-success-emphasis mb-4">-->
-<!--				<i class="fas fa-cat me-2"></i>-->
-<!--				<span th:utext="#{servicios.peluqueria.tarifas.gatos.titulo}"></span>-->
-<!--			</h2>-->
-<!--			<div class="row row-cols-1 row-cols-md-3 g-4" data-tipo="gato">-->
+		<!--		&lt;!&ndash; Sección: Nuestras tarifas para gatos &ndash;&gt;-->
+		<!--		<section class="text-center mb-5">-->
+		<!--			<h2 class="fw-bold text-success-emphasis mb-4">-->
+		<!--				<i class="fas fa-cat me-2"></i>-->
+		<!--				<span th:utext="#{servicios.peluqueria.tarifas.gatos.titulo}"></span>-->
+		<!--			</h2>-->
+		<!--			<div class="row row-cols-1 row-cols-md-3 g-4" data-tipo="gato">-->
 
-<!--				&lt;!&ndash; CARD 1: SOLO BAÑO &ndash;&gt;-->
-<!--				<article class="col">-->
-<!--					<div class="card p-3 shadow-sm h-100 cardServicio">-->
-<!--						<div class="card_image mb-2">-->
-<!--							<img th:src="@{images/estanciaExpres.jpg}" alt="Solo Baño" class="imagenCard rounded-3">-->
-<!--						</div>-->
-<!--						<h3 class="fs-5 fw-bold text-success-emphasis"-->
-<!--							th:utext="#{servicios.peluqueria.tarifas.banoBasico}">-->
-<!--						</h3>-->
-<!--						<p class="fw-bold fs-5">-->
-<!--							<span th:utext="#{servicios.peluqueria.tarifas.banoBasicoDesde}"></span>-->
-<!--						</p>-->
-<!--						<ul class="list-unstyled">-->
-<!--							<li><i class="fas fa-shower me-2 text-success"></i>-->
-<!--								<span th:utext="#{servicios.peluqueria.nuestrosServicios.banio}"></span>-->
-<!--							</li>-->
-<!--							<li><i class="fas fa-brush me-2 text-success"></i>-->
-<!--								<span th:utext="#{servicios.peluqueria.nuestrosServicios.cepillado}"></span>-->
-<!--							</li>-->
-<!--						</ul>-->
-<!--						<button class="btn btn-success btnCard mt-auto">-->
-<!--							<span th:utext="#{servicios.botonSeleccionar}"></span>-->
-<!--						</button>-->
-<!--					</div>-->
-<!--				</article>-->
+		<!--				&lt;!&ndash; CARD 1: SOLO BAÑO &ndash;&gt;-->
+		<!--				<article class="col">-->
+		<!--					<div class="card p-3 shadow-sm h-100 cardServicio">-->
+		<!--						<div class="card_image mb-2">-->
+		<!--							<img th:src="@{images/estanciaExpres.jpg}" alt="Solo Baño" class="imagenCard rounded-3">-->
+		<!--						</div>-->
+		<!--						<h3 class="fs-5 fw-bold text-success-emphasis"-->
+		<!--							th:utext="#{servicios.peluqueria.tarifas.banoBasico}">-->
+		<!--						</h3>-->
+		<!--						<p class="fw-bold fs-5">-->
+		<!--							<span th:utext="#{servicios.peluqueria.tarifas.banoBasicoDesde}"></span>-->
+		<!--						</p>-->
+		<!--						<ul class="list-unstyled">-->
+		<!--							<li><i class="fas fa-shower me-2 text-success"></i>-->
+		<!--								<span th:utext="#{servicios.peluqueria.nuestrosServicios.banio}"></span>-->
+		<!--							</li>-->
+		<!--							<li><i class="fas fa-brush me-2 text-success"></i>-->
+		<!--								<span th:utext="#{servicios.peluqueria.nuestrosServicios.cepillado}"></span>-->
+		<!--							</li>-->
+		<!--						</ul>-->
+		<!--						<button class="btn btn-success btnCard mt-auto">-->
+		<!--							<span th:utext="#{servicios.botonSeleccionar}"></span>-->
+		<!--						</button>-->
+		<!--					</div>-->
+		<!--				</article>-->
 
-<!--				&lt;!&ndash; CARD 2: SOLO CORTE &ndash;&gt;-->
-<!--				<article class="col">-->
-<!--					<div class="card p-3 shadow-sm h-100 cardServicio">-->
-<!--						<div class="card_image mb-2">-->
-<!--							<img th:src="@{images/estanciaExpres.jpg}" alt="Solo Corte" class="imagenCard rounded-3">-->
-<!--						</div>-->
-<!--						<h3 class="fs-5 fw-bold text-success-emphasis"-->
-<!--							th:utext="#{servicios.peluqueria.tarifas.soloCorte}"></h3>-->
-<!--						<p class="fw-bold fs-5">-->
-<!--							<span th:utext="#{servicios.peluqueria.tarifas.soloCorteDesde}"></span>-->
-<!--						</p>-->
-<!--						<ul class="list-unstyled">-->
-<!--							<li><i class="fas fa-scissors me-2 text-success"></i>-->
-<!--								<span th:utext="#{servicios.peluqueria.nuestrosServicios.cortePelo}"></span>-->
-<!--							</li>-->
-<!--						</ul>-->
-<!--						<button class="btn btn-success btnCard mt-auto">-->
-<!--							<span th:utext="#{servicios.botonSeleccionar}"></span>-->
-<!--						</button>-->
-<!--					</div>-->
-<!--				</article>-->
+		<!--				&lt;!&ndash; CARD 2: SOLO CORTE &ndash;&gt;-->
+		<!--				<article class="col">-->
+		<!--					<div class="card p-3 shadow-sm h-100 cardServicio">-->
+		<!--						<div class="card_image mb-2">-->
+		<!--							<img th:src="@{images/estanciaExpres.jpg}" alt="Solo Corte" class="imagenCard rounded-3">-->
+		<!--						</div>-->
+		<!--						<h3 class="fs-5 fw-bold text-success-emphasis"-->
+		<!--							th:utext="#{servicios.peluqueria.tarifas.soloCorte}"></h3>-->
+		<!--						<p class="fw-bold fs-5">-->
+		<!--							<span th:utext="#{servicios.peluqueria.tarifas.soloCorteDesde}"></span>-->
+		<!--						</p>-->
+		<!--						<ul class="list-unstyled">-->
+		<!--							<li><i class="fas fa-scissors me-2 text-success"></i>-->
+		<!--								<span th:utext="#{servicios.peluqueria.nuestrosServicios.cortePelo}"></span>-->
+		<!--							</li>-->
+		<!--						</ul>-->
+		<!--						<button class="btn btn-success btnCard mt-auto">-->
+		<!--							<span th:utext="#{servicios.botonSeleccionar}"></span>-->
+		<!--						</button>-->
+		<!--					</div>-->
+		<!--				</article>-->
 
-<!--				&lt;!&ndash; CARD 3: CORTE + BAÑO &ndash;&gt;-->
-<!--				<article class="col">-->
-<!--					<div class="card p-3 shadow-sm h-100 cardServicio">-->
-<!--						<div class="card_image mb-2">-->
-<!--							<img th:src="@{images/estanciaExpres.jpg}" alt="Corte + Baño" class="imagenCard rounded-3">-->
-<!--						</div>-->
-<!--						<h3 class="fs-5 fw-bold text-success-emphasis"-->
-<!--							th:utext="#{servicios.peluqueria.bañoYCorte}"></h3>-->
-<!--						<p class="fw-bold fs-5">-->
-<!--							<span th:utext="#{servicios.peluqueria.tarifas.soloCorteDesde}"></span>-->
-<!--						</p>-->
-<!--						<ul class="list-unstyled">-->
-<!--							<li><i class="fas fa-shower me-2 text-success"></i>-->
-<!--								<span th:utext="#{servicios.peluqueria.nuestrosServicios.banio}"></span>-->
-<!--							</li>-->
-<!--							<li><i class="fas fa-brush me-2 text-success"></i>-->
-<!--								<span th:utext="#{servicios.peluqueria.nuestrosServicios.cepillado}"></span>-->
-<!--							</li>-->
-<!--							<li><i class="fas fa-scissors me-2 text-success"></i>-->
-<!--								<span th:utext="#{servicios.peluqueria.nuestrosServicios.cortePelo}"></span>-->
-<!--							</li>-->
-<!--						</ul>-->
-<!--						<button class="btn btn-success btnCard mt-auto">-->
-<!--							<span th:utext="#{servicios.botonSeleccionar}"></span>-->
-<!--						</button>-->
-<!--					</div>-->
-<!--				</article>-->
-<!--			</div>-->
-<!--		</section>-->
-<!--		<hr class="mx-auto w-100 border-2 opacity-50">-->
+		<!--				&lt;!&ndash; CARD 3: CORTE + BAÑO &ndash;&gt;-->
+		<!--				<article class="col">-->
+		<!--					<div class="card p-3 shadow-sm h-100 cardServicio">-->
+		<!--						<div class="card_image mb-2">-->
+		<!--							<img th:src="@{images/estanciaExpres.jpg}" alt="Corte + Baño" class="imagenCard rounded-3">-->
+		<!--						</div>-->
+		<!--						<h3 class="fs-5 fw-bold text-success-emphasis"-->
+		<!--							th:utext="#{servicios.peluqueria.bañoYCorte}"></h3>-->
+		<!--						<p class="fw-bold fs-5">-->
+		<!--							<span th:utext="#{servicios.peluqueria.tarifas.soloCorteDesde}"></span>-->
+		<!--						</p>-->
+		<!--						<ul class="list-unstyled">-->
+		<!--							<li><i class="fas fa-shower me-2 text-success"></i>-->
+		<!--								<span th:utext="#{servicios.peluqueria.nuestrosServicios.banio}"></span>-->
+		<!--							</li>-->
+		<!--							<li><i class="fas fa-brush me-2 text-success"></i>-->
+		<!--								<span th:utext="#{servicios.peluqueria.nuestrosServicios.cepillado}"></span>-->
+		<!--							</li>-->
+		<!--							<li><i class="fas fa-scissors me-2 text-success"></i>-->
+		<!--								<span th:utext="#{servicios.peluqueria.nuestrosServicios.cortePelo}"></span>-->
+		<!--							</li>-->
+		<!--						</ul>-->
+		<!--						<button class="btn btn-success btnCard mt-auto">-->
+		<!--							<span th:utext="#{servicios.botonSeleccionar}"></span>-->
+		<!--						</button>-->
+		<!--					</div>-->
+		<!--				</article>-->
+		<!--			</div>-->
+		<!--		</section>-->
+		<!--		<hr class="mx-auto w-100 border-2 opacity-50">-->
 
 		<!-- FORMULARIO RESERVA -->
 		<section class="mb-5">
@@ -766,16 +796,19 @@
 				th:utext="#{servicios.reservaCitaPeluqueria}">
 			</h2>
 			<div class="formContainer">
-				<form class="row g-3">
+				<form class="row g-3" id="checkoutPeluqueria" method="post" th:action="@{/peluqueria/checkoutPeluqueria}">
 					<fieldset class="col-md-6">
 						<div class="itemSeleccion">
 							<legend class="fw-bold">Datos de la mascota</legend>
-							<label for="nombreMascota" class="form-label">Nombre de la mascota: <span style="color: red">*</span></label>
-							<input type="text" id="nombreMascota" class="form-control labelForm" placeholder="-Por favor introduce el nombre de tu mascota-" required>
+							<label for="nombreMascota" class="form-label">Nombre de la mascota: <span
+									style="color: red">*</span></label>
+							<input type="text" id="nombreMascota" class="form-control labelForm"
+								   placeholder="-Por favor introduce el nombre de tu mascota-" required>
 						</div>
 
 						<div class="itemSeleccion">
-							<label for="caracterMascota" class="form-label">Caracter social: <span style="color: red">*</span></label>
+							<label for="caracterMascota" class="form-label">Caracter social: <span
+									style="color: red">*</span></label>
 							<select id="caracterMascota" class="form-select labelForm" required>
 								<option value="" disabled selected>-Por favor, elige una opción-</option>
 								<option>Sociable</option>
@@ -799,8 +832,9 @@
 						</div>
 
 						<div class="itemSeleccion">
-							<label for="tamanoPerro" class="form-label">Tamaño de mi perro:</label>
-							<select id="tamanoPerro" class="form-select labelForm">
+							<label for="tamanoPerro" class="form-label">Tamaño de mi peque: <span
+									style="color: red">*</span></label>
+							<select id="tamanoPerro" class="form-select labelForm" required>
 								<option value="" disabled selected>-Por favor, elige una opción-</option>
 								<option>Gigante > 35kg</option>
 								<option>Grande 26 - 35kg</option>
@@ -811,12 +845,14 @@
 						</div>
 
 						<div class="itemSeleccion">
-							<label for="fechaReserva" class="form-label">Fecha de reserva: <span style="color: red">*</span></label>
+							<label for="fechaReserva" class="form-label">Fecha de reserva: <span
+									style="color: red">*</span></label>
 							<input type="date" id="fechaReserva" class="form-control labelForm" required>
 						</div>
 
 						<div class="itemSeleccion">
-							<label for="horaReserva" class="form-label">Hora de la cita: <span style="color: red">*</span></label>
+							<label for="horaReserva" class="form-label">Hora de la cita: <span
+									style="color: red">*</span></label>
 							<select id="horaReserva" class="form-select labelForm" required>
 								<option value="" disabled selected>-Por favor, elige una hora-</option>
 								<!-- Opciones para horas pueden ser añadidas dinámicamente si quieres -->
@@ -869,14 +905,11 @@
 
 					<div class="itemSeleccion">
 						<input type="checkbox" required>
-						<label class="form-label">He leído y acepto las condiciones de uso de la web, el aviso legal y la política de privacidad</label>
+						<label class="form-label">He leído y acepto las condiciones de uso de la web, el aviso legal y
+							la política de privacidad</label>
 					</div>
-
-					<div class="text-center">
-						<button type="submit" class="btn btn-primary btnEnviar">RESERVAR</button>
-					</div>
+					<button type="submit" class="btn btn-primary btnEnviar">RESERVAR</button>
 				</form>
-
 			</div>
 		</section>
 		<hr class="mx-auto w-100 border-2 opacity-50">
@@ -954,7 +987,9 @@
 			</div>
 		</section>
 	</section>
-		<script>
+
+	<!-- Script para controlar la seleccion de tarifas y suplementos -->
+	<script>
         document.addEventListener('DOMContentLoaded', function () {
             // Elementos
             const tarifaCards = document.querySelectorAll('.cardServicio');
@@ -964,25 +999,32 @@
             const tamanoPerroSelect = document.getElementById('tamanoPerro');
             const suplementosContainer = document.getElementById('suplementosContainer');
             const tipoMascotaSelect = document.getElementById('tipoMascota');
+            const fechaReserva = document.getElementById('fechaReserva');
+
+            // Impide elegir una fecha anterior al dia actual
+            const hoy = new Date().toISOString().split('T')[0];
+            fechaReserva.min = hoy;
 
             // Precios de suplementos
             const preciosSuplementos = {
-                'Por nudos': 15,
-                'Baño antiparasito': 20,
+                'Por nudos': 7,
+                'Baño antiparasito': 10,
                 'Champú potenciador de color': 10,
-                'Deslanado': 25,
-                'Corte a máquina': 10,
-                'Corte a mano': 20,
-                'Corte combinado': 15
+                'Deslanado': 7,
+                'Baño medicado o spa para pieles sensibles': 15,
+                'Retoque extra en patas y cara': 5,
+                'Tratamiento antiolor con aceites esenciales': 10,
+                'Hidratación de almohadillas': 7,
+                'Aplicación de perfume especial': 5
             };
 
             // Precios por tamaño (perros)
             const preciosTamano = {
-                'Gigante > 35kg': 30,
-                'Grande 26 - 35kg': 25,
-                'Mediano 11 - 25kg': 20,
-                'Pequeño 6 - 10kg': 15,
-                'Juguete < 5kg': 10
+                'Gigante > 35kg': 15,
+                'Grande 26 - 35kg': 12,
+                'Mediano 11 - 25kg': 9,
+                'Pequeño 6 - 10kg': 6,
+                'Juguete < 5kg': 0
             };
 
             let tarifaSeleccionada = null;
@@ -1003,19 +1045,80 @@
                     const nombreTarifa = tarifaSeleccionada.nombre.toLowerCase();
                     const incluyeBanio = nombreTarifa.includes('baño');
                     const incluyeCorte = nombreTarifa.includes('corte');
+                    const todo = nombreTarifa.includes('completo');
+                    const mas = nombreTarifa.includes('+');
 
                     let opciones = [];
-                    if (incluyeBanio) {
-                        opciones.push({ value: 'Baño antiparasito', label: 'Baño antiparasito (+20€)' });
-                        opciones.push({ value: 'Champú potenciador de color', label: 'Champú potenciador de color (+10€)' });
+                    if (todo || mas) {
+                        opciones.push({value: 'Baño antiparasito', label: 'Baño antiparasito (+10€)'});
+                        opciones.push({
+                            value: 'Champú potenciador de color',
+                            label: 'Champú potenciador de color (+10€)'
+                        });
+                        opciones.push({
+                            value: 'Baño medicado o spa para pieles sensibles',
+                            label: 'Baño medicado o spa para pieles sensibles (+15€)'
+                        });
+                        opciones.push({value: 'Por nudos', label: 'Por nudos (+7€)'});
+                        opciones.push({value: 'Deslanado', label: 'Deslanado (+7€)'});
+                        opciones.push({
+                            value: 'Retoque extra en patas y cara',
+                            label: 'Retoque extra en patas y cara (+5€)'
+                        });
+                        opciones.push({
+                            value: 'Tratamiento antiolor con aceites esenciales',
+                            label: 'Tratamiento antiolor con aceites esenciales (+10€)'
+                        });
+                        opciones.push({
+                            value: 'Hidratación de almohadillas',
+                            label: 'Hidratación de almohadillas (+7€)'
+                        });
+                        opciones.push({
+                            value: 'Aplicación de perfume especial',
+                            label: 'Aplicación de perfume especial (+5€)'
+                        });
+                    } else if (incluyeBanio) {
+                        opciones.push({value: 'Baño antiparasito', label: 'Baño antiparasito (+10€)'});
+                        opciones.push({
+                            value: 'Champú potenciador de color',
+                            label: 'Champú potenciador de color (+10€)'
+                        });
+                        opciones.push({
+                            value: 'Baño medicado o spa para pieles sensibles',
+                            label: 'Baño medicado o spa para pieles sensibles (+15€)'
+                        });
+                        opciones.push({
+                            value: 'Tratamiento antiolor con aceites esenciales',
+                            label: 'Tratamiento antiolor con aceites esenciales (+10€)'
+                        });
+                        opciones.push({
+                            value: 'Hidratación de almohadillas',
+                            label: 'Hidratación de almohadillas (+7€)'
+                        });
+                        opciones.push({
+                            value: 'Aplicación de perfume especial',
+                            label: 'Aplicación de perfume especial (+5€)'
+                        });
+                    } else if (incluyeCorte) {
+                        opciones.push({value: 'Por nudos', label: 'Por nudos (+7€)'});
+                        opciones.push({value: 'Deslanado', label: 'Deslanado (+7€)'});
+                        opciones.push({
+                            value: 'Retoque extra en patas y cara',
+                            label: 'Retoque extra en patas y cara (+5€)'
+                        });
+                        opciones.push({
+                            value: 'Tratamiento antiolor con aceites esenciales',
+                            label: 'Tratamiento antiolor con aceites esenciales (+10€)'
+                        });
+                        opciones.push({
+                            value: 'Hidratación de almohadillas',
+                            label: 'Hidratación de almohadillas (+7€)'
+                        });
+                        opciones.push({
+                            value: 'Aplicación de perfume especial',
+                            label: 'Aplicación de perfume especial (+5€)'
+                        });
                     }
-                    if (incluyeCorte) {
-                        opciones.push({ value: 'Corte a máquina', label: 'Corte a máquina (+10€)' });
-                        opciones.push({ value: 'Corte a mano', label: 'Corte a mano (+20€)' });
-                        opciones.push({ value: 'Corte combinado', label: 'Corte combinado (+15€)' });
-                    }
-                    opciones.push({ value: 'Por nudos', label: 'Por nudos (+15€)' });
-                    opciones.push({ value: 'Deslanado', label: 'Deslanado (+25€)' });
 
                     // Generar los checkboxes
                     opciones.forEach((opt, idx) => {
@@ -1045,7 +1148,7 @@
                 // Suplementos seleccionados
                 const suplementos = Array.from(document.querySelectorAll('.suplementoCheck:checked')).map(cb => cb.value);
                 if (suplementos.length > 0) {
-                    html += `<div><strong>Suplementos:</strong> ${suplementos.map(s => `${s} (+${preciosSuplementos[s]}€)`).join(', ')}</div>`;
+                    html += `<div><strong>Suplementos:</strong> ${suplementos.map(s => `${s} (+${preciosSuplementos[s]}€)`).join('<br>')}</div>`;
                 } else {
                     html += `<div><strong>Suplementos:</strong> Ninguno</div>`;
                 }
@@ -1060,7 +1163,7 @@
                 suplementosContainer.innerHTML = html;
             }
 
-            tamanoPerroSelect.addEventListener('change', function() {
+            tamanoPerroSelect.addEventListener('change', function () {
                 actualizarPrecioTotal();
             });
 
@@ -1148,10 +1251,108 @@
                     actualizarPrecioTotal();
                 });
             }
+
             // Inicialmente deshabilita el selector de tamaño
             tamanoPerroSelect.disabled = true;
+
+            // Al pulsar el botón de reservar
+            document.getElementById('checkoutPeluqueria').addEventListener('submit', async function(event) {
+                event.preventDefault();
+
+                // 1. Tarifa base
+                const productos = [];
+                if (tarifaSeleccionada && tarifaSeleccionada.nombre) {
+                    productos.push(tarifaSeleccionada.nombre);
+                    console.log(productos.length);
+                }
+
+                // 2. Suplementos seleccionados
+                const suplementos = Array.from(document.querySelectorAll('.suplementoCheck:checked')).map(cb => cb.value);
+                productos.push(...suplementos);
+
+                // 3. Tamaño de animal (si aplica)
+                const tamano = document.getElementById('tamanoPerro').value;
+                if (tamano) {
+                    productos.push(tamano);
+                }
+
+                // 4. Enviar al backend como JSON
+                const formData = {
+                    productos: productos
+                };
+
+                try {
+                    const response = await fetch(event.target.action, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(formData)
+                    });
+
+                    if (!response.ok) {
+                        // Aquí puedes ver el error HTTP
+                        const text = await response.text();
+                        console.error("Respuesta error:", response.status, text);
+                        alert("Error HTTP: " + response.status);
+                        return;
+                    }
+
+                    const data = await response.json();
+                    console.log("Respuesta JSON:", data);
+                } catch (error) {
+                    console.error("Error:", error);
+                    alert("Error al procesar la reserva");
+                }
+
+            });
+        });
+	</script>
+
+	<!-- Script para controlar el selector de horas -->
+	<script>
+        function generarHoras(inicio, fin, intervaloMinutos) {
+            const opciones = [];
+            let [h, m] = inicio.split(':').map(Number);
+            const [hFin, mFin] = fin.split(':').map(Number);
+
+            while (h < hFin || (h === hFin && m <= mFin)) {
+                const horaStr = `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}`;
+                opciones.push(horaStr);
+                m += intervaloMinutos;
+                if (m >= 60) {
+                    m -= 60;
+                    h += 1;
+                }
+            }
+            // Opcional: quitar la última si es igual al fin y no quieres incluir el cierre
+            if (opciones[opciones.length - 1] === fin) opciones.pop();
+            return opciones;
+        }
+
+        const horasManana = generarHoras("10:00", "14:00", 30);
+        const horasTarde = generarHoras("16:00", "19:00", 30);
+
+        const select = document.getElementById('horaReserva');
+
+        const optgroupManana = document.createElement('optgroup');
+        optgroupManana.label = "Mañana";
+        horasManana.forEach(hora => {
+            const option = document.createElement('option');
+            option.value = hora;
+            option.textContent = hora;
+            optgroupManana.appendChild(option);
         });
 
+        const optgroupTarde = document.createElement('optgroup');
+        optgroupTarde.label = "Tarde";
+        horasTarde.forEach(hora => {
+            const option = document.createElement('option');
+            option.value = hora;
+            option.textContent = hora;
+            optgroupTarde.appendChild(option);
+        });
+
+        select.appendChild(optgroupManana);
+        select.appendChild(optgroupTarde);
 	</script>
 </section>
 </body>
