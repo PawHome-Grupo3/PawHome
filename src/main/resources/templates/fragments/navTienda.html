@@ -18,7 +18,7 @@
           list-style: none;
           align-content: center;
           ">
-                <li th:each="categoriaNav : ${categoriasNav}" class="navbar-item px-md-2 py-2 align-content-center"><a th:utext="${categoriaNav.getNombre()}" th:href="@{'/tienda#' + ${categoriasNavDto.get(categoriaNav.getId()-1).getNombre()}}" class="enlaceNavTienda"></a></li>
+                <li th:each="categoriaNav : ${categoriasNavDto}" class="navbar-item px-md-2 py-2 align-content-center"><a th:utext="${categoriaNav.getNombre()}" th:href="@{'/tienda#' + ${categoriasNavDto.get(categoriaNav.getId()-1).getNombre()}}" class="enlaceNavTienda"></a></li>
                 <li class="navbar-item px-md-2 py-2 align-content-center"><a href="/tienda/carrito" class="enlaceNavTienda px-1">Carrito</a></li>
                 <li class="navbar-item px-md-2 py-2 ms-3">
                     <form class="d-flex justify-content-end me-3" role="search">

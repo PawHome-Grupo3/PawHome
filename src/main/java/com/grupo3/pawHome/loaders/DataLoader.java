@@ -95,15 +95,15 @@ public class DataLoader implements CommandLineRunner {
         facturaRepository.save(f3);
 
         Categoria c1 = new Categoria();
-        c1.setNombre("Collares");
+        c1.setNombre("tienda-Collares");
         categoriaRepository.save(c1);
 
         Categoria c2 = new Categoria();
-        c2.setNombre("Camisetas");
+        c2.setNombre("tienda-Camisetas");
         categoriaRepository.save(c2);
 
         Categoria c3 = new Categoria();
-        c3.setNombre("Tazas");
+        c3.setNombre("tienda-Tazas");
         categoriaRepository.save(c3);
 
         Producto p1 = new Producto();
