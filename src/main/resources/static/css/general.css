@@ -1053,34 +1053,220 @@ clamp(10px, 2vw, 40px);
 /*////////////////////////////
 /      DETALLE_PRODUCTO      /
 ////////////////////////////*/
-.imgProductDetail {
-    display: flex;
+/* Fondo y container general */
+/* Fondo y container general */
+.detalleProducto-bg {
+    background: linear-gradient(120deg, #eafaf1 0%, #f4faf8 100%);
+    min-height: 100vh;
+}
+
+.detalleProducto-container {
+    background: #fff;
+    border-radius: 32px;
+    box-shadow: 0 8px 32px rgba(67, 113, 143, 0.09);
+    padding: 2.5rem 2rem;
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+    animation: fadeInDetalleProducto 1.2s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@keyframes fadeInDetalleProducto {
+    0% { opacity: 0; transform: translateY(40px);}
+    100% { opacity: 1; transform: translateY(0);}
+}
+
+/* Imagen principal */
+.detalleProducto-mainImg {
+    background: linear-gradient(135deg, #eafaf1 0%, #d9f0d9 100%);
+    border-radius: 30px;
+    box-shadow: 0 4px 24px rgba(67, 113, 143, 0.13);
+    overflow: hidden;
+    min-height: 300px;
+    max-width: 480px;
     width: 100%;
+    transition: box-shadow 0.3s;
+    position: relative;
+}
+.detalleProducto-mainImg:hover {
+    box-shadow: 0 12px 36px rgba(67, 113, 143, 0.19);
+}
+.detalleProducto-img-principal {
     max-width: 100%;
-    height: 600px;
+    max-height: 420px;
     object-fit: contain;
+    transition: transform 0.3s cubic-bezier(.25,.8,.25,1), box-shadow 0.3s;
+    box-shadow: 0 2px 12px rgba(67,113,143,0.08);
+}
+.detalleProducto-mainImg:hover .detalleProducto-img-principal {
+    transform: scale(1.04) rotate(-2deg);
+    box-shadow: 0 8px 32px rgba(67, 113, 143, 0.18);
 }
 
-.icon-hover:hover {
-    border-color: #3b71ca !important;
-    background-color: white !important;
-    color: #3b71ca !important;
+/* Icono de zoom */
+.detalleProducto-img-zoom {
+    position: absolute;
+    bottom: 18px;
+    right: 24px;
+    background: rgba(255,255,255,0.85);
+    border-radius: 50%;
+    padding: 0.5em 0.6em;
+    font-size: 1.3rem;
+    color: #43718F;
+    box-shadow: 0 2px 8px rgba(67,113,143,0.13);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+.detalleProducto-mainImg:hover .detalleProducto-img-zoom {
+    opacity: 1;
+    pointer-events: auto;
+    animation: zoomPop 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+}
+@keyframes zoomPop {
+    0% { transform: scale(0.8);}
+    60% { transform: scale(1.15);}
+    100% { transform: scale(1);}
 }
 
-.icon-hover:hover i {
-    color: #3b71ca !important;
+/* Miniaturas */
+.detalleProducto-thumbs {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 0.6rem;
+    margin-top: 0.5rem;
 }
-
-.item-thumb {
+.detalleProducto-thumb {
+    border: 2.5px solid transparent;
+    border-radius: 14px;
+    box-shadow: 0 2px 8px rgba(67, 113, 143, 0.08);
     cursor: pointer;
-    transition: border-color 0.3s;
+    transition: border-color 0.3s, transform 0.2s, box-shadow 0.2s;
+    opacity: 0.8;
+    background: #f7fafc;
+    object-fit: cover;
 }
-.item-thumb:hover {
+.detalleProducto-thumb:hover,
+.detalleProducto-thumb:focus {
+    border-color: #43718F;
+    opacity: 1;
+    transform: scale(1.09) rotate(-4deg);
+    z-index: 2;
+}
+.detalleProducto-thumb.thumb-selected {
+    border-color: #ff9800;
+    opacity: 1;
+    transform: scale(1.13);
+    box-shadow: 0 6px 18px rgba(255,152,0,0.11);
+    z-index: 3;
+}
+
+/* Columna de detalles */
+.detalleProducto-main {
+    min-height: 48px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    width: 100%;
+    margin-bottom: 0.5rem;
+    font-size: 1.07rem;
+}
+.detalleProducto-main h4.title {
+    font-size: 2.1rem;
+    font-weight: 800;
+    color: #27632a;
+    margin-bottom: 0.7rem;
+    letter-spacing: 0.01em;
+}
+.detalleProducto-main .h5 {
+    color: #43718F;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+.detalleProducto-main .text-success {
+    color: #388e3c !important;
+    font-weight: 600;
+}
+.detalleProducto-main .form-select {
+    border-radius: 18px;
+    border: 2px solid #d9f0d9;
+    font-weight: 600;
+    color: #27632a;
+    background: #f7fafc;
+    transition: border 0.2s;
+    text-align: center;
+    text-align-last: center;
+}
+.detalleProducto-main .form-select:focus {
+    border-color: #43718F;
+    outline: none;
+}
+.detalleProducto-main .input-group .btn {
+    background: #f7fafc;
+    color: #43718F;
+    border-radius: 16px;
+    border: 1.5px solid #d9f0d9;
+    font-weight: 700;
+    transition: background 0.2s, color 0.2s;
+}
+.detalleProducto-main .input-group .btn:hover {
+    background: #ff9800;
+    color: #fff;
     border-color: #ff9800;
 }
-.thumb-selected {
-    border-color: #ff9800 !important;
-    box-shadow: 0 0 5px #ff9800;
+.detalleProducto-main .form-control {
+    border-radius: 14px;
+    border: 1.5px solid #d9f0d9;
+    font-weight: 600;
+    color: #27632a;
+    background: #f7fafc;
+    transition: border 0.2s;
+}
+.detalleProducto-main .form-control:focus {
+    border-color: #43718F;
+    outline: none;
+}
+
+/* Botones de acción */
+.btnHazteVoluntario {
+    background: linear-gradient(90deg, #43718F 0%, #388e3c 100%);
+    color: #fff;
+    border-radius: 22px;
+    font-weight: 700;
+    font-size: 1.07rem;
+    letter-spacing: 0.01em;
+    box-shadow: 0 2px 8px rgba(67,113,143,0.12);
+    border: none;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.btnHazteVoluntario:hover, .btnHazteVoluntario:focus {
+    background: linear-gradient(90deg, #ff9800 0%, #43718F 100%);
+    color: #fff;
+    box-shadow: 0 6px 18px rgba(255,152,0,0.11);
+    outline: none;
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+    .detalleProducto-container {
+        padding: 1.5rem 0.5rem;
+    }
+    .detalleProducto-mainImg {
+        min-height: 220px;
+    }
+}
+@media (max-width: 767px) {
+    .detalleProducto-main {
+        min-height: 42px;
+        font-size: 1rem;
+    }
 }
 /*////////////////////////////
 /    FIN DETALLE_PRODUCTO    /
