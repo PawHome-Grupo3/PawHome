@@ -27,6 +27,8 @@ public class DataLoader implements CommandLineRunner {
     private final CategoriaRepository categoriaRepository;
     private final TarifaRepository tarifaRepository;
     private final PasswordEncoder passwordEncoder;
+    private final RazaRepository razaRepository;
+    private final EspecieRepository especieRepository;
 
 
     public DataLoader(AnimalRepository animalRepository,
@@ -37,7 +39,7 @@ public class DataLoader implements CommandLineRunner {
                       TallaRepository tallaRepository,
                       CategoriaRepository categoriaRepository,
                       TarifaRepository tarifaRepository,
-                      PasswordEncoder passwordEncoder) {
+                      PasswordEncoder passwordEncoder, RazaRepository razaRepository, EspecieRepository especieRepository) {
 
         this.animalRepository = animalRepository;
         this.apadrinarRepository = apadrinarRepository;
@@ -48,6 +50,8 @@ public class DataLoader implements CommandLineRunner {
         this.categoriaRepository = categoriaRepository;
         this.tarifaRepository = tarifaRepository;
         this.passwordEncoder = passwordEncoder;
+        this.razaRepository = razaRepository;
+        this.especieRepository = especieRepository;
     }
 
     @Override
@@ -91,20 +95,16 @@ public class DataLoader implements CommandLineRunner {
         facturaRepository.save(f3);
 
         Categoria c1 = new Categoria();
-        c1.setNombre("Collares");
+        c1.setNombre("tienda-Collares");
         categoriaRepository.save(c1);
 
         Categoria c2 = new Categoria();
-        c2.setNombre("Camisetas");
+        c2.setNombre("tienda-Camisetas");
         categoriaRepository.save(c2);
 
         Categoria c3 = new Categoria();
-        c3.setNombre("Tazas");
+        c3.setNombre("tienda-Tazas");
         categoriaRepository.save(c3);
-
-        Categoria c4 = new Categoria();
-        c4.setNombre("Guarderia");
-        categoriaRepository.save(c4);
 
         Producto p1 = new Producto();
         p1.setNombre("Collar");
@@ -141,6 +141,11 @@ public class DataLoader implements CommandLineRunner {
         p5.setRutaImagen1("/images/taza-prueba.jpg");
         p5.setCategoria(c3);
         productoRepository.save(p5);
+
+        // Productos y tarifas de Guarderia
+        Categoria c4 = new Categoria();
+        c4.setNombre("Guarderia");
+        categoriaRepository.save(c4);
 
         Producto p6 = new Producto();
         p6.setNombre("ESTANCIA EXPRESS");
@@ -206,6 +211,157 @@ public class DataLoader implements CommandLineRunner {
         bonoSoloDia.setFechaDesde(LocalDate.now());
         bonoSoloDia.setFechaHasta(LocalDate.of(2026, 1, 1));
         tarifaRepository.save(bonoSoloDia);
+
+        // Productos y tarifas de Peluqueria
+        Categoria c5 = new Categoria();
+        c5.setNombre("PeluqueriaBaño");
+        categoriaRepository.save(c5);
+
+        Categoria c6 = new Categoria();
+        c6.setNombre("PeluqueriaCorte");
+        categoriaRepository.save(c6);
+
+        Categoria c7 = new Categoria();
+        c7.setNombre("PeluqueriaBañoCorte");
+        categoriaRepository.save(c7);
+
+        Producto p11 = new Producto();
+        p11.setNombre("BAÑO BÁSICO");
+        p11.setCategoria(c5);
+        productoRepository.save(p11);
+
+        Tarifa bañoBasico = new Tarifa();
+        bañoBasico.setProducto(p11);
+        bañoBasico.setCantidad(1);
+        bañoBasico.setPrecioUnitario(10.00);
+        bañoBasico.setFechaDesde(LocalDate.now());
+        bañoBasico.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(bañoBasico);
+
+        Producto p12 = new Producto();
+        p12.setNombre("BAÑO + STRIPPING");
+        p12.setCategoria(c5);
+        productoRepository.save(p12);
+
+        Tarifa bañoStripping = new Tarifa();
+        bañoStripping.setProducto(p12);
+        bañoStripping.setCantidad(1);
+        bañoStripping.setPrecioUnitario(15.00);
+        bañoStripping.setFechaDesde(LocalDate.now());
+        bañoStripping.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(bañoStripping);
+
+        Producto p13 = new Producto();
+        p13.setNombre("SOLO CORTE");
+        p13.setCategoria(c6);
+        productoRepository.save(p13);
+
+        Tarifa soloCorte = new Tarifa();
+        soloCorte.setProducto(p13);
+        soloCorte.setCantidad(1);
+        soloCorte.setPrecioUnitario(15.00);
+        soloCorte.setFechaDesde(LocalDate.now());
+        soloCorte.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(soloCorte);
+
+        Producto p14 = new Producto();
+        p14.setNombre("BAÑO + CORTE");
+        p14.setCategoria(c7);
+        productoRepository.save(p14);
+
+        Tarifa bañoCorte = new Tarifa();
+        bañoCorte.setProducto(p14);
+        bañoCorte.setCantidad(1);
+        bañoCorte.setPrecioUnitario(20.00);
+        bañoCorte.setFechaDesde(LocalDate.now());
+        bañoCorte.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(bañoCorte);
+
+        Producto p15 = new Producto();
+        p15.setNombre("COMPLETO");
+        p15.setCategoria(c7);
+        productoRepository.save(p15);
+
+        Tarifa completo = new Tarifa();
+        completo.setProducto(p15);
+        completo.setCantidad(1);
+        completo.setPrecioUnitario(25.00);
+        completo.setFechaDesde(LocalDate.now());
+        completo.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(completo);
+
+        Producto p16 = new Producto();
+        p16.setNombre("Por nudos");
+        p16.setCategoria(c6);
+        productoRepository.save(p16);
+
+        Tarifa porNudos = new Tarifa();
+        porNudos.setProducto(p16);
+        porNudos.setCantidad(1);
+        porNudos.setPrecioUnitario(25.00);
+        porNudos.setFechaDesde(LocalDate.now());
+        porNudos.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(porNudos);
+
+        // Fin productos peluqueria
+        // Productos Adiestramiento
+        Categoria cAdiestramiento = new Categoria();
+        cAdiestramiento.setNombre("Adiestramiento");
+        categoriaRepository.save(cAdiestramiento);
+
+        Producto pCursoCachorros = new Producto();
+        pCursoCachorros.setNombre("Educación y preadiestramiento para cachorros");
+        pCursoCachorros.setCategoria(cAdiestramiento);
+        productoRepository.save(pCursoCachorros);
+
+        Tarifa tCursoCachorros = new Tarifa();
+        tCursoCachorros.setProducto(pCursoCachorros);
+        tCursoCachorros.setCantidad(1);
+        tCursoCachorros.setPrecioUnitario(200.00);
+        tCursoCachorros.setFechaDesde(LocalDate.now());
+        tCursoCachorros.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tCursoCachorros);
+
+        Producto pCursoAdultos = new Producto();
+        pCursoAdultos.setNombre("Educación y adiestramiento canino (adultos)");
+        pCursoAdultos.setCategoria(cAdiestramiento);
+        productoRepository.save(pCursoAdultos);
+
+        Tarifa tCursoAdultos = new Tarifa();
+        tCursoAdultos.setProducto(pCursoAdultos);
+        tCursoAdultos.setCantidad(1);
+        tCursoAdultos.setPrecioUnitario(200.00);
+        tCursoAdultos.setFechaDesde(LocalDate.now());
+        tCursoAdultos.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tCursoAdultos);
+
+        Producto pAdiestramientoDomicilio = new Producto();
+        pAdiestramientoDomicilio.setNombre("Educación y adiestramiento a domicilio");
+        pAdiestramientoDomicilio.setCategoria(cAdiestramiento);
+        productoRepository.save(pAdiestramientoDomicilio);
+
+        Tarifa tAdiestramientoDomicilio = new Tarifa();
+        tAdiestramientoDomicilio.setProducto(pAdiestramientoDomicilio);
+        tAdiestramientoDomicilio.setCantidad(1);
+        tAdiestramientoDomicilio.setPrecioUnitario(30.00);
+        tAdiestramientoDomicilio.setFechaDesde(LocalDate.now());
+        tAdiestramientoDomicilio.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tAdiestramientoDomicilio);
+
+        Producto pAdiestramientoCentro = new Producto();
+        pAdiestramientoCentro.setNombre("Educación y adiestramiento en el centro");
+        pAdiestramientoCentro.setCategoria(cAdiestramiento);
+        productoRepository.save(pAdiestramientoCentro);
+
+        Tarifa tAdiestramientoCentro = new Tarifa();
+        tAdiestramientoCentro.setProducto(pAdiestramientoCentro);
+        tAdiestramientoCentro.setCantidad(1);
+        tAdiestramientoCentro.setPrecioUnitario(20.00);
+        tAdiestramientoCentro.setFechaDesde(LocalDate.now());
+        tAdiestramientoCentro.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tAdiestramientoCentro);
+
+        // Fin productos Adiestramiento
 
         Talla t1 = new Talla();
         t1.setStock(5);
@@ -331,8 +487,31 @@ public class DataLoader implements CommandLineRunner {
         ta5.setFechaHasta(LocalDate.of(2026, 1, 1));
         tarifaRepository.save(ta5);
 
+        Raza raza = new Raza();
+        raza.setNombre("Perro");
+        razaRepository.save(raza);
+
+        Raza raza2 = new Raza();
+        raza2.setNombre("Gato");
+        razaRepository.save(raza2);
+
+        Especie e1 = new Especie();
+        e1.setNombre("Malinois");
+        e1.setRaza(raza);
+        especieRepository.save(e1);
+
+        Especie e3 = new Especie();
+        e3.setNombre("Dálmata");
+        e3.setRaza(raza);
+        especieRepository.save(e3);
+
+        Especie e2 = new Especie();
+        e2.setNombre("Esfinge");
+        e2.setRaza(raza2);
+        especieRepository.save(e2);
+
         Animal a1 = new Animal();
-        a1.setNombre("Firulais");
+        a1.setNombre("Comodoro");
         a1.setChip("CHIP9999");
         a1.setPeso(20f);
         a1.setFechaNacimiento(LocalDate.of(2020, 6, 11));
@@ -347,7 +526,10 @@ public class DataLoader implements CommandLineRunner {
         a1.setRutaImg1("/images/perro1Card.jpg");
         a1.setRutaImg2("/images/default-example.png");
         a1.setRutaImg3("/images/default-example.png");
+        a1.setEspecie(e1);
         animalRepository.save(a1);
+
+
 
         Animal a2 = new Animal();
         a2.setNombre("Michi");
@@ -365,6 +547,7 @@ public class DataLoader implements CommandLineRunner {
         a2.setRutaImg1("/images/perro1.png");
         a2.setRutaImg2("/images/default-example.png");
         a2.setRutaImg3("/images/default-example.png");
+        a2.setEspecie(e2);
         animalRepository.save(a2);
 
         Animal a3 = new Animal();
@@ -383,6 +566,7 @@ public class DataLoader implements CommandLineRunner {
         a3.setRutaImg1("/images/perro2.png");
         a3.setRutaImg2("/images/default-example.png");
         a3.setRutaImg3("/images/default-example.png");
+        a3.setEspecie(e2);
         animalRepository.save(a3);
 
         Animal a4 = new Animal();
@@ -401,6 +585,7 @@ public class DataLoader implements CommandLineRunner {
         a4.setRutaImg1("/images/perro3.png");
         a4.setRutaImg2("/images/default-example.png");
         a4.setRutaImg3("/images/default-example.png");
+        a4.setEspecie(e3);
         animalRepository.save(a4);
 
         Animal a5 = new Animal();
@@ -419,6 +604,7 @@ public class DataLoader implements CommandLineRunner {
         a5.setRutaImg1("/images/perro4.png");
         a5.setRutaImg2("/images/default-example.png");
         a5.setRutaImg3("/images/default-example.png");
+        a5.setEspecie(e3);
         animalRepository.save(a5);
 
         Animal a6 = new Animal();
@@ -437,6 +623,7 @@ public class DataLoader implements CommandLineRunner {
         a6.setRutaImg1("images/perro5.png");
         a6.setRutaImg2("/images/default-example.png");
         a6.setRutaImg3("/images/default-example.png");
+        a6.setEspecie(e3);
         animalRepository.save(a6);
 
         Animal a7 = new Animal();

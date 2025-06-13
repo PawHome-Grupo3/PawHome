@@ -23,9 +23,9 @@ public class GlobalModelAttributes {
     public void agregarCategoriasSoloParaTienda(HttpServletRequest request, Model model) {
         String uri = request.getRequestURI();
         if (uri.startsWith("/tienda")) {
-            List<Categoria> categoriasNav = categoriaService.findAll();
+            List<Categoria> categoriasNav = categoriaService.findByNombreContainingIgnoreCase("tienda");
             List<CategoriaDto> categoriasNavDto = categoriasNav.stream()
-                    .map(CategoriaDto::new) // equivalente a CategoriaDTO::new
+                    .map(categoria -> new CategoriaDto(categoria, true))
                     .toList();
 
             model.addAttribute("categoriasNav", categoriasNav);

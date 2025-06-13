@@ -1,16 +1,21 @@
 <th scope="col" th:fragment="sorting(field, label)">
   <a th:href="@{'/nuestrosAnimales?' + ${keyword!=null && keyword!=''? 'keyword=' + keyword + '&' : ''}
                 + 'page=' + ${currentPage} + '&size=' + ${pageSize}
-                + ${sortField!=null ? '&sort=' + field + ',' + (sortField == field ? reverseSortDirection : sortDirection) : ''}}">
+                + ${sortField!=null ? '&sort=' + field + ',' + (sortField == field ? reverseSortDirection : sortDirection) : ''}}"
+     class="text-success fw-bold d-inline-flex align-items-center gap-1 text-decoration-none">
+
     [[${label}]]
+
+    <span th:if="${sortField == field}"
+          class="text-dark"
+          th:title="${sortDirection == 'asc' ? 'Orden descendente' : 'Orden ascendente'}"
+          th:classappend="${sortDirection == 'asc'
+                      ? (field == 'nombre' || field == 'genero'
+                          ? ' fas fa-sort-alpha-down'
+                          : ' fas fa-sort-numeric-down')
+                      : (field == 'nombre' || field == 'genero'
+                          ? ' fas fa-sort-alpha-up'
+                          : ' fas fa-sort-numeric-up')}">
+    </span>
   </a>
-  <span th:if="${sortField == field}"
-        th:title="${sortDirection == 'asc' ? 'Orden descendente' : 'Orden ascendente'}"
-        th:class="${sortDirection == 'asc'
-                    ? (field == 'nombre' || field == 'genero'
-                        ? 'fas fa-sort-alpha-down'
-                        : 'fas fa-sort-numeric-down')
-                    : (field == 'nombre' || field == 'genero'
-                        ? 'fas fa-sort-alpha-up'
-                        : 'fas fa-sort-numeric-up')}"></span>
 </th>

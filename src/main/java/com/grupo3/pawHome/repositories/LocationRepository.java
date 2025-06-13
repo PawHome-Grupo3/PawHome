@@ -14,7 +14,7 @@ import java.util.List;
 @Repository
 public class LocationRepository {
 
-    private static final String USERNAME = "paulokera"; // Cambia por tu usuario GeoNames
+    private static final String USERNAME = "paulokera";
 
     // Obtiene lista de países desde GeoNames (XML)
     public List<CountryDTO> getCountries() throws Exception {

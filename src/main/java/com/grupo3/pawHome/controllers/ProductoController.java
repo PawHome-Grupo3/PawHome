@@ -1,5 +1,6 @@
 package com.grupo3.pawHome.controllers;
 
+import com.grupo3.pawHome.dtos.CategoriaDto;
 import com.grupo3.pawHome.entities.Categoria;
 import com.grupo3.pawHome.entities.Producto;
 import com.grupo3.pawHome.entities.Tarifa;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Controller
 public class ProductoController {
@@ -28,9 +30,14 @@ public class ProductoController {
 
     @GetMapping("/tienda")
     public String mostrarTienda(Model model) {
-        List<Categoria> categorias = categoriaService.findAll();
+        List<Categoria> categorias = categoriaService.findByNombreContainingIgnoreCase("tienda");
+
+        List<CategoriaDto> categoriasDtos = categorias.stream()
+                .map(categoria -> new CategoriaDto(categoria, true))
+                .toList();
 
         model.addAttribute("categorias", categorias);
+        model.addAttribute("categoriasDtos", categoriasDtos);
         return "tienda";
     }
 

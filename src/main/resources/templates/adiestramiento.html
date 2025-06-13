@@ -336,7 +336,6 @@
 		</div>
 	</div>
 
-
 	<section class="container py-5 mainContainer">
 
 		<!-- Sección: Nuestro adiestramiento -->
@@ -369,7 +368,7 @@
 
 				<!-- CARD 1: Curso cachorros -->
 				<article class="col-6 col-md-4">
-					<div class="card p-3 shadow-sm h-100 cardServicio">
+					<div class="card p-3 shadow-sm h-100 cardServicio" data-tipo="bono" data-precio="200" data-nombre="Educación y preadiestramiento para cachorros">
 						<div class="card_image mb-2">
 							<img th:src="@{images/bonoLargaEstancia.jpg}" alt="Curso Cachorros"
 								 class="imagenCard rounded-3">
@@ -397,7 +396,7 @@
 								<i class="fas fa-info-circle me-1"></i>
 								<span th:utext="#{servicios.masInfoModal}"></span>
 							</button>
-							<button class="btn btn-success btnCard">
+							<button class="btn btn-success btnCard cardBono btnSeleccionar">
 								<span th:utext="#{servicios.botonSeleccionar}"></span>
 							</button>
 						</div>
@@ -406,7 +405,7 @@
 
 				<!-- CARD 2: Curso adultos -->
 				<article class="col-6 col-md-4">
-					<div class="card p-3 shadow-sm h-100 cardServicio">
+					<div class="card p-3 shadow-sm h-100 cardServicio" data-tipo="bono" data-precio="200" data-nombre="Educación y adiestramiento canino (adultos)">
 						<div class="card_image mb-2">
 							<img th:src="@{images/bonoSoloDia.jpg}" alt="Curso Adultos" class="imagenCard rounded-3">
 						</div>
@@ -433,7 +432,7 @@
 								<i class="fas fa-info-circle me-1"></i>
 								<span th:utext="#{servicios.masInfoModal}"></span>
 							</button>
-							<button class="btn btn-success btnCard">
+							<button class="btn btn-success btnCard cardBono btnSeleccionar">
 								<span th:utext="#{servicios.botonSeleccionar}"></span>
 							</button>
 						</div>
@@ -453,7 +452,7 @@
 
 				<!-- CARD 1: A domicilio -->
 				<article class="col-6 col-md-4">
-					<div class="card p-3 shadow-sm h-100 cardServicio">
+					<div class="card p-3 shadow-sm h-100 cardServicio" data-tipo="dias" data-precio="30" data-nombre="Educación y adiestramiento a domicilio">
 						<div class="card_image mb-2">
 							<img th:src="@{images/bonoLargaEstancia.jpg}" alt="Adiestramiento a domicilio"
 								 class="imagenCard rounded-3">
@@ -484,7 +483,7 @@
 								<i class="fas fa-info-circle me-1"></i>
 								<span th:utext="#{servicios.masInfoModal}"></span>
 							</button>
-							<button class="btn btn-success btnCard" id="btnBonoLargaEstancia">
+							<button class="btn btn-success btnCard btnSeleccionar">
 								<span th:utext="#{servicios.botonSeleccionar}"></span>
 							</button>
 						</div>
@@ -493,7 +492,7 @@
 
 				<!-- CARD 2: En el centro -->
 				<article class="col-6 col-md-4">
-					<div class="card p-3 shadow-sm h-100 cardServicio">
+					<div class="card p-3 shadow-sm h-100 cardServicio" data-tipo="dias" data-precio="20" data-nombre="Educación y adiestramiento en el centro">
 						<div class="card_image mb-2">
 							<img th:src="@{images/bonoSoloDia.jpg}" alt="Adiestramiento en el centro"
 								 class="imagenCard rounded-3">
@@ -524,7 +523,7 @@
 								<i class="fas fa-info-circle me-1"></i>
 								<span th:utext="#{servicios.masInfoModal}"></span>
 							</button>
-							<button class="btn btn-success btnCard" id="btnBonoEstanciaSoloDia">
+							<button class="btn btn-success btnCard btnSeleccionar">
 								<span th:utext="#{servicios.botonSeleccionar}"></span>
 							</button>
 						</div>
@@ -561,26 +560,6 @@
 						</div>
 
 						<div class="itemSeleccion">
-							<label for="tipoMascota" class="form-label">Tipo: <span style="color: red">*</span></label>
-							<select id="tipoMascota" class="form-select labelForm" required>
-								<option value="" disabled selected>-Por favor, elige una opción-</option>
-								<option>Perro</option>
-								<option>Gato</option>
-								<option>Otro</option>
-							</select>
-						</div>
-
-						<div class="itemSeleccion">
-							<label for="necesitaMedicacion" class="form-label">Necesita medicación: <span
-									style="color: red">*</span></label>
-							<select id="necesitaMedicacion" class="form-select labelForm" required>
-								<option value="" disabled selected>-Por favor, elige una opción-</option>
-								<option>Sí</option>
-								<option>No</option>
-							</select>
-						</div>
-
-						<div class="itemSeleccion">
 							<label for="fechaEntrada" class="form-label">Fecha de entrada: <span
 									style="color: red">*</span></label>
 							<input type="date" id="fechaEntrada" class="form-control labelForm" required>
@@ -598,22 +577,25 @@
 							<legend class="fw-bold">Datos de contacto</legend>
 							<label for="nombreDueño" class="form-label">Tu nombre: <span
 									style="color: red">*</span></label>
-							<input type="text" id="nombreDueño" class="form-control labelForm"
-								   placeholder="-Por favor introduce tu nombre-" required>
+							<input th:value="${usuario != null} ? ${usuario.getPerfilDatos().getNombre()} : ''"
+								   type="text" id="nombreDueño" class="form-control labelForm"
+								   placeholder="-Por favor introduce tu nombre-" disabled>
 						</div>
 
 						<div class="itemSeleccion">
 							<label for="telefonoDueño" class="form-label">Teléfono: <span
 									style="color: red">*</span></label>
-							<input type="tel" id="telefonoDueño" class="form-control labelForm"
-								   placeholder="-Por favor introduce tu número de teléfono-" required>
+							<input th:value="${usuario != null} ? ${usuario.getPerfilDatos().telefono1} : ''" type="tel"
+								   id="telefonoDueño" class="form-control labelForm"
+								   placeholder="-Por favor introduce tu número de teléfono-" disabled>
 						</div>
 
 						<div class="itemSeleccion">
 							<label for="emailDueño" class="form-label">Correo electrónico: <span
 									style="color: red">*</span></label>
-							<input type="email" id="emailDueño" class="form-control labelForm"
-								   placeholder="-Por favor introduce tu correo electrónico-" required>
+							<input th:value="${usuario != null} ? ${usuario.getEmail()} : ''" type="email"
+								   id="emailDueño" class="form-control labelForm"
+								   placeholder="-Por favor introduce tu correo electrónico-" disabled>
 						</div>
 
 						<div class="itemSeleccion">
@@ -624,6 +606,7 @@
 
 					<div class="itemSeleccion">
 						<label class="form-label fw-bold fs-5">Tarifa seleccionada: </label>
+						<span id="tarifaSeleccionada" class="fw-normal"></span>
 					</div>
 
 					<div class="itemSeleccion">
@@ -635,10 +618,11 @@
 						<label class="form-label">He leído y acepto las condiciones de uso de la web,
 							el aviso legal y la política de privacidad</label>
 					</div>
-
-					<div class="text-center">
-						<button type="submit" class="btn btn-primary btnEnviar">RESERVAR</button>
-					</div>
+				</form>
+				<form id="checkoutAdiestramiento" method="post" th:action="@{/adiestramiento/checkoutAdiestramiento}">
+					<input type="hidden" id="nombreProducto" name="nombreProducto">
+					<input type="hidden" id="cantidadDias" name="cantidadDias">
+					<button type="submit" class="btn btn-primary btnEnviar">RESERVAR</button>
 				</form>
 			</div>
 		</section>
@@ -717,8 +701,227 @@
 		</section>
 	</section>
 
-	<!-- Script para controlar la seleccion de fechas -->
+	<div id="errorDias" class="text-danger mt-1"></div>
 
+	<!-- Script  -->
+	<script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const btns = document.querySelectorAll('.btnSeleccionar');
+            const tarifaSpan = document.getElementById('tarifaSeleccionada');
+            const precioTotal = document.getElementById('precioTotal');
+            const fechaEntrada = document.getElementById('fechaEntrada');
+            const fechaSalida = document.getElementById('fechaSalida');
+            const errorDias = document.getElementById('errorDias');
+
+            let tarifaSeleccionada = null;
+            let esBono = false; // "bono" o "dias"
+
+            // Hoy en formato YYYY-MM-DD
+            const hoy = new Date().toISOString().split('T')[0];
+            fechaEntrada.min = hoy;
+
+            // Suma días a una fecha y devuelve en formato YYYY-MM-DD
+            function sumarDias(fecha, dias) {
+                const nuevaFecha = new Date(fecha);
+                nuevaFecha.setDate(nuevaFecha.getDate() + dias);
+                return nuevaFecha.toISOString().split('T')[0];
+            }
+
+            // Calcula los días entre dos fechas
+            function calcularDias(inicio, fin) {
+                const unDiaMs = 1000 * 60 * 60 * 24;
+                return Math.ceil((fin - inicio) / unDiaMs);
+            }
+
+            // Ajusta el rango de la fecha de salida según la tarifa seleccionada
+            function ajustarFechas() {
+                if (!tarifaSeleccionada || !fechaEntrada.value) {
+                    fechaSalida.min = fechaEntrada.value || hoy;
+                    fechaSalida.max = "";
+                    return;
+                }
+
+                // Si ya hay fecha de entrada, ajusta fecha de salida
+                if (fechaEntrada.value) {
+                    fechaSalida.min = sumarDias(fechaEntrada.value, 3);
+                    fechaSalida.value = ""; // Obliga a elegir una nueva fecha válida
+                } else {
+                    fechaSalida.min = sumarDias(hoy, 3);
+                    fechaSalida.value = "";
+                }
+                fechaSalida.max = ""; // Sin máximo
+            }
+
+            function actualizarPrecio() {
+                errorDias.textContent = '';
+
+                // Si es bono, solo muestra el precio del bono y desactiva fechas
+                if (esBono && tarifaSeleccionada) {
+                    precioTotal.textContent = `PRECIO TOTAL: ${tarifaSeleccionada.precio}€`;
+                    return;
+                }
+
+                // Si es por días
+                if (!tarifaSeleccionada || !fechaEntrada.value || !fechaSalida.value){
+                    precioTotal.textContent = "PRECIO TOTAL: ";
+                    return;
+                }
+
+                const inicio = new Date(fechaEntrada.value);
+                const fin = new Date(fechaSalida.value);
+
+                if (fin <= inicio) {
+                    precioTotal.textContent = "ERROR: La fecha de salida debe ser posterior a la de entrada.";
+                    return;
+                }
+
+                const dias = calcularDias(inicio, fin);
+
+                if (dias < 3) {
+                    precioTotal.textContent = "ERROR: El servicio requiere mínimo 3 días.";
+                    return;
+                }
+
+                const total = dias * tarifaSeleccionada.precio;
+                precioTotal.innerHTML = `PRECIO TOTAL: ${total}€ <small class="text-muted">(${dias} días)</small>`;
+            }
+
+            // Selección de tarifa
+            btns.forEach(btn => {
+                btn.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    const card = btn.closest('.cardServicio');
+                    const isBono = btn.classList.contains('cardBono');
+
+                    // Si ya está seleccionada, desmarcar y resetear
+                    if (card.classList.contains('selected')) {
+                        card.classList.remove('selected');
+                        tarifaSeleccionada = null;
+                        esBono = false;
+                        tarifaSpan.textContent = '';
+                        precioTotal.textContent = "PRECIO TOTAL: ";
+                        errorDias.textContent = "";
+                        fechaEntrada.value = "";
+                        fechaSalida.value = "";
+                        fechaEntrada.disabled = false;
+                        fechaSalida.disabled = false;
+                        ajustarFechas();
+                        return;
+                    }
+
+                    // Deseleccionar todas
+                    document.querySelectorAll('.cardServicio.selected').forEach(c => c.classList.remove('selected'));
+                    card.classList.add('selected');
+
+                    // Si es bono
+					if (isBono) {
+                        console.log("Es bono")
+                        esBono = true;
+                        // Descativamos fechas y limpiamos valores
+                        fechaEntrada.disabled = true;
+                        fechaSalida.disabled = true;
+                        fechaEntrada.value = "";
+                        fechaSalida.value = "";
+                        errorDias.textContent = "";
+
+                        tarifaSeleccionada = {
+                            precio: parseFloat(card.dataset.precio),
+                            nombre: card.dataset.nombre
+						};
+
+                        console.log(tarifaSeleccionada.precio);
+
+                        tarifaSpan.textContent = `${tarifaSeleccionada.nombre}`;
+                        actualizarPrecio();
+                        return;
+                    }
+
+                    // Si es tarifa normal
+					esBono = false;
+                    fechaEntrada.disabled = false;
+                    fechaSalida.disabled = false;
+
+                    // Leer datos de la card
+                    tarifaSeleccionada = {
+                        precio: parseFloat(card.dataset.precio),
+                        nombre: card.dataset.nombre
+                    };
+
+                    tarifaSpan.textContent = tarifaSpan.textContent = `${tarifaSeleccionada.nombre} - ${tarifaSeleccionada.precio}€/día`;
+                    ajustarFechas();
+                    actualizarPrecio();
+                });
+            });
+
+            // Cuando cambia la fecha de entrada, ajusta la de salida y recalcula
+            fechaEntrada.addEventListener('change', function () {
+                if (!esBono) {
+                    ajustarFechas();
+                    actualizarPrecio();
+                }
+            });
+
+            // Cuando cambia la fecha de salida, recalcula
+            fechaSalida.addEventListener('change', function () {
+                if (!esBono) {
+                    actualizarPrecio();
+                }
+            });
+
+            // Inicializa el mínimo de salida al cargar la página
+            if (fechaEntrada.value) {
+                fechaSalida.min = fechaEntrada.value;
+            } else {
+                fechaSalida.min = hoy;
+            }
+
+            document.getElementById('checkoutAdiestramiento').addEventListener('submit', async function(event) {
+                event.preventDefault();
+
+                const form = event.target;
+
+                // Validar selección
+                if (!tarifaSeleccionada) {
+                    alert("Selecciona una tarifa o bono antes de reservar.");
+                    return;
+                }
+
+                // Obtener nombre y cantidad de días
+                const nombreProducto = tarifaSeleccionada.nombre;
+                let cantidadDias = 1;
+                if (!esBono && fechaEntrada.value && fechaSalida.value) {
+                    cantidadDias = calcularDias(new Date(fechaEntrada.value), new Date(fechaSalida.value));
+                }
+
+                // Prepara datos para enviar como JSON
+                const formData = {
+                    nombreProducto: nombreProducto,
+                    cantidadDias: cantidadDias
+                };
+
+                try {
+                    const response = await fetch(form.action, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(formData)
+                    });
+
+                    const data = await response.json();
+
+                    if (data.status === "SUCCESS") {
+                        window.location.href = data.sessionUrl; // Redirige a Stripe
+                    } else {
+                        alert("Error en la reserva: " + (data.message || "Sin mensaje"));
+                    }
+                } catch (error) {
+                    console.error("Error:", error);
+                    alert("Error al procesar la reserva");
+                }
+            });
+        });
+
+	</script>
 </section>
 </body>
 </html>
