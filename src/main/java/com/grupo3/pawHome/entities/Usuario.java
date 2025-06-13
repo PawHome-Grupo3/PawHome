@@ -10,8 +10,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Collection;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -47,6 +49,10 @@ public class Usuario implements UserDetails, Serializable {
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Pago> Pago;
+
+    @ManyToOne
+    @JoinColumn(name = "rol_id", referencedColumnName = "id")
+    private Rol rol;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

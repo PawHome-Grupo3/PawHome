@@ -785,7 +785,6 @@ public class DataLoader implements CommandLineRunner {
         animalRepository.save(a1);
 
 
-
         Animal a2 = new Animal();
         a2.setNombre("Michi");
         a2.setChip("CHIP98765");
@@ -934,5 +933,18 @@ public class DataLoader implements CommandLineRunner {
         ap4.setAnimal(a4);
         ap4.setUsuario(u2);
         apadrinarRepository.save(ap4);
+
+
+        if (rolRepository.findByNombre("ROL_USER").isEmpty()) {
+            Rol rol1 = new Rol();
+            rol1.setNombre("ROL_USER");
+            rolRepository.save(rol1);
+        }
+
+        if (rolRepository.findByNombre("ROL_ADMIN").isEmpty()) {
+            Rol rol2 = new Rol();
+            rol2.setNombre("ROL_ADMIN");
+            rolRepository.save(rol2);
+        }
     }
 }
