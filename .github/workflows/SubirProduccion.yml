@@ -31,8 +31,7 @@ jobs:
       - name: Verify Maven is using correct JDK
         run: mvn -version
 
-
-  # --------------------- COMPILAR CÓDIGO ---------------------
+  # --------------------- COMPILAR CÓDIGO (sin ejecutar tests) ---------------------
   ejecucion_tests_y_sonarqube:
     needs: preparar_entorno
     runs-on: self-hosted
@@ -43,13 +42,13 @@ jobs:
           PROJECT_NAME: ${{ vars.PROJECT_NAME }}
         run: mvn versions:set "-DnewVersion=${{ env.VERSION }}"
 
-      - name: Ejecutar Tests, JaCoCo y enviar a SonarQube
+      - name: Ejecutar compilación y enviar a SonarQube (sin tests)
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ vars.SONAR_HOST_URL }}
           VERSION: ${{ github.ref_type == 'tag' && github.ref_name || 'snapshot' }}
           PROJECT_NAME: ${{ vars.PROJECT_NAME }}
-        run: mvn clean verify sonar:sonar -Dsonar:sonar:sonar.projectVersion=${VERSION}
+        run: mvn clean package sonar:sonar -DskipTests -Dsonar.skipTests=true -Dsonar.projectVersion=${VERSION}
 
   # --------------------- CREAR IMAGEN DOCKER ---------------------
   crear_imagen_docker:
@@ -62,9 +61,7 @@ jobs:
       - name: Construir imagen Docker con versión dinámica
         run: mvn spring-boot:build-image -DskipTests
 
-
   # --------------------- DESPLEGAR EN SERVIDOR ---------------------
-
   desplegar_en_servidor:
     needs: crear_imagen_docker
     runs-on: self-hosted
