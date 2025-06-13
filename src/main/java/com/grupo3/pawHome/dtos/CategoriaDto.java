@@ -12,12 +12,28 @@ public class CategoriaDto implements Serializable {
     private final String nombre;
     private final int id;
 
+    // Constructor normal (procesamiento general: sin espacios, lowercase)
     public CategoriaDto(Categoria categoria) {
         this.id = categoria.getId();
-        this.nombre = procesarNombre(categoria.getNombre());
+        this.nombre = procesarNombreBasico(categoria.getNombre());
     }
 
-    private String procesarNombre(String nombre) {
-        return nombre.replaceAll("\\s+", "").toLowerCase();
+    // Constructor especializado para nombres tipo "tienda-Collar"
+    public CategoriaDto(Categoria categoria, boolean eliminarPrefijoTienda) {
+        this.id = categoria.getId();
+        if (eliminarPrefijoTienda) {
+            this.nombre = procesarNombreTienda(categoria.getNombre());
+        } else {
+            this.nombre = procesarNombreBasico(categoria.getNombre());
+        }
+    }
+
+    private String procesarNombreBasico(String nombre) {
+        return nombre == null ? "" : nombre.replaceAll("\\s+", "").toLowerCase();
+    }
+
+    private String procesarNombreTienda(String nombre) {
+        if (nombre == null) return "";
+        return nombre.replaceFirst("(?i)^tienda-?", "").trim();
     }
 }
