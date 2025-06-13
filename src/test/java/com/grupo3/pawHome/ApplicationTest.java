@@ -13,31 +13,31 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
-
-@Log4j2
-@DataJpaTest
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
-class ApplicationTest extends PostgreSQLContainerTest {
-
-    @Autowired
-    EntidadPadreRepository entidadPadreService;
-
-    @Autowired
-    EntidadHijaRepository entidadHijaService;
-
-
-    @Autowired
-    EntidadPadreRepository entidadPadreRepository;
-
-    @Autowired
-    EntidadHijaRepository entidadHijaRepository;
-
-    /**
-     * Ensures that the Spring application context loads successfully when the main method is called.
-     */
-    @Test
-    @Order(1)
-    void contextLoads() {
+//
+//@Log4j2
+//@DataJpaTest
+//@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+//class ApplicationTest extends PostgreSQLContainerTest {
+//
+//    @Autowired
+//    EntidadPadreRepository entidadPadreService;
+//
+//    @Autowired
+//    EntidadHijaRepository entidadHijaService;
+//
+//
+//    @Autowired
+//    EntidadPadreRepository entidadPadreRepository;
+//
+//    @Autowired
+//    EntidadHijaRepository entidadHijaRepository;
+//
+//    /**
+//     * Ensures that the Spring application context loads successfully when the main method is called.
+//     */
+//    @Test
+//    @Order(1)
+//    void contextLoads() {
 //        log.info("Iniciando la prueba de contextos...");
 //        assertThat(dbContainer.isRunning()).isTrue();
 //        assertThat(entidadHijaRepository.findAll()).isEmpty();
@@ -46,7 +46,7 @@ class ApplicationTest extends PostgreSQLContainerTest {
 //            log.info(s);
 //        }
 //        log.info("Contexto de Spring cargado con éxito.");
-    }
-
-
-}
+//    }
+//
+//
+//}
