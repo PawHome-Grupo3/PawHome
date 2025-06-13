@@ -261,6 +261,7 @@
 
 								<a href="#"
 								   th:data-id="${animal.id}"
+								   th:if="${animal.adoptado == false}"
 								   data-bs-toggle="modal"
 								   data-bs-target="#modalApadrinar"
 								   th:class="'btn card_btn ' + (${animal.caracterSocial} == true? 'botonesCardAnimal' : 'botonesCardAnimalApadrina')">
