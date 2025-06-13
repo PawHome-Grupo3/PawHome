@@ -103,7 +103,7 @@ public class ProductCheckoutController {
 
         List<LineaFactura> lineas = new ArrayList<>();
 
-        if(descripcion.equals("Compra en Tienda") || descripcion.equals("ServicioPeluqueria")){
+        if(descripcion.equals("Compra en Tienda")){
 
             List<ItemCarritoDTO> carrito = SessionUtils.obtenerCarritoSeguro(session);
 
@@ -165,6 +165,28 @@ public class ProductCheckoutController {
 
             factura.setPrecio(precioTotal);
             factura.setLineaFacturas(lineas);
+        }
+
+        if(descripcion.equals("ServicioPeluqueria")){
+            List<ItemCarritoDTO> carrito = SessionUtils.obtenerCarritoSeguro(session);
+
+            if (carrito.isEmpty()) { return new RedirectView("/cancel"); }
+
+            double total = carrito.stream()
+                    .mapToDouble(item -> item.getPrecioUnitario() * item.getCantidad())
+                    .sum();
+            factura.setPrecio(total);
+
+            lineas = carrito.stream().map(item -> {
+                LineaFactura linea = new LineaFactura();
+                linea.setNombre(item.getProducto().getNombre());
+                linea.setCantidad(item.getCantidad());
+                linea.setFactura(factura);
+                return linea;
+            }).toList();
+
+            factura.setLineaFacturas(lineas);
+            session.removeAttribute("carrito");
         }
 
         // --- Stripe: obtener PaymentMethod y su fingerprint ---
