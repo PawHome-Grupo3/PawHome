@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layoutAdmin.html}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Editar tarifa</title>
+</head>
+<body>
+
+<section layout:fragment="content">
+
+    <div class="container">
+        <div class="card shadow-lg">
+            <div class="card-header bg-success text-white">
+                <h4 class="mb-0">Editar tarifa</h4>
+            </div>
+            <div class="card-body">
+                <form th:action="@{/admin/tarifas/actualizar/{id}(id=${tarifa.id})}" th:object="${tarifa}" method="post">
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <label for="nombre" class="form-label">Nombre</label>
+                            <input type="text" th:field="*{nombre}" class="form-control" id="nombre" required maxlength="50">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="descripcion" class="form-label">Descripción</label>
+                            <input type="text" th:field="*{descripcion}" class="form-control" id="descripcion" maxlength="255">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="cantidad" class="form-label">Cantidad</label>
+                            <input type="number" th:field="*{cantidad}" class="form-control" id="cantidad" min="0" required>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <label for="precioUnitario" class="form-label">Precio unitario (€)</label>
+                            <input type="number" th:field="*{precioUnitario}" class="form-control" id="precioUnitario" step="0.01" min="0" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="fechaDesde" class="form-label">Fecha desde</label>
+                            <input type="date" th:field="*{fechaDesde}" class="form-control" id="fechaDesde" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="fechaHasta" class="form-label">Fecha hasta</label>
+                            <input type="date" th:field="*{fechaHasta}" class="form-control" id="fechaHasta">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="producto" class="form-label">Producto</label>
+                            <select th:field="*{producto}" class="form-select" id="producto" required>
+                                <option th:each="producto : ${productos}"
+                                        th:value="${producto.id}"
+                                        th:text="${producto.nombre}">
+                                </option>
+                            </select>
+                        </div>
+<!--                        <div class="col-md-6">-->
+<!--                            <label for="lineaFactura" class="form-label">Línea factura</label>-->
+<!--                            <select th:field="*{lineaFactura}" class="form-select" id="lineaFactura">-->
+<!--                                <option th:each="linea : ${lineasFactura}"-->
+<!--                                        th:value="${linea.id}"-->
+<!--                                        th:text="${linea.descripcion}">-->
+<!--                                </option>-->
+<!--                            </select>-->
+<!--                        </div>-->
+                    </div>
+
+                    <div class="d-flex justify-content-end">
+                        <input type="hidden" th:field="*{id}" />
+                        <button type="submit" class="btn btn-success me-2">Guardar cambios</button>
+                        <a th:href="@{/admin/tarifas}" class="btn btn-secondary">Cancelar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

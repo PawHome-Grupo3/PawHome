@@ -27,7 +27,7 @@
                 <th>Origen</th>
                 <th>Estado adopción</th>
                 <th>Fecha llegada</th>
-                <th>Pasearlo</th>
+                <th>¿Se puede pasear?</th>
                 <th>Acciones</th>
             </tr>
             </thead>
@@ -37,7 +37,7 @@
                 <td th:text="${animal.nombre}"></td>
                 <td th:text="${animal.chip}"></td>
                 <td th:text="${animal.peso}"></td>
-                <td th:text="${animal.edad}"></td>
+                <td th:text="${animal.fechaNacimiento}"></td>
                 <td th:if="${animal.caracterSocial}"><span>Amigable</span></td>
                 <td th:unless="${animal.caracterSocial}"><span>No amigable</span></td>
                 <td th:text="${animal.descripcion}"></td>

@@ -213,95 +213,100 @@ public class DataLoader implements CommandLineRunner {
         tarifaRepository.save(bonoSoloDia);
 
         // Productos y tarifas de Peluqueria
-        Categoria c5 = new Categoria();
-        c5.setNombre("PeluqueriaBaño");
-        categoriaRepository.save(c5);
+        Categoria cPeluqueria = new Categoria();
+        cPeluqueria.setNombre("Peluqueria");
+        categoriaRepository.save(cPeluqueria);
 
-        Categoria c6 = new Categoria();
-        c6.setNombre("PeluqueriaCorte");
-        categoriaRepository.save(c6);
+        Producto pBañoBasico = new Producto();
+        pBañoBasico.setNombre("BAÑO BÁSICO");
+        pBañoBasico.setCategoria(cPeluqueria);
+        productoRepository.save(pBañoBasico);
 
-        Categoria c7 = new Categoria();
-        c7.setNombre("PeluqueriaBañoCorte");
-        categoriaRepository.save(c7);
+        Tarifa tBañoBasico = new Tarifa();
+        tBañoBasico.setProducto(pBañoBasico);
+        tBañoBasico.setCantidad(1);
+        tBañoBasico.setPrecioUnitario(10.00);
+        tBañoBasico.setFechaDesde(LocalDate.now());
+        tBañoBasico.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tBañoBasico);
 
-        Producto p11 = new Producto();
-        p11.setNombre("BAÑO BÁSICO");
-        p11.setCategoria(c5);
-        productoRepository.save(p11);
+        Producto pBañoStripping = new Producto();
+        pBañoStripping.setNombre("BAÑO Y STRIPPING");
+        pBañoStripping.setCategoria(cPeluqueria);
+        productoRepository.save(pBañoStripping);
 
-        Tarifa bañoBasico = new Tarifa();
-        bañoBasico.setProducto(p11);
-        bañoBasico.setCantidad(1);
-        bañoBasico.setPrecioUnitario(10.00);
-        bañoBasico.setFechaDesde(LocalDate.now());
-        bañoBasico.setFechaHasta(LocalDate.of(2026, 1, 1));
-        tarifaRepository.save(bañoBasico);
+        Tarifa tBañoStripping = new Tarifa();
+        tBañoStripping.setProducto(pBañoStripping);
+        tBañoStripping.setCantidad(1);
+        tBañoStripping.setPrecioUnitario(15.00);
+        tBañoStripping.setFechaDesde(LocalDate.now());
+        tBañoStripping.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tBañoStripping);
 
-        Producto p12 = new Producto();
-        p12.setNombre("BAÑO + STRIPPING");
-        p12.setCategoria(c5);
-        productoRepository.save(p12);
+        Producto pSoloCorte = new Producto();
+        pSoloCorte.setNombre("SOLO CORTE");
+        pSoloCorte.setCategoria(cPeluqueria);
+        productoRepository.save(pSoloCorte);
 
-        Tarifa bañoStripping = new Tarifa();
-        bañoStripping.setProducto(p12);
-        bañoStripping.setCantidad(1);
-        bañoStripping.setPrecioUnitario(15.00);
-        bañoStripping.setFechaDesde(LocalDate.now());
-        bañoStripping.setFechaHasta(LocalDate.of(2026, 1, 1));
-        tarifaRepository.save(bañoStripping);
+        Tarifa tSoloCorte = new Tarifa();
+        tSoloCorte.setProducto(pSoloCorte);
+        tSoloCorte.setCantidad(1);
+        tSoloCorte.setPrecioUnitario(15.00);
+        tSoloCorte.setFechaDesde(LocalDate.now());
+        tSoloCorte.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tSoloCorte);
 
-        Producto p13 = new Producto();
-        p13.setNombre("SOLO CORTE");
-        p13.setCategoria(c6);
-        productoRepository.save(p13);
+        Producto pBañoCorte = new Producto();
+        pBañoCorte.setNombre("BAÑO + CORTE");
+        pBañoCorte.setCategoria(cPeluqueria);
+        productoRepository.save(pBañoCorte);
 
-        Tarifa soloCorte = new Tarifa();
-        soloCorte.setProducto(p13);
-        soloCorte.setCantidad(1);
-        soloCorte.setPrecioUnitario(15.00);
-        soloCorte.setFechaDesde(LocalDate.now());
-        soloCorte.setFechaHasta(LocalDate.of(2026, 1, 1));
-        tarifaRepository.save(soloCorte);
+        Tarifa tBañoCorte = new Tarifa();
+        tBañoCorte.setProducto(pBañoCorte);
+        tBañoCorte.setCantidad(1);
+        tBañoCorte.setPrecioUnitario(20.00);
+        tBañoCorte.setFechaDesde(LocalDate.now());
+        tBañoCorte.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tBañoCorte);
 
-        Producto p14 = new Producto();
-        p14.setNombre("BAÑO + CORTE");
-        p14.setCategoria(c7);
-        productoRepository.save(p14);
+        Producto pCompleto = new Producto();
+        pCompleto.setNombre("COMPLETO");
+        pCompleto.setCategoria(cPeluqueria);
+        productoRepository.save(pCompleto);
 
-        Tarifa bañoCorte = new Tarifa();
-        bañoCorte.setProducto(p14);
-        bañoCorte.setCantidad(1);
-        bañoCorte.setPrecioUnitario(20.00);
-        bañoCorte.setFechaDesde(LocalDate.now());
-        bañoCorte.setFechaHasta(LocalDate.of(2026, 1, 1));
-        tarifaRepository.save(bañoCorte);
+        Tarifa tCompleto = new Tarifa();
+        tCompleto.setProducto(pCompleto);
+        tCompleto.setCantidad(1);
+        tCompleto.setPrecioUnitario(25.00);
+        tCompleto.setFechaDesde(LocalDate.now());
+        tCompleto.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tCompleto);
 
-        Producto p15 = new Producto();
-        p15.setNombre("COMPLETO");
-        p15.setCategoria(c7);
-        productoRepository.save(p15);
+        Producto pBañoAntiparasito = new Producto();
+        pBañoAntiparasito.setNombre("Baño antiparásito");
+        pBañoAntiparasito.setCategoria(cPeluqueria);
+        productoRepository.save(pBañoAntiparasito);
 
-        Tarifa completo = new Tarifa();
-        completo.setProducto(p15);
-        completo.setCantidad(1);
-        completo.setPrecioUnitario(25.00);
-        completo.setFechaDesde(LocalDate.now());
-        completo.setFechaHasta(LocalDate.of(2026, 1, 1));
-        tarifaRepository.save(completo);
+        Tarifa tBañoAntiparasito = new Tarifa();
+        tBañoAntiparasito.setProducto(pBañoAntiparasito);
+        tBañoAntiparasito.setCantidad(1);
+        tBañoAntiparasito.setPrecioUnitario(10.00);
+        tBañoAntiparasito.setFechaDesde(LocalDate.now());
+        tBañoAntiparasito.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tBañoAntiparasito);
 
-        Producto p16 = new Producto();
-        p16.setNombre("Por nudos");
-        p16.setCategoria(c6);
-        productoRepository.save(p16);
+        Producto pJuguete = new Producto();
+        pJuguete.setNombre("Juguete < 5kg");
+        pJuguete.setCategoria(cPeluqueria);
+        productoRepository.save(pJuguete);
 
-        Tarifa porNudos = new Tarifa();
-        porNudos.setProducto(p16);
-        porNudos.setCantidad(1);
-        porNudos.setPrecioUnitario(25.00);
-        porNudos.setFechaDesde(LocalDate.now());
-        porNudos.setFechaHasta(LocalDate.of(2026, 1, 1));
-        tarifaRepository.save(porNudos);
+        Tarifa tJuguete = new Tarifa();
+        tJuguete.setProducto(pJuguete);
+        tJuguete.setCantidad(1);
+        tJuguete.setPrecioUnitario(0.00);
+        tJuguete.setFechaDesde(LocalDate.now());
+        tJuguete.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tJuguete);
 
         // Fin productos peluqueria
         // Productos Adiestramiento
@@ -362,6 +367,251 @@ public class DataLoader implements CommandLineRunner {
         tarifaRepository.save(tAdiestramientoCentro);
 
         // Fin productos Adiestramiento
+        // Productos Veterinario
+        Categoria cVeterinario = new Categoria();
+        cVeterinario.setNombre("Veterinario");
+        categoriaRepository.save(cVeterinario);
+        // --- PRODUCTOS Y TARIFAS ---
+
+        // 1. Consulta Veterinaria
+        Producto pConsultaVeterinaria = new Producto();
+        pConsultaVeterinaria.setNombre("Consulta Veterinaria: el primer paso hacia la solución");
+        pConsultaVeterinaria.setCategoria(cVeterinario);
+        productoRepository.save(pConsultaVeterinaria);
+
+        Tarifa tConsultaVeterinaria = new Tarifa();
+        tConsultaVeterinaria.setProducto(pConsultaVeterinaria);
+        tConsultaVeterinaria.setCantidad(1);
+        tConsultaVeterinaria.setPrecioUnitario(25.00);
+        tConsultaVeterinaria.setFechaDesde(LocalDate.now());
+        tConsultaVeterinaria.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tConsultaVeterinaria);
+
+        // 2. Chequeo Preventivo
+        Producto pChequeoPreventivo = new Producto();
+        pChequeoPreventivo.setNombre("Chequeo Preventivo: mejor prevenir que curar");
+        pChequeoPreventivo.setCategoria(cVeterinario);
+        productoRepository.save(pChequeoPreventivo);
+
+        Tarifa tChequeoPreventivo = new Tarifa();
+        tChequeoPreventivo.setProducto(pChequeoPreventivo);
+        tChequeoPreventivo.setCantidad(1);
+        tChequeoPreventivo.setPrecioUnitario(35.00);
+        tChequeoPreventivo.setFechaDesde(LocalDate.now());
+        tChequeoPreventivo.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tChequeoPreventivo);
+
+        // 3. Vacunación
+        Producto pVacunacion = new Producto();
+        pVacunacion.setNombre("Vacunación: su escudo contra enfermedades");
+        pVacunacion.setCategoria(cVeterinario);
+        productoRepository.save(pVacunacion);
+
+        Tarifa tVacunacion = new Tarifa();
+        tVacunacion.setProducto(pVacunacion);
+        tVacunacion.setCantidad(1);
+        tVacunacion.setPrecioUnitario(30.00);
+        tVacunacion.setFechaDesde(LocalDate.now());
+        tVacunacion.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tVacunacion);
+
+        // 4. Desparasitación
+        Producto pDesparasitacion = new Producto();
+        pDesparasitacion.setNombre("Desparasitación: libre de bichitos molestos");
+        pDesparasitacion.setCategoria(cVeterinario);
+        productoRepository.save(pDesparasitacion);
+
+        Tarifa tDesparasitacion = new Tarifa();
+        tDesparasitacion.setProducto(pDesparasitacion);
+        tDesparasitacion.setCantidad(1);
+        tDesparasitacion.setPrecioUnitario(20.00);
+        tDesparasitacion.setFechaDesde(LocalDate.now());
+        tDesparasitacion.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tDesparasitacion);
+
+        // 5. Analítica y Test
+        Producto pAnalitica = new Producto();
+        pAnalitica.setNombre("Analítica y Test: saber es poder (y salud)");
+        pAnalitica.setCategoria(cVeterinario);
+        productoRepository.save(pAnalitica);
+
+        Tarifa tAnalitica = new Tarifa();
+        tAnalitica.setProducto(pAnalitica);
+        tAnalitica.setCantidad(1);
+        tAnalitica.setPrecioUnitario(45.00);
+        tAnalitica.setFechaDesde(LocalDate.now());
+        tAnalitica.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tAnalitica);
+
+        // 6. Traumatología
+        Producto pTraumatologia = new Producto();
+        pTraumatologia.setNombre("Traumatología: cuidados para huesos y articulaciones");
+        pTraumatologia.setCategoria(cVeterinario);
+        productoRepository.save(pTraumatologia);
+
+        Tarifa tTraumatologia = new Tarifa();
+        tTraumatologia.setProducto(pTraumatologia);
+        tTraumatologia.setCantidad(1);
+        tTraumatologia.setPrecioUnitario(50.00);
+        tTraumatologia.setFechaDesde(LocalDate.now());
+        tTraumatologia.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tTraumatologia);
+
+        // 7. Oftalmología
+        Producto pOftalmologia = new Producto();
+        pOftalmologia.setNombre("Oftalmología: ver bien es vivir mejor");
+        pOftalmologia.setCategoria(cVeterinario);
+        productoRepository.save(pOftalmologia);
+
+        Tarifa tOftalmologia = new Tarifa();
+        tOftalmologia.setProducto(pOftalmologia);
+        tOftalmologia.setCantidad(1);
+        tOftalmologia.setPrecioUnitario(50.00);
+        tOftalmologia.setFechaDesde(LocalDate.now());
+        tOftalmologia.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tOftalmologia);
+
+        // 8. Radiografía
+        Producto pRadiografia = new Producto();
+        pRadiografia.setNombre("Radiografía: imágenes que cuentan la verdad");
+        pRadiografia.setCategoria(cVeterinario);
+        productoRepository.save(pRadiografia);
+
+        Tarifa tRadiografia = new Tarifa();
+        tRadiografia.setProducto(pRadiografia);
+        tRadiografia.setCantidad(1);
+        tRadiografia.setPrecioUnitario(40.00);
+        tRadiografia.setFechaDesde(LocalDate.now());
+        tRadiografia.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tRadiografia);
+
+        // 9. Ecografía
+        Producto pEcografia = new Producto();
+        pEcografia.setNombre("Ecografía: exploración con alta precisión");
+        pEcografia.setCategoria(cVeterinario);
+        productoRepository.save(pEcografia);
+
+        Tarifa tEcografia = new Tarifa();
+        tEcografia.setProducto(pEcografia);
+        tEcografia.setCantidad(1);
+        tEcografia.setPrecioUnitario(45.00);
+        tEcografia.setFechaDesde(LocalDate.now());
+        tEcografia.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tEcografia);
+
+        // 10. Cirugía veterinaria
+        Producto pCirugia = new Producto();
+        pCirugia.setNombre("Cirugía veterinaria: en manos expertas");
+        pCirugia.setCategoria(cVeterinario);
+        productoRepository.save(pCirugia);
+
+        Tarifa tCirugia = new Tarifa();
+        tCirugia.setProducto(pCirugia);
+        tCirugia.setCantidad(1);
+        tCirugia.setPrecioUnitario(100.00);
+        tCirugia.setFechaDesde(LocalDate.now());
+        tCirugia.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tCirugia);
+
+        // 11. Limpieza bucodental
+        Producto pLimpiezaBucodental = new Producto();
+        pLimpiezaBucodental.setNombre("Limpieza bucodental: sonrisa sana, vida larga");
+        pLimpiezaBucodental.setCategoria(cVeterinario);
+        productoRepository.save(pLimpiezaBucodental);
+
+        Tarifa tLimpiezaBucodental = new Tarifa();
+        tLimpiezaBucodental.setProducto(pLimpiezaBucodental);
+        tLimpiezaBucodental.setCantidad(1);
+        tLimpiezaBucodental.setPrecioUnitario(60.00);
+        tLimpiezaBucodental.setFechaDesde(LocalDate.now());
+        tLimpiezaBucodental.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tLimpiezaBucodental);
+
+        // 12. Hospitalización
+        Producto pHospitalizacion = new Producto();
+        pHospitalizacion.setNombre("Hospitalización: atención las 24 horas");
+        pHospitalizacion.setCategoria(cVeterinario);
+        productoRepository.save(pHospitalizacion);
+
+        Tarifa tHospitalizacion = new Tarifa();
+        tHospitalizacion.setProducto(pHospitalizacion);
+        tHospitalizacion.setCantidad(1);
+        tHospitalizacion.setPrecioUnitario(45.00);
+        tHospitalizacion.setFechaDesde(LocalDate.now());
+        tHospitalizacion.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tHospitalizacion);
+
+        // 13. Visita a domicilio
+        Producto pVisitaDomicilio = new Producto();
+        pVisitaDomicilio.setNombre("Visita a domicilio: el veterinario va a ti");
+        pVisitaDomicilio.setCategoria(cVeterinario);
+        productoRepository.save(pVisitaDomicilio);
+
+        Tarifa tVisitaDomicilio = new Tarifa();
+        tVisitaDomicilio.setProducto(pVisitaDomicilio);
+        tVisitaDomicilio.setCantidad(1);
+        tVisitaDomicilio.setPrecioUnitario(30.00);
+        tVisitaDomicilio.setFechaDesde(LocalDate.now());
+        tVisitaDomicilio.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tVisitaDomicilio);
+
+        // 14. Control de Leishmania
+        Producto pLeishmania = new Producto();
+        pLeishmania.setNombre("Control de Leishmania: prevención todo el año");
+        pLeishmania.setCategoria(cVeterinario);
+        productoRepository.save(pLeishmania);
+
+        Tarifa tLeishmania = new Tarifa();
+        tLeishmania.setProducto(pLeishmania);
+        tLeishmania.setCantidad(1);
+        tLeishmania.setPrecioUnitario(35.00);
+        tLeishmania.setFechaDesde(LocalDate.now());
+        tLeishmania.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tLeishmania);
+
+        // 15. Control de obesidad
+        Producto pObesidad = new Producto();
+        pObesidad.setNombre("Control de obesidad: cuerpo sano, vida feliz");
+        pObesidad.setCategoria(cVeterinario);
+        productoRepository.save(pObesidad);
+
+        Tarifa tObesidad = new Tarifa();
+        tObesidad.setProducto(pObesidad);
+        tObesidad.setCantidad(1);
+        tObesidad.setPrecioUnitario(30.00);
+        tObesidad.setFechaDesde(LocalDate.now());
+        tObesidad.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tObesidad);
+
+        // 16. Plan de salud para perros
+        Producto pPlanPerros = new Producto();
+        pPlanPerros.setNombre("Plan de salud para perros: cuídalo todo el año");
+        pPlanPerros.setCategoria(cVeterinario);
+        productoRepository.save(pPlanPerros);
+
+        Tarifa tPlanPerros = new Tarifa();
+        tPlanPerros.setProducto(pPlanPerros);
+        tPlanPerros.setCantidad(1);
+        tPlanPerros.setPrecioUnitario(150.00);
+        tPlanPerros.setFechaDesde(LocalDate.now());
+        tPlanPerros.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tPlanPerros);
+
+        // 17. Plan de salud para gatos
+        Producto pPlanGatos = new Producto();
+        pPlanGatos.setNombre("Plan de salud para gatos: bienestar sin estrés");
+        pPlanGatos.setCategoria(cVeterinario);
+        productoRepository.save(pPlanGatos);
+
+        Tarifa tPlanGatos = new Tarifa();
+        tPlanGatos.setProducto(pPlanGatos);
+        tPlanGatos.setCantidad(1);
+        tPlanGatos.setPrecioUnitario(140.00);
+        tPlanGatos.setFechaDesde(LocalDate.now());
+        tPlanGatos.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tPlanGatos);
+
+        // Fin productos Veterinario
 
         Talla t1 = new Talla();
         t1.setStock(5);

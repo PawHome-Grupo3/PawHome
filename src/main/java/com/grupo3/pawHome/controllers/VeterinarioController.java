@@ -17,37 +17,39 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 import java.util.Optional;
 
 @Slf4j
 @Controller
-public class GuarderiaController {
+public class VeterinarioController {
     private final UsuarioService usuarioService;
     private final ProductoService productoService;
     private final StripeService stripeService;
     private final SecurityUtil securityUtil;
 
-    public GuarderiaController(UsuarioService usuarioService, ProductoService productoService, StripeService stripeService, SecurityUtil securityUtil) {
+    public VeterinarioController(UsuarioService usuarioService, ProductoService productoService, StripeService stripeService, SecurityUtil securityUtil) {
         this.usuarioService = usuarioService;
         this.productoService = productoService;
         this.stripeService = stripeService;
         this.securityUtil = securityUtil;
     }
 
-    // Metodo para mostrar la pagina de la guarderia
-    @GetMapping("/guarderia")
-    public String mostrarGuarderia(@AuthenticationPrincipal Usuario usuario, Model model) {
+    // Metodo para mostrar la pagina de veterinario
+    @GetMapping("/veterinario")
+    public String mostrarVeterinario(@AuthenticationPrincipal Usuario usuario, Model model) {
         model.addAttribute("usuario", usuario);
-        return "guarderia";
+        return "veterinario";
     }
 
-    @PostMapping("/guarderia/checkoutGuarderia")
-    public ResponseEntity<StripeResponse> checkoutDesdeGuarderia(
+    @PostMapping("/veterinario/checkoutVeterinario")
+    public ResponseEntity<StripeResponse> checkoutDesdeVeterinario(
             @AuthenticationPrincipal Usuario usuario,
-            @RequestBody GuarderiaCheckoutRequest request, // Nuevo DTO
+            @RequestBody VeterinarioCheckoutRequest request, // Nuevo DTO
             HttpSession session) throws StripeException {
 
         if (usuario == null) {
@@ -77,7 +79,7 @@ public class GuarderiaController {
                         request.cantidadDias(),
                         producto.getTarifas().getFirst().getPrecioUnitario() // Obtener última tarifa
 
-        );
+                );
 
         // Proceso de Stripe (igual que en tienda)
         ProductRequest productRequest = new ProductRequest((long)(items.getPrecioUnitario()*100), (long) items.getCantidad(), items.getProducto().getNombre(), "eur");
@@ -94,9 +96,8 @@ public class GuarderiaController {
     }
 
     // DTO para la request
-    public record GuarderiaCheckoutRequest(
+    public record VeterinarioCheckoutRequest(
             String nombreProducto,
             int cantidadDias
     ) {}
-
 }

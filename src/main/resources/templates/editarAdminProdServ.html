@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layoutAdmin.html}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Editar productos y servicios</title>
+</head>
+<body>
+
+<section layout:fragment="content">
+
+    <div class="container">
+        <div class="card shadow-lg">
+            <div class="card-header bg-success text-white">
+                <h4 class="mb-0">Editar productos y servicios</h4>
+            </div>
+            <div class="card-body">
+                <form th:action="@{/admin/productos/actualizar/{id}(id=${producto.id})}" th:object="${producto}"
+                      method="post" enctype="multipart/form-data">
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="nombre" class="form-label">Nombre</label>
+                            <input type="text" th:field="*{nombre}" class="form-control" id="nombre" maxlength="100"
+                                   required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="categoria" class="form-label">Categoría</label>
+                            <select th:field="*{categoria}" class="form-select" id="categoria">
+                                <option th:each="cat : ${categorias}"
+                                        th:value="${cat.id}"
+                                        th:text="${cat.nombre}">
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="descripcion" class="form-label">Descripción</label>
+                        <textarea th:field="*{descripcion}" class="form-control" id="descripcion" maxlength="500"
+                                  rows="4" required></textarea>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <label for="imagen1" class="form-label">Imagen 1</label>
+                            <input type="file" name="imagen1" class="form-control" id="imagen1" accept="image/*">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="imagen2" class="form-label">Imagen 2</label>
+                            <input type="file" name="imagen2" class="form-control" id="imagen2" accept="image/*">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="imagen3" class="form-label">Imagen 3</label>
+                            <input type="file" name="imagen3" class="form-control" id="imagen3" accept="image/*">
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-end">
+                        <input type="hidden" th:field="*{id}"/>
+                        <button type="submit" class="btn btn-success me-2">Guardar cambios</button>
+                        <a th:href="@{/admin/prodserv}" class="btn btn-secondary">Cancelar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>
