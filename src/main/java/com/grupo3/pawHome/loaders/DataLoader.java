@@ -136,8 +136,8 @@ public class DataLoader implements CommandLineRunner {
         productoRepository.save(p4);
 
         Producto p5 = new Producto();
-        p5.setNombre("Taza todo es mejor");
-        p5.setDescripcion("Dale a tu peludo amigo el mejor look con nuestro collar para perro, diseñado para brindar seguridad, confort y un toque de estilo único.");
+        p5.setNombre("Taza Perro");
+        p5.setDescripcion("Incluye un cierre de seguridad reforzado y un aro metálico para enganchar la correa de forma rápida y segura. Ideal para perros de todos los tamaños, disponible en varios colores para combinar con su personalidad.");
         p5.setRutaImagen1("/images/taza-prueba.jpg");
         p5.setCategoria(c3);
         productoRepository.save(p5);
