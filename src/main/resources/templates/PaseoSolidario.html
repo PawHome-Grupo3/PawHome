@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout.html}">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" th:href="@{/css/Paseosolidario.css}"/>
+    <title th:text="#{ps.titulo}">Paseo Solidario</title>
+</head>
+
+<body>
+<section layout:fragment="content">
+    <div class="containerImagen">
+        <div class="cuadro-transparente">
+            <h1 class="textop"><i th:text="#{ps.titulo}">PASEO SOLIDARIO</i></h1>
+            <br>
+            <ol>
+                <li>
+                    <span th:text="#{ps.paso1}">Accede al</span>
+                    <a th:href="@{/colabora/paseosolidario/formularioPS}" th:text="#{ps.formulario}">formulario</a>.
+                </li>
+                <li>
+                    <span th:text="#{ps.paso2}">Elige a uno de nuestros</span>
+                    <a th:href="@{/nuestrosAnimales}" th:text="#{ps.animales}">animales paseables</a>.
+                </li>
+                <li th:text="#{ps.paso3}">
+                    Ingresa la hora de salida y de llegada y haz feliz a uno o varios de nuestros peludos paseándolos.
+                </li>
+            </ol>
+        </div>
+        <h2 class="agradecimiento" th:text="#{ps.agradecimiento}">
+            "En nuestra protectora, a veces es difícil sacar a todos los perros a pasear debido a la cantidad de animales que cuidamos. Tu ayuda es vital para que cada uno de ellos reciba atención y amor, sin que tengan que pasar todo el día encerrados".
+        </h2>
+        <h3 class="firma" th:text="#{ps.firma}">Att:PawHome</h3>
+    </div>
+</section>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout.html}">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" th:href="@{/css/FinalFeliz.css}"/>
+    <title th:text="#{finalfeliz.titulo}">Final feliz</title>
+</head>
+
+<body>
+<section layout:fragment="content">
+
+    <header>
+        <h1 th:text="#{finalfeliz.titulo}">Finales Felices en PawHome</h1>
+        <h2 th:text="#{finalfeliz.subtitulo}">Estas son algunas de nuestras historias que os compartimos para enseñaros que los finales felices existen.</h2>
+    </header>
+
+    <section class="galeria">
+        <div class="historia">
+            <img th:src="@{/images/finalfelizLuna.jpg}" alt="Perro feliz con su nueva familia"/>
+            <p>
+                <strong>Luna</strong>
+                <span th:text="#{finalfeliz.luna}">encontró una familia que nunca la abandonará.</span>
+            </p>
+        </div>
+        <div class="historia">
+            <img th:src="@{/images/finalfelizMilo.jpg}" alt="Gato feliz en su nuevo hogar"/>
+            <p>
+                <strong>Milo</strong>
+                <span th:text="#{finalfeliz.milo}">ahora duerme cada vez que puede abrazado a su humana favorita.</span>
+            </p>
+        </div>
+        <div class="historia">
+            <img th:src="@{/images/finalfelizRocky.jpg}" alt="Perro jugando con hermanos"/>
+            <p>
+                <strong>Rocky</strong>
+                <span th:text="#{finalfeliz.rocky}">juega en el jardín cada día con sus nuevos hermanos peludos.</span>
+            </p>
+        </div>
+        <div class="historia">
+            <img th:src="@{/images/finalfelizSyL.jpg}" alt="Gato y perro juntos en familia"/>
+            <p>
+                <strong>Stitch y Lila</strong>
+                <span th:text="#{finalfeliz.syl}">se llevaban tan bien en la protectora, que la familia decidió no separarlos.</span>
+            </p>
+        </div>
+        <div class="historia">
+            <img th:src="@{/images/finalfelizPipa.jpg}" alt="Gato con bebé"/>
+            <p>
+                <strong>Pipa</strong>
+                <span th:text="#{finalfeliz.pipa}">empezó una nueva vida, acompañando a su nuevo hermano en su comienzo también.</span>
+            </p>
+        </div>
+        <div class="historia">
+            <img th:src="@{/images/finalfelizBug.jpg}" alt="Perro con niños"/>
+            <p>
+                <strong>Bug</strong>
+                <span th:text="#{finalfeliz.bug}">tenía como pasatiempo favorito dar amor, pero ahora ha añadido recibirlo.</span>
+            </p>
+        </div>
+    </section>
+
+</section>
+</body>
+</html>
+

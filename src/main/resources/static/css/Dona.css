@@ -1,0 +1,143 @@
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: sans-serif;
+    position: relative;
+    background: url('../images/Dona.jpg') no-repeat center center fixed;
+    background-size: cover;
+    z-index: 0;
+}
+
+.dona-overlay {
+    background-color: rgba(27, 125, 85, 0.45);
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 80px;
+    box-sizing: border-box;
+}
+
+.dona-content {
+    min-height: 70vh;
+}
+
+.dona-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.dona-columnas {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-bottom: 30px;
+    font-size: 1.2em;
+}
+
+.dona-columna {
+    flex: 1;
+    min-width: 250px;
+    font-size: 1.2em;
+}
+
+.dona-columna p {
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #000000;
+    text-align: center;
+}
+
+.dona-icono {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 15px auto;
+    background-color: rgba(187, 224, 155, 0.61);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.dona-icono:hover {
+    transform: scale(1.1);
+}
+
+.dona-icono img {
+    width: 60%;
+    height: auto;
+}
+
+.dona-cuadro-transparente {
+    background-color: rgba(187, 224, 155, 0.35);
+    border-radius: 15px;
+    padding: 40px 70px;
+    max-width: 1000px;
+    width: 150%;
+    text-align: center;
+    color: #000000;
+}
+
+.dona-textobizum {
+    font-size: 30px;
+    color: #000000;
+}
+
+.dona-header h1 {
+    color: #000000;
+    font-size: 2.5em;
+    margin-bottom: 40px;
+}
+
+.dona-gracias {
+    color: #000000;
+    font-size: 1.6em;
+    max-width: 1000px;
+    margin-top: 30px;
+}
+
+.dona-content p {
+    color: #000000;
+    text-align: center;
+}
+-------------------------------------------------------------------------
+
+.dona-bizum-codigo {
+    font-size: 2.5rem;
+    color: #ffffff;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.8);
+    margin: 20px 0;
+    font-weight: bold;
+}
+
+.dona-cuadro-transparente {
+    background-color: rgba(187, 224, 155, 0.35);
+    border-radius: 15px;
+    padding: 40px 60px;
+    max-width: 800px;
+    width: 90%;
+    text-align: center;
+    margin: 0 auto;
+    color: #000;
+}
+
+.dona-textobizum {
+    font-size: 1.5rem;
+    color: #000000;
+    margin: 20px 0;
+}
+
+.dona-icono img {
+    width: 80%;
+    height: auto;
+}
+
+.img-icono-animal {
+    width: 50px !important;
+    height: auto !important;
+    animation: bounce 1.5s infinite !important ;
+}

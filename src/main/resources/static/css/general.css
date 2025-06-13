@@ -24,7 +24,6 @@
     background: url('../images/fondoHomePerro.png') no-repeat;
     background-size: cover;
     background-attachment: fixed;
-    /*clip-path: polygon(100% 0, 100% 43%, 26% 100%, 0 100%, 0 0);*/
 }
 
 .contenedorImagen h2{
@@ -39,6 +38,7 @@
 
 .seccionHistoria {
     background-color: #f0f8ff;
+    margin: 0 !important;
 }
 
 .custom-text-box {
@@ -75,7 +75,7 @@
 }
 
 .seccionHistoria:hover .carousel-icon {
-    background-color: #717275;
+    background-color: rgba(27, 125, 85, 0.42);
 }
 /*FIN HISTORIA*/
 
@@ -86,47 +86,41 @@
 }
 
 .section-bg {
-    background-color: #f0f8ff;
+    background-color: rgba(187, 224, 155, 0.58);
+}
+
+.esloganDona {
+    color: rgb(0, 0, 0);
+    font-weight: 600;
+    font-size: 36px;
+    z-index: 10;
 }
 
 .cta-section {
+    background-color: rgba(187, 224, 155, 0.58);
+    background-repeat: no-repeat;
+    background-position: top left;
+    background-size: 120px auto;
     position: relative;
     overflow: hidden;
-}
-
-.cta-section::before {
-    content: "";
-    background-color: #5bc1ac;
-    border-radius: 50%;
-    position: absolute;
-    top: -100px;
-    left: -30px;
-    margin: auto;
-    width: 200px;
-    height: 200px;
+    z-index: 1;
 }
 
 .cta-section::after {
     content: "";
-    border: 20px solid #597081;
-    border-radius: 50%;
+    background-image: url('../images/huellitas.png');
+    background-size: contain;
+    background-repeat: no-repeat;
     position: absolute;
-    bottom: -100px;
-    right: 0;
-    left: 0;
-    margin: auto;
-    width: 150px;
-    height: 150px;
-}
-
-.esloganDona {
-    color:#5a6f80;
-    font-weight: 600;
-    font-size: 36px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 900px;
+    height: 355px;
+    z-index: 0;
 }
 
 .btnHazteVoluntario {
-    background: #597081;
     border: 2px solid transparent;
     border-radius: 100px;
     color: white;
@@ -134,15 +128,22 @@
     padding: 20px 30px;
     font-size: 19px;
     font-weight: normal;
+    position: relative;
+    z-index: 10;
 }
 
 .btnHazteVoluntario:hover {
-    background-color: #5bc1ac;
+    background-color: rgba(27, 125, 85, 0.42);
     color: white;
 }
+
 /*FIN SECCION CTA DONA/VOLUNTARIO*/
 
 /*TIENDA*/
+.navTiendaFragment {
+
+}
+
 .tituloTienda {
     color:#43718F;
     font-weight: bold;
@@ -229,6 +230,10 @@ clamp(10px, 2vw, 40px);
         left: 55%;
         top: 20%;
         font-size: 3em;
+    }
+
+    .contenedorImagen{
+        background-image: url('../images/fondoHomePerroMovil.png');
     }
 
     .contenedorImagen h2 {
@@ -385,9 +390,18 @@ clamp(10px, 2vw, 40px);
     color: #191C24FF;
     outline: none;
 }
-
 /*//////////////////////////////////////
 //         FIN PERFIL_USUARIO         //
+//////////////////////////////////////*/
+
+
+
+/*//////////////////////////////////////
+//       PERFIL_USUARIO_ANIMALES      //
+//////////////////////////////////////*/
+
+/*//////////////////////////////////////
+//    FIN PERFIL_USUARIO_ANIMALES     //
 //////////////////////////////////////*/
 
 
@@ -395,7 +409,6 @@ clamp(10px, 2vw, 40px);
 /*////////////////////////////
 /        LISTA CARRITO       /
 ////////////////////////////*/
-
 .card-registration .select-input.form-control[readonly]:not([disabled]) {
     font-size: 1rem;
     line-height: 2.15;
@@ -403,9 +416,18 @@ clamp(10px, 2vw, 40px);
     padding-right: .75em;
 }
 
+.divItemCarrito {
+    transition: box-shadow 0.3s ease;
+}
+
 .card-registration .select-arrow {
     top: 13px;
 }
+
+.divItemCarrito:hover{
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* sombra leve */
+}
+
 /*////////////////////////////
 /     FIN_LISTA_CARRITO      /
 ////////////////////////////*/
@@ -465,6 +487,18 @@ clamp(10px, 2vw, 40px);
 .icon-hover:hover i {
     color: #3b71ca !important;
 }
+
+.item-thumb {
+    cursor: pointer;
+    transition: border-color 0.3s;
+}
+.item-thumb:hover {
+    border-color: #ff9800;
+}
+.thumb-selected {
+    border-color: #ff9800 !important;
+    box-shadow: 0 0 5px #ff9800;
+}
 /*////////////////////////////
 /    FIN DETALLE_PRODUCTO    /
 ////////////////////////////*/
@@ -474,6 +508,19 @@ clamp(10px, 2vw, 40px);
 /*////////////////////////////
 /    NUESTROS ANIMALES       /
 ////////////////////////////*/
+.cardAnimal {
+    width: 100%;
+    max-width: 320px;
+    background-color: #A8D5BA;
+    background-image: linear-gradient(314deg, #6BAF92 0%, #A8D5BA 74%);
+    border-radius: 17px;
+    border-color: #3B6E57;
+    overflow: hidden;
+    box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1),
+    0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+    transition: all 0.5s ease;
+}
+
 .modal-content {
     background-color: #f4faf8;
 }
@@ -494,6 +541,8 @@ clamp(10px, 2vw, 40px);
     font-size: clamp(12px, 1vw, 20px);
     background-color: rgba(27, 125, 85, 0.3);
     border-radius: 15px;
+    padding: 10px;
+    text-align: center;
 }
 
 .contenedorIzquierdo {
@@ -539,15 +588,11 @@ ul {
 
 .contenedorCards {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 1rem;
-}
-
-.imgCardAnimal {
-    height: 175px;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
     width: 100%;
-    max-width: 100%;
-    object-fit: cover !important;
+    justify-items: center; /* Centra las cards dentro de las columnas */
+    padding: 1rem 0;
 }
 
 .cards {
@@ -565,14 +610,28 @@ ul {
     justify-content: center;
 }
 
+.imgCardAnimal {
+    height: 175px;
+    width: 100%;
+    max-width: 100%;
+    object-fit: cover !important;
+    padding: 2px;
+    border-top-left-radius: 17px;
+    border-top-right-radius: 17px;
+}
+
 .cardAnimal {
-    background-color: #8db600;
-    background-image: linear-gradient(314deg, #8db600 0%, #40826d 74%);
+    /*background-image: linear-gradient(314deg, #8db600 0%, #40826d 74%);*/
+    background-color: #A8D5BA; /* Verde menta suave */
+    background-image: linear-gradient(314deg, #6BAF92 0%, #A8D5BA 74%); /* De verde bosque a menta */
     border-radius: 17px;
+    border-color: #3B6E57;
     display: flex;
     overflow: hidden;
     box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1),
     0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+    max-width: 350px;
+    transition: all 0.5s ease;
 }
 
 .card_contentAnimal {
@@ -583,7 +642,7 @@ ul {
 }
 
 .card_titleAnimal {
-    color: #ffffff;
+    color: #1F2D2B;;
     font-size: clamp(15px, 1.5vw, 40px);
     font-weight: 700;
     letter-spacing: 1px;
@@ -592,7 +651,7 @@ ul {
 }
 
 .card_textAnimal {
-    color: #ffffff;
+    color: #1F2D2B;
     font-size: clamp(13px, 1vw, 20px);
     line-height: 1.5;
     margin-bottom: 0.8rem;
@@ -608,28 +667,42 @@ ul {
     text-transform: uppercase;
     padding: 0.5rem;
     cursor: pointer;
-    display: block;
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 4px;
     margin-right: 0.5rem;
     margin-left: 0.5rem;
 }
 
-.botonesCardAnimal:hover {
+.botonesCardAnimalApadrina {
+    background-color: #c8d6cc;
+    font-size: clamp(8px, 4vw, 12px);
+    width: 100%;
+    color: #153d2d;
+    font-weight: bolder;
+    text-transform: uppercase;
+    padding: 0.5rem;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
+}
+
+.botonesCardAnimal:hover,.botonesCardAnimalApadrina:hover {
     background-color: #153d2d;
     color: white;
     font-weight: bolder;
 }
 
 .hiddenCardContent {
-    visibility: hidden;
+    max-height: 0;
     opacity: 0;
-    transition: visibility 0s, opacity 0.3s linear;
+    overflow: hidden;
+    transition: max-height 0.5s ease, opacity 0.5s ease;
     width: 100%;
 }
 
 .hiddenCardContent .botonesCardLeerMas{
-    display: none;
     width: 95%;
 }
 
@@ -639,14 +712,41 @@ ul {
 }
 
 .cardAnimal:hover .hiddenCardContent {
-    visibility: visible;
+    max-height: 100px; /* Ajusta según el contenido real */
     opacity: 1;
-    transition-delay: 0.1s;
 }
 
 .cardAnimal:hover .hiddenCardContent .botonesCardLeerMas {
-    display: block;
     height: auto;
+}
+
+.disabled {
+    pointer-events: none;
+    color: grey;
+    cursor: default;
+    text-decoration: none;
+}
+
+.card_badges .badgeCard {
+    background-color: #ffffffcc; /* Blanco con ligera opacidad */
+    color: #1F2D2B;
+    font-weight: 600;
+    font-size: clamp(12px, 1vw, 14px);
+    padding: 0.35em 0.75em;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3em;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: background-color 0.3s ease;
+}
+
+.card_badges .badgeCard i {
+    color: #3B6E57; /* Verde bosque (oscuro) */
+}
+
+.cardAnimal:hover .card_badges .badgeCard {
+    background-color: #c8d6cc; /* Mismo color que botones hover */
 }
 
 @media screen and (max-width: 639px) {
@@ -695,3 +795,72 @@ ul {
 /*////////////////////////////
 /   FIN NUESTROS_ANIMALES    /
 ////////////////////////////*/
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+.img-icono-animal {
+    width: 50px !important;
+    height: auto !important;
+    animation: bounce 1.5s infinite !important ;
+}
+
+/* Bloque exterior del panel de filtros */
+.table-sort-panel {
+    background-color: #e6f3ea; /* verde muy claro */
+    border: 1px solid #c2dfcc;
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Tabla sin bordes y con centro visual */
+.table-sort-panel .table {
+    margin-bottom: 0;
+}
+
+/* Encabezado visualmente agradable */
+.table-sort-panel thead.thead-light {
+    background-color: transparent;
+}
+
+/* Cada cabecera */
+.table-sort-panel th {
+    text-align: center;
+    padding: 12px;
+    border: none;
+}
+
+/* Estilo de los enlaces de orden */
+.table-sort-panel th a {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #A8D5BA;
+    color: #1c3d2e;
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.table-sort-panel th a:hover {
+    background-color: #6BAF92;
+    color: white;
+}
+
+/* Estilo común de los iconos */
+.table-sort-panel th span.fas {
+    margin-left: 8px;
+    color: #2d5c40;
+    font-size: 1.1rem;
+    vertical-align: middle;
+}
+
+@media (min-width: 768px) {
+    .table-sort-panel form > * {
+        margin-right: 10px;
+    }
+}

@@ -9,21 +9,21 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 /**
  * Controlador encargado de manejar las solicitudes relacionadas con la entidad principal.
- *
+
  * Este controlador utiliza la anotación {@code @Controller} para ser detectado como un componente
  * Spring MVC y maneja solicitudes HTTP. Su objetivo principal es gestionar las operaciones
  * necesarias para mostrar una lista de entidades en la vista correspondiente.
- *
+
  * Anotaciones importantes:
  * - {@code @Controller}: Indica que esta clase se comporta como un controlador Spring MVC.
  * - {@code @PreAuthorize}: Define que el acceso a ciertos métodos esté restringido
  *   según las reglas de autorización establecidas.
- *
+
  * Dependencias:
  * - {@code EntidadPadreRepository}: Interfaz del repositorio que permite interactuar con
  *   la base de datos para operaciones de persistencia y consulta relacionadas con
  *   la entidad padre.
- *
+
  * Métodos principales:
  * - {@code listEntities}: Maneja solicitudes GET a la URL "/entities", recupera los
  *   datos de las entidades desde la base de datos y los pasa al modelo para mostrarlos
@@ -75,43 +75,6 @@ public class DefaultController {
         return "index"; // Carga /templates/index.html
     }
 
-    @GetMapping("/detalleProducto")
-    public String mostrarDetalleProducto()
-    {
-        return "detalleProducto"; // Carga /templates/index.html
-    }
-
-    @GetMapping("/listaCarrito")
-    public String mostrarListaCarrito() { return "listaCarrito"; }
-
-    // Metodo para mostrar pagina de inicio
-    @GetMapping("/tienda")
-    public String mostrarTienda()
-    {
-        return "tienda"; // Carga /templates/tienda.html
-    }
-
-    // Metodo para mostrar la pagina de la guarderia
-    @GetMapping("/guarderia")
-    public String mostrarGuarderia()
-    {
-        return "guarderia";
-    }
-
-    // Metodo para mostrar la pagina de la peluqueria
-    @GetMapping("/peluqueria")
-    public String mostrarPeluqueria()
-    {
-        return "peluqueria";
-    }
-
-    // Metodo para mostrar la pagina de adiestramiento
-    @GetMapping("/adiestramiento")
-    public String mostrarAdiestramiento()
-    {
-        return "adiestramiento";
-    }
-
     // Metodo para mostrar la pagina de veterinario
     @GetMapping("/veterinario")
     public String mostrarVeterinario()
@@ -124,13 +87,6 @@ public class DefaultController {
     public String mostrarAsesoramientoLegal()
     {
         return "asesoramientoLegal";
-    }
-
-    // Metodo para mostrar la pagina de nuestros animales
-    @GetMapping("/nuestrosAnimales")
-    public String mostrarNuestrosAnimales()
-    {
-        return "nuestrosAnimales";
     }
 
     // Metodo para mostrar la pagina de contacto
@@ -154,18 +110,85 @@ public class DefaultController {
         return "horariomapa";
     }
 
-    // Metodo para mostrar la pagina del horario y el mapa
-    @GetMapping("/perfil/informacion")
-    public String mostrarPerfil()
+    @GetMapping("/perfil/puntos")
+    public String mostrarPerfilPuntos()
+    { return "perfilUsuarioPuntos"; }
+
+    @GetMapping("/perfil/adopciones")
+    public String mostrarPerfilAdopciones()
     {
-        return "perfilUsuario";
+        return "perfilUsuarioAdopciones";
     }
 
-    @GetMapping("/perfil/editar")
-    public String mostrarPerfilEditar()
+    @GetMapping("/perfil/donaciones")
+    public String mostrarPerfilDonaciones()
     {
-        return "perfilUsuarioEditar";
+        return "perfilUsuarioDonaciones";
     }
+
+    // Metodo para mostrar la página de Reseñas
+    @GetMapping("resenas")
+    public String mostrarResenas()
+    {
+        return "Reseñas";
+    }
+
+    @GetMapping("/eventos")
+    public String mostrarEventos(){
+        return "eventos";
+    }
+
+
+    // Metodo para mostrar la página de Colabora
+    @GetMapping("/colabora")
+    public String mostrarColabora()
+    {
+        return "Colabora";
+    }
+
+    @GetMapping("/colabora/dona/donarBizum")
+    public String mostrarColaboraDonaDonarBizum()
+    {
+        return "donarBizum";
+    }
+
+    @GetMapping("/colabora/apadrina")
+    public String mostrarColaboraApadrina()
+    {
+        return "Apadrina";
+    }
+
+    @GetMapping("/colabora/Apadrina/formularioApadrina")
+    public String mostrarformularioapadrina()
+    { return "formularioApadrina"; }
+
+    @GetMapping("/colabora/adopta")
+    public String mostrarColaboraAdopta()
+    { return "Adopta"; }
+
+    @GetMapping("/colabora/adopta/formularioAdopta")
+    public String mostrarformularioadopta()
+    { return "formularioAdopta"; }
+
+    @GetMapping("/colabora/paseosolidario")
+    public String mostrarColaboraPaseoSolidario()
+    { return "PaseoSolidario"; }
+
+    @GetMapping("/colabora/paseosolidario/formularioPS")
+    public String mostrarformularioPS()
+    { return "formularioPS"; }
+
+    @GetMapping("/finalfeliz")
+    public String mostrarFinalesFelices()
+    { return "FinalFeliz"; }
+
+    @GetMapping("/registro")
+    public String mostrarRegistro()
+    { return "registro"; }
+
+    @GetMapping("/loginPawHome")
+    public String mostrarLogin()
+    { return "login"; }
 
     /**
      * Gestiona las solicitudes GET para obtener y mostrar la lista de entidades protegidas.
@@ -207,3 +230,7 @@ public class DefaultController {
     }
 
 }
+
+
+
+

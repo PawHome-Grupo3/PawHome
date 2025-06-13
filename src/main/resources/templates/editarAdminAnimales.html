@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layoutAdmin.html}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Editar animal</title>
+</head>
+<body>
+
+<section layout:fragment="content">
+
+    <div class="container">
+        <div class="card shadow-lg">
+            <div class="card-header bg-success text-white">
+                <h4 class="mb-0">Editar animal</h4>
+            </div>
+            <div class="card-body">
+                <form th:action="@{/admin/animales/actualizar/{id}(id=${animal.id})}" th:object="${animal}" method="post">
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <label for="nombre" class="form-label">Nombre</label>
+                            <input type="text" th:field="*{nombre}" class="form-control" id="nombre" required
+                                   maxlength="50">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="chip" class="form-label">Chip</label>
+                            <input type="text" th:field="*{chip}" class="form-control" id="chip" maxlength="30">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="peso" class="form-label">Peso (kg)</label>
+                            <input type="number" th:field="*{peso}" class="form-control" id="peso" step="0.01" min="0"
+                                   required>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <label for="edad" class="form-label">Edad</label>
+                            <input type="number" th:field="*{edad}" class="form-control" id="edad" min="0" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="caracterSocial" class="form-label">Carácter social</label>
+                            <select th:field="*{caracterSocial}" class="form-select" id="caracterSocial">
+                                <option value="false">No amigable</option>
+                                <option value="true">Amigable</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="genero" class="form-label">Género</label>
+                            <select th:field="*{genero}" class="form-select" id="genero">
+                                <option value="false">Hembra</option>
+                                <option value="true">Macho</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="descripcion" class="form-label">Descripción</label>
+                        <textarea th:field="*{descripcion}" class="form-control" id="descripcion"
+                                  maxlength="500"></textarea>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <label for="origen" class="form-label">Origen</label>
+                            <input type="text" th:field="*{origen}" class="form-control" id="origen" maxlength="100">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="adoptado" class="form-label">Estado adopción</label>
+                            <select th:field="*{adoptado}" class="form-select" id="adoptado">
+                                <option value="false">No adoptado</option>
+                                <option value="true">Adoptado</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="fechaLlegada" class="form-label">Fecha llegada</label>
+                            <input type="date" th:field="*{fechaLlegada}" class="form-control" id="fechaLlegada"
+                                   required>
+                        </div>
+                    </div>
+                    <div class="mb-3 form-check">
+                        <label for="paseable" class="form-label">¿Se puede pasear?</label>
+                        <select th:field="*{paseable}" class="form-select" id="paseable">
+                            <option value="false">No paseable</option>
+                            <option value="true">Paseable</option>
+                        </select>
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <button type="submit" class="btn btn-success me-2">Guardar cambios</button>
+                        <input type="hidden" th:field="*{id}"/>
+                        <a th:href="@{/admin/animales}" class="btn btn-secondary">Cancelar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

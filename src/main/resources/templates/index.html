@@ -2,15 +2,18 @@
 <html lang="es" xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="~{layouts/layout.html}">
 <head>
-	<title th:text="#{page.index.title}"></title>
+	<title th:utext="#{page.index.title}"></title>
 	<link rel="stylesheet" th:href="@{/css/general.css}"/>
+	<link rel="stylesheet" th:href="@{/css/Colabora.css}"/>
+	<link rel="stylesheet" th:href="@{/css/Reseñas.css}"/>
+
 </head>
 <body style="margin: 0 !important;">
 <section layout:fragment="content">
 
 <!--CABECERA-->
 	<div class="contenedorImagen">
-		<h2 th:text="#{index.esloganInicial}"></h2>
+		<h2 th:utext="#{index.esloganInicial}"></h2>
 	</div>
 <!--CABECERA-->
 
@@ -37,9 +40,9 @@
 						<div class="row justify-content-center">
 							<div class="col-lg-10 col-md-10 col-12">
 								<div class="custom-text-box mb-lg-0">
-									<h5 class="mb-3 indexSubTitulo">Our Mission</h5>
-									<p class="indexParrafo">Sed leo nisl, posuere at molestie ac, suscipit auctor quis
-										metus</p>
+									<h5 class="mb-3 indexSubTitulo">Nuestra misión</h5>
+									<p class="indexParrafo">Ser un hogar para todos los animales,
+										ya que todos lo merecen.</p>
 								</div>
 							</div>
 						</div>
@@ -48,7 +51,7 @@
 
 				<div class="row carousel-item d-flex justify-content-center">
 					<div class="carousel slide col-md-7 col-12 mb-4  align-content-center">
-						<img th:src="@{images/fondoHomePerro.png}" class="custom-text-box-image img-fluid" alt="...">
+						<img th:src="@{images/PawHomeestablecimiento.jpg}" class="custom-text-box-image img-fluid" alt="...">
 					</div>
 
 					<div class="col-md-5 col-12 align-content-md-center">
@@ -64,8 +67,8 @@
 							<div class="col-lg-10 col-md-10 col-12">
 								<div class="custom-text-box mb-lg-0">
 									<h5 class="mb-3 indexSubTitulo"></h5>
-									<p class="indexParrafo">Sed leo nisl, posuere at molestie ac, suscipit auctor quis
-										metus</p>
+									<p class="indexParrafo">Esta protectora nace de algo muy real: el amor por los animales y las ganas de hacer
+										las cosas mejor.</p>
 								</div>
 							</div>
 						</div>
@@ -90,8 +93,11 @@
 						<div class="row justify-content-center">
 							<div class="col-lg-10 col-md-10 col-12">
 								<div class="custom-text-box mb-lg-0">
-									<h5 class="mb-3 indexSubTitulo">Our Mission</h5>
-									<p class="indexParrafo">EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE</p>
+									<h5 class="mb-3 indexSubTitulo">Pawhome, un hogar para los que aún no lo tienen 🐾</h5>
+									<p class="indexParrafo">En Pawhome, rescatamos, cuidamos y damos en adopción a animales que han sido abandonados o maltratados.
+										Creemos que cada perro y gato merece una segunda oportunidad y un hogar lleno de amor.
+										Nuestro equipo de voluntarios trabaja con cariño y compromiso para que cada peludo encuentre
+										una familia que lo quiera para siempre. Pero no podemos hacerlo solos.</p>
 								</div>
 							</div>
 						</div>
@@ -107,6 +113,10 @@
 		</div>
 	</section>
 	<!--FIN HISTORIA PROTECTORA-->
+
+	<!-- INICIO COLABORA -->
+	<div th:insert="fragments/colaboraFragment :: colaboraContent"></div>
+	<!-- FIN COLABORA -->
 
 	<!--TIENDA-->
 	<section class="section-padding" id="section_3">
@@ -185,7 +195,75 @@
 	</section>
 	<!--FIN TIENDA-->
 
-<!--DONA Y VOLUNTARIO -->
+	<!-- NUESTROS SERVICIOS -->
+	<section class="container my-5">
+		<h2 class="text-center tituloTienda mb-4">
+			<i class="fas fa-paw me-2"></i>
+			<span th:text="#{index.nuestrosServicios}"></span>
+		</h2>
+		<div class="row g-4 justify-content-center">
+
+			<!-- Servicio 1: Guarderia -->
+			<article class="col-12 col-md-6 col-lg-4">
+				<div class="text-center p-4 border rounded shadow-sm h-100">
+					<i class="fas fa-hotel fa-3x text-success mb-3"></i>
+					<h4 class="fw-bold mb-2" th:utext="#{header.guarderia}"></h4>
+					<p th:utext="#{index.esloganGuarderia}"></p>
+					<a href="/guarderia" class="btn btn-success mt-2" th:utext="#{index.verMas}"></a>
+				</div>
+			</article>
+
+			<!-- Servicio 2: Peluquería -->
+			<article class="col-12 col-md-6 col-lg-4">
+				<div class="text-center p-4 border rounded shadow-sm h-100">
+					<i class="fas fa-cut fa-3x text-success mb-3"></i>
+					<h4 class="fw-bold mb-2" th:utext="#{header.peluqueria}"></h4>
+					<p th:utext="#{index.esloganPeluqueria}"></p>
+					<a href="/peluqueria" class="btn btn-success mt-2" th:utext="#{index.verMas}"></a>
+				</div>
+			</article>
+
+			<!-- Servicio 3: Adiestramiento -->
+			<article class="col-12 col-md-6 col-lg-4">
+				<div class="text-center p-4 border rounded shadow-sm h-100">
+					<i class="fas fa-dog fa-3x text-success mb-3"></i>
+					<h4 class="fw-bold mb-2" th:utext="#{header.adiestramiento}"></h4>
+					<p th:utext="#{index.esloganAdiestramiento}"></p>
+					<a href="/adiestramiento" class="btn btn-success mt-2" th:utext="#{index.verMas}"></a>
+				</div>
+			</article>
+
+			<!-- Servicio 4: Veterinaria -->
+			<article class="col-12 col-md-6 col-lg-4">
+				<div class="text-center p-4 border rounded shadow-sm h-100">
+					<i class="fas fa-stethoscope fa-3x text-success mb-3"></i>
+					<h4 class="fw-bold mb-2" th:utext="#{header.veterinario}"></h4>
+					<p th:utext="#{index.esloganVeterinario}"></p>
+					<a href="/veterinario" class="btn btn-success mt-2" th:utext="#{index.verMas}"></a>
+				</div>
+			</article>
+
+			<!-- Servicio 5: Asesoramiento Legal -->
+			<article class="col-12 col-md-6 col-lg-4">
+				<div class="text-center p-4 border rounded shadow-sm h-100">
+					<i class="fas fa-balance-scale fa-3x text-success mb-3"></i>
+					<h4 class="fw-bold mb-2" th:utext="#{header.asesoramientoL}"></h4>
+					<p th:utext="#{index.esloganAsesoramientoLegal}"></p>
+					<a href="/asesoramientoLegal" class="btn btn-success mt-2" th:utext="#{index.verMas}"></a>
+				</div>
+			</article>
+
+		</div>
+	</section>
+	<!-- FIN NUESTROS SERVICIOS -->
+
+	<!-- RESEñAS -->
+	<br>
+	<div th:replace="Reseñas :: reviewsFragment"></div>
+	<!--FIN RESEñAS -->
+
+
+	<!--DONA Y VOLUNTARIO -->
 	<section class="cta-section section-padding section-bg">
 		<div class="container">
 			<div class="row justify-content-center align-items-center text-center">
@@ -195,9 +273,8 @@
 				</div>
 
 				<div class="col-md-6 col-12 flex-nowrap columDona mt-3">
-					<a href="#" class="me-4" style="color:#5a6f80;" th:utext="#{dona}"></a>
-
-					<a href="#" class="custom-btn btn smoothscroll btnHazteVoluntario" th:utext="#{index.hazteVoluntario}"></a>
+					<a href="/colabora/dona" class="btn btn-success btnHazteVoluntario" th:utext="#{Dona}"></a>
+					<a href="#" class="btn btn-success btnHazteVoluntario" th:utext="#{Hazte voluntario}"></a>
 				</div>
 
 			</div>

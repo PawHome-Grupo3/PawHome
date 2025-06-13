@@ -1,0 +1,138 @@
+/* --- RESET UNIVERSAL --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    margin-top: 0 !important;
+}
+
+/* --- FONDO ESPECÍFICO PARA ESTA PÁGINA --- */
+.colabora-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: sans-serif;
+    position: relative;
+    padding: 40px 20px;
+    background: url('../images/Gato.mirando.arriba.png') no-repeat center center;
+    background-size: cover;
+    z-index: 0;
+}
+
+/* --- CONTENEDOR PRINCIPAL --- */
+.container-vista {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+    padding: 50px 20px;
+    margin: 0 auto;
+    backdrop-filter: blur(2px);
+}
+
+/* --- TEXTOS --- */
+.texto1 {
+    text-align: center;
+    font-weight: normal;
+    color: rgb(13, 58, 39);
+    margin: 0 0 20px 0;
+    font-size: 3rem;
+    font-family: 'Arial', sans-serif;
+    font-style: italic;
+    padding-top: 100px;
+}
+
+.texto2 {
+    text-align: center;
+    font-weight: bold;
+    color: rgb(13, 58, 39);
+    margin: 20px 0 10px 0;
+    font-size: 2rem;
+}
+
+/* --- ENLACES --- */
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+/* --- FILAS DE BOTONES --- */
+.fila {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.fila.abajo .button:first-child {
+    transform: translateX(-20px);
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+.fila.abajo .button:last-child {
+    transform: translateX(20px);
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+.fila.abajo .button:first-child:hover {
+    transform: translateX(-20px) translateY(-4px);
+}
+.fila.abajo .button:last-child:hover {
+    transform: translateX(20px) translateY(-4px);
+}
+
+/* --- BOTONES --- */
+.botoncolabora {
+    background-color: rgba(187, 224, 155, 0.85);
+    width: 260px;
+    padding: 18px 20px;
+    border: none;
+    border-radius: 12px;
+    color: #0b3d2b;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+}
+
+.botoncolabora span {
+    display: block;
+    font-size: 1rem;
+    margin-top: 8px;
+    color: #000000;
+}
+
+.botoncolabora:hover {
+    background-color: rgba(27, 125, 85, 0.8);
+    color: white;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+    .fila.abajo .button:first-child,
+    .fila.abajo .button:last-child {
+        transform: translateX(0);
+    }
+
+    .botoncolabora {
+        width: 90%;
+        max-width: 300px;
+    }
+
+    .fila {
+        gap: 20px;
+    }
+}

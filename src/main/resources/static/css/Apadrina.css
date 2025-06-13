@@ -1,0 +1,76 @@
+body {
+    margin-top: 0 !important;
+}
+
+.containerImagen {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    padding-top: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    z-index: 0;
+}
+
+.containerImagen::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: url('../images/Apadrina.jpg') no-repeat center center fixed;
+    background-size: cover;
+    z-index: -2;
+}
+
+.containerImagen::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(27, 125, 85, 0.6);
+    z-index: -1;
+}
+.cuadro-transparente {
+    background-color: rgba(187, 224, 155, 0.35);
+    border-radius: 15px;
+    padding: 40px 60px;
+    max-width: 1000px;
+    width: 80%;
+    text-align: left;
+}
+
+h1 {
+    font-size: 60px;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    margin-bottom: 30px;
+    font-family: Arial, sans-serif;
+}
+
+ol {
+    font-size: 30px;
+    color: #000000;
+    position: relative;
+    z-index: 1;
+    width: 98%;
+    line-height: 1.8;
+    padding-left: 30px;
+    max-width: 1050px;
+}
+
+a {
+    color: rgb(0, 0, 0);
+    text-decoration: strong;
+}
+
+a:hover {
+    text-decoration:none;
+}

@@ -2,11 +2,10 @@
 <html lang="es" xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
 	  layout:decorate="~{layouts/layout.html}">
 <head>
-	<title>Guarderia PawHome</title>
-	<link rel="stylesheet" th:href="@{/css/guarderia.css}"/>
+	<title th:utext="#{page.guarderia.tittle}"></title>
+	<link rel="stylesheet" th:href="@{/css/servicios.css}"/>
 </head>
 <body>
-
 <section layout:fragment="content">
 	<section class="container py-5 mainContainer">
 
@@ -14,11 +13,14 @@
 		<section class="text-center rounded-4 shadow mx-2 my-3 p-3 seccionTitulo">
 			<div class="container px-4">
 				<h2 class="fw-bold display-5 text-success-emphasis mb-3">
-					<i class="fas fa-home me-2"></i>Guardería PawHome
+					<i class="fas fa-home me-2"></i>
+					<span th:utext="#{page.guarderia.tittle}"></span>
 				</h2>
 				<p class="fs-5">
-					<i class="fas fa-paw me-2 text-success"></i>Deja tus mascotas en manos de nuestros profesionales y disfruta de tus vacaciones con total tranquilidad. <br>
-					<i class="fas fa-heart me-2 text-success"></i>Cuidamos de ellos como si fueran parte de nuestra familia.
+					<i class="fas fa-paw me-2 text-success"></i>
+					<span th:utext="#{servicios.guarderia.eslogan1}"></span><br>
+					<i class="fas fa-heart me-2 text-success"></i>
+					<span th:utext="#{servicios.guarderia.eslogan2}"></span>
 					<i class="fas fa-dog ms-2 me-1 text-success"></i>
 					<i class="fas fa-cat me-1 text-success"></i>
 				</p>
@@ -29,55 +31,85 @@
 		<!-- Sección: Nuestras tarifas -->
 		<section class="text-center mb-5">
 			<h2 class="fw-bold text-success-emphasis mb-4">
-				<i class="fas fa-paw me-2"></i>Nuestras tarifas</h2>
+				<i class="fas fa-paw me-2"></i>
+				<span th:utext="#{servicios.guarderia.nuestrasTarifas}"></span>
+			</h2>
 
 			<div class="row row-cols-1 row-cols-md-3 g-4">
 				<article class="col">
-					<div class="card p-3 shadow-sm cardServicio">
+					<div class="card p-3 shadow-sm cardServicio" data-precio="18" data-min-dias="1" data-max-dias="5">
 						<div class="card_image">
-							<img th:src="@{images/estanciaExpres.jpg}" alt="LogoEstanciaExpress" class="imagenCard">
+							<img th:src="@{images/estanciaExpres.png}" alt="LogoEstanciaExpress" class="imagenCard">
 						</div>
-						<h3 class="card-title mt-3 fs-4 fw-bold text-success-emphasis">ESTANCIA EXPRESS</h3>
-						<p class="fw-bold fs-5 mb-1">18€ por noche</p>
-						<p>De 1 a 5 noches</p>
+						<h3 class="card-title mt-3 fs-4 fw-bold text-success-emphasis"
+							th:utext="#{servicios.guarderia.estanciaExpress.titulo}"></h3>
+						<p class="fw-bold fs-5 mb-1" th:utext="#{servicios.guarderia.estanciaExpress.precio}"></p>
+						<p th:utext="#{servicios.guarderia.estanciaExpress.duracion}"></p>
 						<ul class="list-unstyled">
-							<li><i class="fas fa-bone me-2 text-success"></i>Incluye comida</li>
-							<li><i class="fas fa-bed me-2 text-success"></i>Incluye alojamiento</li>
-							<li><i class="fas fa-futbol me-2 text-success"></i>Incluye entretenimiento</li>
+							<li><i class="fas fa-bone me-2 text-success"></i>
+								<span th:utext="#{servicios.guarderia.incluyeComida}"></span>
+							</li>
+							<li><i class="fas fa-bed me-2 text-success"></i>
+								<span th:utext="#{servicios.guarderia.incluyeAlojamiento}"></span>
+							</li>
+							<li><i class="fas fa-futbol me-2 text-success"></i>
+								<span th:utext="#{servicios.guarderia.incluyeEntretenimiento}"></span>
+							</li>
 						</ul>
-						<button class="btn btn-success btnCard" id="btnEstanciaExpress">Seleccionar</button>
+						<button class="btn btn-success btnCard" id="btnEstanciaExpress"
+								th:utext="#{servicios.botonSeleccionar}">
+						</button>
 					</div>
 				</article>
 				<article class="col">
-					<div class="card p-3 shadow-sm cardServicio">
+					<div class="card p-3 shadow-sm cardServicio" data-precio="15" data-min-dias="6" data-max-dias="10">
 						<div class="card_image">
 							<img th:src="@{images/estanciaRelax.jpg}" alt="LogoEstanciaRelax" class="imagenCard">
 						</div>
-						<h3 class="mt-3 fs-4 fw-bold text-success-emphasis">ESTANCIA RELAX</h3>
-						<p class="fw-bold fs-5 mb-1">15€ por noche</p>
-						<p>De 6 a 10 noches</p>
+						<h3 class="card-title mt-3 fs-4 fw-bold text-success-emphasis"
+							th:utext="#{servicios.guarderia.estanciaRelax.titulo}"></h3>
+						<p class="fw-bold fs-5 mb-1" th:utext="#{servicios.guarderia.estanciaRelax.precio}"></p>
+						<p th:utext="#{servicios.guarderia.estanciaRelax.duracion}"></p>
 						<ul class="list-unstyled">
-							<li><i class="fas fa-bone me-2 text-success"></i>Incluye comida</li>
-							<li><i class="fas fa-bed me-2 text-success"></i>Incluye alojamiento</li>
-							<li><i class="fas fa-futbol me-2 text-success"></i>Incluye entretenimiento</li>
+							<li><i class="fas fa-bone me-2 text-success"></i>
+								<span th:utext="#{servicios.guarderia.incluyeComida}"></span>
+							</li>
+							<li><i class="fas fa-bed me-2 text-success"></i>
+								<span th:utext="#{servicios.guarderia.incluyeAlojamiento}"></span>
+							</li>
+							<li><i class="fas fa-futbol me-2 text-success"></i>
+								<span th:utext="#{servicios.guarderia.incluyeEntretenimiento}"></span>
+							</li>
 						</ul>
-						<button class="btn btn-success btnCard" id="btnEstanciaRelax">Seleccionar</button>
+						<button class="btn btn-success btnCard" id="btnEstanciaRelax"
+								th:utext="#{servicios.botonSeleccionar}">
+						</button>
 					</div>
 				</article>
 				<article class="col">
-					<div class="card p-3 shadow-sm cardServicio">
+					<div class="card p-3 shadow-sm cardServicio" data-precio="12" data-min-dias="11"
+						 data-max-dias="999">
 						<div class="card_image">
 							<img th:src="@{images/estanciaSabatica.jpg}" alt="LogoEstanciaSabatica" class="imagenCard">
 						</div>
-						<h3 class="mt-3 fs-4 fw-bold text-success-emphasis">ESTANCIA SABÁTICA</h3>
-						<p class="fw-bold fs-5 mb-1">12€ por noche</p>
-						<p>A partir de 11 noches</p>
+						<h3 class="card-title mt-3 fs-4 fw-bold text-success-emphasis"
+							th:utext="#{servicios.guarderia.estanciaSabatica.titulo}"></h3>
+						<p class="fw-bold fs-5 mb-1" th:utext="#{servicios.guarderia.estanciaSabatica.precio}"></p>
+						<p th:utext="#{servicios.guarderia.estanciaSabatica.duracion}"></p>
 						<ul class="list-unstyled">
-							<li><i class="fas fa-bone me-2 text-success"></i>Incluye comida</li>
-							<li><i class="fas fa-bed me-2 text-success"></i>Incluye alojamiento</li>
-							<li><i class="fas fa-futbol me-2 text-success"></i>Incluye entretenimiento</li>
+							<li><i class="fas fa-bone me-2 text-success"></i>
+								<span th:utext="#{servicios.guarderia.incluyeComida}"></span>
+							</li>
+							<li><i class="fas fa-bed me-2 text-success"></i>
+								<span th:utext="#{servicios.guarderia.incluyeAlojamiento}"></span>
+							</li>
+							<li><i class="fas fa-futbol me-2 text-success"></i>
+								<span th:utext="#{servicios.guarderia.incluyeEntretenimiento}"></span>
+							</li>
 						</ul>
-						<button class="btn btn-success btnCard" id="btnEstanciaSabatica">Seleccionar</button>
+						<button class="btn btn-success btnCard" id="btnEstanciaSabatica"
+								th:utext="#{servicios.botonSeleccionar}">
+						</button>
 					</div>
 				</article>
 			</div>
@@ -87,41 +119,61 @@
 		<!-- Sección: Descubre nuestros bonos -->
 		<section class="text-center mb-5">
 			<h2 class="fw-bold text-success-emphasis mb-4">
-				<i class="fas fa-gift me-2"></i>Descubre nuestros bonos:</h2>
+				<i class="fas fa-gift me-2"></i>
+				<span th:utext="#{servicios.guarderia.descubreBonos}"></span>
+			</h2>
 
 			<div class="row g-4 d-flex justify-content-center">
 				<article class="col-6 col-md-4">
-					<div class="card p-3 shadow-sm cardServicio">
+					<div class="card p-3 shadow-sm cardServicio" data-precio="200">
 						<div class="card_image">
 							<img th:src="@{images/bonoLargaEstancia.jpg}" alt="BonoLargaEstancia" class="imagenCard">
 						</div>
-						<h3 class="mt-3 fs-4 fw-bold text-success-emphasis">BONO LARGA ESTANCIA</h3>
-						<p class="fw-bold fs-3 mb-1">200€</p>
-						<p class="fw-bold fs-3">20 NOCHES</p>
+						<h3 class="card-title mt-3 fs-4 fw-bold text-success-emphasis"
+							th:utext="#{servicios.guarderia.bonoLargaEstancia.titulo}"></h3>
+						<p class="fw-bold fs-5 mb-1" th:utext="#{servicios.guarderia.bonoLargaEstancia.precio}"></p>
+						<p th:utext="#{servicios.guarderia.bonoLargaEstancia.duracion}"></p>
 						<ul class="list-unstyled">
-							<li><i class="fas fa-bone me-2 text-success"></i>Incluye comida</li>
-							<li><i class="fas fa-bed me-2 text-success"></i>Incluye alojamiento</li>
-							<li><i class="fas fa-futbol me-2 text-success"></i>Incluye entretenimiento</li>
+							<li><i class="fas fa-bone me-2 text-success"></i>
+								<span th:utext="#{servicios.guarderia.incluyeComida}"></span>
+							</li>
+							<li><i class="fas fa-bed me-2 text-success"></i>
+								<span th:utext="#{servicios.guarderia.incluyeAlojamiento}"></span>
+							</li>
+							<li><i class="fas fa-futbol me-2 text-success"></i>
+								<span th:utext="#{servicios.guarderia.incluyeEntretenimiento}"></span>
+							</li>
 						</ul>
-						<p>Elige los días cuando quieras</p>
-						<button class="btn btn-success btnCard" id="btnBonoLargaEstancia">Seleccionar</button>
+						<p th:utext="#{servicios.guarderia.elegirDias}"></p>
+						<button class="btn btn-success btnCard cardBono" id="btnBonoLargaEstancia"
+								th:utext="#{servicios.botonSeleccionar}">
+						</button>
 					</div>
 				</article>
 				<article class="col-6 col-md-4">
-					<div class="card p-3 shadow-sm cardServicio">
+					<div class="card p-3 shadow-sm cardServicio" data-precio="75">
 						<div class="card_image">
 							<img th:src="@{images/bonoSoloDia.jpg}" alt="BonoSoloDia" class="imagenCard">
 						</div>
-						<h3 class="mt-3 fs-4 fw-bold text-success-emphasis">BONO ESTANCIA SOLO DÍA</h3>
-						<p class="fw-bold fs-3 mb-1">75€</p>
-						<p class="fw-bold fs-3">10 DIAS</p>
+						<h3 class="card-title mt-3 fs-4 fw-bold text-success-emphasis"
+							th:utext="#{servicios.guarderia.bonoSoloDia.titulo}"></h3>
+						<p class="fw-bold fs-5 mb-1" th:utext="#{servicios.guarderia.bonoSoloDia.precio}"></p>
+						<p th:utext="#{servicios.guarderia.bonoSoloDia.duracion}"></p>
 						<ul class="list-unstyled">
-							<li><i class="fas fa-bone me-2 text-success"></i>Incluye comida</li>
-							<li><i class="fas fa-bed me-2 text-success"></i>Incluye alojamiento</li>
-							<li><i class="fas fa-futbol me-2 text-success"></i>Incluye entretenimiento</li>
+							<li><i class="fas fa-bone me-2 text-success"></i>
+								<span th:utext="#{servicios.guarderia.incluyeComida}"></span>
+							</li>
+							<li><i class="fas fa-bed me-2 text-success"></i>
+								<span th:utext="#{servicios.guarderia.incluyeAlojamiento}"></span>
+							</li>
+							<li><i class="fas fa-futbol me-2 text-success"></i>
+								<span th:utext="#{servicios.guarderia.incluyeEntretenimiento}"></span>
+							</li>
 						</ul>
-						<p>Elige los días cuando quieras</p>
-						<button class="btn btn-success btnCard" id="btnBonoEstanciaSoloDia">Seleccionar</button>
+						<p th:utext="#{servicios.guarderia.elegirDias}"></p>
+						<button class="btn btn-success btnCard cardBono" id="btnBonoEstanciaSoloDia"
+								th:utext="#{servicios.botonSeleccionar}">
+						</button>
 					</div>
 				</article>
 			</div>
@@ -130,7 +182,8 @@
 
 		<!-- Sección: Formulario de contacto -->
 		<section class="mb-5">
-			<h2 class="text-success-emphasis fw-bold display-5 my-4 text-center">Reserva tu estancia</h2>
+			<h2 class="text-success-emphasis fw-bold display-5 my-4 text-center"
+				th:utext="#{servicios.reservaEstancia}"></h2>
 			<div class="formContainer">
 				<form class="row g-3">
 					<fieldset class="col-md-6">
@@ -190,22 +243,25 @@
 							<legend class="fw-bold">Datos de contacto</legend>
 							<label for="nombreDueño" class="form-label">Tu nombre: <span
 									style="color: red">*</span></label>
-							<input type="text" id="nombreDueño" class="form-control labelForm"
-								   placeholder="-Por favor introduce tu nombre-" required>
+							<input th:value="${usuario != null} ? ${usuario.getPerfilDatos().getNombre()} : ''"
+								   type="text" id="nombreDueño" class="form-control labelForm"
+								   placeholder="-Por favor introduce tu nombre-" disabled>
 						</div>
 
 						<div class="itemSeleccion">
 							<label for="telefonoDueño" class="form-label">Teléfono: <span
 									style="color: red">*</span></label>
-							<input type="tel" id="telefonoDueño" class="form-control labelForm"
-								   placeholder="-Por favor introduce tu número de teléfono-" required>
+							<input th:value="${usuario != null} ? ${usuario.getPerfilDatos().telefono1} : ''" type="tel"
+								   id="telefonoDueño" class="form-control labelForm"
+								   placeholder="-Por favor introduce tu número de teléfono-" disabled>
 						</div>
 
 						<div class="itemSeleccion">
 							<label for="emailDueño" class="form-label">Correo electrónico: <span
 									style="color: red">*</span></label>
-							<input type="email" id="emailDueño" class="form-control labelForm"
-								   placeholder="-Por favor introduce tu correo electrónico-" required>
+							<input th:value="${usuario != null} ? ${usuario.getEmail()} : ''" type="email"
+								   id="emailDueño" class="form-control labelForm"
+								   placeholder="-Por favor introduce tu correo electrónico-" disabled>
 						</div>
 
 						<div class="itemSeleccion">
@@ -216,6 +272,7 @@
 
 					<div class="itemSeleccion">
 						<label class="form-label fw-bold fs-5">Tarifa seleccionada: </label>
+						<span id="tarifaSeleccionada" class="fw-normal"></span>
 					</div>
 
 					<div class="itemSeleccion">
@@ -227,10 +284,11 @@
 						<label class="form-label">He leído y acepto las condiciones de uso de la web,
 							el aviso legal y la política de privacidad</label>
 					</div>
-
-					<div class="text-center">
-						<button type="submit" class="btn btn-primary btnEnviar">RESERVAR</button>
-					</div>
+				</form>
+				<form id="checkoutGuarderia" method="post" th:action="@{/guarderia/checkoutGuarderia}">
+					<input type="hidden" id="nombreProducto" name="nombreProducto">
+					<input type="hidden" id="cantidadDias" name="cantidadDias">
+					<button type="submit" class="btn btn-primary btnEnviar">RESERVAR</button>
 				</form>
 			</div>
 		</section>
@@ -238,16 +296,20 @@
 
 		<!-- Sección: otros servicios-->
 		<section class="text-center mb-1">
-			<h2 class="text-success-emphasis fw-bold display-5 my-4">Otros servicios:</h2>
+			<h2 class="text-success-emphasis fw-bold display-5 my-4"
+				th:utext="#{servicios.otrosServicios}"></h2>
 			<div class="row row-cols-1 row-cols-md-4 g-4">
 				<article class="col">
 					<div class="card p-3 shadow-sm cardServicio">
 						<div class="card_image">
 							<img th:src="@{images/peluqueriaCanina.jpg}" alt="LogoPeluqueria" class="imagenCard">
 						</div>
-						<h3 class="mt-3 fs-3 fw-bold text-success-emphasis">PELUQUERÍA</h3>
-						<p class="fs-4">A PARTIR DE 10€</p>
-						<a th:href="@{/peluqueria}" class="btn btn-success">MÁS INFO</a>
+						<h3 class="mt-3 fs-3 fw-bold text-success-emphasis"
+							th:utext="#{servicios.peluqueria}"></h3>
+						<p class="fs-4" th:utext="#{servicios.peluqueriaApartirDe}"></p>
+						<a th:href="@{/peluqueria}" class="btn btn-success"
+						   th:utext="#{servicios.masInfo}">
+						</a>
 					</div>
 				</article>
 				<article class="col">
@@ -255,9 +317,12 @@
 						<div class="card_image">
 							<img th:src="@{images/adiestramiento.jpg}" alt="LogoAdiestramiento" class="imagenCard">
 						</div>
-						<h3 class="mt-3 fs-3 fw-bold text-success-emphasis">ADIESTRAMIENTO</h3>
-						<p class="fs-4">A PARTIR DE 15€</p>
-						<a th:href="@{/adiestramiento}" class="btn btn-success">MÁS INFO</a>
+						<h3 class="mt-3 fs-3 fw-bold text-success-emphasis"
+							th:utext="#{servicios.adiestramiento}"></h3>
+						<p class="fs-4" th:utext="#{servicios.adiestramientoApartirDe}"></p>
+						<a th:href="@{/adiestramiento}" class="btn btn-success"
+						   th:utext="#{servicios.masInfo}">
+						</a>
 					</div>
 				</article>
 				<article class="col">
@@ -265,8 +330,12 @@
 						<div class="card_image">
 							<img th:src="@{images/veterinario.jpg}" alt="LogoVeterinario" class="imagenCard">
 						</div>
-						<h3 class="mt-3 fs-3 fw-bold text-success-emphasis">ASESORAMIENTO VETERINARIO</h3>
-						<a th:href="@{/veterinario}" class="btn btn-success">MÁS INFO</a>
+						<h3 class="mt-3 fs-3 fw-bold text-success-emphasis"
+							th:utext="#{servicios.veterinario}"></h3>
+						<p class="fs-4" th:utext="#{servicios.veterinarioApartirDe}"></p>
+						<a th:href="@{/veterinario}" class="btn btn-success"
+						   th:utext="#{servicios.masInfo}">
+						</a>
 					</div>
 				</article>
 				<article class="col">
@@ -274,124 +343,246 @@
 						<div class="card_image">
 							<img th:src="@{images/asesoramientoLegal.jpg}" alt="LogoLegal" class="imagenCard">
 						</div>
-						<h3 class="mt-3 fs-3 fw-bold text-success-emphasis">ASESORAMIENTO LEGAL</h3>
-						<a th:href="@{/asesoramientoLegal}" class="btn btn-success">MÁS INFO</a>
+						<h3 class="mt-3 fs-3 fw-bold text-success-emphasis"
+							th:utext="#{servicios.asesoramientoLegal}"></h3>
+						<p class="fs-4" th:utext="#{servicios.asesoramientoApartirDe}"></p>
+						<a th:href="@{/asesoramientoLegal}" class="btn btn-success"
+						   th:utext="#{servicios.masInfo}">
+						</a>
 					</div>
 				</article>
 			</div>
 		</section>
 	</section>
 
-	<!-- Script para controlar la seleccion de fechas -->
+	<div id="errorDias" class="text-danger mt-1"></div>
+
+	<!-- Script para controlar la seleccion y gestion de dias -->
 	<script>
-        'use strict';
-        var dclhandler = false;
-        if (document.readyState !== 'loading') {
-            start();
-        } else {
-            dclhandler = true;
-            document.addEventListener('DOMContentLoaded', start);
-        }
-
-        function start() {
-            if (dclhandler) {
-                document.removeEventListener('DOMContentLoaded', start);
-            }
-            console.log('Start the site`s JS activities');
-        }
-
         document.addEventListener('DOMContentLoaded', function () {
+            const btns = document.querySelectorAll('.btnCard');
+            const tarifaSpan = document.getElementById('tarifaSeleccionada');
+            const precioTotal = document.getElementById('precioTotal');
             const fechaEntrada = document.getElementById('fechaEntrada');
             const fechaSalida = document.getElementById('fechaSalida');
+            const errorDias = document.getElementById('errorDias');
 
+            let tarifaSeleccionada = null;
+            let esBono = false;
 
-            // Obtener la fecha actual en formato YYYY-MM-DD
+            // Obtener la fecha de hoy en formato YYYY-MM-DD
             const hoy = new Date().toISOString().split('T')[0];
-
-            // Establecer el valor mínimo para la fecha de entrada
             fechaEntrada.min = hoy;
 
-            // Evento para actualizar la fecha mínima de salida cuando cambia la entrada
-            fechaEntrada.addEventListener('change', function () {
-                fechaSalida.min = fechaEntrada.value;
-            });
-        });
-	</script>
-
-	<!-- Script para calcular el precio dependiendo de la tarifa seleccionada -->
-	<script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const tarifas = {
-                "ESTANCIA EXPRESS": 18,
-                "ESTANCIA RELAX": 15,
-                "ESTANCIA SABÁTICA": 12,
-                "BONO LARGA ESTANCIA": 200,
-                "BONO ESTANCIA SOLO DIA": 75
-            };
-
-            let tarifaSeleccionada = "";
-            let precioPorNoche = 0;
-
-            const etiquetaTarifa = document.querySelector('.fw-bold.fs-5'); // Donde se mostrará la tarifa
-            const etiquetaPrecioTotal = document.getElementById('precioTotal');
-
-            // Botones de selección de tarifa
-            document.getElementById('btnEstanciaExpress').addEventListener('click', function () {
-                seleccionarTarifa("ESTANCIA EXPRESS");
-            });
-
-            document.getElementById('btnEstanciaRelax').addEventListener('click', function () {
-                seleccionarTarifa("ESTANCIA RELAX");
-            });
-
-            document.getElementById('btnEstanciaSabatica').addEventListener('click', function () {
-                seleccionarTarifa("ESTANCIA SABÁTICA");
-            });
-
-            document.getElementById('btnBonoLargaEstancia').addEventListener('click', function () {
-                establecerTarifaFija("BONO LARGA ESTANCIA");
-            });
-
-            document.getElementById('btnBonoEstanciaSoloDia').addEventListener('click', function () {
-                establecerTarifaFija("BONO ESTANCIA SOLO DIA");
-            });
-
-            function establecerTarifaFija(tarifa) {
-                tarifaSeleccionada = tarifa;
-                etiquetaTarifa.textContent = "Tarifa seleccionada: " + tarifa;
-                const totalFijo = tarifas[tarifa];
-                etiquetaPrecioTotal.textContent = `PRECIO TOTAL: ${totalFijo}€`;
+            // Suma días a una fecha y devuelve en formato YYYY-MM-DD
+            function sumarDias(fecha, dias) {
+                const nuevaFecha = new Date(fecha);
+                nuevaFecha.setDate(nuevaFecha.getDate() + dias);
+                return nuevaFecha.toISOString().split('T')[0];
             }
 
-            function seleccionarTarifa(tarifa) {
-                tarifaSeleccionada = tarifa;
-                precioPorNoche = tarifas[tarifa];
-                etiquetaTarifa.textContent = "Tarifa seleccionada: " + tarifa;
-                calcularPrecio(); // Recalcular si ya hay fechas seleccionadas
+            // Calcula los días entre dos fechas
+            function calcularDias(inicio, fin) {
+                const unDiaMs = 1000 * 60 * 60 * 24;
+                const diffMs = fin - inicio;
+                return Math.ceil(diffMs / unDiaMs);
             }
 
-            // Función para calcular el precio total según las fechas
-            function calcularPrecio() {
-                const fechaEntrada = document.getElementById('fechaEntrada').value;
-                const fechaSalida = document.getElementById('fechaSalida').value;
+            // Ajusta el rango de la fecha de salida según la tarifa seleccionada
+            function ajustarRangoFechaSalida() {
+                if (!tarifaSeleccionada || !fechaEntrada.value) {
+                    fechaSalida.min = fechaEntrada.value || hoy;
+                    fechaSalida.max = "";
+                    return;
+                }
+                const minDias = parseInt(tarifaSeleccionada.minDias);
+                const maxDias = parseInt(tarifaSeleccionada.maxDias);
 
-                if (fechaEntrada && fechaSalida && tarifaSeleccionada) {
-                    const inicio = new Date(fechaEntrada);
-                    const fin = new Date(fechaSalida);
-                    const noches = Math.max((fin - inicio) / (1000 * 60 * 60 * 24), 0);
+                fechaSalida.min = sumarDias(fechaEntrada.value, minDias);
+                fechaSalida.max = sumarDias(fechaEntrada.value, maxDias);
 
-                    if (noches > 0) {
-                        const total = noches * precioPorNoche;
-                        etiquetaPrecioTotal.textContent = `PRECIO TOTAL: ${total}€`;
-                    } else {
-                        etiquetaPrecioTotal.textContent = "PRECIO TOTAL: ";
+                // Si la fecha de salida actual está fuera del rango, resetea
+                if (fechaSalida.value) {
+                    if (fechaSalida.value < fechaSalida.min || fechaSalida.value > fechaSalida.max) {
+                        fechaSalida.value = "";
                     }
                 }
             }
 
-            // Detectar cambios en las fechas y calcular precio
-            document.getElementById('fechaEntrada').addEventListener('change', calcularPrecio);
-            document.getElementById('fechaSalida').addEventListener('change', calcularPrecio);
+            // Actualiza el precio total y valida los días
+            function actualizarPrecio() {
+                errorDias.textContent = "";
+
+                // Si es bono, solo muestra el precio del bono y desactiva fechas
+                if (esBono && tarifaSeleccionada) {
+                    precioTotal.textContent = `PRECIO TOTAL: ${tarifaSeleccionada.precio}€`;
+                    return;
+                }
+
+                // Si no hay tarifa seleccionada o fechas, resetea
+                if (!tarifaSeleccionada || !fechaEntrada.value || !fechaSalida.value) {
+                    precioTotal.textContent = "PRECIO TOTAL: ";
+                    return;
+                }
+
+                const inicio = new Date(fechaEntrada.value);
+                const fin = new Date(fechaSalida.value);
+
+                if (fin <= inicio) {
+                    precioTotal.textContent = "ERROR: La fecha de salida debe ser posterior a la de entrada.";
+                    return;
+                }
+
+                const dias = calcularDias(inicio, fin);
+                const minDias = parseInt(tarifaSeleccionada.minDias);
+                const maxDias = parseInt(tarifaSeleccionada.maxDias);
+
+                if (dias < minDias || dias > maxDias) {
+                    precioTotal.textContent = "PRECIO TOTAL: ";
+                    let mensaje = `Esta tarifa solo permite estancias de `;
+                    if (maxDias >= 999) {
+                        mensaje += `${minDias} días o más.`;
+                    } else {
+                        mensaje += `entre ${minDias} y ${maxDias} días.`;
+                    }
+                    errorDias.textContent = mensaje;
+                    return;
+                }
+
+                errorDias.textContent = "";
+                const total = dias * tarifaSeleccionada.precio;
+                precioTotal.innerHTML = `PRECIO TOTAL: ${total}€ <small class="text-muted">(${dias} días)</small>`;
+            }
+
+            // Evento para seleccionar una tarifa o bono
+            btns.forEach(btn => {
+                btn.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    const card = btn.closest('.cardServicio');
+                    const isBono = btn.classList.contains('cardBono');
+
+                    // Si ya está seleccionada, desmarcar y resetear
+                    if (card.classList.contains('selected')) {
+                        card.classList.remove('selected');
+                        tarifaSeleccionada = null;
+                        esBono = false;
+                        tarifaSpan.textContent = '';
+                        precioTotal.textContent = "PRECIO TOTAL: ";
+                        errorDias.textContent = "";
+                        fechaEntrada.disabled = false;
+                        fechaSalida.disabled = false;
+                        ajustarRangoFechaSalida();
+                        return;
+                    }
+
+                    // Desmarcar todas las seleccionadas
+                    document.querySelectorAll('.cardServicio.selected').forEach(c => c.classList.remove('selected'));
+                    card.classList.add('selected');
+
+                    // Si es bono
+                    if (isBono) {
+                        esBono = true;
+                        // Desactivar fechas y limpiar valores
+                        fechaEntrada.disabled = true;
+                        fechaSalida.disabled = true;
+                        fechaEntrada.value = "";
+                        fechaSalida.value = "";
+                        errorDias.textContent = "";
+
+                        tarifaSeleccionada = {
+                            precio: parseFloat(card.dataset.precio),
+                            nombre: card.querySelector('.card-title').textContent.trim()
+                        };
+
+                        tarifaSpan.textContent = `${tarifaSeleccionada.nombre}`;
+                        actualizarPrecio();
+                        return;
+                    }
+
+                    // Si es tarifa normal
+                    esBono = false;
+                    fechaEntrada.disabled = false;
+                    fechaSalida.disabled = false;
+
+                    tarifaSeleccionada = {
+                        precio: parseFloat(card.dataset.precio),
+                        nombre: card.querySelector('.card-title').textContent.trim(),
+                        minDias: card.dataset.minDias,
+                        maxDias: card.dataset.maxDias
+                    };
+
+                    tarifaSpan.textContent = `${tarifaSeleccionada.nombre} - ${tarifaSeleccionada.precio}€/día`;
+                    ajustarRangoFechaSalida();
+                    actualizarPrecio();
+                });
+            });
+
+            // Cuando cambia la fecha de entrada, ajusta el rango de salida y recalcula
+            fechaEntrada.addEventListener('change', function () {
+                if (!esBono) {
+                    ajustarRangoFechaSalida();
+                    actualizarPrecio();
+                }
+            });
+
+            // Cuando cambia la fecha de salida, recalcula
+            fechaSalida.addEventListener('change', function () {
+                if (!esBono) {
+                    actualizarPrecio();
+                }
+            });
+
+            // Inicializa el mínimo de salida al cargar la página
+            if (fechaEntrada.value) {
+                fechaSalida.min = fechaEntrada.value;
+            } else {
+                fechaSalida.min = hoy;
+            }
+
+            document.getElementById('checkoutGuarderia').addEventListener('submit', async function(event) {
+                event.preventDefault();
+
+                const form = event.target;
+
+                // Validar selección
+                if (!tarifaSeleccionada) {
+                    alert("Selecciona una tarifa o bono antes de reservar.");
+                    return;
+                }
+
+                // Obtener nombre y cantidad de días
+                const nombreProducto = tarifaSeleccionada.nombre;
+                let cantidadDias = 1;
+                if (!esBono && fechaEntrada.value && fechaSalida.value) {
+                    cantidadDias = calcularDias(new Date(fechaEntrada.value), new Date(fechaSalida.value));
+                }
+
+                // Prepara datos para enviar como JSON
+                const formData = {
+                    nombreProducto: nombreProducto,
+                    cantidadDias: cantidadDias
+                };
+
+                try {
+                    const response = await fetch(form.action, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(formData)
+                    });
+
+                    const data = await response.json();
+
+                    if (data.status === "SUCCESS") {
+                        window.location.href = data.sessionUrl; // Redirige a Stripe
+                    } else {
+                        alert("Error en la reserva: " + (data.message || "Sin mensaje"));
+                    }
+                } catch (error) {
+                    console.error("Error:", error);
+                    alert("Error al procesar la reserva");
+                }
+            });
         });
 	</script>
 </section>

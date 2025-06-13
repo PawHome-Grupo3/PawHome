@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title th:text="Nav Tienda"></title>
 </head>
@@ -18,10 +18,8 @@
           list-style: none;
           align-content: center;
           ">
-                <li class="navbar-item px-md-2 py-2 align-content-center"><a href="/tienda#collares" class="enlaceNavTienda">Collares</a></li>
-                <li class="navbar-item px-md-2 py-2 align-content-center"><a href="/tienda#camisetas" class="enlaceNavTienda">Camisetas</a></li>
-                <li class="navbar-item px-md-2 py-2 align-content-center"><a href="/tienda#tazas" class="enlaceNavTienda">Tazas</a></li>
-                <li class="navbar-item px-md-2 py-2 align-content-center"><a class="fa-solid fa-cart-shopping" id="carritoCompra"> Carrito</a><a href="/listaCarrito" class="enlaceNavTienda px-1">Carrito</a></li>
+                <li th:each="categoriaNav : ${categoriasNav}" class="navbar-item px-md-2 py-2 align-content-center"><a th:utext="${categoriaNav.getNombre()}" th:href="@{'/tienda#' + ${categoriasNavDto.get(categoriaNav.getId()-1).getNombre()}}" class="enlaceNavTienda"></a></li>
+                <li class="navbar-item px-md-2 py-2 align-content-center"><a href="/tienda/carrito" class="enlaceNavTienda px-1">Carrito</a></li>
                 <li class="navbar-item px-md-2 py-2 ms-3">
                     <form class="d-flex justify-content-end me-3" role="search">
                     <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
@@ -29,24 +27,5 @@
                 </form></li>
             </ul>
         </div>
-        <script>
-            document.addEventListener("mouseover", (event) => {
-                const target = event.target;
-
-                if (target && target.id === "carritoCompra" && !target.classList.contains("fa-bounce")) {
-                    console.log("Mouse sobre el carritoCompra");
-                    target.classList.add("fa-bounce"); // Añade la clase "fa-bounce"
-                }
-            }, true);
-
-            document.addEventListener("mouseleave", (event) => {
-                const target = event.target;
-
-                if (target && target.id === "carritoCompra" && target.classList.contains("fa-bounce")) {
-                    console.log("Mouse fuera del carritoCompra");
-                    target.classList.remove("fa-bounce"); // Elimina la clase "fa-bounce"
-                }
-            }, true);
-        </script>
     </div>
 </html>

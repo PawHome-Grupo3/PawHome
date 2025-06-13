@@ -10,6 +10,7 @@ services:
       SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/producciondb
       SPRING_DATASOURCE_USERNAME: produccionuser
       SPRING_DATASOURCE_PASSWORD: produccionpassword
+      SPRING_PROFILES_ACTIVE: produccion
     depends_on:
       db:
         condition: service_healthy

@@ -1,0 +1,137 @@
+body {
+    margin-top: 0 !important;
+}
+
+.containerImagen {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    padding: 120px 20px 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 0;
+}
+
+.containerImagen::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: url('/images/PS.jpg') no-repeat center center fixed;
+    background-size: cover;
+    z-index: -2;
+}
+
+.containerImagen::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(27, 125, 85, 0.6);
+    z-index: -1;
+}
+
+.cuadro-transparente {
+    background-color: rgba(187, 224, 155, 0.35);
+    border-radius: 15px;
+    padding: 2rem;
+    max-width: 1000px;
+    width: 80%;
+    text-align: left;
+    margin-top: 40px;
+    margin-bottom: 60px;
+}
+
+.textop {
+    font-size: 60px;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    margin-bottom: 30px;
+    font-family: Arial, sans-serif;
+}
+
+ol {
+    font-size: 30px;
+    color: #000000;
+    width: 90%;
+    line-height: 1.8;
+    padding-left: 50px;
+}
+
+a {
+    color: rgb(0, 0, 0);
+    text-decoration: strong;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.agradecimiento {
+    color: #000000;
+    text-align: center;
+    font-size: 1.6rem;
+    font-family: Arial, sans-serif;
+    font-weight: normal;
+    line-height: 1.8;
+    z-index: 1;
+    margin: 0 auto;
+    max-width: 1500px;
+    padding: 0 20px;
+}
+
+.firma {
+    color: #000000;
+    text-align: center;
+    font-size: 1.5rem;
+    font-family: Arial, sans-serif;
+    font-style: italic;
+    font-weight: normal;
+    line-height: 1.6;
+    margin-top: 10px;
+    margin-bottom: 40px;
+    padding: 0 20px;
+}
+
+
+
+@media (max-width: 768px) {
+    .cuadro-transparente {
+        padding: 1.5rem;
+        width: 95%;
+        margin-top: 30px;
+        margin-bottom: 40px;
+    }
+
+    .textop {
+        font-size: 2.2rem;
+    }
+
+    ol {
+        font-size: 1.2rem;
+        padding-left: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .cuadro-transparente {
+        padding: 1rem;
+        width: 95%;
+    }
+
+   .textop {
+        font-size: 1.8rem;
+    }
+
+    ol {
+        font-size: 1rem;
+        padding-left: 1rem;
+    }
+
+}

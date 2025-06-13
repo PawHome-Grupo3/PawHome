@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout.html}">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" th:href="@{/css/Adopta.css}">
+  <title th:text="#{adopta.titulo}">Adopta</title>
+</head>
+
+<body>
+<section layout:fragment="content">
+
+  <div class="containerImagen">
+    <div class="cuadro-transparente">
+      <h1><i th:text="#{adopta.titulo}">Adopta</i></h1>
+      <br>
+      <ol>
+        <li>
+          <span th:text="#{adopta.paso1}">Elige a uno de nuestros</span>
+          <a th:href="@{/nuestrosAnimales}" th:text="#{adopta.animales}">animales disponibles para adopción</a>.
+        </li>
+        <li>
+          <span th:text="#{adopta.paso2}">Accede al</span>
+          <a th:href="@{/colabora/adopta/formularioAdopta}" th:text="#{adopta.formulario}">formulario y escribe su nombre</a>.
+        </li>
+        <li th:text="#{adopta.paso3}">
+          Rellénalo con sinceridad, queremos conocerte y saber si eres apto para poder cuidar bien de uno o varios de nuestros peluditos.
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+</body>
+</html>

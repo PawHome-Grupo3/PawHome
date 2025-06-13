@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout.html}">
+
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{donar.bizum.titulo}">Donar por Bizum</title>
+    <link rel="stylesheet" th:href="@{/css/Dona.css}">
+</head>
+
+<body class="dona-body">
+<section layout:fragment="content" class="dona-content">
+    <div class="dona-overlay">
+        <div class="dona-header">
+            <h1><strong th:text="#{donar.bizum.titulo}">Donar por Bizum</strong></h1>
+        </div>
+
+        <div class="dona-cuadro-transparente">
+            <p class="dona-textobizum" th:text="#{donar.bizum.instrucciones}">
+                Para donar por Bizum, abre la app de tu banco, selecciona la opción de Bizum, elige "Donar a ONG" e introduce nuestro código:
+            </p>
+
+            <h2 class="dona-bizum-codigo">
+                <b th:text="#{donar.bizum.codigo}">PAWH567</b>
+            </h2>
+
+            <p class="dona-textobizum" th:text="#{donar.bizum.agradecimiento}">
+                ¡Gracias por tu ayuda!
+            </p>
+
+            <div style="margin-top: 24px;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/2/2b/Bizum.svg" alt="Bizum" style="width:200px;">
+            </div>
+
+        </div>
+    </div>
+</section>
+</body>
+</html>

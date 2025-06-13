@@ -4,6 +4,12 @@
 <head>
 	<title>Nuestros Animales</title>
 	<link rel="stylesheet" th:href="@{/css/general.css}"/>
+	<style>
+		.dropdown-menu .dropdown-item:hover {
+			background-color: white !important;
+			color: #14532d !important;
+		}
+	</style>
 </head>
 <body>
 
@@ -28,323 +34,424 @@
 
 	</div>
 
-	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<main>
+		<div class="container">
+			<!-- Sorting -->
+			<div class="row justify-content-center mb-3">
+				<div class="col-12 col-md-10">
+					<div class="table-sort-panel">
+						<!-- Escritorio: Botones de orden + selector -->
+						<div class="d-none d-md-flex flex-wrap justify-content-between gap-2 mb-2">
+
+							<!-- Botón: Nombre -->
+							<div class="flex-fill text-center" style="min-width: 120px;">
+								<button type="button"
+										class="btn w-100 text-success fw-bold d-inline-flex align-items-center justify-content-center gap-1 text-decoration-none bg-success bg-opacity-25 rounded-pill px-3 py-1"
+										onclick="sortBy('nombre')">
+									Nombre
+									<i class="fa-solid"
+									   th:classappend="${sortField == 'nombre'} ? (sortDirection == 'asc' ? ' fa-sort-alpha-down' : ' fa-sort-alpha-up') : ''"
+									   th:title="${sortDirection == 'asc' ? 'Orden descendente' : 'Orden ascendente'}"></i>
+								</button>
+							</div>
+
+							<!-- Botón: Edad -->
+							<div class="flex-fill text-center" style="min-width: 120px;">
+								<button type="button"
+										class="btn w-100 text-success fw-bold d-inline-flex align-items-center justify-content-center gap-1 text-decoration-none bg-success bg-opacity-25 rounded-pill px-3 py-1"
+										onclick="sortBy('fechaNacimiento')">
+									Edad
+									<i class="fa-solid"
+									   th:classappend="${sortField == 'fechaNacimiento'} ? (sortDirection == 'asc' ? ' fa-sort-numeric-down' : ' fa-sort-numeric-up') : ''"
+									   th:title="${sortDirection == 'asc' ? 'Orden descendente' : 'Orden ascendente'}"></i>
+								</button>
+							</div>
+
+							<!-- Botón: Peso -->
+							<div class="flex-fill text-center" style="min-width: 120px;">
+								<button type="button"
+										class="btn w-100 text-success fw-bold d-inline-flex align-items-center justify-content-center gap-1 text-decoration-none bg-success bg-opacity-25 rounded-pill px-3 py-1"
+										onclick="sortBy('peso')">
+									Peso
+									<i class="fa-solid"
+									   th:classappend="${sortField == 'peso'} ? (sortDirection == 'asc' ? ' fa-sort-numeric-down' : ' fa-sort-numeric-up') : ''"
+									   th:title="${sortDirection == 'asc' ? 'Orden descendente' : 'Orden ascendente'}"></i>
+								</button>
+							</div>
+
+							<!-- Botón: Género -->
+							<div class="flex-fill text-center" style="min-width: 120px;">
+								<button type="button"
+										class="btn w-100 text-success fw-bold d-inline-flex align-items-center justify-content-center gap-1 text-decoration-none bg-success bg-opacity-25 rounded-pill px-3 py-1"
+										onclick="sortBy('genero')">
+									Género
+									<i class="fa-solid"
+									   th:classappend="${sortField == 'genero'} ? (sortDirection == 'asc' ? ' fa-sort-alpha-down' : ' fa-sort-alpha-up') : ''"
+									   th:title="${sortDirection == 'asc' ? 'Orden descendente' : 'Orden ascendente'}"></i>
+								</button>
+							</div>
+
+							<!-- Selector de cantidad -->
+							<div class="text-center" style="min-width: 150px;">
+								<form th:action="@{/nuestrosAnimales}" method="get" id="pageSizeFormDesktop" class="mb-0">
+									<input type="hidden" name="keyword" th:value="${keyword}" />
+									<input type="hidden" name="adoptado" th:value="${adoptado}" />
+									<input type="hidden" name="sort" th:value="${sortField + ',' + sortDirection}" />
+
+									<div class="d-flex align-items-center bg-success bg-opacity-25 rounded-pill px-2 py-1 shadow-sm">
+										<i class="fa-solid fa-list-ol me-2 text-success"></i>
+										<select name="size"
+												class="form-select form-select-sm border-0 bg-transparent text-center fw-bold text-success"
+												onchange="document.getElementById('pageSizeFormDesktop').submit()"
+												style="min-width: 60px;">
+											<option th:value="5" th:selected="${pageSize == 5}">5</option>
+											<option th:value="10" th:selected="${pageSize == 10}">10</option>
+											<option th:value="15" th:selected="${pageSize == 15}">15</option>
+											<option th:value="20" th:selected="${pageSize == 20}">20</option>
+										</select>
+									</div>
+								</form>
+							</div>
+
+						</div>
+
+						<!-- Móvil: Dropdown original -->
+						<div class="d-md-none w-100">
+							<!-- Selector de cantidad -->
+							<div class="mb-2 d-flex justify-content-center">
+								<form th:action="@{/nuestrosAnimales}" method="get" id="pageSizeFormMobile" class="mb-0">
+									<input type="hidden" name="keyword" th:value="${keyword}" />
+									<input type="hidden" name="adoptado" th:value="${adoptado}" />
+									<input type="hidden" name="sort" th:value="${sortField + ',' + sortDirection}" />
+
+									<div class="d-flex align-items-center bg-success bg-opacity-25 rounded-pill px-2 py-1 shadow-sm">
+										<i class="fa-solid fa-list-ol me-2 text-success"></i>
+										<select name="size" class="form-select form-select-sm border-0 bg-transparent text-center fw-bold text-success"
+												onchange="document.getElementById('pageSizeFormMobile').submit()"
+												style="width: auto; min-width: 30px;">
+											<option th:value="5" th:selected="${pageSize == 5}">5</option>
+											<option th:value="10" th:selected="${pageSize == 10}">10</option>
+											<option th:value="15" th:selected="${pageSize == 15}">15</option>
+											<option th:value="20" th:selected="${pageSize == 20}">20</option>
+										</select>
+									</div>
+								</form>
+							</div>
+
+							<!-- Menú desplegable de ordenamiento -->
+							<div class="dropdown text-center">
+								<button class="btn bg-success bg-opacity-25 text-success shadow-sm rounded-pill fw-bold px-4"
+										type="button" id="dropdownSortMobile" data-bs-toggle="dropdown" aria-expanded="false">
+									Ordenar por
+									<i class="fa-solid"
+									   th:classappend="${sortDirection == 'asc'} ? ' fa-arrow-up' : ' fa-arrow-down'"></i>
+								</button>
+
+								<ul class="dropdown-menu mx-auto mt-2 shadow-sm text-center border-0"
+									style="background-color: #198754; min-width: 200px;"
+									aria-labelledby="dropdownSortMobile">
+
+									<li>
+										<a class="dropdown-item fw-semibold text-white"
+										   th:classappend="${sortField == 'nombre'} ? ' active bg-white bg-opacity-25 text-white fw-bold' : ''"
+										   href="#" onclick="sortBy('nombre')">Nombre</a>
+									</li>
+									<li>
+										<a class="dropdown-item fw-semibold text-white"
+										   th:classappend="${sortField == 'fechaNacimiento'} ? ' active bg-white bg-opacity-25 text-white fw-bold' : ''"
+										   href="#" onclick="sortBy('fechaNacimiento')">Edad</a>
+									</li>
+									<li>
+										<a class="dropdown-item fw-semibold text-white"
+										   th:classappend="${sortField == 'peso'} ? ' active bg-white bg-opacity-25 text-white fw-bold' : ''"
+										   href="#" onclick="sortBy('peso')">Peso</a>
+									</li>
+									<li>
+										<a class="dropdown-item fw-semibold text-white"
+										   th:classappend="${sortField == 'genero'} ? ' active bg-white bg-opacity-25 text-white fw-bold' : ''"
+										   href="#" onclick="sortBy('genero')">Género</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+			<div class="row justify-content-center mb-4">
+				<div class="col-12 col-md-10">
+					<div class="table-sort-panel">
+						<form id="filtroForm" th:action="@{/nuestrosAnimales}" method="get"
+							  class="d-flex flex-column flex-md-row justify-content-center align-items-center gap-3 flex-wrap">
+
+							<!-- Campo de búsqueda -->
+							<input type="text" name="keyword" th:value="${keyword}" placeholder="Buscar por nombre"
+								   class="form-control flex-grow-1"
+								   style="min-width: 200px; max-width: 220px;" />
+
+							<!-- Filtro por adoptado -->
+							<select name="adoptado" class="form-select" style="width: 160px;">
+								<option th:value="null" th:selected="${adoptado == null}">Todos</option>
+								<option th:value="true" th:selected="${adoptado == 'true'}">Adoptados</option>
+								<option th:value="false" th:selected="${adoptado == 'false'}">Sin Adoptar</option>
+							</select>
+
+							<!-- Filtro por raza -->
+							<select name="razaId" id="razaSelect" class="form-select" style="width: 180px;"
+									onchange="onRazaChange()">
+								<option th:value="null" th:selected="${razaId == null}">Todas las razas</option>
+								<option th:each="raza : ${razas}" th:value="${raza.id}" th:text="${raza.nombre}"
+										th:selected="${razaId != null and razaId == raza.id}"></option>
+							</select>
+
+							<!-- Filtro por especie (si hay especies cargadas) -->
+							<select name="especieId" id="especieSelect" class="form-select" style="width: 180px;"
+									th:if="${especies != null}">
+								<option th:value="null" th:selected="${especieId == null}">Todas las especies</option>
+								<option th:each="especie : ${especies}" th:value="${especie.id}" th:text="${especie.nombre}"
+										th:selected="${especieId != null and especieId == especie.id}"></option>
+							</select>
+
+							<!-- Botón Filtrar -->
+							<button type="submit" class="btn fw-bold"
+									style="min-width: 100px; background-color: #198754; color: white;">
+								Filtrar
+							</button>
+						</form>
+					</div>
+				</div>
+			</div>
+
+			<!-- Cards -->
+			<div class="row justify-content-center">
+				<!--/* @thymesVar id="animal" type="com.grupo3.pawHome.entities.Animal" */-->
+				<div th:each="animal : ${animales}"
+					 class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4 d-flex justify-content-center">
+					<div class="card cardAnimal">
+						<div class="card_image">
+							<img class="imgCardAnimal" th:src="${animal.rutaImg1}"
+								 alt="foto de perro disponible para adoptar">
+						</div>
+						<div class="card_content d-flex justify-content-center card_contentAnimal">
+							<h2 class="card_title card_titleAnimal pb-3" th:utext="${animal.nombre}"></h2>
+							<div class="d-flex flex-wrap justify-content-center gap-2 mb-2 card_badges">
+								<!-- Peso -->
+								<span class="badgeCard">
+									<i class="fas fa-weight-hanging me-1"></i>
+									<span th:text="${animal.peso} + ' kg'">8 kg</span>
+								</span>
+
+								<!-- Edad -->
+								<span class="badgeCard">
+									<i class="fas fa-birthday-cake me-1"></i>
+									<span th:text="${animal.edad}">2 años</span>
+								</span>
+
+								<!-- Género -->
+								<span class="badgeCard">
+									<i class="fas fa-venus-mars me-1"></i>
+									<span th:text="${animal.genero == false ? 'Hembra' : 'Macho'}">Hembra</span>
+								</span>
+							</div>
+							<div class="row d-flex justify-content-center flex-nowrap">
+								<a th:if="${animal.adoptado == false && animal.caracterSocial == true}"
+								   th:href="@{/adopta/{id}(id=${animal.id})}"
+								   class="botonesCardAnimal btn card_btn">Adopta</a>
+
+								<a th:if="${animal.adoptado == false}"
+								   th:href="@{/apadrinar/{id}(id=${animal.id})}"
+								   th:class="'btn card_btn ' + (${animal.caracterSocial} == true? 'botonesCardAnimal' : 'botonesCardAnimalApadrina')">
+									Apadrina
+								</a>
+							</div>
+							<div class="row d-flex justify-content-center flex-nowrap hiddenCardContent">
+								<button type="button" class="botonesCardAnimal botonesCardLeerMas btn card_btn arrow"
+										data-bs-toggle="modal" data-bs-target="#exampleModal"
+										th:attr="data-id=${animal.id},
+											data-nombre=${animal.nombre},
+											data-imagen=${animal.rutaImg1},
+											data-imagen2=${animal.rutaImg2},
+											data-imagen3=${animal.rutaImg3},
+											data-descripcion=${animal.descripcion},
+											data-peso=${animal.peso},
+											data-fechaNacimiento=${animal.fechaNacimiento},
+											data-genero=${animal.genero},
+											data-adoptado=${animal.adoptado},
+											data-caracter=${animal.caracterSocial}"> Leer Más
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Bloque de paginación -->
+			<div class="row justify-content-center mt-4">
+				<nav aria-label="Pagination" th:if="${totalPages > 0}">
+					<ul class="pagination justify-content-center">
+						<li class="page-item" th:classappend="${currentPage == 1} ? 'disabled'">
+							<a th:replace="fragments/paging :: paging(1, '<<', 'First Page')"></a>
+						</li>
+						<li class="page-item font-weight-bold" th:classappend="${currentPage == 1} ? 'disabled'">
+							<a th:replace="fragments/paging :: paging(${currentPage - 1}, 'Prev', 'Previous Page')"></a>
+						</li>
+						<li class="page-item disabled" th:if="${currentPage - 2 > 1}">
+							<a class="page-link" href="#">...</a>
+						</li>
+						<li class="page-item" th:classappend="${page == currentPage} ? 'active'"
+							th:each="page : ${#numbers.sequence(currentPage > 2 ? currentPage - 2 : 1, currentPage + 2 < totalPages ? currentPage + 2 : totalPages)}">
+							<a th:replace="fragments/paging :: paging(${page}, ${page}, 'Page ' + ${page})"></a>
+						</li>
+						<li class="page-item disabled" th:if="${currentPage + 2 < totalPages}">
+							<a class="page-link" href="#">...</a>
+						</li>
+						<li class="page-item font-weight-bold" th:classappend="${currentPage == totalPages} ? 'disabled'">
+							<a th:replace="fragments/paging :: paging(${currentPage + 1},'Next', 'Next Page')"></a>
+						</li>
+						<li class="page-item" th:classappend="${currentPage == totalPages} ? 'disabled'">
+							<a th:replace="fragments/paging :: paging(${totalPages}, '>>', 'Last Page')"></a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</main>
+
+	<!-- Modal único -->
+	<div class="modal fade" id="exampleModal" tabindex="-1" aria-hidden="true">
 		<div class="modal-dialog modal-lg modal-dialog-centered">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h1 class="modal-title fs-5" id="exampleModalLabel">Comodoro</h1>
-					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					<h1 class="modal-title fs-5" id="modalNombre">Nombre</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
 				</div>
 				<div class="modal-body">
 					<div class="row mx-1">
-						<img th:src="@{images/perro1Card.jpg}" alt="Foto de perro para adoptar">
+						<img id="modalImagen" src="" alt="Foto del animal" class="img-fluid">
 					</div>
-					<div class="row mx-4">
-						<div class="col-6 m-0 p-0">
-							<img th:src="@{images/perro1Card.jpg}" alt="Foto de perro para adoptar">
+					<div class="row mx-1">
+						<div class="col-12 col-md-6">
+							<img id="modalImagen2" src="" alt="Foto del animal" class="img-fluid">
 						</div>
-						<div class="col-6 m-0 p-0">
-							<img th:src="@{images/perro1Card.jpg}" alt="Foto de perro para adoptar">
+						<div class="col-12 col-md-6">
+							<img id="modalImagen3" src="" alt="Foto del animal" class="img-fluid">
 						</div>
 					</div>
-					<p class="textoModal m-1 p-3">
-						Comodoro es un adorable mestizo de tamaño mediano, de aproximadamente 3 años, que está esperando
-						encontrar
-						una familia amorosa.<br><br> Tiene un pelaje corto y suave de color miel con manchitas blancas en el
-						pecho, y
-						unos ojos llenos de ternura que reflejan su gran corazón.<br><br>
-						Es un perrito juguetón y cariñoso, perfecto para quienes buscan un compañero fiel. Le encanta salir
-						a
-						pasear, recibir caricias y compartir momentos especiales. Max se lleva bien con otros perros y
-						también
-						con niños, lo que lo hace ideal para cualquier familia.<br><br>
-						Está vacunado, desparasitado y castrado, listo para llenar de amor y alegría el hogar que lo adopte.
-						Si buscas un amigo incondicional, ¡Comodoro es el indicado!
+					<p class="textoModal m-1 p-3" id="modalDescripcion">
+					</p>
+					<p class="textoModal mx-3">
+						<strong>Peso:</strong> <span id="modalPeso"></span><br>
+						<strong>FechaNacimiento:</strong> <span id="modalFechaNacimiento"></span><br>
+						<strong>Género:</strong> <span id="modalGenero"></span>
 					</p>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary " data-bs-dismiss="modal">Cerrar</button>
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
 					<div class="row d-flex justify-content-center flex-nowrap mx-3">
-						<button class="botonesCardAnimal btn card_btn">Apadrina</button>
-						<button class="botonesCardAnimal btn card_btn">Adopta</button>
+						<a id="modalBotonApadrina" class="botonesCardAnimal btn card_btn">
+							Apadrina
+						</a>
+						<a id="modalBotonAdopta" class="botonesCardAnimal btn card_btn">
+							Adopta
+						</a>
 					</div>
-
 				</div>
 			</div>
 		</div>
 	</div>
 
-	<main>
-		<div class="row m-1 filtrosTop justify-content-center">
-			<button type="button" id="grid-active-btn">
-				<i class="fas fa-th"></i>
-			</button>
-			<button type="button" id="details-active-btn">
-				<i class="fas fa-list-ul"></i>
-			</button>
-		</div>
-		<div class="row m-3">
-			<div class="col-2 contenedorFiltros">
-				<ul>
-					<li class="my-1"> Raza
-						<ul>
-							<li><label>
-								<input type="checkbox">
-							</label> Perro
-							</li>
-							<li><label><input type="checkbox"></label> Gato</li>
-						</ul>
-					</li>
+	<!-- Script para resetear especie y página al cambiar raza -->
+	<script>
+		function onRazaChange() {
+			const form = document.getElementById("filtroForm");
 
-					<li class="my-1"> Género
-						<ul>
-							<li><label><input type="checkbox"></label> Macho</li>
-							<li><label><input type="checkbox"></label> Hembra</li>
-						</ul>
-					</li>
+			// Resetear selector de especie
+			const especieSelect = document.getElementById("especieSelect");
+			if (especieSelect) {
+				especieSelect.selectedIndex = 0;
+			}
 
-					<li class="my-1"><label><input type="checkbox"></label> Castrado</li>
+			// Eliminar parámetro de paginación si existe
+			const pageInput = document.createElement("input");
+			pageInput.type = "hidden";
+			pageInput.name = "page";
+			pageInput.value = "1";
+			form.appendChild(pageInput);
 
-					<li class="my-1"><label><input type="checkbox"></label> Para Apadrinar</li>
+			form.submit();
+		}
+	</script>
 
-					<li class="my-1"><label><input type="checkbox"></label> Para Adoptar</li>
+	<script>
+		function sortBy(field) {
+			const url = new URL(window.location.href);
+			const currentSort = url.searchParams.get("sort") || "id,asc";
+			const currentField = currentSort.split(',')[0];
+			const currentDirection = currentSort.split(',')[1];
 
-					<li class="my-1">Edad
-						<ul>
-							<li><label><input type="checkbox"></label> 6 meses</li>
-							<li><label><input type="checkbox"></label> 1 año</li>
-							<li><label><input type="checkbox"></label> 5 años</li>
-							<li><label><input type="checkbox"></label> 10 años</li>
-						</ul>
-					</li>
-				</ul>
+			const direction = (currentField === field && currentDirection === "asc") ? "desc" : "asc";
+			url.searchParams.set("sort", `${field},${direction}`);
+			window.location.href = url.toString();
+		}
+	</script>
 
-				<button class="btn btn-secondary">Filtrar
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+			const modalNombre = document.getElementById('modalNombre');
+			const modalDescripcion = document.getElementById('modalDescripcion');
+			const modalPeso = document.getElementById('modalPeso');
+			const modalFechaNacimiento = document.getElementById('modalFechaNacimiento');
+			const modalGenero = document.getElementById('modalGenero');
+			const modalImagen = document.getElementById('modalImagen');
+			const modalImagen2 = document.getElementById('modalImagen2');
+			const modalImagen3 = document.getElementById('modalImagen3');
+			const modalBotonAdopta = document.getElementById('modalBotonAdopta');
+			const modalBotonApadrina = document.getElementById('modalBotonApadrina');
 
-				</button>
-			</div>
+			const leerMasBtns = document.querySelectorAll('.botonesCardLeerMas');
 
-			<div class="col-10 contenedorCards ">
+			leerMasBtns.forEach(btn => {
+				btn.addEventListener('click', () => {
+					const nombre = btn.getAttribute('data-nombre');
+					const descripcion = btn.getAttribute('data-descripcion');
+					const peso = btn.getAttribute('data-peso');
+					const fechaNacimiento = btn.getAttribute('data-fechaNacimiento');
+					const genero = btn.getAttribute('data-genero') === 'true' ? 'Macho' : 'Hembra';
+					const imagen = btn.getAttribute('data-imagen');
+					const imagen2 = btn.getAttribute('data-imagen2');
+					const imagen3 = btn.getAttribute('data-imagen3');
+					const id = btn.getAttribute('data-id');
+					const adoptado = btn.getAttribute('data-adoptado') === 'true';
+					const caracter = btn.getAttribute('data-caracter') === 'true';
 
-				<div class="card cardAnimal">
-					<div class="card_image"><img class="imgCardAnimal" th:src="@{images/perro1Card.jpg}"
-												 alt="foto de perro disponible para adoptar"></div>
-					<div class="card_content d-flex justify-content-center card_contentAnimal">
-						<h2 class="card_title card_titleAnimal">Comodoro</h2>
-						<p class="card_tex card_textAnimal">Macho, 2 años, vacunado</p>
-						<div class="row d-flex justify-content-center flex-nowrap">
-							<button class="botonesCardAnimal btn card_btn">Apadrina</button>
-							<button class="botonesCardAnimal btn card_btn">Adopta</button>
-						</div>
-						<div class="row d-flex justify-content-center flex-nowrap hiddenCardContent">
-							<button type="button" class="botonesCardAnimal botonesCardLeerMas btn card_btn arrow"
-									data-bs-toggle="modal" data-bs-target="#exampleModal"> Leer Más
-							</button>
-						</div>
-					</div>
-				</div>
+					// Set info en el modal
+					modalNombre.textContent = nombre;
+					modalDescripcion.textContent = descripcion;
+					modalPeso.textContent = peso + ' kg';
+					modalFechaNacimiento.textContent = fechaNacimiento;
+					modalGenero.textContent = genero;
+					modalImagen.setAttribute('src', imagen);
+					modalImagen2.setAttribute('src', imagen2);
+					modalImagen3.setAttribute('src', imagen3);
+					modalBotonAdopta.setAttribute('href', `/adopta/${id}`);
 
-				<div class="card cardAnimal">
-					<div class="card_image"><img class="imgCardAnimal" th:src="@{images/perro1Card.jpg}"
-												 alt="foto de perro disponible para adoptar"></div>
-					<div class="card_content d-flex justify-content-center card_contentAnimal">
-						<h2 class="card_title card_titleAnimal">Comodoro</h2>
-						<p class="card_tex card_textAnimal">Macho, 2 años, vacunado</p>
-						<div class="row d-flex justify-content-center flex-nowrap">
-							<button class="botonesCardAnimal btn card_btn">Apadrina</button>
-							<button class="botonesCardAnimal btn card_btn">Adopta</button>
-						</div>
-						<div class="row d-flex justify-content-center flex-nowrap hiddenCardContent">
-							<button type="button" class="botonesCardAnimal botonesCardLeerMas btn card_btn arrow"
-									data-bs-toggle="modal" data-bs-target="#exampleModal"> Leer Más
-							</button>
-						</div>
-					</div>
-				</div>
-
-				<div class="card cardAnimal">
-					<div class="card_image"><img class="imgCardAnimal" th:src="@{images/perro1Card.jpg}"
-												 alt="foto de perro disponible para adoptar"></div>
-					<div class="card_content d-flex justify-content-center card_contentAnimal">
-						<h2 class="card_title card_titleAnimal">Comodoro</h2>
-						<p class="card_tex card_textAnimal">Macho, 2 años, vacunado</p>
-						<div class="row d-flex justify-content-center flex-nowrap">
-							<button class="botonesCardAnimal btn card_btn">Apadrina</button>
-							<button class="botonesCardAnimal btn card_btn">Adopta</button>
-						</div>
-						<div class="row d-flex justify-content-center flex-nowrap hiddenCardContent">
-							<button type="button" class="botonesCardAnimal botonesCardLeerMas btn card_btn arrow"
-									data-bs-toggle="modal" data-bs-target="#exampleModal"> Leer Más
-							</button>
-						</div>
-					</div>
-				</div>
-
-				<div class="card cardAnimal">
-					<div class="card_image"><img class="imgCardAnimal" th:src="@{images/perro1Card.jpg}"
-												 alt="foto de perro disponible para adoptar"></div>
-					<div class="card_content d-flex justify-content-center card_contentAnimal">
-						<h2 class="card_title card_titleAnimal">Comodoro</h2>
-						<p class="card_tex card_textAnimal">Macho, 2 años, vacunado</p>
-						<div class="row d-flex justify-content-center flex-nowrap">
-							<button class="botonesCardAnimal btn card_btn">Apadrina</button>
-							<button class="botonesCardAnimal btn card_btn">Adopta</button>
-						</div>
-						<div class="row d-flex justify-content-center flex-nowrap hiddenCardContent">
-							<button type="button" class="botonesCardAnimal botonesCardLeerMas btn card_btn arrow"
-									data-bs-toggle="modal" data-bs-target="#exampleModal"> Leer Más
-							</button>
-						</div>
-					</div>
-				</div>
-
-				<div class="card cardAnimal">
-					<div class="card_image"><img class="imgCardAnimal" th:src="@{images/perro1Card.jpg}"
-												 alt="foto de perro disponible para adoptar"></div>
-					<div class="card_content d-flex justify-content-center card_contentAnimal">
-						<h2 class="card_title card_titleAnimal">Comodoro</h2>
-						<p class="card_tex card_textAnimal">Macho, 2 años, vacunado</p>
-						<div class="row d-flex justify-content-center flex-nowrap">
-							<button class="botonesCardAnimal btn card_btn">Apadrina</button>
-							<button class="botonesCardAnimal btn card_btn">Adopta</button>
-						</div>
-						<div class="row d-flex justify-content-center flex-nowrap hiddenCardContent">
-							<button type="button" class="botonesCardAnimal botonesCardLeerMas btn card_btn arrow"
-									data-bs-toggle="modal" data-bs-target="#exampleModal"> Leer Más
-							</button>
-						</div>
-					</div>
-				</div>
-
-				<div class="card cardAnimal">
-					<div class="card_image"><img class="imgCardAnimal" th:src="@{images/perro1Card.jpg}"
-												 alt="foto de perro disponible para adoptar"></div>
-					<div class="card_content d-flex justify-content-center card_contentAnimal">
-						<h2 class="card_title card_titleAnimal">Comodoro</h2>
-						<p class="card_tex card_textAnimal">Macho, 2 años, vacunado</p>
-						<div class="row d-flex justify-content-center flex-nowrap">
-							<button class="botonesCardAnimal btn card_btn">Apadrina</button>
-							<button class="botonesCardAnimal btn card_btn">Adopta</button>
-						</div>
-						<div class="row d-flex justify-content-center flex-nowrap hiddenCardContent">
-							<button type="button" class="botonesCardAnimal botonesCardLeerMas btn card_btn arrow"
-									data-bs-toggle="modal" data-bs-target="#exampleModal"> Leer Más
-							</button>
-						</div>
-					</div>
-				</div>
-
-				<div class="card cardAnimal">
-					<div class="card_image"><img class="imgCardAnimal" th:src="@{images/perro1Card.jpg}"
-												 alt="foto de perro disponible para adoptar"></div>
-					<div class="card_content d-flex justify-content-center card_contentAnimal">
-						<h2 class="card_title card_titleAnimal">Comodoro</h2>
-						<p class="card_tex card_textAnimal">Macho, 2 años, vacunado</p>
-						<div class="row d-flex justify-content-center flex-nowrap">
-							<button class="botonesCardAnimal btn card_btn">Apadrina</button>
-							<button class="botonesCardAnimal btn card_btn">Adopta</button>
-						</div>
-						<div class="row d-flex justify-content-center flex-nowrap hiddenCardContent">
-							<button type="button" class="botonesCardAnimal botonesCardLeerMas btn card_btn arrow"
-									data-bs-toggle="modal" data-bs-target="#exampleModal"> Leer Más
-							</button>
-						</div>
-					</div>
-				</div>
-
-				<div class="card cardAnimal">
-					<div class="card_image"><img class="imgCardAnimal" th:src="@{images/perro1Card.jpg}"
-												 alt="foto de perro disponible para adoptar"></div>
-					<div class="card_content d-flex justify-content-center card_contentAnimal">
-						<h2 class="card_title card_titleAnimal">Comodoro</h2>
-						<p class="card_tex card_textAnimal">Macho, 2 años, vacunado</p>
-						<div class="row d-flex justify-content-center flex-nowrap">
-							<button class="botonesCardAnimal btn card_btn">Apadrina</button>
-							<button class="botonesCardAnimal btn card_btn">Adopta</button>
-						</div>
-						<div class="row d-flex justify-content-center flex-nowrap hiddenCardContent">
-							<button type="button" class="botonesCardAnimal botonesCardLeerMas btn card_btn arrow"
-									data-bs-toggle="modal" data-bs-target="#exampleModal"> Leer Más
-							</button>
-						</div>
-					</div>
-				</div>
-
-				<div class="card cardAnimal">
-					<div class="card_image"><img class="imgCardAnimal" th:src="@{images/perro1Card.jpg}"
-												 alt="foto de perro disponible para adoptar"></div>
-					<div class="card_content d-flex justify-content-center card_contentAnimal">
-						<h2 class="card_title card_titleAnimal">Comodoro</h2>
-						<p class="card_tex card_textAnimal">Macho, 2 años, vacunado</p>
-						<div class="row d-flex justify-content-center flex-nowrap">
-							<button class="botonesCardAnimal btn card_btn">Apadrina</button>
-							<button class="botonesCardAnimal btn card_btn">Adopta</button>
-						</div>
-						<div class="row d-flex justify-content-center flex-nowrap hiddenCardContent">
-							<button type="button" class="botonesCardAnimal botonesCardLeerMas btn card_btn arrow"
-									data-bs-toggle="modal" data-bs-target="#exampleModal"> Leer Más
-							</button>
-						</div>
-					</div>
-				</div>
-
-				<div class="card cardAnimal">
-					<div class="card_image"><img class="imgCardAnimal" th:src="@{images/perro1Card.jpg}"
-												 alt="foto de perro disponible para adoptar"></div>
-					<div class="card_content d-flex justify-content-center card_contentAnimal">
-						<h2 class="card_title card_titleAnimal">Comodoro</h2>
-						<p class="card_tex card_textAnimal">Macho, 2 años, vacunado</p>
-						<div class="row d-flex justify-content-center flex-nowrap">
-							<button class="botonesCardAnimal btn card_btn">Apadrina</button>
-							<button class="botonesCardAnimal btn card_btn">Adopta</button>
-						</div>
-						<div class="row d-flex justify-content-center flex-nowrap hiddenCardContent">
-							<button type="button" class="botonesCardAnimal botonesCardLeerMas btn card_btn arrow"
-									data-bs-toggle="modal" data-bs-target="#exampleModal"> Leer Más
-							</button>
-						</div>
-					</div>
-				</div>
-
-
-				<div class="card cardAnimal">
-					<div class="card_image"><img class="imgCardAnimal" th:src="@{images/perro1Card.jpg}"
-												 alt="foto de perro disponible para adoptar"></div>
-					<div class="card_content d-flex justify-content-center card_contentAnimal">
-						<h2 class="card_title card_titleAnimal">Comodoro</h2>
-						<p class="card_tex card_textAnimal">Macho, 2 años, vacunado</p>
-						<div class="row d-flex justify-content-center flex-nowrap">
-							<button class="botonesCardAnimal btn card_btn">Apadrina</button>
-							<button class="botonesCardAnimal btn card_btn">Adopta</button>
-						</div>
-						<div class="row d-flex justify-content-center flex-nowrap hiddenCardContent">
-							<button type="button" class="botonesCardAnimal botonesCardLeerMas btn card_btn arrow"
-									data-bs-toggle="modal" data-bs-target="#exampleModal"> Leer Más
-							</button>
-						</div>
-					</div>
-				</div>
-
-				<div class="card cardAnimal">
-					<div class="card_image"><img class="imgCardAnimal" th:src="@{images/perro1Card.jpg}"
-												 alt="foto de perro disponible para adoptar"></div>
-					<div class="card_content d-flex justify-content-center card_contentAnimal">
-						<h2 class="card_title card_titleAnimal">Comodoro</h2>
-						<p class="card_tex card_textAnimal">Macho, 2 años, vacunado</p>
-						<div class="row d-flex justify-content-center flex-nowrap">
-							<button class="botonesCardAnimal btn card_btn">Apadrina</button>
-							<button class="botonesCardAnimal btn card_btn">Adopta</button>
-						</div>
-						<div class="row d-flex justify-content-center flex-nowrap hiddenCardContent">
-							<button type="button" class="botonesCardAnimal botonesCardLeerMas btn card_btn arrow"
-									data-bs-toggle="modal" data-bs-target="#exampleModal"> Leer Más
-							</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</main>
+					if (!adoptado && caracter) {
+						modalBotonAdopta.style.display = 'inline-block';
+						modalBotonApadrina.style.display = 'inline-block';
+						modalBotonApadrina.className = 'botonesCardAnimal btn card_btn';
+					} else if (!adoptado && !caracter) {
+						modalBotonAdopta.style.display = 'none';
+						modalBotonApadrina.style.display = 'inline-block';
+						modalBotonApadrina.className = 'botonesCardAnimalApadrina btn card_btn';
+					} else {
+						modalBotonAdopta.style.display = 'none';
+						modalBotonApadrina.style.display = 'none';
+					}
+				});
+			});
+		});
+	</script>
 </section>
 </body>
 </html>

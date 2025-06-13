@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout.html}">
+<head>
+  <meta charset="UTF-8">
+  <title th:text="#{sponsor.form.title}">Formulario para apadrinar</title>
+  <link rel="stylesheet" th:href="@{/css/formularios.css}"/>
+</head>
+<body>
+
+<section class="mb-5" layout:fragment="content">
+  <h2 class="text-success-emphasis fw-bold display-5 my-4 text-center" th:text="#{sponsor.form.heading}">Apadrina una de nuestras mascotas</h2>
+  <div class="formContainer">
+    <form class="row g-3">
+
+      <legend class="fw-bold"><strong th:text="#{sponsor.form.sponsor.data}">DATOS DEL/LA PADRINO/MADRINA:</strong></legend>
+
+      <div class="itemSeleccion">
+        <label for="nombrePadrino" class="form-label" th:text="#{sponsor.form.name}">Nombre completo: <span style="color: red">*</span></label>
+        <input type="text" id="nombrePadrino" class="form-control labelForm"
+               th:placeholder="#{sponsor.form.name.placeholder}" required>
+      </div>
+
+      <div class="itemSeleccion">
+        <label for="padrinoDNI" class="form-label" th:text="#{sponsor.form.dni}">DNI: <span style="color: red">*</span></label>
+        <input type="text" id="padrinoDNI" class="form-control labelForm"
+               th:placeholder="#{sponsor.form.dni.placeholder}" required>
+      </div>
+
+      <div class="itemSeleccion">
+        <label for="edadPadrino" class="form-label" th:text="#{sponsor.form.age}">Edad: <span style="color: red">*</span></label>
+        <input type="text" id="edadPadrino" class="form-control labelForm"
+               th:placeholder="#{sponsor.form.age.placeholder}" required>
+      </div>
+
+      <div class="itemSeleccion">
+        <label for="telefonoPadrino" class="form-label" th:text="#{sponsor.form.phone}">Teléfono: <span style="color: red">*</span></label>
+        <input type="text" id="telefonoPadrino" class="form-control labelForm"
+               th:placeholder="#{sponsor.form.phone.placeholder}" required>
+      </div>
+
+      <div class="itemSeleccion">
+        <label for="correoPadrino" class="form-label" th:text="#{sponsor.form.email}">Correo: <span style="color: red">*</span></label>
+        <input type="text" id="correoPadrino" class="form-control labelForm"
+               th:placeholder="#{sponsor.form.email.placeholder}" required>
+      </div>
+
+      <div class="itemSeleccion">
+        <label for="direccionPadrino" class="form-label" th:text="#{sponsor.form.address}">Dirección:</label>
+        <input type="text" id="direccionPadrino" class="form-control labelForm"
+               th:placeholder="#{sponsor.form.address.placeholder}">
+      </div>
+
+      <div class="itemSeleccion">
+        <label for="ocupacionPadrino" class="form-label" th:text="#{sponsor.form.occupation}">Ocupación:<span style="color: red">*</span></label>
+        <select id="ocupacionPadrino" class="form-select labelForm" required>
+          <option value="" disabled selected th:text="#{form.select.option}">-Elija una opción-</option>
+          <option th:text="#{sponsor.form.occupation.student}">Estudiante</option>
+          <option th:text="#{sponsor.form.occupation.worker}">Trabajador</option>
+          <option th:text="#{sponsor.form.occupation.unemployed}">Desempleado</option>
+        </select>
+      </div>
+      <br>
+      <legend class="fw-bold"><strong th:text="#{sponsor.form.info.title}">INFORMACIÓN DEL APADRINAMIENTO:</strong></legend>
+
+      <div class="itemSeleccion">
+        <label for="preferenciaPadrino" class="form-label" th:text="#{sponsor.form.preference}">¿Tiene alguna preferencia para apadrinar? Indícalo: <span style="color: red">*</span></label>
+        <select id="preferenciaPadrino" class="form-select labelForm" required>
+          <option value="" disabled selected th:text="#{form.select.option}">-Elija una opción-</option>
+          <option th:text="#{sponsor.form.preference.dog}">Perro</option>
+          <option th:text="#{sponsor.form.preference.cat}">Gato</option>
+          <option th:text="#{sponsor.form.preference.any}">Indiferente</option>
+        </select>
+      </div>
+
+      <div class="itemSeleccion">
+        <label for="nombreMascota" class="form-label" th:text="#{sponsor.form.pet.name}">Nombre de la mascota: <span style="color: red">*</span></label>
+        <a href="/nuestrosAnimales" target="_blank" class="enlaceMascotas" th:text="#{sponsor.form.pet.list.link}">Consulta la lista de animales disponibles</a>
+        <input type="text" id="nombreMascota" class="form-control labelForm"
+               th:placeholder="#{sponsor.form.pet.name.placeholder}" required>
+      </div>
+
+      <div class="itemSeleccion">
+        <label for="apoyoAdoptante" class="form-label" th:text="#{sponsor.form.support.type}">¿Qué tipo de apoyo te gustaría ofrecer? Indícalo: <span style="color: red">*</span></label>
+        <select id="apoyoAdoptante" class="form-select labelForm" required>
+          <option value="" disabled selected th:text="#{form.select.option}">-Elija una opción-</option>
+          <option th:text="#{sponsor.form.support.type.monthly}">Ayuda económica mensual</option>
+          <option th:text="#{sponsor.form.support.type.food}">Compra de alimento</option>
+          <option th:text="#{sponsor.form.support.type.vet}">Atención veterinaria</option>
+          <option th:text="#{sponsor.form.support.type.walk}">Paseo y visitas al refugio</option>
+        </select>
+      </div>
+      <br>
+      <div class="itemSeleccion">
+        <label class="form-label"><strong th:text="#{sponsor.form.suggested.amount.title}">Aporte mensual sugerido:</strong></label>
+        <p><em th:text="#{sponsor.form.suggested.amount.text}">(Puedes definir tú la cantidad, nosotros sugerimos 10€ mensuales como mínimo)</em></p>
+
+        <label for="cantidadAporte" class="form-label" th:text="#{sponsor.form.amount}">Cantidad a aportar: €</label>
+        <input type="number" id="cantidadAporte" class="form-control labelForm"
+               th:placeholder="#{sponsor.form.amount.placeholder}">
+
+        <br>
+
+        <label for="frecuenciaAporte" class="form-label mt-3" th:text="#{sponsor.form.frequency}">Frecuencia del aporte:</label>
+        <select id="frecuenciaAporte" class="form-select labelForm">
+          <option value="" disabled selected th:text="#{form.select.option2}">-Selecciona una opción-</option>
+          <option value="mensual" th:text="#{sponsor.form.frequency.monthly}">Mensual</option>
+          <option value="trimestral" th:text="#{sponsor.form.frequency.quarterly}">Trimestral</option>
+          <option value="unica" th:text="#{sponsor.form.frequency.once}">Única vez</option>
+        </select>
+
+        <br>
+
+        <label for="comentariosAporte" class="form-label mt-3" th:text="#{sponsor.form.comments}">Comentarios adicionales:</label>
+        <textarea id="comentariosAporte" class="form-control labelForm" rows="3"
+                  th:placeholder="#{sponsor.form.comments.placeholder}"></textarea>
+      </div>
+
+      <div class="col-12 text-center mt-4">
+        <button type="submit" class="btn btnEnviar text-white" th:text="#{sponsor.form.submit}">Enviar solicitud</button>
+      </div>
+
+    </form>
+  </div>
+</section>
+</body>
+</html>

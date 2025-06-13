@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout.html}">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" th:href="@{/css/Dona.css}">
+    <title th:text="#{dona.titulo}">Dona</title>
+</head>
+
+<body class="dona-body">
+<section layout:fragment="content" class="dona-content">
+    <div class="dona-overlay">
+
+        <!-- Título principal -->
+        <div class="dona-header">
+            <h1><b th:text="#{dona.comoDonar}">¿Cómo puedes donar?</b></h1>
+        </div>
+
+        <!-- Sección de iconos -->
+        <div class="dona-columnas">
+            <!-- Columna recursos monetarios -->
+            <div class="dona-columna">
+                <p th:text="#{dona.recursos.monetarios}">Recursos monetarios</p>
+
+                <!-- PayPal -->
+                <a href="#" data-bs-toggle="modal" data-bs-target="#paypalModal" th:title="#{dona.paypal.titulo}">
+                    <div class="dona-icono">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal" />
+                    </div>
+                </a>
+
+                <!-- Bizum -->
+                <a th:href="@{/colabora/dona/donarBizum}" th:title="#{dona.bizum.titulo}">
+                    <div class="dona-icono">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2b/Bizum.svg" alt="Bizum" />
+                    </div>
+                </a>
+            </div>
+
+            <!-- Columna recursos materiales -->
+            <div class="dona-columna">
+                <p th:text="#{dona.recursos.materiales}">Recursos materiales</p>
+
+                <!-- Correos -->
+                <a href="/colabora/donaciones-materiales" th:title="#{dona.correos.titulo}">
+                    <div class="dona-icono">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/9/9c/Logo_Correos_2019.svg" alt="Correos" />
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Mensaje de agradecimiento -->
+        <h3 class="dona-gracias">
+            <b th:text="#{dona.gracias}">
+                Gracias a tu apoyo, podemos seguir cuidando y protegiendo a los animales que más lo necesitan.
+                <br>
+                ¡Tu ayuda marca la diferencia!
+            </b>
+        </h3>
+
+    </div>
+
+    <!-- Modal PayPal (ahora usa Stripe) -->
+    <div class="modal fade" id="paypalModal" tabindex="-1" aria-labelledby="paypalModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg rounded-4" style="background-color: #f4fef8;">
+
+                <div class="modal-header border-0">
+                    <h5 class="modal-title w-100 text-center fw-bold" id="paypalModalLabel" style="
+          color: #218838;
+          font-size: 1.5rem;
+          font-family: 'Segoe UI', sans-serif;
+          text-shadow: 0 1px 1px rgba(0,0,0,0.1);
+        ">
+                        🐾 Donar Por Tarjeta de Crédito
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+
+                <form id="checkoutForm">
+                    <div class="modal-body text-center">
+
+                        <label for="cantidad" class="form-label fw-medium mb-3" style="color: #155724;">
+                            ¿Cuánto deseas donar? (EUR)
+                        </label>
+
+                        <div class="input-group w-50 mx-auto">
+                            <input type="number" class="form-control text-center rounded-start" id="cantidad" name="cantidad"
+                                   min="1" step="1" value="5" required style="font-size: 1.2rem;">
+                            <span class="input-group-text rounded-end" style="background-color: #d4edda; color: #155724;">€</span>
+                            <div class="invalid-feedback">Introduce una cantidad válida mayor a 0.</div>
+                        </div>
+
+                    </div>
+
+                    <div class="modal-footer justify-content-center border-0">
+                        <button type="submit" class="btn px-4 py-2 fw-semibold" style="
+            background-color: #28a745;
+            color: white;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+          " onmouseover="this.style.backgroundColor='#218838'" onmouseout="this.style.backgroundColor='#28a745'">
+                            Donar ahora
+                        </button>
+
+                        <button type="button" class="btn btn-outline-secondary px-4 py-2" data-bs-dismiss="modal"
+                                style="border-radius: 30px;">
+                            Cancelar
+                        </button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal alerta animal visualmente mejorado -->
+    <div class="modal fade" id="alertaAnimal" tabindex="-1" aria-labelledby="alertaAnimalLabel" aria-hidden="true"
+         data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content text-center shadow-lg border-0 rounded-4" style="background-color: #e9f9ef;">
+
+                <div class="modal-header border-0">
+                    <h5 class="modal-title w-100 fs-4 fw-bold" id="alertaAnimalLabel" style="
+            color: #218838;
+            text-shadow: 0 1px 1px rgba(0,0,0,0.1);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+                        🐾 ¡Ups! Necesitas iniciar sesión
+                    </h5>
+                </div>
+
+                <div class="modal-body fs-5 px-4" style="
+          color: #155724;
+          font-weight: 500;
+          font-family: 'Segoe UI', sans-serif;
+      ">
+                    <p>
+                        Para continuar con la donación, por favor inicia sesión.<br>
+                    </p>
+                    <div class="mt-2">
+                        <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="Huella animal"
+                             width="50" style="animation: bounce 1.5s infinite;"/>
+                    </div>
+                </div>
+
+                <div class="modal-footer justify-content-center border-0">
+                    <button id="btnLogin" type="button" class="btn px-4 py-2 fw-semibold" style="
+            border-radius: 30px;
+            background-color: #28a745;
+            color: white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        " onmouseover="this.style.backgroundColor='#218838'" onmouseout="this.style.backgroundColor='#28a745'">
+                        Ir al login
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const input = document.getElementById("cantidad");
+            const form = document.getElementById("checkoutForm");
+
+            // Solo permitir números y punto decimal
+            input.addEventListener("keypress", function (e) {
+                const char = String.fromCharCode(e.which);
+                if (!/[0-9.]|\./.test(char)) {
+                    e.preventDefault();
+                }
+            });
+
+            form.addEventListener("submit", async function (e) {
+                e.preventDefault();
+
+                const cantidad = parseFloat(input.value);
+
+                if (isNaN(cantidad) || cantidad <= 0) {
+                    input.classList.add("is-invalid");
+                    return;
+                } else {
+                    input.classList.remove("is-invalid");
+                }
+
+                try {
+                    const response = await fetch("/colabora/dona/checkout", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            cantidad: cantidad
+                        })
+                    });
+
+                    const data = await response.json();
+
+                    if (data.status === "SUCCESS") {
+                        window.location.href = data.sessionUrl;
+                    } else {
+                        if (data.message.includes("no autenticado")) {
+                            mostrarAlertaAnimal(data.message);
+                        } else {
+                            mostrarAlertaAnimal("Error al iniciar el pago: " + data.message);
+                        }
+                    }
+
+                } catch (error) {
+                    console.error("Error al conectar con el servidor:", error);
+                    alert("No se pudo procesar el pago.");
+                }
+            });
+        });
+
+
+        function mostrarAlertaAnimal() {
+            const alertaModalEl = document.getElementById('alertaAnimal');
+            const alertaModal = new bootstrap.Modal(alertaModalEl, {
+            backdrop: 'static',
+            keyboard: false
+        });
+
+            alertaModal.show();
+
+            const timerId = setTimeout(() => {
+            window.location.href = "/login";
+        }, 4000);
+
+            document.getElementById('btnLogin').addEventListener("click", () => {
+            clearTimeout(timerId);
+            window.location.href = "/login";
+        });
+        }
+    </script>
+
+</section>
+</body>
+</html>

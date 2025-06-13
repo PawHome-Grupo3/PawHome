@@ -1,0 +1,84 @@
+<div th:fragment="navbarsAdminFragment">
+
+
+    <!-- Navbar superior -->
+    <nav class="navbar navbar-principal navbar-expand-lg navbar-dark bg-dark fixed-top shadow-sm">
+        <div class="container-fluid d-flex">
+            <!-- Logo y botón de inicio -->
+            <div class="navbar-brand">
+                <a th:href="@{/}">
+                    <img th:src="@{/images/logoSinFondoBlanco.png}" alt="Logo" width="60" height="60"/>
+                </a>
+            </div>
+
+            <!-- Fecha/hora -->
+            <div class="d-flex align-items-center me-3">
+                <div id="datetime" class="text-white me-3"></div>
+            </div>
+
+            <!-- Dropdown usuario -->
+            <div class="dropdown">
+                <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                    Perfil
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end">
+                    <li><a class="dropdown-item" th:href="@{/perfil}">Ver Perfil</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Script para mostrar fecha y hora -->
+    <script>
+        function updateDateTime() {
+            const now = new Date();
+            const options = {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            };
+            document.getElementById('datetime').textContent = now.toLocaleDateString('es-ES', options);
+        }
+
+        setInterval(updateDateTime, 1000);
+        updateDateTime(); // Llamada inicial
+    </script>
+
+    <!-- Navbar inferior -->
+    <nav class="navbar navbar-secundaria">
+        <div class="d-flex justify-content-center">
+            <!-- Pestañas de navegación -->
+            <div class="nav-tabs-container">
+                <ul class="nav nav-pills d-flex">
+                    <li class="nav-item">
+                        <a href="/admin/animales" class="nav-link">Animales</a>
+                    </li>
+                    <li>
+                        <a href="/admin/usuarios" class="nav-link">Usuarios</a>
+                    </li>
+                    <li>
+                        <a href="/admin/prodserv" class="nav-link">Productos y servicios</a>
+                    </li>
+                    <li>
+                        <a href="/admin/tarifas" class="nav-link">Tarifas</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Buscador -->
+            <div class="search-container d-flex align-items-center ms-auto">
+                <form class="d-flex me-3" role="search" th:action="@{/buscar}" method="get">
+                    <input class="form-control form-control-sm me-2" type="search" name="q" placeholder="Buscar..."
+                           aria-label="Buscar"/>
+                    <button class="btn btn-outline-dark btn-sm" type="submit">Buscar</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+</div>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layoutAdmin.html}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Animales</title>
+</head>
+<body>
+
+<section layout:fragment="content">
+
+    <div class="container">
+        <h1>Gestión de animales</h1>
+        <!-- Tabla de Animales -->
+        <table class="table table-striped table-bordered">
+            <thead class="table-success">
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Chip</th>
+                <th>Peso</th>
+                <th>Edad</th>
+                <th>Carácter social</th>
+                <th>Descripción</th>
+                <th>Género</th>
+                <th>Origen</th>
+                <th>Estado adopción</th>
+                <th>Fecha llegada</th>
+                <th>Pasearlo</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="animal : ${animales}">
+                <td th:text="${animal.id}"></td>
+                <td th:text="${animal.nombre}"></td>
+                <td th:text="${animal.chip}"></td>
+                <td th:text="${animal.peso}"></td>
+                <td th:text="${animal.edad}"></td>
+                <td th:if="${animal.caracterSocial}"><span>Amigable</span></td>
+                <td th:unless="${animal.caracterSocial}"><span>No amigable</span></td>
+                <td th:text="${animal.descripcion}"></td>
+                <td th:if="${animal.genero}"><span>Macho</span></td>
+                <td th:unless="${animal.genero}"><span>Hembra</span></td>
+                <td th:text="${animal.origen}"></td>
+                <td th:if="${animal.adoptado}"><span>Sí</span></td>
+                <td th:unless="${animal.adoptado}"><span>No</span></td>
+                <td th:text="${animal.fechaLlegada}"></td>
+                <td th:if="${animal.paseable}"><span>Sí</span></td>
+                <td th:unless="${animal.paseable}"><span>No</span></td>
+                <td>
+                    <a th:href="@{/admin/animales/editar/{id}(id=${animal.id})}" class="btn btn-success btn-sm">Editar</a>
+                    <a th:href="@{'/admin/animales/eliminar/' + ${animal.id}}" class="btn btn-danger btn-sm"
+                       onclick="return confirm('¿Eliminar este animal?')">Eliminar</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+</body>
+</html>

@@ -1,0 +1,96 @@
+.body{
+    background-color: #d1d1d1;
+}
+
+.navbar-custom {
+    background-color: #1b7d56 !important;
+    width: 100%;
+}
+
+.navbar-custom .navbar-nav .nav-link {
+    color: rgb(20, 19, 19) !important;
+}
+
+.navbar-custom .navbar-brand {
+    color: rgb(19, 16, 16) !important;
+}
+
+.navbar-custom .nav-link:hover {
+    color: #dbdbdb !important;
+}
+
+.navbar-custom .btn-outline-success {
+    border-color: rgba(5, 4, 4, 0) !important;
+    color: #f4faf8 !important;
+}
+
+.navbar-custom .btn-outline-success:hover {
+    background-color: #1b7d55  !important;
+    color: #abacab !important;
+}
+
+.dropdown-menu {
+    background-color: #1b7d568c !important;
+    border: none;
+}
+.dropdown-menu .dropdown-item {
+    color: rgb(0, 0, 0) !important;
+}
+
+.dropdown-menu .dropdown-item:hover {
+    background-color: #1b7d55 !important;
+    color: rgb(255, 255, 255) !important;
+}
+.dropdown-menu {
+    background-color: #1b7d55;
+    border-radius: 50%;
+    padding: 10px;
+}
+
+.dropdown-menu :hover {
+    background-color: #1b7d55;
+}
+.dropdown-item {
+    color: #1b7d5600;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.Idiom {
+    background-color: #00000000 !important;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.Idiom:hover {
+    color: #010504;
+    background-color: #010504;
+}
+
+.Register {
+    background-color: #00000000 !important;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.Register:hover {
+    color: #010504;
+    background-color: #010504;
+}
+
+.dropdown-toggle.show {
+    color: white !important;
+}
+
+.d-flex {
+    background-color: #1b7d55;
+    border: none;
+    padding: 8px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: black;
+}
+
+.d-flex:hover {
+    color: #020504;
+}

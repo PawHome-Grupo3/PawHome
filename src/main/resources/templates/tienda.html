@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layouts/layout.html}">
+      layout:decorate="~{layouts/layout.html}" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title th:text="#{page.index.title}"></title>
+  <title th:text="#{page.tienda.title}"></title>
   <link rel="stylesheet" th:href="@{/css/general.css}"/>
 </head>
 <body style="background-color: #f4faf8;">
@@ -10,186 +10,56 @@
 <section layout:fragment="content">
   <div th:replace="~{fragments/navTienda :: navTiendaFragment}"></div>
 
-  <!-- COLLARES -->
-  <section class="section-padding pb-0" id="collares">
+  <!-- Tarjetas -->
+  <section th:each="categoria : ${categorias}" class="section-padding pb-0" th:id="${categoriasNavDto.get(categoria.getId()-1).getNombre()}">
     <div class="container">
-      <div class="row contCardsTienda">
+      <div class="row contCardsTienda justify-content-center">
 
         <div class="col-lg-12 col-12 text-center">
-          <h2 class="w-auto tituloTienda m-0">Collares</h2>
+          <h2 class="w-auto tituloTienda m-0" th:utext="${categoria.getNombre()}"></h2>
         </div>
 
-        <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
+        <div th:each="producto : ${categoria.getProductos()}" class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0" >
           <div class="custom-block-wrap">
-            <img th:src="@{images/collar.png}" class="custom-block-image img-fluid" alt="">
+            <img th:src="${producto.getRutaImagen1()}" class="custom-block-image img-fluid" th:alt="'imagen de prducto ' + ${producto.nombre}">
 
             <div class="custom-block">
               <div class="custom-block-body py-0">
-                <h5 class="mb-3" style="color:#5bc1ac; font-weight: 600;">Collar</h5>
+                <h5 class="mb-3" style="color:#5bc1ac; font-weight: 600;" th:utext="${producto.getNombre()}"></h5>
 
-                <p style="color:#717275; font-weight: 300; font-size: 16px;">
-                  Dale a tu peludo amigo el mejor look con nuestro collar para perro,
-                  diseñado para brindar seguridad, confort y un toque de estilo único.
-                </p>
+                <p style="color:#717275; font-weight: 300; font-size: 16px;" th:utext="${producto.getDescripcion()}"></p>
               </div>
 
-              <div class="d-flex justify-content-center flex-row w-100 flex-nowrap">
-                <a href="/detalleProducto" class="custom-btn btn btnHazteVoluntario w-100 align-content-center">Más Info</a>
-                <a href="/tienda" class="custom-btn btn btnHazteVoluntario w-100 align-content-center">Añadir al Carrito</a>
-              </div>
-            </div>
-          </div>
-        </div>
+              <div class="d-flex justify-content-center flex-row w-100 flex-nowrap align-items-stretch gap-1">
+                <a th:href="@{/tienda/producto/{id}(id=${producto.getId()})}" class="custom-btn btn btnHazteVoluntario w-100 align-content-center" th:text="#{tienda.leerMas}"></a>
 
-        <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
-          <div class="custom-block-wrap">
-            <img th:src="@{images/collar.png}" class="custom-block-image img-fluid" alt="">
+                <form th:if="${producto.getTallas().getFirst().getStock() > 1 && producto.getTallas().getFirst().getTallaje().equalsIgnoreCase('unica')}"
+                      th:action="@{/tienda/carrito/agregar}" method="post" class="w-100">
+                  <input type="hidden" name="productoId" th:value="${producto.getId()}" />
+                  <input type="hidden" name="tallaId" th:value="${producto.getTallas().getFirst().getId()}" />
+                  <input type="hidden" name="cantidad" value="1" />
+<!--                  <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />-->
+                  <button type="submit" class="custom-btn btn btnHazteVoluntario w-100 align-content-center" th:text="#{tienda.comprar}"></button>
+                </form>
 
-            <div class="custom-block">
-              <div class="custom-block-body py-0">
-                <h5 class="mb-3" style="color:#5bc1ac; font-weight: 600;">Collar</h5>
-
-                <p style="color:#717275; font-weight: 300; font-size: 16px;">
-                  Dale a tu peludo amigo el mejor look con nuestro collar para perro,
-                  diseñado para brindar seguridad, confort y un toque de estilo único.
-                </p>
-              </div>
-
-              <div class="d-flex justify-content-center flex-row w-100 flex-nowrap">
-                <a href="/detalleProducto" class="custom-btn btn btnHazteVoluntario w-100 align-content-center">Más Info</a>
-                <a href="/tienda" class="custom-btn btn btnHazteVoluntario w-100 align-content-center">Añadir al Carrito</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
-          <div class="custom-block-wrap">
-            <img th:src="@{images/collar.png}" class="custom-block-image img-fluid" alt="">
-
-            <div class="custom-block">
-              <div class="custom-block-body py-0">
-                <h5 class="mb-3" style="color:#5bc1ac; font-weight: 600;">Collar - 10€</h5>
-
-                <p style="color:#717275; font-weight: 300; font-size: 16px;">
-                  Dale a tu peludo amigo el mejor look con nuestro collar para perro,
-                  diseñado para brindar seguridad, confort y un toque de estilo único.
-                </p>
-              </div>
-
-              <div class="d-flex justify-content-center flex-row w-100 flex-nowrap">
-                <a href="/detalleProducto" class="custom-btn btn btnHazteVoluntario w-100 align-content-center">Más Info</a>
-                <a href="/tienda" class="custom-btn btn btnHazteVoluntario w-100 align-content-center">Añadir al Carrito</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-  <!-- FIN COLLARES -->
-
-  <!-- CAMISETAS -->
-  <section class="section-padding pb-0" id="camisetas">
-    <div class="container">
-      <div class="row contCardsTienda">
-
-        <div class="col-lg-12 col-12 text-center">
-          <h2 class="w-auto tituloTienda m-0">Camisetas</h2>
-        </div>
-
-        <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
-          <div class="custom-block-wrap">
-            <img th:src="@{images/Camiseta-azul.png}" class="custom-block-image img-fluid" alt="">
-
-            <div class="custom-block mt-2">
-              <div class="custom-block-body py-0">
-                <h5 class="mb-3" style="color:#5bc1ac; font-weight: 600;">Camiseta Héroe</h5>
-
-                <p style="color:#717275; font-weight: 300; font-size: 16px;">
-                  ¿Quieres ser un héroe con estilo? Compra nuestra camiseta para que lo sepa todo el mundo
-                </p>
-              </div>
-
-              <div class="d-flex justify-content-center flex-row w-100 flex-nowrap">
-                <a href="/detalleProducto" class="custom-btn btn btnHazteVoluntario w-50 align-content-center">Más Info</a>
-                <div class="dropdown w-50 align-content-center justify-content-center">
-                  <button class="btn dropdown-toggle custom-btn btn btnHazteVoluntario w-100"
-                          type="button" id="tallaDropdown" data-bs-toggle="dropdown" aria-expanded="false">Escoge Talla</button>
+                <div th:unless="${producto.getTallas().getFirst().getTallaje().equalsIgnoreCase('unica')}" class="dropdown w-100 align-content-center justify-content-center">
+                  <button class="custom-btn btn btnHazteVoluntario w-100 align-content-center"
+                          type="button" id="tallaDropdown" data-bs-toggle="dropdown" aria-expanded="false" th:text="#{tienda.escogeTalla}"></button>
                   <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="tallaDropdown">
-                    <li><a class="dropdown-item text-center" href="#" data-bs-toggle="modal" data-bs-target="#" th:text="XS"></a></li>
-                    <li><a class="dropdown-item text-center" href="#" data-bs-toggle="modal" data-bs-target="#" th:text="S"></a></li>
-                    <li><a class="dropdown-item text-center" href="#" data-bs-toggle="modal" data-bs-target="#" th:text="M"></a></li>
-                    <li><a class="dropdown-item text-center" href="#" data-bs-toggle="modal" data-bs-target="#" th:text="L"></a></li>
-                    <li><a class="dropdown-item text-center" href="#" data-bs-toggle="modal" data-bs-target="#" th:text="XL"></a></li>
-                    <li><a class="dropdown-item text-center" href="#" data-bs-toggle="modal" data-bs-target="#" th:text="XXL"></a></li>
+                    <li th:each="talla : ${producto.getTallas()}" th:if="${talla.getStock() > 0}">
+                      <form th:action="@{/tienda/carrito/agregar}" method="post">
+                        <input type="hidden" name="productoId" th:value="${producto.getId()}" />
+                        <input type="hidden" name="tallaId" th:value="${talla.id}" />
+                        <input type="hidden" name="cantidad" value="1" />
+<!--                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />-->
+                        <button type="submit" href="/tienda/carrito" class="text-center w-100" style="all: unset;">
+                          <a class="dropdown-item" th:utext="${talla.getTallaje()}"></a>
+                        </button>
+                      </form>
+                    </li>
                   </ul>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
 
-        <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
-          <div class="custom-block-wrap">
-            <img th:src="@{images/Camiseta-azul.png}" class="custom-block-image img-fluid" alt="">
-
-            <div class="custom-block mt-2">
-              <div class="custom-block-body py-0">
-                <h5 class="mb-3" style="color:#5bc1ac; font-weight: 600;">Camiseta Héroe</h5>
-
-                <p style="color:#717275; font-weight: 300; font-size: 16px;">
-                  ¿Quieres ser un héroe con estilo? Compra nuestra camiseta para que lo sepa todo el mundo
-                </p>
-              </div>
-
-              <div class="d-flex justify-content-center flex-row w-100 flex-nowrap">
-                <a href="/detalleProducto" class="custom-btn btn btnHazteVoluntario w-50 align-content-center">Más Info</a>
-                <div class="dropdown w-50">
-                  <button class="btn dropdown-toggle custom-btn btn btnHazteVoluntario w-100 align-content-center"
-                          type="button" id="tallaDropdown2" data-bs-toggle="dropdown" aria-expanded="false">Escoge Talla</button>
-                  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="tallaDropdown2">
-                    <li><a class="dropdown-item text-center" href="#" data-bs-toggle="modal" data-bs-target="#" th:text="XS"></a></li>
-                    <li><a class="dropdown-item text-center" href="#" data-bs-toggle="modal" data-bs-target="#" th:text="S"></a></li>
-                    <li><a class="dropdown-item text-center" href="#" data-bs-toggle="modal" data-bs-target="#" th:text="M"></a></li>
-                    <li><a class="dropdown-item text-center" href="#" data-bs-toggle="modal" data-bs-target="#" th:text="L"></a></li>
-                    <li><a class="dropdown-item text-center" href="#" data-bs-toggle="modal" data-bs-target="#" th:text="XL"></a></li>
-                    <li><a class="dropdown-item text-center" href="#" data-bs-toggle="modal" data-bs-target="#" th:text="XXL"></a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
-          <div class="custom-block-wrap">
-            <img th:src="@{images/Camiseta-azul.png}" class="custom-block-image img-fluid" alt="">
-
-            <div class="custom-block mt-2">
-              <div class="custom-block-body py-0">
-                <h5 class="mb-3" style="color:#5bc1ac; font-weight: 600;">Camiseta Héroe</h5>
-
-                <p style="color:#717275; font-weight: 300; font-size: 16px;">
-                  ¿Quieres ser un héroe con estilo? Compra nuestra camiseta para que lo sepa todo el mundo
-                </p>
-              </div>
-
-              <div class="d-flex justify-content-center flex-row w-100 flex-nowrap">
-                <a href="/detalleProducto" class="custom-btn btn btnHazteVoluntario w-50 align-content-center">Más Info</a>
-                <div class="dropdown w-50">
-                  <button class="btn dropdown-toggle custom-btn btn btnHazteVoluntario w-100 align-content-center"
-                          type="button" id="tallaDropdown3" data-bs-toggle="dropdown" aria-expanded="false">Escoge Talla</button>
-                  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="tallaDropdown3">
-                    <li><a class="dropdown-item text-center" href="#" data-bs-toggle="modal" data-bs-target="#" th:text="XS"></a></li>
-                    <li><a class="dropdown-item text-center" href="#" data-bs-toggle="modal" data-bs-target="#" th:text="S"></a></li>
-                    <li><a class="dropdown-item text-center" href="#" data-bs-toggle="modal" data-bs-target="#" th:text="M"></a></li>
-                    <li><a class="dropdown-item text-center" href="#" data-bs-toggle="modal" data-bs-target="#" th:text="L"></a></li>
-                    <li><a class="dropdown-item text-center" href="#" data-bs-toggle="modal" data-bs-target="#" th:text="XL"></a></li>
-                    <li><a class="dropdown-item text-center" href="#" data-bs-toggle="modal" data-bs-target="#" th:text="XXL"></a></li>
-                  </ul>
-                </div>
               </div>
             </div>
           </div>
@@ -198,87 +68,6 @@
       </div>
     </div>
   </section>
-<!-- FIN CAMISETAS-->
-
-<!-- TAZAS -->
-  <section class="section-padding pb-0" id="tazas">
-    <div class="container">
-      <div class="row contCardsTienda">
-
-        <div class="col-lg-12 col-12 text-center">
-          <h2 class="w-auto tituloTienda m-0">Tazas</h2>
-        </div>
-
-        <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
-          <div class="custom-block-wrap">
-            <img th:src="@{images/taza-prueba.jpg}" class="custom-block-image img-fluid" alt="">
-
-            <div class="custom-block">
-              <div class="custom-block-body py-0">
-                <h5 class="mb-3" style="color:#5bc1ac; font-weight: 600;">Taza - 15€</h5>
-
-                <p style="color:#717275; font-weight: 300; font-size: 16px;">
-                  Dale a tu peludo amigo el mejor look con nuestro collar para perro,
-                  diseñado para brindar seguridad, confort y un toque de estilo único.
-                </p>
-              </div>
-
-              <div class="d-flex justify-content-center flex-row w-100 flex-nowrap">
-                <a href="/detalleProducto" class="custom-btn btn btnHazteVoluntario w-100 align-content-center">Más Info</a>
-                <a href="/tienda" class="custom-btn btn btnHazteVoluntario w-100 align-content-center">Añadir al Carrito</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
-          <div class="custom-block-wrap">
-            <img th:src="@{images/taza-prueba.jpg}" class="custom-block-image img-fluid" alt="">
-
-            <div class="custom-block">
-              <div class="custom-block-body py-0">
-                <h5 class="mb-3" style="color:#5bc1ac; font-weight: 600;">Taza - 15€</h5>
-
-                <p style="color:#717275; font-weight: 300; font-size: 16px;">
-                  Dale a tu peludo amigo el mejor look con nuestro collar para perro,
-                  diseñado para brindar seguridad, confort y un toque de estilo único.
-                </p>
-              </div>
-
-              <div class="d-flex justify-content-center flex-row w-100 flex-nowrap">
-                <a href="/detalleProducto" class="custom-btn btn btnHazteVoluntario w-100 align-content-center">Más Info</a>
-                <a href="/tienda" class="custom-btn btn btnHazteVoluntario w-100 align-content-center">Añadir al Carrito</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
-          <div class="custom-block-wrap">
-            <img th:src="@{images/taza-prueba.jpg}" class="custom-block-image img-fluid" alt="">
-
-            <div class="custom-block">
-              <div class="custom-block-body py-0">
-                <h5 class="mb-3" style="color:#5bc1ac; font-weight: 600;">Taza - 15€</h5>
-
-                <p style="color:#717275; font-weight: 300; font-size: 16px;">
-                  Dale a tu peludo amigo el mejor look con nuestro collar para perro,
-                  diseñado para brindar seguridad, confort y un toque de estilo único.
-                </p>
-              </div>
-
-              <div class="d-flex justify-content-center flex-row w-100 flex-nowrap">
-                <a href="/detalleProducto" class="custom-btn btn btnHazteVoluntario w-100 align-content-center">Más Info</a>
-                <a href="/tienda" class="custom-btn btn btnHazteVoluntario w-100 align-content-center">Añadir al Carrito</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-<!-- FIN TAZAS -->
 </section>
 </body>
 </html>

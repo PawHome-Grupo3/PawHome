@@ -2,13 +2,13 @@
 <html lang="es" xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
 	  layout:decorate="~{layouts/layout.html}">
 <head>
-	<title>Adiestramiento PawHome</title>
-	<link rel="stylesheet" th:href="@{/css/adiestramiento.css}"/>
+	<title th:utext="#{page.adiestramiento.tittle}"></title>
+	<link rel="stylesheet" th:href="@{/css/servicios.css}"/>
 </head>
 <body>
 <section layout:fragment="content">
-	<!-- MODAL PARA CADA SERVICIO -->
-	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<!-- MODAL PARA CURSO CACHORROS -->
+	<div class="modal fade" id="cursoCachorros" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog modal-lg modal-dialog-centered">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -21,13 +21,14 @@
 							Un curso pensado para sentar las bases de una convivencia armoniosa entre tú y tu cachorro.
 							Aprenderás a comprender su comportamiento, establecer normas claras y construir un vínculo
 							basado en la confianza, el respeto y la responsabilidad.
-							A través de actividades prácticas y orientación personalizada, fomentarás su desarrollo hacia un
+							A través de actividades prácticas y orientación personalizada, fomentarás su desarrollo
+							hacia un
 							perro equilibrado, sociable y feliz.
 							Más que adiestramiento, es aprender a disfrutar y crecer juntos.
 						</p>
 					</div>
-					<div class="row mx-4">
-						<div class="textoModal col-6 m-0 p-1">
+					<div class="row mx-4 justify-content-center">
+						<div class="textoModal col-5 m-1 p-1">
 							<h3 class="m-1 p-3">
 								Contexto para los propietarios:
 							</h3>
@@ -37,10 +38,12 @@
 								<li>Desarrollar rutinas de obediencia, educación y vínculo.</li>
 								<li>Aplicar ejercicios de pre-adiestramiento y juegos estructurados.</li>
 								<li>Establecer normas de convivencia e higiene en casa.</li>
-								<li>Familiarizar al cachorro con la manipulación física y el uso de material de adiestramiento.</li>
+								<li>Familiarizar al cachorro con la manipulación física y el uso de material de
+									adiestramiento.
+								</li>
 							</ul>
 						</div>
-						<div class="textoModal col-6 m-0 p-1">
+						<div class="textoModal col-5 m-1 p-1">
 							<h3 class="m-1 p-3">
 								Contexto para los cachorros:
 							</h3>
@@ -74,18 +77,282 @@
 		</div>
 	</div>
 
+	<!-- MODAL CURSO ADULTOS -->
+	<div class="modal fade" id="cursoAdultos" tabindex="-1" aria-labelledby="cursoAdiestramientoLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h1 class="modal-title fs-5" id="cursoAdiestramientoLabel">Educación y Adiestramiento Canino (adultos)</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+				</div>
+				<div class="modal-body">
+					<div class="container-fluid px-4">
+
+						<!-- Bloque 1: Descripción general -->
+						<div class="row mx-1">
+							<p class="textoModal m-1 p-3">
+								Curso de Educación y Adiestramiento Canino dirigido tanto a futuros profesionales como a propietarios de perros que desean profundizar en la psicología y comportamiento canino.
+								Se abordan temas como técnicas de adiestramiento básicas y avanzadas, fenómenos de aprendizaje, psicología e inteligencia animal, etología y etnología.
+								El curso combina teoría y práctica, de forma presencial, individual o en grupo, y ofrece certificado y diploma al finalizar.
+							</p>
+						</div>
+
+						<!-- Bloque 2: Dos columnas -->
+						<div class="row mx-4 align-items-start">
+							<div class="textoModal col-md-5 m-1 p-1">
+								<h3 class="m-1 p-3">Para futuros profesionales:</h3>
+								<ul>
+									<li>Formación sólida en psicología y comportamiento canino.</li>
+									<li>Certificado y diploma que acreditan conocimientos y habilidades.</li>
+									<li>Aprendizaje práctico con perros reales de diferentes perfiles.</li>
+									<li>Desarrollo de competencias necesarias para ejercer profesionalmente.</li>
+								</ul>
+							</div>
+							<div class="textoModal col-md-5 m-1 p-1">
+								<h3 class="m-1 p-3">Para propietarios:</h3>
+								<ul>
+									<li>Mayor comprensión de la psicología de su perro.</li>
+									<li>Fortalecimiento del vínculo con su mascota.</li>
+									<li>Educación y adiestramiento desde un enfoque positivo y profesional.</li>
+									<li>Posibilidad de participar sin necesidad de llevar su propio perro.</li>
+								</ul>
+							</div>
+						</div>
+
+						<!-- Bloque 3: Contenidos del curso -->
+						<div class="textoModal">
+							<h3 class="m-1 p-3">Contenidos del curso:</h3>
+							<ul>
+								<li>Psicología e inteligencia animal, cognitivismo y motivación.</li>
+								<li>Condicionamientos clásico, operante, aprendizaje y refuerzo.</li>
+								<li>Etología canina: comportamiento, desarrollo, modificación de conducta.</li>
+								<li>Etnología: razas, morfología y características generales del perro.</li>
+								<li>Lenguaje canino: comunicación visual, olfativa y auditiva.</li>
+								<li>Problemas de conducta: agresividad, ansiedad, hiperactividad, fobias, etc.</li>
+								<li>Evaluación y diagnóstico de casos reales.</li>
+								<li>Educación en positivo y técnicas de adiestramiento cognitivo-emocional.</li>
+								<li>Test de Campbell y test de carácter.</li>
+							</ul>
+						</div>
+
+						<!-- Bloque 4: Comentarios generales -->
+						<div class="textoModal">
+							<h3 class="m-1 p-3">Comentarios generales:</h3>
+							<ul>
+								<li>Entrega del dossier de la materia teórica.</li>
+								<li>Curso teórico-práctico al 50%.</li>
+								<li>Duración: 30 sesiones de 4 horas, dos días a la semana.</li>
+								<li>Evaluaciones: dos teóricas y una práctica.</li>
+								<li>Clases teóricas en el Instituto Superior de Estudios, Madrid.</li>
+								<li>Clases prácticas en centro canino en San Sebastián de los Reyes.</li>
+								<li>Modalidad intensiva: 3 horas durante 15 días continuados.</li>
+								<li>Diploma “Técnicas de Educación y Adiestramiento Canino”.</li>
+							</ul>
+						</div>
+
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- MODAL PARA EDUCACION A DOMICILIO -->
+	<div class="modal fade" id="adiestramientoDomicilio" tabindex="-1" aria-labelledby="adiestramientoDomicilioLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h1 class="modal-title fs-5" id="adiestramientoDomicilioLabel">Educación y Adiestramiento a Domicilio</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+				</div>
+				<div class="modal-body">
+					<div class="container-fluid px-4">
+
+						<!-- Bloque 1: Descripción general -->
+						<div class="row mx-1">
+							<p class="textoModal m-1 p-3">
+								La educación y adiestramiento del perro en su propio entorno y junto a sus propietarios es clave para lograr una mayor seguridad, confianza y disposición al aprendizaje.
+								Esto permite una adaptación más natural, una atención más enfocada y una mejor asimilación de técnicas y métodos aplicados según las necesidades específicas del perro.
+								Los propietarios también aprenderán de forma práctica cómo actuar ante diversas situaciones y conductas.
+							</p>
+						</div>
+
+						<!-- Bloque 2: Evaluaciones (dos columnas) -->
+						<div class="row mx-4 align-items-start">
+							<div class="textoModal col-md-5 m-1 p-1">
+								<h3 class="m-1 p-3">Evaluación general:</h3>
+								<ul>
+									<li>Ambiente del hogar, estilo de vida y rutinas diarias.</li>
+									<li>Alojamiento, zonas de alimentación, juego y eliminación.</li>
+									<li>Tiempo que pasa solo, dentro y fuera de casa.</li>
+									<li>Composición familiar y relación con el perro.</li>
+									<li>Presencia de otras mascotas.</li>
+									<li>Principales problemas de comportamiento observados.</li>
+								</ul>
+							</div>
+							<div class="textoModal col-md-5 m-1 p-1">
+								<h3 class="m-1 p-3">Otras evaluaciones:</h3>
+								<ul>
+									<li>Comportamiento fuera de casa.</li>
+									<li>Relación con personas conocidas y desconocidas.</li>
+									<li>Interacción con niños, otros perros y animales.</li>
+									<li>Evaluación general del comportamiento social.</li>
+								</ul>
+							</div>
+						</div>
+
+						<!-- Bloque 3: Objetivos -->
+						<div class="textoModal">
+							<h3 class="m-1 p-3">Objetivos del programa:</h3>
+							<ul>
+								<li>Inducir estados de calma y relajación en distintos entornos.</li>
+								<li>Educar las conductas higiénicas en casa y en la calle.</li>
+								<li>Establecer rutinas, horarios, normas y límites en casa.</li>
+								<li>Diagnóstico y tratamiento de problemas de comportamiento.</li>
+								<li>Adiestramiento básico para el control total del perro:</li>
+								<ul>
+									<li>Caminar al lado en diferentes ritmos.</li>
+									<li>Órdenes: sentado, tumbado, de pie, quieto.</li>
+									<li>Acudir a la llamada.</li>
+									<li>Soltar objetos de la boca.</li>
+									<li>No ingerir cosas del suelo.</li>
+								</ul>
+								<li>Protocolos de juego: cobro, presa, actividades aeróbicas.</li>
+								<li>Equilibrar energía física y mental del perro.</li>
+							</ul>
+						</div>
+
+						<!-- Bloque 4: Comentarios generales -->
+						<div class="textoModal">
+							<h3 class="m-1 p-3">Comentarios generales:</h3>
+							<ul>
+								<li>Sesiones personalizadas directamente en el domicilio.</li>
+								<li>Adaptación a las rutinas y estilo de vida del propietario.</li>
+								<li>Participación activa de la familia en el proceso.</li>
+								<li>Ideal para abordar problemas específicos del entorno diario.</li>
+							</ul>
+						</div>
+
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- MODAL PARA EDUCACION EN CENTRO -->
+	<div class="modal fade" id="adiestramientoCentro" tabindex="-1" aria-labelledby="adiestramientoCentroLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg modal-dialog-centered">
+			<div class="modal-content">
+
+				<!-- Header -->
+				<div class="modal-header">
+					<h1 class="modal-title fs-5" id="adiestramientoCentroLabel">Adiestramiento en Centro Canino (régimen interno)</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+				</div>
+
+				<!-- Body -->
+				<div class="modal-body">
+					<div class="container-fluid px-4">
+
+						<!-- Bloque 1 – Descripción general -->
+						<div class="row mx-1">
+							<p class="textoModal m-1 p-3">
+								La educación y adiestramiento en régimen interno se recomienda cuando el perro necesita técnicas y
+								entornos diferentes, presenta conductas que sus propietarios no logran controlar o los dueños no
+								disponen del tiempo necesario para las sesiones diarias. El perro permanece en nuestras
+								instalaciones todo el proceso: la primera semana sin visitas para facilitar su adaptación; después
+								los propietarios pueden asistir con la frecuencia que acuerden con el educador.
+							</p>
+						</div>
+
+						<!-- Bloque 2 – Dos columnas -->
+						<div class="row mx-4 align-items-start">
+							<!-- Columna 1 -->
+							<div class="textoModal col-md-5 m-1 p-1">
+								<h3 class="m-1 p-3">¿Cuándo elegir régimen interno?</h3>
+								<ul>
+									<li>Problemas de comportamiento que requieren entornos controlados.</li>
+									<li>Necesidad de técnicas específicas difíciles de aplicar en casa.</li>
+									<li>Propietarios con tiempo limitado para la formación diaria.</li>
+									<li>Conductas no controladas que ponen en riesgo a personas o animales.</li>
+								</ul>
+							</div>
+							<!-- Columna 2 -->
+							<div class="textoModal col-md-5 m-1 p-1">
+								<h3 class="m-1 p-3">Proceso de adaptación y visitas</h3>
+								<ul>
+									<li>Primera semana sin visitas para evitar interferir en el vínculo.</li>
+									<li>Adaptación y lazos afectivos con el profesional antes de empezar el trabajo.</li>
+									<li>Visitas programadas para que los dueños observen el progreso.</li>
+									<li>Evaluación conjunta para planificar el traspaso de mando al final.</li>
+								</ul>
+							</div>
+						</div>
+
+						<!-- Bloque 3 – Objetivos -->
+						<div class="textoModal">
+							<h3 class="m-1 p-3">Objetivos del programa:</h3>
+							<ul>
+								<li>Alcanzar estados emocionales óptimos en cualquier entorno.</li>
+								<li>Diagnosticar y modificar problemas de comportamiento.</li>
+								<li>Crear normas y rutinas diarias aplicables en el hogar.</li>
+								<li>Tabla básica de adiestramiento para el control por parte de los dueños:</li>
+								<ul>
+									<li>Caminar al lado en ritmos lento, normal y rápido.</li>
+									<li>Órdenes: sentado, tumbado y de pie.</li>
+									<li>Quieto en las tres posturas.</li>
+									<li>Acudir a la llamada.</li>
+									<li>Soltar objetos y no ingerir cosas del suelo.</li>
+								</ul>
+								<li>Protocolos de juego y actividades aeróbicas para equilibrar energía física y mental.</li>
+							</ul>
+						</div>
+
+						<!-- Bloque 4 – Comentarios generales -->
+						<div class="textoModal">
+							<h3 class="m-1 p-3">Comentarios generales:</h3>
+							<ul>
+								<li>Duración variable según capacidad de aprendizaje y problemas a tratar.</li>
+								<li>Sesiones de “traspaso de mando” en el centro y en entornos urbanos reales.</li>
+								<li>Propietarios reciben formación teórico-práctica antes del regreso a casa.</li>
+								<li>Seguimiento posterior y asesoramiento continuo a la familia.</li>
+							</ul>
+						</div>
+
+					</div>
+				</div>
+
+				<!-- Footer -->
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
 	<section class="container py-5 mainContainer">
 
 		<!-- Sección: Nuestro adiestramiento -->
 		<section class="text-center rounded-4 shadow mx-2 my-3 p-4 seccionTitulo">
 			<div class="container px-4">
 				<h2 class="fw-bold display-5 text-success-emphasis mb-3">
-					<i class="fas fa-dog me-2"></i> Adiestramiento PawHome
+					<i class="fas fa-dog me-2"></i>
+					<span th:utext="#{page.adiestramiento.tittle}"></span>
 				</h2>
 				<p class="fs-5">
-					Fortalecemos el vínculo con tu peludo mediante <i class="fas fa-star text-success"></i> técnicas efectivas,
-					<i class="fas fa-chalkboard-teacher text-success"></i> entrenadores certificados
-					y <i class="fas fa-handshake text-success"></i> métodos respetuosos y personalizados.
+					<span th:utext="#{servicios.adiestramiento.descripcion1}"></span>
+					<i class="fas fa-star text-success"></i>
+					<span th:utext="#{servicios.adiestramiento.descripcion2}"></span>
+					<i class="fas fa-chalkboard-teacher text-success"></i>
+					<span th:utext="#{servicios.adiestramiento.descripcion3}"></span>
+					<i class="fas fa-handshake text-success"></i>
+					<span th:utext="#{servicios.adiestramiento.descripcion4}"></span>
 				</p>
 			</div>
 		</section>
@@ -94,50 +361,80 @@
 		<!-- Sección: Nuestros cursos de adiestramiento -->
 		<section class="text-center mb-5">
 			<h2 class="fw-bold text-success-emphasis mb-4">
-				<i class="fas fa-chalkboard-teacher me-1"></i><i class="fas fa-paw me-2"></i>Nuestros cursos de adiestramiento
+				<i class="fas fa-chalkboard-teacher me-1"></i><i class="fas fa-paw me-2"></i>
+				<span th:utext="#{servicios.adiestramiento.cursos.titulo}"></span>
 			</h2>
 			<div class="row g-5 d-flex justify-content-center">
 
 				<!-- CARD 1: Curso cachorros -->
 				<article class="col-6 col-md-4">
-					<div class="card p-3 shadow-sm h-100 cardServicio">
+					<div class="card p-3 shadow-sm h-100 cardServicio" data-tipo="bono" data-precio="200" data-nombre="Educación y preadiestramiento para cachorros">
 						<div class="card_image mb-2">
-							<img th:src="@{images/bonoLargaEstancia.jpg}" alt="Curso Cachorros" class="imagenCard rounded-3">
+							<img th:src="@{images/bonoLargaEstancia.jpg}" alt="Curso Cachorros"
+								 class="imagenCard rounded-3">
 						</div>
-						<h3 class="fs-4 fw-bold text-success-emphasis">Educación y preadiestramiento para cachorros</h3>
-						<p class="fw-bold fs-5">200€</p>
+						<h3 class="fs-4 fw-bold text-success-emphasis"
+							th:utext="#{servicios.adiestramiento.cursos.cachorros.titulo}">
+						</h3>
+						<p class="fw-bold fs-5"
+						   th:utext="#{servicios.adiestramiento.cursos.cachorros.precio}">
+						</p>
 						<ul class="list-unstyled ps-3">
-							<li><i class="fas fa-calendar-alt me-2 text-success"></i>10 sesiones</li>
-							<li><i class="fas fa-clock me-2 text-success"></i>Lunes y Miércoles, 17:00 - 20:00</li>
-							<li><i class="fas fa-dog me-2 text-success"></i>2 días a la semana</li>
+							<li><i class="fas fa-calendar-alt me-2 text-success"></i>
+								<span th:utext="#{servicios.adiestramiento.cursos.cachorros.sesiones}"></span>
+							</li>
+							<li><i class="fas fa-clock me-2 text-success"></i>
+								<span th:utext="#{servicios.adiestramiento.cursos.cachorros.horario}"></span>
+							</li>
+							<li><i class="fas fa-dog me-2 text-success"></i>
+								<span th:utext="#{servicios.adiestramiento.cursos.cachorros.frecuencia}"></span>
+							</li>
 						</ul>
 						<div class="d-grid gap-2 mt-auto">
-							<button class="btn btn-success btnCard" data-bs-toggle="modal" data-bs-target="#exampleModal">
-								<i class="fas fa-info-circle me-1"></i>Más info
+							<button class="btn btn-success btnCard" data-bs-toggle="modal"
+									data-bs-target="#cursoCachorros">
+								<i class="fas fa-info-circle me-1"></i>
+								<span th:utext="#{servicios.masInfoModal}"></span>
 							</button>
-							<button class="btn btn-success btnCard">Seleccionar</button>
+							<button class="btn btn-success btnCard cardBono btnSeleccionar">
+								<span th:utext="#{servicios.botonSeleccionar}"></span>
+							</button>
 						</div>
 					</div>
 				</article>
 
 				<!-- CARD 2: Curso adultos -->
 				<article class="col-6 col-md-4">
-					<div class="card p-3 shadow-sm h-100 cardServicio">
+					<div class="card p-3 shadow-sm h-100 cardServicio" data-tipo="bono" data-precio="200" data-nombre="Educación y adiestramiento canino (adultos)">
 						<div class="card_image mb-2">
 							<img th:src="@{images/bonoSoloDia.jpg}" alt="Curso Adultos" class="imagenCard rounded-3">
 						</div>
-						<h3 class="fs-4 fw-bold text-success-emphasis">Educación y adiestramiento canino (adultos)</h3>
-						<p class="fw-bold fs-5">200€</p>
+						<h3 class="fs-4 fw-bold text-success-emphasis"
+							th:utext="#{servicios.adiestramiento.cursos.adultos.titulo}">
+						</h3>
+						<p class="fw-bold fs-5"
+						   th:utext="#{servicios.adiestramiento.cursos.adultos.precio}">
+						</p>
 						<ul class="list-unstyled ps-3">
-							<li><i class="fas fa-calendar-alt me-2 text-success"></i>10 sesiones</li>
-							<li><i class="fas fa-clock me-2 text-success"></i>Martes y Jueves, 17:00 - 20:00</li>
-							<li><i class="fas fa-dog me-2 text-success"></i>2 días a la semana</li>
+							<li><i class="fas fa-calendar-alt me-2 text-success"></i>
+								<span th:utext="#{servicios.adiestramiento.cursos.adultos.sesiones}"></span>
+							</li>
+							<li><i class="fas fa-clock me-2 text-success"></i>
+								<span th:utext="#{servicios.adiestramiento.cursos.adultos.horario}"></span>
+							</li>
+							<li><i class="fas fa-dog me-2 text-success"></i>
+								<span th:utext="#{servicios.adiestramiento.cursos.adultos.frecuencia}"></span>
+							</li>
 						</ul>
 						<div class="d-grid gap-2 mt-auto">
-							<button class="btn btn-success btnCard" data-bs-toggle="modal" data-bs-target="#exampleModal">
-								<i class="fas fa-info-circle me-1"></i>Más info
+							<button class="btn btn-success btnCard" data-bs-toggle="modal"
+									data-bs-target="#cursoAdultos">
+								<i class="fas fa-info-circle me-1"></i>
+								<span th:utext="#{servicios.masInfoModal}"></span>
 							</button>
-							<button class="btn btn-success btnCard">Seleccionar</button>
+							<button class="btn btn-success btnCard cardBono btnSeleccionar">
+								<span th:utext="#{servicios.botonSeleccionar}"></span>
+							</button>
 						</div>
 					</div>
 				</article>
@@ -148,52 +445,87 @@
 		<!-- Sección: Nuestros servicios de adiestramiento -->
 		<section class="text-center mb-5">
 			<h2 class="fw-bold text-success-emphasis mb-4">
-				<i class="fas fa-dog me-1"></i><i class="fas fa-handshake me-2"></i>Nuestros servicios de adiestramiento
+				<i class="fas fa-dog me-1"></i><i class="fas fa-handshake me-2"></i>
+				<span th:utext="#{servicios.adiestramiento.servicios.titulo}"></span>
 			</h2>
 			<div class="row g-5 d-flex justify-content-center">
 
 				<!-- CARD 1: A domicilio -->
 				<article class="col-6 col-md-4">
-					<div class="card p-3 shadow-sm h-100 cardServicio">
+					<div class="card p-3 shadow-sm h-100 cardServicio" data-tipo="dias" data-precio="30" data-nombre="Educación y adiestramiento a domicilio">
 						<div class="card_image mb-2">
-							<img th:src="@{images/bonoLargaEstancia.jpg}" alt="Adiestramiento a domicilio" class="imagenCard rounded-3">
+							<img th:src="@{images/bonoLargaEstancia.jpg}" alt="Adiestramiento a domicilio"
+								 class="imagenCard rounded-3">
 						</div>
-						<h3 class="fs-4 fw-bold text-success-emphasis">Educación y adiestramiento a domicilio</h3>
-						<p class="fw-bold fs-5">30€/sesión</p>
+						<h3 class="fs-4 fw-bold text-success-emphasis"
+							th:utext="#{servicios.adiestramiento.servicio.domicilio.titulo}">
+						</h3>
+						<p class="fw-bold fs-5"
+						   th:utext="#{servicios.adiestramiento.servicio.domicilio.precio}">
+						</p>
 						<ul class="list-unstyled ps-3">
-							<li><i class="fas fa-list-ol me-2 text-success"></i>Mínimo 3 sesiones</li>
-							<li><i class="fas fa-clock me-2 text-success"></i>10:00 - 12:00 y 17:00 - 19:00</li>
-							<li><i class="fas fa-calendar-week me-2 text-success"></i>Lunes a Viernes</li>
-							<li><i class="fas fa-calendar-check me-2 text-success"></i>Elige los días que prefieras</li>
+							<li><i class="fas fa-list-ol me-2 text-success"></i>
+								<span th:utext="#{servicios.adiestramiento.servicio.domicilio.minimo}"></span>
+							</li>
+							<li><i class="fas fa-clock me-2 text-success"></i>
+								<span th:utext="#{servicios.adiestramiento.servicio.domicilio.horario}"></span>
+							</li>
+							<li><i class="fas fa-calendar-week me-2 text-success"></i>
+								<span th:utext="#{servicios.adiestramiento.servicio.domicilio.dias}"></span>
+							</li>
+							<li><i class="fas fa-calendar-check me-2 text-success"></i>
+								<span th:utext="#{servicios.adiestramiento.servicio.domicilio.flexibilidad}"></span>
+							</li>
 						</ul>
 						<div class="d-grid gap-2 mt-auto">
-							<button class="btn btn-success btnCard" data-bs-toggle="modal" data-bs-target="#exampleModal">
-								<i class="fas fa-info-circle me-1"></i>Más info
+							<button class="btn btn-success btnCard" data-bs-toggle="modal"
+									data-bs-target="#adiestramientoDomicilio">
+								<i class="fas fa-info-circle me-1"></i>
+								<span th:utext="#{servicios.masInfoModal}"></span>
 							</button>
-							<button class="btn btn-success btnCard" id="btnBonoLargaEstancia">Seleccionar</button>
+							<button class="btn btn-success btnCard btnSeleccionar">
+								<span th:utext="#{servicios.botonSeleccionar}"></span>
+							</button>
 						</div>
 					</div>
 				</article>
 
 				<!-- CARD 2: En el centro -->
 				<article class="col-6 col-md-4">
-					<div class="card p-3 shadow-sm h-100 cardServicio">
+					<div class="card p-3 shadow-sm h-100 cardServicio" data-tipo="dias" data-precio="20" data-nombre="Educación y adiestramiento en el centro">
 						<div class="card_image mb-2">
-							<img th:src="@{images/bonoSoloDia.jpg}" alt="Adiestramiento en el centro" class="imagenCard rounded-3">
+							<img th:src="@{images/bonoSoloDia.jpg}" alt="Adiestramiento en el centro"
+								 class="imagenCard rounded-3">
 						</div>
-						<h3 class="fs-4 fw-bold text-success-emphasis">Educación y adiestramiento en el centro</h3>
-						<p class="fw-bold fs-5">20€/sesión</p>
+						<h3 class="fs-4 fw-bold text-success-emphasis"
+							th:utext="#{servicios.adiestramiento.servicio.centro.titulo}">
+						</h3>
+						<p class="fw-bold fs-5"
+						   th:utext="#{servicios.adiestramiento.servicio.centro.precio}">
+						</p>
 						<ul class="list-unstyled ps-3">
-							<li><i class="fas fa-list-ol me-2 text-success"></i>Mínimo 3 sesiones</li>
-							<li><i class="fas fa-clock me-2 text-success"></i>10:00 - 12:00 y 17:00 - 19:00</li>
-							<li><i class="fas fa-calendar-week me-2 text-success"></i>Lunes a Viernes</li>
-							<li><i class="fas fa-calendar-check me-2 text-success"></i>Elige los días que prefieras</li>
+							<li><i class="fas fa-list-ol me-2 text-success"></i>
+								<span th:utext="#{servicios.adiestramiento.servicio.centro.minimo}"></span>
+							</li>
+							<li><i class="fas fa-clock me-2 text-success"></i>
+								<span th:utext="#{servicios.adiestramiento.servicio.centro.horario}"></span>
+							</li>
+							<li><i class="fas fa-calendar-week me-2 text-success"></i>
+								<span th:utext="#{servicios.adiestramiento.servicio.centro.dias}"></span>
+							</li>
+							<li><i class="fas fa-calendar-check me-2 text-success"></i>
+								<span th:utext="#{servicios.adiestramiento.servicio.centro.flexibilidad}"></span>
+							</li>
 						</ul>
 						<div class="d-grid gap-2 mt-auto">
-							<button class="btn btn-success btnCard" data-bs-toggle="modal" data-bs-target="#exampleModal">
-								<i class="fas fa-info-circle me-1"></i>Más info
+							<button class="btn btn-success btnCard" data-bs-toggle="modal"
+									data-bs-target="#adiestramientoCentro">
+								<i class="fas fa-info-circle me-1"></i>
+								<span th:utext="#{servicios.masInfoModal}"></span>
 							</button>
-							<button class="btn btn-success btnCard" id="btnBonoEstanciaSoloDia">Seleccionar</button>
+							<button class="btn btn-success btnCard btnSeleccionar">
+								<span th:utext="#{servicios.botonSeleccionar}"></span>
+							</button>
 						</div>
 					</div>
 				</article>
@@ -204,7 +536,8 @@
 
 		<!-- Sección: Formulario de contacto -->
 		<section class="mb-5">
-			<h2 class="text-success-emphasis fw-bold display-5 my-4 text-center">Reserva tu estancia</h2>
+			<h2 class="text-success-emphasis fw-bold display-5 my-4 text-center"
+				th:utext="#{servicios.reservaCitaAdiestramiento}"></h2>
 			<div class="formContainer">
 				<form class="row g-3">
 					<fieldset class="col-md-6">
@@ -227,26 +560,6 @@
 						</div>
 
 						<div class="itemSeleccion">
-							<label for="tipoMascota" class="form-label">Tipo: <span style="color: red">*</span></label>
-							<select id="tipoMascota" class="form-select labelForm" required>
-								<option value="" disabled selected>-Por favor, elige una opción-</option>
-								<option>Perro</option>
-								<option>Gato</option>
-								<option>Otro</option>
-							</select>
-						</div>
-
-						<div class="itemSeleccion">
-							<label for="necesitaMedicacion" class="form-label">Necesita medicación: <span
-									style="color: red">*</span></label>
-							<select id="necesitaMedicacion" class="form-select labelForm" required>
-								<option value="" disabled selected>-Por favor, elige una opción-</option>
-								<option>Sí</option>
-								<option>No</option>
-							</select>
-						</div>
-
-						<div class="itemSeleccion">
 							<label for="fechaEntrada" class="form-label">Fecha de entrada: <span
 									style="color: red">*</span></label>
 							<input type="date" id="fechaEntrada" class="form-control labelForm" required>
@@ -264,22 +577,25 @@
 							<legend class="fw-bold">Datos de contacto</legend>
 							<label for="nombreDueño" class="form-label">Tu nombre: <span
 									style="color: red">*</span></label>
-							<input type="text" id="nombreDueño" class="form-control labelForm"
-								   placeholder="-Por favor introduce tu nombre-" required>
+							<input th:value="${usuario != null} ? ${usuario.getPerfilDatos().getNombre()} : ''"
+								   type="text" id="nombreDueño" class="form-control labelForm"
+								   placeholder="-Por favor introduce tu nombre-" disabled>
 						</div>
 
 						<div class="itemSeleccion">
 							<label for="telefonoDueño" class="form-label">Teléfono: <span
 									style="color: red">*</span></label>
-							<input type="tel" id="telefonoDueño" class="form-control labelForm"
-								   placeholder="-Por favor introduce tu número de teléfono-" required>
+							<input th:value="${usuario != null} ? ${usuario.getPerfilDatos().telefono1} : ''" type="tel"
+								   id="telefonoDueño" class="form-control labelForm"
+								   placeholder="-Por favor introduce tu número de teléfono-" disabled>
 						</div>
 
 						<div class="itemSeleccion">
 							<label for="emailDueño" class="form-label">Correo electrónico: <span
 									style="color: red">*</span></label>
-							<input type="email" id="emailDueño" class="form-control labelForm"
-								   placeholder="-Por favor introduce tu correo electrónico-" required>
+							<input th:value="${usuario != null} ? ${usuario.getEmail()} : ''" type="email"
+								   id="emailDueño" class="form-control labelForm"
+								   placeholder="-Por favor introduce tu correo electrónico-" disabled>
 						</div>
 
 						<div class="itemSeleccion">
@@ -290,6 +606,7 @@
 
 					<div class="itemSeleccion">
 						<label class="form-label fw-bold fs-5">Tarifa seleccionada: </label>
+						<span id="tarifaSeleccionada" class="fw-normal"></span>
 					</div>
 
 					<div class="itemSeleccion">
@@ -301,10 +618,11 @@
 						<label class="form-label">He leído y acepto las condiciones de uso de la web,
 							el aviso legal y la política de privacidad</label>
 					</div>
-
-					<div class="text-center">
-						<button type="submit" class="btn btn-primary btnEnviar">RESERVAR</button>
-					</div>
+				</form>
+				<form id="checkoutAdiestramiento" method="post" th:action="@{/adiestramiento/checkoutAdiestramiento}">
+					<input type="hidden" id="nombreProducto" name="nombreProducto">
+					<input type="hidden" id="cantidadDias" name="cantidadDias">
+					<button type="submit" class="btn btn-primary btnEnviar">RESERVAR</button>
 				</form>
 			</div>
 		</section>
@@ -312,16 +630,24 @@
 
 		<!-- Sección: otros servicios-->
 		<section class="text-center mb-1">
-			<h2 class="text-success-emphasis fw-bold display-5 my-4">Otros servicios:</h2>
+			<h2 class="text-success-emphasis fw-bold display-5 my-4"
+				th:utext="#{servicios.otrosServicios}">
+			</h2>
 			<div class="row row-cols-1 row-cols-md-4 g-4">
 				<article class="col">
 					<div class="card p-3 shadow-sm cardServicio">
 						<div class="card_image">
-							<img th:src="@{images/peluqueriaCanina.jpg}" alt="LogoGuarderia" class="imagenCard">
+							<img th:src="@{images/peluqueriaCanina.jpg}" alt="LogoPeluqueria" class="imagenCard">
 						</div>
-						<h3 class="mt-3 fs-3 fw-bold text-success-emphasis">GUARDERÍA</h3>
-						<p class="fs-4">A PARTIR DE 10€</p>
-						<a th:href="@{/guarderia}" class="btn btn-success">MÁS INFO</a>
+						<h3 class="mt-3 fs-3 fw-bold text-success-emphasis"
+							th:utext="#{servicios.guarderia}">
+						</h3>
+						<p class="fs-4"
+						   th:utext="#{servicios.guarderiaApartirDe}">
+						</p>
+						<a th:href="@{/guarderia}" class="btn btn-success"
+						   th:utext="#{servicios.masInfo}">
+						</a>
 					</div>
 				</article>
 				<article class="col">
@@ -329,9 +655,14 @@
 						<div class="card_image">
 							<img th:src="@{images/peluqueriaCanina.jpg}" alt="LogoPeluqueria" class="imagenCard">
 						</div>
-						<h3 class="mt-3 fs-3 fw-bold text-success-emphasis">PELUQUERÍA</h3>
-						<p class="fs-4">A PARTIR DE 15€</p>
-						<a th:href="@{/peluqueria}" class="btn btn-success">MÁS INFO</a>
+						<h3 class="mt-3 fs-3 fw-bold text-success-emphasis"
+							th:utext="#{servicios.peluqueria}"></h3>
+						<p class="fs-4"
+						   th:utext="#{servicios.peluqueriaApartirDe}">
+						</p>
+						<a th:href="@{/peluqueria}" class="btn btn-success"
+						   th:utext="#{servicios.masInfo}">
+						</a>
 					</div>
 				</article>
 				<article class="col">
@@ -339,8 +670,15 @@
 						<div class="card_image">
 							<img th:src="@{images/veterinario.jpg}" alt="LogoVeterinario" class="imagenCard">
 						</div>
-						<h3 class="mt-3 fs-3 fw-bold text-success-emphasis">ASESORAMIENTO VETERINARIO</h3>
-						<a th:href="@{/veterinario}" class="btn btn-success">MÁS INFO</a>
+						<h3 class="mt-3 fs-3 fw-bold text-success-emphasis"
+							th:utext="#{servicios.veterinario}">
+						</h3>
+						<p class="fs-4"
+						   th:utext="#{servicios.veterinarioApartirDe}">
+						</p>
+						<a th:href="@{/veterinario}" class="btn btn-success"
+						   th:utext="#{servicios.masInfo}">
+						</a>
 					</div>
 				</article>
 				<article class="col">
@@ -348,16 +686,242 @@
 						<div class="card_image">
 							<img th:src="@{images/asesoramientoLegal.jpg}" alt="LogoLegal" class="imagenCard">
 						</div>
-						<h3 class="mt-3 fs-3 fw-bold text-success-emphasis">ASESORAMIENTO LEGAL</h3>
-						<a th:href="@{/asesoramientoLegal}" class="btn btn-success">MÁS INFO</a>
+						<h3 class="mt-3 fs-3 fw-bold text-success-emphasis"
+							th:utext="#{servicios.asesoramientoLegal}">
+						</h3>
+						<p class="fs-4"
+						   th:utext="#{servicios.asesoramientoApartirDe}">
+						</p>
+						<a th:href="@{/asesoramientoLegal}" class="btn btn-success"
+						   th:utext="#{servicios.masInfo}">
+						</a>
 					</div>
 				</article>
 			</div>
 		</section>
 	</section>
 
-	<!-- Script para controlar la seleccion de fechas -->
+	<div id="errorDias" class="text-danger mt-1"></div>
 
+	<!-- Script  -->
+	<script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const btns = document.querySelectorAll('.btnSeleccionar');
+            const tarifaSpan = document.getElementById('tarifaSeleccionada');
+            const precioTotal = document.getElementById('precioTotal');
+            const fechaEntrada = document.getElementById('fechaEntrada');
+            const fechaSalida = document.getElementById('fechaSalida');
+            const errorDias = document.getElementById('errorDias');
+
+            let tarifaSeleccionada = null;
+            let esBono = false; // "bono" o "dias"
+
+            // Hoy en formato YYYY-MM-DD
+            const hoy = new Date().toISOString().split('T')[0];
+            fechaEntrada.min = hoy;
+
+            // Suma días a una fecha y devuelve en formato YYYY-MM-DD
+            function sumarDias(fecha, dias) {
+                const nuevaFecha = new Date(fecha);
+                nuevaFecha.setDate(nuevaFecha.getDate() + dias);
+                return nuevaFecha.toISOString().split('T')[0];
+            }
+
+            // Calcula los días entre dos fechas
+            function calcularDias(inicio, fin) {
+                const unDiaMs = 1000 * 60 * 60 * 24;
+                return Math.ceil((fin - inicio) / unDiaMs);
+            }
+
+            // Ajusta el rango de la fecha de salida según la tarifa seleccionada
+            function ajustarFechas() {
+                if (!tarifaSeleccionada || !fechaEntrada.value) {
+                    fechaSalida.min = fechaEntrada.value || hoy;
+                    fechaSalida.max = "";
+                    return;
+                }
+
+                // Si ya hay fecha de entrada, ajusta fecha de salida
+                if (fechaEntrada.value) {
+                    fechaSalida.min = sumarDias(fechaEntrada.value, 3);
+                    fechaSalida.value = ""; // Obliga a elegir una nueva fecha válida
+                } else {
+                    fechaSalida.min = sumarDias(hoy, 3);
+                    fechaSalida.value = "";
+                }
+                fechaSalida.max = ""; // Sin máximo
+            }
+
+            function actualizarPrecio() {
+                errorDias.textContent = '';
+
+                // Si es bono, solo muestra el precio del bono y desactiva fechas
+                if (esBono && tarifaSeleccionada) {
+                    precioTotal.textContent = `PRECIO TOTAL: ${tarifaSeleccionada.precio}€`;
+                    return;
+                }
+
+                // Si es por días
+                if (!tarifaSeleccionada || !fechaEntrada.value || !fechaSalida.value){
+                    precioTotal.textContent = "PRECIO TOTAL: ";
+                    return;
+                }
+
+                const inicio = new Date(fechaEntrada.value);
+                const fin = new Date(fechaSalida.value);
+
+                if (fin <= inicio) {
+                    precioTotal.textContent = "ERROR: La fecha de salida debe ser posterior a la de entrada.";
+                    return;
+                }
+
+                const dias = calcularDias(inicio, fin);
+
+                if (dias < 3) {
+                    precioTotal.textContent = "ERROR: El servicio requiere mínimo 3 días.";
+                    return;
+                }
+
+                const total = dias * tarifaSeleccionada.precio;
+                precioTotal.innerHTML = `PRECIO TOTAL: ${total}€ <small class="text-muted">(${dias} días)</small>`;
+            }
+
+            // Selección de tarifa
+            btns.forEach(btn => {
+                btn.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    const card = btn.closest('.cardServicio');
+                    const isBono = btn.classList.contains('cardBono');
+
+                    // Si ya está seleccionada, desmarcar y resetear
+                    if (card.classList.contains('selected')) {
+                        card.classList.remove('selected');
+                        tarifaSeleccionada = null;
+                        esBono = false;
+                        tarifaSpan.textContent = '';
+                        precioTotal.textContent = "PRECIO TOTAL: ";
+                        errorDias.textContent = "";
+                        fechaEntrada.value = "";
+                        fechaSalida.value = "";
+                        fechaEntrada.disabled = false;
+                        fechaSalida.disabled = false;
+                        ajustarFechas();
+                        return;
+                    }
+
+                    // Deseleccionar todas
+                    document.querySelectorAll('.cardServicio.selected').forEach(c => c.classList.remove('selected'));
+                    card.classList.add('selected');
+
+                    // Si es bono
+					if (isBono) {
+                        console.log("Es bono")
+                        esBono = true;
+                        // Descativamos fechas y limpiamos valores
+                        fechaEntrada.disabled = true;
+                        fechaSalida.disabled = true;
+                        fechaEntrada.value = "";
+                        fechaSalida.value = "";
+                        errorDias.textContent = "";
+
+                        tarifaSeleccionada = {
+                            precio: parseFloat(card.dataset.precio),
+                            nombre: card.dataset.nombre
+						};
+
+                        console.log(tarifaSeleccionada.precio);
+
+                        tarifaSpan.textContent = `${tarifaSeleccionada.nombre}`;
+                        actualizarPrecio();
+                        return;
+                    }
+
+                    // Si es tarifa normal
+					esBono = false;
+                    fechaEntrada.disabled = false;
+                    fechaSalida.disabled = false;
+
+                    // Leer datos de la card
+                    tarifaSeleccionada = {
+                        precio: parseFloat(card.dataset.precio),
+                        nombre: card.dataset.nombre
+                    };
+
+                    tarifaSpan.textContent = tarifaSpan.textContent = `${tarifaSeleccionada.nombre} - ${tarifaSeleccionada.precio}€/día`;
+                    ajustarFechas();
+                    actualizarPrecio();
+                });
+            });
+
+            // Cuando cambia la fecha de entrada, ajusta la de salida y recalcula
+            fechaEntrada.addEventListener('change', function () {
+                if (!esBono) {
+                    ajustarFechas();
+                    actualizarPrecio();
+                }
+            });
+
+            // Cuando cambia la fecha de salida, recalcula
+            fechaSalida.addEventListener('change', function () {
+                if (!esBono) {
+                    actualizarPrecio();
+                }
+            });
+
+            // Inicializa el mínimo de salida al cargar la página
+            if (fechaEntrada.value) {
+                fechaSalida.min = fechaEntrada.value;
+            } else {
+                fechaSalida.min = hoy;
+            }
+
+            document.getElementById('checkoutAdiestramiento').addEventListener('submit', async function(event) {
+                event.preventDefault();
+
+                const form = event.target;
+
+                // Validar selección
+                if (!tarifaSeleccionada) {
+                    alert("Selecciona una tarifa o bono antes de reservar.");
+                    return;
+                }
+
+                // Obtener nombre y cantidad de días
+                const nombreProducto = tarifaSeleccionada.nombre;
+                let cantidadDias = 1;
+                if (!esBono && fechaEntrada.value && fechaSalida.value) {
+                    cantidadDias = calcularDias(new Date(fechaEntrada.value), new Date(fechaSalida.value));
+                }
+
+                // Prepara datos para enviar como JSON
+                const formData = {
+                    nombreProducto: nombreProducto,
+                    cantidadDias: cantidadDias
+                };
+
+                try {
+                    const response = await fetch(form.action, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(formData)
+                    });
+
+                    const data = await response.json();
+
+                    if (data.status === "SUCCESS") {
+                        window.location.href = data.sessionUrl; // Redirige a Stripe
+                    } else {
+                        alert("Error en la reserva: " + (data.message || "Sin mensaje"));
+                    }
+                } catch (error) {
+                    console.error("Error:", error);
+                    alert("Error al procesar la reserva");
+                }
+            });
+        });
+
+	</script>
 </section>
 </body>
 </html>

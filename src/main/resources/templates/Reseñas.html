@@ -1,0 +1,23 @@
+<!-- src/main/resources/templates/Reseñas.html -->
+<section class="reviews-section" th:fragment="reviewsFragment">
+    <h2 th:text="#{reviews.heading}">Nuestras reseñas cuentan historias</h2>
+    <section class="testimonials">
+        <div class="testimonial">
+            <span class="rating">⭐⭐⭐⭐⭐</span>
+            <p th:text="#{reviews.testimonial.1}"></p>
+        </div>
+        <div class="testimonial">
+            <span class="rating">⭐⭐⭐⭐⭐</span>
+            <p th:text="#{reviews.testimonial.2}"></p>
+        </div>
+        <div class="testimonial">
+            <span class="rating">⭐⭐⭐⭐⭐</span>
+            <p th:text="#{reviews.testimonial.3}"></p>
+        </div>
+    </section>
+    <section class="review">
+        <div class="input-with-icon">
+            <input type="text" th:placeholder="#{reviews.input.placeholder}">
+        </div>
+    </section>
+</section>

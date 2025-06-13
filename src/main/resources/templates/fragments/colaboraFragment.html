@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head></head>
+<body>
+<div th:fragment="colaboraContent">
+    <section class="colabora-page section-padding section-bg">
+        <h1 class="texto1" th:text="#{colabora.title}">Colabora con nosotros y nuestros animales</h1>
+        <div class="container-vista">
+            <div class="fila arriba">
+                <a th:href="@{/colabora/dona}" class="botoncolabora">
+                    <span th:text="#{colabora.dona}">DONA</span>
+                    <span th:text="#{colabora.dona.desc}">Cada aportación, por pequeña que sea, hace una gran diferencia.</span>
+                </a>
+                <a th:href="@{/colabora/adopta}" class="botoncolabora">
+                    <span th:text="#{colabora.adopta}">ADOPTA</span>
+                    <span th:text="#{colabora.adopta.desc}">Cambia tu vida o la de uno de nuestros amigos peludos.</span>
+                </a>
+            </div>
+            <div class="fila abajo">
+                <a th:href="@{/colabora/apadrina}" class="botoncolabora">
+                    <span th:text="#{colabora.apadrina}">APADRINA</span>
+                    <span th:text="#{colabora.apadrina.desc}">Apadrina a uno de nuestros animales y dale una segunda oportunidad, sin necesidad de adoptar.</span>
+                </a>
+                <a th:href="@{/colabora/paseosolidario}" class="botoncolabora">
+                    <span th:text="#{colabora.paseo}">PASEO SOLIDARIO</span>
+                    <span th:text="#{colabora.paseo.desc}">Pasea con nuestros amigos peludos, ayúdanos y recibe su cariño. ¡Nosotros te lo agradeceremos aún más!</span>
+                </a>
+            </div>
+            <br>
+            <h2 class="texto2" th:text="#{colabora.footer}">Cada ayuda cuenta, por pequeña que sea.</h2>
+        </div>
+    </section>
+</div>
+</body>
+</html>

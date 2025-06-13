@@ -1,0 +1,100 @@
+.body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    font-family: "Inter", sans-serif;
+    background-color: #ffffff;
+    overflow-x: hidden;
+}
+
+.mainContainer {
+    background-color: rgba(27, 125, 85, 0.76);
+    max-width: 1400px;
+    margin: 60px auto 20px;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+
+.formContainer {
+    background-color: rgba(27, 125, 85, 0.42);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+
+.itemSeleccion {
+    margin-bottom: 15px;
+}
+
+
+.labelForm {
+    border-radius: 10px;
+    border: 1px solid rgb(187, 224, 155);
+    padding: 10px;
+    transition: border-color 0.3s ease;
+}
+
+.labelForm:focus {
+    border-color: #198754;
+    outline: none;
+    box-shadow: 0 0 5px rgba(25, 135, 84, 0.4);
+}
+
+.enlaceMascotas {
+    display: inline-block;
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+    color: #1b7d55;
+    text-decoration: underline;
+}
+
+.enlaceMascotas:hover {
+    color: #000000;
+}
+
+.btnEnviar {
+    background-color: #1b7d55;
+    border: none;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 300px;
+    padding: 12px 20px;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btnEnviar:hover {
+    background-color: #157347;
+    transform: scale(1.02);
+    cursor: pointer;
+}
+
+.btnReserva{
+    background-color: #1b7d55;
+    border: none;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 300px;
+    padding: 12px 20px;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.btnReserva:hover {
+    background-color: #157347;
+    transform: scale(1.02);
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .formContainer {
+        padding: 20px 15px;
+    }
+
+    .btnEnviar {
+        width: 100%;
+    }
+}
