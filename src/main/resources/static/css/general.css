@@ -267,8 +267,75 @@
 /*FIN SECCION CTA DONA/VOLUNTARIO*/
 
 /*TIENDA*/
-.navTiendaFragment {
+.fondoCategoriaTienda {
+    background: linear-gradient(90deg, #eafaf1 0%, #e4f1e4 100%);
+    border-radius: 40px;
+    box-shadow: 0 8px 32px rgba(99, 177, 102, 0.12);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: flotacionCategoria 6s ease-in-out infinite;
+    margin-bottom: 2.5rem !important;
+    transition: box-shadow 0.3s;
+    position: relative;
+    z-index: 2;
+}
 
+@keyframes flotacionCategoria {
+    0%, 100% { transform: translateY(0);}
+    50% { transform: translateY(-10px);}
+}
+
+.cabeceraCategoriaTienda {
+    background: #fff;
+    border-radius: 32px;
+    box-shadow: 0 4px 18px rgba(67, 113, 143, 0.09);
+    display: inline-flex;
+    align-items: center;
+    gap: 1.5rem;
+    transition: background 0.4s, box-shadow 0.4s;
+    position: relative;
+    z-index: 3;
+    animation: cabeceraBrillo 4s linear infinite;
+}
+
+@keyframes cabeceraBrillo {
+    0% {
+        box-shadow: 0 4px 18px rgba(67, 113, 143, 0.09);
+    }
+    50% {
+        box-shadow: 0 8px 32px rgba(67, 113, 143, 0.18);
+        background: #f0f8ff;
+    }
+    100% {
+        box-shadow: 0 4px 18px rgba(67, 113, 143, 0.09);
+    }
+}
+
+.tituloCategoriaTienda {
+    color: #27632a;
+    font-weight: 800;
+    font-size: clamp(2rem, 4vw, 2.7rem);
+    letter-spacing: 0.01em;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(90deg, #27632a 60%, #43718F 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.icono-categoria i {
+    color: #ff9800;
+    font-size: 2.1rem;
+    vertical-align: middle;
+    filter: drop-shadow(0 2px 6px rgba(255,152,0,0.15));
+    animation: iconoSwing 2.5s infinite;
+}
+
+@keyframes iconoSwing {
+    0%, 100% { transform: rotate(-6deg);}
+    50% { transform: rotate(8deg);}
 }
 
 .tituloTienda {
@@ -844,30 +911,139 @@ clamp(10px, 2vw, 40px);
 /*////////////////////////////
 /         TIENDA             /
 ////////////////////////////*/
-.enlaceNavTienda {
-    text-decoration: none;
-    color: #000000;
+/* NAV TIENDA ESTILO PROFESIONAL */
+.navTiendaBar {
+    background: linear-gradient(90deg, #f7fafc 0%, #eafaf1 100%);
+    box-shadow: 0 4px 24px rgba(67, 113, 143, 0.09);
+    border-radius: 0 0 32px 32px;
+    margin-bottom: 2.5rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    z-index: 10;
+    position: relative;
+    animation: navTiendaBarFadeIn 1.2s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@keyframes navTiendaBarFadeIn {
+    0% { opacity: 0; transform: translateY(-40px);}
+    100% { opacity: 1; transform: translateY(0);}
+}
+
+.navTiendaBar-list {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 1.7rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    flex-wrap: wrap;
+}
+
+.navTiendaBar-item {
+    display: flex;
+    align-items: center;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    padding: 0.5rem 0;
     position: relative;
 }
 
+.enlaceNavTienda {
+    text-decoration: none;
+    color: #27632a;
+    position: relative;
+    padding: 0.2rem 0.7rem;
+    border-radius: 18px;
+    transition: background 0.2s, color 0.2s;
+    font-weight: 700;
+    font-size: 1.07rem;
+    letter-spacing: 0.01em;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
 .enlaceNavTienda::after {
-    content: ""; /* Crea el pseudo-elemento vacío */
+    content: "";
     position: absolute;
-    left: 0;
-    bottom: -5px;
-    height: 3px; /* Grosor de la línea */
-    width: 0; /* Línea invisible al inicio */
-    background-color: #28a745; /* Color de la línea */
-    transition-duration: 0s, 0.5s;
-    transition-timing-function: ease, ease;
-    transition-delay: 0s, 0s;
-    transition-property: all, all;
+    left: 20%;
+    bottom: 4px;
+    height: 3px;
+    width: 0;
+    background: linear-gradient(90deg, #43718F 0%, #ff9800 100%);
+    border-radius: 2px;
+    transition: width 0.4s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-.enlaceNavTienda:hover::after {
-    width: 100%; /* Línea se extiende completamente al pasar el ratón */
+.enlaceNavTienda:hover,
+.enlaceNavTienda:focus {
+    background: #f0f8ff;
+    color: #43718F;
+    outline: none;
 }
 
+.enlaceNavTienda:hover::after,
+.enlaceNavTienda:focus::after {
+    width: 60%;
+}
+
+.navTiendaBar-search {
+    margin-left: 1.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.navTiendaBar-searchInput {
+    border-radius: 20px 0 0 20px;
+    border: 1.5px solid #43718F;
+    padding: 0.4rem 1.1rem;
+    font-size: 1rem;
+    background: #f7fafc;
+    color: #27632a;
+    transition: border 0.2s;
+}
+
+.navTiendaBar-searchInput:focus {
+    outline: none;
+    border-color: #ff9800;
+    background: #fffde7;
+}
+
+.navTiendaBar-searchBtn {
+    border-radius: 0 20px 20px 0;
+    border: 1.5px solid #43718F;
+    border-left: none;
+    background: #43718F;
+    color: #fff;
+    padding: 0.4rem 1.1rem;
+    font-size: 1.1rem;
+    transition: background 0.2s, color 0.2s;
+}
+
+.navTiendaBar-searchBtn:hover,
+.navTiendaBar-searchBtn:focus {
+    background: #ff9800;
+    color: #27632a;
+}
+
+.buttonHamburguesa {
+    border: none;
+    background: transparent;
+    font-size: 1.7rem;
+    color: #43718F;
+}
+
+@media (max-width: 768px) {
+    .navTiendaBar-list {
+        gap: 0.5rem;
+    }
+    .navTiendaBar-search {
+        margin-left: 0.5rem;
+    }
+}
 /*////////////////////////////
 /         FIN_TIENDA         /
 ////////////////////////////*/

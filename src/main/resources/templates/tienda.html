@@ -11,25 +11,31 @@
   <div th:replace="~{fragments/navTienda :: navTiendaFragment}"></div>
 
   <!-- Tarjetas -->
-  <section th:each="categoria : ${categorias}" class="section-padding pb-0" th:id="${categoriasNavDto.get(categoria.getId()-1).getNombre()}">
+  <section th:each="categoria : ${categorias}" class="section-padding pb-0"
+           th:id="${categoriasNavDto.get(categoria.getId()-1).getNombre()}">
     <div class="container">
-      <div class="row contCardsTienda justify-content-center">
+      <div class="row contCardsTienda fondoCategoriaTienda justify-content-center pt-3">
 
-        <div class="col-lg-12 col-12 text-center">
-          <h2 class="w-auto tituloTienda m-0" th:utext="${categoriasDtos.get(categoria.getId()-1).getNombre()}"></h2>
+      <div class="col-lg-12 col-12 text-center mb-5">
+        <div class="cabeceraCategoriaTienda d-inline-block px-5 py-3">
+          <h2 class="tituloCategoriaTienda m-0" th:utext="${categoriasDtos.get(categoria.getId()-1).getNombre()}"></h2>
+          <span class="icono-categoria ms-3"><i class="fas fa-paw"></i></span>
         </div>
+      </div>
 
         <div th:each="producto : ${categoria.getProductos()}" class="col-lg-4 col-md-6 col-12 mb-4">
           <div class="card-producto h-100 d-flex flex-column shadow-lg position-relative">
 
             <!-- Etiqueta Stock Limitado -->
-            <div th:if="${producto.getTallas().getFirst().getStock() < 5}" class="badge-stock-limitado position-absolute">
+            <div th:if="${producto.getTallas().getFirst().getStock() < 5}"
+                 class="badge-stock-limitado position-absolute">
               ¡Stock limitado!
             </div>
 
             <!-- Imagen -->
             <div class="imagen-producto p-3 bg-white d-flex align-items-center justify-content-center">
-              <img th:src="${producto.getRutaImagen1()}" th:alt="'Imagen de ' + ${producto.nombre}" class="img-fluid imagen-interna">
+              <img th:src="${producto.getRutaImagen1()}" th:alt="'Imagen de ' + ${producto.nombre}"
+                   class="img-fluid imagen-interna">
             </div>
 
             <!-- Información -->
@@ -53,9 +59,11 @@
               <div class="botonera d-flex flex-wrap justify-content-center gap-2 mt-auto">
 
                 <!-- Botón Leer más -->
-                <a th:href="@{/tienda/producto/{id}(id=${producto.getId()})}" class="btn btn-vermas d-flex align-items-center">
+                <a th:href="@{/tienda/producto/{id}(id=${producto.getId()})}"
+                   class="btn btn-vermas d-flex align-items-center">
                   <span th:text="#{tienda.leerMas}">Leer más</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" class="icon ms-2" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon ms-2" width="20" height="20" viewBox="0 0 24 24"
+                       fill="none" stroke="currentColor">
                     <circle cx="11" cy="11" r="8"></circle>
                     <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                   </svg>
@@ -64,11 +72,12 @@
                 <!-- Compra directa si talla única -->
                 <form th:if="${producto.getTallas().getFirst().getStock() > 0 && producto.getTallas().getFirst().getTallaje().equalsIgnoreCase('unica')}"
                       th:action="@{/tienda/carrito/agregar}" method="post">
-                  <input type="hidden" name="productoId" th:value="${producto.getId()}" />
-                  <input type="hidden" name="tallaId" th:value="${producto.getTallas().getFirst().getId()}" />
-                  <input type="hidden" name="cantidad" value="1" />
+                  <input type="hidden" name="productoId" th:value="${producto.getId()}"/>
+                  <input type="hidden" name="tallaId" th:value="${producto.getTallas().getFirst().getId()}"/>
+                  <input type="hidden" name="cantidad" value="1"/>
                   <button type="submit" class="btn btn-comprar d-flex align-items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon me-2" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon me-2" width="20" height="20" viewBox="0 0 24 24"
+                         fill="none" stroke="currentColor">
                       <circle cx="9" cy="21" r="1"></circle>
                       <circle cx="20" cy="21" r="1"></circle>
                       <path d="M1 1h4l2.68 13.39a2 2 0 002 1.61H19a2 2 0 002-1.5L23 6H6"></path>
@@ -78,9 +87,12 @@
                 </form>
 
                 <!-- Selector de talla -->
-                <div th:unless="${producto.getTallas().getFirst().getTallaje().equalsIgnoreCase('unica')}" class="cardTienda-dropdown dropdown">
-                  <button class="btn btn-comprar cardTienda-dropdown-toggle dropdown-toggle d-flex align-items-center" type="button" data-bs-toggle="dropdown">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon me-2" width="20" height="20" fill="none" stroke="currentColor">
+                <div th:unless="${producto.getTallas().getFirst().getTallaje().equalsIgnoreCase('unica')}"
+                     class="cardTienda-dropdown dropdown">
+                  <button class="btn btn-comprar cardTienda-dropdown-toggle dropdown-toggle d-flex align-items-center"
+                          type="button" data-bs-toggle="dropdown">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon me-2" width="20" height="20" fill="none"
+                         stroke="currentColor">
                       <path d="M4 4l6 2l6 -2l4 2v2l-2 1v10h-4v-6h-4v6h-4V9l-2 -1V6z"/>
                     </svg>
                     <span th:text="#{tienda.escogeTalla}">Escoge talla</span>
@@ -91,21 +103,16 @@
                         <input type="hidden" name="productoId" th:value="${producto.getId()}"/>
                         <input type="hidden" name="tallaId" th:value="${talla.id}"/>
                         <input type="hidden" name="cantidad" value="1"/>
-                        <button type="submit" class="cardTienda-dropdown-item dropdown-item text-center" th:text="${talla.getTallaje()}"></button>
+                        <button type="submit" class="cardTienda-dropdown-item dropdown-item text-center"
+                                th:text="${talla.getTallaje()}"></button>
                       </form>
                     </li>
                   </ul>
                 </div>
-
               </div>
             </div>
-
-            <!-- Detalle cola de perro -->
-            <div class="detalle-cola-perro"></div>
-
           </div>
         </div>
-
       </div>
     </div>
   </section>
