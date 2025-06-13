@@ -19,42 +19,79 @@
           <h2 class="w-auto tituloTienda m-0" th:utext="${categoriasDtos.get(categoria.getId()-1).getNombre()}"></h2>
         </div>
 
-        <div th:each="producto : ${categoria.getProductos()}" class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0" >
-          <div class="custom-block-wrap">
-            <img th:src="${producto.getRutaImagen1()}" class="custom-block-image img-fluid" th:alt="'imagen de prducto ' + ${producto.nombre}">
+        <div th:each="producto : ${categoria.getProductos()}" class="col-lg-4 col-md-6 col-12 mb-4">
+          <div class="card-producto h-100 d-flex flex-column shadow-lg position-relative">
 
-            <div class="custom-block">
-              <div class="custom-block-body py-0">
-                <h5 class="mb-3" style="color:#5bc1ac; font-weight: 600;" th:utext="${producto.getNombre()}"></h5>
+            <!-- Etiqueta Stock Limitado -->
+            <div th:if="${producto.getTallas().getFirst().getStock() < 5}" class="badge-stock-limitado position-absolute">
+              ¡Stock limitado!
+            </div>
 
-                <p style="color:#717275; font-weight: 300; font-size: 16px;" th:utext="${producto.getDescripcion()}"></p>
+            <!-- Imagen -->
+            <div class="imagen-producto p-3 bg-white d-flex align-items-center justify-content-center">
+              <img th:src="${producto.getRutaImagen1()}" th:alt="'Imagen de ' + ${producto.nombre}" class="img-fluid imagen-interna">
+            </div>
+
+            <!-- Información -->
+            <div class="contenido-producto px-4 py-3 d-flex flex-column flex-grow-1 justify-content-between">
+
+              <!-- Título / Precio / Descripción -->
+              <div class="info mb-3">
+                <div class="nombre-precio d-flex align-items-center gap-2 mb-2">
+                  <i class="fas fa-paw icon-animal me-1"></i>
+                  <span class="nombre-producto" th:utext="${producto.getNombre()}"></span>
+                  <span class="separador-nombre-precio mx-2">|</span>
+                  <span class="precio-producto">
+                    <i class="fas fa-euro-sign icon-precio me-1"></i>
+                    <span th:text="${producto.getTarifas().getFirst().getPrecioUnitario()}"></span>
+                  </span>
+                </div>
+                <p class="descripcion-producto" th:utext="${producto.getDescripcion()}"></p>
               </div>
 
-              <div class="d-flex justify-content-center flex-row w-100 flex-nowrap align-items-stretch gap-1">
-                <a th:href="@{/tienda/producto/{id}(id=${producto.getId()})}" class="custom-btn btn btnHazteVoluntario w-100 align-content-center" th:text="#{tienda.leerMas}"></a>
+              <!-- Botonera -->
+              <div class="botonera d-flex flex-wrap justify-content-center gap-2 mt-auto">
 
-                <form th:if="${producto.getTallas().getFirst().getStock() > 1 && producto.getTallas().getFirst().getTallaje().equalsIgnoreCase('unica')}"
-                      th:action="@{/tienda/carrito/agregar}" method="post" class="w-100">
+                <!-- Botón Leer más -->
+                <a th:href="@{/tienda/producto/{id}(id=${producto.getId()})}" class="btn btn-vermas d-flex align-items-center">
+                  <span th:text="#{tienda.leerMas}">Leer más</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon ms-2" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                  </svg>
+                </a>
+
+                <!-- Compra directa si talla única -->
+                <form th:if="${producto.getTallas().getFirst().getStock() > 0 && producto.getTallas().getFirst().getTallaje().equalsIgnoreCase('unica')}"
+                      th:action="@{/tienda/carrito/agregar}" method="post">
                   <input type="hidden" name="productoId" th:value="${producto.getId()}" />
                   <input type="hidden" name="tallaId" th:value="${producto.getTallas().getFirst().getId()}" />
                   <input type="hidden" name="cantidad" value="1" />
-<!--                  <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />-->
-                  <button type="submit" class="custom-btn btn btnHazteVoluntario w-100 align-content-center" th:text="#{tienda.comprar}"></button>
+                  <button type="submit" class="btn btn-comprar d-flex align-items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon me-2" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                      <circle cx="9" cy="21" r="1"></circle>
+                      <circle cx="20" cy="21" r="1"></circle>
+                      <path d="M1 1h4l2.68 13.39a2 2 0 002 1.61H19a2 2 0 002-1.5L23 6H6"></path>
+                    </svg>
+                    <span th:text="#{tienda.comprar}">Comprar</span>
+                  </button>
                 </form>
 
-                <div th:unless="${producto.getTallas().getFirst().getTallaje().equalsIgnoreCase('unica')}" class="dropdown w-100 align-content-center justify-content-center">
-                  <button class="custom-btn btn btnHazteVoluntario w-100 align-content-center"
-                          type="button" id="tallaDropdown" data-bs-toggle="dropdown" aria-expanded="false" th:text="#{tienda.escogeTalla}"></button>
-                  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="tallaDropdown">
+                <!-- Selector de talla -->
+                <div th:unless="${producto.getTallas().getFirst().getTallaje().equalsIgnoreCase('unica')}" class="cardTienda-dropdown dropdown">
+                  <button class="btn btn-comprar cardTienda-dropdown-toggle dropdown-toggle d-flex align-items-center" type="button" data-bs-toggle="dropdown">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon me-2" width="20" height="20" fill="none" stroke="currentColor">
+                      <path d="M4 4l6 2l6 -2l4 2v2l-2 1v10h-4v-6h-4v6h-4V9l-2 -1V6z"/>
+                    </svg>
+                    <span th:text="#{tienda.escogeTalla}">Escoge talla</span>
+                  </button>
+                  <ul class="cardTienda-dropdown-menu dropdown-menu w-100">
                     <li th:each="talla : ${producto.getTallas()}" th:if="${talla.getStock() > 0}">
                       <form th:action="@{/tienda/carrito/agregar}" method="post">
-                        <input type="hidden" name="productoId" th:value="${producto.getId()}" />
-                        <input type="hidden" name="tallaId" th:value="${talla.id}" />
-                        <input type="hidden" name="cantidad" value="1" />
-<!--                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />-->
-                        <button type="submit" href="/tienda/carrito" class="text-center w-100" style="all: unset;">
-                          <a class="dropdown-item" th:utext="${talla.getTallaje()}"></a>
-                        </button>
+                        <input type="hidden" name="productoId" th:value="${producto.getId()}"/>
+                        <input type="hidden" name="tallaId" th:value="${talla.id}"/>
+                        <input type="hidden" name="cantidad" value="1"/>
+                        <button type="submit" class="cardTienda-dropdown-item dropdown-item text-center" th:text="${talla.getTallaje()}"></button>
                       </form>
                     </li>
                   </ul>
@@ -62,6 +99,10 @@
 
               </div>
             </div>
+
+            <!-- Detalle cola de perro -->
+            <div class="detalle-cola-perro"></div>
+
           </div>
         </div>
 
