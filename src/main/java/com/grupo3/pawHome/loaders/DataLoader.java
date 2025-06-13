@@ -62,6 +62,19 @@ public class DataLoader implements CommandLineRunner {
     @Override
     public void run(String... args) {
 
+        // ROLES
+        if (rolRepository.findByNombre("USER").isEmpty()) {
+            Rol rol1 = new Rol();
+            rol1.setNombre("USER");
+            rolRepository.save(rol1);
+        }
+
+        if (rolRepository.findByNombre("ADMIN").isEmpty()) {
+            Rol rol2 = new Rol();
+            rol2.setNombre("ADMIN");
+            rolRepository.save(rol2);
+        }
+
         // Crear Usuarios
         Usuario usuario = new Usuario();
         usuario.setNickname("juan1234");
@@ -104,7 +117,7 @@ public class DataLoader implements CommandLineRunner {
         perfil1.setApellidos("García García");
         perfil1.setEdad(25);
         perfil1.setDni("12345678B");
-        perfil1.setDireccion("Calle Falsa 123");
+        perfil1.setDireccion("Avenida Alcalde Manuel del Valle 123");
         perfil1.setPais("España");
         perfil1.setCiudad("Sevilla");
         perfil1.setCp("41015");
@@ -142,7 +155,7 @@ public class DataLoader implements CommandLineRunner {
         u2.setPerfilDatos(perfil2);
 
         usuarioRepository.save(u2);
-        
+
         // Usuarios con el rol ADMIN
         Usuario u3 = new Usuario();
         u3.setNickname("Javix");
@@ -1007,17 +1020,5 @@ public class DataLoader implements CommandLineRunner {
         ap4.setUsuario(u2);
         apadrinarRepository.save(ap4);
 
-
-        if (rolRepository.findByNombre("ROL_USER").isEmpty()) {
-            Rol rol1 = new Rol();
-            rol1.setNombre("ROL_USER");
-            rolRepository.save(rol1);
-        }
-
-        if (rolRepository.findByNombre("ROL_ADMIN").isEmpty()) {
-            Rol rol2 = new Rol();
-            rol2.setNombre("ROL_ADMIN");
-            rolRepository.save(rol2);
-        }
     }
 }
