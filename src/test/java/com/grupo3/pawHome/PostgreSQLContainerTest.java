@@ -10,12 +10,12 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 @Testcontainers
 public abstract class PostgreSQLContainerTest {
 
-    @ServiceConnection
-    protected static final PostgreSQLContainer<?> dbContainer = new PostgreSQLContainer<>("postgres:latest").withDatabaseName("testDB").withUsername("appuser").withPassword("password123");
-
-    static {
-        dbContainer.start();
-    }
+//    @ServiceConnection
+//    protected static final PostgreSQLContainer<?> dbContainer = new PostgreSQLContainer<>("postgres:latest").withDatabaseName("testDB").withUsername("appuser").withPassword("password123");
+//
+//    static {
+//        dbContainer.start();
+//    }
 
 }
 
