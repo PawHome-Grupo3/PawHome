@@ -239,19 +239,19 @@
 								<!-- Peso -->
 								<span class="badgeCard">
 									<i class="fas fa-weight-hanging me-1"></i>
-									<span th:text="${animal.peso} + ' kg'">8 kg</span>
+									<span th:text="${animal.peso} + ' kg'"></span>
 								</span>
 
 								<!-- Edad -->
 								<span class="badgeCard">
 									<i class="fas fa-birthday-cake me-1"></i>
-									<span th:text="${animal.edad}">2 años</span>
+									<span th:text="${animal.edad}"></span>
 								</span>
 
 								<!-- Género -->
 								<span class="badgeCard">
 									<i class="fas fa-venus-mars me-1"></i>
-									<span th:text="${animal.genero == false ? 'Hembra' : 'Macho'}">Hembra</span>
+									<span th:text="${animal.genero == false ? 'Hembra' : 'Macho'}"></span>
 								</span>
 							</div>
 							<div class="row d-flex justify-content-center flex-nowrap">
@@ -259,8 +259,11 @@
 								   th:href="@{/adopta/{id}(id=${animal.id})}"
 								   class="botonesCardAnimal btn card_btn">Adopta</a>
 
-								<a th:if="${animal.adoptado == false}"
-								   th:href="@{/apadrinar/{id}(id=${animal.id})}"
+								<a href="#"
+								   th:data-id="${animal.id}"
+								   th:if="${animal.adoptado == false}"
+								   data-bs-toggle="modal"
+								   data-bs-target="#modalApadrinar"
 								   th:class="'btn card_btn ' + (${animal.caracterSocial} == true? 'botonesCardAnimal' : 'botonesCardAnimalApadrina')">
 									Apadrina
 								</a>
@@ -361,26 +364,80 @@
 		</div>
 	</div>
 
-	<!-- Script para resetear especie y página al cambiar raza -->
+<!--	Modal para confirmar apadrinamiento-->
+	<div class="modal fade" id="modalApadrinar" tabindex="-1" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content p-3">
+				<form id="checkoutApadrinarForm" method="post">
+					<div class="modal-header border-0">
+						<h5 class="modal-title">Apadrinar</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+					</div>
+
+					<div class="modal-body">
+						<input type="hidden" id="animalId" name="animalId">
+						<label for="aporteMensual">Aporte mensual (€)</label>
+						<input type="number" name="aporteMensual" id="aporteMensual" min="1" required class="form-control">
+					</div>
+
+					<div class="modal-footer border-0">
+						<button type="submit" class="btn btn-success">Confirmar</button>
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
 	<script>
-		function onRazaChange() {
-			const form = document.getElementById("filtroForm");
+		document.addEventListener("DOMContentLoaded", function () {
+			const modal = document.getElementById('modalApadrinar');
 
-			// Resetear selector de especie
-			const especieSelect = document.getElementById("especieSelect");
-			if (especieSelect) {
-				especieSelect.selectedIndex = 0;
-			}
+			// 1. Cuando se abre el modal, actualizamos el formulario con el ID del animal
+			modal.addEventListener('show.bs.modal', function (event) {
+				const button = event.relatedTarget;
+				const animalId = button.getAttribute('data-id');
 
-			// Eliminar parámetro de paginación si existe
-			const pageInput = document.createElement("input");
-			pageInput.type = "hidden";
-			pageInput.name = "page";
-			pageInput.value = "1";
-			form.appendChild(pageInput);
+				const form = document.getElementById('checkoutApadrinarForm');
+				form.setAttribute('action', `/apadrinar/${animalId}/checkout-suscripcion`);
+				document.getElementById('animalId').value = animalId;
+			});
 
-			form.submit();
-		}
+			// 2. Envío del formulario
+			document.getElementById('checkoutApadrinarForm').addEventListener('submit', async function (event) {
+				event.preventDefault();
+
+				const form = event.target;
+				const aporteMensual = form.aporteMensual.value;
+				const actionUrl = form.getAttribute('action');
+
+				if (!aporteMensual || isNaN(aporteMensual) || Number(aporteMensual) <= 0) {
+					alert("Introduce un valor válido.");
+					return;
+				}
+
+				try {
+					const response = await fetch(actionUrl, {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json'
+						},
+						body: JSON.stringify({ aporteMensual: parseFloat(aporteMensual) })
+					});
+
+					const result = await response.json();
+
+					if (result.status === 'SUCCESS') {
+						window.location.href = result.sessionUrl;
+					} else {
+						alert("Error al iniciar la suscripción: " + result.message);
+					}
+				} catch (error) {
+					console.error("Error al conectar con el servidor:", error);
+					alert("No se pudo procesar la suscripción.");
+				}
+			});
+		});
 	</script>
 
 	<script>
@@ -394,6 +451,46 @@
 			url.searchParams.set("sort", `${field},${direction}`);
 			window.location.href = url.toString();
 		}
+	</script>
+
+	<script>
+		document.getElementById('checkoutSuscripcionForm').addEventListener('submit', async function (event) {
+			event.preventDefault();
+
+			const form = event.target;
+			const aporteMensual = form.aporteMensual.value;
+
+			// Validación básica
+			if (!aporteMensual || isNaN(aporteMensual) || Number(aporteMensual) <= 0) {
+				alert("Por favor, introduce un aporte mensual válido.");
+				return;
+			}
+
+			const data = {
+				aporteMensual: Number(aporteMensual)
+			};
+
+			try {
+				const response = await fetch(form.action, {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify(data)
+				});
+
+				const result = await response.json();
+
+				if (result.status === 'SUCCESS') {
+					window.location.href = result.sessionUrl; // Redirige a Stripe u otra pasarela
+				} else {
+					alert("Error al iniciar la suscripción: " + result.message);
+				}
+			} catch (error) {
+				console.error("Error al conectar con el servidor:", error);
+				alert("No se pudo procesar la suscripción.");
+			}
+		});
 	</script>
 
 	<script>

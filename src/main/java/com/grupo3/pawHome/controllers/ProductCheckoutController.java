@@ -233,7 +233,8 @@ public class ProductCheckoutController {
     public ResponseEntity<StripeResponse> checkoutApadrinamiento(
             @PathVariable("id") Integer animalId,
             @RequestBody SubscriptionRequest request,
-            @AuthenticationPrincipal Usuario usuarioAutenticado
+            @AuthenticationPrincipal Usuario usuarioAutenticado,
+            HttpSession session
     ) throws StripeException {
         Optional<Usuario> userOptional = usuarioService.findById(usuarioAutenticado.getId());
         if (userOptional.isEmpty()) {
@@ -255,6 +256,8 @@ public class ProductCheckoutController {
             animal.setStripeProductId(productId);
             animalService.save(animal);
         }
+
+        session.setAttribute("animal", animal);
 
         Price price = stripeService.getOrCreatePriceId(request.getAporteMensual(), animal);
 

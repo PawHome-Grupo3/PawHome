@@ -64,7 +64,9 @@ public class ApadrinarController {
         String subscriptionId = session.getSubscription();
         Subscription subscription = Subscription.retrieve(subscriptionId);
 
-        Animal animal = SessionUtils.obtenerAnimalSeguro(httpSession);
+        Animal animalSession = SessionUtils.obtenerAnimalSeguro(httpSession);
+        Animal animal = animalService.findById(animalSession.getId())
+                .orElseThrow(() -> new IllegalArgumentException("Animal no encontrado"));
 
         String aporteMensualStr = subscription.getMetadata().get("aporteMensual");
         double aporteMensual = (aporteMensualStr != null ? Double.parseDouble(aporteMensualStr) : 0.0)/100;
