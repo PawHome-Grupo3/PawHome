@@ -32,5 +32,4 @@ public class LocationController {
 
         return xml.toString();
     }
-
 }

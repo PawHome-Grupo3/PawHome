@@ -46,12 +46,12 @@
 
                   <div class="col-md-6 mt-1">
                     <label class="labels" for="pais">País</label>
-                    <select id="pais" name="pais" class="form-control" th:field="*{pais}" required>
-                      <option value="" disabled th:selected="${perfilDTO.pais == null}">Selecciona un país</option>
+                    <select id="pais" th:field="*{codigoPais}" class="form-select" required>
+                      <option value="" disabled>Selecciona un país</option>
                       <option th:each="pais : ${paises}"
-                              th:value="${pais.code}"
-                              th:text="${pais.name}"
-                              th:selected="${pais.code == perfilDTO.pais}">
+                              th:value="${pais.codigo}"
+                              th:text="${pais.nombre}"
+                              th:selected="${pais.codigo} == ${perfilDTO.codigoPais}">
                       </option>
                     </select>
                     <div class="error-message" id="error-pais"></div>
@@ -59,8 +59,9 @@
 
                   <div class="col-md-6 mt-1">
                     <label class="labels" for="ciudad">Ciudad</label>
-                    <select id="ciudad" name="ciudad" class="form-control" th:field="*{ciudad}" required>
-                      <option value="" disabled th:selected="${perfilDTO.ciudad == null}">Selecciona una ciudad</option>
+                    <select id="ciudad" th:field="*{ciudad}" class="form-control"
+                            th:attr="data-ciudad=${perfilDTO.ciudad}" required>
+                      <option value="" disabled>Selecciona una ciudad</option>
                       <option th:each="ciudad : ${ciudades}"
                               th:value="${ciudad}"
                               th:text="${ciudad}"
@@ -126,13 +127,11 @@
       </div>
     </div>
   </div>
-</section>
-
-<section layout:fragment="pageScripts">
   <script th:inline="javascript">
-    document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("DOMContentLoaded", function () {
       const paisSelect = document.getElementById("pais");
       const ciudadSelect = document.getElementById("ciudad");
+      const ciudadSeleccionada = ciudadSelect.getAttribute("data-ciudad");
 
       function cargarCiudades(paisSeleccionado) {
         if (!paisSeleccionado) {
@@ -153,7 +152,6 @@
                   defaultOption.value = '';
                   defaultOption.textContent = 'Selecciona una ciudad';
                   defaultOption.disabled = true;
-                  defaultOption.selected = true;
                   ciudadSelect.appendChild(defaultOption);
 
                   for (let i = 0; i < ciudades.length; i++) {
@@ -162,6 +160,11 @@
                     const option = document.createElement("option");
                     option.value = nombreCiudad;
                     option.textContent = nombreCiudad;
+
+                    // Marca como seleccionada la ciudad si coincide con la actual
+                    if (nombreCiudad === ciudadSeleccionada) {
+                      option.selected = true;
+                    }
 
                     ciudadSelect.appendChild(option);
                   }
@@ -172,7 +175,15 @@
                 });
       }
 
-      paisSelect.addEventListener('change', function() {
+      // Inicial: cargar ciudades si ya hay un país seleccionado
+      const paisInicial = paisSelect.value;
+      if (paisInicial) {
+        console.log("Cargando ciudades para país seleccionado:", paisInicial);
+        cargarCiudades(paisInicial);
+      }
+
+      // Evento: al cambiar de país
+      paisSelect.addEventListener('change', function () {
         cargarCiudades(this.value);
       });
     });
@@ -301,6 +312,12 @@
       });
     });
   </script>
+</section>
+
+<section layout:fragment="pageScripts">
+
+
+
 </section>
 
 </body>
