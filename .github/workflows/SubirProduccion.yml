@@ -25,6 +25,13 @@ jobs:
           java-version: '${{ vars.JAVA_VERSION }}'
           check-latest: false
 
+      - name: Verify Java version
+        run: java -version
+
+      - name: Verify Maven is using correct JDK
+        run: mvn -version
+
+
   # --------------------- COMPILAR CÓDIGO ---------------------
   ejecucion_tests_y_sonarqube:
     needs: preparar_entorno
@@ -33,6 +40,7 @@ jobs:
       - name: Establecer versión de proyecto para CI
         env:
           VERSION: ${{ github.ref_type == 'tag' && github.ref_name || 'snapshot' }}
+          PROJECT_NAME: ${{ vars.PROJECT_NAME }}
         run: mvn versions:set "-DnewVersion=${{ env.VERSION }}"
 
       - name: Ejecutar Tests, JaCoCo y enviar a SonarQube
@@ -40,7 +48,8 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ vars.SONAR_HOST_URL }}
           VERSION: ${{ github.ref_type == 'tag' && github.ref_name || 'snapshot' }}
-        run: mvn -T24 clean verify sonar:sonar -Dsonar:sonar:sonar.projectVersion=${VERSION}
+          PROJECT_NAME: ${{ vars.PROJECT_NAME }}
+        run: mvn clean verify sonar:sonar -Dsonar:sonar:sonar.projectVersion=${VERSION}
 
   # --------------------- CREAR IMAGEN DOCKER ---------------------
   crear_imagen_docker:
@@ -48,6 +57,7 @@ jobs:
     runs-on: self-hosted
     env:
       VERSION: ${{ github.ref_type == 'tag' && github.ref_name || 'snapshot' }}
+      PROJECT_NAME: ${{ vars.PROJECT_NAME }}
     steps:
       - name: Construir imagen Docker con versión dinámica
         run: mvn spring-boot:build-image -DskipTests
