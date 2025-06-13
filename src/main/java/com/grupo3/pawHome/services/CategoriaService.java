@@ -15,4 +15,8 @@ public class CategoriaService {
     }
 
     public List<Categoria> findAll() { return categoriaRepository.findAll(); }
+
+    public List<Categoria> findByNombreContainingIgnoreCase(String tienda) {
+        return categoriaRepository.findByNombreContainingIgnoreCase(tienda);
+    }
 }
