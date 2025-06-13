@@ -11,104 +11,109 @@
 <body style="margin: 0 !important;">
 <section layout:fragment="content">
 
-<!--CABECERA-->
-	<div class="contenedorImagen">
-		<h2 th:utext="#{index.esloganInicial}"></h2>
+	<!-- CABECERA -->
+	<div class="contenedorImagen position-relative d-flex align-items-center justify-content-center">
+		<div class="overlay-gradient"></div>
+
+		<div class="text-center z-1 contenidoAnimado">
+			<h2 class="indexTitulo animate-fadein" th:utext="#{index.esloganInicial}"></h2>
+			<p class="indexParrafo animate-slideup mt-3">Cuidamos de ellos como se merecen</p>
+			<a href="#historia" class="scroll-down-arrow animate-bounce mt-5">
+				<i class="fa-solid fa-chevron-down"></i>
+			</a>
+		</div>
 	</div>
-<!--CABECERA-->
+	<!-- CABECERA -->
 
 	<!--HISTORIA PROTECTORA-->
-	<section class="section-padding section-bg seccionHistoria mx-5" id="historia">
+	<section class="section-padding sectionHistoria-bg seccionHistoria mx-5" id="historia"
+			 style="background-color: white">
 
-		<div id="carouselExample" class="carousel slide carousel-fade">
+		<div id="carouselExample" class="carousel slide rounded-4 m-4"
+			 data-bs-ride="carousel" data-bs-interval="4000" data-bs-pause="hover"
+			 style="background-color: rgb(217 235 202 / 58%); padding-top: 20px; padding-left: 15px; padding-right: 15px;">
 			<div class="carousel-inner">
-				<div class="row carousel-item active d-flex justify-content-center w-100">
-					<div class="carousel slide col-md-6 col-lg-7 col-12 mb-4  align-content-center">
-						<img th:src="@{images/historiaProtectora.jpg}" class="custom-text-box-image img-fluid"
-							 alt="...">
+				<div class="row carousel-item active d-flex justify-content-center w-100" style="margin-left: 1px;">
+					<div class="carousel slide col-md-6 col-lg-7 col-12 mb-4 align-content-center">
+						<img th:src="@{images/historiaProtectora.jpg}" style="height: 600px"
+							 class="custom-text-box-image img-fluid" alt="...">
 					</div>
 
 					<div class="col-lg-5 col-md-6 col-12 align-content-md-center justify-content-center">
 						<div class="custom-text-box">
-							<h2 class="mb-2 indexTitulo" th:utext="#{index.historiaTitulo}"></h2>
-
-							<h5 class="mb-3 indexSubTitulo" th:utext="#{index.historiaSubTitulo}"></h5>
-
-							<p class="mb-0 indexParrafo" th:utext="#{index.historiaParrafo}"></p>
+							<h2 class="mb-2 historiaTitulo" th:utext="#{index.historiaTitulo}"></h2>
+							<h5 class="mb-3 historiaSubTitulo" th:utext="#{index.historiaSubTitulo}"></h5>
+							<p class="mb-0 historiaParrafo" th:utext="#{index.historiaParrafo}"></p>
 						</div>
 
 						<div class="row justify-content-center">
 							<div class="col-lg-10 col-md-10 col-12">
 								<div class="custom-text-box mb-lg-0">
-									<h5 class="mb-3 indexSubTitulo">Nuestra misión</h5>
-									<p class="indexParrafo">Ser un hogar para todos los animales,
-										ya que todos lo merecen.</p>
+									<h5 class="mb-3 historiaSubTitulo">Nuestra misión</h5>
+									<p class="historiaParrafo">Ser un hogar para todos los animales, ya que todos lo merecen.</p>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 
-				<div class="row carousel-item d-flex justify-content-center">
-					<div class="carousel slide col-md-7 col-12 mb-4  align-content-center">
-						<img th:src="@{images/PawHomeestablecimiento.jpg}" class="custom-text-box-image img-fluid" alt="...">
+				<div class="row carousel-item d-flex justify-content-center" style="margin-left: 1px;">
+					<div class="carousel slide col-md-6 col-lg-7 col-12 mb-4 align-content-center">
+						<img th:src="@{images/PawHomeestablecimiento.jpg}" style="height: 600px"
+							 class="custom-text-box-image img-fluid" alt="...">
 					</div>
 
-					<div class="col-md-5 col-12 align-content-md-center">
+					<div class="col-lg-5 col-md-6 col-12 align-content-md-center justify-content-center">
 						<div class="custom-text-box">
-							<h2 class="mb-2 indexTitulo" th:utext="#{index.historiaTitulo2}"></h2>
-
-							<h5 class="mb-3 indexSubTitulo" th:utext="#{index.historiaSubTitulo2}"></h5>
-
-							<p class="mb-0 indexParrafo" th:utext="#{index.historiaParrafo2}"></p>
+							<h2 class="mb-2 historiaTitulo" th:utext="#{index.historiaTitulo2}"></h2>
+							<h5 class="mb-3 historiaSubTitulo" th:utext="#{index.historiaSubTitulo2}"></h5>
+							<p class="mb-0 historiaParrafo" th:utext="#{index.historiaParrafo2}"></p>
 						</div>
 
 						<div class="row justify-content-center">
 							<div class="col-lg-10 col-md-10 col-12">
 								<div class="custom-text-box mb-lg-0">
-									<h5 class="mb-3 indexSubTitulo"></h5>
-									<p class="indexParrafo">Esta protectora nace de algo muy real: el amor por los animales y las ganas de hacer
-										las cosas mejor.</p>
+									<h5 class="mb-3 historiaSubTitulo">Nuestra misión</h5>
+									<p class="historiaParrafo">Ser un hogar para todos los animales, ya que todos lo merecen.</p>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 
-				<div class="row carousel-item d-flex justify-content-center">
-					<div class="carousel slide col-md-7 col-12 mb-4  align-content-center">
-						<img th:src="@{images/historiaProtectora.jpg}" class="custom-text-box-image img-fluid"
-							 alt="...">
+				<div class="row carousel-item d-flex justify-content-center" style="margin-left: 1px;">
+					<div class="carousel slide col-md-7 col-12 mb-4 align-content-center">
+						<img th:src="@{images/PawHomeestablecimiento.jpg}" style="height: 600px"
+							 class="custom-text-box-image img-fluid" alt="...">
 					</div>
 
 					<div class="col-md-5 col-12 align-content-md-center">
 						<div class="custom-text-box">
-							<h2 class="mb-2 indexTitulo" th:utext="#{index.historiaTitulo3}"></h2>
-
-							<h5 class="mb-3 indexSubTitulo" th:utext="#{index.historiaSubTitulo3}"></h5>
-
-							<p class="mb-0 indexParrafo" th:utext="#{index.historiaParrafo3}"></p>
+							<h2 class="mb-2 historiaTitulo" th:utext="#{index.historiaTitulo2}"></h2>
+							<h5 class="mb-3 historiaSubTitulo" th:utext="#{index.historiaSubTitulo2}"></h5>
+							<p class="mb-0 historiaParrafo" th:utext="#{index.historiaParrafo2}"></p>
 						</div>
 
 						<div class="row justify-content-center">
 							<div class="col-lg-10 col-md-10 col-12">
 								<div class="custom-text-box mb-lg-0">
-									<h5 class="mb-3 indexSubTitulo">Pawhome, un hogar para los que aún no lo tienen 🐾</h5>
-									<p class="indexParrafo">En Pawhome, rescatamos, cuidamos y damos en adopción a animales que han sido abandonados o maltratados.
-										Creemos que cada perro y gato merece una segunda oportunidad y un hogar lleno de amor.
-										Nuestro equipo de voluntarios trabaja con cariño y compromiso para que cada peludo encuentre
-										una familia que lo quiera para siempre. Pero no podemos hacerlo solos.</p>
+									<h5 class="mb-3 historiaSubTitulo"></h5>
+									<p class="historiaParrafo">
+										Esta protectora nace de algo muy real: el amor por los animales y las ganas de hacer
+										las cosas mejor.
+									</p>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+
 			<button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-				<span class="carousel-control-prev-icon carousel-icon" aria-hidden="true"></span>
+				<span class="fas fa-chevron-left text-white"></span>
 			</button>
 			<button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-				<span class="carousel-control-next-icon carousel-icon" aria-hidden="true"></span>
+				<span class="fas fa-chevron-right text-white"></span>
 			</button>
 		</div>
 	</section>
@@ -204,7 +209,7 @@
 		<div class="row g-4 justify-content-center">
 
 			<!-- Servicio 1: Guarderia -->
-			<article class="col-12 col-md-6 col-lg-4">
+			<article class="col-12 pb-3 col-md-6 col-lg-4">
 				<div class="text-center p-4 border rounded shadow-sm h-100">
 					<i class="fas fa-hotel fa-3x text-success mb-3"></i>
 					<h4 class="fw-bold mb-2" th:utext="#{header.guarderia}"></h4>
@@ -214,7 +219,7 @@
 			</article>
 
 			<!-- Servicio 2: Peluquería -->
-			<article class="col-12 col-md-6 col-lg-4">
+			<article class="col-12 pb-3 col-md-6 col-lg-4">
 				<div class="text-center p-4 border rounded shadow-sm h-100">
 					<i class="fas fa-cut fa-3x text-success mb-3"></i>
 					<h4 class="fw-bold mb-2" th:utext="#{header.peluqueria}"></h4>
@@ -224,7 +229,7 @@
 			</article>
 
 			<!-- Servicio 3: Adiestramiento -->
-			<article class="col-12 col-md-6 col-lg-4">
+			<article class="col-12 pb-3 col-md-6 col-lg-4">
 				<div class="text-center p-4 border rounded shadow-sm h-100">
 					<i class="fas fa-dog fa-3x text-success mb-3"></i>
 					<h4 class="fw-bold mb-2" th:utext="#{header.adiestramiento}"></h4>
@@ -234,7 +239,7 @@
 			</article>
 
 			<!-- Servicio 4: Veterinaria -->
-			<article class="col-12 col-md-6 col-lg-4">
+			<article class="col-12 pb-3 col-md-6 col-lg-4">
 				<div class="text-center p-4 border rounded shadow-sm h-100">
 					<i class="fas fa-stethoscope fa-3x text-success mb-3"></i>
 					<h4 class="fw-bold mb-2" th:utext="#{header.veterinario}"></h4>
@@ -244,7 +249,7 @@
 			</article>
 
 			<!-- Servicio 5: Asesoramiento Legal -->
-			<article class="col-12 col-md-6 col-lg-4">
+			<article class="col-12 pb-3 col-md-6 col-lg-4">
 				<div class="text-center p-4 border rounded shadow-sm h-100">
 					<i class="fas fa-balance-scale fa-3x text-success mb-3"></i>
 					<h4 class="fw-bold mb-2" th:utext="#{header.asesoramientoL}"></h4>
@@ -258,13 +263,12 @@
 	<!-- FIN NUESTROS SERVICIOS -->
 
 	<!-- RESEñAS -->
-	<br>
-	<div th:replace="Reseñas :: reviewsFragment"></div>
+	<div th:replace="~{fragments/resenas :: resenasFragment}"></div>
 	<!--FIN RESEñAS -->
 
 
 	<!--DONA Y VOLUNTARIO -->
-	<section class="cta-section section-padding section-bg">
+	<section class="cta-section section-padding section-bg mb-4">
 		<div class="container">
 			<div class="row justify-content-center align-items-center text-center">
 
@@ -273,14 +277,51 @@
 				</div>
 
 				<div class="col-md-6 col-12 flex-nowrap columDona mt-3">
-					<a href="/colabora/dona" class="btn btn-success btnHazteVoluntario" th:utext="#{Dona}"></a>
-					<a href="#" class="btn btn-success btnHazteVoluntario" th:utext="#{Hazte voluntario}"></a>
+					<a href="/colabora/dona" class="btn btn-success btnHazteVoluntario">Dona</a>
+					<a href="#" class="btn btn-success btnHazteVoluntario">Hazte Voluntario</a>
 				</div>
 
 			</div>
 		</div>
 	</section>
 <!--FIN DONA Y VOLUNTARIO -->
+
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			const carousel = document.getElementById('carouselExample');
+			const carouselInner = carousel.querySelector('.carousel-inner');
+
+			carousel.addEventListener('slid.bs.carousel', function () {
+				const activeItem = carouselInner.querySelector('.carousel-item.active');
+				const texts = activeItem.querySelectorAll('.custom-text-box h2, .custom-text-box h5, .custom-text-box p');
+
+				texts.forEach(el => {
+					el.classList.remove('animate-text');
+					void el.offsetWidth; // Fuerza reflow
+					el.classList.add('animate-text');
+				});
+			});
+
+			// Activar animación en el primer slide
+			const initialItem = carouselInner.querySelector('.carousel-item.active');
+			const initialTexts = initialItem.querySelectorAll('.custom-text-box h2, .custom-text-box h5, .custom-text-box p');
+			initialTexts.forEach(el => el.classList.add('animate-text'));
+		});
+	</script>
+
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			const title = document.querySelector(".animate-fadein");
+			const para = document.querySelector(".animate-slideup");
+
+			// Forzar reflow y aplicar animaciones (si no se activan por defecto)
+			void title.offsetWidth;
+			void para.offsetWidth;
+
+			title.classList.add("animate-fadein");
+			para.classList.add("animate-slideup");
+		});
+	</script>
 </section>
 </body>
 </html>
