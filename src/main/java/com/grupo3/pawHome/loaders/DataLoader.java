@@ -29,6 +29,7 @@ public class DataLoader implements CommandLineRunner {
     private final PasswordEncoder passwordEncoder;
     private final RazaRepository razaRepository;
     private final EspecieRepository especieRepository;
+    private final RolRepository rolRepository;
 
 
     public DataLoader(AnimalRepository animalRepository,
@@ -39,7 +40,10 @@ public class DataLoader implements CommandLineRunner {
                       TallaRepository tallaRepository,
                       CategoriaRepository categoriaRepository,
                       TarifaRepository tarifaRepository,
-                      PasswordEncoder passwordEncoder, RazaRepository razaRepository, EspecieRepository especieRepository) {
+                      PasswordEncoder passwordEncoder,
+                      RazaRepository razaRepository,
+                      EspecieRepository especieRepository,
+                      RolRepository rolRepository) {
 
         this.animalRepository = animalRepository;
         this.apadrinarRepository = apadrinarRepository;
@@ -52,6 +56,7 @@ public class DataLoader implements CommandLineRunner {
         this.passwordEncoder = passwordEncoder;
         this.razaRepository = razaRepository;
         this.especieRepository = especieRepository;
+        this.rolRepository = rolRepository;
     }
 
     @Override
