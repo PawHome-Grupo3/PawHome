@@ -61,6 +61,7 @@ public class DataLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
+
         // Crear Usuarios
         Usuario usuario = new Usuario();
         usuario.setNickname("juan1234");
@@ -87,44 +88,62 @@ public class DataLoader implements CommandLineRunner {
         perfil.setUsuario(usuario);
         usuario.setPerfilDatos(perfil);
 
-        // Guardar usuario (gracias a CascadeType.ALL también guarda perfil)
+        // Guardar usuario
         usuarioRepository.save(usuario);
 
-
+        // Usuario 1
         Usuario u1 = new Usuario();
         u1.setNickname("Pepe2025");
         u1.setPassword(passwordEncoder.encode("123"));
-        u1.setEmail("a@gmail.com");
+        u1.setEmail("pepin@gmail.com");
         u1.setFechaRegistro(LocalDate.now());
         u1.setRol(rolRepository.findByNombre("USER").orElseThrow(() -> new RuntimeException("Rol USER no encontrado")));
 
         PerfilDatos perfil1 = new PerfilDatos();
-        perfil1.setNombre("Pepe");
-        perfil1.setApellidos("Gómez");
+        perfil1.setNombre("José");
+        perfil1.setApellidos("García García");
         perfil1.setEdad(25);
         perfil1.setDni("12345678B");
         perfil1.setDireccion("Calle Falsa 123");
         perfil1.setPais("España");
-        perfil1.setCiudad("Madrid");
-        perfil1.setCp("28002");
+        perfil1.setCiudad("Sevilla");
+        perfil1.setCp("41015");
         perfil1.setTelefono1("600987654");
         perfil1.setTelefono2("601234567");
         perfil1.setTelefono3(null); // opcional
 
-        // Establecer relación bidireccional
         perfil1.setUsuario(u1);
         u1.setPerfilDatos(perfil1);
-        // Guardar usuario (gracias a CascadeType.ALL también guarda perfil)
+
         usuarioRepository.save(u1);
 
+        // Usuario 2
         Usuario u2 = new Usuario();
         u2.setNickname("Maria456");
         u2.setPassword(passwordEncoder.encode("123"));
         u2.setEmail("maria@gmail.com");
         u2.setFechaRegistro(LocalDate.now());
         u2.setRol(rolRepository.findByNombre("USER").orElseThrow(() -> new RuntimeException("Rol USER no encontrado")));
-        usuarioRepository.save(u2);
 
+        PerfilDatos perfil2 = new PerfilDatos();
+        perfil2.setNombre("María");
+        perfil2.setApellidos("López Fernández");
+        perfil2.setEdad(28);
+        perfil2.setDni("87654321C");
+        perfil2.setDireccion("Avenida Siempre Viva 456");
+        perfil2.setPais("España");
+        perfil2.setCiudad("Barcelona");
+        perfil2.setCp("08001");
+        perfil2.setTelefono1("600123456");
+        perfil2.setTelefono2("601234567");
+        perfil2.setTelefono3(null); // opcional
+
+        perfil2.setUsuario(u2);
+        u2.setPerfilDatos(perfil2);
+
+        usuarioRepository.save(u2);
+        
+        // Usuarios con el rol ADMIN
         Usuario u3 = new Usuario();
         u3.setNickname("Javix");
         u3.setPassword(passwordEncoder.encode("JavixAdmin"));
