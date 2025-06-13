@@ -29,6 +29,7 @@ public class DataLoader implements CommandLineRunner {
     private final PasswordEncoder passwordEncoder;
     private final RazaRepository razaRepository;
     private final EspecieRepository especieRepository;
+    private final RolRepository rolRepository;
 
 
     public DataLoader(AnimalRepository animalRepository,
@@ -39,7 +40,10 @@ public class DataLoader implements CommandLineRunner {
                       TallaRepository tallaRepository,
                       CategoriaRepository categoriaRepository,
                       TarifaRepository tarifaRepository,
-                      PasswordEncoder passwordEncoder, RazaRepository razaRepository, EspecieRepository especieRepository) {
+                      PasswordEncoder passwordEncoder,
+                      RazaRepository razaRepository,
+                      EspecieRepository especieRepository,
+                      RolRepository rolRepository) {
 
         this.animalRepository = animalRepository;
         this.apadrinarRepository = apadrinarRepository;
@@ -52,24 +56,139 @@ public class DataLoader implements CommandLineRunner {
         this.passwordEncoder = passwordEncoder;
         this.razaRepository = razaRepository;
         this.especieRepository = especieRepository;
+        this.rolRepository = rolRepository;
     }
 
     @Override
     public void run(String... args) {
+
+        // ROLES
+        if (rolRepository.findByNombre("USER").isEmpty()) {
+            Rol rol1 = new Rol();
+            rol1.setNombre("USER");
+            rolRepository.save(rol1);
+        }
+
+        if (rolRepository.findByNombre("ADMIN").isEmpty()) {
+            Rol rol2 = new Rol();
+            rol2.setNombre("ADMIN");
+            rolRepository.save(rol2);
+        }
+
         // Crear Usuarios
+        Usuario usuario = new Usuario();
+        usuario.setNickname("juan1234");
+        usuario.setPassword(passwordEncoder.encode("1234"));
+        usuario.setEmail("juan123@example.com");
+        usuario.setFechaRegistro(LocalDate.now());
+        usuario.setRol(rolRepository.findByNombre("USER").orElseThrow(() -> new RuntimeException("Rol USER no encontrado")));
+
+        // Crear PerfilDatos
+        PerfilDatos perfil = new PerfilDatos();
+        perfil.setNombre("Juan");
+        perfil.setApellidos("Pérez Gómez");
+        perfil.setEdad(30);
+        perfil.setDni("12345678A");
+        perfil.setDireccion("Calle Mayor 123");
+        perfil.setPais("España");
+        perfil.setCiudad("Madrid");
+        perfil.setCp("28001");
+        perfil.setTelefono1("600123456");
+        perfil.setTelefono2("601234567");
+        perfil.setTelefono3(null); // opcional
+
+        // Establecer relación bidireccional
+        perfil.setUsuario(usuario);
+        usuario.setPerfilDatos(perfil);
+
+        // Guardar usuario
+        usuarioRepository.save(usuario);
+
+        // Usuario 1
         Usuario u1 = new Usuario();
-        u1.setNickname("Juan1234");
+        u1.setNickname("Pepe2025");
         u1.setPassword(passwordEncoder.encode("123"));
-        u1.setEmail("a@gmail.com");
+        u1.setEmail("pepin@gmail.com");
         u1.setFechaRegistro(LocalDate.now());
+        u1.setRol(rolRepository.findByNombre("USER").orElseThrow(() -> new RuntimeException("Rol USER no encontrado")));
+
+        PerfilDatos perfil1 = new PerfilDatos();
+        perfil1.setNombre("José");
+        perfil1.setApellidos("García García");
+        perfil1.setEdad(25);
+        perfil1.setDni("12345678B");
+        perfil1.setDireccion("Avenida Alcalde Manuel del Valle 123");
+        perfil1.setPais("España");
+        perfil1.setCiudad("Sevilla");
+        perfil1.setCp("41015");
+        perfil1.setTelefono1("600987654");
+        perfil1.setTelefono2("601234567");
+        perfil1.setTelefono3(null); // opcional
+
+        perfil1.setUsuario(u1);
+        u1.setPerfilDatos(perfil1);
+
         usuarioRepository.save(u1);
 
+        // Usuario 2
         Usuario u2 = new Usuario();
         u2.setNickname("Maria456");
         u2.setPassword(passwordEncoder.encode("123"));
         u2.setEmail("maria@gmail.com");
         u2.setFechaRegistro(LocalDate.now());
+        u2.setRol(rolRepository.findByNombre("USER").orElseThrow(() -> new RuntimeException("Rol USER no encontrado")));
+
+        PerfilDatos perfil2 = new PerfilDatos();
+        perfil2.setNombre("María");
+        perfil2.setApellidos("López Fernández");
+        perfil2.setEdad(28);
+        perfil2.setDni("87654321C");
+        perfil2.setDireccion("Avenida Siempre Viva 456");
+        perfil2.setPais("España");
+        perfil2.setCiudad("Barcelona");
+        perfil2.setCp("08001");
+        perfil2.setTelefono1("600123456");
+        perfil2.setTelefono2("601234567");
+        perfil2.setTelefono3(null); // opcional
+
+        perfil2.setUsuario(u2);
+        u2.setPerfilDatos(perfil2);
+
         usuarioRepository.save(u2);
+
+        // Usuarios con el rol ADMIN
+        Usuario u3 = new Usuario();
+        u3.setNickname("Javix");
+        u3.setPassword(passwordEncoder.encode("JavixAdmin"));
+        u3.setEmail("Javix97@gmail.com");
+        u3.setFechaRegistro(LocalDate.now());
+        u3.setRol(rolRepository.findByNombre("ADMIN").orElseThrow(() -> new RuntimeException("Rol ADMIN no encontrado")));
+        usuarioRepository.save(u3);
+
+        Usuario u4 = new Usuario();
+        u4.setNickname("PauloSH");
+        u4.setPassword(passwordEncoder.encode("PauloSHAdmin"));
+        u4.setEmail("PauloSH@gmail.com");
+        u4.setFechaRegistro(LocalDate.now());
+        u4.setRol(rolRepository.findByNombre("ADMIN").orElseThrow(() -> new RuntimeException("Rol ADMIN no encontrado")));
+        usuarioRepository.save(u4);
+
+        Usuario u5 = new Usuario();
+        u5.setNickname("Lauguirez");
+        u5.setPassword(passwordEncoder.encode("LauguirezAdmin"));
+        u5.setEmail("Lauguirez@gmail.com");
+        u5.setFechaRegistro(LocalDate.now());
+        u5.setRol(rolRepository.findByNombre("ADMIN").orElseThrow(() -> new RuntimeException("Rol ADMIN no encontrado")));
+        usuarioRepository.save(u5);
+
+        Usuario u6 = new Usuario();
+        u6.setNickname("Manueltrmr");
+        u6.setPassword(passwordEncoder.encode("ManueltrmrAdmin"));
+        u6.setEmail("mantormir@gmail.com");
+        u6.setFechaRegistro(LocalDate.now());
+        u6.setRol(rolRepository.findByNombre("ADMIN").orElseThrow(() -> new RuntimeException("Rol ADMIN no encontrado")));
+        usuarioRepository.save(u6);
+
 
         // Crear Facturas para u1
         Factura f1 = new Factura();
@@ -805,34 +924,6 @@ public class DataLoader implements CommandLineRunner {
         t6.setProducto(p3);
         tallaRepository.save(t6);
 
-        // Crear Usuario
-        Usuario usuario = new Usuario();
-        usuario.setNickname("juan123");
-        usuario.setPassword(passwordEncoder.encode("1234"));
-        usuario.setEmail("juan@example.com");
-        usuario.setFechaRegistro(LocalDate.now());
-
-        // Crear PerfilDatos
-        PerfilDatos perfil = new PerfilDatos();
-        perfil.setNombre("Juan");
-        perfil.setApellidos("Pérez Gómez");
-        perfil.setEdad(30);
-        perfil.setDni("12345678A");
-        perfil.setDireccion("Calle Mayor 123");
-        perfil.setPais("España");
-        perfil.setCiudad("Madrid");
-        perfil.setCp("28001");
-        perfil.setTelefono1("600123456");
-        perfil.setTelefono2("601234567");
-        perfil.setTelefono3(null); // opcional
-
-        // Establecer relación bidireccional
-        perfil.setUsuario(usuario);
-        usuario.setPerfilDatos(perfil);
-
-        // Guardar usuario (gracias a CascadeType.ALL también guarda perfil)
-        usuarioRepository.save(usuario);
-
         Talla t7 = new Talla();
         t7.setStock(12);
         t7.setTallaje("unica");
@@ -934,7 +1025,6 @@ public class DataLoader implements CommandLineRunner {
         a1.setRutaImg3("/images/default-example.png");
         a1.setEspecie(e1);
         animalRepository.save(a1);
-
 
 
         Animal a2 = new Animal();
@@ -1085,5 +1175,6 @@ public class DataLoader implements CommandLineRunner {
         ap4.setAnimal(a4);
         ap4.setUsuario(u2);
         apadrinarRepository.save(ap4);
+
     }
 }
