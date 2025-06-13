@@ -34,7 +34,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll() // 💡 permite preflight
                         .requestMatchers("/perfil/**").authenticated()
-                        .requestMatchers("/product/v1/checkout", "/css/**", "/js/**", "/img/**", "/fonts/**", "/webjars/**").permitAll()
+                        .requestMatchers("/product/v1/checkout", "/css/**", "/js/**", "/images/**", "/fonts/**", "/webjars/**").permitAll()
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .requestMatchers("/**").hasAnyRole("USER", "ADMIN")
                         .anyRequest().permitAll()

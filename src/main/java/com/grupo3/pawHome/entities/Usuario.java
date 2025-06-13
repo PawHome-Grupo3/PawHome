@@ -11,10 +11,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Collection;
-import java.util.Set;
 
 @Getter
 @Setter
@@ -57,7 +55,7 @@ public class Usuario implements UserDetails, Serializable {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority("ROL_" + rol.getNombre()));
+        return List.of(new SimpleGrantedAuthority("ROLE_" + rol.getNombre()));
     }
 
     @Override
@@ -93,5 +91,6 @@ public class Usuario implements UserDetails, Serializable {
         //return UserDetails.super.isEnabled();
         return true;
     }
+
 
 }
