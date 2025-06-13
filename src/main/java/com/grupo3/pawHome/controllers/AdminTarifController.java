@@ -31,9 +31,16 @@ public class AdminTarifController {
     // Editar tarifa (rellena el formulario con los datos de la tarifa)
     @GetMapping("/editar/{id}")
     public String editarTarifa(@PathVariable Integer id, Model model) {
-        model.addAttribute("tarifas", tarifaRepository.findAll());
-        model.addAttribute("tarifa", tarifaRepository.findById(id).orElse(new Tarifa())); // Formulario relleno
-        return "adminTarifas";
+        Tarifa tarifa = tarifaRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Tarifa no encontrada con ID: " + id));
+        model.addAttribute("tarifa", tarifa); // Formulario relleno
+        return "editarAdminTarifas";
+    }
+
+    @PostMapping("/actualizar/{id}")
+    public String actualizarTarifa(@ModelAttribute("tarifa") Tarifa tarifa) {
+        tarifaRepository.save(tarifa);
+        return "redirect:/admin/tarifas";
     }
 
     // Eliminar tarifa

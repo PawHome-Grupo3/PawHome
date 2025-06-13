@@ -43,11 +43,16 @@ public class AdminProdServController {
     // Editar productos y servicios (rellena el formulario con los datos del producto o de la talla)
     @GetMapping("/editar/{id}")
     public String editarProducto(@PathVariable Integer id, Model model) {
-        model.addAttribute("productos", productoRepository.findAll());
-        model.addAttribute("producto", productoRepository.findById(id).orElse(new Producto())); // Formulario relleno
-//        model.addAttribute("tallas", tallaRepository.findAll());
-//        model.addAttribute("talla", tallaRepository.findById(id).orElse(new Talla())); // Formulario relleno
-        return "adminProdServ";
+        Producto producto = productoRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Producto o servicio no encontrado con ID: " + id));
+        model.addAttribute("producto", producto); // Formulario relleno
+        return "editarAdminProdServ";
+    }
+
+    @PostMapping("/actualizar/{id}")
+    public String actualizarProducto(@ModelAttribute("producto") Producto producto) {
+        productoRepository.save(producto);
+        return "redirect:/admin/prodserv";
     }
 
     // Eliminar producto o servicio
