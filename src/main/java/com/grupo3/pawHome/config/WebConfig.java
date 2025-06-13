@@ -12,7 +12,9 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addMapping("/**")
                 .allowedOrigins("http://localhost:8080",
                         "https://grupo03-desarrollo.serverjava.net",
-                        "http://grupo03-desarrollo.serverjava.net")
+                        "http://grupo03-desarrollo.serverjava.net",
+                        "https://grupo03.serverjava.net",
+                        "http://grupo03.serverjava.net")
                 .allowedMethods("POST", "GET", "PUT", "OPTIONS", "DELETE")
                 .allowedHeaders("*")
                 .allowCredentials(true);
