@@ -24,23 +24,7 @@ public class DesarrolloDataLoader {
     private final CategoriaRepository categoriaRepository;
     private final TarifaRepository tarifaRepository;
     private final PasswordEncoder passwordEncoder;
-/**
- * Clase de configuración que permite cargar datos iniciales en los repositorios
- * de entidades para diferentes perfiles de configuración.
 
- * Esta clase es útil para inicializar datos predefinidos utilizados durante el
- * desarrollo o en entornos específicos según el perfil.
-
- * **Anotaciones utilizadas**:
- * - `@Configuration`: Define esta clase como una clase de configuración de Spring.
- *   Permite registrar beans en el contexto de la aplicación y gestionar configuraciones específicas.
-
- * - `@Log4j2`: Habilita el uso de Log4j2 para registrar mensajes de log importantes,
- *   utilizados para monitoreo y depuración de la aplicación.
-
- * Cada método anotado con `@Profile` y `@PostConstruct` permite la carga de datos
- * iniciales dependiendo del perfil activo.
- */
 public DesarrolloDataLoader(AnimalRepository animalRepository,
                             ApadrinarRepository apadrinarRepository,
                             UsuarioRepository usuarioRepository,
