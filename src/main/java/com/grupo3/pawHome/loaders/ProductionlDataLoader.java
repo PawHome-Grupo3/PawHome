@@ -24,7 +24,7 @@ import java.time.LocalDate;
 
 @Configuration
 @Log4j2
-@Profile("produccion")
+@Profile("produccionRESETDATA")
 public class ProductionlDataLoader {
 
     private final AnimalRepository animalRepository;
@@ -59,7 +59,6 @@ public class ProductionlDataLoader {
     }
 
     @PostConstruct
-    @Profile("produccionRESETDATA")
     public void loadDataProduccion() {
         log.info("Iniciando la carga de datos para el perfil de producción.");
         // Crear Usuarios
