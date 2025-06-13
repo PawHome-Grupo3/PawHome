@@ -185,7 +185,7 @@
 			<h2 class="text-success-emphasis fw-bold display-5 my-4 text-center"
 				th:utext="#{servicios.reservaEstancia}"></h2>
 			<div class="formContainer">
-				<form class="row g-3">
+				<form class="row g-3" id="checkoutGuarderia" method="post" th:action="@{/guarderia/checkoutGuarderia}">
 					<fieldset class="col-md-6">
 						<div class="itemSeleccion">
 							<legend class="fw-bold">Datos de la mascota</legend>
@@ -284,11 +284,12 @@
 						<label class="form-label">He leído y acepto las condiciones de uso de la web,
 							el aviso legal y la política de privacidad</label>
 					</div>
-				</form>
-				<form id="checkoutGuarderia" method="post" th:action="@{/guarderia/checkoutGuarderia}">
-					<input type="hidden" id="nombreProducto" name="nombreProducto">
-					<input type="hidden" id="cantidadDias" name="cantidadDias">
-					<button type="submit" class="btn btn-primary btnEnviar">RESERVAR</button>
+
+					<div>
+						<input type="hidden" id="nombreProducto" name="nombreProducto">
+						<input type="hidden" id="cantidadDias" name="cantidadDias">
+						<button type="submit" class="btn btn-primary btnEnviar">RESERVAR</button>
+					</div>
 				</form>
 			</div>
 		</section>
