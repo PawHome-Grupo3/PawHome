@@ -58,9 +58,9 @@ public class GuarderiaController {
                             .build());
         }
 
-        Optional<Producto> producto = productoService.findByNombre(request.nombreProducto());
+        Optional<Producto> productoOpt = productoService.findByNombre(request.nombreProducto());
 
-        if (producto.isEmpty()) {
+        if (productoOpt.isEmpty()) {
             return ResponseEntity.badRequest().body(
                     StripeResponse.builder()
                             .status("FAILED")
@@ -68,12 +68,14 @@ public class GuarderiaController {
                             .build());
         }
 
+        Producto producto = productoOpt.get();
+
         // Crear ítem de carrito específico para guardería
         ItemCarritoDTO items =
                 new ItemCarritoDTO(
-                        producto.get(),
+                        producto,
                         request.cantidadDias(),
-                        producto.get().getTarifas().getFirst().getPrecioUnitario() // Obtener última tarifa
+                        producto.getTarifas().getFirst().getPrecioUnitario() // Obtener última tarifa
 
         );
 

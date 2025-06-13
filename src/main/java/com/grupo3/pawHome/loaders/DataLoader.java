@@ -204,95 +204,100 @@ public class DataLoader implements CommandLineRunner {
         tarifaRepository.save(bonoSoloDia);
 
         // Productos y tarifas de Peluqueria
-        Categoria c5 = new Categoria();
-        c5.setNombre("PeluqueriaBaño");
-        categoriaRepository.save(c5);
+        Categoria cPeluqueria = new Categoria();
+        cPeluqueria.setNombre("Peluqueria");
+        categoriaRepository.save(cPeluqueria);
 
-        Categoria c6 = new Categoria();
-        c6.setNombre("PeluqueriaCorte");
-        categoriaRepository.save(c6);
+        Producto pBañoBasico = new Producto();
+        pBañoBasico.setNombre("BAÑO BÁSICO");
+        pBañoBasico.setCategoria(cPeluqueria);
+        productoRepository.save(pBañoBasico);
 
-        Categoria c7 = new Categoria();
-        c7.setNombre("PeluqueriaBañoCorte");
-        categoriaRepository.save(c7);
+        Tarifa tBañoBasico = new Tarifa();
+        tBañoBasico.setProducto(pBañoBasico);
+        tBañoBasico.setCantidad(1);
+        tBañoBasico.setPrecioUnitario(10.00);
+        tBañoBasico.setFechaDesde(LocalDate.now());
+        tBañoBasico.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tBañoBasico);
 
-        Producto p11 = new Producto();
-        p11.setNombre("BAÑO BÁSICO");
-        p11.setCategoria(c5);
-        productoRepository.save(p11);
+        Producto pBañoStripping = new Producto();
+        pBañoStripping.setNombre("BAÑO Y STRIPPING");
+        pBañoStripping.setCategoria(cPeluqueria);
+        productoRepository.save(pBañoStripping);
 
-        Tarifa bañoBasico = new Tarifa();
-        bañoBasico.setProducto(p11);
-        bañoBasico.setCantidad(1);
-        bañoBasico.setPrecioUnitario(10.00);
-        bañoBasico.setFechaDesde(LocalDate.now());
-        bañoBasico.setFechaHasta(LocalDate.of(2026, 1, 1));
-        tarifaRepository.save(bañoBasico);
+        Tarifa tBañoStripping = new Tarifa();
+        tBañoStripping.setProducto(pBañoStripping);
+        tBañoStripping.setCantidad(1);
+        tBañoStripping.setPrecioUnitario(15.00);
+        tBañoStripping.setFechaDesde(LocalDate.now());
+        tBañoStripping.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tBañoStripping);
 
-        Producto p12 = new Producto();
-        p12.setNombre("BAÑO + STRIPPING");
-        p12.setCategoria(c5);
-        productoRepository.save(p12);
+        Producto pSoloCorte = new Producto();
+        pSoloCorte.setNombre("SOLO CORTE");
+        pSoloCorte.setCategoria(cPeluqueria);
+        productoRepository.save(pSoloCorte);
 
-        Tarifa bañoStripping = new Tarifa();
-        bañoStripping.setProducto(p12);
-        bañoStripping.setCantidad(1);
-        bañoStripping.setPrecioUnitario(15.00);
-        bañoStripping.setFechaDesde(LocalDate.now());
-        bañoStripping.setFechaHasta(LocalDate.of(2026, 1, 1));
-        tarifaRepository.save(bañoStripping);
+        Tarifa tSoloCorte = new Tarifa();
+        tSoloCorte.setProducto(pSoloCorte);
+        tSoloCorte.setCantidad(1);
+        tSoloCorte.setPrecioUnitario(15.00);
+        tSoloCorte.setFechaDesde(LocalDate.now());
+        tSoloCorte.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tSoloCorte);
 
-        Producto p13 = new Producto();
-        p13.setNombre("SOLO CORTE");
-        p13.setCategoria(c6);
-        productoRepository.save(p13);
+        Producto pBañoCorte = new Producto();
+        pBañoCorte.setNombre("BAÑO + CORTE");
+        pBañoCorte.setCategoria(cPeluqueria);
+        productoRepository.save(pBañoCorte);
 
-        Tarifa soloCorte = new Tarifa();
-        soloCorte.setProducto(p13);
-        soloCorte.setCantidad(1);
-        soloCorte.setPrecioUnitario(15.00);
-        soloCorte.setFechaDesde(LocalDate.now());
-        soloCorte.setFechaHasta(LocalDate.of(2026, 1, 1));
-        tarifaRepository.save(soloCorte);
+        Tarifa tBañoCorte = new Tarifa();
+        tBañoCorte.setProducto(pBañoCorte);
+        tBañoCorte.setCantidad(1);
+        tBañoCorte.setPrecioUnitario(20.00);
+        tBañoCorte.setFechaDesde(LocalDate.now());
+        tBañoCorte.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tBañoCorte);
 
-        Producto p14 = new Producto();
-        p14.setNombre("BAÑO + CORTE");
-        p14.setCategoria(c7);
-        productoRepository.save(p14);
+        Producto pCompleto = new Producto();
+        pCompleto.setNombre("COMPLETO");
+        pCompleto.setCategoria(cPeluqueria);
+        productoRepository.save(pCompleto);
 
-        Tarifa bañoCorte = new Tarifa();
-        bañoCorte.setProducto(p14);
-        bañoCorte.setCantidad(1);
-        bañoCorte.setPrecioUnitario(20.00);
-        bañoCorte.setFechaDesde(LocalDate.now());
-        bañoCorte.setFechaHasta(LocalDate.of(2026, 1, 1));
-        tarifaRepository.save(bañoCorte);
+        Tarifa tCompleto = new Tarifa();
+        tCompleto.setProducto(pCompleto);
+        tCompleto.setCantidad(1);
+        tCompleto.setPrecioUnitario(25.00);
+        tCompleto.setFechaDesde(LocalDate.now());
+        tCompleto.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tCompleto);
 
-        Producto p15 = new Producto();
-        p15.setNombre("COMPLETO");
-        p15.setCategoria(c7);
-        productoRepository.save(p15);
+        Producto pBañoAntiparasito = new Producto();
+        pBañoAntiparasito.setNombre("Baño antiparásito");
+        pBañoAntiparasito.setCategoria(cPeluqueria);
+        productoRepository.save(pBañoAntiparasito);
 
-        Tarifa completo = new Tarifa();
-        completo.setProducto(p15);
-        completo.setCantidad(1);
-        completo.setPrecioUnitario(25.00);
-        completo.setFechaDesde(LocalDate.now());
-        completo.setFechaHasta(LocalDate.of(2026, 1, 1));
-        tarifaRepository.save(completo);
+        Tarifa tBañoAntiparasito = new Tarifa();
+        tBañoAntiparasito.setProducto(pBañoAntiparasito);
+        tBañoAntiparasito.setCantidad(1);
+        tBañoAntiparasito.setPrecioUnitario(10.00);
+        tBañoAntiparasito.setFechaDesde(LocalDate.now());
+        tBañoAntiparasito.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tBañoAntiparasito);
 
-        Producto p16 = new Producto();
-        p16.setNombre("Por nudos");
-        p16.setCategoria(c6);
-        productoRepository.save(p16);
+        Producto pJuguete = new Producto();
+        pJuguete.setNombre("Juguete < 5kg");
+        pJuguete.setCategoria(cPeluqueria);
+        productoRepository.save(pJuguete);
 
-        Tarifa porNudos = new Tarifa();
-        porNudos.setProducto(p16);
-        porNudos.setCantidad(1);
-        porNudos.setPrecioUnitario(25.00);
-        porNudos.setFechaDesde(LocalDate.now());
-        porNudos.setFechaHasta(LocalDate.of(2026, 1, 1));
-        tarifaRepository.save(porNudos);
+        Tarifa tJuguete = new Tarifa();
+        tJuguete.setProducto(pJuguete);
+        tJuguete.setCantidad(1);
+        tJuguete.setPrecioUnitario(0.00);
+        tJuguete.setFechaDesde(LocalDate.now());
+        tJuguete.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tJuguete);
 
         // Fin productos peluqueria
         // Productos Adiestramiento

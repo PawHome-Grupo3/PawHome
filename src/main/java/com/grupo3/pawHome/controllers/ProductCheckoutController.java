@@ -103,7 +103,7 @@ public class ProductCheckoutController {
 
         List<LineaFactura> lineas = new ArrayList<>();
 
-        if(descripcion.equals("Compra en Tienda")){
+        if(descripcion.equals("Compra en Tienda") || descripcion.equals("ServicioPeluqueria")){
 
             List<ItemCarritoDTO> carrito = SessionUtils.obtenerCarritoSeguro(session);
 
