@@ -109,7 +109,6 @@ public class CarritoController {
                                      @RequestParam("cantidad") int cantidad,
                                      HttpSession session) {
         List<ItemCarritoDTO> carrito = getCarrito(session);
-
         if (cantidad <= 0) {
             carrito.removeIf(item -> item.getProducto().getId() == productoId && item.getTalla().getId() == tallaId);
         } else {
