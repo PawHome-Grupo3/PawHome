@@ -1,5 +1,7 @@
 name: ${COMPOSE_NAME}
-
+volumes:
+  produccion_pgdata:
+  produccion_javadata:
 # Definimos los servicios que se ejecutarán en los contenedores Docker.
 services:
   java:
