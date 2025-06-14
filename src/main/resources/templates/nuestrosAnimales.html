@@ -293,7 +293,7 @@
 			<div class="row justify-content-center mt-4">
 				<nav aria-label="Pagination" th:if="${totalPages > 0}">
 					<ul class="pagination justify-content-center">
-						<li class="page-item" th:classappend="${currentPage == 1} ? 'disabled'">
+						<li class="page-item"  th:classappend="${currentPage == 1} ? 'disabled'">
 							<a th:replace="fragments/paging :: paging(1, '<<', 'First Page')"></a>
 						</li>
 						<li class="page-item font-weight-bold" th:classappend="${currentPage == 1} ? 'disabled'">
@@ -366,46 +366,60 @@
 
 	<!-- Modal para confirmar apadrinamiento -->
 	<div class="modal fade" id="modalApadrinar" tabindex="-1" aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered">
-			<div class="modal-content p-4 bg-white shadow rounded-4 animate__animated animate__fadeIn">
-				<form id="checkoutApadrinarForm" method="post">
-					<div class="modal-header border-0">
-						<h5 class="modal-title w-100 text-center text-success fw-bold">
-							<i class="fa-solid fa-paw me-2 animate__animated animate__pulse animate__infinite"></i>
-							¡Apadrina y cambia una vida!
-						</h5>
-						<button type="button" class="btn-close position-absolute end-0 me-3" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-					</div>
+		<div class="modal-dialog modal-dialog-centered position-relative">
+			<div class="modal-wrap position-relative">
 
-					<div class="modal-body text-center">
-						<input type="hidden" id="animalId" name="animalId">
+				<!-- Imagen decorativa flotante -->
+				<img th:src="@{/images/perritoAsomandose.png}" alt="Perrito decorativo" class="start-hidden" id="perritoAnimado">
 
-						<p class="text-muted mb-4">
-							Tu <strong>apadrinamiento mensual</strong> es una fuente de esperanza para nuestros animales.
-							Puedes cancelarlo en cualquier momento. ¡Gracias por hacer posible su bienestar!
-						</p>
-
-						<div class="mb-4">
-							<label for="aporteMensual" class="form-label fw-semibold text-success">¿Cuánto deseas aportar al mes?</label>
-							<input type="number" name="aporteMensual" id="aporteMensual" min="1" value="10" required
-								   class="form-control aporte-input mx-auto text-center">
+				<div class="modal-content p-4 bg-white shadow rounded-4 animate__animated animate__fadeIn pt-5">
+					<form id="checkoutApadrinarForm" method="post">
+						<div class="modal-header border-0">
+							<h5 class="modal-title w-100 text-center text-success fw-bold">
+								<i class="fa-solid fa-paw me-2 animate__animated animate__pulse animate__infinite"></i>
+								¡Apadrina y cambia una vida!
+							</h5>
+							<button type="button" class="btn-close position-absolute end-0 me-3" data-bs-dismiss="modal"
+									aria-label="Cerrar"></button>
 						</div>
 
-						<div class="form-check d-flex justify-content-center">
-							<input class="form-check-input me-2" type="checkbox" id="aceptaTerminos">
-							<label class="form-check-label" for="aceptaTerminos">
-								Acepto los <a href="/terminos" target="_blank" class="text-success text-decoration-underline">términos y condiciones</a>
-							</label>
-						</div>
-					</div>
+						<div class="modal-body text-center">
+							<input type="hidden" id="animalId" name="animalId">
 
-					<div class="modal-footer border-0 d-flex justify-content-center">
-						<button type="submit" class="btn btn-success confirm-button px-4" id="btnConfirmar" disabled>
-							<i class="fa-solid fa-heart me-1"></i> Confirmar Apadrinamiento
-						</button>
-						<button type="button" class="btn btn-outline-secondary ms-2" data-bs-dismiss="modal">Cancelar</button>
-					</div>
-				</form>
+							<p class="text-muted mb-4">
+								Tu <strong>apadrinamiento mensual</strong> es una fuente de esperanza para nuestros
+								animales.
+								Puedes cancelarlo en cualquier momento. ¡Gracias por hacer posible su bienestar!
+							</p>
+
+							<div class="mb-4">
+								<label for="aporteMensual" class="form-label fw-semibold text-success">¿Cuánto deseas
+									aportar al mes?</label>
+								<input type="number" name="aporteMensual" id="aporteMensual" min="1" value="10" required
+									   class="form-control aporte-input mx-auto text-center">
+							</div>
+
+							<div class="form-check d-flex justify-content-center">
+								<input class="form-check-input me-2" type="checkbox" id="aceptaTerminos">
+								<label class="form-check-label" for="aceptaTerminos">
+									Acepto los <a href="/terminos" target="_blank"
+												  class="text-success text-decoration-underline">términos y
+									condiciones</a>
+								</label>
+							</div>
+						</div>
+
+						<div class="modal-footer border-0 d-flex justify-content-center">
+							<button type="submit" class="btn btn-success confirm-button px-4" id="btnConfirmar"
+									disabled>
+								<i class="fa-solid fa-heart me-1"></i> Confirmar Apadrinamiento
+							</button>
+							<button type="button" class="btn btn-outline-secondary ms-2" data-bs-dismiss="modal">
+								Cancelar
+							</button>
+						</div>
+					</form>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -492,6 +506,35 @@
 	<script>
 		document.addEventListener("DOMContentLoaded", function () {
 			const modal = document.getElementById('modalApadrinar');
+			const perrito = document.getElementById('perritoAnimado');
+
+			modal.addEventListener('show.bs.modal', function () {
+				perrito.classList.remove('asomado', 'z-top', 'rebote');
+				perrito.style.zIndex = -1;
+
+				setTimeout(() => {
+					perrito.classList.add('asomado');
+
+					// Después de 4s de animación de subida...
+					setTimeout(() => {
+						perrito.classList.add('z-top');
+
+						// Pequeño rebote
+						perrito.classList.add('rebote');
+
+						// Opcional: quitar clase para permitir rebote si se reabre
+						setTimeout(() => {
+							perrito.classList.remove('rebote');
+						}, 700);
+					}, 4000);
+				}, 1000);
+			});
+
+			modal.addEventListener('hidden.bs.modal', function () {
+				perrito.classList.remove('asomado', 'z-top', 'rebote');
+				perrito.style.zIndex = -1;
+			});
+
 			const checkbox = document.getElementById('aceptaTerminos');
 			const confirmarBtn = document.getElementById('btnConfirmar');
 
