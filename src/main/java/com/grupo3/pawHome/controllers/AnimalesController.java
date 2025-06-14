@@ -87,6 +87,8 @@ public class AnimalesController {
             model.addAttribute("sortDirection", sortDirection);
             model.addAttribute("reverseSortDirection", sortDirection.equals("asc") ? "desc" : "asc");
             model.addAttribute("adoptado", adoptado);
+            model.addAttribute("keyword", keyword);
+
         } catch (Exception e) {
             model.addAttribute("message", e.getMessage());
         }
