@@ -15,7 +15,6 @@ import com.stripe.exception.StripeException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 @RequestMapping("/apadrinar")
@@ -35,23 +34,6 @@ public class ApadrinarController {
         this.apadrinarService = apadrinarService;
         this.pagoService = pagoService;
         this.facturaService = facturaService;
-    }
-
-    // Muestra página de confirmación
-    @GetMapping("/{id}")
-    public String mostrarConfirmacion(@PathVariable("id") int animalId,
-                                      @AuthenticationPrincipal MyUserDetails userDetails,
-                                      Model model,
-                                      HttpSession session) {
-        Usuario usuario = userDetails.getUsuario();
-        Optional<Animal> animalOpt = animalService.findById(animalId);
-        animalOpt.ifPresent(animal -> {
-            model.addAttribute("animal", animal);
-            session.setAttribute("animal", animal);
-        });
-
-        model.addAttribute("usuario", usuario);
-        return "confirmarApadrinamiento";
     }
 
     @GetMapping("/success")

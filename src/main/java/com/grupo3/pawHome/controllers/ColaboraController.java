@@ -52,14 +52,24 @@ public class ColaboraController {
             @RequestBody Map<String, Object> datos,
             HttpSession session
     ) throws StripeException {
-        Usuario usuario = userDetails.getUsuario();
-        if (usuario == null) {
+
+        if (userDetails == null) {
             return ResponseEntity.badRequest().body(
                     StripeResponse.builder()
                             .status("FAILED")
                             .message("Usuario no autenticado. Por favor inicia sesión")
                             .build()
             );
+        }
+
+        Usuario usuario = userDetails.getUsuario();
+        if (usuario.getPerfilDatos() == null) {
+            return ResponseEntity.badRequest().body(
+                    StripeResponse.builder()
+                            .status("FAILED")
+                            .message("Datos de Perfil Incompletos")
+                            .build()
+                    );
         }
 
         double precio = Double.parseDouble(datos.get("cantidad").toString());
