@@ -31,6 +31,7 @@ public class FacturaService {
             List<LineaFacturaDTO> lineasDTO = factura.getLineaFacturas().stream()
                     .map(linea -> new LineaFacturaDTO(
                             linea.getNombre(),
+                            linea.getDescripcion(),
                             linea.getCantidad(),
                             linea.getTarifa().getPrecioUnitario()
                     )).collect(Collectors.toList());

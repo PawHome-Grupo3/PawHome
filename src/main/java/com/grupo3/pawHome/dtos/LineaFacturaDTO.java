@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class LineaFacturaDTO {
     private String nombre;
+    private String descripcion;
     private int cantidad;
     private double precioUnitario; // sacado desde la entidad `Tarifa`
 }
