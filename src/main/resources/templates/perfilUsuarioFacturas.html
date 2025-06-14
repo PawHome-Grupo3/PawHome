@@ -17,7 +17,7 @@
 				</div>
 				<div class="modal-body" id="facturaDetalle">
 					<div class="text-center mb-4">
-						<h4 class="fw-bold">Clínica Mascotas Felices</h4>
+						<h4 class="fw-bold">PawHome</h4>
 						<p class="mb-0">Factura Nº: <span id="factura-id"></span></p>
 						<p class="mb-0">Fecha: <span id="factura-fecha"></span></p>
 					</div>
@@ -30,7 +30,7 @@
 					<table class="table table-bordered table-sm">
 						<thead class="table-light text-center">
 						<tr>
-							<th>Servicio</th>
+							<th>Producto</th>
 							<th>Descripción</th>
 							<th>Cantidad</th>
 							<th>Precio Unitario</th>
@@ -45,6 +45,9 @@
 					<div class="text-end">
 						<h5 class="fw-bold">Total: <span id="factura-total"></span> €</h5>
 					</div>
+					<a id="descargar-pdf-btn" href="#" target="_blank" class="btn btn-outline-secondary btn-sm mt-2">
+						Descargar PDF
+					</a>
 				</div>
 			</div>
 		</div>
@@ -93,7 +96,7 @@
 			</div>
 		</div>
 	</div>
-	<script>
+	<script th:inline="javascript">
         const facturas = /*[[${facturas}]]*/ [];
 
         document.addEventListener("DOMContentLoaded", function () {
@@ -112,6 +115,7 @@
                     document.getElementById('factura-fecha').innerText = factura.fecha;
                     document.getElementById('cliente-nombre').innerText = `${factura.nombreUsuario} ${factura.apellidosUsuario}`;
                     document.getElementById('factura-total').innerText = factura.precio.toFixed(2);
+                    document.getElementById('descargar-pdf-btn').href = `/perfil/facturas/pdf/${factura.idFactura}`;
 
                     // Rellenar líneas
                     const tbody = document.getElementById('lineas-factura');
