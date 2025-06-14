@@ -7,6 +7,7 @@ import com.grupo3.pawHome.entities.PerfilDatos;
 import com.grupo3.pawHome.repositories.FacturaRepository;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -29,17 +30,24 @@ public class FacturaService {
             PerfilDatos perfil = factura.getUsuario().getPerfilDatos();
 
             List<LineaFacturaDTO> lineasDTO = factura.getLineaFacturas().stream()
-                    .map(linea -> new LineaFacturaDTO(
-                            linea.getNombre(),
-                            linea.getDescripcion(),
-                            linea.getCantidad(),
-                            linea.getTarifa().getPrecioUnitario()
-                    )).collect(Collectors.toList());
+                    .map(linea -> {
+                        double precioUnitario = (linea.getTarifa() != null)
+                                ? linea.getTarifa().getPrecioUnitario()
+                                : linea.getFactura().getPrecio();
+
+                        return new LineaFacturaDTO(
+                                linea.getNombre(),
+                                linea.getDescripcion(),
+                                linea.getCantidad(),
+                                precioUnitario
+                        );
+                    })
+                    .collect(Collectors.toList());
 
             return new FacturaDTO(
                     factura.getId(),
                     factura.getFecha().format(formatter),
-                    factura.getPrecio(),
+                    factura.getPrecio(), // Ojo: también debes convertir el total
                     factura.getDescripcion(),
                     perfil.getNombre(),
                     perfil.getApellidos(),
