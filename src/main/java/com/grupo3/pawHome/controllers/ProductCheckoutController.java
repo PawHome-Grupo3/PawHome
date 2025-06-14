@@ -260,9 +260,8 @@ public class ProductCheckoutController {
             @AuthenticationPrincipal MyUserDetails userDetails,
             HttpSession session
     ) throws StripeException {
-        Usuario usuarioAutenticado = userDetails.getUsuario();
-        Optional<Usuario> userOptional = usuarioService.findById(usuarioAutenticado.getId());
-        if (userOptional.isEmpty()) {
+
+        if (userDetails == null) {
             return ResponseEntity.badRequest().body(
                     StripeResponse.builder()
                             .status("FAILED")
@@ -270,8 +269,17 @@ public class ProductCheckoutController {
                             .build()
             );
         }
-        Usuario usuario = userOptional.get();
-        usuarioService.ensureStripeCustomerExists(usuario);
+
+        Usuario usuario = userDetails.getUsuario();
+        if (usuario.getPerfilDatos() == null) {
+            return ResponseEntity.badRequest().body(
+                    StripeResponse.builder()
+                            .status("FAILED")
+                            .message("Datos de Perfil Incompletos")
+                            .build()
+            );
+        }
+
 
         Animal animal = animalService.findById(animalId)
                 .orElseThrow(() -> new IllegalArgumentException("Animal no encontrado"));
