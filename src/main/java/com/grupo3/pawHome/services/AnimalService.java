@@ -2,7 +2,9 @@ package com.grupo3.pawHome.services;
 
 import com.grupo3.pawHome.entities.Animal;
 import com.grupo3.pawHome.repositories.AnimalRepository;
+import com.grupo3.pawHome.specifications.AnimalSpecifications;
 import org.springframework.data.domain.*;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -98,6 +100,36 @@ public class AnimalService {
                     return animalRepository.findAllByAnimalServicioIsFalse(pageable);
                 }
             }
+        }
+    }
+
+    public Page<Animal> buscarAnimales(
+            String keyword, String adoptado, Integer especieId, Integer razaId, Pageable pageable) {
+
+        Specification<Animal> spec = Specification.where(null);
+
+        if (keyword != null && !keyword.isEmpty()) {
+            spec = spec.and(AnimalSpecifications.nombreContiene(keyword));
+        }
+
+        if (adoptado != null) {
+            boolean isAdoptado = Boolean.parseBoolean(adoptado);
+            spec = spec.and(AnimalSpecifications.adoptadoEs(isAdoptado));
+        }
+
+        if (especieId != null) {
+            spec = spec.and(AnimalSpecifications.especieIdEs(especieId));
+        }
+
+        if (razaId != null) {
+            spec = spec.and(AnimalSpecifications.razaIdEs(razaId));
+        }
+
+        // Si la spec es null, puedes devolver findAllByAnimalServicioIsFalse(pageable) si lo necesitas
+        if (spec == null) {
+            return animalRepository.findAllByAnimalServicioIsFalse(pageable);
+        } else {
+            return animalRepository.findAll(spec, pageable);
         }
     }
 }

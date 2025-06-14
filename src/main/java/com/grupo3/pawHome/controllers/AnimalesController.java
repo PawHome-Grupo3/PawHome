@@ -67,7 +67,7 @@ public class AnimalesController {
 
             Pageable pageable = PageRequest.of(page - 1, size, Sort.by(order));
 
-            Page<Animal> pageAns = animalService.buscarAnimalesConFiltros(keyword, adoptado, razaId, especieId, pageable);
+            Page<Animal> pageAns = animalService.buscarAnimales(keyword, adoptado, razaId, especieId, pageable);
 
             animales = pageAns.getContent();
             AnimalDto animalDto;
