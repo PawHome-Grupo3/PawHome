@@ -48,6 +48,10 @@ public class AdiestramientoController {
             return "adiestramiento";
         }
         Usuario usuario = userDetails.getUsuario();
+        if(usuario.getPerfilDatos() == null) {
+            model.addAttribute("usuario", null);
+            return "adiestramiento";
+        }
         model.addAttribute("usuario", usuario);
         return "adiestramiento";
     }
@@ -65,7 +69,17 @@ public class AdiestramientoController {
                             .message("Usuario no autenticado")
                             .build());
         }
+
         Usuario usuario = userDetails.getUsuario();
+
+        if (usuario.getPerfilDatos() == null) {
+            return ResponseEntity.badRequest().body(
+                    StripeResponse.builder()
+                            .status("FAILED")
+                            .message("Datos de Perfil Incompletos")
+                            .build()
+            );
+        }
 
         Optional<Producto> productoOpt = productoService.findByNombre(request.nombreProducto());
 

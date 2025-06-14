@@ -46,6 +46,10 @@ public class GuarderiaController {
             return "guarderia";
         }
         Usuario usuario = userDetails.getUsuario();
+        if(usuario.getPerfilDatos() == null) {
+            model.addAttribute("usuario", null);
+            return "guarderia";
+        }
         model.addAttribute("usuario", usuario);
         return "guarderia";
     }
@@ -65,6 +69,15 @@ public class GuarderiaController {
         }
 
         Usuario usuario = userDetails.getUsuario();
+
+        if (usuario.getPerfilDatos() == null) {
+            return ResponseEntity.badRequest().body(
+                    StripeResponse.builder()
+                            .status("FAILED")
+                            .message("Datos de Perfil Incompletos")
+                            .build()
+            );
+        }
 
         Optional<Producto> productoOpt = productoService.findByNombre(request.nombreProducto());
 

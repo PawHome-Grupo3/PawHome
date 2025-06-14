@@ -48,6 +48,10 @@ public class VeterinarioController {
             return "veterinario";
         }
         Usuario usuario = userDetails.getUsuario();
+        if(usuario.getPerfilDatos() == null) {
+            model.addAttribute("usuario", null);
+            return "veterinario";
+        }
         model.addAttribute("usuario", usuario);
         return "veterinario";
     }
@@ -65,7 +69,17 @@ public class VeterinarioController {
                             .message("Usuario no autenticado")
                             .build());
         }
+
         Usuario usuario = userDetails.getUsuario();
+
+        if (usuario.getPerfilDatos() == null) {
+            return ResponseEntity.badRequest().body(
+                    StripeResponse.builder()
+                            .status("FAILED")
+                            .message("Datos de Perfil Incompletos")
+                            .build()
+            );
+        }
 
         Optional<Producto> productoOpt = productoService.findByNombre(request.nombreProducto());
 

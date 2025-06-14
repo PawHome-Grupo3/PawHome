@@ -42,10 +42,50 @@
 					background-color: #28a745;
 					color: white;
 					box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-					transition: all 0.3s ease;" onmouseover="this.style.backgroundColor='#218838'" onmouseout="this.style.backgroundColor='#28a745'">
+					transition: all 0.3s ease;" onmouseover="this.style.backgroundColor='#218838'"
+							onmouseout="this.style.backgroundColor='#28a745'">
 						Ir al login
 					</button>
 				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Modal alerta animal Sin Perfil -->
+	<div class="modal fade" id="alertaAnimalPerfil" tabindex="-1" aria-labelledby="alertaAnimalPerfilLabel"
+		 aria-hidden="true"
+		 data-bs-backdrop="static" data-bs-keyboard="false">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content text-center shadow-lg border-0 rounded-4" style="background-color: #e9f9ef;">
+
+				<div class="modal-header border-0">
+					<h5 class="modal-title w-100 fs-4 fw-bold" id="alertaAnimalPerfilLabel"
+						style="color: #218838; text-shadow: 0 1px 1px rgba(0,0,0,0.1);">
+						🐾 ¡Ups! Necesitas iniciar sesión
+					</h5>
+				</div>
+
+				<div class="modal-body fs-5 px-4" style="color: #155724;font-weight: 500;">
+					<p>
+						¡Antes de realizar una reserva de nuestro servicio de guarderia, necesita completar sus datos!<br>
+					</p>
+					<div class="mt-2">
+						<img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="Huella animal"
+							 style="animation: bounce 1.5s infinite; width: 50px; height: auto;">
+					</div>
+				</div>
+
+				<div class="modal-footer justify-content-center border-0">
+					<button id="btnLoginPerfil" type="button" class="btn px-4 py-2 fw-semibold"
+							style="border-radius: 30px; background-color: #28a745; color: white;
+                            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+                        transition: all 0.3s ease;
+                    " onmouseover="this.style.backgroundColor='#218838'"
+							onmouseout="this.style.backgroundColor='#28a745'">
+						Completar Datos Personales
+					</button>
+				</div>
+
 			</div>
 		</div>
 	</div>
@@ -621,9 +661,11 @@
                         window.location.href = data.sessionUrl; // Redirige a Stripe
                     } else {
                         console.log(data.message);
-                        if(data.message.includes("no autenticado")) {
+                        if (data.message.includes("no autenticado")) {
                             mostrarAlertaAnimal(data.message);
-						}else{
+                        } else if (data.message.includes("Datos de Perfil Incompletos")) {
+                            mostrarAlertaAnimalPerfil();
+                        } else {
                             alert("Error en la reserva: " + (data.message || "Sin mensaje"));
                         }
                     }
@@ -649,6 +691,25 @@
                 document.getElementById('btnLogin').addEventListener("click", () => {
                     clearTimeout(timerId);
                     window.location.href = "/login";
+                });
+            }
+
+            function mostrarAlertaAnimalPerfil() {
+                const alertaModalEl = document.getElementById('alertaAnimalPerfil');
+                const alertaModal = new bootstrap.Modal(alertaModalEl, {
+                    backdrop: 'static',
+                    keyboard: false
+                });
+
+                alertaModal.show();
+
+                const timerId = setTimeout(() => {
+                    window.location.href = "/perfil/editar";
+                }, 4000);
+
+                document.getElementById('btnLoginPerfil').addEventListener("click", () => {
+                    clearTimeout(timerId);
+                    window.location.href = "/perfil/editar";
                 });
             }
         });

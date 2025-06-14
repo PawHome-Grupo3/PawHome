@@ -50,6 +50,10 @@ public class PeluqueriaController {
             return "peluqueria";
         }
         Usuario usuario = userDetails.getUsuario();
+        if(usuario.getPerfilDatos() == null) {
+            model.addAttribute("usuario", null);
+            return "peluqueria";
+        }
         model.addAttribute("usuario", usuario);
         return "peluqueria";
     }
@@ -67,7 +71,17 @@ public class PeluqueriaController {
                             .message("Usuario no autenticado")
                             .build());
         }
+
         Usuario usuario = userDetails.getUsuario();
+
+        if (usuario.getPerfilDatos() == null) {
+            return ResponseEntity.badRequest().body(
+                    StripeResponse.builder()
+                            .status("FAILED")
+                            .message("Datos de Perfil Incompletos")
+                            .build()
+            );
+        }
 
         // Aquí puedes buscar los productos por nombre y construir la lista de ItemCarritoDTO
         List<String> nombresProductos = request.productos();
