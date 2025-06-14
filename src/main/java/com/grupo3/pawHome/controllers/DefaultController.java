@@ -60,6 +60,12 @@ public class DefaultController {
         return "perfilUsuarioDonaciones";
     }
 
+    @GetMapping("/perfil/citas")
+    public String mostrarPerfilCitas()
+    {
+        return "perfilUsuarioCitas";
+    }
+
 //    // Metodo para mostrar la página de Reseñas
 //    @GetMapping("resenas")
 //    public String mostrarResenas()
