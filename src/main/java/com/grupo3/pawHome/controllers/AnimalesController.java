@@ -101,10 +101,10 @@ public class AnimalesController {
         if (animalOpt.isPresent()) {
             Animal animal = animalOpt.get();
             model.addAttribute("animal", animal);
+
             return "compruebaAdoptaId";
         } else {
             return "redirect:/error";
         }
     }
-
 }

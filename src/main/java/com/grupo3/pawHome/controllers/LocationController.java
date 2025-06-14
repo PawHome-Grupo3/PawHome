@@ -19,15 +19,18 @@ public class LocationController {
     @GetMapping(value = "/api/ciudades", produces = "application/xml")
     @ResponseBody
     public String getCitiesByCountry(@RequestParam("pais") String countryCode) throws Exception {
+
         List<String> ciudades = locationService.getCitiesForCountry(countryCode);
         System.out.println("País recibido en controlador: " + countryCode);
         System.out.println("Ciudades encontradas: " + ciudades);
 
         StringBuilder xml = new StringBuilder();
         xml.append("<ciudades>");
+
         for (String ciudad : ciudades) {
             xml.append("<ciudad>").append(ciudad).append("</ciudad>");
         }
+
         xml.append("</ciudades>");
 
         return xml.toString();

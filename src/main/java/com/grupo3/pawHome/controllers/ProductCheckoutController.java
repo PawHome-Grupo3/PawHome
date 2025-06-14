@@ -60,11 +60,12 @@ public class ProductCheckoutController {
     @PostMapping("/product/v1/checkout")
     public ResponseEntity<StripeResponse> checkoutProducts(
             @RequestBody List<ProductRequest> productRequests,
-            @AuthenticationPrincipal MyUserDetails userDetails
-    ) {
+            @AuthenticationPrincipal MyUserDetails userDetails) {
+
         try {
             Usuario usuarioAutenticado = userDetails.getUsuario();
             Optional<Usuario> userOptional = usuarioService.findById(usuarioAutenticado.getId());
+
             if (userOptional.isEmpty()) {
                 return ResponseEntity.badRequest().body(
                         StripeResponse.builder()
@@ -95,8 +96,10 @@ public class ProductCheckoutController {
     public RedirectView procesarPagoExitoso(@RequestParam("session_id") String sessionId,
                                             @AuthenticationPrincipal MyUserDetails userDetails,
                                             HttpSession session) throws StripeException {
+
         Usuario usuario = userDetails.getUsuario();
-        String descripcion = (session.getAttribute("motivo") == null)? "" : session.getAttribute("motivo").toString();
+        String descripcion = (session.getAttribute("motivo") == null)?
+                "" : session.getAttribute("motivo").toString();
 
         Factura factura = new Factura();
         factura.setUsuario(usuario);
@@ -113,6 +116,7 @@ public class ProductCheckoutController {
 
             for (ItemCarritoDTO item : carrito) {
                 Optional<Talla> talla = tallaService.findById(item.getTalla().getId());
+
                 if (talla.isPresent()) {
                     Talla t = talla.get();
                     t.setStock(t.getStock() - item.getCantidad());
@@ -132,6 +136,7 @@ public class ProductCheckoutController {
                 linea.setDescripcion(item.getProducto().getDescripcion());
                 linea.setTarifa(item.getTarifa());
                 linea.setFactura(factura);
+
                 return linea;
             }).toList();
 
@@ -157,7 +162,9 @@ public class ProductCheckoutController {
         if(descripcion.equals("Servicio")){
             LineaFactura linea = new LineaFactura();
             ItemCarritoDTO item = (ItemCarritoDTO) session.getAttribute("itemServicio");
+
             double precioTotal = item.getCantidad()*item.getPrecioUnitario();
+
             linea.setNombre(item.getProducto().getNombre());
             linea.setCantidad(item.getCantidad());
             linea.setDescripcion(item.getProducto().getDescripcion());
@@ -168,7 +175,9 @@ public class ProductCheckoutController {
 
             factura.setPrecio(precioTotal);
             factura.setLineaFacturas(lineas);
-            factura.setDescripcion((session.getAttribute("nombreServicio") == null)? "" : session.getAttribute("nombreServicio").toString());
+            factura.setDescripcion((session.getAttribute("nombreServicio") == null)?
+                    "" : session.getAttribute("nombreServicio").toString());
+
             session.removeAttribute("motivo");
             session.removeAttribute("itemServicio");
             session.removeAttribute("nombreServicio");
@@ -190,11 +199,14 @@ public class ProductCheckoutController {
                 linea.setCantidad(item.getCantidad());
                 linea.setFactura(factura);
                 linea.setTarifa(item.getProducto().getTarifas().getFirst());
+
                 return linea;
             }).toList();
 
             factura.setLineaFacturas(lineas);
-            factura.setDescripcion((session.getAttribute("nombreServicio") == null)? "" : session.getAttribute("nombreServicio").toString());
+            factura.setDescripcion((session.getAttribute("nombreServicio") == null)?
+                    "" : session.getAttribute("nombreServicio").toString());
+
             session.removeAttribute("motivo");
             session.removeAttribute("itemServicio");
             session.removeAttribute("nombreServicio");
@@ -213,8 +225,8 @@ public class ProductCheckoutController {
         // Busca en tu base de datos por fingerprint para evitar duplicados
         MetodoPago metodoPago = metodoPagoService.findByFingerPrintAndUsuario(fingerprint, usuario);
 
+        // Si no existe, crea uno nuevo
         if (metodoPago == null) {
-            // Si no existe, crea uno nuevo
             metodoPago = new MetodoPago();
             metodoPago.setStripePaymentMethodId(paymentMethod.getId());
             metodoPago.setMarcaTarjeta(paymentMethod.getCard().getBrand());
@@ -227,7 +239,6 @@ public class ProductCheckoutController {
             metodoPago.setActivo(true);
             metodoPago.setFingerPrint(fingerprint); // Necesitas este campo en tu entidad
 
-            // Opcional: asigna tipo de pago si lo tienes en tu modelo
             Optional<TipoPago> tipoPago = tipoPagoService.findByNombreContains("Tarjeta Credito");
             tipoPago.ifPresent(metodoPago::setTipoPago);
 
@@ -236,6 +247,7 @@ public class ProductCheckoutController {
             // Si existe, actualiza el ID si ha cambiado y márcalo como activo
             metodoPago.setStripePaymentMethodId(paymentMethod.getId());
             metodoPago.setActivo(true);
+
             metodoPagoService.save(metodoPago);
         }
 
@@ -250,17 +262,13 @@ public class ProductCheckoutController {
         facturaService.save(factura);
         pagoService.save(pago);
 
-
         session.removeAttribute("motivo");
 
         return new RedirectView("/pago-correcto");
     }
 
     @GetMapping("/cancel")
-    public RedirectView procesarPagoIncorrecto(){
-
-        return new RedirectView("/pago-incorrecto");
-    }
+    public RedirectView procesarPagoIncorrecto(){ return new RedirectView("/pago-incorrecto"); }
 
     @PostMapping("/apadrinar/{id}/checkout-suscripcion")
     public ResponseEntity<StripeResponse> checkoutApadrinamiento(
@@ -288,7 +296,6 @@ public class ProductCheckoutController {
                             .build()
             );
         }
-
 
         Animal animal = animalService.findById(animalId)
                 .orElseThrow(() -> new IllegalArgumentException("Animal no encontrado"));

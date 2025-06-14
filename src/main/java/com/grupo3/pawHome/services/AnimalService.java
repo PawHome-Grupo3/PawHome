@@ -29,8 +29,8 @@ public class AnimalService {
             String adoptado,
             Integer razaId,
             Integer especieId,
-            Pageable pageable
-    ) {
+            Pageable pageable) {
+
         boolean hasKeyword = keyword != null && !keyword.isEmpty();
         boolean hasAdoptado = adoptado != null && !adoptado.isEmpty();
         boolean hasEspecie = especieId != null;
@@ -39,6 +39,7 @@ public class AnimalService {
         if (hasKeyword) {
             if (hasAdoptado) {
                 boolean isAdoptado = Boolean.parseBoolean(adoptado);
+
                 if (hasEspecie && hasRaza) {
                     return animalRepository.findByNombreContainingIgnoreCaseAndAdoptadoAndEspecie_IdAndEspecie_Raza_Id(
                             keyword, isAdoptado, especieId, razaId, pageable);
@@ -52,6 +53,7 @@ public class AnimalService {
                     return animalRepository.findByNombreContainingIgnoreCaseAndAdoptado(
                             keyword, isAdoptado, pageable);
                 }
+
             } else {
                 if (hasEspecie && hasRaza) {
                     return animalRepository.findByNombreContainingIgnoreCaseAndEspecie_IdAndEspecie_Raza_Id(
@@ -65,10 +67,12 @@ public class AnimalService {
                 } else {
                     return animalRepository.findByNombreContainingIgnoreCase(keyword, pageable);
                 }
+
             }
         } else {
             if (hasAdoptado) {
                 boolean isAdoptado = Boolean.parseBoolean(adoptado);
+
                 if (hasEspecie && hasRaza) {
                     return animalRepository.findByAdoptadoAndEspecie_IdAndEspecie_Raza_Id(
                             isAdoptado, especieId, razaId, pageable);
@@ -81,6 +85,7 @@ public class AnimalService {
                 } else {
                     return animalRepository.findByAdoptado(isAdoptado, pageable);
                 }
+
             } else {
                 if (hasEspecie && hasRaza) {
                     return animalRepository.findByEspecie_IdAndEspecie_Raza_Id(

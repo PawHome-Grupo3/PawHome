@@ -41,6 +41,7 @@ public class ApadrinarController {
                                 @AuthenticationPrincipal MyUserDetails userDetails,
                                 Model model,
                                 HttpSession httpSession) throws StripeException {
+
         Usuario usuario = userDetails.getUsuario();
         Session session = Session.retrieve(sessionId);
 
@@ -72,7 +73,6 @@ public class ApadrinarController {
         factura.setLineaFacturas(lineaFacturaList);
         facturaService.save(factura);
 
-        // Guardar apadrinamiento en BD
         Apadrinar a = new Apadrinar();
         a.setUsuario(usuario);
         a.setAnimal(animal);

@@ -9,35 +9,30 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class DefaultController {
 
-    // Metodo para mostrar pagina de inicio
     @GetMapping("")
     public String mostrarIndex(Model model) {
         model.addAttribute("currentLocale", LocaleContextHolder.getLocale().getDisplayName());
-        return "index"; // Carga /templates/index.html
+        return "index";
     }
 
-    // Metodo para mostrar la pagina de asesoramiento legal
     @GetMapping("/asesoramientoLegal")
     public String mostrarAsesoramientoLegal()
     {
         return "asesoramientoLegal";
     }
 
-    // Metodo para mostrar la pagina de contacto
     @GetMapping("/contacto")
     public String mostrarContacto()
     {
         return "contacto";
     }
 
-    // Metodo para mostrar la pagina del buzón de sugerencias
     @GetMapping("/buzonsugerencias")
     public String mostrarBuzonSugerencias()
     {
         return "buzonsugerencias";
     }
 
-    // Metodo para mostrar la pagina del horario y el mapa
     @GetMapping("/horariomapa")
     public String mostrarHorarioMapa()
     {
@@ -45,8 +40,7 @@ public class DefaultController {
     }
 
     @GetMapping("/perfil/puntos")
-    public String mostrarPerfilPuntos()
-    { return "perfilUsuarioPuntos"; }
+    public String mostrarPerfilPuntos() { return "perfilUsuarioPuntos"; }
 
     @GetMapping("/perfil/adopciones")
     public String mostrarPerfilAdopciones()
@@ -66,19 +60,17 @@ public class DefaultController {
         return "perfilUsuarioCitas";
     }
 
-//    // Metodo para mostrar la página de Reseñas
-//    @GetMapping("resenas")
-//    public String mostrarResenas()
-//    {
-//        return "resenas";
-//    }
+    @GetMapping("/politica-privacidad")
+    public String mostrarPoliticaPrivacidad(){ return "politicaPrivacidad"; }
+
+    @GetMapping("/politica-cookies")
+    public String mostrarPoliticaCookies(){ return "politicaPrivacidad"; }
 
     @GetMapping("/eventos")
     public String mostrarEventos(){
         return "eventos";
     }
 
-    // Metodo para mostrar la página de Colabora
     @GetMapping("/colabora")
     public String mostrarColabora()
     {
@@ -98,36 +90,28 @@ public class DefaultController {
     }
 
     @GetMapping("/colabora/Apadrina/formularioApadrina")
-    public String mostrarformularioapadrina()
-    { return "formularioApadrina"; }
+    public String mostrarformularioapadrina() { return "formularioApadrina"; }
 
     @GetMapping("/colabora/adopta")
-    public String mostrarColaboraAdopta()
-    { return "Adopta"; }
+    public String mostrarColaboraAdopta() { return "Adopta"; }
 
     @GetMapping("/colabora/adopta/formularioAdopta")
-    public String mostrarformularioadopta()
-    { return "formularioAdopta"; }
+    public String mostrarformularioadopta() { return "formularioAdopta"; }
 
     @GetMapping("/colabora/paseosolidario")
-    public String mostrarColaboraPaseoSolidario()
-    { return "PaseoSolidario"; }
+    public String mostrarColaboraPaseoSolidario() { return "PaseoSolidario"; }
 
     @GetMapping("/colabora/paseosolidario/formularioPS")
-    public String mostrarformularioPS()
-    { return "formularioPS"; }
+    public String mostrarformularioPS() { return "formularioPS"; }
 
     @GetMapping("/finalfeliz")
-    public String mostrarFinalesFelices()
-    { return "FinalFeliz"; }
+    public String mostrarFinalesFelices() { return "FinalFeliz"; }
 
     @GetMapping("/registro")
-    public String mostrarRegistro()
-    { return "registro"; }
+    public String mostrarRegistro() { return "registro"; }
 
     @GetMapping("/loginPawHome")
-    public String mostrarLogin()
-    { return "login"; }
+    public String mostrarLogin() { return "login"; }
 }
 
 
