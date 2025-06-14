@@ -1,6 +1,8 @@
 package com.grupo3.pawHome.config;
 
 import com.grupo3.pawHome.entities.Usuario;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -8,6 +10,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.List;
 
+@Getter
+@Setter
 public class MyUserDetails implements UserDetails {
 
     private final Usuario usuario;
@@ -57,9 +61,5 @@ public class MyUserDetails implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true; // Puedes usar un campo booleano "activo" en tu entidad si lo deseas
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
     }
 }

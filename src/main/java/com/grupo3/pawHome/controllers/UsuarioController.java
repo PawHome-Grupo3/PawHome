@@ -1,5 +1,6 @@
 package com.grupo3.pawHome.controllers;
 
+import com.grupo3.pawHome.config.MyUserDetails;
 import com.grupo3.pawHome.dtos.CountryDTO;
 import com.grupo3.pawHome.dtos.PerfilDatosDTO;
 import com.grupo3.pawHome.entities.Apadrinar;
@@ -8,10 +9,7 @@ import com.grupo3.pawHome.entities.PerfilDatos;
 import com.grupo3.pawHome.entities.Usuario;
 import com.grupo3.pawHome.services.*;
 import com.grupo3.pawHome.util.PaisUtils;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -43,7 +41,9 @@ public class UsuarioController {
     }
 
     @GetMapping("/perfil/informacion")
-    public String mostrarPerfil(@AuthenticationPrincipal Usuario usuario, Model model) {
+    public String mostrarPerfil(@AuthenticationPrincipal MyUserDetails userDetails, Model model) {
+        Usuario usuario = userDetails.getUsuario();
+
         model.addAttribute("usuario", usuario);
         List<MetodoPago> metodoPagos = metodoPagoService.findAllByUsuario(usuario);
         if(metodoPagos.isEmpty()){
@@ -206,17 +206,6 @@ public class UsuarioController {
         // Asociar el perfil al usuario y guardar
         usuario.setPerfilDatos(perfil);
         usuarioService.save(usuario);
-
-        // Refrescar autenticación
-        Usuario usuarioActualizado = usuarioService.findById(authUsuario.getId())
-                .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
-
-        Authentication newAuth = new UsernamePasswordAuthenticationToken(
-                usuarioActualizado,
-                usuarioActualizado.getPassword(),
-                usuarioActualizado.getAuthorities());
-
-        SecurityContextHolder.getContext().setAuthentication(newAuth);
 
         return "redirect:/perfil/editar";
     }

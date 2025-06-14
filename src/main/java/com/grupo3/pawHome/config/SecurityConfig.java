@@ -32,12 +32,12 @@ public class SecurityConfig {
                         .permitAll()
                 )
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll() // 💡 permite preflight
-                        .requestMatchers("/perfil/**").authenticated()
-                        .requestMatchers("/product/v1/checkout", "/css/**", "/js/**", "/images/**", "/fonts/**", "/webjars/**").permitAll()
+                        .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+                        .requestMatchers("/css/**", "/js/**", "/images/**", "/fonts/**", "/webjars/**").permitAll()
+                        .requestMatchers("/login", "/register", "/product/v1/checkout").permitAll()
                         .requestMatchers("/admin/**").hasRole("ADMIN")
-                        .requestMatchers("/**").hasAnyRole("USER", "ADMIN")
-                        .anyRequest().permitAll()
+                        .requestMatchers("/perfil/**").hasAnyRole("USER", "ADMIN")
+                        .anyRequest().permitAll() // O .authenticated() si quieres proteger el resto
                 )
                 .logout(LogoutConfigurer::permitAll);
 
