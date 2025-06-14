@@ -1,5 +1,6 @@
 package com.grupo3.pawHome.controllers;
 
+import com.grupo3.pawHome.config.MyUserDetails;
 import com.grupo3.pawHome.dtos.ProductRequest;
 import com.grupo3.pawHome.dtos.StripeResponse;
 import com.grupo3.pawHome.entities.*;
@@ -147,9 +148,10 @@ public class CarritoController {
 
     @PostMapping("/tienda/carrito/checkout")
     public ResponseEntity<StripeResponse> checkoutDesdeCarrito(
-            @AuthenticationPrincipal Usuario usuario,
+            @AuthenticationPrincipal MyUserDetails userDetails,
             HttpSession session
     ) throws StripeException {
+        Usuario usuario = userDetails.getUsuario();
         if (usuario == null) {
             return ResponseEntity.badRequest().body(
                     StripeResponse.builder()

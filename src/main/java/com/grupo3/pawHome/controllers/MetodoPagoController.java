@@ -1,5 +1,6 @@
 package com.grupo3.pawHome.controllers;
 
+import com.grupo3.pawHome.config.MyUserDetails;
 import com.grupo3.pawHome.config.StripeConfig;
 import com.grupo3.pawHome.dtos.GuardarMetodoPagoRequest;
 import com.grupo3.pawHome.entities.Usuario;
@@ -26,7 +27,8 @@ public class MetodoPagoController {
     }
 
     @GetMapping("/anadir")
-    public String mostrarFormularioAnadirTarjeta(@AuthenticationPrincipal Usuario usuario, Model model) throws StripeException {
+    public String mostrarFormularioAnadirTarjeta(@AuthenticationPrincipal MyUserDetails userDetails, Model model) throws StripeException {
+        Usuario usuario = userDetails.getUsuario();
         String clientSecret = metodoPagoService.crearSetupIntent(usuario);
         model.addAttribute("stripePublicKey", stripeConfig.getPublicKey());
         model.addAttribute("clientSecret", clientSecret);
@@ -36,10 +38,10 @@ public class MetodoPagoController {
 
     @PostMapping("/guardar")
     public String guardarMetodoPago(
-            @AuthenticationPrincipal Usuario usuario,
+            @AuthenticationPrincipal MyUserDetails userDetails,
             @ModelAttribute("guardarRequest") GuardarMetodoPagoRequest guardarRequest,
             Model model) {
-
+            Usuario usuario = userDetails.getUsuario();
         try {
             metodoPagoService.guardarMetodoPago(guardarRequest.getPaymentMethodId(), usuario, guardarRequest.getAlias());
 

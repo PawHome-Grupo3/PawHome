@@ -1,5 +1,6 @@
 package com.grupo3.pawHome.controllers;
 
+import com.grupo3.pawHome.config.MyUserDetails;
 import com.grupo3.pawHome.entities.*;
 import com.grupo3.pawHome.services.*;
 import com.grupo3.pawHome.util.SessionUtils;
@@ -39,10 +40,10 @@ public class ApadrinarController {
     // Muestra página de confirmación
     @GetMapping("/{id}")
     public String mostrarConfirmacion(@PathVariable("id") int animalId,
-                                      @AuthenticationPrincipal Usuario usuario,
+                                      @AuthenticationPrincipal MyUserDetails userDetails,
                                       Model model,
                                       HttpSession session) {
-
+        Usuario usuario = userDetails.getUsuario();
         Optional<Animal> animalOpt = animalService.findById(animalId);
         animalOpt.ifPresent(animal -> {
             model.addAttribute("animal", animal);
@@ -55,10 +56,10 @@ public class ApadrinarController {
 
     @GetMapping("/success")
     public String procesarExito(@RequestParam("session_id") String sessionId,
-                                @AuthenticationPrincipal Usuario usuario,
+                                @AuthenticationPrincipal MyUserDetails userDetails,
                                 Model model,
                                 HttpSession httpSession) throws StripeException {
-
+        Usuario usuario = userDetails.getUsuario();
         Session session = Session.retrieve(sessionId);
 
         String subscriptionId = session.getSubscription();

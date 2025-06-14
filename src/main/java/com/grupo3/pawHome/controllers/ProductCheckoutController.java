@@ -1,5 +1,6 @@
 package com.grupo3.pawHome.controllers;
 
+import com.grupo3.pawHome.config.MyUserDetails;
 import com.grupo3.pawHome.dtos.ItemCarritoDTO;
 import com.grupo3.pawHome.dtos.ProductRequest;
 import com.grupo3.pawHome.dtos.StripeResponse;
@@ -59,9 +60,10 @@ public class ProductCheckoutController {
     @PostMapping("/product/v1/checkout")
     public ResponseEntity<StripeResponse> checkoutProducts(
             @RequestBody List<ProductRequest> productRequests,
-            @AuthenticationPrincipal Usuario usuarioAutenticado
+            @AuthenticationPrincipal MyUserDetails userDetails
     ) {
         try {
+            Usuario usuarioAutenticado = userDetails.getUsuario();
             Optional<Usuario> userOptional = usuarioService.findById(usuarioAutenticado.getId());
             if (userOptional.isEmpty()) {
                 return ResponseEntity.badRequest().body(
@@ -91,9 +93,9 @@ public class ProductCheckoutController {
 
     @GetMapping("/success")
     public RedirectView procesarPagoExitoso(@RequestParam("session_id") String sessionId,
-                                            @AuthenticationPrincipal Usuario usuario,
+                                            @AuthenticationPrincipal MyUserDetails userDetails,
                                             HttpSession session) throws StripeException {
-
+        Usuario usuario = userDetails.getUsuario();
         String descripcion = (session.getAttribute("motivo") == null)? "" : session.getAttribute("motivo").toString();
 
         Factura factura = new Factura();
@@ -255,9 +257,10 @@ public class ProductCheckoutController {
     public ResponseEntity<StripeResponse> checkoutApadrinamiento(
             @PathVariable("id") Integer animalId,
             @RequestBody SubscriptionRequest request,
-            @AuthenticationPrincipal Usuario usuarioAutenticado,
+            @AuthenticationPrincipal MyUserDetails userDetails,
             HttpSession session
     ) throws StripeException {
+        Usuario usuarioAutenticado = userDetails.getUsuario();
         Optional<Usuario> userOptional = usuarioService.findById(usuarioAutenticado.getId());
         if (userOptional.isEmpty()) {
             return ResponseEntity.badRequest().body(

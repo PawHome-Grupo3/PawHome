@@ -55,69 +55,11 @@ public class UsuarioController {
         return "perfilUsuario";
     }
 
-//    @GetMapping("/perfil/editar")
-//    public String mostrarFormulario(@AuthenticationPrincipal Usuario usuario,
-//                                    @RequestParam(value = "paisSeleccionado", required = false) String paisSeleccionado,
-//                                    Model model) throws Exception {
-//
-//        PerfilDatosDTO dto = new PerfilDatosDTO();
-//
-//        if (usuario.getPerfilDatos() != null) {
-//            PerfilDatos perfil = usuario.getPerfilDatos();
-//
-//            dto.setNombre(perfil.getNombre());
-//            dto.setApellidos(perfil.getApellidos());
-//            dto.setEdad(perfil.getEdad());
-//            dto.setDni(perfil.getDni());
-//            dto.setDireccion(perfil.getDireccion());
-//            dto.setCiudad(perfil.getCiudad());
-//            dto.setCp(perfil.getCp());
-//            dto.setTelefono1(perfil.getTelefono1());
-//            dto.setTelefono2(perfil.getTelefono2());
-//            dto.setTelefono3(perfil.getTelefono3());
-//            dto.setPais(perfil.getPais());
-//
-//            model.addAttribute("ciudadSeleccionada", dto.getCiudad());
-//        } else {
-//            System.out.println("No hay perfilDatos asociado al usuario");
-//        }
-//
-//        model.addAttribute("perfilDTO", dto);
-//
-//        // Lista de países
-//        List<CountryDTO> paises = locationService.getAllCountries();
-//        model.addAttribute("paises", paises);
-//        System.out.println("Cargados países: " + paises.size());
-//
-//        // Determinar el país base
-//        String pais = (paisSeleccionado != null && !paisSeleccionado.isBlank())
-//                ? paisSeleccionado
-//                : dto.getPais();
-//        model.addAttribute("paisSeleccionado", pais);
-//
-//        // Lista de ciudades para el país
-//        if (pais != null && !pais.isBlank()) {
-//            try {
-//                List<String> ciudades = locationService.getCitiesForCountry(pais);
-//                model.addAttribute("ciudades", ciudades);
-//                System.out.println("País seleccionado: " + pais + " -> ciudades cargadas: " + ciudades.size());
-//            } catch (Exception e) {
-//                System.out.println("Error obteniendo ciudades para país: " + pais);
-//                e.printStackTrace();
-//                model.addAttribute("ciudades", Collections.emptyList());
-//            }
-//        } else {
-//            System.out.println("No se seleccionó país, lista de ciudades vacía");
-//            model.addAttribute("ciudades", Collections.emptyList());
-//        }
-//
-//        return "perfilUsuarioEditar";
-//    }
-
     @GetMapping("/perfil/editar")
-    public String mostrarFormulario(@AuthenticationPrincipal Usuario usuario,
+    public String mostrarFormulario(@AuthenticationPrincipal MyUserDetails userDetails,
                                     @RequestParam(value = "paisSeleccionado", required = false) String paisSeleccionado,
                                     Model model) throws Exception {
+        Usuario usuario = userDetails.getUsuario();
 
         PerfilDatosDTO dto = new PerfilDatosDTO();
 
@@ -173,8 +115,9 @@ public class UsuarioController {
     }
 
     @PostMapping("/perfil/guardar")
-    public String guardarPerfil(@AuthenticationPrincipal Usuario authUsuario,
+    public String guardarPerfil(@AuthenticationPrincipal MyUserDetails userDetails,
                                 @ModelAttribute("perfilDTO") PerfilDatosDTO dto) {
+        Usuario authUsuario = userDetails.getUsuario();
 
         Usuario usuario = usuarioService.findById(authUsuario.getId())
                 .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
@@ -211,8 +154,8 @@ public class UsuarioController {
     }
 
     @GetMapping("/perfil/apadrinamientos")
-    public String mostrarPerfilApadrinamientos(@AuthenticationPrincipal Usuario usuario, Model model) {
-
+    public String mostrarPerfilApadrinamientos(@AuthenticationPrincipal MyUserDetails userDetails, Model model) {
+        Usuario usuario = userDetails.getUsuario();
         if (usuario != null) {
             Set<Apadrinar> apadrinamientosActivos = apadrinarService.apadrinamientosActivosPorUsuario(usuario.getId());
             Set<Apadrinar> apadrinamientosInactivos = apadrinarService.apadrinamientosInactivosPorUsuario(usuario.getId());
