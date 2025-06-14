@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="~{layouts/layout.html}">
+<head>
+	<title>Usuario Facturas</title>
+	<link rel="stylesheet" th:href="@{/css/general.css}"/>
+</head>
+<body>
+<section layout:fragment="content">
+
+	<div class="modal fade" id="facturaModal" tabindex="-1" aria-labelledby="facturaModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+			<div class="modal-content p-4" style="font-family: 'Courier New', monospace;">
+				<div class="modal-header border-0">
+					<h5 class="modal-title" id="facturaModalLabel">Factura</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+				</div>
+				<div class="modal-body" id="facturaDetalle">
+					<div class="text-center mb-4">
+						<h4 class="fw-bold">Clínica Mascotas Felices</h4>
+						<p class="mb-0">Factura Nº: <span id="factura-id"></span></p>
+						<p class="mb-0">Fecha: <span id="factura-fecha"></span></p>
+					</div>
+
+					<div class="mb-3">
+						<h6 class="fw-bold">Cliente:</h6>
+						<p class="mb-0" id="cliente-nombre"></p>
+					</div>
+
+					<table class="table table-bordered table-sm">
+						<thead class="table-light text-center">
+						<tr>
+							<th>Servicio</th>
+							<th>Descripción</th>
+							<th>Cantidad</th>
+							<th>Precio Unitario</th>
+							<th>Total</th>
+						</tr>
+						</thead>
+						<tbody id="lineas-factura">
+						<!-- JavaScript inyectará aquí las líneas -->
+						</tbody>
+					</table>
+
+					<div class="text-end">
+						<h5 class="fw-bold">Total: <span id="factura-total"></span> €</h5>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row bg-white mt-5 m-0 p-0 w-100">
+		<div class="row w-100">
+			<div th:replace="~{fragments/navbarPerfil :: navPerfilFragment}"></div>
+
+			<div class="col-md-9 col-lg-10 justify-content-center">
+				<div class="row justify-content-center">
+					<div th:if="${facturas}" class="container my-5">
+						<h2 class="text-center mb-4">Tus Facturas</h2>
+
+						<div class="table-responsive">
+							<table class="table table-bordered table-hover text-center">
+								<thead class="table-light">
+								<tr>
+									<th>Fecha</th>
+									<th>Importe</th>
+									<th>Descripción</th>
+									<th>Acción</th>
+								</tr>
+								</thead>
+								<tbody>
+								<tr th:each="factura : ${facturas}">
+									<td th:text="${factura.fecha}"></td>
+									<td th:text="${factura.precio} + ' €'"></td>
+									<td th:text="${factura.descripcion}"></td>
+									<td>
+										<button type="button"
+												class="btn btn-success btn-sm"
+												data-bs-toggle="modal"
+												data-bs-target="#facturaModal"
+												th:attr="data-id-factura=${factura.idFactura}">
+											Detalles Factura
+										</button>
+									</td>
+								</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div th:unless="${facturas}" class="container my-5">NO EXISTEN FACTURAS!</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+        const facturas = /*[[${facturas}]]*/ [];
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const modal = document.getElementById('facturaModal');
+            const botones = document.querySelectorAll('button[data-id-factura]');
+
+            botones.forEach(btn => {
+                btn.addEventListener('click', function () {
+                    const id = this.getAttribute('data-id-factura');
+                    const factura = facturas.find(f => f.idFactura == id);
+
+                    if (!factura) return;
+
+                    // Rellenar cabecera
+                    document.getElementById('factura-id').innerText = factura.idFactura;
+                    document.getElementById('factura-fecha').innerText = factura.fecha;
+                    document.getElementById('cliente-nombre').innerText = `${factura.nombreUsuario} ${factura.apellidosUsuario}`;
+                    document.getElementById('factura-total').innerText = factura.precio.toFixed(2);
+
+                    // Rellenar líneas
+                    const tbody = document.getElementById('lineas-factura');
+                    tbody.innerHTML = ''; // Limpiar
+
+                    factura.lineas.forEach(linea => {
+                        const fila = document.createElement('tr');
+                        fila.innerHTML = `
+                        <td>${linea.nombre}</td>
+                        <td>${linea.descripcion}</td>
+                        <td class="text-center">${linea.cantidad}</td>
+                        <td class="text-end">${linea.precioUnitario.toFixed(2)} €</td>
+                        <td class="text-end">${(linea.precioUnitario * linea.cantidad).toFixed(2)} €</td>
+                    `;
+                        tbody.appendChild(fila);
+                    });
+                });
+            });
+        });
+	</script>
+
+</section>
+</body>
+</html>

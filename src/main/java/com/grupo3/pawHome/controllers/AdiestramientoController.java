@@ -42,7 +42,16 @@ public class AdiestramientoController {
 
     // Metodo para mostrar la pagina de adiestramiento
     @GetMapping("/adiestramiento")
-    public String mostrarAdiestramiento(@AuthenticationPrincipal Usuario usuario, Model model) {
+    public String mostrarAdiestramiento(@AuthenticationPrincipal MyUserDetails userDetails, Model model) {
+        if(userDetails == null) {
+            model.addAttribute("usuario", null);
+            return "adiestramiento";
+        }
+        Usuario usuario = userDetails.getUsuario();
+        if(usuario.getPerfilDatos() == null) {
+            model.addAttribute("usuario", null);
+            return "adiestramiento";
+        }
         model.addAttribute("usuario", usuario);
         return "adiestramiento";
     }
@@ -53,14 +62,23 @@ public class AdiestramientoController {
             @RequestBody AdiestramientoCheckoutRequest request, // Nuevo DTO
             HttpSession session) throws StripeException {
 
-        Usuario usuario = userDetails.getUsuario();
-
-        if (usuario == null) {
+        if (userDetails == null) {
             return ResponseEntity.badRequest().body(
                     StripeResponse.builder()
                             .status("FAILED")
                             .message("Usuario no autenticado")
                             .build());
+        }
+
+        Usuario usuario = userDetails.getUsuario();
+
+        if (usuario.getPerfilDatos() == null) {
+            return ResponseEntity.badRequest().body(
+                    StripeResponse.builder()
+                            .status("FAILED")
+                            .message("Datos de Perfil Incompletos")
+                            .build()
+            );
         }
 
         Optional<Producto> productoOpt = productoService.findByNombre(request.nombreProducto());

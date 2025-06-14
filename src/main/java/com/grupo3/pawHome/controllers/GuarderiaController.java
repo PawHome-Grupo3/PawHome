@@ -40,7 +40,16 @@ public class GuarderiaController {
 
     // Metodo para mostrar la pagina de la guarderia
     @GetMapping("/guarderia")
-    public String mostrarGuarderia(@AuthenticationPrincipal Usuario usuario, Model model) {
+    public String mostrarGuarderia(@AuthenticationPrincipal MyUserDetails userDetails, Model model) {
+        if(userDetails == null) {
+            model.addAttribute("usuario", null);
+            return "guarderia";
+        }
+        Usuario usuario = userDetails.getUsuario();
+        if(usuario.getPerfilDatos() == null) {
+            model.addAttribute("usuario", null);
+            return "guarderia";
+        }
         model.addAttribute("usuario", usuario);
         return "guarderia";
     }
@@ -51,14 +60,23 @@ public class GuarderiaController {
             @RequestBody GuarderiaCheckoutRequest request, // Nuevo DTO
             HttpSession session) throws StripeException {
 
-        Usuario usuario = userDetails.getUsuario();
-
-        if (usuario == null) {
+        if (userDetails == null) {
             return ResponseEntity.badRequest().body(
                     StripeResponse.builder()
                             .status("FAILED")
                             .message("Usuario no autenticado")
                             .build());
+        }
+
+        Usuario usuario = userDetails.getUsuario();
+
+        if (usuario.getPerfilDatos() == null) {
+            return ResponseEntity.badRequest().body(
+                    StripeResponse.builder()
+                            .status("FAILED")
+                            .message("Datos de Perfil Incompletos")
+                            .build()
+            );
         }
 
         Optional<Producto> productoOpt = productoService.findByNombre(request.nombreProducto());

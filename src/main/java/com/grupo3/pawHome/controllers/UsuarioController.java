@@ -2,14 +2,17 @@ package com.grupo3.pawHome.controllers;
 
 import com.grupo3.pawHome.config.MyUserDetails;
 import com.grupo3.pawHome.dtos.CountryDTO;
+import com.grupo3.pawHome.dtos.FacturaDTO;
 import com.grupo3.pawHome.dtos.PerfilDatosDTO;
 import com.grupo3.pawHome.entities.Apadrinar;
 import com.grupo3.pawHome.entities.MetodoPago;
 import com.grupo3.pawHome.entities.PerfilDatos;
 import com.grupo3.pawHome.entities.Usuario;
+import com.grupo3.pawHome.repositories.FacturaRepository;
 import com.grupo3.pawHome.services.*;
 import com.grupo3.pawHome.util.PaisUtils;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -26,18 +29,21 @@ public class UsuarioController {
     private final ApadrinarService apadrinarService;
     private final LocationService locationService;
     private final MetodoPagoService metodoPagoService;
+    private final FacturaService facturaService;
+    private final FacturaRepository facturaRepository;
     private final PaisUtils paisUtils;
-
 
     public UsuarioController(UsuarioService usuarioService,
                              ApadrinarService apadrinarService,
                              LocationService locationService,
-                             MetodoPagoService metodoPagoService, PaisUtils paisUtils) {
+                             MetodoPagoService metodoPagoService, PaisUtils paisUtils, FacturaService facturaService, FacturaRepository facturaRepository) {
         this.usuarioService = usuarioService;
         this.apadrinarService = apadrinarService;
         this.locationService = locationService;
         this.metodoPagoService = metodoPagoService;
         this.paisUtils = paisUtils;
+        this.facturaService = facturaService;
+        this.facturaRepository = facturaRepository;
     }
 
     @GetMapping("/perfil/informacion")
@@ -173,6 +179,23 @@ public class UsuarioController {
         }
 
         return "perfilUsuarioApadrinamientos";
+    }
+
+    @GetMapping("/perfil/facturas")
+    public String mostrarFacturas(Model model, @AuthenticationPrincipal MyUserDetails userDetails) {
+
+        // Aquí deberías buscar el usuario por email/nickname
+        Usuario usuario = userDetails.getUsuario();
+        boolean tieneFacturas = facturaRepository.existsByUsuario_Id(Long.valueOf(usuario.getId()));
+        if(tieneFacturas) {
+
+            List<FacturaDTO> facturas = facturaService.obtenerFacturasPorUsuario(usuario.getId());
+
+            model.addAttribute("facturas", facturas);
+        }else{
+            model.addAttribute("facturas", null);
+        }
+        return "perfilUsuarioFacturas"; // la vista HTML donde tienes la tabla
     }
 
     @PostMapping("/perfil/apadrinamientos/finalizar")
