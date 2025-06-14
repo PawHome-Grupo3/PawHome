@@ -11,6 +11,7 @@ import com.grupo3.pawHome.entities.Usuario;
 import com.grupo3.pawHome.repositories.FacturaRepository;
 import com.grupo3.pawHome.services.*;
 import com.grupo3.pawHome.util.PaisUtils;
+import com.grupo3.pawHome.util.SecurityUtil;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -32,11 +33,12 @@ public class UsuarioController {
     private final FacturaService facturaService;
     private final FacturaRepository facturaRepository;
     private final PaisUtils paisUtils;
+    private final SecurityUtil securityUtil;
 
     public UsuarioController(UsuarioService usuarioService,
                              ApadrinarService apadrinarService,
                              LocationService locationService,
-                             MetodoPagoService metodoPagoService, PaisUtils paisUtils, FacturaService facturaService, FacturaRepository facturaRepository) {
+                             MetodoPagoService metodoPagoService, PaisUtils paisUtils, FacturaService facturaService, FacturaRepository facturaRepository, SecurityUtil securityUtil) {
         this.usuarioService = usuarioService;
         this.apadrinarService = apadrinarService;
         this.locationService = locationService;
@@ -44,6 +46,7 @@ public class UsuarioController {
         this.paisUtils = paisUtils;
         this.facturaService = facturaService;
         this.facturaRepository = facturaRepository;
+        this.securityUtil = securityUtil;
     }
 
     @GetMapping("/perfil/informacion")
@@ -155,6 +158,7 @@ public class UsuarioController {
         // Asociar el perfil al usuario y guardar
         usuario.setPerfilDatos(perfil);
         usuarioService.save(usuario);
+        securityUtil.updateAuthenticatedUser(usuario);
 
         return "redirect:/perfil/editar";
     }

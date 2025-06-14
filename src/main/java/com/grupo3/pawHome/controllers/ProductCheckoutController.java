@@ -162,11 +162,16 @@ public class ProductCheckoutController {
             linea.setCantidad(item.getCantidad());
             linea.setDescripcion(item.getProducto().getDescripcion());
             linea.setFactura(factura);
+            linea.setTarifa(item.getProducto().getTarifas().getFirst());
 
             lineas.add(linea);
 
             factura.setPrecio(precioTotal);
             factura.setLineaFacturas(lineas);
+            factura.setDescripcion((session.getAttribute("nombreServicio") == null)? "" : session.getAttribute("nombreServicio").toString());
+            session.removeAttribute("motivo");
+            session.removeAttribute("itemServicio");
+            session.removeAttribute("nombreServicio");
         }
 
         if(descripcion.equals("ServicioPeluqueria")){
@@ -184,11 +189,15 @@ public class ProductCheckoutController {
                 linea.setNombre(item.getProducto().getNombre());
                 linea.setCantidad(item.getCantidad());
                 linea.setFactura(factura);
+                linea.setTarifa(item.getProducto().getTarifas().getFirst());
                 return linea;
             }).toList();
 
             factura.setLineaFacturas(lineas);
-            session.removeAttribute("carrito");
+            factura.setDescripcion((session.getAttribute("nombreServicio") == null)? "" : session.getAttribute("nombreServicio").toString());
+            session.removeAttribute("motivo");
+            session.removeAttribute("itemServicio");
+            session.removeAttribute("nombreServicio");
         }
 
         // --- Stripe: obtener PaymentMethod y su fingerprint ---

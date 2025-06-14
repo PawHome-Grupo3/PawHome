@@ -124,6 +124,7 @@ public class PeluqueriaController {
         securityUtil.updateAuthenticatedUser(user);
         session.setAttribute("motivo", "ServicioPeluqueria");
         session.setAttribute("carrito", carrito);
+        session.setAttribute("nombreServicio", "Servicio de peluqueria");
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 

@@ -113,6 +113,7 @@ public class VeterinarioController {
         securityUtil.updateAuthenticatedUser(user);
         session.setAttribute("motivo", "Servicio");
         session.setAttribute("itemServicio", items);
+        session.setAttribute("nombreServicio", "Servicio de veterinario");
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 

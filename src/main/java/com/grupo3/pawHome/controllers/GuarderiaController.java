@@ -111,6 +111,7 @@ public class GuarderiaController {
         securityUtil.updateAuthenticatedUser(user);
         session.setAttribute("motivo", "Servicio");
         session.setAttribute("itemServicio", items);
+        session.setAttribute("nombreServicio", "Servicio de guarderia");
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
