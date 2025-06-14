@@ -1,5 +1,6 @@
 package com.grupo3.pawHome.controllers;
 
+import com.grupo3.pawHome.config.MyUserDetails;
 import com.grupo3.pawHome.dtos.ItemCarritoDTO;
 import com.grupo3.pawHome.dtos.ProductRequest;
 import com.grupo3.pawHome.dtos.StripeResponse;
@@ -48,9 +49,11 @@ public class VeterinarioController {
 
     @PostMapping("/veterinario/checkoutVeterinario")
     public ResponseEntity<StripeResponse> checkoutDesdeVeterinario(
-            @AuthenticationPrincipal Usuario usuario,
+            @AuthenticationPrincipal MyUserDetails userDetails,
             @RequestBody VeterinarioCheckoutRequest request, // Nuevo DTO
             HttpSession session) throws StripeException {
+
+        Usuario usuario = userDetails.getUsuario();
 
         if (usuario == null) {
             return ResponseEntity.badRequest().body(
