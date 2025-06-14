@@ -44,7 +44,12 @@ public class PeluqueriaController {
 
     // Metodo para mostrar la pagina de la peluqueria
     @GetMapping("/peluqueria")
-    public String mostrarGuarderia(@AuthenticationPrincipal Usuario usuario, Model model) {
+    public String mostrarGuarderia(@AuthenticationPrincipal MyUserDetails userDetails, Model model) {
+        if(userDetails == null) {
+            model.addAttribute("usuario", null);
+            return "peluqueria";
+        }
+        Usuario usuario = userDetails.getUsuario();
         model.addAttribute("usuario", usuario);
         return "peluqueria";
     }
@@ -55,17 +60,14 @@ public class PeluqueriaController {
             @RequestBody PeluqueriaCheckoutRequest request,
             HttpSession session) throws StripeException {
 
-        Usuario usuario = userDetails.getUsuario();
-
-        System.out.println("Entramos en checkoutPeluqueria");
-        log.info(request.toString());
-        if (usuario == null) {
+        if (userDetails == null) {
             return ResponseEntity.badRequest().body(
                     StripeResponse.builder()
                             .status("FAILED")
                             .message("Usuario no autenticado")
                             .build());
         }
+        Usuario usuario = userDetails.getUsuario();
 
         // Aquí puedes buscar los productos por nombre y construir la lista de ItemCarritoDTO
         List<String> nombresProductos = request.productos();

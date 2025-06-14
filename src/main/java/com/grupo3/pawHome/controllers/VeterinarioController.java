@@ -42,7 +42,12 @@ public class VeterinarioController {
 
     // Metodo para mostrar la pagina de veterinario
     @GetMapping("/veterinario")
-    public String mostrarVeterinario(@AuthenticationPrincipal Usuario usuario, Model model) {
+    public String mostrarVeterinario(@AuthenticationPrincipal MyUserDetails userDetails, Model model) {
+        if(userDetails == null) {
+            model.addAttribute("usuario", null);
+            return "veterinario";
+        }
+        Usuario usuario = userDetails.getUsuario();
         model.addAttribute("usuario", usuario);
         return "veterinario";
     }
@@ -53,15 +58,14 @@ public class VeterinarioController {
             @RequestBody VeterinarioCheckoutRequest request, // Nuevo DTO
             HttpSession session) throws StripeException {
 
-        Usuario usuario = userDetails.getUsuario();
-
-        if (usuario == null) {
+        if (userDetails == null) {
             return ResponseEntity.badRequest().body(
                     StripeResponse.builder()
                             .status("FAILED")
                             .message("Usuario no autenticado")
                             .build());
         }
+        Usuario usuario = userDetails.getUsuario();
 
         Optional<Producto> productoOpt = productoService.findByNombre(request.nombreProducto());
 

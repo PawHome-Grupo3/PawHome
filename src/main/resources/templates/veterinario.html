@@ -1480,6 +1480,47 @@
 		</div>
 	</div>
 
+	<!-- Modal alerta animal visualmente mejorado -->
+	<div class="modal fade" id="alertaAnimal" tabindex="-1" aria-labelledby="alertaAnimalLabel" aria-hidden="true"
+		 data-bs-backdrop="static" data-bs-keyboard="false">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content text-center shadow-lg border-0 rounded-4" style="background-color: #e9f9ef;">
+
+				<div class="modal-header border-0">
+					<h5 class="modal-title w-100 fs-4 fw-bold" id="alertaAnimalLabel" style="
+					color: #218838;
+					text-shadow: 0 1px 1px rgba(0,0,0,0.1);
+					font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+						🐾 ¡Ups! Necesitas iniciar sesión
+					</h5>
+				</div>
+
+				<div class="modal-body fs-5 px-4" style="
+				color: #155724;
+				font-weight: 500;
+				font-family: 'Segoe UI', sans-serif;">
+					<p>
+						Para continuar con la reserva de tu servicio de veterinario, por favor inicia sesión.<br>
+					</p>
+					<div class="mt-2">
+						<img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="Huella animal"
+							 style="animation: bounce 1.5s infinite; width: 50px; height: auto;">
+					</div>
+				</div>
+
+				<div class="modal-footer justify-content-center border-0">
+					<button id="btnLogin" type="button" class="btn px-4 py-2 fw-semibold" style="
+					border-radius: 30px;
+					background-color: #28a745;
+					color: white;
+					box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+					transition: all 0.3s ease;" onmouseover="this.style.backgroundColor='#218838'" onmouseout="this.style.backgroundColor='#28a745'">
+						Ir al login
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<section class="container py-5 mainContainer">
 		<!-- Sección: Nuestro servicio de Veterinario -->
@@ -2423,13 +2464,37 @@
                     if (data.status === "SUCCESS") {
                         window.location.href = data.sessionUrl; // Redirige a Stripe
                     } else {
-                        alert("Error en la reserva: " + (data.message || "Sin mensaje"));
+                        console.log(data.message);
+                        if(data.message.includes("no autenticado")) {
+                            mostrarAlertaAnimal(data.message);
+                        }else{
+                            alert("Error en la reserva: " + (data.message || "Sin mensaje"));
+                        }
                     }
                 } catch (error) {
                     console.error("Error:", error);
                     alert("Error al procesar la reserva");
                 }
             });
+
+            function mostrarAlertaAnimal() {
+                const alertaModalEl = document.getElementById('alertaAnimal');
+                const alertaModal = new bootstrap.Modal(alertaModalEl, {
+                    backdrop: 'static',
+                    keyboard: false
+                });
+
+                alertaModal.show();
+
+                const timerId = setTimeout(() => {
+                    window.location.href = "/login";
+                }, 4000);
+
+                document.getElementById('btnLogin').addEventListener("click", () => {
+                    clearTimeout(timerId);
+                    window.location.href = "/login";
+                });
+            }
         });
 	</script>
 </section>
