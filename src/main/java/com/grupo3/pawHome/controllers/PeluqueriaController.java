@@ -1,5 +1,6 @@
 package com.grupo3.pawHome.controllers;
 
+import com.grupo3.pawHome.config.MyUserDetails;
 import com.grupo3.pawHome.dtos.ItemCarritoDTO;
 import com.grupo3.pawHome.dtos.ProductRequest;
 import com.grupo3.pawHome.dtos.StripeResponse;
@@ -50,9 +51,11 @@ public class PeluqueriaController {
 
     @PostMapping("/peluqueria/checkoutPeluqueria")
     public ResponseEntity<StripeResponse> checkoutDesdePeluqueria(
-            @AuthenticationPrincipal Usuario usuario,
+            @AuthenticationPrincipal MyUserDetails userDetails,
             @RequestBody PeluqueriaCheckoutRequest request,
             HttpSession session) throws StripeException {
+
+        Usuario usuario = userDetails.getUsuario();
 
         System.out.println("Entramos en checkoutPeluqueria");
         log.info(request.toString());
