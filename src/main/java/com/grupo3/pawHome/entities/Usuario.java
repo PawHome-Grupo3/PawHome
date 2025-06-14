@@ -43,7 +43,10 @@ public class Usuario implements Serializable {
     private List<MetodoPago> metodosPago;
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Pago> Pago;
+    private List<Pago> pagos;
+
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Factura> facturas;
 
     @ManyToOne
     @JoinColumn(name = "rol_id", referencedColumnName = "id")
