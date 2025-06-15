@@ -355,7 +355,9 @@
 						<a id="modalBotonApadrina" class="botonesCardAnimal btn card_btn">
 							Apadrina
 						</a>
-						<a id="modalBotonAdopta" class="botonesCardAnimal btn card_btn">
+						<a href="#"
+						   id="modalBotonAdopta"
+						   class="botonesCardAnimal btn card_btn">
 							Adopta
 						</a>
 					</div>
@@ -690,6 +692,7 @@
 					modalImagen2.setAttribute('src', imagen2);
 					modalImagen3.setAttribute('src', imagen3);
 					modalBotonAdopta.setAttribute('href', `/adopta/${id}`);
+					modalBotonApadrina.setAttribute('data-id', id);
 
 					if (!adoptado && caracter) {
 						modalBotonAdopta.style.display = 'inline-block';
@@ -704,6 +707,19 @@
 						modalBotonApadrina.style.display = 'none';
 					}
 				});
+			});
+
+			document.getElementById('modalBotonApadrina').addEventListener('click', function () {
+				const idAnimal = this.getAttribute('data-id');
+
+				// Asignar el action al formulario y el valor del input oculto
+				const form = document.getElementById('checkoutApadrinarForm');
+				form.setAttribute('action', `/apadrinar/${idAnimal}/checkout-suscripcion`);
+				document.getElementById('animalId').value = idAnimal;
+
+				// Abrir el modal de apadrinamiento manualmente
+				const modalApadrinar = new bootstrap.Modal(document.getElementById('modalApadrinar'));
+				modalApadrinar.show();
 			});
 		});
 	</script>
