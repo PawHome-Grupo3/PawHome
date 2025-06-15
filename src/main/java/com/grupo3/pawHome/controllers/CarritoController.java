@@ -1,5 +1,6 @@
 package com.grupo3.pawHome.controllers;
 
+import com.grupo3.pawHome.config.MyUserDetails;
 import com.grupo3.pawHome.dtos.ProductRequest;
 import com.grupo3.pawHome.dtos.StripeResponse;
 import com.grupo3.pawHome.entities.*;
@@ -62,6 +63,7 @@ public class CarritoController {
                                    @RequestParam("tallaId") int tallaId,
                                    @RequestParam("cantidad") int cantidad,
                                    HttpSession session) {
+
         Optional<Producto> productoOpt = productoService.findById(productoId);
         Optional<Talla> tallaOpt = tallaService.findById(tallaId);
         Optional<Tarifa> tarifaOpt = tarifaService.findTopByProductoIdOrderByFechaDesdeDesc(productoId);
@@ -96,9 +98,11 @@ public class CarritoController {
     public String eliminarDelCarrito(@RequestParam("productoId") int productoId,
                                      @RequestParam("tallaId") int tallaId,
                                      HttpSession session) {
+
         List<ItemCarritoDTO> carrito = getCarrito(session);
         carrito.removeIf(item -> item.getProducto().getId() == productoId &&
                 item.getTalla().getId() == tallaId);
+
         session.setAttribute("carrito", carrito);
         return "redirect:/tienda/carrito";
     }
@@ -108,7 +112,9 @@ public class CarritoController {
                                      @RequestParam("tallaId") int tallaId,
                                      @RequestParam("cantidad") int cantidad,
                                      HttpSession session) {
+
         List<ItemCarritoDTO> carrito = getCarrito(session);
+
         if (cantidad <= 0) {
             carrito.removeIf(item -> item.getProducto().getId() == productoId && item.getTalla().getId() == tallaId);
         } else {
@@ -130,6 +136,7 @@ public class CarritoController {
 
     @PostMapping("/tienda/carrito/vaciar")
     public String vaciarCarrito(HttpSession session) {
+
         session.removeAttribute("carrito");
         return "redirect:/tienda/carrito";
     }
@@ -137,24 +144,37 @@ public class CarritoController {
     @SuppressWarnings("unchecked")
     private List<ItemCarritoDTO> getCarrito(HttpSession session) {
         Object carrito = session.getAttribute("carrito");
+
         if (carrito == null) {
             List<ItemCarritoDTO> nuevoCarrito = new ArrayList<>();
             session.setAttribute("carrito", nuevoCarrito);
             return nuevoCarrito;
         }
+
         return (List<ItemCarritoDTO>) carrito;
     }
 
     @PostMapping("/tienda/carrito/checkout")
     public ResponseEntity<StripeResponse> checkoutDesdeCarrito(
-            @AuthenticationPrincipal Usuario usuario,
+            @AuthenticationPrincipal MyUserDetails userDetails,
             HttpSession session
     ) throws StripeException {
-        if (usuario == null) {
+
+        if (userDetails == null) {
             return ResponseEntity.badRequest().body(
                     StripeResponse.builder()
                             .status("FAILED")
                             .message("Usuario no autenticado. Por favor inicia sesión")
+                            .build()
+            );
+        }
+
+        Usuario usuario = userDetails.getUsuario();
+        if (usuario.getPerfilDatos() == null) {
+            return ResponseEntity.badRequest().body(
+                    StripeResponse.builder()
+                            .status("FAILED")
+                            .message("Datos de Perfil Incompletos")
                             .build()
             );
         }
@@ -174,6 +194,7 @@ public class CarritoController {
 
         List<ProductRequest> productRequests = stripeService.convertirCarritoAProductRequests(carrito);
         Optional<Usuario> user = usuarioService.findById(usuario.getId());
+
         if (user.isPresent()) {
             Usuario userCustomerId = usuarioService.ensureStripeCustomerExists(user.get());
             StripeResponse stripeResponse = stripeService.checkoutProducts(productRequests, userCustomerId.getStripeCustomerId());

@@ -2,12 +2,12 @@
     <nav class="navbar navbarAside bg-light navbar-light flex-column justify-content-start p-2">
         <div class="d-flex align-items-center divAside m-1">
             <div class="position-relative">
-                <img th:src="@{/images/twitter.ico}" class="custom-block-image img-fluid" alt="" style="max-height: 50px; max-width: 50px;">
+                <img th:src="@{/images/fotoPerfilUsuario.jpg}" class="custom-block-image img-fluid" alt="" style="max-height: 50px; max-width: 50px;">
                 <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
             </div>
             <div class="ms-3">
-                <h6 class="mb-0">Paulo</h6>
-                <span>Usuario</span>
+                <h6 class="mb-0"></h6>
+                <span th:text="${usuario.nickname}"></span>
             </div>
         </div>
         <div class="navbar-nav">
@@ -17,6 +17,8 @@
             <a href="/perfil/apadrinamientos" class="nav-item nav-link"><i class="fa fa-table me-2"></i><span th:utext="#{navPerfil.apadrinamientos}"></span></a>
             <a href="/perfil/adopciones" class="nav-item nav-link"><i class="fa fa-table me-2"></i><span th:utext="#{navPerfil.adopciones}"></span></a>
             <a href="/perfil/donaciones" class="nav-item nav-link"><i class="fa fa-table me-2"></i><span th:utext="#{navPerfil.donaciones}"></span></a>
+            <a href="/perfil/facturas" class="nav-item nav-link"><i class="fa fa-table me-2"></i><span th:utext="#{navPerfil.facturas}"></span></a>
+            <a href="/perfil/citas" class="nav-item nav-link"><i class="fa fa-table me-2"></i><span th:utext="#{navPerfil.citas}"></span></a>
         </div>
     </nav>
 </div>

@@ -15,6 +15,7 @@ public class PagoController {
 
     @GetMapping("/pagos")
     public String mostrarPagos(Model model) {
+
         model.addAttribute("donacionesMonetarias", metodoPagoRepo.findByTipoPago_Nombre("MONETARIO"));
         model.addAttribute("donacionesMateriales", metodoPagoRepo.findByTipoPago_Nombre("MATERIAL"));
         return "pagos";

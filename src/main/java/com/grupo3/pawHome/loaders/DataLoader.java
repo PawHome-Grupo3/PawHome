@@ -29,6 +29,7 @@ public class DataLoader implements CommandLineRunner {
     private final PasswordEncoder passwordEncoder;
     private final RazaRepository razaRepository;
     private final EspecieRepository especieRepository;
+    private final RolRepository rolRepository;
 
 
     public DataLoader(AnimalRepository animalRepository,
@@ -39,7 +40,10 @@ public class DataLoader implements CommandLineRunner {
                       TallaRepository tallaRepository,
                       CategoriaRepository categoriaRepository,
                       TarifaRepository tarifaRepository,
-                      PasswordEncoder passwordEncoder, RazaRepository razaRepository, EspecieRepository especieRepository) {
+                      PasswordEncoder passwordEncoder,
+                      RazaRepository razaRepository,
+                      EspecieRepository especieRepository,
+                      RolRepository rolRepository) {
 
         this.animalRepository = animalRepository;
         this.apadrinarRepository = apadrinarRepository;
@@ -52,24 +56,139 @@ public class DataLoader implements CommandLineRunner {
         this.passwordEncoder = passwordEncoder;
         this.razaRepository = razaRepository;
         this.especieRepository = especieRepository;
+        this.rolRepository = rolRepository;
     }
 
     @Override
     public void run(String... args) {
+
+        // ROLES
+        if (rolRepository.findByNombre("USER").isEmpty()) {
+            Rol rol1 = new Rol();
+            rol1.setNombre("USER");
+            rolRepository.save(rol1);
+        }
+
+        if (rolRepository.findByNombre("ADMIN").isEmpty()) {
+            Rol rol2 = new Rol();
+            rol2.setNombre("ADMIN");
+            rolRepository.save(rol2);
+        }
+
         // Crear Usuarios
+        Usuario usuario = new Usuario();
+        usuario.setNickname("juan1234");
+        usuario.setPassword(passwordEncoder.encode("1234"));
+        usuario.setEmail("juan123@example.com");
+        usuario.setFechaRegistro(LocalDate.now());
+        usuario.setRol(rolRepository.findByNombre("USER").orElseThrow(() -> new RuntimeException("Rol USER no encontrado")));
+
+        // Crear PerfilDatos
+        PerfilDatos perfil = new PerfilDatos();
+        perfil.setNombre("Juan");
+        perfil.setApellidos("Pérez Gómez");
+        perfil.setEdad(30);
+        perfil.setDni("12345678A");
+        perfil.setDireccion("Calle Mayor 123");
+        perfil.setPais("España");
+        perfil.setCiudad("Madrid");
+        perfil.setCp("28001");
+        perfil.setTelefono1("600123456");
+        perfil.setTelefono2("601234567");
+        perfil.setTelefono3(null); // opcional
+
+        // Establecer relación bidireccional
+        perfil.setUsuario(usuario);
+        usuario.setPerfilDatos(perfil);
+
+        // Guardar usuario
+        usuarioRepository.save(usuario);
+
+        // Usuario 1
         Usuario u1 = new Usuario();
-        u1.setNickname("Juan1234");
+        u1.setNickname("Pepe2025");
         u1.setPassword(passwordEncoder.encode("123"));
-        u1.setEmail("a@gmail.com");
+        u1.setEmail("pepin@gmail.com");
         u1.setFechaRegistro(LocalDate.now());
+        u1.setRol(rolRepository.findByNombre("USER").orElseThrow(() -> new RuntimeException("Rol USER no encontrado")));
+
+        PerfilDatos perfil1 = new PerfilDatos();
+        perfil1.setNombre("José");
+        perfil1.setApellidos("García García");
+        perfil1.setEdad(25);
+        perfil1.setDni("12345678B");
+        perfil1.setDireccion("Avenida Alcalde Manuel del Valle 123");
+        perfil1.setPais("España");
+        perfil1.setCiudad("Sevilla");
+        perfil1.setCp("41015");
+        perfil1.setTelefono1("600987654");
+        perfil1.setTelefono2("601234567");
+        perfil1.setTelefono3(null); // opcional
+
+        perfil1.setUsuario(u1);
+        u1.setPerfilDatos(perfil1);
+
         usuarioRepository.save(u1);
 
+        // Usuario 2
         Usuario u2 = new Usuario();
         u2.setNickname("Maria456");
         u2.setPassword(passwordEncoder.encode("123"));
         u2.setEmail("maria@gmail.com");
         u2.setFechaRegistro(LocalDate.now());
+        u2.setRol(rolRepository.findByNombre("USER").orElseThrow(() -> new RuntimeException("Rol USER no encontrado")));
+
+        PerfilDatos perfil2 = new PerfilDatos();
+        perfil2.setNombre("María");
+        perfil2.setApellidos("López Fernández");
+        perfil2.setEdad(28);
+        perfil2.setDni("87654321C");
+        perfil2.setDireccion("Avenida Siempre Viva 456");
+        perfil2.setPais("España");
+        perfil2.setCiudad("Barcelona");
+        perfil2.setCp("08001");
+        perfil2.setTelefono1("600123456");
+        perfil2.setTelefono2("601234567");
+        perfil2.setTelefono3(null); // opcional
+
+        perfil2.setUsuario(u2);
+        u2.setPerfilDatos(perfil2);
+
         usuarioRepository.save(u2);
+
+        // Usuarios con el rol ADMIN
+        Usuario u3 = new Usuario();
+        u3.setNickname("Javix");
+        u3.setPassword(passwordEncoder.encode("JavixAdmin"));
+        u3.setEmail("Javix97@gmail.com");
+        u3.setFechaRegistro(LocalDate.now());
+        u3.setRol(rolRepository.findByNombre("ADMIN").orElseThrow(() -> new RuntimeException("Rol ADMIN no encontrado")));
+        usuarioRepository.save(u3);
+
+        Usuario u4 = new Usuario();
+        u4.setNickname("PauloSH");
+        u4.setPassword(passwordEncoder.encode("PauloSHAdmin"));
+        u4.setEmail("PauloSH@gmail.com");
+        u4.setFechaRegistro(LocalDate.now());
+        u4.setRol(rolRepository.findByNombre("ADMIN").orElseThrow(() -> new RuntimeException("Rol ADMIN no encontrado")));
+        usuarioRepository.save(u4);
+
+        Usuario u5 = new Usuario();
+        u5.setNickname("Lauguirez");
+        u5.setPassword(passwordEncoder.encode("LauguirezAdmin"));
+        u5.setEmail("Lauguirez@gmail.com");
+        u5.setFechaRegistro(LocalDate.now());
+        u5.setRol(rolRepository.findByNombre("ADMIN").orElseThrow(() -> new RuntimeException("Rol ADMIN no encontrado")));
+        usuarioRepository.save(u5);
+
+        Usuario u6 = new Usuario();
+        u6.setNickname("Manueltrmr");
+        u6.setPassword(passwordEncoder.encode("ManueltrmrAdmin"));
+        u6.setEmail("mantormir@gmail.com");
+        u6.setFechaRegistro(LocalDate.now());
+        u6.setRol(rolRepository.findByNombre("ADMIN").orElseThrow(() -> new RuntimeException("Rol ADMIN no encontrado")));
+        usuarioRepository.save(u6);
+
 
         // Crear Facturas para u1
         Factura f1 = new Factura();
@@ -136,8 +255,8 @@ public class DataLoader implements CommandLineRunner {
         productoRepository.save(p4);
 
         Producto p5 = new Producto();
-        p5.setNombre("Taza todo es mejor");
-        p5.setDescripcion("Dale a tu peludo amigo el mejor look con nuestro collar para perro, diseñado para brindar seguridad, confort y un toque de estilo único.");
+        p5.setNombre("Taza Perro");
+        p5.setDescripcion("Incluye un cierre de seguridad reforzado y un aro metálico para enganchar la correa de forma rápida y segura. Ideal para perros de todos los tamaños, disponible en varios colores para combinar con su personalidad.");
         p5.setRutaImagen1("/images/taza-prueba.jpg");
         p5.setCategoria(c3);
         productoRepository.save(p5);
@@ -295,6 +414,110 @@ public class DataLoader implements CommandLineRunner {
         tBañoAntiparasito.setFechaHasta(LocalDate.of(2026, 1, 1));
         tarifaRepository.save(tBañoAntiparasito);
 
+        Producto pChampuColor = new Producto();
+        pChampuColor.setNombre("Champú potenciador de color");
+        pChampuColor.setCategoria(cPeluqueria);
+        productoRepository.save(pChampuColor);
+
+        Tarifa tChampuColor = new Tarifa();
+        tChampuColor.setProducto(pChampuColor);
+        tChampuColor.setCantidad(1);
+        tChampuColor.setPrecioUnitario(10.00);
+        tChampuColor.setFechaDesde(LocalDate.now());
+        tChampuColor.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tChampuColor);
+
+        Producto pBañoMedico = new Producto();
+        pBañoMedico.setNombre("Baño medicado o spa para pieles sensibles");
+        pBañoMedico.setCategoria(cPeluqueria);
+        productoRepository.save(pBañoMedico);
+
+        Tarifa tBañoMedico = new Tarifa();
+        tBañoMedico.setProducto(pBañoMedico);
+        tBañoMedico.setCantidad(1);
+        tBañoMedico.setPrecioUnitario(15.00);
+        tBañoMedico.setFechaDesde(LocalDate.now());
+        tBañoMedico.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tBañoMedico);
+
+        Producto pNudos = new Producto();
+        pNudos.setNombre("Por nudos");
+        pNudos.setCategoria(cPeluqueria);
+        productoRepository.save(pNudos);
+
+        Tarifa tNudos = new Tarifa();
+        tNudos.setProducto(pNudos);
+        tNudos.setCantidad(1);
+        tNudos.setPrecioUnitario(7.00);
+        tNudos.setFechaDesde(LocalDate.now());
+        tNudos.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tNudos);
+
+        Producto pDeslanado = new Producto();
+        pDeslanado.setNombre("Deslanado");
+        pDeslanado.setCategoria(cPeluqueria);
+        productoRepository.save(pDeslanado);
+
+        Tarifa tDeslanado = new Tarifa();
+        tDeslanado.setProducto(pDeslanado);
+        tDeslanado.setCantidad(1);
+        tDeslanado.setPrecioUnitario(7.00);
+        tDeslanado.setFechaDesde(LocalDate.now());
+        tDeslanado.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tDeslanado);
+
+        Producto pRetoqueExtra = new Producto();
+        pRetoqueExtra.setNombre("Retoque extra en patas y cara");
+        pRetoqueExtra.setCategoria(cPeluqueria);
+        productoRepository.save(pRetoqueExtra);
+
+        Tarifa tRetoqueExtra = new Tarifa();
+        tRetoqueExtra.setProducto(pRetoqueExtra);
+        tRetoqueExtra.setCantidad(1);
+        tRetoqueExtra.setPrecioUnitario(5.00);
+        tRetoqueExtra.setFechaDesde(LocalDate.now());
+        tRetoqueExtra.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tRetoqueExtra);
+
+        Producto pAntiolor = new Producto();
+        pAntiolor.setNombre("Tratamiento antiolor con aceites esenciales");
+        pAntiolor.setCategoria(cPeluqueria);
+        productoRepository.save(pAntiolor);
+
+        Tarifa tAntiolor = new Tarifa();
+        tAntiolor.setProducto(pAntiolor);
+        tAntiolor.setCantidad(1);
+        tAntiolor.setPrecioUnitario(10.00);
+        tAntiolor.setFechaDesde(LocalDate.now());
+        tAntiolor.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tAntiolor);
+
+        Producto pHidratacion = new Producto();
+        pHidratacion.setNombre("Hidratación de almohadillas");
+        pHidratacion.setCategoria(cPeluqueria);
+        productoRepository.save(pHidratacion);
+
+        Tarifa tHidratacion = new Tarifa();
+        tHidratacion.setProducto(pHidratacion);
+        tHidratacion.setCantidad(1);
+        tHidratacion.setPrecioUnitario(7.00);
+        tHidratacion.setFechaDesde(LocalDate.now());
+        tHidratacion.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tHidratacion);
+
+        Producto pPerfumeEspecial = new Producto();
+        pPerfumeEspecial.setNombre("Aplicación de perfume especial");
+        pPerfumeEspecial.setCategoria(cPeluqueria);
+        productoRepository.save(pPerfumeEspecial);
+
+        Tarifa tPerfumeEspecial = new Tarifa();
+        tPerfumeEspecial.setProducto(pPerfumeEspecial);
+        tPerfumeEspecial.setCantidad(1);
+        tPerfumeEspecial.setPrecioUnitario(5.00);
+        tPerfumeEspecial.setFechaDesde(LocalDate.now());
+        tPerfumeEspecial.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tPerfumeEspecial);
+
         Producto pJuguete = new Producto();
         pJuguete.setNombre("Juguete < 5kg");
         pJuguete.setCategoria(cPeluqueria);
@@ -307,6 +530,58 @@ public class DataLoader implements CommandLineRunner {
         tJuguete.setFechaDesde(LocalDate.now());
         tJuguete.setFechaHasta(LocalDate.of(2026, 1, 1));
         tarifaRepository.save(tJuguete);
+
+        Producto pPequeño = new Producto();
+        pPequeño.setNombre("Pequeño 6 - 10kg");
+        pPequeño.setCategoria(cPeluqueria);
+        productoRepository.save(pPequeño);
+
+        Tarifa tPequeño = new Tarifa();
+        tPequeño.setProducto(pPequeño);
+        tPequeño.setCantidad(1);
+        tPequeño.setPrecioUnitario(6.00);
+        tPequeño.setFechaDesde(LocalDate.now());
+        tPequeño.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tPequeño);
+
+        Producto pMediano = new Producto();
+        pMediano.setNombre("Mediano 11 - 25kg");
+        pMediano.setCategoria(cPeluqueria);
+        productoRepository.save(pMediano);
+
+        Tarifa tMediano = new Tarifa();
+        tMediano.setProducto(pMediano);
+        tMediano.setCantidad(1);
+        tMediano.setPrecioUnitario(9.00);
+        tMediano.setFechaDesde(LocalDate.now());
+        tMediano.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tMediano);
+
+        Producto pGrande = new Producto();
+        pGrande.setNombre("Grande 26 - 35kg");
+        pGrande.setCategoria(cPeluqueria);
+        productoRepository.save(pGrande);
+
+        Tarifa tGrande = new Tarifa();
+        tGrande.setProducto(pGrande);
+        tGrande.setCantidad(1);
+        tGrande.setPrecioUnitario(12.00);
+        tGrande.setFechaDesde(LocalDate.now());
+        tGrande.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tGrande);
+
+        Producto pGigante = new Producto();
+        pGigante.setNombre("Gigante > 35kg");
+        pGigante.setCategoria(cPeluqueria);
+        productoRepository.save(pGigante);
+
+        Tarifa tGigante = new Tarifa();
+        tGigante.setProducto(pGigante);
+        tGigante.setCantidad(1);
+        tGigante.setPrecioUnitario(15.00);
+        tGigante.setFechaDesde(LocalDate.now());
+        tGigante.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tGigante);
 
         // Fin productos peluqueria
         // Productos Adiestramiento
@@ -649,34 +924,6 @@ public class DataLoader implements CommandLineRunner {
         t6.setProducto(p3);
         tallaRepository.save(t6);
 
-        // Crear Usuario
-        Usuario usuario = new Usuario();
-        usuario.setNickname("juan123");
-        usuario.setPassword(passwordEncoder.encode("1234"));
-        usuario.setEmail("juan@example.com");
-        usuario.setFechaRegistro(LocalDate.now());
-
-        // Crear PerfilDatos
-        PerfilDatos perfil = new PerfilDatos();
-        perfil.setNombre("Juan");
-        perfil.setApellidos("Pérez Gómez");
-        perfil.setEdad(30);
-        perfil.setDni("12345678A");
-        perfil.setDireccion("Calle Mayor 123");
-        perfil.setPais("España");
-        perfil.setCiudad("Madrid");
-        perfil.setCp("28001");
-        perfil.setTelefono1("600123456");
-        perfil.setTelefono2("601234567");
-        perfil.setTelefono3(null); // opcional
-
-        // Establecer relación bidireccional
-        perfil.setUsuario(usuario);
-        usuario.setPerfilDatos(perfil);
-
-        // Guardar usuario (gracias a CascadeType.ALL también guarda perfil)
-        usuarioRepository.save(usuario);
-
         Talla t7 = new Talla();
         t7.setStock(12);
         t7.setTallaje("unica");
@@ -778,7 +1025,6 @@ public class DataLoader implements CommandLineRunner {
         a1.setRutaImg3("/images/default-example.png");
         a1.setEspecie(e1);
         animalRepository.save(a1);
-
 
 
         Animal a2 = new Animal();
@@ -929,5 +1175,6 @@ public class DataLoader implements CommandLineRunner {
         ap4.setAnimal(a4);
         ap4.setUsuario(u2);
         apadrinarRepository.save(ap4);
+
     }
 }

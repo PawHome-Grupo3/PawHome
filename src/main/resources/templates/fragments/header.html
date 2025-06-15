@@ -1,4 +1,4 @@
-<header th:fragment="headerFragment">
+<header th:fragment="headerFragment" xmlns:sec="http://www.w3.org/1999/xhtml">
 	<nav class="navbar fixed-top navbar-expand-md px-3">
 		<a class="navbar-brand" href="/">
 			<img th:src="@{/images/logoSinFondoBlanco.png}" alt="LogoEmpresa" class="logoNav d-inline-block align-text-top">
@@ -22,24 +22,17 @@
 					</ul>
 				</li>
 
-				<li class="nav-item">
-					<div class="btn-group">
-						<a href="/colabora" class="btn btn-link nav-link enlaceNav" style="text-decoration:none;">
-							Colabora</a>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle enlaceNav" href="/colabora" data-bs-toggle="dropdown"
+					   aria-expanded="false" th:text="#{header.colabora}"></a>
 
-						<button type="button" class="btn btn-link nav-link dropdown-toggle dropdown-toggle-split enlaceNav"
-								data-bs-toggle="dropdown" aria-expanded="false" style="text-decoration:none;">
-							<span class="visually-hidden">Desplegar menú</span>
-						</button>
-						<ul class="dropdown-menu dropdownNav">
-							<li><a class="dropdown-item" href="/colabora/dona">Dona</a></li>
-							<li><a class="dropdown-item" href="/colabora/adopta">Adopta</a></li>
-							<li><a class="dropdown-item" href="/colabora/apadrina">Apadrina</a></li>
-							<li><a class="dropdown-item" href="/colabora/paseosolidario">Paseo solidario</a></li>
-						</ul>
-					</div>
+					<ul class="dropdown-menu dropdownNav">
+						<li><a class="dropdown-item" href="/colabora/dona">Dona</a></li>
+						<li><a class="dropdown-item" href="/colabora/adopta">Adopta</a></li>
+						<li><a class="dropdown-item" href="/colabora/apadrina">Apadrina</a></li>
+						<li><a class="dropdown-item" href="/colabora/paseosolidario">Paseo solidario</a></li>
+					</ul>
 				</li>
-
 
 				<li><a class="navbar-brand enlaceNav" href="/tienda" th:text="#{header.tienda}"></a></li>
 
@@ -87,11 +80,37 @@
 			<div class="dropdown">
 				<button class="btn dropdown-toggle botonRegistro" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
 					<i class="fa fa-user-circle" aria-hidden="true"></i>
+					<span th:text="${#authentication.authenticated} ? 'Mi Cuenta' : 'Acceder a mi cuenta'"></span>
 				</button>
 				<ul class="dropdown-menu dropdown-menu-end dropdownNav" aria-labelledby="userDropdown">
-					<li><a class="dropdown-item" href="/registro" th:text="#{header.registrarse}"></a></li>
-					<li><a class="dropdown-item" href="/loginPawHome" th:text="#{header.iniciar}"></a></li>
-					<li><a class="dropdown-item" href="/perfil/informacion" th:text="#{header.perfil}"></a></li>
+					<!-- Usuario logueado: perfil y logout -->
+					<li sec:authorize="isAuthenticated()">
+						<a class="dropdown-item" th:href="@{/perfil/informacion}">
+							<i class="fa-solid fa-face-smile me-2"></i>
+							<span th:text="#{header.perfil}"></span>
+						</a>
+					</li>
+					<li sec:authorize="isAuthenticated() and hasRole('ADMIN')">
+						<a class="dropdown-item" th:href="@{/admin/animales}">
+							<i class="fa fa-cogs me-2" aria-hidden="true"></i> Administración
+						</a>
+					</li>
+					<li sec:authorize="isAuthenticated()">
+						<form th:action="@{/logout}" method="post" style="display:inline;">
+							<button class="dropdown-item" type="submit">
+							<i class="fa-solid fa-right-from-bracket me-2"></i>
+									<span th:text="#{header.cerrar}"></span>
+							</button>
+						</form>
+					</li>
+
+					<!-- Usuario no logueado: acceso -->
+					<li sec:authorize="isAnonymous()">
+						<a class="dropdown-item" th:href="@{/auth/loginPawHome}">
+							<i class="fa-solid fa-unlock-keyhole me-2"></i>
+							<span th:text="#{header.iniciar}"></span>
+						</a>
+					</li>
 				</ul>
 			</div>
 		</div>

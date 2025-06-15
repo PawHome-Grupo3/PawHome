@@ -1,5 +1,6 @@
 package com.grupo3.pawHome.controllers;
 
+import com.grupo3.pawHome.config.MyUserDetails;
 import com.grupo3.pawHome.dtos.ItemCarritoDTO;
 import com.grupo3.pawHome.dtos.ProductRequest;
 import com.grupo3.pawHome.dtos.StripeResponse;
@@ -39,23 +40,43 @@ public class GuarderiaController {
 
     // Metodo para mostrar la pagina de la guarderia
     @GetMapping("/guarderia")
-    public String mostrarGuarderia(@AuthenticationPrincipal Usuario usuario, Model model) {
+    public String mostrarGuarderia(@AuthenticationPrincipal MyUserDetails userDetails, Model model) {
+        if(userDetails == null) {
+            model.addAttribute("usuario", null);
+            return "guarderia";
+        }
+        Usuario usuario = userDetails.getUsuario();
+        if(usuario.getPerfilDatos() == null) {
+            model.addAttribute("usuario", null);
+            return "guarderia";
+        }
         model.addAttribute("usuario", usuario);
         return "guarderia";
     }
 
     @PostMapping("/guarderia/checkoutGuarderia")
     public ResponseEntity<StripeResponse> checkoutDesdeGuarderia(
-            @AuthenticationPrincipal Usuario usuario,
+            @AuthenticationPrincipal MyUserDetails userDetails,
             @RequestBody GuarderiaCheckoutRequest request, // Nuevo DTO
             HttpSession session) throws StripeException {
 
-        if (usuario == null) {
+        if (userDetails == null) {
             return ResponseEntity.badRequest().body(
                     StripeResponse.builder()
                             .status("FAILED")
                             .message("Usuario no autenticado")
                             .build());
+        }
+
+        Usuario usuario = userDetails.getUsuario();
+
+        if (usuario.getPerfilDatos() == null) {
+            return ResponseEntity.badRequest().body(
+                    StripeResponse.builder()
+                            .status("FAILED")
+                            .message("Datos de Perfil Incompletos")
+                            .build()
+            );
         }
 
         Optional<Producto> productoOpt = productoService.findByNombre(request.nombreProducto());
@@ -90,6 +111,7 @@ public class GuarderiaController {
         securityUtil.updateAuthenticatedUser(user);
         session.setAttribute("motivo", "Servicio");
         session.setAttribute("itemServicio", items);
+        session.setAttribute("nombreServicio", "Servicio de guarderia");
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 

@@ -1,5 +1,6 @@
 package com.grupo3.pawHome.controllers;
 
+import com.grupo3.pawHome.config.MyUserDetails;
 import com.grupo3.pawHome.dtos.ProductRequest;
 import com.grupo3.pawHome.dtos.StripeResponse;
 import com.grupo3.pawHome.entities.Usuario;
@@ -47,17 +48,28 @@ public class ColaboraController {
 
     @PostMapping("/colabora/dona/checkout")
     public ResponseEntity<StripeResponse> checkoutDesdeDona(
-            @AuthenticationPrincipal Usuario usuario,
+            @AuthenticationPrincipal MyUserDetails userDetails,
             @RequestBody Map<String, Object> datos,
             HttpSession session
     ) throws StripeException {
-        if (usuario == null) {
+
+        if (userDetails == null) {
             return ResponseEntity.badRequest().body(
                     StripeResponse.builder()
                             .status("FAILED")
                             .message("Usuario no autenticado. Por favor inicia sesión")
                             .build()
             );
+        }
+
+        Usuario usuario = userDetails.getUsuario();
+        if (usuario.getPerfilDatos() == null) {
+            return ResponseEntity.badRequest().body(
+                    StripeResponse.builder()
+                            .status("FAILED")
+                            .message("Datos de Perfil Incompletos")
+                            .build()
+                    );
         }
 
         double precio = Double.parseDouble(datos.get("cantidad").toString());

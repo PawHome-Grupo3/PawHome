@@ -13,12 +13,12 @@
 
   <div class="containerImagen">
     <div class="cuadro-transparente">
-      <h1><i th:text="#{adopta.titulo}">Adopta</i></h1>
+      <h1><i th:text="#{adopta.titulo}"></i></h1>
       <br>
       <ol>
         <li>
-          <span th:text="#{adopta.paso1}">Elige a uno de nuestros</span>
-          <a th:href="@{/nuestrosAnimales}" th:text="#{adopta.animales}">animales disponibles para adopción</a>.
+          <span th:text="#{adopta.paso1}"></span>
+          <a th:href="@{/nuestrosAnimales(adoptado='adoptar')}" th:text="#{adopta.animales}"></a>.
         </li>
         <li>
           <span th:text="#{adopta.paso2}">Accede al</span>

@@ -16,7 +16,7 @@
 <section layout:fragment="content">
 	<div class="row m-5 pt-3">
 		<div class="col-7 contenedorIzquierdo">
-			<h2>Nuestros animales disponibles:</h2>
+			<h2>Nuestros animales:</h2>
 			<p>Adoptar un animal de nuestro refugio no solo significa darle una segunda oportunidad a un ser que ha sufrido
 				el abandono,
 				sino también ganar un compañero fiel que llenará tu hogar de amor y alegría. Cada uno de nuestros animales
@@ -190,11 +190,12 @@
 								   class="form-control flex-grow-1"
 								   style="min-width: 200px; max-width: 220px;" />
 
-							<!-- Filtro por adoptado -->
-							<select name="adoptado" class="form-select" style="width: 160px;">
+							<!-- Filtro por estado del animal -->
+							<select name="adoptado" class="form-select" style="width: 180px;">
 								<option th:value="null" th:selected="${adoptado == null}">Todos</option>
-								<option th:value="true" th:selected="${adoptado == 'true'}">Adoptados</option>
-								<option th:value="false" th:selected="${adoptado == 'false'}">Sin Adoptar</option>
+								<option th:value="apadrinar" th:selected="${adoptado == 'apadrinar'}">Para Apadrinar</option>
+								<option th:value="adoptar" th:selected="${adoptado == 'adoptar'}">Para Adoptar</option>
+								<option th:value="adoptado" th:selected="${adoptado == 'adoptado'}">Ya Adoptados</option>
 							</select>
 
 							<!-- Filtro por raza -->
@@ -293,7 +294,7 @@
 			<div class="row justify-content-center mt-4">
 				<nav aria-label="Pagination" th:if="${totalPages > 0}">
 					<ul class="pagination justify-content-center">
-						<li class="page-item" th:classappend="${currentPage == 1} ? 'disabled'">
+						<li class="page-item"  th:classappend="${currentPage == 1} ? 'disabled'">
 							<a th:replace="fragments/paging :: paging(1, '<<', 'First Page')"></a>
 						</li>
 						<li class="page-item font-weight-bold" th:classappend="${currentPage == 1} ? 'disabled'">
@@ -355,7 +356,9 @@
 						<a id="modalBotonApadrina" class="botonesCardAnimal btn card_btn">
 							Apadrina
 						</a>
-						<a id="modalBotonAdopta" class="botonesCardAnimal btn card_btn">
+						<a href="#"
+						   id="modalBotonAdopta"
+						   class="botonesCardAnimal btn card_btn">
 							Adopta
 						</a>
 					</div>
@@ -364,27 +367,141 @@
 		</div>
 	</div>
 
-<!--	Modal para confirmar apadrinamiento-->
+	<!-- Modal para confirmar apadrinamiento -->
 	<div class="modal fade" id="modalApadrinar" tabindex="-1" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered position-relative">
+			<div class="modal-wrap position-relative">
+
+				<!-- Imagen decorativa flotante -->
+				<img th:src="@{/images/perritoAsomandose.png}" alt="Perrito decorativo" class="start-hidden" id="perritoAnimado">
+
+				<div class="modal-content p-4 bg-white shadow rounded-4 animate__animated animate__fadeIn pt-5">
+					<form id="checkoutApadrinarForm" method="post">
+						<div class="modal-header border-0">
+							<h5 class="modal-title w-100 text-center text-success fw-bold">
+								<i class="fa-solid fa-paw me-2 animate__animated animate__pulse animate__infinite"></i>
+								¡Apadrina y cambia una vida!
+							</h5>
+							<button type="button" class="btn-close position-absolute end-0 me-3" data-bs-dismiss="modal"
+									aria-label="Cerrar"></button>
+						</div>
+
+						<div class="modal-body text-center">
+							<input type="hidden" id="animalId" name="animalId">
+
+							<p class="text-muted mb-4">
+								Tu <strong>apadrinamiento mensual</strong> es una fuente de esperanza para nuestros
+								animales.
+								Puedes cancelarlo en cualquier momento. ¡Gracias por hacer posible su bienestar!
+							</p>
+
+							<div class="mb-4">
+								<label for="aporteMensual" class="form-label fw-semibold text-success">¿Cuánto deseas
+									aportar al mes?</label>
+								<input type="number" name="aporteMensual" id="aporteMensual" min="1" value="10" required
+									   class="form-control aporte-input mx-auto text-center">
+							</div>
+
+							<div class="form-check d-flex justify-content-center">
+								<input class="form-check-input me-2" type="checkbox" id="aceptaTerminos">
+								<label class="form-check-label" for="aceptaTerminos">
+									Acepto los <a href="/terminos" target="_blank"
+												  class="text-success text-decoration-underline">términos y
+									condiciones</a>
+								</label>
+							</div>
+						</div>
+
+						<div class="modal-footer border-0 d-flex justify-content-center">
+							<button type="submit" class="btn btn-success confirm-button px-4" id="btnConfirmar"
+									disabled>
+								<i class="fa-solid fa-heart me-1"></i> Confirmar Apadrinamiento
+							</button>
+							<button type="button" class="btn btn-outline-secondary ms-2" data-bs-dismiss="modal">
+								Cancelar
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Modal alerta animal Sin estar logeado -->
+	<div class="modal fade" id="alertaAnimal" tabindex="-1" aria-labelledby="alertaAnimalLabel" aria-hidden="true"
+		 data-bs-backdrop="static" data-bs-keyboard="false">
 		<div class="modal-dialog modal-dialog-centered">
-			<div class="modal-content p-3">
-				<form id="checkoutApadrinarForm" method="post">
-					<div class="modal-header border-0">
-						<h5 class="modal-title">Apadrinar</h5>
-						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-					</div>
+			<div class="modal-content text-center shadow-lg border-0 rounded-4" style="background-color: #e9f9ef;">
 
-					<div class="modal-body">
-						<input type="hidden" id="animalId" name="animalId">
-						<label for="aporteMensual">Aporte mensual (€)</label>
-						<input type="number" name="aporteMensual" id="aporteMensual" min="1" required class="form-control">
-					</div>
+				<div class="modal-header border-0">
+					<h5 class="modal-title w-100 fs-4 fw-bold" id="alertaAnimalLabel" style="
+            color: #218838;
+            text-shadow: 0 1px 1px rgba(0,0,0,0.1);">
+						🐾 ¡Ups! Necesitas iniciar sesión
+					</h5>
+				</div>
 
-					<div class="modal-footer border-0">
-						<button type="submit" class="btn btn-success">Confirmar</button>
-						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+				<div class="modal-body fs-5 px-4" style="
+          color: #155724;
+          font-weight: 500;">
+					<p>
+						Para continuar con el apadrinamiento, por favor inicia sesión.<br>
+					</p>
+					<div class="mt-2">
+						<img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="Huella animal"
+							 style="animation: bounce 1.5s infinite; width: 50px; height: auto;">
 					</div>
-				</form>
+				</div>
+
+				<div class="modal-footer justify-content-center border-0">
+					<button id="btnLogin" type="button" class="btn px-4 py-2 fw-semibold" style="
+            border-radius: 30px;
+            background-color: #28a745;
+            color: white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        " onmouseover="this.style.backgroundColor='#218838'" onmouseout="this.style.backgroundColor='#28a745'">
+						Ir al login
+					</button>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<!-- Modal alerta animal Sin Perfil -->
+	<div class="modal fade" id="alertaAnimalPerfil" tabindex="-1" aria-labelledby="alertaAnimalPerfilLabel" aria-hidden="true"
+		 data-bs-backdrop="static" data-bs-keyboard="false">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content text-center shadow-lg border-0 rounded-4" style="background-color: #e9f9ef;">
+
+				<div class="modal-header border-0">
+					<h5 class="modal-title w-100 fs-4 fw-bold" id="alertaAnimalPerfilLabel"
+						style="color: #218838; text-shadow: 0 1px 1px rgba(0,0,0,0.1);">
+						🐾 ¡Ups! Necesitas iniciar sesión
+					</h5>
+				</div>
+
+				<div class="modal-body fs-5 px-4" style="color: #155724;font-weight: 500;">
+					<p>
+						¡Antes de realizar una compra, necesita completar sus datos!<br>
+					</p>
+					<div class="mt-2">
+						<img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="Huella animal"
+							 style="animation: bounce 1.5s infinite; width: 50px; height: auto;">
+					</div>
+				</div>
+
+				<div class="modal-footer justify-content-center border-0">
+					<button id="btnLoginPerfil" type="button" class="btn px-4 py-2 fw-semibold"
+							style="border-radius: 30px; background-color: #28a745; color: white;
+                            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+                        transition: all 0.3s ease;
+                    " onmouseover="this.style.backgroundColor='#218838'" onmouseout="this.style.backgroundColor='#28a745'">
+						Completar Datos Personales
+					</button>
+				</div>
+
 			</div>
 		</div>
 	</div>
@@ -392,8 +509,38 @@
 	<script>
 		document.addEventListener("DOMContentLoaded", function () {
 			const modal = document.getElementById('modalApadrinar');
+			const perrito = document.getElementById('perritoAnimado');
 
-			// 1. Cuando se abre el modal, actualizamos el formulario con el ID del animal
+			modal.addEventListener('show.bs.modal', function () {
+				perrito.classList.remove('asomado', 'z-top', 'rebote');
+				perrito.style.zIndex = -1;
+
+				setTimeout(() => {
+					perrito.classList.add('asomado');
+
+					// Después de 4s de animación de subida...
+					setTimeout(() => {
+						perrito.classList.add('z-top');
+
+						// Pequeño rebote
+						perrito.classList.add('rebote');
+
+						// Opcional: quitar clase para permitir rebote si se reabre
+						setTimeout(() => {
+							perrito.classList.remove('rebote');
+						}, 700);
+					}, 4000);
+				}, 1000);
+			});
+
+			modal.addEventListener('hidden.bs.modal', function () {
+				perrito.classList.remove('asomado', 'z-top', 'rebote');
+				perrito.style.zIndex = -1;
+			});
+
+			const checkbox = document.getElementById('aceptaTerminos');
+			const confirmarBtn = document.getElementById('btnConfirmar');
+
 			modal.addEventListener('show.bs.modal', function (event) {
 				const button = event.relatedTarget;
 				const animalId = button.getAttribute('data-id');
@@ -401,6 +548,13 @@
 				const form = document.getElementById('checkoutApadrinarForm');
 				form.setAttribute('action', `/apadrinar/${animalId}/checkout-suscripcion`);
 				document.getElementById('animalId').value = animalId;
+
+				checkbox.checked = false;
+				confirmarBtn.disabled = true;
+			});
+
+			checkbox.addEventListener('change', function () {
+				confirmarBtn.disabled = !this.checked;
 			});
 
 			// 2. Envío del formulario
@@ -430,13 +584,60 @@
 					if (result.status === 'SUCCESS') {
 						window.location.href = result.sessionUrl;
 					} else {
-						alert("Error al iniciar la suscripción: " + result.message);
+						console.log("Estoy dentro");
+						if (result.message.includes("no autenticado")) {
+							mostrarAlertaAnimal(result.message);
+						}
+						else if (result.message.includes("Datos de Perfil Incompletos")) {
+							mostrarAlertaAnimalPerfil();
+						}
+						else {
+							alert("Error al iniciar el pago: " + result.message);
+						}
 					}
 				} catch (error) {
 					console.error("Error al conectar con el servidor:", error);
 					alert("No se pudo procesar la suscripción.");
 				}
 			});
+
+			function mostrarAlertaAnimal() {
+				const alertaModalEl = document.getElementById('alertaAnimal');
+				const alertaModal = new bootstrap.Modal(alertaModalEl, {
+					backdrop: 'static',
+					keyboard: false
+				});
+
+				alertaModal.show();
+
+				const timerId = setTimeout(() => {
+					window.location.href = "/login";
+				}, 4000);
+
+				document.getElementById('btnLogin').addEventListener("click", () => {
+					clearTimeout(timerId);
+					window.location.href = "/login";
+				});
+			}
+
+			function mostrarAlertaAnimalPerfil() {
+				const alertaModalEl = document.getElementById('alertaAnimalPerfil');
+				const alertaModal = new bootstrap.Modal(alertaModalEl, {
+					backdrop: 'static',
+					keyboard: false
+				});
+
+				alertaModal.show();
+
+				const timerId = setTimeout(() => {
+					window.location.href = "/perfil/editar";
+				}, 4000);
+
+				document.getElementById('btnLoginPerfil').addEventListener("click", () => {
+					clearTimeout(timerId);
+					window.location.href = "/perfil/editar";
+				});
+			}
 		});
 	</script>
 
@@ -451,46 +652,6 @@
 			url.searchParams.set("sort", `${field},${direction}`);
 			window.location.href = url.toString();
 		}
-	</script>
-
-	<script>
-		document.getElementById('checkoutSuscripcionForm').addEventListener('submit', async function (event) {
-			event.preventDefault();
-
-			const form = event.target;
-			const aporteMensual = form.aporteMensual.value;
-
-			// Validación básica
-			if (!aporteMensual || isNaN(aporteMensual) || Number(aporteMensual) <= 0) {
-				alert("Por favor, introduce un aporte mensual válido.");
-				return;
-			}
-
-			const data = {
-				aporteMensual: Number(aporteMensual)
-			};
-
-			try {
-				const response = await fetch(form.action, {
-					method: 'POST',
-					headers: {
-						'Content-Type': 'application/json'
-					},
-					body: JSON.stringify(data)
-				});
-
-				const result = await response.json();
-
-				if (result.status === 'SUCCESS') {
-					window.location.href = result.sessionUrl; // Redirige a Stripe u otra pasarela
-				} else {
-					alert("Error al iniciar la suscripción: " + result.message);
-				}
-			} catch (error) {
-				console.error("Error al conectar con el servidor:", error);
-				alert("No se pudo procesar la suscripción.");
-			}
-		});
 	</script>
 
 	<script>
@@ -532,6 +693,7 @@
 					modalImagen2.setAttribute('src', imagen2);
 					modalImagen3.setAttribute('src', imagen3);
 					modalBotonAdopta.setAttribute('href', `/adopta/${id}`);
+					modalBotonApadrina.setAttribute('data-id', id);
 
 					if (!adoptado && caracter) {
 						modalBotonAdopta.style.display = 'inline-block';
@@ -546,6 +708,19 @@
 						modalBotonApadrina.style.display = 'none';
 					}
 				});
+			});
+
+			document.getElementById('modalBotonApadrina').addEventListener('click', function () {
+				const idAnimal = this.getAttribute('data-id');
+
+				// Asignar el action al formulario y el valor del input oculto
+				const form = document.getElementById('checkoutApadrinarForm');
+				form.setAttribute('action', `/apadrinar/${idAnimal}/checkout-suscripcion`);
+				document.getElementById('animalId').value = idAnimal;
+
+				// Abrir el modal de apadrinamiento manualmente
+				const modalApadrinar = new bootstrap.Modal(document.getElementById('modalApadrinar'));
+				modalApadrinar.show();
 			});
 		});
 	</script>
