@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <script th:src="@{/js/all.js}"></script>
+    <title>Inicio de sesión</title>
+    <link rel="stylesheet" th:href="@{/css/LoginRegistro.css}"/>
+    <link
+            href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+            rel="stylesheet"
+    />
+</head>
+
+<body>
+
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<!--  <div class="ContenedorPrincipal">-->
+<div class="logoContainer">
+    <a href="/" class="logo-btn">
+        <img src="images/Logocompletosinfondo.png" alt="Logo">
+    </a>
+
+    <div class="container">
+        <div class="form-box login">
+            <form th:action="@{/login}" method="post">
+                <h1>Acceso</h1>
+                <div class="input-box">
+                    <input type="text" name="username" placeholder="Nombre de usuario" required/>
+                    <i class="bx bxs-user"></i>
+                </div>
+                <div class="input-box">
+                    <input type="password" name="password" placeholder="Contraseña" required/>
+                    <i class="bx bxs-lock-alt"></i>
+                </div>
+                <div class="forgot-link">
+                    <a th:href="@{/olvido-password}">¿Has olvidado la contraseña?</a>
+                </div>
+                <button type="submit" class="btn">Iniciar sesión</button>
+                <p>o inicia sesión con una de tus redes sociales</p>
+                <div class="social-icons">
+                    <a href="#"><i class="bx bxl-google"></i></a>
+                    <a href="#"><i class="bx bxl-facebook"></i></a>
+                    <a href="#"><i class="bx bxl-github"></i></a>
+                    <a href="#"><i class="bx bxl-linkedin"></i></a>
+                </div>
+            </form>
+        </div>
+
+        <div class="form-box register">
+            <form th:action="@{/registro}" method="post">
+                <h1>Registro</h1>
+                <div class="input-box">
+                    <input type="text" placeholder="Usuario" required/>
+                    <i class="bx bxs-user"></i>
+                </div>
+                <div class="input-box">
+                    <input type="email" placeholder="Correo electrónico" required/>
+                    <i class="bx bxs-envelope"></i>
+                </div>
+                <div class="input-box">
+                    <input type="password" placeholder="Contraseña" required/>
+                    <i class="bx bxs-lock-alt"></i>
+                </div>
+                <button type="submit" class="btn">Registrarse</button>
+                <p>o accede con una de tus redes sociales</p>
+                <div class="social-icons">
+                    <a href="#"><i class="bx bxl-google"></i></a>
+                    <a href="#"><i class="bx bxl-facebook"></i></a>
+                    <a href="#"><i class="bx bxl-github"></i></a>
+                    <a href="#"><i class="bx bxl-linkedin"></i></a>
+                </div>
+            </form>
+        </div>
+
+        <div class="toggle-box">
+            <div class="toggle-panel toggle-left">
+                <h1>¡Hola, te damos la bienvenida!</h1>
+                <p>¿No tienes cuenta?</p>
+                <button class="btn register-btn">Regístrate</button>
+            </div>
+
+            <div class="toggle-panel toggle-right">
+                <h1>¡Nos alegramos de verte de nuevo!</h1>
+                <p>¿Ya tienes cuenta?</p>
+                <button class="btn login-btn">Inicia sesión</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--  </div>-->
+
+<script>
+    container = document.querySelector('.container');
+    const registerBtn = document.querySelector('.register-btn');
+    const loginBtn = document.querySelector('.login-btn');
+
+    registerBtn.addEventListener('click', () => {
+        container.classList.add('active');
+    })
+
+    loginBtn.addEventListener('click', () => {
+        container.classList.remove('active');
+    })
+</script>
+
+</body>
+</html>
