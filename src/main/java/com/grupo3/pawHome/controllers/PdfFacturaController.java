@@ -4,11 +4,9 @@ import com.grupo3.pawHome.config.MyUserDetails;
 import com.grupo3.pawHome.dtos.FacturaDTO;
 import com.grupo3.pawHome.entities.Adopcion;
 import com.grupo3.pawHome.entities.Usuario;
-import com.grupo3.pawHome.services.AdopcionService;
-import com.grupo3.pawHome.services.FacturaService;
-import com.grupo3.pawHome.services.PdfFacturaService;
-import com.grupo3.pawHome.services.UsuarioService;
+import com.grupo3.pawHome.services.*;
 import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.PdfContentByte;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
@@ -81,6 +79,12 @@ public class PdfFacturaController {
 
         Document document = new Document(PageSize.A4, 50, 50, 50, 50);
         PdfWriter writer = PdfWriter.getInstance(document, response.getOutputStream());
+
+        String fondoPath = "src/main/resources/static/images/fondoPdf.png";
+        if (Files.exists(Paths.get(fondoPath))) {
+            writer.setPageEvent(new BackgroundImageEvent(fondoPath));
+        }
+
         document.open();
 
         // 1. Logo
@@ -108,8 +112,9 @@ public class PdfFacturaController {
         intro.setSpacingAfter(15);
         document.add(intro);
 
-        // 4. Datos del Adoptante
-        document.add(new Paragraph("DATOS DEL ADOPTANTE", subTitulo()));
+        Paragraph subtituloAdoptante = new Paragraph("DATOS DEL ADOPTANTE", subTitulo());
+        subtituloAdoptante.setSpacingAfter(10); // Puedes ajustar a 15 si quieres más espacio
+        document.add(subtituloAdoptante);
 
         PdfPTable tablaAdoptante = new PdfPTable(2);
         tablaAdoptante.setWidthPercentage(100);
@@ -143,8 +148,9 @@ public class PdfFacturaController {
         tablaAnimal.addCell(adopcion.getAnimal().isGenero() ? "Macho" : "Hembra");
         document.add(tablaAnimal);
 
-        // 6. Cláusulas del contrato
-        document.add(new Paragraph("CLÁUSULAS DEL CONTRATO", subTitulo()));
+        Paragraph subtituloAnimal = new Paragraph("DATOS DEL ANIMAL", subTitulo());
+        subtituloAnimal.setSpacingAfter(10); // También ajustable
+        document.add(subtituloAnimal);
 
         Paragraph clausulas = new Paragraph();
         clausulas.setSpacingBefore(10);
