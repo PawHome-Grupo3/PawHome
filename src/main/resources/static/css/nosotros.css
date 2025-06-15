@@ -1,0 +1,59 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f6f6e7;
+    margin: 0;
+    padding: 0;
+}
+.team-container {
+    max-width: 800px;
+    margin: 40px auto;
+    background: #fffbe7;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    padding: 32px 24px;
+    position: relative;
+}
+.team-header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+.team-members {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 32px 16px;
+}
+.member {
+    flex: 1 1 180px;
+    max-width: 200px;
+    text-align: center;
+}
+.member img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #b3d9b3;
+    margin-bottom: 12px;
+}
+.member .role {
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+.bird-boss {
+    margin: 0 auto;
+    margin-top: 24px;
+    text-align: center;
+}
+.bird-boss img {
+    width: 110px;
+    height: 110px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #f5b041;
+}
+.bird-boss .role {
+    font-style: italic;
+    font-weight: bold;
+    margin-top: 6px;
+}

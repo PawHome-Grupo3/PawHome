@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{nosotros.titulo}">Sobre Nosotros</title>
+    <link rel="stylesheet" href="/css/nosotros.css">
+</head>
+<body>
+<div class="team-container">
+    <div class="team-header">
+        <img src="/img/logo.png" th:alt="#{nosotros.logo-alt}" style="height: 60px;">
+        <h2 th:text="#{nosotros.titulo}">Sobre Nosotros</h2>
+        <p th:text="#{nosotros.descripcion}">Conoce al equipo detrás de PawHome</p>
+    </div>
+    <div class="team-members">
+        <div class="member">
+            <img src="/img/miembro1.jpg" alt="Miembro 1">
+            <div class="role" th:text="#{nosotros.rol1}">Desarrollador Fullstack / Lógica y Debugging</div>
+        </div>
+        <div class="member">
+            <img src="/img/miembro2.jpg" alt="Miembro 2">
+            <div class="role" th:text="#{nosotros.rol2}">Desarrollo Fullstack / Lógica técnica y funcionalidades</div>
+        </div>
+        <div class="member">
+            <img src="/img/miembro3.jpg" alt="Miembro 3">
+            <div class="role" th:text="#{nosotros.rol3}">Desarrollo Fullstack / Frontend/UI Designer</div>
+        </div>
+        <div class="member">
+            <img src="/img/miembro4.jpg" alt="Miembro 4">
+            <div class="role" th:text="#{nosotros.rol4}">Desarrollo Fullstack / Gestor de contenidos y coordinador</div>
+        </div>
+    </div>
+    <div class="bird-boss">
+        <img src="/img/bird.jpg" alt="The birdg boss">
+        <div class="role" th:text="#{nosotros.boss}">The bi(rd)g boss</div>
+    </div>
+</div>
+</body>
+</html>

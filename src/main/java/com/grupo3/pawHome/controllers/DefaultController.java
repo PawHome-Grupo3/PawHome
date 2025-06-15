@@ -106,6 +106,11 @@ public class DefaultController {
 
     @GetMapping("/finalfeliz")
     public String mostrarFinalesFelices() { return "FinalFeliz"; }
+
+    @GetMapping("/nosotros")
+    public String mostrarNosotros() {
+        return "nosotros";
+    }
 }
 
 
