@@ -5,7 +5,7 @@ body {
     background: linear-gradient(90deg, #e2e2e2, rgba(0, 196, 118, 0.7));
 }
 
-.cardFormulario {
+.cardFormulario1 {
     background: rgba(255, 255, 255, 0.85);
     border-radius: 20px;
     padding: 40px 25px;
@@ -21,6 +21,33 @@ body {
     flex-direction: column;
     justify-content: center;
     border-left: 8px solid #27632a;
+}
+.cardFormulario2 {
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 20px;
+    padding: 40px 25px;
+    margin: 0;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(10px);
+    opacity: 0;
+    transform: translateY(60px);
+    animation: floatIn 1.2s ease-out forwards;
+    flex: 1 1 100%;
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-right: 8px solid #27632a;
+}
+
+.form-control {
+    width: 90%;
+    display: unset;
+}
+
+.form-select {
+    width: 94%;
+    display: unset;
 }
 
 h2, h3 {
