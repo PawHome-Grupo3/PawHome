@@ -95,9 +95,6 @@ public class DefaultController {
     @GetMapping("/colabora/adopta")
     public String mostrarColaboraAdopta() { return "Adopta"; }
 
-    @GetMapping("/colabora/adopta/formularioAdopta")
-    public String mostrarformularioadopta() { return "formularioAdopta"; }
-
     @GetMapping("/colabora/paseosolidario")
     public String mostrarColaboraPaseoSolidario() { return "PaseoSolidario"; }
 

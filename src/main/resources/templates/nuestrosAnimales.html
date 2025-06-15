@@ -257,7 +257,7 @@
 							</div>
 							<div class="row d-flex justify-content-center flex-nowrap">
 								<a th:if="${animal.adoptado == false && animal.caracterSocial == true}"
-								   th:href="@{/adopta/{id}(id=${animal.id})}"
+								   th:href="@{/colabora/adopta/formularioAdopta(animalId=${animal.id})}"
 								   class="botonesCardAnimal btn card_btn">Adopta</a>
 
 								<a href="#"

@@ -3,198 +3,154 @@
       layout:decorate="~{layouts/layout.html}">
 <head>
   <link rel="stylesheet" th:href="@{/css/formularios.css}"/>
-  <title th:text="#{form.title}">Formulario para adoptar</title>
+  <title th:text="#{form.title}"></title>
 </head>
 <body>
 <section class="mb-5" layout:fragment="content">
   <h2 class="text-success-emphasis fw-bold display-5 my-4 text-center" th:text="#{form.heading}">Adopta a una de nuestras mascotas</h2>
   <div class="formContainer">
-    <form class="row g-3" method="post">
+    <!-- ... encabezado HTML omitido para brevedad ... -->
+    <form th:action="@{/colabora/adopta/crearFormulario}" th:object="${formAdoptaDTO}" class="row g-3" method="post">
       <fieldset class="col-md-6">
-        <legend class="fw-bold"><strong th:text="#{form.adopter.data}">DATOS DEL ADOPTANTE:</strong></legend>
-        <br>
-
+        <!-- ... otros campos ... -->
         <div class="itemSeleccion">
-          <label for="nombreAdoptante" class="form-label" th:text="#{form.adopter.name}">Nombre completo: <span style="color: red">*</span></label>
+          <label for="nombreAdoptante" class="form-label" th:text="#{form.adopter.name}"></label>
           <input type="text" id="nombreAdoptante" class="form-control labelForm"
-                 th:placeholder="#{form.adopter.name.placeholder}" required>
+                 th:value="*{nombre}" th:field="*{nombre}" th:placeholder="#{form.adopter.name.placeholder}" readonly>
         </div>
 
         <div class="itemSeleccion">
-          <label for="adoptanteDNI" class="form-label" th:text="#{form.adopter.dni}">DNI: <span style="color: red">*</span></label>
+          <label for="adoptanteDNI" class="form-label" th:text="#{form.adopter.dni}"></label>
           <input type="text" id="adoptanteDNI" class="form-control labelForm"
-                 th:placeholder="#{form.adopter.dni.placeholder}" required>
+                 th:value="*{dni}" th:field="*{dni}" th:placeholder="#{form.adopter.dni.placeholder}" readonly>
         </div>
 
         <div class="itemSeleccion">
-          <label for="edadAdoptante" class="form-label" th:text="#{form.adopter.age}">Edad: <span style="color: red">*</span></label>
+          <label for="edadAdoptante" class="form-label" th:text="#{form.adopter.age}"></label>
           <input type="text" id="edadAdoptante" class="form-control labelForm"
-                 th:placeholder="#{form.adopter.age.placeholder}" required>
+                 th:value="*{edad}" th:field="*{edad}" th:placeholder="#{form.adopter.age.placeholder}" readonly>
         </div>
 
         <div class="itemSeleccion">
-          <label for="telefonoAdoptante" class="form-label" th:text="#{form.adopter.phone}">Teléfono: <span style="color: red">*</span></label>
+          <label for="telefonoAdoptante" class="form-label" th:text="#{form.adopter.phone}"></label>
           <input type="text" id="telefonoAdoptante" class="form-control labelForm"
-                 th:placeholder="#{form.adopter.phone.placeholder}" required>
+                 th:value="*{telefono}" th:field="*{telefono}" th:placeholder="#{form.adopter.phone.placeholder}" readonly>
         </div>
 
         <div class="itemSeleccion">
-          <label for="correoAdoptante" class="form-label" th:text="#{form.adopter.email}">Correo: <span style="color: red">*</span></label>
+          <label for="correoAdoptante" class="form-label" th:text="#{form.adopter.email}"></label>
           <input type="email" id="correoAdoptante" class="form-control labelForm"
-                 th:placeholder="#{form.adopter.email.placeholder}" required>
+                 th:value="*{correo}" th:field="*{correo}" th:placeholder="#{form.adopter.email.placeholder}" readonly>
         </div>
 
         <div class="itemSeleccion">
-          <label for="direccionAdoptante" class="form-label" th:text="#{form.adopter.address}">Dirección: <span style="color: red">*</span></label>
+          <label for="direccionAdoptante" class="form-label" th:text="#{form.adopter.address}"></label>
           <input type="text" id="direccionAdoptante" class="form-control labelForm"
-                 th:placeholder="#{form.adopter.address.placeholder}" required>
+                 th:value="*{direccion}" th:field="*{direccion}" th:placeholder="#{form.adopter.address.placeholder}" readonly>
         </div>
 
         <div class="itemSeleccion">
-          <label for="ocupacionAdoptante" class="form-label" th:text="#{form.adopter.occupation}">Ocupación: <span style="color: red">*</span></label>
-          <select id="ocupacionAdoptante" class="form-select labelForm" required>
-            <option value="" disabled selected th:text="#{form.select.option}">-Por favor, elige una opción-</option>
-            <option th:text="#{form.adopter.occupation.unemployed}">En situación de desempleo</option>
-            <option th:text="#{form.adopter.occupation.worker}">Trabajador</option>
+          <label for="ocupacionAdoptante" class="form-label" th:text="#{form.adopter.occupation}"></label>
+          <select id="ocupacionAdoptante" class="form-select labelForm" th:field="*{ocupacion}" required>
+            <option value="" disabled selected th:text="#{form.select.option}"></option>
+            <option value="desempleado" th:text="#{form.adopter.occupation.unemployed}"></option>
+            <option value="trabajador" th:text="#{form.adopter.occupation.worker}"></option>
           </select>
         </div>
 
         <div class="itemSeleccion">
-          <label for="animalesAdoptante" class="form-label" th:text="#{form.adopter.other.animals}">¿Tiene otros animales? <span style="color: red">*</span></label>
+          <label for="animalesAdoptante" class="form-label" th:text="#{form.adopter.other.animals}"></label>
           <select id="animalesAdoptante" class="form-select labelForm" required>
-            <option value="" disabled selected th:text="#{form.select.option}">-Elija una opción-</option>
-            <option th:text="#{form.yes}">Sí</option>
-            <option th:text="#{form.no}">No</option>
+            <option value="" disabled selected th:text="#{form.select.option}"></option>
+            <option value="si" th:text="#{form.yes}"></option>
+            <option value="no" th:text="#{form.no}"></option>
           </select>
           <input type="text" id="detalleAnimales" class="form-control labelForm mt-2"
-                 th:placeholder="#{form.adopter.other.animals.details}" />
+                 th:field="*{otrosAnimales}" th:placeholder="#{form.adopter.other.animals.details}" />
         </div>
 
         <div class="itemSeleccion">
-          <label for="acuerdoFamiliar" class="form-label" th:text="#{form.adopter.family.agreement}">¿Todas las personas de su unidad familiar están de acuerdo con la adopción? <span style="color: red">*</span></label>
-          <select id="acuerdoFamiliar" class="form-select labelForm" required>
-            <option value="" disabled selected th:text="#{form.select.option}">-Elija una opción-</option>
-            <option th:text="#{form.yes}">Sí</option>
-            <option th:text="#{form.no}">No</option>
+          <label for="acuerdoFamiliar" class="form-label" th:text="#{form.adopter.family.agreement}"></label>
+          <select id="acuerdoFamiliar" class="form-select labelForm" th:field="*{deAcuerdo}" required>
+            <option value="" disabled selected th:text="#{form.select.option}"></option>
+            <option value="si" th:text="#{form.yes}"></option>
+            <option value="no" th:text="#{form.no}"></option>
           </select>
         </div>
 
         <div class="itemSeleccion">
-          <label for="hijosAdoptante" class="form-label" th:text="#{form.adopter.children}">¿Tiene hijos? <span style="color: red">*</span></label>
+          <label for="hijosAdoptante" class="form-label" th:text="#{form.adopter.children}"></label>
           <select id="hijosAdoptante" class="form-select labelForm" required>
-            <option value="" disabled selected th:text="#{form.select.option}">-Elija una opción-</option>
-            <option th:text="#{form.yes}">Sí</option>
-            <option th:text="#{form.no}">No</option>
+            <option value="" disabled selected th:text="#{form.select.option}"></option>
+            <option value="si" th:text="#{form.yes}"></option>
+            <option value="no" th:text="#{form.no}"></option>
           </select>
           <input type="text" id="detalleHijos" class="form-control labelForm mt-2"
-                 th:placeholder="#{form.adopter.children.details}" />
+                 th:field="*{hijos}" th:placeholder="#{form.adopter.children.details}" />
         </div>
       </fieldset>
 
       <fieldset class="col-md-6">
-        <legend class="fw-bold"><strong th:text="#{form.adoption.data}">DATOS DE LA ADOPCIÓN:</strong></legend>
-        <br>
-
         <div class="itemSeleccion">
-          <label for="seleccionAdoptante" class="form-label" th:text="#{form.adoption.prefer.pet}">¿Prefiere adoptar un perro o un gato? <span style="color: red">*</span></label>
-          <select id="seleccionAdoptante" class="form-select labelForm" required>
-            <option value="" disabled selected th:text="#{form.select.option}">-Elija una opción-</option>
-            <option th:text="#{form.adoption.prefer.dog}">Perro</option>
-            <option th:text="#{form.adoption.prefer.cat}">Gato</option>
-            <option th:text="#{form.adoption.prefer.any}">Indiferente</option>
-          </select>
-        </div>
-
-        <div class="itemSeleccion">
-          <label for="tamañoMascota" class="form-label" th:text="#{form.adoption.size}">Tamaño preferido del animal <span style="color: red">*</span></label>
-          <select id="tamañoMascota" class="form-select labelForm" required>
-            <option value="" disabled selected th:text="#{form.select.option}">-Elija una opción-</option>
-            <option th:text="#{form.adoption.size.small}">Pequeño</option>
-            <option th:text="#{form.adoption.size.medium}">Mediano</option>
-            <option th:text="#{form.adoption.size.large}">Grande</option>
-          </select>
-        </div>
-
-        <div class="itemSeleccion">
-          <label for="sexoMascota" class="form-label" th:text="#{form.adoption.gender}">¿De qué sexo lo prefiere? <span style="color: red">*</span></label>
-          <select id="sexoMascota" class="form-select labelForm" required>
-            <option value="" disabled selected th:text="#{form.select.option}">-Elija una opción-</option>
-            <option th:text="#{form.adoption.gender.female}">Hembra</option>
-            <option th:text="#{form.adoption.gender.male}">Macho</option>
-            <option th:text="#{form.adoption.gender.any}">Indiferente</option>
-          </select>
-        </div>
-
-        <div class="itemSeleccion">
-          <label for="caracteristicasMascota" class="form-label" th:text="#{form.adoption.characteristics}">¿Qué características busca en una mascota?</label>
+          <label for="caracteristicasMascota" class="form-label" th:text="#{form.adoption.characteristics}"></label>
           <input type="text" id="caracteristicasMascota" class="form-control labelForm"
-                 th:placeholder="#{form.adoption.characteristics.placeholder}" />
+                 th:field="*{caracteristicaMascota}" th:placeholder="#{form.adoption.characteristics.placeholder}" />
         </div>
 
         <div class="itemSeleccion">
-          <label for="experienciasMascota" class="form-label" th:text="#{form.adoption.experience}">¿Tienes experiencia previa con animales?</label>
+          <label for="experienciasMascota" class="form-label" th:text="#{form.adoption.experience}"></label>
           <input type="text" id="experienciasMascota" class="form-control labelForm"
-                 th:placeholder="#{form.adoption.experience.placeholder}" />
+                 th:field="*{experienciaPrevia}" th:placeholder="#{form.adoption.experience.placeholder}" />
         </div>
 
         <div class="itemSeleccion">
-          <label for="tiempoMascota" class="form-label" th:text="#{form.adoption.time.alone}">¿Cuánto tiempo estará solo el animal al día?</label>
+          <label for="tiempoMascota" class="form-label" th:text="#{form.adoption.time.alone}"></label>
           <input type="text" id="tiempoMascota" class="form-control labelForm"
-                 th:placeholder="#{form.adoption.time.alone.placeholder}" />
+                 th:field="*{tiempoSolo}" th:placeholder="#{form.adoption.time.alone.placeholder}" />
         </div>
 
         <div class="itemSeleccion">
-          <label for="vidaMascota" class="form-label" th:text="#{form.adoption.living.place}">¿Dónde vivirá el animal? <span style="color: red">*</span></label>
-          <select id="vidaMascota" class="form-select labelForm" required>
-            <option value="" disabled selected th:text="#{form.select.option}">-Elija una opción-</option>
-            <option th:text="#{form.adoption.living.place.indoor}">Interior</option>
-            <option th:text="#{form.adoption.living.place.outdoor}">Exterior</option>
-            <option th:text="#{form.adoption.living.place.both}">Ambas</option>
+          <label for="vidaMascota" class="form-label" th:text="#{form.adoption.living.place}"></label>
+          <select id="vidaMascota" class="form-select labelForm" th:field="*{dondeVivira}" required>
+            <option value="" disabled selected th:text="#{form.select.option}"></option>
+            <option value="interior" th:text="#{form.adoption.living.place.indoor}"></option>
+            <option value="exterior" th:text="#{form.adoption.living.place.outdoor}"></option>
+            <option value="ambas" th:text="#{form.adoption.living.place.both}"></option>
           </select>
         </div>
 
         <div class="itemSeleccion">
-          <label for="veterinarioMascota" class="form-label" th:text="#{form.adoption.trusted.vet}">¿Tienes un veterinario de confianza? <span style="color: red">*</span></label>
-          <select id="veterinarioMascota" class="form-select labelForm" required>
-            <option value="" disabled selected th:text="#{form.select.option}">-Elija una opción-</option>
-            <option th:text="#{form.yes}">Sí</option>
-            <option th:text="#{form.no}">No</option>
+          <label for="veterinarioMascota" class="form-label" th:text="#{form.adoption.trusted.vet}"></label>
+          <select id="veterinarioMascota" class="form-select labelForm" th:field="*{veterinario}" required>
+            <option value="" disabled selected th:text="#{form.select.option}"></option>
+            <option value="si" th:text="#{form.yes}"></option>
+            <option value="no" th:text="#{form.no}"></option>
           </select>
         </div>
 
         <div class="itemSeleccion">
-          <label for="visitasMascota" class="form-label" th:text="#{form.adoption.visits}">¿Autorizas visitas de seguimiento? <span style="color: red">*</span></label>
-          <select id="visitasMascota" class="form-select labelForm" required>
-            <option value="" disabled selected th:text="#{form.select.option}">-Elija una opción-</option>
-            <option th:text="#{form.yes}">Sí</option>
-            <option th:text="#{form.no}">No</option>
+          <label for="visitasMascota" class="form-label" th:text="#{form.adoption.visits}"></label>
+          <select id="visitasMascota" class="form-select labelForm" th:field="*{visitasSeguimiento}" required>
+            <option value="" disabled selected th:text="#{form.select.option}"></option>
+            <option value="si" th:text="#{form.yes}"></option>
+            <option value="no" th:text="#{form.no}"></option>
           </select>
         </div>
 
-        <a href="/nuestrosAnimales" target="_blank" class="enlaceMascotas" th:text="#{sponsor.form.pet.list.link}">Consulta la lista de animales disponibles</a>
+        <div class="mb-3">
+          <label for="firma" class="form-label" th:text="#{form.signature}"></label>
+          <textarea id="firma" class="form-control" rows="3" th:field="*{firma}" th:placeholder="#{form.signature.placeholder}" required></textarea>
+        </div>
 
-        <div class="compromiso mt-4">
-          <p><strong th:text="#{form.commitment.title}">Compromiso:</strong></p>
-          <p class="fst-italic" th:text="#{form.commitment.text}">
-            Declaro que los datos proporcionados son verídicos y me comprometo a brindar los cuidados necesarios al animal adoptado, respetando sus necesidades físicas, emocionales y médicas.
-          </p>
+        <div class="mb-3">
+          <label for="fecha" class="form-label" th:text="#{form.date}"></label>
+          <input type="date" id="fecha" class="form-control" th:field="*{fechaFormulario}" required>
+        </div>
 
-          <div class="mb-3">
-            <label for="firma" class="form-label" th:text="#{form.signature}">Firma:</label>
-            <textarea id="firma" class="form-control" rows="3"
-                      th:placeholder="#{form.signature.placeholder}" required></textarea>
-          </div>
-
-          <div class="mb-3">
-            <label for="fecha" class="form-label" th:text="#{form.date}">Fecha:</label>
-            <input type="date" id="fecha" class="form-control" required>
-          </div>
+        <div class="text-center mt-4">
+          <button type="submit" class="btn btn-success px-5" th:text="#{form.submit}"></button>
         </div>
       </fieldset>
-
-      <div class="text-center mt-4">
-        <button type="submit" class="btn btn-success px-5" th:text="#{form.submit}">Enviar formulario</button>
-      </div>
     </form>
   </div>
 </section>
