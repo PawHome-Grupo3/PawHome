@@ -33,11 +33,12 @@ public class UsuarioController {
     private final FacturaRepository facturaRepository;
     private final PaisUtils paisUtils;
     private final SecurityUtil securityUtil;
+    private final StripeService stripeService;
 
     public UsuarioController(UsuarioService usuarioService,
                              ApadrinarService apadrinarService,
                              LocationService locationService,
-                             MetodoPagoService metodoPagoService, PaisUtils paisUtils, FacturaService facturaService, FacturaRepository facturaRepository, SecurityUtil securityUtil) {
+                             MetodoPagoService metodoPagoService, PaisUtils paisUtils, FacturaService facturaService, FacturaRepository facturaRepository, SecurityUtil securityUtil, StripeService stripeService) {
         this.usuarioService = usuarioService;
         this.apadrinarService = apadrinarService;
         this.locationService = locationService;
@@ -46,6 +47,7 @@ public class UsuarioController {
         this.facturaService = facturaService;
         this.facturaRepository = facturaRepository;
         this.securityUtil = securityUtil;
+        this.stripeService = stripeService;
     }
 
     @GetMapping("/perfil/informacion")
@@ -158,6 +160,24 @@ public class UsuarioController {
         return "redirect:/perfil/editar";
     }
 
+    @GetMapping("/perfil/facturas")
+    public String mostrarFacturas(Model model, @AuthenticationPrincipal MyUserDetails userDetails) {
+
+        Usuario usuario = userDetails.getUsuario();
+        boolean tieneFacturas = facturaRepository.existsByUsuario_Id(Long.valueOf(usuario.getId()));
+
+        if(tieneFacturas) {
+
+            List<FacturaDTO> facturas = facturaService.obtenerFacturasPorUsuario(usuario.getId());
+
+            model.addAttribute("facturas", facturas);
+        }else{
+            model.addAttribute("facturas", null);
+        }
+
+        return "perfilUsuarioFacturas"; // la vista HTML donde tienes la tabla
+    }
+
     @GetMapping("/perfil/apadrinamientos")
     public String mostrarPerfilApadrinamientos(@AuthenticationPrincipal MyUserDetails userDetails, Model model) {
 
@@ -181,24 +201,6 @@ public class UsuarioController {
         return "perfilUsuarioApadrinamientos";
     }
 
-    @GetMapping("/perfil/facturas")
-    public String mostrarFacturas(Model model, @AuthenticationPrincipal MyUserDetails userDetails) {
-
-        Usuario usuario = userDetails.getUsuario();
-        boolean tieneFacturas = facturaRepository.existsByUsuario_Id(Long.valueOf(usuario.getId()));
-
-        if(tieneFacturas) {
-
-            List<FacturaDTO> facturas = facturaService.obtenerFacturasPorUsuario(usuario.getId());
-
-            model.addAttribute("facturas", facturas);
-        }else{
-            model.addAttribute("facturas", null);
-        }
-
-        return "perfilUsuarioFacturas"; // la vista HTML donde tienes la tabla
-    }
-
     @PostMapping("/perfil/apadrinamientos/finalizar")
     public String finalizarApadrinamiento(@RequestParam("apadrinamientoId") int apadrinamientoId) {
 
@@ -206,6 +208,19 @@ public class UsuarioController {
 
         if (apadrinarOpt.isPresent()) {
             Apadrinar apadrinamiento = apadrinarOpt.get();
+
+            // Cancelar en Stripe
+            String stripeSubscriptionId = apadrinamiento.getStripeSubscriptionId();
+            if (stripeSubscriptionId != null && !stripeSubscriptionId.isEmpty()) {
+                boolean cancelado = stripeService.cancelarSuscripcion(stripeSubscriptionId);
+                if (!cancelado) {
+                    // Opcional: manejar errores de cancelación
+                    // Redireccionar a una página de error o mostrar un mensaje
+                    return "redirect:/perfil/apadrinamientos?errorStripe";
+                }
+            }
+
+            // Marcar como inactivo en la BD
             apadrinamiento.setFechaBaja(LocalDate.now());
             apadrinarService.save(apadrinamiento);
         }
