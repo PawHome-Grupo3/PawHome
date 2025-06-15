@@ -26,7 +26,7 @@ public class SecurityConfig {
                 .cors(Customizer.withDefaults()) // 💡 habilita soporte para CORS
                 .csrf(AbstractHttpConfigurer::disable)
                 .formLogin(form -> form
-                        .loginPage("/login")
+                        .loginPage("/auth/loginPawHome")
                         .failureUrl("/login?error=true")
                         .defaultSuccessUrl("/", true)
                         .permitAll()
@@ -34,12 +34,18 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                         .requestMatchers("/css/**", "/js/**", "/images/**", "/fonts/**", "/webjars/**").permitAll()
-                        .requestMatchers("/login", "/register", "/product/v1/checkout").permitAll()
+                        .requestMatchers("/auth/**", "/register", "/product/v1/checkout").permitAll()
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .requestMatchers("/perfil/**").hasAnyRole("USER", "ADMIN")
                         .anyRequest().permitAll() // O .authenticated() si quieres proteger el resto
                 )
-                .logout(LogoutConfigurer::permitAll);
+                .logout(logout -> logout
+                        .logoutUrl("/logout")
+                        .logoutSuccessUrl("/")
+                        .invalidateHttpSession(true)
+                        .deleteCookies("JSESSIONID")
+                        .permitAll()
+                );
 
         return http.build();
     }

@@ -106,7 +106,7 @@
 
 					<!-- Usuario no logueado: acceso -->
 					<li sec:authorize="isAnonymous()">
-						<a class="dropdown-item" th:href="@{/loginPawHome}">
+						<a class="dropdown-item" th:href="@{/auth/loginPawHome}">
 							<i class="fa-solid fa-unlock-keyhole me-2"></i>
 							<span th:text="#{header.iniciar}"></span>
 						</a>

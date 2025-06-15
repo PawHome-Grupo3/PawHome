@@ -20,12 +20,12 @@
 <!--  <div class="ContenedorPrincipal">-->
 <div class="logoContainer">
     <a href="/" class="logo-btn">
-        <img src="images/Logocompletosinfondo.png" alt="Logo">
+        <img src="/images/Logocompletosinfondo.png" alt="Logo">
     </a>
 
     <div class="container">
         <div class="form-box login">
-            <form th:action="@{/login}" method="post">
+            <form th:action="@{/auth/loginPawHome}" method="post">
                 <h1>Acceso</h1>
                 <div class="input-box">
                     <input type="text" name="username" placeholder="Nombre de usuario" required/>
@@ -50,20 +50,26 @@
         </div>
 
         <div class="form-box register">
-            <form th:action="@{/registro}" method="post">
+            <form th:action="@{/auth/registro}" th:object="${registroDTO}" method="post">
                 <h1>Registro</h1>
                 <div class="input-box">
-                    <input type="text" placeholder="Usuario" required/>
+                    <input th:field="*{nickname}" type="text" placeholder="Usuario" required/>
                     <i class="bx bxs-user"></i>
+                    <p th:if="${#fields.hasErrors('nickname')}" th:errors="*{nickname}">Error</p>
                 </div>
                 <div class="input-box">
-                    <input type="email" placeholder="Correo electrónico" required/>
+                    <input th:field="*{email}" type="email" placeholder="Correo electrónico" required/>
                     <i class="bx bxs-envelope"></i>
+                    <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Error</p>
                 </div>
                 <div class="input-box">
-                    <input type="password" placeholder="Contraseña" required/>
+                    <input th:field="*{password}" type="password" placeholder="Contraseña" required/>
                     <i class="bx bxs-lock-alt"></i>
+                    <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Error</p>
                 </div>
+
+                <p th:if="${error}" th:text="${error}" style="color: red;"></p>
+
                 <button type="submit" class="btn">Registrarse</button>
                 <p>o accede con una de tus redes sociales</p>
                 <div class="social-icons">
