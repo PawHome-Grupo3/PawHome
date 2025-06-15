@@ -1,59 +1,96 @@
-body {
-    font-family: Arial, sans-serif;
-    background: #f6f6e7;
-    margin: 0;
-    padding: 0;
-}
-.team-container {
-    max-width: 800px;
-    margin: 40px auto;
-    background: #fffbe7;
-    border-radius: 16px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    padding: 32px 24px;
+.containerImagen {
     position: relative;
+    min-height: 120vh;
+    width: 100%;
+    overflow: hidden;
+    padding-top: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    z-index: 0;
+    margin-top: -100px;
 }
-.team-header {
+
+.containerImagen::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: url('../images/fachada.jpg') no-repeat center top fixed;
+    background-size: cover;
+    z-index: -2;
+}
+
+.containerImagen::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(13, 58, 39, 0.44);
+    z-index: -1;
+}
+
+.equipo-overlay {
+    background-color: rgba(187, 224, 155, 0.62);
+    border-radius: 15px;
+    padding: 40px 60px;
+    max-width: 1000px;
+    width: 80%;
     text-align: center;
-    margin-bottom: 32px;
+    z-index: 1;
+}
+
+.team-header h2{
+    text-align: center;
+    font-size: 2.6em;
+    font-weight: bold;
+}
+
+.team-header p {
+    font-size: 1.7rem;
+}
+
+.team-members .role {
+    font-size: 1.2rem;
+}
+
+.team-members ol, .team-members li {
+    font-size: 1.2rem;
 }
 .team-members {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
-    gap: 32px 16px;
+    justify-content: center;
+    gap: 40px;
 }
+
 .member {
-    flex: 1 1 180px;
-    max-width: 200px;
+    flex: 0 1 220px;
+    max-width: 220px;
     text-align: center;
 }
+
 .member img {
-    width: 120px;
-    height: 120px;
-    object-fit: cover;
+    width: 160px;
+    height: 160px;
     border-radius: 50%;
-    border: 3px solid #b3d9b3;
+    object-fit: cover;
+    border: 3px solid rgb(13, 58, 39);
     margin-bottom: 12px;
 }
-.member .role {
-    font-weight: bold;
-    margin-bottom: 4px;
-}
-.bird-boss {
-    margin: 0 auto;
-    margin-top: 24px;
-    text-align: center;
-}
+
+
 .bird-boss img {
-    width: 110px;
-    height: 110px;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 3px solid #f5b041;
+    border: 3px solid rgb(13, 58, 39);
 }
+
 .bird-boss .role {
     font-style: italic;
-    font-weight: bold;
     margin-top: 6px;
 }
