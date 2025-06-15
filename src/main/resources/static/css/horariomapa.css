@@ -29,14 +29,21 @@ body {
     backdrop-filter: blur(10px);
     opacity: 0;
     transform: translateY(60px);
-    animation:
-            floatIn 1.2s ease-out forwards,
-            levitar 3s ease-in-out infinite;
     flex: 1 1 100%;
+
+    /* Fade-in separado */
+    animation-name: floatIn, levitar;
+    animation-duration: 1.2s, 3s;
+    animation-timing-function: ease-out, ease-in-out;
+    animation-fill-mode: forwards, none;
+    animation-delay: 0.2s, 1.2s;
+    animation-iteration-count: 1, infinite;
+    animation-play-state: running, running;
 }
 
+/* Al hacer hover, solo se pausa levitar */
 .mainContainer:hover .card-box {
-    animation-play-state: paused, paused;
+    animation-play-state: running, paused;
 }
 
 .map-responsive {
