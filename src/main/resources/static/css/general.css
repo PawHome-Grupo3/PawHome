@@ -750,136 +750,228 @@ clamp(10px, 2vw, 40px);
 //////////////////////////////////////*/
 
 
-
-/*//////////////////////////////////////
-//         PERFIL_USUARIO             //
-//////////////////////////////////////*/
-
-.form-control:focus {
-    box-shadow: none;
-    border-color: #BA68C8
-}
-
-.profile-button {
-    background: rgb(99, 39, 120);
-    box-shadow: none;
-    border: none
-}
-
-.profile-button:hover {
-    background: #682773
-}
-
-.profile-button:focus {
-    background: #682773;
-    box-shadow: none
-}
-
-.profile-button:active {
-    background: #682773;
-    box-shadow: none
-}
-
-.back:hover {
-    color: #682773;
-    cursor: pointer
-}
-
-.labels {
-    font-size: 11px
-}
-
-.add-experience:hover {
-    background: #BA68C8;
-    color: #fff;
-    cursor: pointer;
-    border: solid 1px #BA68C8
-}
-
+/* NAVBAR PERFIL */
 :root {
+    --navPerfil-bg: #1B4332;
+    --navPerfil-hover: #2D6A4F;
+    --navPerfil-text: #ffffff;
+    --navPerfil-icon-bg: rgba(255, 255, 255, 0.1);
+    --navPerfil-border-radius: 12px;
     --primary: #5bc1ac;
     --light: #F3F6F9;
-    --dark: #191C24;
 }
 
-.divAside {
-    background-color: var(--light);
+.navPerfil-aside {
+    background-color: var(--navPerfil-bg);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-.navbarAside {
+.navPerfil-navbar {
+    background-color: transparent;
     width: 100%;
 }
 
-.navbarAside .navbar-nav .nav-link {
-    padding: 7px 20px;
-    color: #191C24FF;
-    font-weight: 500;
-    border-left: 3px solid var(--light);
-    border-radius: 0 30px 30px 0;
-    outline: none;
+.navPerfil-profile img {
+    object-fit: cover;
+    width: 50px;
+    height: 50px;
 }
 
-.navbarAside .navbar-nav .nav-link:hover,
-.navbarAside .navbar-nav .nav-link.active {
-    color: var(--primary);
-    background: #FFFFFF;
-    border-color: var(--primary);
+.navPerfil-profile small,
+.navPerfil-profile h6 {
+    color: var(--navPerfil-text);
 }
 
-.navbarAside .navbar-nav .nav-link i {
-    width: 40px;
-    height: 40px;
-    display: inline-flex;
+.navPerfil-nav .navPerfil-link {
+    color: var(--navPerfil-text);
+    padding: 10px 15px;
+    border-radius: var(--navPerfil-border-radius);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    display: flex;
     align-items: center;
-    justify-content: center;
-    background: #FFFFFF;
-    border-radius: 40px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    text-decoration: none;
 }
 
-.navbarAside .navbar-nav .nav-link:hover i,
-.navbarAside .navbar-nav .nav-link.active i {
-    background: var(--light);
+.navPerfil-nav .navPerfil-link i {
+    width: 24px;
+    height: 24px;
+    text-align: center;
+    color: var(--navPerfil-text);
+    background-color: var(--navPerfil-icon-bg);
+    border-radius: 50%;
+    padding: 6px;
+    transition: background-color 0.3s ease;
+    margin-right: 10px;
 }
 
-.navbarAside .dropdown-toggle::after {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    border: none;
-    content: "\f107";
-    font-weight: 900;
-    transition: .5s;
+.navPerfil-nav .navPerfil-link:hover,
+.navPerfil-nav .navPerfil-link.active {
+    background-color: var(--navPerfil-hover);
+    color: var(--navPerfil-text);
 }
 
-.navbarAside .dropdown-toggle[aria-expanded=true]::after {
-    transform: rotate(-180deg);
+.navPerfil-nav .navPerfil-link:hover i,
+.navPerfil-nav .navPerfil-link.active i {
+    background-color: #ffffff20;
 }
-
-.navbarAside .dropdown-item {
-    padding-left: 25px;
-    border-radius: 0 30px 30px 0;
-}
-
-.navbarAside .navbar-nav .nav-link {
-    margin-left: 0;
-    padding: 12px 0;
-    color: #191C24FF;
-    outline: none;
-}
-/*//////////////////////////////////////
-//         FIN PERFIL_USUARIO         //
-//////////////////////////////////////*/
-
 
 
 /*//////////////////////////////////////
 //       PERFIL_USUARIO_ANIMALES      //
 //////////////////////////////////////*/
 
+/* PERFIL USUARIO */
+.perfilInfo-fondo {
+    background-color: #f4fbf5;
+    min-height: 100vh;
+}
+
+.perfilInfo-card {
+    background-color: #ffffff;
+    border-left: 8px solid #27632a;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.perfilInfo-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(39, 99, 42, 0.15);
+}
+
+.perfilInfo-dato {
+    color: #114938;
+    font-weight: 500;
+    margin: 0;
+}
+
+.perfilInfo-btnEditar {
+    background-color: #27632a;
+    color: #fff;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 25px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.perfilInfo-btnEditar:hover {
+    background-color: #1e4e24;
+}
+
+.perfilInfo-btnAñadir {
+    background-color: #ffffff;
+    border: 2px solid #27632a;
+    color: #27632a;
+    font-weight: bold;
+    transition: 0.3s ease;
+    border-radius: 25px;
+    padding: 6px 20px;
+}
+
+.perfilInfo-btnAñadir:hover {
+    background-color: #27632a;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .perfilInfo-card {
+        padding: 1.5rem 1rem;
+    }
+
+    .perfilInfo-btnEditar,
+    .perfilInfo-btnAñadir {
+        width: 100%;
+    }
+}
 /*//////////////////////////////////////
 //    FIN PERFIL_USUARIO_ANIMALES     //
 //////////////////////////////////////*/
 
+/*//////////////////////////////////////
+//            PERFIL_EDITAR           //
+//////////////////////////////////////*/
+
+.perfilEditar-container {
+    background-color: #f4fbf5;
+    padding: 3rem 2rem;
+    min-height: 100vh;
+}
+
+.perfilEditar-card {
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+    padding: 2.5rem 2rem;
+}
+
+.perfilEditar-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #114938;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.labels {
+    font-weight: 600;
+    color: #114938;
+    margin-bottom: 6px;
+    display: inline-block;
+}
+
+.form-control,
+.form-select {
+    border-radius: 8px;
+    padding: 10px 15px;
+    border: 1px solid #ced4da;
+    transition: border-color 0.3s ease;
+    font-size: 1rem;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #5bc1ac;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(91, 193, 172, 0.2);
+}
+
+.profile-button {
+    background-color: #5bc1ac;
+    color: #fff;
+    font-weight: bold;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 25px;
+    transition: background-color 0.3s ease;
+}
+
+.profile-button:hover {
+    background-color: #48af98;
+}
+
+.error-message {
+    color: #d9534f;
+    font-size: 0.85rem;
+    margin-top: 4px;
+}
+
+/* Responsive para dispositivos pequeños */
+@media (max-width: 768px) {
+    .perfilEditar-card {
+        padding: 1.5rem 1rem;
+    }
+
+    .profile-button {
+        width: 100%;
+    }
+}
+
+/*//////////////////////////////////////
+//         FIN PERFIL_EDITAR          //
+//////////////////////////////////////*/
 
 
 /*////////////////////////////
