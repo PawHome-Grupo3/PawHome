@@ -25,20 +25,20 @@
 
     <div class="container">
         <div class="form-box login">
-            <form action="#">
+            <form th:action="@{/login}" method="post">
                 <h1>Acceso</h1>
                 <div class="input-box">
-                    <input type="text" placeholder="Nombre de usuario" required/>
+                    <input type="text" name="username" placeholder="Nombre de usuario" required/>
                     <i class="bx bxs-user"></i>
                 </div>
                 <div class="input-box">
-                    <input type="password" placeholder="Contraseña" required/>
+                    <input type="password" name="password" placeholder="Contraseña" required/>
                     <i class="bx bxs-lock-alt"></i>
                 </div>
                 <div class="forgot-link">
-                    <a href="#">¿Has olvidado la contraseña?</a>
+                    <a th:href="@{/olvido-password}">¿Has olvidado la contraseña?</a>
                 </div>
-                <button type="submit" class="btn">Acceso</button>
+                <button type="submit" class="btn">Iniciar sesión</button>
                 <p>o inicia sesión con una de tus redes sociales</p>
                 <div class="social-icons">
                     <a href="#"><i class="bx bxl-google"></i></a>
@@ -50,7 +50,7 @@
         </div>
 
         <div class="form-box register">
-            <form action="#">
+            <form th:action="@{/registro}" method="post">
                 <h1>Registro</h1>
                 <div class="input-box">
                     <input type="text" placeholder="Usuario" required/>
@@ -64,7 +64,7 @@
                     <input type="password" placeholder="Contraseña" required/>
                     <i class="bx bxs-lock-alt"></i>
                 </div>
-                <button type="submit" class="btn">Registro</button>
+                <button type="submit" class="btn">Registrarse</button>
                 <p>o accede con una de tus redes sociales</p>
                 <div class="social-icons">
                     <a href="#"><i class="bx bxl-google"></i></a>
