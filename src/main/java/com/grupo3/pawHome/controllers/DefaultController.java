@@ -106,9 +106,6 @@ public class DefaultController {
 
     @GetMapping("/finalfeliz")
     public String mostrarFinalesFelices() { return "FinalFeliz"; }
-
-    @GetMapping("/loginPawHome")
-    public String mostrarLoginRegistro() { return "loginRegistro"; }
 }
 
 
