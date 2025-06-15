@@ -1,40 +1,105 @@
-body{
+body {
     padding: 0;
     font-family: "Inter", sans-serif;
     overflow-x: hidden;
+    background: linear-gradient(90deg, #e2e2e2, rgba(0, 196, 118, 0.7));
 }
 
-.mainContainer{
-    background: #1B7D55B2;
-    margin: 100px;
-    padding: 15px;
+.cardFormulario {
+    background: rgba(255, 255, 255, 0.85);
     border-radius: 20px;
+    padding: 40px 25px;
+    margin: 0;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(10px);
+    opacity: 0;
+    transform: translateY(60px);
+    animation: floatIn 1.2s ease-out forwards;
+    flex: 1 1 100%;
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-left: 8px solid #27632a;
 }
 
-.cardFormulario{
-    background-color: rgba(27, 125, 85, 0.5);
-    border-radius: 20px;
+h2, h3 {
+    padding: 0.5rem 0 1rem 0;
+    margin: 0;
+    color: black;
+    font-weight: bold;
+    text-align: center;
+
+    opacity: 0;
+    transform: translateY(60px);
+    animation: floatIn 1.2s ease-out forwards;
 }
 
-.btnCard{
-    --selected-background-color: green;
+h2 {
+    animation-delay: 0.2s;
 }
 
-.itemSeleccion{
-    padding: 10px;
+h3 {
+    animation-delay: 0.4s;
 }
 
-.labelForm{
+@keyframes floatIn {
+    from {
+        opacity: 0;
+        transform: translateY(60px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.btnEnviar,
+.btn-success {
+    border: none;
+    background: linear-gradient(90deg, rgba(0, 255, 153, 0.7), rgba(27, 125, 85, 0.7));
+    border-radius: 0.75rem;
+    width: 100%;
+    height: 48px;
+    font-weight: 600;
+    font-size: 16px;
+    color: white;
+    transition: transform 0.3s ease-in-out, background 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.btnEnviar:hover,
+.btn-success:hover {
+    background: linear-gradient(90deg, rgba(0, 255, 153, 1), rgba(27, 125, 85, 1));
+    box-shadow: 0 0 15px rgba(0, 255, 153, 0.5);
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+.labelForm {
     border-radius: 10px;
 }
 
-.btnEnviar{
-    border: hidden;
-    background-color: #198754;
-    border-radius: 0.75rem;
-    width: 300px;
+.itemSeleccion {
+    padding: 10px;
 }
 
-.btnEnviar:hover{
-    background-color: #157347;
+@media (max-width: 768px) {
+    .row {
+        flex-direction: column !important;
+        gap: 1rem;
+    }
+
+    .cardFormulario {
+        padding: 20px 15px;
+        margin: 0 5px;
+        min-height: unset;
+        height: auto;
+    }
+
+    .btnEnviar,
+    .btn-success {
+        width: 100%;
+        height: 44px;
+        font-size: 15px;
+    }
 }

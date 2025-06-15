@@ -2,7 +2,7 @@
 <html lang="es" xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layouts/layout.html}">
 <head>
-    <title>Contacto</title>
+    <title>Contáctanos</title>
     <link rel="stylesheet" th:href="@{/css/contacto.css}"/>
 </head>
 
@@ -11,10 +11,11 @@
 <section layout:fragment="content">
 
     <section class="mainContainer d-flex flex-column text-center">
-        <h2 class="fw-bold" th:utext="#{contacto.contactanos}"></h2>
-        <div class="row d-flex justify-content-center cardFormulario mt-5 m-5">
+        <div class="row d-flex justify-content-center mt-5 m-5">
+            <h2 class="fw-bold" th:utext="#{contacto.contactanos}"></h2>
             <!---Columna izquierda--->
-            <article class="col-12 col-md-8 mt-5 mb-5">
+            <article class="col-12 col-md-4 mt-5 mb-5">
+
                 <h3 th:utext="#{contacto.dejanosMensaje}"></h3>
                 <div class="card p-3 shadow-sm cardFormulario">
                     <form>
@@ -45,7 +46,8 @@
                 </div>
             </article>
             <!---Columna derecha--->
-            <article class="col-6 col-md-4 mt-5 mb-5">
+            <article class="col-12 col-md-4 mt-5 mb-5">
+
                 <h3 th:utext="#{contacto.teLlamamos}"></h3>
                 <div class="card p-3 shadow-sm cardFormulario">
                     <form>

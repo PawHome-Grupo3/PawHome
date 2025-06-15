@@ -78,7 +78,7 @@ body {
     display: inline-block;
     padding: 14px 32px;
     min-width: 220px;
-    background: linear-gradient(90deg, rgb(76, 175, 80), rgb(46, 125, 50));
+    background: linear-gradient(90deg, rgba(0, 255, 153, 0.7), rgba(27, 125, 85, 0.7));
     border-radius: 12px;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
     border: none;
