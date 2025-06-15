@@ -18,11 +18,11 @@
             <ol>
                 <li>
                     <span th:text="#{apadrina.paso1}"></span>
-                    <a th:href="@{/nuestrosAnimales}" th:text="#{apadrina.amigosPeludos}"></a>.
+                    <a th:href="@{/nuestrosAnimales(adoptado='apadrinar')}" th:text="#{apadrina.amigosPeludos}"></a>.
                 </li>
                 <li>
                     <span th:text="#{apadrina.paso2}">Accede al</span>
-                    <a th:href="@{/colabora/Apadrina/formularioApadrina}" th:text="#{apadrina.formulario}"></a>.
+                    <a th:href="@{/nuestrosAnimales(adoptado='apadrinar')}" th:text="#{apadrina.formulario}"></a>.
 
                 </li>
                 <li th:text="#{apadrina.paso3}"></li>
