@@ -147,6 +147,9 @@
           <input type="date" id="fecha" class="form-control" th:field="*{fechaFormulario}" required>
         </div>
 
+        <input type="hidden" name="usuarioId" th:value="*{usuarioId}" />
+        <input type="hidden" name="animalId" th:value="*{animalId}" />
+
         <div class="text-center mt-4">
           <button type="submit" class="btn btn-success px-5" th:text="#{form.submit}"></button>
         </div>

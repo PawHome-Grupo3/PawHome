@@ -14,7 +14,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "documento_adopcion")
-public class DocumentoAdopcion {
+public class Adopcion {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Integer id;
@@ -43,7 +43,13 @@ public class DocumentoAdopcion {
 
     private LocalDate fechaFormulario;
 
+    private boolean aceptado;
+
     @ManyToOne
     @JoinColumn(name = "usuario_id", referencedColumnName = "id")
     private Usuario usuario;
+
+    @ManyToOne
+    @JoinColumn(name = "animal_id", referencedColumnName = "id")
+    private Animal animal;
 }

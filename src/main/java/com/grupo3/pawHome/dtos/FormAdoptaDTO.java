@@ -11,7 +11,8 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 public class FormAdoptaDTO {
-    Integer usuarioId;
+    int usuarioId;
+    int animalId;
     String nombre;
     String dni;
     Integer edad;
@@ -30,11 +31,11 @@ public class FormAdoptaDTO {
     String visitasSeguimiento;
     String firma;
     LocalDate fechaFormulario;
-    Animal animal;
 
-    public FormAdoptaDTO (Integer usuarioId, String nombre, String dni, int edad,
+    public FormAdoptaDTO (int usuarioId, int animalId, String nombre, String dni, int edad,
                           String telefono, String correo, String direccion) {
         this.usuarioId = usuarioId;
+        this.animalId = animalId;
         this.nombre = nombre;
         this.dni = dni;
         this.edad = edad;

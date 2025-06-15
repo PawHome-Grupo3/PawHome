@@ -4,10 +4,12 @@ import com.grupo3.pawHome.config.MyUserDetails;
 import com.grupo3.pawHome.dtos.FormAdoptaDTO;
 import com.grupo3.pawHome.dtos.ProductRequest;
 import com.grupo3.pawHome.dtos.StripeResponse;
-import com.grupo3.pawHome.entities.Animal;
+import com.grupo3.pawHome.entities.Adopcion;
 import com.grupo3.pawHome.entities.PerfilDatos;
 import com.grupo3.pawHome.entities.Usuario;
+import com.grupo3.pawHome.repositories.AdopcionRepository;
 import com.grupo3.pawHome.services.AnimalService;
+import com.grupo3.pawHome.services.AdopcionService;
 import com.grupo3.pawHome.services.StripeService;
 import com.grupo3.pawHome.services.UsuarioService;
 import com.grupo3.pawHome.util.SecurityUtil;
@@ -26,7 +28,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 @Controller
 public class ColaboraController {
@@ -35,12 +36,20 @@ public class ColaboraController {
     private final StripeService stripeService;
     private final SecurityUtil securityUtil;
     private final AnimalService animalService;
+    private final AdopcionService adopcionService;
+    private final AdopcionRepository adopcionRepository;
 
-    public ColaboraController(UsuarioService usuarioService, StripeService stripeService, SecurityUtil securityUtil, AnimalService animalService) {
+    public ColaboraController(UsuarioService usuarioService,
+                              StripeService stripeService,
+                              SecurityUtil securityUtil,
+                              AnimalService animalService,
+                              AdopcionService adopcionService, AdopcionRepository adopcionRepository) {
         this.usuarioService = usuarioService;
         this.stripeService = stripeService;
         this.securityUtil = securityUtil;
         this.animalService = animalService;
+        this.adopcionService = adopcionService;
+        this.adopcionRepository = adopcionRepository;
     }
 
     @GetMapping("/colabora/donaciones-materiales")
@@ -104,18 +113,13 @@ public class ColaboraController {
             Usuario usuario = userDetails.getUsuario();
             model.addAttribute("usuario", usuario);
 
-            if(usuario.getPerfilDatos() != null){
+            if(usuario.getPerfilDatos() != null && animalId != null) {
+
                 PerfilDatos perfilDatos = usuario.getPerfilDatos();
 
-                FormAdoptaDTO formAdoptaDTO = new FormAdoptaDTO(usuario.getId(), perfilDatos.getNombre(),
-                        perfilDatos.getDni(), perfilDatos.getEdad(), perfilDatos.getTelefono1(),
-                        usuario.getEmail(), perfilDatos.getDireccion());
-
-                if(animalId != null) {
-                    Optional<Animal> animalOpt = animalService.findById(animalId);
-                    formAdoptaDTO.setAnimal(animalOpt.orElse(null));
-                    model.addAttribute("animal", animalOpt.orElse(null));
-                }
+                FormAdoptaDTO formAdoptaDTO = new FormAdoptaDTO(usuario.getId(),animalId,
+                        perfilDatos.getNombre(), perfilDatos.getDni(), perfilDatos.getEdad(),
+                        perfilDatos.getTelefono1(), usuario.getEmail(), perfilDatos.getDireccion());
 
                 model.addAttribute("formAdoptaDTO", formAdoptaDTO);
             }
@@ -141,9 +145,9 @@ public class ColaboraController {
             return "redirect:/colabora/adopta/formularioAdopta";
         }
 
+        Adopcion adopcion = adopcionService.formAdoptaDtoToDocumentoAdopcion(formAdoptaDTO);
+        adopcionRepository.save(adopcion);
 
-
-        // Aquí procesarías el DTO, por ejemplo guardarlo en base de datos o llamar a servicio
         model.addAttribute("mensajeExito", "Formulario enviado correctamente");
 
         return "redirect:/";
