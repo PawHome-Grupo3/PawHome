@@ -32,6 +32,9 @@ public class Apadrinar {
     @Column(name = "stripe_subscription_id")
     private String stripeSubscriptionId;
 
+    @Column(name = "stripe_price_id")
+    private String stripePriceId;
+
     @ManyToOne
     @JoinColumn(name = "animal_id", referencedColumnName = "id")
     private Animal animal;

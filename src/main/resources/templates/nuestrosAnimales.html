@@ -16,7 +16,7 @@
 <section layout:fragment="content">
 	<div class="row m-5 pt-3">
 		<div class="col-7 contenedorIzquierdo">
-			<h2>Nuestros animales disponibles:</h2>
+			<h2>Nuestros animales:</h2>
 			<p>Adoptar un animal de nuestro refugio no solo significa darle una segunda oportunidad a un ser que ha sufrido
 				el abandono,
 				sino también ganar un compañero fiel que llenará tu hogar de amor y alegría. Cada uno de nuestros animales
@@ -190,11 +190,12 @@
 								   class="form-control flex-grow-1"
 								   style="min-width: 200px; max-width: 220px;" />
 
-							<!-- Filtro por adoptado -->
-							<select name="adoptado" class="form-select" style="width: 160px;">
+							<!-- Filtro por estado del animal -->
+							<select name="adoptado" class="form-select" style="width: 180px;">
 								<option th:value="null" th:selected="${adoptado == null}">Todos</option>
-								<option th:value="true" th:selected="${adoptado == 'true'}">Adoptados</option>
-								<option th:value="false" th:selected="${adoptado == 'false'}">Sin Adoptar</option>
+								<option th:value="apadrinar" th:selected="${adoptado == 'apadrinar'}">Para Apadrinar</option>
+								<option th:value="adoptar" th:selected="${adoptado == 'adoptar'}">Para Adoptar</option>
+								<option th:value="adoptado" th:selected="${adoptado == 'adoptado'}">Ya Adoptados</option>
 							</select>
 
 							<!-- Filtro por raza -->

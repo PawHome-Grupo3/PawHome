@@ -23,4 +23,8 @@ public class AnimalSpecifications {
     public static Specification<Animal> razaIdEs(Integer razaId) {
         return (root, query, cb) -> cb.equal(root.get("especie").get("raza").get("id"), razaId);
     }
+
+    public static Specification<Animal> caracterSocialEs(boolean valor) {
+        return (root, query, cb) -> cb.equal(root.get("caracterSocial"), valor);
+    }
 }
