@@ -4,15 +4,13 @@ import com.grupo3.pawHome.config.MyUserDetails;
 import com.grupo3.pawHome.dtos.FacturaDTO;
 import com.grupo3.pawHome.entities.Adopcion;
 import com.grupo3.pawHome.entities.Usuario;
-import com.grupo3.pawHome.services.AdopcionService;
-import com.grupo3.pawHome.services.FacturaService;
-import com.grupo3.pawHome.services.PdfFacturaService;
-import com.grupo3.pawHome.services.UsuarioService;
+import com.grupo3.pawHome.services.*;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import jakarta.servlet.http.HttpServletResponse;
+import org.apache.commons.io.IOUtils;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -22,24 +20,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.security.Principal;
+import java.io.InputStream;
 import java.util.List;
 import java.util.Optional;
 
 @Controller
 public class PdfFacturaController {
-    private final UsuarioService usuarioService;
     private final FacturaService facturaService;
     private final PdfFacturaService pdfFacturaService;
     private final AdopcionService adopcionService;
 
-    public PdfFacturaController(UsuarioService usuarioService,
-                                FacturaService facturaService,
+    public PdfFacturaController(FacturaService facturaService,
                                 PdfFacturaService pdfFacturaService,
                                 AdopcionService adopcionService) {
-        this.usuarioService = usuarioService;
         this.facturaService = facturaService;
         this.pdfFacturaService = pdfFacturaService;
         this.adopcionService = adopcionService;
@@ -103,12 +96,18 @@ public class PdfFacturaController {
 
         Document document = new Document(PageSize.A4, 50, 50, 50, 50);
         PdfWriter writer = PdfWriter.getInstance(document, response.getOutputStream());
+
+        InputStream fondoStream = getClass().getClassLoader().getResourceAsStream("static/images/fondoPdf.png");
+        if (fondoStream != null) {
+            writer.setPageEvent(new BackgroundImageEvent(fondoStream));
+        }
+
         document.open();
 
         // 1. Logo
-        String logoPath = "src/main/resources/static/images/Logocompletosinfondo.png";
-        if (Files.exists(Paths.get(logoPath))) {
-            Image logo = Image.getInstance(logoPath);
+        InputStream logoStream = getClass().getClassLoader().getResourceAsStream("static/images/Logocompletosinfondo.png");
+        if (logoStream != null) {
+            Image logo = Image.getInstance(IOUtils.toByteArray(logoStream));
             logo.scaleAbsolute(100, 100);
             logo.setAlignment(Element.ALIGN_LEFT);
             document.add(logo);
@@ -130,8 +129,9 @@ public class PdfFacturaController {
         intro.setSpacingAfter(15);
         document.add(intro);
 
-        // 4. Datos del Adoptante
-        document.add(new Paragraph("DATOS DEL ADOPTANTE", subTitulo()));
+        Paragraph subtituloAdoptante = new Paragraph("DATOS DEL ADOPTANTE", subTitulo());
+        subtituloAdoptante.setSpacingAfter(10); // Puedes ajustar a 15 si quieres más espacio
+        document.add(subtituloAdoptante);
 
         PdfPTable tablaAdoptante = new PdfPTable(2);
         tablaAdoptante.setWidthPercentage(100);
@@ -153,10 +153,13 @@ public class PdfFacturaController {
         document.add(tablaAdoptante);
 
         // 5. Datos del Animal
-        document.add(new Paragraph("DATOS DEL ANIMAL", subTitulo()));
+        Paragraph subtituloAnimal = new Paragraph("DATOS DEL ANIMAL", subTitulo());
+        subtituloAnimal.setSpacingAfter(10);
+        document.add(subtituloAnimal);
         PdfPTable tablaAnimal = new PdfPTable(2);
         tablaAnimal.setWidthPercentage(100);
-        tablaAnimal.setSpacingAfter(15);
+        tablaAnimal.setSpacingAfter(10);
+
         tablaAnimal.addCell(celdaHeader("Nombre del Animal"));
         tablaAnimal.addCell(adopcion.getAnimal().getNombre());
         tablaAnimal.addCell(celdaHeader("Fecha de Nacimiento"));
@@ -164,9 +167,6 @@ public class PdfFacturaController {
         tablaAnimal.addCell(celdaHeader("Género"));
         tablaAnimal.addCell(adopcion.getAnimal().isGenero() ? "Macho" : "Hembra");
         document.add(tablaAnimal);
-
-        // 6. Cláusulas del contrato
-        document.add(new Paragraph("CLÁUSULAS DEL CONTRATO", subTitulo()));
 
         Paragraph clausulas = new Paragraph();
         clausulas.setSpacingBefore(10);
@@ -227,21 +227,4 @@ public class PdfFacturaController {
         cell.setPadding(6);
         return cell;
     }
-
-//    @GetMapping("/adopciones/{id}/documento")
-//    public void generarDocumentoAdopcion(@PathVariable Integer id, HttpServletResponse response) throws Exception {
-//        Optional<Adopcion> adopcionOpt = adopcionService.findById(id);
-//        if (adopcionOpt.isEmpty()) {
-//            response.sendError(HttpServletResponse.SC_NOT_FOUND, "Adopción no encontrada");
-//            return;
-//        }
-//
-//        Adopcion adopcion = adopcionOpt.get();
-//
-//        response.setContentType("application/pdf");
-//        response.setHeader("Content-Disposition", "inline; filename=adopcion_" + id + ".pdf");
-//
-//        pdfService.generarPdfAdopcion(adopcion, response.getOutputStream());
-//    }
-
 }

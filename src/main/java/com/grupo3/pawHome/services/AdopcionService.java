@@ -9,6 +9,7 @@ import com.grupo3.pawHome.repositories.AnimalRepository;
 import com.grupo3.pawHome.repositories.UsuarioRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -52,4 +53,6 @@ public class AdopcionService {
     }
 
     public Optional<Adopcion> findById(Integer id) { return adopcionRepository.findById(id); }
+
+    public List<Adopcion> findaAllByUsuario(Usuario usuario) { return adopcionRepository.findAllByUsuario(usuario); }
 }

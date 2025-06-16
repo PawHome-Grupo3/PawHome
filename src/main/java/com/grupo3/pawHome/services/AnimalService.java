@@ -26,8 +26,7 @@ public class AnimalService {
 
     public Animal save(Animal animal) { return animalRepository.save(animal); }
 
-    public Page<Animal> buscarAnimales(
-            String keyword, String adoptado, Integer especieId, Integer razaId, Pageable pageable) {
+    public Page<Animal> buscarAnimales(String keyword, String adoptado, Integer especieId, Integer razaId, Pageable pageable) {
 
         Specification<Animal> spec = AnimalSpecifications.animalServicioEsFalse();
 
@@ -53,5 +52,9 @@ public class AnimalService {
         }
 
         return animalRepository.findAll(spec, pageable);
+    }
+
+    public List<Animal> findAllByPaseable(boolean paseable) {
+        return animalRepository.findAllByPaseable(paseable);
     }
 }

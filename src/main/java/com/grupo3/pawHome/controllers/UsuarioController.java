@@ -3,11 +3,9 @@ package com.grupo3.pawHome.controllers;
 import com.grupo3.pawHome.config.MyUserDetails;
 import com.grupo3.pawHome.dtos.CountryDTO;
 import com.grupo3.pawHome.dtos.FacturaDTO;
+import com.grupo3.pawHome.dtos.PerfilAdopcionDto;
 import com.grupo3.pawHome.dtos.PerfilDatosDTO;
-import com.grupo3.pawHome.entities.Apadrinar;
-import com.grupo3.pawHome.entities.MetodoPago;
-import com.grupo3.pawHome.entities.PerfilDatos;
-import com.grupo3.pawHome.entities.Usuario;
+import com.grupo3.pawHome.entities.*;
 import com.grupo3.pawHome.repositories.FacturaRepository;
 import com.grupo3.pawHome.services.*;
 import com.grupo3.pawHome.util.PaisUtils;
@@ -18,10 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 @Controller
 public class UsuarioController {
@@ -34,11 +29,18 @@ public class UsuarioController {
     private final PaisUtils paisUtils;
     private final SecurityUtil securityUtil;
     private final StripeService stripeService;
+    private final AdopcionService adopcionService;
 
     public UsuarioController(UsuarioService usuarioService,
                              ApadrinarService apadrinarService,
                              LocationService locationService,
-                             MetodoPagoService metodoPagoService, PaisUtils paisUtils, FacturaService facturaService, FacturaRepository facturaRepository, SecurityUtil securityUtil, StripeService stripeService) {
+                             MetodoPagoService metodoPagoService,
+                             PaisUtils paisUtils,
+                             FacturaService facturaService,
+                             FacturaRepository facturaRepository,
+                             SecurityUtil securityUtil,
+                             StripeService stripeService,
+                             AdopcionService adopcionService) {
         this.usuarioService = usuarioService;
         this.apadrinarService = apadrinarService;
         this.locationService = locationService;
@@ -48,6 +50,7 @@ public class UsuarioController {
         this.facturaRepository = facturaRepository;
         this.securityUtil = securityUtil;
         this.stripeService = stripeService;
+        this.adopcionService = adopcionService;
     }
 
     @GetMapping("/perfil/informacion")
@@ -214,9 +217,7 @@ public class UsuarioController {
             if (stripeSubscriptionId != null && !stripeSubscriptionId.isEmpty()) {
                 boolean cancelado = stripeService.cancelarSuscripcion(stripeSubscriptionId);
                 if (!cancelado) {
-                    // Opcional: manejar errores de cancelación
-                    // Redireccionar a una página de error o mostrar un mensaje
-                    return "redirect:/perfil/apadrinamientos?errorStripe";
+                    return "redirect:/error";
                 }
             }
 
@@ -242,6 +243,33 @@ public class UsuarioController {
         }
 
         return "redirect:/perfil/apadrinamientos";
+    }
+
+    @GetMapping("/perfil/adopciones")
+    public String mostrarPerfilAdopciones(@AuthenticationPrincipal MyUserDetails userDetails, Model model) {
+
+        Usuario usuario = userDetails.getUsuario();
+
+        if (usuario != null) {
+            List<Adopcion> adopciones = adopcionService.findaAllByUsuario(usuario);
+            List<PerfilAdopcionDto> perfilAdopcionDtos = new ArrayList<>();
+            PerfilAdopcionDto perfilAdopcionDto = new PerfilAdopcionDto();
+            for (Adopcion adopcion : adopciones) {
+                perfilAdopcionDto.setNombre(adopcion.getAnimal().getNombre());
+                perfilAdopcionDto.setAdopcionId(adopcion.getId());
+                perfilAdopcionDto.setRutaImg(adopcion.getAnimal().getRutaImg1());
+                perfilAdopcionDto.setFechaDocumento(String.valueOf(adopcion.getFechaFormulario()));
+                perfilAdopcionDto.setAceptado(false);
+                perfilAdopcionDtos.add(perfilAdopcionDto);
+            }
+            model.addAttribute("adopciones", perfilAdopcionDtos);
+        }
+        else{
+            model.addAttribute("adopciones", null);
+        }
+
+        model.addAttribute("usuario", usuario);
+        return "perfilUsuarioAdopciones";
     }
 
     @GetMapping("/login")

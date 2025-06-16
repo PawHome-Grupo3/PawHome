@@ -6,6 +6,7 @@
     <meta charset="UTF-8" />
     <link rel="stylesheet" th:href="@{/css/Dona.css}">
     <title th:text="#{dona.titulo}">Dona</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 
 <body class="dona-body">
@@ -45,7 +46,7 @@
                 <!-- Correos -->
                 <a href="/colabora/donaciones-materiales" th:title="#{dona.correos.titulo}">
                     <div class="dona-icono">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/9/9c/Logo_Correos_2019.svg" alt="Correos" />
+                        <i class="fas fa-handshake fa-3x"></i>
                     </div>
                 </a>
             </div>
@@ -269,12 +270,12 @@
             alertaModal.show();
 
             const timerId = setTimeout(() => {
-            window.location.href = "/login";
+            window.location.href = "/auth/loginPawHome";
         }, 4000);
 
             document.getElementById('btnLogin').addEventListener("click", () => {
             clearTimeout(timerId);
-            window.location.href = "/login";
+            window.location.href = "/auth/loginPawHome";
         });
         }
 

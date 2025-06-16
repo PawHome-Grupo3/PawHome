@@ -15,4 +15,6 @@ public class RazaService {
     }
 
     public List<Raza> findAll() { return razaRepository.findAll(); }
+
+    public List<Raza> findByEspecieId(Integer especieId) { return razaRepository.findByEspecieId(especieId); }
 }

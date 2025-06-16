@@ -32,12 +32,12 @@ public class SecurityConfig {
                         .permitAll()
                 )
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-                        .requestMatchers("/css/**", "/js/**", "/images/**", "/fonts/**", "/webjars/**").permitAll()
-                        .requestMatchers("/auth/**", "/register", "/product/v1/checkout").permitAll()
-                        .requestMatchers("/admin/**").hasRole("ADMIN")
-                        .requestMatchers("/perfil/**").hasAnyRole("USER", "ADMIN")
-                        .anyRequest().permitAll() // O .authenticated() si quieres proteger el resto
+                                .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+//                        .requestMatchers("/css/**", "/js/**", "/images/**", "/fonts/**", "/webjars/**").permitAll()
+//                        .requestMatchers("/auth/**", "/register", "/product/v1/checkout").permitAll()
+                                .requestMatchers("/admin/**").hasRole("ADMIN")
+                                .requestMatchers("/perfil/**", "/colabora/adopta/formularioAdopta").authenticated()
+                                .anyRequest().permitAll()
                 )
                 .logout(logout -> logout
                         .logoutUrl("/logout")
