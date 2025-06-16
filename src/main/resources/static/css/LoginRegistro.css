@@ -92,6 +92,10 @@ body {
     animation: fadeInFloating 3s ease-in-out forwards, floating 3s ease-in-out infinite;
 }
 
+.container:hover{
+    animation-play-state: running, paused;
+}
+
 .container h1 {
     font-size: 36px;
     margin: -10px 0;

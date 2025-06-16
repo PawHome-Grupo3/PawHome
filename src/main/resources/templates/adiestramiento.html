@@ -739,67 +739,96 @@
 				th:utext="#{servicios.otrosServicios}">
 			</h2>
 			<div class="row row-cols-1 row-cols-md-4 g-4">
-				<article class="col">
-					<div class="card p-3 shadow-sm cardServicio">
-						<div class="card_image">
-							<img th:src="@{images/guarderia.jpg}" alt="LogoPeluqueria" class="imagenCard">
+				<!-- Guardería -->
+				<article class="col mb-4">
+					<div class="ser-card h-100 d-flex flex-column shadow-lg position-relative rounded-4 overflow-hidden">
+						<div class="ser-imagen d-flex align-items-center justify-content-center">
+							<img th:src="@{images/guarderia.jpg}" alt="Guardería" class="ser-imagen-servicio">
 						</div>
-						<h3 class="mt-3 fs-3 fw-bold text-success-emphasis"
-							th:utext="#{servicios.guarderia}">
-						</h3>
-						<p class="fs-4"
-						   th:utext="#{servicios.guarderiaApartirDe}">
-						</p>
-						<a th:href="@{/guarderia}" class="btn btn-success"
-						   th:utext="#{servicios.masInfo}">
-						</a>
+						<div class="ser-contenido px-4 py-3 d-flex flex-column flex-grow-1 justify-content-between">
+							<div class="ser-info mb-3 text-center">
+								<h3 class="ser-titulo fs-5 fw-bold ser-texto-verde-emphasis mb-2"
+									th:utext="#{servicios.guarderia}"></h3>
+								<p class="ser-precio fs-5 fw-semibold ser-texto-muted"
+								   th:utext="#{servicios.guarderiaApartirDe}"></p>
+							</div>
+							<div class="ser-botonera mt-3 d-flex justify-content-center">
+								<a th:href="@{/guarderia}"
+								   class="ser-btn-otrosServicios d-flex align-items-center justify-content-center px-4 py-2">
+									<span th:utext="#{servicios.masInfo}">Más info</span>
+								</a>
+							</div>
+						</div>
 					</div>
 				</article>
-				<article class="col">
-					<div class="card p-3 shadow-sm cardServicio">
-						<div class="card_image">
-							<img th:src="@{images/peluqueriaCanina.jpg}" alt="LogoPeluqueria" class="imagenCard">
+
+				<!-- Peluqueria -->
+				<article class="col mb-4">
+					<div class="ser-card h-100 d-flex flex-column shadow-lg position-relative rounded-4 overflow-hidden">
+						<div class="ser-imagen d-flex align-items-center justify-content-center">
+							<img th:src="@{images/peluqueriaCanina.jpg}" alt="Peluqueria" class="ser-imagen-servicio">
 						</div>
-						<h3 class="mt-3 fs-3 fw-bold text-success-emphasis"
-							th:utext="#{servicios.peluqueria}"></h3>
-						<p class="fs-4"
-						   th:utext="#{servicios.peluqueriaApartirDe}">
-						</p>
-						<a th:href="@{/peluqueria}" class="btn btn-success"
-						   th:utext="#{servicios.masInfo}">
-						</a>
+						<div class="ser-contenido px-4 py-3 d-flex flex-column flex-grow-1 justify-content-between">
+							<div class="ser-info mb-3 text-center">
+								<h3 class="ser-titulo fs-5 fw-bold ser-texto-verde-emphasis mb-2"
+									th:utext="#{servicios.peluqueria}"></h3>
+								<p class="ser-precio fs-5 fw-semibold ser-texto-muted"
+								   th:utext="#{servicios.peluqueriaApartirDe}"></p>
+							</div>
+							<div class="ser-botonera mt-3 d-flex justify-content-center">
+								<a th:href="@{/peluqueria}"
+								   class="ser-btn-otrosServicios d-flex align-items-center justify-content-center px-4 py-2">
+									<span th:utext="#{servicios.masInfo}">Más info</span>
+								</a>
+							</div>
+						</div>
 					</div>
 				</article>
-				<article class="col">
-					<div class="card p-3 shadow-sm cardServicio">
-						<div class="card_image">
-							<img th:src="@{images/veterinario.jpg}" alt="LogoVeterinario" class="imagenCard">
+
+				<!-- Veterinario -->
+				<article class="col mb-4">
+					<div class="ser-card h-100 d-flex flex-column shadow-lg position-relative rounded-4 overflow-hidden">
+						<div class="ser-imagen d-flex align-items-center justify-content-center">
+							<img th:src="@{images/veterinario.jpg}" alt="Veterinario" class="ser-imagen-servicio">
 						</div>
-						<h3 class="mt-3 fs-3 fw-bold text-success-emphasis"
-							th:utext="#{servicios.veterinario}">
-						</h3>
-						<p class="fs-4"
-						   th:utext="#{servicios.veterinarioApartirDe}">
-						</p>
-						<a th:href="@{/veterinario}" class="btn btn-success"
-						   th:utext="#{servicios.masInfo}">
-						</a>
+						<div class="ser-contenido px-4 py-3 d-flex flex-column flex-grow-1 justify-content-between">
+							<div class="ser-info mb-3 text-center">
+								<h3 class="ser-titulo fs-5 fw-bold ser-texto-verde-emphasis mb-2"
+									th:utext="#{servicios.veterinario}"></h3>
+								<p class="ser-precio fs-5 fw-semibold ser-texto-muted"
+								   th:utext="#{servicios.veterinarioApartirDe}"></p>
+							</div>
+							<div class="ser-botonera mt-3 d-flex justify-content-center">
+								<a th:href="@{/veterinario}"
+								   class="ser-btn-otrosServicios d-flex align-items-center justify-content-center px-4 py-2">
+									<span th:utext="#{servicios.masInfo}">Más info</span>
+								</a>
+							</div>
+						</div>
 					</div>
 				</article>
-				<article class="col">
-					<div class="card p-3 shadow-sm cardServicio">
-						<div class="card_image">
-							<img th:src="@{images/asesoramientoLegal.jpg}" alt="LogoLegal" class="imagenCard">
+
+				<!-- Asesoramiento Legal -->
+				<article class="col mb-4">
+					<div class="ser-card h-100 d-flex flex-column shadow-lg position-relative rounded-4 overflow-hidden">
+						<div class="ser-imagen d-flex align-items-center justify-content-center">
+							<img th:src="@{images/asesoramientoLegal.jpg}" alt="Asesoramiento Legal"
+								 class="ser-imagen-servicio">
 						</div>
-						<h3 class="mt-3 fs-3 fw-bold text-success-emphasis"
-							th:utext="#{servicios.asesoramientoLegal}">
-						</h3>
-						<p class="fs-4"
-						   th:utext="#{servicios.asesoramientoApartirDe}">
-						</p>
-						<a th:href="@{/asesoramientoLegal}" class="btn btn-success"
-						   th:utext="#{servicios.masInfo}">
-						</a>
+						<div class="ser-contenido px-4 py-3 d-flex flex-column flex-grow-1 justify-content-between">
+							<div class="ser-info mb-3 text-center">
+								<h3 class="ser-titulo fs-5 fw-bold ser-texto-verde-emphasis mb-2"
+									th:utext="#{servicios.asesoramientoLegal}"></h3>
+								<p class="ser-precio fs-5 fw-semibold ser-texto-muted"
+								   th:utext="#{servicios.asesoramientoApartirDe}"></p>
+							</div>
+							<div class="ser-botonera mt-3 d-flex justify-content-center">
+								<a th:href="@{/asesoramientoLegal}"
+								   class="ser-btn-otrosServicios d-flex align-items-center justify-content-center px-4 py-2">
+									<span th:utext="#{servicios.masInfo}">Más info</span>
+								</a>
+							</div>
+						</div>
 					</div>
 				</article>
 			</div>
@@ -1042,12 +1071,12 @@
                 alertaModal.show();
 
                 const timerId = setTimeout(() => {
-                    window.location.href = "/login";
+                    window.location.href = "/auth/loginPawHome";
                 }, 4000);
 
                 document.getElementById('btnLogin').addEventListener("click", () => {
                     clearTimeout(timerId);
-                    window.location.href = "/login";
+                    window.location.href = "/auth/loginPawHome";
                 });
             }
 
