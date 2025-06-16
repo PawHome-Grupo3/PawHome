@@ -5,14 +5,10 @@
     <link rel="stylesheet" th:href="@{/css/formularios.css}"/>
     <title th:text="#{walk.form.title}">Formulario para paseo solidario</title>
 </head>
+
 <body>
 <section class="mb-5" layout:fragment="content">
     <h2 class="text-success-emphasis fw-bold display-5 my-4 text-center" th:text="#{walk.form.heading}">¡Apúntate a un Paseo Solidario!</h2>
-
-    <div th:if="${formularioEnviado}"
-         style="background:#d4edda; color:#155724; border:1px solid #c3e6cb; padding:16px; border-radius:6px; margin-bottom:20px; text-align:center; font-weight:bold;">
-        ¡Formulario enviado con éxito!
-    </div>
 
     <div class="formContainer">
         <form class="row g-3" method="post" th:action="@{/colabora/paseosolidario/formularioPS}">
@@ -92,6 +88,10 @@
                 <button type="submit" class="btn btnReserva" th:text="#{walk.form.submit}">Reservar Paseo Solidario</button>
             </div>
         </form>
+    </div>
+    <div th:if="${formularioEnviado}"
+         style="background:#d4edda; color:#155724; border:1px solid #c3e6cb; padding:16px; border-radius:6px; margin-bottom:20px; text-align:center; font-weight:bold;">
+        ¡Formulario enviado con éxito!
     </div>
 </section>
 </body>
