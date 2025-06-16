@@ -151,11 +151,11 @@ public class ColaboraController {
                 model.addAttribute("formAdoptaDTO", formAdoptaDTO);
             }
             else{
-                model.addAttribute("formAdoptaDTO", null);
+                model.addAttribute("formAdoptaDTO", new FormAdoptaDTO());
             }
         }
         else{
-            model.addAttribute("formAdoptaDTO", null);
+            model.addAttribute("formAdoptaDTO", new FormAdoptaDTO());
         }
 
         return "formularioAdopta";

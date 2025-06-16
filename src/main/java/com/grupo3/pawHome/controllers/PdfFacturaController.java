@@ -10,6 +10,7 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import jakarta.servlet.http.HttpServletResponse;
+import org.apache.commons.io.IOUtils;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -19,8 +20,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.io.InputStream;
 import java.util.List;
 import java.util.Optional;
 
@@ -75,17 +75,17 @@ public class PdfFacturaController {
         Document document = new Document(PageSize.A4, 50, 50, 50, 50);
         PdfWriter writer = PdfWriter.getInstance(document, response.getOutputStream());
 
-        String fondoPath = "src/main/resources/static/images/fondoPdf.png";
-        if (Files.exists(Paths.get(fondoPath))) {
-            writer.setPageEvent(new BackgroundImageEvent(fondoPath));
+        InputStream fondoStream = getClass().getClassLoader().getResourceAsStream("static/images/fondoPdf.png");
+        if (fondoStream != null) {
+            writer.setPageEvent(new BackgroundImageEvent(fondoStream));
         }
 
         document.open();
 
         // 1. Logo
-        String logoPath = "src/main/resources/static/images/Logocompletosinfondo.png";
-        if (Files.exists(Paths.get(logoPath))) {
-            Image logo = Image.getInstance(logoPath);
+        InputStream logoStream = getClass().getClassLoader().getResourceAsStream("static/images/Logocompletosinfondo.png");
+        if (logoStream != null) {
+            Image logo = Image.getInstance(IOUtils.toByteArray(logoStream));
             logo.scaleAbsolute(100, 100);
             logo.setAlignment(Element.ALIGN_LEFT);
             document.add(logo);
