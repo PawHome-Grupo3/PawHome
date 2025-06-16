@@ -22,6 +22,4 @@ public class Especie {
 
     @OneToMany(mappedBy = "especie", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Raza> razas;
-
-
 }

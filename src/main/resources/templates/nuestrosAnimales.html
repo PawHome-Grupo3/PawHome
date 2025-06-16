@@ -101,7 +101,7 @@
 									<div class="d-flex align-items-center bg-success bg-opacity-25 rounded-pill px-2 py-1 shadow-sm">
 										<i class="fa-solid fa-list-ol me-2 text-success"></i>
 										<select name="size"
-												class="form-select form-select-sm border-0 bg-transparent text-center fw-bold text-success"
+												class="form-select form-select-sm border-0 bg-transparent text-center p-0 fw-bold text-success"
 												onchange="document.getElementById('pageSizeFormDesktop').submit()"
 												style="min-width: 60px;">
 											<option th:value="5" th:selected="${pageSize == 5}">5</option>
@@ -198,20 +198,25 @@
 								<option th:value="adoptado" th:selected="${adoptado == 'adoptado'}">Ya Adoptados</option>
 							</select>
 
-							<!-- Filtro por raza -->
-							<select name="razaId" id="razaSelect" class="form-select" style="width: 180px;"
-									onchange="onRazaChange()">
-								<option th:value="null" th:selected="${razaId == null}">Todas las razas</option>
-								<option th:each="raza : ${razas}" th:value="${raza.id}" th:text="${raza.nombre}"
-										th:selected="${razaId != null and razaId == raza.id}"></option>
+							<!-- Filtro por especie -->
+							<select name="especieId" id="especieSelect" class="form-select" style="width: 180px;" onchange="onEspecieChange()">
+								<option th:value="null" th:selected="${especieId == null}">Todas las especies</option>
+								<option th:each="especie : ${especies}"
+										th:value="${especie.id}"
+										th:text="${especie.nombre}"
+										th:selected="${especieId != null and especieId == especie.id}">
+								</option>
 							</select>
 
-							<!-- Filtro por especie (si hay especies cargadas) -->
-							<select name="especieId" id="especieSelect" class="form-select" style="width: 180px;"
+							<!-- Filtro por raza (se filtran del lado del servidor usando especieId) -->
+							<select name="razaId" id="razaSelect" class="form-select" style="width: 180px;"
 									th:if="${especies != null}">
-								<option th:value="null" th:selected="${especieId == null}">Todas las especies</option>
-								<option th:each="especie : ${especies}" th:value="${especie.id}" th:text="${especie.nombre}"
-										th:selected="${especieId != null and especieId == especie.id}"></option>
+								<option th:value="null" th:selected="${razaId == null}">Todas las razas</option>
+								<option th:each="raza : ${razas}"
+										th:value="${raza.id}"
+										th:text="${raza.nombre}"
+										th:selected="${razaId != null and razaId == raza.id}">
+								</option>
 							</select>
 
 							<!-- Botón Filtrar -->
