@@ -29,7 +29,7 @@ body {
 }
 
 .seccionTitulo{
-    background-color: rgba(27, 125, 85, 0.1);
+    background-color: #daf5dc;
 }
 
 .mainContainer {
@@ -135,7 +135,7 @@ body {
 }
 
 .formContainer {
-    background-color: rgba(27, 125, 85, 0.4);
+    background-color: #daf5dc;
     width: calc(100% - 5px);
     max-width: 1400px;
     margin: 0 auto;
@@ -165,11 +165,173 @@ body {
 
 .btnEnviar {
     border: hidden;
-    background-color: #198754;
+    background-color: #4a8c47;
     border-radius: 0.75rem;
     width: 300px;
 }
 
 .btnEnviar:hover {
     background-color: #157347;
+}
+
+/* Estructura base de tarjeta */
+.ser-card {
+    background-color: #daf5dc;
+    color: #27632a;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 1rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    animation: serCardFadeIn 0.9s cubic-bezier(0.23, 1, 0.32, 1);
+    will-change: transform, opacity;
+}
+
+/* Imagen de la tarjeta */
+.ser-imagen {
+    background-color: #daf5dc;
+    color: #27632a;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    animation: serCardFadeIn 0.9s cubic-bezier(0.23, 1, 0.32, 1);
+    flex-shrink: 0;
+    padding: 0;
+    overflow: hidden;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ser-imagen img.ser-imagen-servicio {
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+    object-fit: cover;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    display: block;
+    padding: 4px;
+}
+
+/* Contenido interior */
+.ser-contenido {
+    padding: 1rem 1.5rem 1.5rem 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+}
+
+/* Botón */
+.ser-btn-comprar {
+    background-color: #4a8c47;
+    color: #daf5dc;
+    border: none;
+    width: fit-content;
+    padding: 0.4rem 1.2rem;
+    align-self: center;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    cursor: pointer;
+}
+
+/* Botón otros servicios */
+.ser-btn-otrosServicios {
+    background-color: #4a8c47;
+    color: #daf5dc;
+    border: none;
+    width: fit-content;
+    padding: 0.4rem 1.2rem;
+    align-self: center;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    cursor: pointer;
+}
+
+/* Hover de tarjeta completo */
+.ser-card:hover{
+    background-color: #2c5d2b !important;
+    color: #d6f0d6 !important;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+}
+
+.ser-card:hover,
+.ser-card:hover * {
+    color: #d6f0d6 !important;
+}
+
+.ser-card:hover .ser-imagen{
+    background-color: #2c5d2b !important;
+}
+
+/* Selected de tarjeta completo */
+.ser-card.selected{
+    background-color: #2c5d2b !important;
+    color: #d6f0d6 !important;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+}
+
+.ser-card.selected,
+.ser-card.selected * {
+    color: #d6f0d6 !important;
+}
+
+/* Botón hover */
+.ser-card:hover .ser-btn-comprar {
+    background-color: #c9eac7;
+    color: #083e08;
+}
+.ser-card:hover .ser-btn-comprar * {
+    color: #083e08 !important;
+}
+
+/* Botón selected */
+.ser-card.selected .ser-btn-comprar {
+    background-color: #c9eac7;
+    color: #083e08;
+}
+.ser-card.selected .ser-btn-comprar * {
+    color: #083e08 !important;
+}
+
+/* Background imagen selected */
+.ser-card.selected .ser-imagen{
+    background-color: #2c5d2b !important;
+}
+
+/* Animación de entrada */
+@keyframes serCardFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Textos */
+.ser-icono-verde {
+    color: #27632a;
+}
+.ser-texto-verde-emphasis {
+    color: #27632a;
+}
+.ser-texto-muted {
+    color: #6c757d;
+}
+.ser-texto-secundario {
+    color: #495057;
+}
+.ser-separador {
+    user-select: none;
 }
