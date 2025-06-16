@@ -2,9 +2,7 @@ package com.grupo3.pawHome.services;
 
 import com.grupo3.pawHome.dtos.EditarUsuarioPerfilDTO;
 import com.grupo3.pawHome.entities.PerfilDatos;
-import com.grupo3.pawHome.entities.Rol;
 import com.grupo3.pawHome.entities.Usuario;
-import com.grupo3.pawHome.repositories.RolRepository;
 import com.grupo3.pawHome.repositories.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,8 +12,6 @@ public class EditarUsuarioPerfilService {
 
     @Autowired
     private UsuarioRepository usuarioRepository;
-    @Autowired
-    private RolRepository rolRepository;
 
     public void actualizarDesdeDto(Integer id, EditarUsuarioPerfilDTO dto) {
         Usuario usuario = usuarioRepository.findById(id)
@@ -44,12 +40,6 @@ public class EditarUsuarioPerfilService {
         perfil.setUsuario(usuario);
         usuario.setPerfilDatos(perfil);
 
-        if (dto.getRolId() != null) {
-            Rol rol = rolRepository.findById(dto.getRolId())
-                    .orElseThrow(() -> new RuntimeException("Rol no encontrado"));
-            usuario.setRol(rol);
-        }
-
         usuarioRepository.save(usuario);
     }
 
@@ -61,8 +51,6 @@ public class EditarUsuarioPerfilService {
         dto.setId(usuario.getId());
         dto.setNickname(usuario.getNickname());
         dto.setEmail(usuario.getEmail());
-        dto.setRolId(usuario.getRol() != null ? usuario.getRol().getId() : null);
-
 
         PerfilDatos perfil = usuario.getPerfilDatos();
         if (perfil != null) {
@@ -78,7 +66,6 @@ public class EditarUsuarioPerfilService {
             dto.setTelefono2(perfil.getTelefono2());
             dto.setTelefono3(perfil.getTelefono3());
         }
-
 
         return dto;
     }

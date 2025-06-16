@@ -63,10 +63,9 @@ public class Animal {
     private String stripeProductId;
 
     @ManyToOne
-    @JoinColumn(name = "raza_id", referencedColumnName = "id")
-    private Raza raza;
+    @JoinColumn(name = "especie_id", referencedColumnName = "id")
+    private Especie especie;
 
     @OneToMany(mappedBy = "animal", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Adopcion> Adopciones;
-
 }
