@@ -4,6 +4,9 @@ import com.grupo3.pawHome.config.MyUserDetails;
 import com.grupo3.pawHome.dtos.FormAdoptaDTO;
 import com.grupo3.pawHome.dtos.ProductRequest;
 import com.grupo3.pawHome.dtos.StripeResponse;
+import com.grupo3.pawHome.entities.Animal;
+import com.grupo3.pawHome.entities.Usuario;
+import com.grupo3.pawHome.services.AnimalService;
 import com.grupo3.pawHome.entities.Adopcion;
 import com.grupo3.pawHome.entities.PerfilDatos;
 import com.grupo3.pawHome.entities.Usuario;
@@ -20,6 +23,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -100,6 +106,29 @@ public class ColaboraController {
 
         return ResponseEntity.status(HttpStatus.OK).body(stripeResponse);
     }
+
+    @Autowired
+    private AnimalService animalService;
+    @GetMapping("/colabora/paseosolidario")
+    public String mostrarColaboraPaseoSolidario() { return "PaseoSolidario"; }
+
+
+    @GetMapping("/colabora/paseosolidario/formularioPS")
+    public String mostrarformularioPS(Model model) {
+        List<Animal> animales = animalService.findAllByPaseable(true);
+        model.addAttribute("animales", animales);
+        return "formularioPS";
+    }
+
+    @PostMapping("/colabora/paseosolidario/formularioPS")
+    public String procesarFormularioPS(Model model) {
+        // Aquí procesas los datos recibidos del formulario si hace falta
+
+        // Añades el atributo para mostrar el banner de confirmación
+        model.addAttribute("formularioEnviado", true);
+
+        // Vuelves a la misma vista del formulario
+        return "formularioPS";
 
     @GetMapping("/colabora/adopta/formularioAdopta")
     public String mostrarColaboraDona(@AuthenticationPrincipal MyUserDetails userDetails,

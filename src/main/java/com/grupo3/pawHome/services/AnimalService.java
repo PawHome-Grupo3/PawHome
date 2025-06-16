@@ -54,4 +54,8 @@ public class AnimalService {
 
         return animalRepository.findAll(spec, pageable);
     }
+
+    public List<Animal> findAllByPaseable(boolean paseable) {
+        return animalRepository.findAllByPaseable(paseable);
+    }
 }

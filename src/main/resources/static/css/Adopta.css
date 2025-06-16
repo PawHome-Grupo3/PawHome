@@ -34,7 +34,7 @@ body {
     left: 0;
     height: 100%;
     width: 100%;
-    background-color: rgba(27, 125, 85, 0.6);
+    background-color: rgba(27, 125, 85, 0.46);
     z-index: -1;
 }
 .cuadro-transparente {
