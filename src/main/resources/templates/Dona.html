@@ -269,12 +269,12 @@
             alertaModal.show();
 
             const timerId = setTimeout(() => {
-            window.location.href = "/login";
+            window.location.href = "/auth/loginPawHome";
         }, 4000);
 
             document.getElementById('btnLogin').addEventListener("click", () => {
             clearTimeout(timerId);
-            window.location.href = "/login";
+            window.location.href = "/auth/loginPawHome";
         });
         }
 
