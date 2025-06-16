@@ -3,16 +3,20 @@ package com.grupo3.pawHome.controllers;
 import com.grupo3.pawHome.config.MyUserDetails;
 import com.grupo3.pawHome.dtos.ProductRequest;
 import com.grupo3.pawHome.dtos.StripeResponse;
+import com.grupo3.pawHome.entities.Animal;
 import com.grupo3.pawHome.entities.Usuario;
+import com.grupo3.pawHome.services.AnimalService;
 import com.grupo3.pawHome.services.StripeService;
 import com.grupo3.pawHome.services.UsuarioService;
 import com.grupo3.pawHome.util.SecurityUtil;
 import com.stripe.exception.StripeException;
 import jakarta.servlet.http.HttpSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -88,5 +92,28 @@ public class ColaboraController {
         session.setAttribute("motivo", "Donacion");
 
         return ResponseEntity.status(HttpStatus.OK).body(stripeResponse);
+    }
+    @Autowired
+    private AnimalService animalService;
+    @GetMapping("/colabora/paseosolidario")
+    public String mostrarColaboraPaseoSolidario() { return "PaseoSolidario"; }
+
+
+    @GetMapping("/colabora/paseosolidario/formularioPS")
+    public String mostrarformularioPS(Model model) {
+        List<Animal> animales = animalService.findAllByPaseable(true);
+        model.addAttribute("animales", animales);
+        return "formularioPS";
+    }
+
+    @PostMapping("/colabora/paseosolidario/formularioPS")
+    public String procesarFormularioPS(Model model) {
+        // Aquí procesas los datos recibidos del formulario si hace falta
+
+        // Añades el atributo para mostrar el banner de confirmación
+        model.addAttribute("formularioEnviado", true);
+
+        // Vuelves a la misma vista del formulario
+        return "formularioPS";
     }
 }

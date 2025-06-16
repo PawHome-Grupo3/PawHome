@@ -7,6 +7,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface AnimalRepository extends JpaRepository<Animal, Integer>, JpaSpecificationExecutor<Animal> {
 
@@ -77,4 +79,7 @@ public interface AnimalRepository extends JpaRepository<Animal, Integer>, JpaSpe
     Page<Animal> findByEspecie_Raza_Id(
             Integer razaId, Pageable pageable
     );
+
+    // 16. Paseable solo
+    List<Animal> findAllByPaseable(boolean paseable);
 }

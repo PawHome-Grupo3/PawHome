@@ -1,9 +1,14 @@
 package com.grupo3.pawHome.controllers;
 
+import com.grupo3.pawHome.entities.Animal;
+import com.grupo3.pawHome.services.AnimalService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @Controller
@@ -98,11 +103,6 @@ public class DefaultController {
     @GetMapping("/colabora/adopta/formularioAdopta")
     public String mostrarformularioadopta() { return "formularioAdopta"; }
 
-    @GetMapping("/colabora/paseosolidario")
-    public String mostrarColaboraPaseoSolidario() { return "PaseoSolidario"; }
-
-    @GetMapping("/colabora/paseosolidario/formularioPS")
-    public String mostrarformularioPS() { return "formularioPS"; }
 
     @GetMapping("/finalfeliz")
     public String mostrarFinalesFelices() { return "FinalFeliz"; }
