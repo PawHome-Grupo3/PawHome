@@ -1140,6 +1140,7 @@ public class DataLoader implements CommandLineRunner {
         a7.setRutaImg1("/images/perro6.png");
         a7.setRutaImg2("/images/default-example.png");
         a7.setRutaImg3("/images/default-example.png");
+        a7.setEspecie(e1);
         animalRepository.save(a7);
 
         Apadrinar ap1 = new Apadrinar();

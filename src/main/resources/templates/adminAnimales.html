@@ -21,9 +21,10 @@
                 <th>Chip</th>
                 <th>Peso</th>
                 <th>Edad</th>
+                <th>Género</th>
+                <th>Raza</th>
                 <th>Carácter social</th>
                 <th>Descripción</th>
-                <th>Género</th>
                 <th>Origen</th>
                 <th>Estado adopción</th>
                 <th>Fecha llegada</th>
@@ -38,11 +39,12 @@
                 <td th:text="${animal.chip}"></td>
                 <td th:text="${animal.peso}"></td>
                 <td th:text="${animal.fechaNacimiento}"></td>
+                <td th:if="${animal.genero}"><span>Macho</span></td>
+                <td th:unless="${animal.genero}"><span>Hembra</span></td>
+                <td th:text="${animal.especie.raza.nombre}"></td>
                 <td th:if="${animal.caracterSocial}"><span>Amigable</span></td>
                 <td th:unless="${animal.caracterSocial}"><span>No amigable</span></td>
                 <td th:text="${animal.descripcion}"></td>
-                <td th:if="${animal.genero}"><span>Macho</span></td>
-                <td th:unless="${animal.genero}"><span>Hembra</span></td>
                 <td th:text="${animal.origen}"></td>
                 <td th:if="${animal.adoptado}"><span>Sí</span></td>
                 <td th:unless="${animal.adoptado}"><span>No</span></td>

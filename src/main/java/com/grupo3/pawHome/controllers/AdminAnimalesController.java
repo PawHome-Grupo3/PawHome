@@ -1,7 +1,11 @@
 package com.grupo3.pawHome.controllers;
 
 import com.grupo3.pawHome.entities.Animal;
+import com.grupo3.pawHome.entities.Especie;
+import com.grupo3.pawHome.entities.Raza;
 import com.grupo3.pawHome.repositories.AnimalRepository;
+import com.grupo3.pawHome.repositories.EspecieRepository;
+import com.grupo3.pawHome.repositories.RazaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,8 +14,17 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 @RequestMapping("/admin/animales")
 public class AdminAnimalesController {
-    @Autowired
-    private AnimalRepository animalRepository;
+
+    private final AnimalRepository animalRepository;
+    private final RazaRepository razaRepository;
+    private final EspecieRepository especieRepository;
+
+    public AdminAnimalesController(AnimalRepository animalRepository, RazaRepository razaRepository, EspecieRepository especieRepository) {
+        this.animalRepository = animalRepository;
+        this.razaRepository = razaRepository;
+        this.especieRepository = especieRepository;
+    }
+
 
     // Listar animales y mostrar formulario (crear o editar)
     @GetMapping
@@ -33,12 +46,25 @@ public class AdminAnimalesController {
     public String editarAnimal(@PathVariable Integer id, Model model) {
         Animal animal = animalRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Animal no encontrado con ID: " + id));
+        // Asegurarse de que el animal tiene una especie y una raza asociada
+        if (animal.getEspecie() == null) {
+            animal.setEspecie(new Especie());
+        }
+        if (animal.getRaza() == null) {
+            animal.setRaza(new Raza());
+        }
+        // Añadir el animal al modelo para que se muestre en el formulario de edición
         model.addAttribute("animal", animal); // Formulario relleno
+        model.addAttribute("especies", especieRepository.findAll()); // Para seleccionar especie
+        model.addAttribute("razas", razaRepository.findAll()); // Para seleccionar raza
         return "editarAdminAnimales";
     }
 
     @PostMapping("/actualizar/{id}")
-    public String actualizarAnimal(@ModelAttribute("animal") Animal animal) {
+    public String actualizarAnimal(@ModelAttribute Animal animal, @PathVariable Integer id) {
+        Especie especie = especieRepository.findById(animal.getEspecie().getId())
+                .orElseThrow(() -> new IllegalArgumentException("Especie no encontrada"));
+        animal.setEspecie(especie);
         animalRepository.save(animal);
         return "redirect:/admin/animales";
     }
