@@ -43,19 +43,20 @@ public class AnimalesController {
                                           @RequestParam(required = false) String adoptado,
                                           @RequestParam(defaultValue = "1") int page,
                                           @RequestParam(defaultValue = "5") int size,
-                                          @RequestParam(required = false) Integer razaId,
                                           @RequestParam(required = false) Integer especieId,
-                                          @RequestParam(defaultValue = "id,asc") String[] sort){
-        try {
-            List<Raza> razas = razaService.findAll();
-            model.addAttribute("razas", razas);
+                                          @RequestParam(required = false) Integer razaId,
+                                          @RequestParam(defaultValue = "id,asc") String[] sort) {
 
-            if (razaId != null) {
-                List<Especie> especies = especieService.findByRazaId(razaId);
-                model.addAttribute("especies", especies);
-                model.addAttribute("razaId", razaId);
+        try {
+            List<Especie> especies = especieService.findAll();
+            model.addAttribute("especies", especies);
+
+            if (especieId != null) {
+                List<Raza> razas = razaService.findByEspecieId(especieId);
+                model.addAttribute("razas", razas);
+                model.addAttribute("especieId", especieId);
             }
-            model.addAttribute("especieId", especieId);
+            model.addAttribute("razaId", razaId);
 
             List<Animal> animales;
 
@@ -67,7 +68,7 @@ public class AnimalesController {
 
             Pageable pageable = PageRequest.of(page - 1, size, Sort.by(order));
 
-            Page<Animal> pageAns = animalService.buscarAnimales(keyword, adoptado, razaId, especieId, pageable);
+            Page<Animal> pageAns = animalService.buscarAnimales(keyword, adoptado, especieId, razaId, pageable);
 
             animales = pageAns.getContent();
             AnimalDto animalDto;

@@ -2,56 +2,157 @@ body {
     font-family: 'Segoe UI', sans-serif;
     margin: 0;
     padding: 0;
-    background: #f5fff9;
+    background: linear-gradient(to right, #f5fff9, #e8f5e9);
     color: #1b7d55;
 }
 
 header {
     text-align: center;
-    padding: 2rem;
-    background-color: #bbe09b;
+    padding: 3rem 1rem;
+    background: linear-gradient(135deg, #a8e6cf, #dcedc1);
     color: #1b7d55;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
-    font-size: 2.5rem;
-    color: #1b7d55;
+    font-size: 2.8rem;
+    margin-bottom: 0.5rem;
+}
+
+h2 {
+    font-weight: 400;
+    font-size: 1.4rem;
+    color: #2e7d32;
 }
 
 .galeria {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); //*Está así para que siempre haya 3 columnas, pero se puede cambiar dependiendo del tamaño de la pantalla*//
-    grid-template-rows: repeat(3, 1fr);
-    grid-gap: 1rem;
-    gap: 1.5rem;
-    padding: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* tarjetas más anchas */
+    gap: 2.5rem;
+    padding: 3rem;
 }
 
 .historia {
-    background-color: #ffffff;
-    border: 2px solid #bbe09b;
-    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 2px 8px rgba(27, 125, 85, 0.15);
-    text-align: center;
-    padding-bottom: 1rem;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-
+    box-shadow: 0 6px 20px rgba(27, 125, 85, 0.15);
+    transition: all 0.3s ease-in-out;
 }
 
 .historia:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(27, 125, 85, 0.25);
+    transform: translateY(-6px) scale(1.01);
+    box-shadow: 0 12px 24px rgba(27, 125, 85, 0.3);
 }
 
 .historia img {
     width: 100%;
-    height: auto;
-    display: block;
+    height: 280px; /* imagen más alta */
+    object-fit: cover;
+    border-bottom: 3px solid #bbe09b;
 }
 
 .historia p {
-    margin: 1rem;
-    font-size: 1rem;
-    color: #333;
+    padding: 1.5rem; /* más espacio interno */
+    font-size: 1.1rem;
+    color: #444;
+    margin: 0;
+}
+
+.historia strong {
+    font-size: 1.1rem;
+    color: #1b7d55;
+}
+
+.boton-historia {
+    display: inline-block;
+    margin: 2rem auto 4rem;
+    background-color: #1b7d55;
+    color: white;
+    padding: 0.9rem 2rem;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.boton-historia:hover {
+    background-color: #146b45;
+}
+
+.boton-container {
+    text-align: center;
+}
+.boton-historia {
+    background-color: #1b7d55;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.boton-historia:hover {
+    background-color: #146b45;
+}
+
+/* Ajustes para pantallas pequeñas (móviles) */
+@media (max-width: 600px) {
+    .galeria {
+        grid-template-columns: 1fr; /* 1 columna para pantallas pequeñas */
+        padding: 1.5rem;
+        gap: 1.5rem;
+    }
+
+    .historia img {
+        height: 200px; /* imagen un poco más baja para móviles */
+    }
+
+    .historia p {
+        font-size: 1rem;
+        padding: 1rem;
+    }
+
+    header {
+        padding: 2rem 1rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.1rem;
+    }
+}
+
+/* Ajustes para tablets y pantallas medianas */
+@media (min-width: 601px) and (max-width: 900px) {
+    .galeria {
+        grid-template-columns: repeat(2, 1fr); /* 2 columnas en tablets */
+        padding: 2rem;
+        gap: 2rem;
+    }
+
+    .historia img {
+        height: 240px;
+    }
+
+    .historia p {
+        font-size: 1.05rem;
+        padding: 1.2rem;
+    }
+
+    header {
+        padding: 2.5rem 1rem;
+    }
+
+    h1 {
+        font-size: 2.3rem;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
 }

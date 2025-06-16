@@ -10,7 +10,6 @@
 
 <body>
 <section layout:fragment="content">
-
   <div class="containerImagen">
     <div class="cuadro-transparente">
       <h1><i th:text="#{adopta.titulo}"></i></h1>
@@ -18,18 +17,15 @@
       <ol>
         <li>
           <span th:text="#{adopta.paso1}"></span>
-          <a th:href="@{/nuestrosAnimales(adoptado='adoptar')}" th:text="#{adopta.animales}"></a>.
+          <a th:href="@{/nuestrosAnimales(adoptado='adoptar')}">animales disponibles para adopción</a>.
         </li>
         <li>
-          <span th:text="#{adopta.paso2}">Accede al</span>
-          <a th:href="@{/colabora/adopta/formularioAdopta}" th:text="#{adopta.formulario}">formulario y escribe su nombre</a>.
+          <span th:text="#{adopta.paso2}"></span>
         </li>
-        <li th:text="#{adopta.paso3}">
-          Rellénalo con sinceridad, queremos conocerte y saber si eres apto para poder cuidar bien de uno o varios de nuestros peluditos.
+        <li>
+          <span th:text="#{adopta.paso3}"></span>
         </li>
       </ol>
     </div>
-  </div>
-</section>
+    </div>
 </body>
-</html>
