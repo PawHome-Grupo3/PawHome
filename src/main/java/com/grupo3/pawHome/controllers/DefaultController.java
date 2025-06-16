@@ -78,6 +78,10 @@ public class DefaultController {
     public String mostrarNosotros() {
         return "nosotros";
     }
+
+    //Errores
+    @GetMapping("/paginaerror")
+    public String mostrarError404() { return "paginaerror"; }
 }
 
 
