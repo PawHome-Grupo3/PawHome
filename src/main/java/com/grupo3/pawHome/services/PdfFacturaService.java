@@ -41,7 +41,7 @@ public class PdfFacturaService {
         }
 
         // Datos de la empresa (manuales)
-        Paragraph empresa = new Paragraph("PawHome\nAv. Dr. Gómez Ulla, 13\n11003 Cádiz\nEspaña\nTel: 956 26 07 41\npawhome@gmail.com\nNIF: B00000001", fontNormal);
+        Paragraph empresa = new Paragraph("PawHome\nAv. Dr. Gómez Ulla, 13\nCádiz, 11003\nEspaña\nTel: 956 26 07 41\npawhome@gmail.com\nNIF: B00000001", fontNormal);
         document.add(empresa);
 
         // Espaciado
@@ -62,6 +62,7 @@ public class PdfFacturaService {
         Paragraph cliente = new Paragraph(
                 factura.getNombreUsuario() + " " + factura.getApellidosUsuario() + "\n" +
                         factura.getDireccionUsuario() + "\n" +
+                        factura.getCiudadUsuario() + ", " + factura.getCpUsuario() + "\n" +
                         "DNI: " + factura.getDniUsuario() + "\n" +
                         "Tel: " + factura.getTelefonoUsuario(),
                 fontNormal

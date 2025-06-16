@@ -38,26 +38,6 @@ public class PdfFacturaController {
         this.adopcionService = adopcionService;
     }
 
-//    @GetMapping("/perfil/facturas/pdf/{id}")
-//    public ResponseEntity<byte[]> descargarPDF(@PathVariable Integer id, @AuthenticationPrincipal MyUserDetails userDetails) throws Exception {
-//        Usuario usuario = userDetails.getUsuario();
-//        List<FacturaDTO> facturasUsuario = facturaService.obtenerFacturasPorUsuario(usuario.getId());
-//
-//        // Filtrar por ID
-//        FacturaDTO factura = facturasUsuario.stream()
-//                .filter(f -> f.getIdFactura().equals(id))
-//                .findFirst()
-//                .orElseThrow(() -> new RuntimeException("Factura no encontrada o no pertenece al usuario."));
-//
-//        byte[] pdfBytes = pdfFacturaService.generarFacturaPDF(factura);
-//
-//        HttpHeaders headers = new HttpHeaders();
-//        headers.setContentType(MediaType.APPLICATION_PDF);
-//        headers.setContentDispositionFormData("inline", "factura_" + id + ".pdf");
-//
-//        return new ResponseEntity<>(pdfBytes, headers, HttpStatus.OK);
-//    }
-
     @GetMapping("/perfil/facturas/pdf/{id}")
     public ResponseEntity<byte[]> generarFacturaPDF(@PathVariable Integer id, @AuthenticationPrincipal MyUserDetails userDetails) {
         Usuario usuario = userDetails.getUsuario();
