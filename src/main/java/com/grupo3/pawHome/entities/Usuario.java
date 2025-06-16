@@ -48,6 +48,9 @@ public class Usuario implements Serializable {
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Factura> facturas;
 
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Adopcion> Adopciones;
+
     @ManyToOne
     @JoinColumn(name = "rol_id", referencedColumnName = "id")
     private Rol rol;

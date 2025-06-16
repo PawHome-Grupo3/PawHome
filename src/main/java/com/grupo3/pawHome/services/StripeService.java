@@ -172,4 +172,17 @@ public class StripeService {
         animalService.save(animal);
         return product.getId();
     }
+
+    public boolean cancelarSuscripcion(String subscriptionId) {
+        Stripe.apiKey = stripeConfig.getSecretKey();
+
+        try {
+            com.stripe.model.Subscription subscription = com.stripe.model.Subscription.retrieve(subscriptionId);
+            subscription.cancel();
+            return true;
+        } catch (StripeException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }

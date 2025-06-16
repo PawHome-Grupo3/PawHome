@@ -6,101 +6,102 @@
     <link rel="stylesheet" th:href="@{/css/general.css}"/>
 </head>
 <body>
-<section layout:fragment="content">
-
-    <div class="row bg-white mt-5 m-0 p-0 w-100">
-        <div class="row w-100">
+<section layout:fragment="content" class="perfilInfo-fondo p-0">
+    <div class="container m-0">
+        <div class="row">
+            <!-- Sidebar Perfil -->
             <div th:replace="~{fragments/navbarPerfil :: navPerfilFragment}"></div>
 
-            <div class="col-md-9 col-lg-10 justify-content-center">
-                <div class="row justify-content-center">
-                    <div class="col-md-12">
-                        <div th:if="${usuario.getPerfilDatos() != null}" class="p-3 py-5">
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <h4 class="text-right">Datos de Perfil</h4>
+            <!-- Contenido Perfil -->
+            <main class="col-md-9 col-lg-10 justify-content-start p-5">
+                <div class="perfilInfo-card shadow-sm rounded-4 p-4">
+                    <h3 class="mb-4 text-success fw-bold">Información del Perfil</h3>
+
+                    <!-- Datos completos -->
+                    <div th:if="${usuario.getPerfilDatos() != null}">
+                        <div class="row mb-3">
+                            <div class="col-md-6 mb-2">
+                                <strong>Nombre:</strong>
+                                <p class="perfilInfo-dato" th:text="${usuario.perfilDatos.nombre}"></p>
                             </div>
-                            <div class="row mt-2">
-                                <div class="col-md-6">
-                                    <p><strong>Nombre:</strong> <span th:text="${usuario.perfilDatos.nombre}"></span></p>
-                                </div>
-                                <div class="col-md-6">
-                                    <p><strong>Apellidos:</strong> <span th:text="${usuario.perfilDatos.apellidos}"></span></p>
-                                </div>
+                            <div class="col-md-6 mb-2">
+                                <strong>Apellidos:</strong>
+                                <p class="perfilInfo-dato" th:text="${usuario.perfilDatos.apellidos}"></p>
                             </div>
-                            <div class="row mt-3">
-                                <div class="col-md-12 mt-1">
-                                    <p><strong>Nombre Usuario:</strong> <span th:text="${usuario.nickname}"> </span></p>
-                                </div>
-                                <div class="col-md-12 mt-1">
-                                    <p><strong>Número teléfono:</strong> <span th:text="${usuario.perfilDatos.telefono1}"> </span></p>
-                                </div>
-                                <div class="col-md-12 mt-1">
-                                    <p><strong>Dirección 1:</strong> <span th:text="${usuario.perfilDatos.direccion}"> </span></p>
-                                </div>
-                                <div class="col-md-12 mt-1">
-                                    <p><strong>Código Postal:</strong> <span th:text="${usuario.perfilDatos.cp}"> </span> </p>
-                                </div>
-                                <div class="col-md-12 mt-1">
-                                    <p><strong>DNI:</strong> <span th:text="${usuario.perfilDatos.dni}"> </span></p>
-                                </div>
-                                <div class="col-md-12 mt-1">
-                                    <p><strong>Email:</strong> <span th:text="${usuario.email}"></span> </p>
-                                </div>
-                                <div class="col-md-12 mt-1">
-                                    <p><strong>Edad:</strong> <span th:text="${usuario.perfilDatos.edad}"></span> </p>
-                                </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <strong>Nombre Usuario:</strong>
+                                <p class="perfilInfo-dato" th:text="${usuario.nickname}"></p>
                             </div>
-                            <div class="row mt-3">
-                                <div class="col-md-6">
-                                    <p><strong>País:</strong> <span th:text="${@paisUtils.obtenerNombrePais(usuario.perfilDatos.pais)}"></span> </p>
-                                </div>
-                                <div class="col-md-6">
-                                    <p><strong>Ciudad:</strong> <span th:text="${usuario.perfilDatos.ciudad}"> </span></p>
-                                </div>
+                            <div class="col-md-6">
+                                <strong>Email:</strong>
+                                <p class="perfilInfo-dato" th:text="${usuario.email}"></p>
                             </div>
-                            <div class="mt-5 text-center">
-                                <button class="btn btn-primary profile-button" type="button">
-                                    <a href="/perfil/editar" style="text-decoration: none; color: white;">Editar Perfil</a>
-                                </button>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <strong>Teléfono:</strong>
+                                <p class="perfilInfo-dato" th:text="${usuario.perfilDatos.telefono1}"></p>
+                            </div>
+                            <div class="col-md-6">
+                                <strong>DNI:</strong>
+                                <p class="perfilInfo-dato" th:text="${usuario.perfilDatos.dni}"></p>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <strong>Dirección:</strong>
+                                <p class="perfilInfo-dato" th:text="${usuario.perfilDatos.direccion}"></p>
+                            </div>
+                            <div class="col-md-3">
+                                <strong>Código Postal:</strong>
+                                <p class="perfilInfo-dato" th:text="${usuario.perfilDatos.cp}"></p>
+                            </div>
+                            <div class="col-md-3">
+                                <strong>Edad:</strong>
+                                <p class="perfilInfo-dato" th:text="${usuario.perfilDatos.edad}"></p>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <strong>País:</strong>
+                                <p class="perfilInfo-dato" th:text="${@paisUtils.obtenerNombrePais(usuario.perfilDatos.pais)}"></p>
+                            </div>
+                            <div class="col-md-6">
+                                <strong>Ciudad:</strong>
+                                <p class="perfilInfo-dato" th:text="${usuario.perfilDatos.ciudad}"></p>
                             </div>
                         </div>
 
-                        <div th:unless="${usuario.getPerfilDatos() != null}" class="p-3 py-5">
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <h4 class="text-right">Datos de Perfil</h4>
-                            </div>
-                            <div class="row mt-3">
-                                <div class="col-md-12 mt-1">
-                                    <p><strong>Nombre Usuario:</strong> <span th:text="${usuario.nickname}"> </span></p>
-                                </div>
-                                <div class="col-md-12 mt-1">
-                                    <p><strong>Email:</strong> <span th:text="${usuario.email}"></span> </p>
-                                </div>
-                            </div>
-                            <div class="mt-5 text-center">
-                                <button class="btn btn-primary profile-button" type="button">
-                                    <a href="/perfil/editar" style="text-decoration: none; color: white;">Crear Datos Perfil</a>
-                                </button>
-                            </div>
+                        <div class="text-center mt-4">
+                            <a href="/perfil/editar" class="btn perfilInfo-btnEditar">Editar Perfil</a>
                         </div>
                     </div>
-                    <div class="col-md-12">
-                        <div class="p-3 py-5">
-                            <div class="d-flex justify-content-center align-items-center experience">
-                                <span>Métodos de Pago</span>
-                                <a type="button" th:href="@{/perfil/metodo-pago/anadir}" class="border px-3 p-1 add-experience"><i class="fa fa-plus"></i>&nbsp;Nuevo método de pago</a>
-                            </div>
-                        </div>
-                        <div th:if="${metodosPago != null}" th:each="metodoPago : ${metodosPago}">
-                            <p>Nombre Titular: <span th:text="${metodoPago.getNombreTitular()}"></span></p>
-                            <p>Alias: <span th:text="${metodoPago.alias}"></span></p>
-                            <p>Marca: <span th:text="${metodoPago.marcaTarjeta}"></span></p>
-                            <p>Año expiración: <span th:text="${metodoPago.expAnio}"></span></p>
-                            <p>Mes expiración: <span th:text="${metodoPago.expMes}"></span></p>
+
+                    <!-- Perfil incompleto -->
+                    <div th:unless="${usuario.getPerfilDatos() != null}">
+                        <p class="text-muted">Este usuario aún no ha completado sus datos de perfil.</p>
+                        <div class="text-center mt-4">
+                            <a href="/perfil/editar" class="btn perfilInfo-btnEditar">Crear Datos Perfil</a>
                         </div>
                     </div>
                 </div>
-            </div>
+
+                <!-- Métodos de pago -->
+                <div class="perfilInfo-card mt-4 shadow-sm rounded-4 p-4">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="fw-semibold text-success">Métodos de Pago</h4>
+                        <a href="/perfil/metodo-pago/anadir" class="btn perfilInfo-btnAñadir"><i class="fa fa-plus me-2"></i>Nuevo método</a>
+                    </div>
+                    <div th:if="${metodosPago != null}" th:each="metodoPago : ${metodosPago}" class="mb-3 border-bottom pb-2">
+                        <p><strong>Nombre Titular:</strong> <span th:text="${metodoPago.getNombreTitular()}"></span></p>
+                        <p><strong>Alias:</strong> <span th:text="${metodoPago.alias}"></span></p>
+                        <p><strong>Marca:</strong> <span th:text="${metodoPago.marcaTarjeta}"></span></p>
+                        <p><strong>Expira:</strong> <span th:text="${metodoPago.expMes} + '/' + ${metodoPago.expAnio}"></span></p>
+                    </div>
+                </div>
+            </main>
         </div>
     </div>
 </section>

@@ -27,12 +27,16 @@ public class MetodoPagoController {
     }
 
     @GetMapping("/anadir")
-    public String mostrarFormularioAnadirTarjeta(@AuthenticationPrincipal MyUserDetails userDetails, Model model) throws StripeException {
+    public String mostrarFormularioAnadirTarjeta(@AuthenticationPrincipal MyUserDetails userDetails, Model model)
+            throws StripeException {
+
         Usuario usuario = userDetails.getUsuario();
         String clientSecret = metodoPagoService.crearSetupIntent(usuario);
+
         model.addAttribute("stripePublicKey", stripeConfig.getPublicKey());
         model.addAttribute("clientSecret", clientSecret);
         model.addAttribute("guardarRequest", new GuardarMetodoPagoRequest());
+
         return "metodoPagoForm";
     }
 
@@ -41,15 +45,18 @@ public class MetodoPagoController {
             @AuthenticationPrincipal MyUserDetails userDetails,
             @ModelAttribute("guardarRequest") GuardarMetodoPagoRequest guardarRequest,
             Model model) {
-            Usuario usuario = userDetails.getUsuario();
+
+        Usuario usuario = userDetails.getUsuario();
         try {
             metodoPagoService.guardarMetodoPago(guardarRequest.getPaymentMethodId(), usuario, guardarRequest.getAlias());
 
             model.addAttribute("mensajeExito", "Método de pago guardado correctamente.");
         } catch (Exception e) {
             model.addAttribute("mensajeError", "Error al guardar método de pago: " + e.getMessage());
+
             return "metodoPagoForm";
         }
+
         return "redirect:/perfil/informacion";
     }
 }

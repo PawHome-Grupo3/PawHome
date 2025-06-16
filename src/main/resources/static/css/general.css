@@ -750,160 +750,354 @@ clamp(10px, 2vw, 40px);
 //////////////////////////////////////*/
 
 
-
-/*//////////////////////////////////////
-//         PERFIL_USUARIO             //
-//////////////////////////////////////*/
-
-.form-control:focus {
-    box-shadow: none;
-    border-color: #BA68C8
-}
-
-.profile-button {
-    background: rgb(99, 39, 120);
-    box-shadow: none;
-    border: none
-}
-
-.profile-button:hover {
-    background: #682773
-}
-
-.profile-button:focus {
-    background: #682773;
-    box-shadow: none
-}
-
-.profile-button:active {
-    background: #682773;
-    box-shadow: none
-}
-
-.back:hover {
-    color: #682773;
-    cursor: pointer
-}
-
-.labels {
-    font-size: 11px
-}
-
-.add-experience:hover {
-    background: #BA68C8;
-    color: #fff;
-    cursor: pointer;
-    border: solid 1px #BA68C8
-}
-
+/* NAVBAR PERFIL */
 :root {
+    --navPerfil-bg: #1B4332;
+    --navPerfil-hover: #2D6A4F;
+    --navPerfil-text: #ffffff;
+    --navPerfil-icon-bg: rgba(255, 255, 255, 0.1);
+    --navPerfil-border-radius: 12px;
     --primary: #5bc1ac;
     --light: #F3F6F9;
-    --dark: #191C24;
 }
 
-.divAside {
-    background-color: var(--light);
+.navPerfil-aside {
+    background-color: var(--navPerfil-bg);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-.navbarAside {
+.navPerfil-navbar {
+    background-color: transparent;
     width: 100%;
 }
 
-.navbarAside .navbar-nav .nav-link {
-    padding: 7px 20px;
-    color: #191C24FF;
-    font-weight: 500;
-    border-left: 3px solid var(--light);
-    border-radius: 0 30px 30px 0;
-    outline: none;
+.navPerfil-profile img {
+    object-fit: cover;
+    width: 50px;
+    height: 50px;
 }
 
-.navbarAside .navbar-nav .nav-link:hover,
-.navbarAside .navbar-nav .nav-link.active {
-    color: var(--primary);
-    background: #FFFFFF;
-    border-color: var(--primary);
+.navPerfil-profile small,
+.navPerfil-profile h6 {
+    color: var(--navPerfil-text);
 }
 
-.navbarAside .navbar-nav .nav-link i {
-    width: 40px;
-    height: 40px;
-    display: inline-flex;
+.navPerfil-nav .navPerfil-link {
+    color: var(--navPerfil-text);
+    padding: 10px 15px;
+    border-radius: var(--navPerfil-border-radius);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    display: flex;
     align-items: center;
-    justify-content: center;
-    background: #FFFFFF;
-    border-radius: 40px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    text-decoration: none;
 }
 
-.navbarAside .navbar-nav .nav-link:hover i,
-.navbarAside .navbar-nav .nav-link.active i {
-    background: var(--light);
+.navPerfil-nav .navPerfil-link i {
+    width: 24px;
+    height: 24px;
+    text-align: center;
+    color: var(--navPerfil-text);
+    background-color: var(--navPerfil-icon-bg);
+    border-radius: 50%;
+    padding: 6px;
+    transition: background-color 0.3s ease;
+    margin-right: 10px;
 }
 
-.navbarAside .dropdown-toggle::after {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    border: none;
-    content: "\f107";
-    font-weight: 900;
-    transition: .5s;
+.navPerfil-nav .navPerfil-link:hover,
+.navPerfil-nav .navPerfil-link.active {
+    background-color: var(--navPerfil-hover);
+    color: var(--navPerfil-text);
 }
 
-.navbarAside .dropdown-toggle[aria-expanded=true]::after {
-    transform: rotate(-180deg);
+.navPerfil-nav .navPerfil-link:hover i,
+.navPerfil-nav .navPerfil-link.active i {
+    background-color: #ffffff20;
 }
-
-.navbarAside .dropdown-item {
-    padding-left: 25px;
-    border-radius: 0 30px 30px 0;
-}
-
-.navbarAside .navbar-nav .nav-link {
-    margin-left: 0;
-    padding: 12px 0;
-    color: #191C24FF;
-    outline: none;
-}
-/*//////////////////////////////////////
-//         FIN PERFIL_USUARIO         //
-//////////////////////////////////////*/
-
 
 
 /*//////////////////////////////////////
 //       PERFIL_USUARIO_ANIMALES      //
 //////////////////////////////////////*/
 
+/* PERFIL USUARIO */
+.perfilInfo-fondo {
+    background-color: #f4fbf5;
+    min-height: 100vh;
+}
+
+.perfilInfo-card {
+    background-color: #ffffff;
+    border-left: 8px solid #27632a;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.perfilInfo-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(39, 99, 42, 0.15);
+}
+
+.perfilInfo-dato {
+    color: #114938;
+    font-weight: 500;
+    margin: 0;
+}
+
+.perfilInfo-btnEditar {
+    background-color: #27632a;
+    color: #fff;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 25px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.perfilInfo-btnEditar:hover {
+    background-color: #1e4e24;
+}
+
+.perfilInfo-btnAñadir {
+    background-color: #ffffff;
+    border: 2px solid #27632a;
+    color: #27632a;
+    font-weight: bold;
+    transition: 0.3s ease;
+    border-radius: 25px;
+    padding: 6px 20px;
+}
+
+.perfilInfo-btnAñadir:hover {
+    background-color: #27632a;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .perfilInfo-card {
+        padding: 1.5rem 1rem;
+    }
+
+    .perfilInfo-btnEditar,
+    .perfilInfo-btnAñadir {
+        width: 100%;
+    }
+}
 /*//////////////////////////////////////
 //    FIN PERFIL_USUARIO_ANIMALES     //
 //////////////////////////////////////*/
 
+/*//////////////////////////////////////
+//            PERFIL_EDITAR           //
+//////////////////////////////////////*/
+
+.perfilEditar-container {
+    background-color: #f4fbf5;
+    padding: 3rem 2rem;
+    min-height: 100vh;
+}
+
+.perfilEditar-card {
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+    padding: 2.5rem 2rem;
+}
+
+.perfilEditar-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #114938;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.labels {
+    font-weight: 600;
+    color: #114938;
+    margin-bottom: 6px;
+    display: inline-block;
+}
+
+.form-control,
+.form-select {
+    border-radius: 8px;
+    padding: 10px 15px;
+    border: 1px solid #ced4da;
+    transition: border-color 0.3s ease;
+    font-size: 1rem;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #5bc1ac;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(91, 193, 172, 0.2);
+}
+
+.profile-button {
+    background-color: #5bc1ac;
+    color: #fff;
+    font-weight: bold;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 25px;
+    transition: background-color 0.3s ease;
+}
+
+.profile-button:hover {
+    background-color: #48af98;
+}
+
+.error-message {
+    color: #d9534f;
+    font-size: 0.85rem;
+    margin-top: 4px;
+}
+
+/* Responsive para dispositivos pequeños */
+@media (max-width: 768px) {
+    .perfilEditar-card {
+        padding: 1.5rem 1rem;
+    }
+
+    .profile-button {
+        width: 100%;
+    }
+}
+
+/*//////////////////////////////////////
+//         FIN PERFIL_EDITAR          //
+//////////////////////////////////////*/
 
 
 /*////////////////////////////
 /        LISTA CARRITO       /
 ////////////////////////////*/
-.card-registration .select-input.form-control[readonly]:not([disabled]) {
-    font-size: 1rem;
-    line-height: 2.15;
-    padding-left: .75em;
-    padding-right: .75em;
+.resumen-carrito {
+    background-color: #27632a;
+    color: #f0f0f0;
+    padding: 40px 30px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-left: none;
+    height: 100%;
+    box-shadow: -6px 0 20px rgba(0, 0, 0, 0.1);
 }
 
-.divItemCarrito {
-    transition: box-shadow 0.3s ease;
+.resumen-carrito h3,
+.resumen-carrito h5 {
+    color: #ffffff;
+    font-weight: 600;
 }
 
-.card-registration .select-arrow {
-    top: 13px;
+.resumen-carrito input[type="text"] {
+    background-color: #ffffff;
+    color: #f0f0f0;
+    border: 1px solid #444;
+    border-radius: 0;
 }
 
-.divItemCarrito:hover{
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* sombra leve */
+.resumen-carrito .form-label {
+    color: #aaa;
 }
 
+.resumen-carrito .btn {
+    background-color: #ffffff;
+    color: #fff;
+    border: none;
+    font-weight: bold;
+    padding: 12px 20px;
+    transition: background-color 0.3s ease;
+}
+
+.resumen-carrito .btn:hover {
+    background-color: #114938;
+}
+
+/* Cabecera del carrito (encabezados de columnas) */
+.carrito-header {
+    font-size: 0.95rem;
+    color: #fff;
+    background-color: #27632a; /* verde oscuro */
+    border-bottom: none;
+    padding: 12px 0;
+    border-radius: 6px;
+}
+
+/* Item de producto */
+.carrito-item {
+    background-color: #f1fdf3;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0); /* inicio sin sombra */
+    margin-bottom: 1rem;
+}
+
+.carrito-item:hover {
+    transform: scale(1.01);
+    box-shadow: 0 10px 18px rgba(67, 113, 143, 0.15);
+    background-color: #e9f9ee;
+}
+
+/* Imagen */
+.carrito-img {
+    max-height: 100px;
+    object-fit: contain;
+    border-radius: 10px;
+    border: 1px solid #43718F;
+    padding: 5px;
+    background-color: #f7fafc;
+}
+
+.carrito-quantity-input {
+    width: 50px;
+    border: 1px solid #43718F;
+    color: #27632a;
+    background-color: #f7fafc;
+    font-weight: bold;
+}
+
+/* Botones +/- */
+.btn-outline-secondary {
+    border-color: #43718F;
+    color: #43718F;
+    padding: 4px 10px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-radius: 6px;
+}
+
+.btn-outline-secondary:hover {
+    background-color: #43718F;
+    color: #fff;
+}
+
+/* Botón eliminar */
+.btn-link.text-danger {
+    font-size: 1.2rem;
+}
+
+/* Botón "Vaciar carrito" oscuro */
+.btn.btn-dark {
+    background-color: #1b1b1b !important;
+    border: none;
+    color: #fff;
+    font-weight: bold;
+}
+
+/* Enlace volver a tienda */
+a.text-body i {
+    color: #43718F;
+    transition: color 0.2s ease;
+}
+
+a.text-body i:hover {
+    color: #ff9800;
+}
 /*////////////////////////////
 /     FIN_LISTA_CARRITO      /
 ////////////////////////////*/
@@ -1519,6 +1713,58 @@ ul {
 .confirm-button:hover {
     background-color: #157347;
     transform: scale(1.05);
+}
+
+/* Estado inicial: oculto detrás */
+.start-hidden {
+    top: 200px;
+    z-index: -1;
+    opacity: 0;
+    transition: top 4s ease-in-out, opacity 1.5s ease-in-out;
+    height: 200px;
+    left: 50%;
+    transform: translateX(-50%);
+    object-fit: contain;
+    pointer-events: none;
+    position: absolute;
+}
+
+/* Estado visible: asomado desde arriba */
+.asomado {
+    top: -120px;
+    opacity: 1;
+}
+
+/* Cuando pasa al frente visualmente */
+.z-top {
+    z-index: 4;
+}
+
+.modal-dialog {
+    overflow: visible !important;
+}
+
+.modal-content {
+    position: relative;
+    z-index: 1;
+    margin-top: 30px;
+    padding-top: 70px; /* espacio para la imagen */
+    border-radius: 1rem;
+}
+
+.modal-wrap {
+    position: relative;
+}
+
+@keyframes rebotar {
+    0% { transform: translateX(-50%) translateY(0); }
+    30% { transform: translateX(-50%) translateY(-12px); }
+    60% { transform: translateX(-50%) translateY(6px); }
+    100% { transform: translateX(-50%) translateY(0); }
+}
+
+.rebote {
+    animation: rebotar 0.6s ease-out;
 }
 
 /*FIN_EFECTOS PARA MODAL*/

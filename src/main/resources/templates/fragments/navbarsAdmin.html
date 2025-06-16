@@ -1,4 +1,4 @@
-<div th:fragment="navbarsAdminFragment">
+<div th:fragment="navbarsAdminFragment" xmlns:sec="http://www.w3.org/1999/xhtml">
 
 
     <!-- Navbar superior -->
@@ -20,12 +20,36 @@
             <div class="dropdown">
                 <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
-                    Perfil
+                    <span th:text="${#authentication.authenticated} ? 'Mi Cuenta' : 'Acceder a mi cuenta'"></span>
                 </button>
-                <ul class="dropdown-menu dropdown-menu-end">
-                    <li><a class="dropdown-item" th:href="@{/perfil}">Ver Perfil</a></li>
-                    <li>
-                        <hr class="dropdown-divider">
+                <ul class="dropdown-menu dropdown-menu-end dropdownNav" aria-labelledby="userDropdown">
+                    <!-- Usuario logueado: perfil y logout -->
+                    <li sec:authorize="isAuthenticated()">
+                        <a class="dropdown-item" th:href="@{/perfil/informacion}">
+                            <i class="fa-solid fa-face-smile me-2"></i>
+                            <span th:text="#{header.perfil}"></span>
+                        </a>
+                    </li>
+                    <li sec:authorize="isAuthenticated() and hasRole('ADMIN')">
+                        <a class="dropdown-item" th:href="@{/}">
+                            <i class="fa-solid fa-house-chimney me-2"></i> Inicio
+                        </a>
+                    </li>
+                    <li sec:authorize="isAuthenticated()">
+                        <form th:action="@{/logout}" method="post" style="display:inline;">
+                            <button class="dropdown-item" type="submit">
+                                <i class="fa-solid fa-right-from-bracket me-2"></i>
+                                <span th:text="#{header.cerrar}"></span>
+                            </button>
+                        </form>
+                    </li>
+
+                    <!-- Usuario no logueado: acceso -->
+                    <li sec:authorize="isAnonymous()">
+                        <a class="dropdown-item" th:href="@{/auth/loginPawHome}">
+                            <i class="fa-solid fa-unlock-keyhole me-2"></i>
+                            <span th:text="#{header.iniciar}"></span>
+                        </a>
                     </li>
                 </ul>
             </div>

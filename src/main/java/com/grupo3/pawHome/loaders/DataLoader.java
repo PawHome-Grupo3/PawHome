@@ -30,6 +30,7 @@ public class DataLoader implements CommandLineRunner {
     private final RazaRepository razaRepository;
     private final EspecieRepository especieRepository;
     private final RolRepository rolRepository;
+    private final AdopcionRepository adopcionRepository;
 
 
     public DataLoader(AnimalRepository animalRepository,
@@ -43,7 +44,7 @@ public class DataLoader implements CommandLineRunner {
                       PasswordEncoder passwordEncoder,
                       RazaRepository razaRepository,
                       EspecieRepository especieRepository,
-                      RolRepository rolRepository) {
+                      RolRepository rolRepository, AdopcionRepository adopcionRepository) {
 
         this.animalRepository = animalRepository;
         this.apadrinarRepository = apadrinarRepository;
@@ -57,6 +58,7 @@ public class DataLoader implements CommandLineRunner {
         this.razaRepository = razaRepository;
         this.especieRepository = especieRepository;
         this.rolRepository = rolRepository;
+        this.adopcionRepository = adopcionRepository;
     }
 
     @Override
@@ -1176,5 +1178,24 @@ public class DataLoader implements CommandLineRunner {
         ap4.setUsuario(u2);
         apadrinarRepository.save(ap4);
 
+        Adopcion adopcion = new Adopcion();
+
+        adopcion.setOcupacion("Administrativa en una clínica dental");
+        adopcion.setOtrosAnimales("Sí, tengo una gata de 4 años esterilizada");
+        adopcion.setDeAcuerdo("Sí, estoy de acuerdo con las condiciones de adopción establecidas");
+        adopcion.setHijos("No tengo hijos actualmente");
+        adopcion.setCaracteristicaMascota("Cariñosa, tranquila y que se lleve bien con otros animales");
+        adopcion.setExperienciaPrevia("Sí, he tenido perros y gatos anteriormente. Me considero responsable y comprometida");
+        adopcion.setTiempoSolo("Máximo 4 horas al día, ya que trabajo medio tiempo y el resto desde casa");
+        adopcion.setDondeVivira("Vivirá dentro de casa, con acceso a un patio cerrado y seguro");
+        adopcion.setVeterinario("Clínica Veterinaria San Jorge, con la Dra. Laura Martínez");
+        adopcion.setVisitasSeguimiento("Sí, estoy completamente de acuerdo con que se realicen visitas de seguimiento");
+        adopcion.setFirma("Laura Gómez Pérez");
+        adopcion.setFechaFormulario(LocalDate.now());
+        adopcion.setAceptado(true);
+
+        adopcion.setUsuario(usuario); // Instancia existente de Usuario
+        adopcion.setAnimal(a1);
+        adopcionRepository.save(adopcion);
     }
 }

@@ -3,20 +3,107 @@ body {
     padding: 0;
     font-family: "Inter", sans-serif;
     overflow-x: hidden;
+    background: linear-gradient(90deg, #e2e2e2, rgba(0, 196, 118, 0.7));
 }
 
 .mainContainer {
-    background-color: rgba(27, 125, 85, 0.3);
-    margin: 250px;
+    margin: 250px auto;
     padding: 15px;
     border-radius: 20px;
+    max-width: 1200px;
 }
 
 .cardMapa {
-    background-color: rgba(27, 125, 85, 0.5);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.card-box {
+    background: #fff;
     border-radius: 20px;
-    margin: 5px;
-    padding: 10px;
+    padding: 25px;
+    margin: 0;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(10px);
+    opacity: 0;
+    transform: translateY(60px);
+    flex: 1 1 100%;
+
+    /* Fade-in separado */
+    animation-name: floatIn, levitar;
+    animation-duration: 1.2s, 3s;
+    animation-timing-function: ease-out, ease-in-out;
+    animation-fill-mode: forwards, none;
+    animation-delay: 0.2s, 1.2s;
+    animation-iteration-count: 1, infinite;
+    animation-play-state: running, running;
+}
+
+/* Al hacer hover, solo se pausa levitar */
+.mainContainer:hover .card-box {
+    animation-play-state: running, paused;
+}
+
+.map-responsive {
+    border-left: 8px solid #27632a;
+}
+
+.tablaHorario {
+    border-right: 8px solid #27632a;
+}
+
+.card-box.tablaHorario {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.boton-container {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.boton-container h2 {
+    margin-bottom: 12px;
+    font-size: 22px;
+    font-family: "Inter", sans-serif;
+    color: #000;
+}
+
+.btn-contacto {
+    display: inline-block;
+    padding: 14px 32px;
+    min-width: 220px;
+    background: linear-gradient(90deg, rgba(0, 255, 153, 0.7), rgba(27, 125, 85, 0.7));
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform 0.4s ease-in-out, background 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.btn-contacto:hover {
+    background: linear-gradient(90deg, rgba(0, 255, 153, 1), rgba(27, 125, 85, 1));
+    box-shadow: 0 10px 25px rgba(0, 255, 153, 0.6);
+    transform: scale(1.08);
+}
+
+@media (min-width: 768px) {
+    .card-box.map-responsive {
+        flex: 1 1 65%;
+    }
+
+    .card-box.tablaHorario {
+        flex: 1 1 30%;
+    }
 }
 
 .map-responsive {
@@ -26,6 +113,29 @@ body {
 
 .map-responsive iframe {
     height: 500px;
-    width: 800px;
+    width: 100%;
+    border-radius: 15px;
+    border: none;
+}
+
+/* Animaciones */
+@keyframes floatIn {
+    from {
+        opacity: 0;
+        transform: translateY(60px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes levitar {
+    0%, 100% {
+        transform: translateX(0) translateY(0);
+    }
+    50% {
+        transform: translateX(0) translateY(-15px);
+    }
 }
 

@@ -22,7 +22,9 @@ public class ProductoController {
     private final ProductoService productoService;
     private final TarifaService tarifaService;
 
-    public ProductoController(CategoriaService categoriaService, ProductoService productoService, TarifaService tarifaService) {
+    public ProductoController(CategoriaService categoriaService,
+                              ProductoService productoService,
+                              TarifaService tarifaService) {
         this.categoriaService = categoriaService;
         this.productoService = productoService;
         this.tarifaService = tarifaService;
@@ -30,6 +32,7 @@ public class ProductoController {
 
     @GetMapping("/tienda")
     public String mostrarTienda(Model model) {
+
         List<Categoria> categorias = categoriaService.findByNombreContainingIgnoreCase("tienda");
 
         List<CategoriaDto> categoriasDtos = categorias.stream()
@@ -38,6 +41,7 @@ public class ProductoController {
 
         model.addAttribute("categorias", categorias);
         model.addAttribute("categoriasDtos", categoriasDtos);
+
         return "tienda";
     }
 
@@ -49,8 +53,10 @@ public class ProductoController {
         if (productoOpt.isPresent()) {
             Producto producto = productoOpt.get();
             Optional<Tarifa> tarifaActualOpt = tarifaService.findTopByProductoIdOrderByFechaDesdeDesc(id);
+
             model.addAttribute("producto", producto);
             tarifaActualOpt.ifPresent(tarifa -> model.addAttribute("tarifa", tarifa));
+
             return "detalleProducto"; // nombre de la vista Thymeleaf (por ejemplo: templates/dona.html)
         } else {
             return "redirect:/error"; // o cualquier página de error

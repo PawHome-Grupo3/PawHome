@@ -2,7 +2,7 @@
 <html lang="es" xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layouts/layout.html}">
 <head>
-    <title>Contacto</title>
+    <title>Buzón de sugerencias</title>
     <link rel="stylesheet" th:href="@{/css/buzonsugerencias.css}"/>
 </head>
 
@@ -12,12 +12,15 @@
 
     <section class="mainContainer d-flex flex-column text-center">
         <h2 class="fw-bold text-center" th:utext="#{buzonsugerencias.titulo}"></h2>
+
         <div class="container mt-5 mb-5">
             <form class="row g-4 d-flex justify-content-center cardFormulario">
                 <fieldset class="col-md-12">
+
                     <div class="itemSeleccion">
-                        <label for="motivoMensaje" class="form-label" th:utext="#{buzonsugerencias.motivoMensaje}"><span
-                                style="color: red">*</span></label>
+                        <label for="motivoMensaje" class="form-label fw-bold text-start" th:utext="#{buzonsugerencias.motivoMensaje}">
+                            <span style="color: red">*</span>
+                        </label>
                         <select id="motivoMensaje" class="form-select labelForm" required>
                             <option value="" disabled selected th:utext="#{buzonsugerencias.porFavor}"></option>
                             <option th:utext="#{buzonsugerencias.sugerencia}"></option>
@@ -30,8 +33,9 @@
                     </div>
 
                     <div class="itemSeleccion">
-                        <label for="destinatario" class="form-label" th:utext="#{buzonsugerencias.dirigido}"><span
-                                style="color: red">*</span></label>
+                        <label for="destinatario" class="form-label fw-bold text-start" th:utext="#{buzonsugerencias.dirigido}">
+                            <span style="color: red">*</span>
+                        </label>
                         <select id="destinatario" class="form-select labelForm" required>
                             <option value="" disabled selected th:utext="#{buzonsugerencias.porFavor}"></option>
                             <option th:utext="#{buzonsugerencias.trabajador}"></option>
@@ -41,12 +45,13 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="sugerencia" class="form-label" th:utext="#{buzonsugerencias.tuSugerencia}"></label>
-                        <textarea class="form-control" id="sugerencia" rows="4"
+                        <label for="sugerencia" class="form-label fw-bold text-start" th:utext="#{buzonsugerencias.tuSugerencia}"></label>
+                        <textarea class="form-control labelForm" id="sugerencia" rows="4"
                                   placeholder="Escribe tu sugerencia aquí..."></textarea>
                     </div>
 
                 </fieldset>
+
                 <div class="text-center mt-5 mb-5">
                     <button type="submit" class="btn btn-success btnEnviar" th:utext="#{buzonsugerencias.botonEnviar}"></button>
                 </div>

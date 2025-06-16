@@ -13,7 +13,6 @@ import com.grupo3.pawHome.services.*;
 import com.grupo3.pawHome.util.PaisUtils;
 import com.grupo3.pawHome.util.SecurityUtil;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -34,11 +33,12 @@ public class UsuarioController {
     private final FacturaRepository facturaRepository;
     private final PaisUtils paisUtils;
     private final SecurityUtil securityUtil;
+    private final StripeService stripeService;
 
     public UsuarioController(UsuarioService usuarioService,
                              ApadrinarService apadrinarService,
                              LocationService locationService,
-                             MetodoPagoService metodoPagoService, PaisUtils paisUtils, FacturaService facturaService, FacturaRepository facturaRepository, SecurityUtil securityUtil) {
+                             MetodoPagoService metodoPagoService, PaisUtils paisUtils, FacturaService facturaService, FacturaRepository facturaRepository, SecurityUtil securityUtil, StripeService stripeService) {
         this.usuarioService = usuarioService;
         this.apadrinarService = apadrinarService;
         this.locationService = locationService;
@@ -47,20 +47,24 @@ public class UsuarioController {
         this.facturaService = facturaService;
         this.facturaRepository = facturaRepository;
         this.securityUtil = securityUtil;
+        this.stripeService = stripeService;
     }
 
     @GetMapping("/perfil/informacion")
     public String mostrarPerfil(@AuthenticationPrincipal MyUserDetails userDetails, Model model) {
+
         Usuario usuario = userDetails.getUsuario();
 
         model.addAttribute("usuario", usuario);
         List<MetodoPago> metodoPagos = metodoPagoService.findAllByUsuario(usuario);
+
         if(metodoPagos.isEmpty()){
             model.addAttribute("metodosPago", null);
         }
         else{
             model.addAttribute("metodosPago", metodoPagos);
         }
+
         return "perfilUsuario";
     }
 
@@ -117,15 +121,13 @@ public class UsuarioController {
             model.addAttribute("ciudades", Collections.emptyList());
         }
 
-        System.out.println("Pais seleccionado DTO: " + dto.getCodigoPais());
-        System.out.println("Ciudad seleccionada DTO: " + dto.getCiudad());
-
         return "perfilUsuarioEditar";
     }
 
     @PostMapping("/perfil/guardar")
     public String guardarPerfil(@AuthenticationPrincipal MyUserDetails userDetails,
                                 @ModelAttribute("perfilDTO") PerfilDatosDTO dto) {
+
         Usuario authUsuario = userDetails.getUsuario();
 
         Usuario usuario = usuarioService.findById(authUsuario.getId())
@@ -138,24 +140,19 @@ public class UsuarioController {
             perfil.setUsuario(usuario);
         }
 
-        // Asignación de campos del formulario al perfil
         perfil.setNombre(dto.getNombre());
         perfil.setApellidos(dto.getApellidos());
         perfil.setEdad(dto.getEdad());
         perfil.setDni(dto.getDni());
         perfil.setDireccion(dto.getDireccion());
-
-        System.out.println("CODIGO PAISSSS: " + dto.getCodigoPais());
-        // ✅ Asegúrate de que aquí se guarda el código del país (por ejemplo "ES")
         perfil.setPais(dto.getCodigoPais());
-
         perfil.setCiudad(dto.getCiudad());
         perfil.setCp(dto.getCp());
         perfil.setTelefono1(dto.getTelefono1());
         perfil.setTelefono2(dto.getTelefono2());
         perfil.setTelefono3(dto.getTelefono3());
 
-        // Asociar el perfil al usuario y guardar
+        // Asociar el perfil al usuario y guardar y actualizarlo
         usuario.setPerfilDatos(perfil);
         usuarioService.save(usuario);
         securityUtil.updateAuthenticatedUser(usuario);
@@ -163,9 +160,29 @@ public class UsuarioController {
         return "redirect:/perfil/editar";
     }
 
+    @GetMapping("/perfil/facturas")
+    public String mostrarFacturas(Model model, @AuthenticationPrincipal MyUserDetails userDetails) {
+
+        Usuario usuario = userDetails.getUsuario();
+        boolean tieneFacturas = facturaRepository.existsByUsuario_Id(Long.valueOf(usuario.getId()));
+
+        if(tieneFacturas) {
+
+            List<FacturaDTO> facturas = facturaService.obtenerFacturasPorUsuario(usuario.getId());
+
+            model.addAttribute("facturas", facturas);
+        }else{
+            model.addAttribute("facturas", null);
+        }
+
+        return "perfilUsuarioFacturas"; // la vista HTML donde tienes la tabla
+    }
+
     @GetMapping("/perfil/apadrinamientos")
     public String mostrarPerfilApadrinamientos(@AuthenticationPrincipal MyUserDetails userDetails, Model model) {
+
         Usuario usuario = userDetails.getUsuario();
+
         if (usuario != null) {
             Set<Apadrinar> apadrinamientosActivos = apadrinarService.apadrinamientosActivosPorUsuario(usuario.getId());
             Set<Apadrinar> apadrinamientosInactivos = apadrinarService.apadrinamientosInactivosPorUsuario(usuario.getId());
@@ -177,7 +194,6 @@ public class UsuarioController {
             else model.addAttribute("apadrinamientosInactivos", null);
 
             model.addAttribute("usuario", usuario);
-
         } else {
             model.addAttribute("usuario", null);
         }
@@ -185,29 +201,26 @@ public class UsuarioController {
         return "perfilUsuarioApadrinamientos";
     }
 
-    @GetMapping("/perfil/facturas")
-    public String mostrarFacturas(Model model, @AuthenticationPrincipal MyUserDetails userDetails) {
-
-        // Aquí deberías buscar el usuario por email/nickname
-        Usuario usuario = userDetails.getUsuario();
-        boolean tieneFacturas = facturaRepository.existsByUsuario_Id(Long.valueOf(usuario.getId()));
-        if(tieneFacturas) {
-
-            List<FacturaDTO> facturas = facturaService.obtenerFacturasPorUsuario(usuario.getId());
-
-            model.addAttribute("facturas", facturas);
-        }else{
-            model.addAttribute("facturas", null);
-        }
-        return "perfilUsuarioFacturas"; // la vista HTML donde tienes la tabla
-    }
-
     @PostMapping("/perfil/apadrinamientos/finalizar")
     public String finalizarApadrinamiento(@RequestParam("apadrinamientoId") int apadrinamientoId) {
+
         Optional<Apadrinar> apadrinarOpt = apadrinarService.findById(apadrinamientoId);
 
         if (apadrinarOpt.isPresent()) {
             Apadrinar apadrinamiento = apadrinarOpt.get();
+
+            // Cancelar en Stripe
+            String stripeSubscriptionId = apadrinamiento.getStripeSubscriptionId();
+            if (stripeSubscriptionId != null && !stripeSubscriptionId.isEmpty()) {
+                boolean cancelado = stripeService.cancelarSuscripcion(stripeSubscriptionId);
+                if (!cancelado) {
+                    // Opcional: manejar errores de cancelación
+                    // Redireccionar a una página de error o mostrar un mensaje
+                    return "redirect:/perfil/apadrinamientos?errorStripe";
+                }
+            }
+
+            // Marcar como inactivo en la BD
             apadrinamiento.setFechaBaja(LocalDate.now());
             apadrinarService.save(apadrinamiento);
         }
@@ -217,6 +230,7 @@ public class UsuarioController {
 
     @PostMapping("/perfil/apadrinamientos/reactivar")
     public String reactivarApadrinamiento(@RequestParam("apadrinamientoId") int apadrinamientoId) {
+
         Optional<Apadrinar> apadrinarOpt = apadrinarService.findById(apadrinamientoId);
 
         if (apadrinarOpt.isPresent()) {
@@ -232,7 +246,7 @@ public class UsuarioController {
 
     @GetMapping("/login")
     public String login() {
-        return "login";
+        return "loginRegistro";
     }
 
 }
