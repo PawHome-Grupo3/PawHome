@@ -47,12 +47,6 @@ public class DefaultController {
     @GetMapping("/perfil/puntos")
     public String mostrarPerfilPuntos() { return "perfilUsuarioPuntos"; }
 
-    @GetMapping("/perfil/adopciones")
-    public String mostrarPerfilAdopciones()
-    {
-        return "perfilUsuarioAdopciones";
-    }
-
     @GetMapping("/perfil/donaciones")
     public String mostrarPerfilDonaciones()
     {
@@ -99,10 +93,6 @@ public class DefaultController {
 
     @GetMapping("/colabora/adopta")
     public String mostrarColaboraAdopta() { return "Adopta"; }
-
-    @GetMapping("/colabora/adopta/formularioAdopta")
-    public String mostrarformularioadopta() { return "formularioAdopta"; }
-
 
     @GetMapping("/finalfeliz")
     public String mostrarFinalesFelices() { return "FinalFeliz"; }

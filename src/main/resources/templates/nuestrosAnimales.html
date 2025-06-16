@@ -257,7 +257,7 @@
 							</div>
 							<div class="row d-flex justify-content-center flex-nowrap">
 								<a th:if="${animal.adoptado == false && animal.caracterSocial == true}"
-								   th:href="@{/adopta/{id}(id=${animal.id})}"
+								   th:href="@{/colabora/adopta/formularioAdopta(animalId=${animal.id})}"
 								   class="botonesCardAnimal btn card_btn">Adopta</a>
 
 								<a href="#"
@@ -611,12 +611,12 @@
 				alertaModal.show();
 
 				const timerId = setTimeout(() => {
-					window.location.href = "/login";
+					window.location.href = "/auth/loginPawHome";
 				}, 4000);
 
 				document.getElementById('btnLogin').addEventListener("click", () => {
 					clearTimeout(timerId);
-					window.location.href = "/login";
+					window.location.href = "/auth/loginPawHome";
 				});
 			}
 

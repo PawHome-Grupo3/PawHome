@@ -35,21 +35,21 @@
 
 										<!-- Cantidad dias -->
 										<span class="badgeCard">
-									<i class="fas fa-calendar-days me-1"></i>
-									<span>3 Dias</span>
-								</span>
+											<i class="fas fa-calendar-days me-1"></i>
+											<span>3 Dias</span>
+										</span>
 
 										<!-- Fecha entrada -->
 										<span class="badgeCard">
-									<i class="fas fa-door-open me-1"></i>
-									<span>19/06/2025</span>
-								</span>
+											<i class="fas fa-door-open me-1"></i>
+											<span>19/06/2025</span>
+										</span>
 
 										<!-- Fecha salida -->
 										<span class="badgeCard">
-									<i class="fas fa-door-closed me-1"></i>
-									<span>22/06/2025</span>
-								</span>
+											<i class="fas fa-door-closed me-1"></i>
+											<span>22/06/2025</span>
+										</span>
 									</div>
 									<div class="row d-flex justify-content-center flex-nowrap">
 										<a class="botonesCardAnimal btn card_btn">Factura</a>
@@ -64,6 +64,44 @@
 								</div>
 							</div>
 						</div>
+
+						<div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4 d-flex justify-content-center">
+							<div class="card cardAnimal">
+								<div class="card_image">
+									<img th:src="@{/images/perro3.png}" alt="Firulais" class="imgCardAnimal">
+								</div>
+								<div class="card_content d-flex justify-content-center card_contentAnimal">
+									<h2 class="card_title card_titleAnimal">Tobi</h2>
+									<hr class="mx-1 w-100 opacity-50">
+									<h2 class="card_title card_titleAnimal pb-3">Bono larga estancia</h2>
+									<div class="d-flex flex-wrap justify-content-center gap-2 mb-2 card_badges">
+
+										<!-- Cantidad dias -->
+										<span class="badgeCard">
+											<i class="fas fa-calendar-days me-1"></i>
+											<span>20 Noches</span>
+										</span>
+
+										<!-- Dias restantes -->
+										<span class="badgeCard">
+											<i class="fas fa-door-open me-1"></i>
+											<span>12 Restantes</span>
+										</span>
+									</div>
+									<div class="row d-flex justify-content-center flex-nowrap">
+										<a class="botonesCardAnimal btn card_btn">Factura</a>
+										<a class="botonesCardAnimal btn card_btn">Contacto</a>
+									</div>
+									<div class="row d-flex justify-content-center flex-nowrap hiddenCardContent">
+										<button type="button"
+												class="botonesCardAnimal botonesCardLeerMas btn card_btn arrow">
+											Usar bono
+										</button>
+									</div>
+								</div>
+							</div>
+						</div>
+
 					</div>
 
 					<hr class="mx-auto w-100 border-2 opacity-50">
@@ -74,41 +112,29 @@
 						<div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4 d-flex justify-content-center">
 							<div class="card cardAnimal">
 								<div class="card_image">
-									<img th:src="@{/images/perro2.png}" alt="Firulais" class="imgCardAnimal">
+									<img th:src="@{/images/perro4.png}" alt="Firulais" class="imgCardAnimal">
 								</div>
 								<div class="card_content d-flex justify-content-center card_contentAnimal">
-									<h2 class="card_title card_titleAnimal pb-3">Firulais</h2>
+									<h2 class="card_title card_titleAnimal">Comodoro</h2>
+									<hr class="mx-1 w-100 opacity-50">
+									<h2 class="card_title card_titleAnimal pb-3">Baño + Corte</h2>
 									<div class="d-flex flex-wrap justify-content-center gap-2 mb-2 card_badges">
 
-										<!-- Peso -->
+										<!-- Dia de la cita -->
 										<span class="badgeCard">
-									<i class="fas fa-weight-hanging me-1"></i>
-									<span>10Kg</span>
-								</span>
+											<i class="fas fa-calendar-days me-1"></i>
+											<span>19/06/2025</span>
+										</span>
 
-										<!-- Edad -->
+										<!-- Hora -->
 										<span class="badgeCard">
-									<i class="fas fa-birthday-cake me-1"></i>
-									<span>3 Añitos</span>
-								</span>
-
-										<!-- Género -->
-										<span class="badgeCard">
-									<i class="fas fa-venus-mars me-1"></i>
-									<span>Macho</span>
-								</span>
+											<i class="fas fa-clock-four me-1"></i>
+											<span>10:30</span>
+										</span>
 									</div>
 									<div class="row d-flex justify-content-center flex-nowrap">
-										<a class="botonesCardAnimal btn card_btn">Adopta</a>
-										<a class="botonesCardAnimal btn card_btn">
-											Apadrina
-										</a>
-									</div>
-									<div class="row d-flex justify-content-center flex-nowrap hiddenCardContent">
-										<button type="button"
-												class="botonesCardAnimal botonesCardLeerMas btn card_btn arrow">
-											Leer Más
-										</button>
+										<a class="botonesCardAnimal btn card_btn">Factura</a>
+										<a class="botonesCardAnimal btn card_btn">Contacto</a>
 									</div>
 								</div>
 							</div>
@@ -117,50 +143,10 @@
 
 					<hr class="mx-auto w-100 border-2 opacity-50">
 
-					<h3 class="mb-3">Adiestramiento:</h3>
+					<h3 class="mb-3">Adiestramiento: Sin citas pendientes</h3>
 					<!-- Cards -->
 					<div class="row justify-content-center">
 						<div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4 d-flex justify-content-center">
-							<div class="card cardAnimal">
-								<div class="card_image">
-									<img th:src="@{/images/perro2.png}" alt="Firulais" class="imgCardAnimal">
-								</div>
-								<div class="card_content d-flex justify-content-center card_contentAnimal">
-									<h2 class="card_title card_titleAnimal pb-3">Firulais</h2>
-									<div class="d-flex flex-wrap justify-content-center gap-2 mb-2 card_badges">
-
-										<!-- Peso -->
-										<span class="badgeCard">
-									<i class="fas fa-weight-hanging me-1"></i>
-									<span>10Kg</span>
-								</span>
-
-										<!-- Edad -->
-										<span class="badgeCard">
-									<i class="fas fa-birthday-cake me-1"></i>
-									<span>3 Añitos</span>
-								</span>
-
-										<!-- Género -->
-										<span class="badgeCard">
-									<i class="fas fa-venus-mars me-1"></i>
-									<span>Macho</span>
-								</span>
-									</div>
-									<div class="row d-flex justify-content-center flex-nowrap">
-										<a class="botonesCardAnimal btn card_btn">Adopta</a>
-										<a class="botonesCardAnimal btn card_btn">
-											Apadrina
-										</a>
-									</div>
-									<div class="row d-flex justify-content-center flex-nowrap hiddenCardContent">
-										<button type="button"
-												class="botonesCardAnimal botonesCardLeerMas btn card_btn arrow">
-											Leer Más
-										</button>
-									</div>
-								</div>
-							</div>
 						</div>
 					</div>
 
@@ -175,38 +161,26 @@
 									<img th:src="@{/images/perro2.png}" alt="Firulais" class="imgCardAnimal">
 								</div>
 								<div class="card_content d-flex justify-content-center card_contentAnimal">
-									<h2 class="card_title card_titleAnimal pb-3">Firulais</h2>
+									<h2 class="card_title card_titleAnimal">Firulais</h2>
+									<hr class="mx-1 w-100 opacity-50">
+									<h2 class="card_title card_titleAnimal pb-3">Vacunación</h2>
 									<div class="d-flex flex-wrap justify-content-center gap-2 mb-2 card_badges">
 
-										<!-- Peso -->
+										<!-- Dia de la cita -->
 										<span class="badgeCard">
-									<i class="fas fa-weight-hanging me-1"></i>
-									<span>10Kg</span>
-								</span>
+											<i class="fas fa-calendar-days me-1"></i>
+											<span>19/06/2025</span>
+										</span>
 
-										<!-- Edad -->
+										<!-- Hora -->
 										<span class="badgeCard">
-									<i class="fas fa-birthday-cake me-1"></i>
-									<span>3 Añitos</span>
-								</span>
-
-										<!-- Género -->
-										<span class="badgeCard">
-									<i class="fas fa-venus-mars me-1"></i>
-									<span>Macho</span>
-								</span>
+											<i class="fas fa-clock-four me-1"></i>
+											<span>10:30</span>
+										</span>
 									</div>
 									<div class="row d-flex justify-content-center flex-nowrap">
-										<a class="botonesCardAnimal btn card_btn">Adopta</a>
-										<a class="botonesCardAnimal btn card_btn">
-											Apadrina
-										</a>
-									</div>
-									<div class="row d-flex justify-content-center flex-nowrap hiddenCardContent">
-										<button type="button"
-												class="botonesCardAnimal botonesCardLeerMas btn card_btn arrow">
-											Leer Más
-										</button>
+										<a class="botonesCardAnimal btn card_btn">Factura</a>
+										<a class="botonesCardAnimal btn card_btn">Contacto</a>
 									</div>
 								</div>
 							</div>
@@ -215,50 +189,10 @@
 
 					<hr class="mx-auto w-100 border-2 opacity-50">
 
-					<h3 class="mb-3">Asesoramiento Legal:</h3>
+					<h3 class="mb-3">Asesoramiento Legal: Sin citas pendientes</h3>
 					<!-- Cards -->
 					<div class="row justify-content-center">
 						<div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4 d-flex justify-content-center">
-							<div class="card cardAnimal">
-								<div class="card_image">
-									<img th:src="@{/images/consulta.jpg}" alt="Firulais" class="imgCardAnimal">
-								</div>
-								<div class="card_content d-flex justify-content-center card_contentAnimal">
-									<h2 class="card_title card_titleAnimal pb-3">Firulais</h2>
-									<div class="d-flex flex-wrap justify-content-center gap-2 mb-2 card_badges">
-
-										<!-- Peso -->
-										<span class="badgeCard">
-									<i class="fas fa-weight-hanging me-1"></i>
-									<span>10Kg</span>
-								</span>
-
-										<!-- Edad -->
-										<span class="badgeCard">
-									<i class="fas fa-birthday-cake me-1"></i>
-									<span>3 Añitos</span>
-								</span>
-
-										<!-- Género -->
-										<span class="badgeCard">
-									<i class="fas fa-venus-mars me-1"></i>
-									<span>Macho</span>
-								</span>
-									</div>
-									<div class="row d-flex justify-content-center flex-nowrap">
-										<a class="botonesCardAnimal btn card_btn">Adopta</a>
-										<a class="botonesCardAnimal btn card_btn">
-											Apadrina
-										</a>
-									</div>
-									<div class="row d-flex justify-content-center flex-nowrap hiddenCardContent">
-										<button type="button"
-												class="botonesCardAnimal botonesCardLeerMas btn card_btn arrow">
-											Leer Más
-										</button>
-									</div>
-								</div>
-							</div>
 						</div>
 					</div>
 				</div>
