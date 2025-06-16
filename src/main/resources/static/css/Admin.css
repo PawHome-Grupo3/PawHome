@@ -1,9 +1,16 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: rgba(141, 197, 146, 0.2); /* Color de fondo */
+}
+
 main {
     margin-top: 110px; /* Suma de las alturas de ambas navbars */
 }
 
 .container {
-    margin-top: 10%
+    margin-top: 10%;
 }
 
 
@@ -46,5 +53,17 @@ main {
     width: 100%;
     margin: 0;
     padding: 0;
+}
+
+table {
+    border-collapse: separate; /* importante para que funcione el border-radius */
+    border-spacing: 0; /* opcional, para que no haya espacio entre celdas */
+    border-radius: 10px; /* aquí ajustas el redondeo */
+    overflow: hidden; /* para que el contenido no sobresalga */
+    border: 1px solid #ccc; /* para que se note el borde */
+}
+
+.table img {
+    width: 100px;
 }
 

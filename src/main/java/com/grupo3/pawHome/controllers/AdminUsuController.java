@@ -14,12 +14,15 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/admin/usuarios")
 public class AdminUsuController {
 
-    @Autowired
-    private UsuarioRepository usuarioRepository;
-    @Autowired
-    private EditarUsuarioPerfilService editarUsuarioPerfilService;
-    @Autowired
-    private RolRepository rolRepository;
+    private final UsuarioRepository usuarioRepository;
+    private final EditarUsuarioPerfilService editarUsuarioPerfilService;
+    private final RolRepository rolRepository;
+
+    public AdminUsuController(UsuarioRepository usuarioRepository, EditarUsuarioPerfilService editarUsuarioPerfilService, RolRepository rolRepository) {
+        this.usuarioRepository = usuarioRepository;
+        this.editarUsuarioPerfilService = editarUsuarioPerfilService;
+        this.rolRepository = rolRepository;
+    }
 
     @GetMapping
     public String listarUsuarios(Model model) {
