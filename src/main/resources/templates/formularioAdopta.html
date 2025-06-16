@@ -10,7 +10,7 @@
   <h2 class="text-success-emphasis fw-bold display-5 my-4 text-center" th:text="#{form.heading}">Adopta a una de nuestras mascotas</h2>
   <div class="formContainer">
     <!-- ... encabezado HTML omitido para brevedad ... -->
-    <form th:action="@{/colabora/adopta/crearFormulario}" th:object="${formAdoptaDTO}" class="row g-3" method="post">
+    <form th:if="${formAdoptaDTO != null}" th:action="@{/colabora/adopta/crearFormulario}" th:object="${formAdoptaDTO}" class="row g-3" method="post">
       <fieldset class="col-md-6">
         <!-- ... otros campos ... -->
         <div class="itemSeleccion">
