@@ -25,7 +25,6 @@ public class AdminAnimalesController {
         this.especieRepository = especieRepository;
     }
 
-
     // Listar animales y mostrar formulario (crear o editar)
     @GetMapping
     public String listarAnimales(Model model) {
@@ -46,25 +45,18 @@ public class AdminAnimalesController {
     public String editarAnimal(@PathVariable Integer id, Model model) {
         Animal animal = animalRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Animal no encontrado con ID: " + id));
-        // Asegurarse de que el animal tiene una especie y una raza asociada
-        if (animal.getEspecie() == null) {
-            animal.setEspecie(new Especie());
-        }
-        if (animal.getRaza() == null) {
-            animal.setRaza(new Raza());
-        }
-        // Añadir el animal al modelo para que se muestre en el formulario de edición
-        model.addAttribute("animal", animal); // Formulario relleno
-        model.addAttribute("especies", especieRepository.findAll()); // Para seleccionar especie
-        model.addAttribute("razas", razaRepository.findAll()); // Para seleccionar raza
+
+        model.addAttribute("animal", animal);
+        model.addAttribute("razas", razaRepository.findAll());
         return "editarAdminAnimales";
     }
 
     @PostMapping("/actualizar/{id}")
     public String actualizarAnimal(@ModelAttribute Animal animal, @PathVariable Integer id) {
-        Especie especie = especieRepository.findById(animal.getEspecie().getId())
-                .orElseThrow(() -> new IllegalArgumentException("Especie no encontrada"));
-        animal.setEspecie(especie);
+        Raza raza = razaRepository.findById(animal.getRaza().getId())
+                .orElseThrow(() -> new IllegalArgumentException("Raza no encontrada"));
+
+        animal.setRaza(raza);
         animalRepository.save(animal);
         return "redirect:/admin/animales";
     }

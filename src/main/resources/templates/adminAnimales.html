@@ -22,6 +22,7 @@
                 <th>Peso</th>
                 <th>Edad</th>
                 <th>Género</th>
+                <th>Especie</th>
                 <th>Raza</th>
                 <th>Carácter social</th>
                 <th>Descripción</th>
@@ -41,7 +42,8 @@
                 <td th:text="${animal.fechaNacimiento}"></td>
                 <td th:if="${animal.genero}"><span>Macho</span></td>
                 <td th:unless="${animal.genero}"><span>Hembra</span></td>
-                <td th:text="${animal.especie.raza.nombre}"></td>
+                <td th:text="${animal.raza.nombre}"></td>
+                <td th:text="${animal.raza.especie.nombre}"></td>
                 <td th:if="${animal.caracterSocial}"><span>Amigable</span></td>
                 <td th:unless="${animal.caracterSocial}"><span>No amigable</span></td>
                 <td th:text="${animal.descripcion}"></td>

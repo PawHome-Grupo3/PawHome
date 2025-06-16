@@ -33,9 +33,9 @@
                                    required>
                         </div>
                         <div>
-                            <label for="especie" class="form-label">Raza</label>
-                            <select th:field="*{especie.id}" class="form-select" id="especie" required>
-                                <option th:each="especie : ${especies}" th:value="${especie.id}" th:text="${especie.nombre}"></option>
+                            <label for="raza" class="form-label">Raza</label>
+                            <select th:field="*{raza.id}" class="form-select" id="raza" required>
+                                <option th:each="raza : ${razas}" th:value="${raza.id}" th:text="${raza.nombre}"></option>
                             </select>
                         </div>
 

@@ -63,23 +63,10 @@ public class Animal {
     private String stripeProductId;
 
     @ManyToOne
-    @JoinColumn(name = "especie_id", referencedColumnName = "id")
-    private Especie especie;
+    @JoinColumn(name = "raza_id", referencedColumnName = "id")
+    private Raza raza;
 
     @OneToMany(mappedBy = "animal", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Adopcion> Adopciones;
 
-    public String getRaza() {
-        if (this.especie != null && this.especie.getRaza() != null) {
-            return this.especie.getRaza().getNombre();
-        }
-        return null;
-    }
-
-    public void setRaza(Raza raza) {
-        if (this.especie == null) {
-            this.especie = new Especie();
-        }
-        this.especie.setRaza(raza);
-    }
 }
