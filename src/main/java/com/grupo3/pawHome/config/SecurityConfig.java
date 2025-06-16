@@ -37,7 +37,7 @@ public class SecurityConfig {
 //                        .requestMatchers("/auth/**", "/register", "/product/v1/checkout").permitAll()
                                 .requestMatchers("/admin/**").hasRole("ADMIN")
                                 .requestMatchers("/perfil/**", "/colabora/adopta/formularioAdopta").authenticated()
-                                .anyRequest().permitAll() // O .authenticated() si quieres proteger el resto
+                                .anyRequest().permitAll()
                 )
                 .logout(logout -> logout
                         .logoutUrl("/logout")
