@@ -126,70 +126,148 @@
 	<!--TIENDA-->
 	<section class="section-padding" id="section_3">
 		<div class="container">
-			<div class="row contCardsTienda">
+			<div class="row contCardsTienda fondoCategoriaTienda align-items-stretch pt-3">
 
-				<div class="col-lg-12 col-12 text-center">
-					<h2 class="w-auto tituloTienda m-0" th:utext="#{index.apoya}"></h2>
+				<div class="col-lg-12 col-12 text-center mb-5">
+					<div class="cabeceraCategoriaTienda d-inline-block px-5 py-3">
+						<h2 class="tituloCategoriaTienda m-0">Escaparate Solidario</h2>
+						<span class="icono-categoria ms-3"><i class="fas fa-paw"></i></span>
+					</div>
 				</div>
 
-				<div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
-					<div class="custom-block-wrap">
-						<img th:src="@{images/collar.png}" class="custom-block-image img-fluid" alt="">
+				<div class="col-lg-4 col-md-6 col-12 mb-4">
+					<div class="card-producto h-100 d-flex flex-column shadow-lg position-relative">
 
-						<div class="custom-block">
-							<div class="custom-block-body">
-								<h5 class="mb-3" style="color:#5bc1ac; font-weight: 600;">Collar</h5>
+						<!-- Imagen -->
+						<div class="imagen-producto p-3 bg-white d-flex align-items-center justify-content-center">
+							<img th:src="@{/images/Camiseta-azul.png}" alt="Imagen de camiseta azul"
+								 class="img-fluid imagen-interna">
+						</div>
 
-								<p style="color:#717275; font-weight: 300; font-size: 16px;">
-									Dale a tu peludo amigo el mejor look con nuestro collar para perro,
-									diseñado para brindar seguridad, confort y un toque de estilo único.
-								</p>
+						<!-- Información -->
+						<div class="contenido-producto px-4 py-3 d-flex flex-column flex-grow-1 justify-content-between">
+
+							<!-- Título / Precio / Descripción -->
+							<div class="info mb-3 h-100 align-content-center">
+								<div class="nombre-precio d-flex align-items-center gap-2 mb-2">
+									<i class="fas fa-paw icon-animal me-1"></i>
+									<span class="nombre-producto">Camiseta Súper Perro</span>
+									<span class="separador-nombre-precio mx-2">|</span>
+									<span class="flex-nowrap precio-producto align-items-center">
+										<span>10</span>
+										<i class="fas fa-euro-sign icon-precio me-1"></i>
+									</span>
+								</div>
+								<p class="descripcion-producto">¿Quieres ser un héroe con estilo? Compra nuestra camiseta para que lo sepa todo el mundo</p>
 							</div>
 
-							<div>
-								<a href="/tienda" class="custom-btn btn btnHazteVoluntario" th:utext="#{index.apoyanos}"></a>
+							<!-- Botonera -->
+							<div class="botonera d-flex flex-wrap justify-content-center gap-2 mt-auto">
+
+								<!-- Compra directa si talla única -->
+								<form th:action="@{/tienda}" method="get">
+									<button type="submit" class="btn btn-comprar d-flex align-items-center">
+										<svg xmlns="http://www.w3.org/2000/svg" class="icon me-2" width="20" height="20" viewBox="0 0 24 24"
+											 fill="none" stroke="currentColor">
+											<circle cx="9" cy="21" r="1"></circle>
+											<circle cx="20" cy="21" r="1"></circle>
+											<path d="M1 1h4l2.68 13.39a2 2 0 002 1.61H19a2 2 0 002-1.5L23 6H6"></path>
+										</svg>
+										<span>Ir a la tienda</span>
+									</button>
+								</form>
 							</div>
 						</div>
 					</div>
 				</div>
 
-				<div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
-					<div class="custom-block-wrap">
-						<img th:src="@{/images/Camiseta-azul.png}" class="custom-block-image img-fluid" alt="">
+				<div class="col-lg-4 col-md-6 col-12 mb-4">
+					<div class="card-producto h-100 d-flex flex-column shadow-lg position-relative">
 
-						<div class="custom-block">
-							<div class="custom-block-body">
-								<h5 class="mb-3" style="color:#5bc1ac; font-weight: 600;">Camiseta Azul</h5>
+						<!-- Imagen -->
+						<div class="imagen-producto p-3 bg-white d-flex align-items-center justify-content-center">
+							<img th:src="@{/images/Camiseta-azul.png}" alt="Imagen de camiseta azul"
+								 class="img-fluid imagen-interna">
+						</div>
 
-								<p style="color:#717275; font-weight: 300; font-size: 16px;">
-									¿Quieres ser un héroe con estilo? Compra nuestra camiseta para que lo sepa todo el mundo?
-								</p>
+						<!-- Información -->
+						<div class="contenido-producto px-4 py-3 d-flex flex-column flex-grow-1 justify-content-between">
+
+							<!-- Título / Precio / Descripción -->
+							<div class="info mb-3 h-100 align-content-center">
+								<div class="nombre-precio d-flex align-items-center gap-2 mb-2">
+									<i class="fas fa-paw icon-animal me-1"></i>
+									<span class="nombre-producto">Camiseta Súper Perro</span>
+									<span class="separador-nombre-precio mx-2">|</span>
+									<span class="flex-nowrap precio-producto align-items-center">
+										<span>8</span>
+										<i class="fas fa-euro-sign icon-precio me-1"></i>
+									</span>
+								</div>
+								<p class="descripcion-producto">Quieres desayunar con el mejor look con nuestra taza para perro, diseñado para brindar seguridad, confort y un toque de estilo único.</p>
 							</div>
 
-							<div>
-								<a href="/tienda" class="custom-btn btn btnHazteVoluntario" th:utext="#{index.apoyanos}"></a>
+							<!-- Botonera -->
+							<div class="botonera d-flex flex-wrap justify-content-center gap-2 mt-auto">
+
+								<!-- Compra directa si talla única -->
+								<form th:action="@{/tienda}" method="get">
+									<button type="submit" class="btn btn-comprar d-flex align-items-center">
+										<svg xmlns="http://www.w3.org/2000/svg" class="icon me-2" width="20" height="20" viewBox="0 0 24 24"
+											 fill="none" stroke="currentColor">
+											<circle cx="9" cy="21" r="1"></circle>
+											<circle cx="20" cy="21" r="1"></circle>
+											<path d="M1 1h4l2.68 13.39a2 2 0 002 1.61H19a2 2 0 002-1.5L23 6H6"></path>
+										</svg>
+										<span>Ir a la tienda</span>
+									</button>
+								</form>
 							</div>
 						</div>
 					</div>
 				</div>
 
-				<div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
-					<div class="custom-block-wrap">
-						<img th:src="@{/images/taza-prueba.jpg}" class="custom-block-image img-fluid" alt="">
+				<div class="col-lg-4 col-md-6 col-12 mb-4">
+					<div class="card-producto h-100 d-flex flex-column shadow-lg position-relative">
 
-						<div class="custom-block">
-							<div class="custom-block-body">
-								<h5 class="mb-3" style="color:#5bc1ac; font-weight: 600;">Taza </h5>
+						<!-- Imagen -->
+						<div class="imagen-producto p-3 bg-white d-flex align-items-center justify-content-center">
+							<img th:src="@{/images/Camiseta-azul.png}" alt="Imagen de camiseta azul"
+								 class="img-fluid imagen-interna">
+						</div>
 
-								<p style="color:#717275; font-weight: 300; font-size: 16px;">
-									Incluye un cierre de seguridad reforzado y un aro metálico para enganchar la correa
-									de forma rápida y segura. Ideal para perros de todos los tamaños, disponible en
-									varios colores para combinar con su personalidad.
-								</p>
+						<!-- Información -->
+						<div class="contenido-producto px-4 py-3 d-flex flex-column flex-grow-1 justify-content-between">
+
+							<!-- Título / Precio / Descripción -->
+							<div class="info mb-3 h-100 align-content-center">
+								<div class="nombre-precio d-flex align-items-center gap-2 mb-2">
+									<i class="fas fa-paw icon-animal me-1"></i>
+									<span class="nombre-producto">Collar</span>
+									<span class="separador-nombre-precio mx-2">|</span>
+									<span class="flex-nowrap precio-producto align-items-center">
+										<span>5</span>
+										<i class="fas fa-euro-sign icon-precio"></i>
+									</span>
+								</div>
+								<p class="descripcion-producto">Incluye un cierre de seguridad reforzado y un aro metálico para enganchar la correa de forma rápida y segura. Ideal para perros de todos los tamaños, disponible en varios colores para combinar con su personalidad.</p>
 							</div>
 
-							<div>
-								<a href="/tienda" class="custom-btn btn btnHazteVoluntario" th:utext="#{index.apoyanos}"></a>
+							<!-- Botonera -->
+							<div class="botonera d-flex flex-wrap justify-content-center gap-2 mt-auto">
+
+								<!-- Compra directa si talla única -->
+								<form th:action="@{/tienda}" method="get">
+									<button type="submit" class="btn btn-comprar d-flex align-items-center">
+										<svg xmlns="http://www.w3.org/2000/svg" class="icon me-2" width="20" height="20" viewBox="0 0 24 24"
+											 fill="none" stroke="currentColor">
+											<circle cx="9" cy="21" r="1"></circle>
+											<circle cx="20" cy="21" r="1"></circle>
+											<path d="M1 1h4l2.68 13.39a2 2 0 002 1.61H19a2 2 0 002-1.5L23 6H6"></path>
+										</svg>
+										<span>Ir a la tienda</span>
+									</button>
+								</form>
 							</div>
 						</div>
 					</div>
