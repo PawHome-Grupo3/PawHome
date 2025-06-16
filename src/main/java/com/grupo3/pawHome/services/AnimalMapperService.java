@@ -11,9 +11,8 @@ import java.time.Period;
 public class AnimalMapperService {
 
     public AnimalDto toDto(Animal animal) {
-        if (animal == null) {
-            return null;
-        }
+
+        if (animal == null) { return null; }
 
         AnimalDto dto = new AnimalDto();
         dto.setId(animal.getId());
@@ -39,8 +38,10 @@ public class AnimalMapperService {
     }
 
     private String calcularEdad(LocalDate fechaNacimiento) {
+
         if (fechaNacimiento == null) return "Desconocida";
         Period periodo = Period.between(fechaNacimiento, LocalDate.now());
+
         int anios = periodo.getYears();
         int meses = periodo.getMonths();
         int dias = periodo.getDays();

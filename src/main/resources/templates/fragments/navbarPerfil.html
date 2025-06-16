@@ -1,22 +1,48 @@
-<div th:fragment="navPerfilFragment" class=" col-md-3 col-lg-2 divAside p-0">
-    <nav class="navbar navbarAside bg-light navbar-light flex-column justify-content-start p-2">
-        <div class="d-flex align-items-center divAside m-1">
+<div th:fragment="navPerfilFragment" class="col-md-3 col-lg-2 navPerfil-aside p-0">
+    <nav class="navbar navPerfil-navbar flex-column justify-content-start p-3">
+        <div class="d-flex align-items-center navPerfil-profile mb-4">
             <div class="position-relative">
-                <img th:src="@{/images/twitter.ico}" class="custom-block-image img-fluid" alt="" style="max-height: 50px; max-width: 50px;">
+                <img th:src="@{/images/fotoPerfilUsuario.jpg}" class="rounded-circle img-fluid" alt="Foto de perfil" style="width: 50px; height: 50px;">
                 <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
             </div>
-            <div class="ms-3">
-                <h6 class="mb-0">Paulo</h6>
-                <span>Usuario</span>
+            <div class="ms-3 text-white">
+                <h6 th:if="${usuario.perfilDatos}" class="mb-0 fw-semibold" th:text="${usuario.perfilDatos.nombre}"></h6>
+                <small th:text="${usuario.nickname}"></small>
             </div>
         </div>
-        <div class="navbar-nav">
-            <a href="/perfil/informacion" class="nav-item nav-link"><span th:utext="#{navPerfil.informacion}"></span></a>
-            <a href="/perfil/editar" class="nav-item nav-link"><i class="fa fa-th me-2"></i><span th:utext="#{navPerfil.editar}"></span></a>
-            <a href="/perfil/puntos" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i><span th:utext="#{navPerfil.puntos}"></span></a>
-            <a href="/perfil/apadrinamientos" class="nav-item nav-link"><i class="fa fa-table me-2"></i><span th:utext="#{navPerfil.apadrinamientos}"></span></a>
-            <a href="/perfil/adopciones" class="nav-item nav-link"><i class="fa fa-table me-2"></i><span th:utext="#{navPerfil.adopciones}"></span></a>
-            <a href="/perfil/donaciones" class="nav-item nav-link"><i class="fa fa-table me-2"></i><span th:utext="#{navPerfil.donaciones}"></span></a>
+        <div class="nav nav-pills flex-column navPerfil-nav">
+            <a href="/perfil/informacion" class="nav-link navPerfil-link">
+                <i class="fa-solid fa-circle-info me-2"></i>
+                <span th:utext="#{navPerfil.informacion}"></span>
+            </a>
+            <a href="/perfil/editar" class="nav-link navPerfil-link">
+                <i class="fa-solid fa-user-pen me-2"></i>
+                <span th:utext="#{navPerfil.editar}"></span>
+            </a>
+            <a href="/perfil/puntos" class="nav-link navPerfil-link">
+                <i class="fa-solid fa-star me-2"></i>
+                <span th:utext="#{navPerfil.puntos}"></span>
+            </a>
+            <a href="/perfil/apadrinamientos" class="nav-link navPerfil-link">
+                <i class="fa-solid fa-hand-holding-heart me-2"></i>
+                <span th:utext="#{navPerfil.apadrinamientos}"></span>
+            </a>
+            <a href="/perfil/adopciones" class="nav-link navPerfil-link">
+                <i class="fa-solid fa-paw me-2"></i>
+                <span th:utext="#{navPerfil.adopciones}"></span>
+            </a>
+            <a href="/perfil/donaciones" class="nav-link navPerfil-link">
+                <i class="fa-solid fa-donate me-2"></i>
+                <span th:utext="#{navPerfil.donaciones}"></span>
+            </a>
+            <a href="/perfil/facturas" class="nav-link navPerfil-link">
+                <i class="fa-solid fa-file-invoice-dollar me-2"></i>
+                <span th:utext="#{navPerfil.facturas}"></span>
+            </a>
+            <a href="/perfil/citas" class="nav-link navPerfil-link">
+                <i class="fa-solid fa-calendar-check me-2"></i>
+                <span th:utext="#{navPerfil.citas}"></span>
+            </a>
         </div>
     </nav>
 </div>

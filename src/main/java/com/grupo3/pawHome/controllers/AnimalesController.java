@@ -67,7 +67,7 @@ public class AnimalesController {
 
             Pageable pageable = PageRequest.of(page - 1, size, Sort.by(order));
 
-            Page<Animal> pageAns = animalService.buscarAnimalesConFiltros(keyword, adoptado, razaId, especieId, pageable);
+            Page<Animal> pageAns = animalService.buscarAnimales(keyword, adoptado, razaId, especieId, pageable);
 
             animales = pageAns.getContent();
             AnimalDto animalDto;
@@ -87,6 +87,8 @@ public class AnimalesController {
             model.addAttribute("sortDirection", sortDirection);
             model.addAttribute("reverseSortDirection", sortDirection.equals("asc") ? "desc" : "asc");
             model.addAttribute("adoptado", adoptado);
+            model.addAttribute("keyword", keyword);
+
         } catch (Exception e) {
             model.addAttribute("message", e.getMessage());
         }
@@ -101,10 +103,10 @@ public class AnimalesController {
         if (animalOpt.isPresent()) {
             Animal animal = animalOpt.get();
             model.addAttribute("animal", animal);
+
             return "compruebaAdoptaId";
         } else {
             return "redirect:/error";
         }
     }
-
 }

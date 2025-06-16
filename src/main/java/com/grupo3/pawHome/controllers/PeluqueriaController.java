@@ -1,5 +1,6 @@
 package com.grupo3.pawHome.controllers;
 
+import com.grupo3.pawHome.config.MyUserDetails;
 import com.grupo3.pawHome.dtos.ItemCarritoDTO;
 import com.grupo3.pawHome.dtos.ProductRequest;
 import com.grupo3.pawHome.dtos.StripeResponse;
@@ -43,25 +44,43 @@ public class PeluqueriaController {
 
     // Metodo para mostrar la pagina de la peluqueria
     @GetMapping("/peluqueria")
-    public String mostrarGuarderia(@AuthenticationPrincipal Usuario usuario, Model model) {
+    public String mostrarGuarderia(@AuthenticationPrincipal MyUserDetails userDetails, Model model) {
+        if(userDetails == null) {
+            model.addAttribute("usuario", null);
+            return "peluqueria";
+        }
+        Usuario usuario = userDetails.getUsuario();
+        if(usuario.getPerfilDatos() == null) {
+            model.addAttribute("usuario", null);
+            return "peluqueria";
+        }
         model.addAttribute("usuario", usuario);
         return "peluqueria";
     }
 
     @PostMapping("/peluqueria/checkoutPeluqueria")
     public ResponseEntity<StripeResponse> checkoutDesdePeluqueria(
-            @AuthenticationPrincipal Usuario usuario,
+            @AuthenticationPrincipal MyUserDetails userDetails,
             @RequestBody PeluqueriaCheckoutRequest request,
             HttpSession session) throws StripeException {
 
-        System.out.println("Entramos en checkoutPeluqueria");
-        log.info(request.toString());
-        if (usuario == null) {
+        if (userDetails == null) {
             return ResponseEntity.badRequest().body(
                     StripeResponse.builder()
                             .status("FAILED")
                             .message("Usuario no autenticado")
                             .build());
+        }
+
+        Usuario usuario = userDetails.getUsuario();
+
+        if (usuario.getPerfilDatos() == null) {
+            return ResponseEntity.badRequest().body(
+                    StripeResponse.builder()
+                            .status("FAILED")
+                            .message("Datos de Perfil Incompletos")
+                            .build()
+            );
         }
 
         // Aquí puedes buscar los productos por nombre y construir la lista de ItemCarritoDTO
@@ -105,6 +124,7 @@ public class PeluqueriaController {
         securityUtil.updateAuthenticatedUser(user);
         session.setAttribute("motivo", "ServicioPeluqueria");
         session.setAttribute("carrito", carrito);
+        session.setAttribute("nombreServicio", "Servicio de peluqueria");
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 

@@ -11,6 +11,7 @@ import lombok.Setter;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "perfil_datos")
 public class PerfilDatos {
 
     @Id

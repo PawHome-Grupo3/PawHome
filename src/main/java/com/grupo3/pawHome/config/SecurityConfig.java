@@ -6,6 +6,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -16,6 +17,7 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
+@EnableMethodSecurity
 public class SecurityConfig {
 
     @Bean
@@ -24,18 +26,26 @@ public class SecurityConfig {
                 .cors(Customizer.withDefaults()) // 💡 habilita soporte para CORS
                 .csrf(AbstractHttpConfigurer::disable)
                 .formLogin(form -> form
-                        .loginPage("/login")
+                        .loginPage("/auth/loginPawHome")
                         .failureUrl("/login?error=true")
                         .defaultSuccessUrl("/", true)
                         .permitAll()
                 )
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll() // 💡 permite preflight
-                        .requestMatchers("/perfil/**").authenticated()
-                        .requestMatchers("/product/v1/checkout").permitAll()
-                        .anyRequest().permitAll()
+                                .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+//                        .requestMatchers("/css/**", "/js/**", "/images/**", "/fonts/**", "/webjars/**").permitAll()
+//                        .requestMatchers("/auth/**", "/register", "/product/v1/checkout").permitAll()
+                                .requestMatchers("/admin/**").hasRole("ADMIN")
+                                .requestMatchers("/perfil/**", "/colabora/adopta/formularioAdopta").authenticated()
+                                .anyRequest().permitAll()
                 )
-                .logout(LogoutConfigurer::permitAll);
+                .logout(logout -> logout
+                        .logoutUrl("/logout")
+                        .logoutSuccessUrl("/")
+                        .invalidateHttpSession(true)
+                        .deleteCookies("JSESSIONID")
+                        .permitAll()
+                );
 
         return http.build();
     }

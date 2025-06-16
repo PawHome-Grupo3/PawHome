@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Getter
 @Setter
@@ -64,4 +65,7 @@ public class Animal {
     @ManyToOne
     @JoinColumn(name = "especie_id", referencedColumnName = "id")
     private Especie especie;
+
+    @OneToMany(mappedBy = "animal", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Adopcion> Adopciones;
 }

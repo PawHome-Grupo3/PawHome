@@ -58,6 +58,52 @@ body {
     transition: background 0.2s;
 }
 
+.cardServicio.selected .btnCard {
+    background-color: #ffffff;
+    color: #198754;
+    border: 1px solid #145c32;
+}
+
+.cardServicio.selected .fa-bone,
+.cardServicio.selected .fa-shower,
+.cardServicio.selected .fa-brush,
+.cardServicio.selected .fa-cut,
+.cardServicio.selected .fa-scissors,
+.cardServicio.selected .fa-bed,
+.cardServicio.selected .fa-futbol,
+.cardServicio.selected .fa-clock,
+.cardServicio.selected .fa-dog,
+.cardServicio.selected .fa-list-ol,
+.cardServicio.selected .fa-calendar-week,
+.cardServicio.selected .fa-calendar-check,
+.cardServicio.selected .fa-check,
+.cardServicio.selected .fa-paw,
+.cardServicio.selected .fa-shield,
+.cardServicio.selected .fa-sync,
+.cardServicio.selected .fa-bug,
+.cardServicio.selected .fa-vial,
+.cardServicio.selected .fa-search,
+.cardServicio.selected .fa-user-md,
+.cardServicio.selected .fa-eye,
+.cardServicio.selected .fa-x-ray,
+.cardServicio.selected .fa-heartbeat,
+.cardServicio.selected .fa-smile,
+.cardServicio.selected .fa-hospital,
+.cardServicio.selected .fa-car-side,
+.cardServicio.selected .fa-vial-circle-check,
+.cardServicio.selected .fa-shield-dog,
+.cardServicio.selected .fa-location-dot,
+.cardServicio.selected .fa-notes-medical,
+.cardServicio.selected .fa-weight-scale,
+.cardServicio.selected .fa-heart-pulse,
+.cardServicio.selected .fa-syringe,
+.cardServicio.selected .fa-stethoscope,
+.cardServicio.selected .fa-cat,
+.cardServicio.selected .fa-house-chimney,
+.cardServicio.selected .fa-calendar {
+    color: white !important;
+}
+
 .cardServicio.selected .card-title,
 .cardServicio.selected .fa,
 .cardServicio.selected .form-label {
