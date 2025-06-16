@@ -32,8 +32,8 @@ public class StripeService {
 
         SessionCreateParams.Builder paramsBuilder = SessionCreateParams.builder()
                 .setMode(SessionCreateParams.Mode.PAYMENT)
-                //.setSuccessUrl("http://localhost:8080/success?session_id={CHECKOUT_SESSION_ID}")
-                .setSuccessUrl("http://grupo03.serverjava.net/success?session_id={CHECKOUT_SESSION_ID}")
+                .setSuccessUrl("http://localhost:8080/success?session_id={CHECKOUT_SESSION_ID}")
+                //.setSuccessUrl("http://grupo03.serverjava.net/success?session_id={CHECKOUT_SESSION_ID}")
                 .setCancelUrl("http://grupo03.serverjava.net/cancel")
                 .setCustomer(customerId)
                 .setPaymentIntentData(
@@ -111,8 +111,8 @@ public class StripeService {
 
         SessionCreateParams params = SessionCreateParams.builder()
                 .setMode(SessionCreateParams.Mode.SUBSCRIPTION)
-                //.setSuccessUrl("http://localhost:8080/apadrinar/success?session_id={CHECKOUT_SESSION_ID}")
-                .setSuccessUrl("http://grupo03.serverjava.net/success?session_id={CHECKOUT_SESSION_ID}")
+                .setSuccessUrl("http://localhost:8080/apadrinar/success?session_id={CHECKOUT_SESSION_ID}")
+                //.setSuccessUrl("http://grupo03.serverjava.net/success?session_id={CHECKOUT_SESSION_ID}")
                 .setCancelUrl("http://grupo03.serverjava.net/apadrinar/cancel")
                 //.setCancelUrl("http://localhost:8080/apadrinar/cancel")
                 .setCustomer(customerId)

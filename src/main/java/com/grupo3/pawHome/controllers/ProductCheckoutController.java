@@ -127,7 +127,8 @@ public class ProductCheckoutController {
             double total = carrito.stream()
                     .mapToDouble(item -> item.getPrecioUnitario() * item.getCantidad())
                     .sum();
-            factura.setPrecio(total);
+            factura.setPrecio(Math.round(total * 100.0) / 100.0
+            );
 
             lineas = carrito.stream().map(item -> {
                 LineaFactura linea = new LineaFactura();
@@ -210,6 +211,7 @@ public class ProductCheckoutController {
             session.removeAttribute("motivo");
             session.removeAttribute("itemServicio");
             session.removeAttribute("nombreServicio");
+            session.removeAttribute("carrito");
         }
 
         // --- Stripe: obtener PaymentMethod y su fingerprint ---
