@@ -8,7 +8,6 @@ import com.grupo3.pawHome.entities.Adopcion;
 import com.grupo3.pawHome.entities.PerfilDatos;
 import com.grupo3.pawHome.entities.Usuario;
 import com.grupo3.pawHome.repositories.AdopcionRepository;
-import com.grupo3.pawHome.services.AnimalService;
 import com.grupo3.pawHome.services.AdopcionService;
 import com.grupo3.pawHome.services.StripeService;
 import com.grupo3.pawHome.services.UsuarioService;
@@ -35,19 +34,16 @@ public class ColaboraController {
     private final UsuarioService usuarioService;
     private final StripeService stripeService;
     private final SecurityUtil securityUtil;
-    private final AnimalService animalService;
     private final AdopcionService adopcionService;
     private final AdopcionRepository adopcionRepository;
 
     public ColaboraController(UsuarioService usuarioService,
                               StripeService stripeService,
                               SecurityUtil securityUtil,
-                              AnimalService animalService,
                               AdopcionService adopcionService, AdopcionRepository adopcionRepository) {
         this.usuarioService = usuarioService;
         this.stripeService = stripeService;
         this.securityUtil = securityUtil;
-        this.animalService = animalService;
         this.adopcionService = adopcionService;
         this.adopcionRepository = adopcionRepository;
     }
@@ -150,6 +146,11 @@ public class ColaboraController {
 
         model.addAttribute("mensajeExito", "Formulario enviado correctamente");
 
-        return "redirect:/";
+        return "redirect:/formulario-enviado";
+    }
+
+    @GetMapping("/formulario-enviado")
+    public String mostrarFormularioEnviado() {
+        return "envioFormAdopcion";
     }
 }
