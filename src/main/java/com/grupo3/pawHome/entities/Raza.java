@@ -21,9 +21,5 @@ public class Raza {
     private String nombre;
 
     @OneToMany(mappedBy = "raza", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<Animal> animales;
-
-    @ManyToOne
-    @JoinColumn(name = "especie_id", nullable = false)
-    private Especie especie;
+    private List<Especie> especies;
 }

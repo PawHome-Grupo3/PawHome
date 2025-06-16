@@ -26,6 +26,4 @@ public class EditarUsuarioPerfilDTO {
     private String telefono1;
     private String telefono2;
     private String telefono3;
-
-    private Integer rolId;
 }
