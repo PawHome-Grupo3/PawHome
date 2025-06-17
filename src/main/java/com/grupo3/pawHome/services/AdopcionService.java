@@ -48,7 +48,7 @@ public class AdopcionService {
         adopcion.setFechaFormulario(formAdoptaDTO.getFechaFormulario());
         adopcion.setAnimal(animalOpt.orElse(null));
         adopcion.setUsuario(usuarioOpt.orElse(null));
-        adopcion.setAceptado(false);
+        adopcion.setAceptado(null);
 
         return adopcion;
     }
