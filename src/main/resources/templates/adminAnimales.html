@@ -57,6 +57,9 @@
                     <a th:href="@{/admin/animales/editar/{id}(id=${animal.id})}" class="btn btn-success btn-sm">Editar</a>
                     <a th:href="@{'/admin/animales/eliminar/' + ${animal.id}}" class="btn btn-danger btn-sm"
                        onclick="return confirm('¿Eliminar este animal?')">Eliminar</a>
+                    <a class="btn btn-primary mb-3" th:href="@{/admin/animales/nuevo}">
+                        Crear
+                    </a>
                 </td>
             </tr>
             </tbody>

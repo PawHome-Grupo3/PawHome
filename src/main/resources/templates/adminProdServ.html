@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Gestión de productos y servicios</title>
+
 </head>
+
 <body>
 
 <section layout:fragment="content">
@@ -24,6 +26,7 @@
                 <th>Imagen 2</th>
                 <th>Imagen 3</th>
                 <th>Categoría</th>
+                <th>Acciones</th>
             </tr>
             </thead>
             <tbody>
@@ -34,11 +37,14 @@
                 <td><img th:src="${producto.rutaImagen1}" alt=""></td>
                 <td><img th:src="${producto.rutaImagen2}" alt=""></td>
                 <td><img th:src="${producto.rutaImagen3}" alt=""></td>
-                <td th:text="${producto.categoria}"></td>
+                <td th:text="${producto.categoria.nombre}"></td>
                 <td>
                     <a th:href="@{'/admin/prodserv/editar/' + ${producto.id}}" class="btn btn-success btn-sm">Editar</a>
                     <a th:href="@{'/admin/prodserv/eliminar/' + ${producto.id}}" class="btn btn-danger btn-sm"
                        onclick="return confirm('¿Eliminar esta tarifa?')">Eliminar</a>
+                    <a class="btn btn-primary mb-3" th:href="@{/admin/prodserv/nuevo}">
+                        Crear
+                    </a>
                 </td>
             </tr>
             </tbody>

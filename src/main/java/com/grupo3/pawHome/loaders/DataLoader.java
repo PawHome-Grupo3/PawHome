@@ -1373,10 +1373,30 @@ public class DataLoader implements CommandLineRunner {
         adopcion.setVisitasSeguimiento("Sí, estoy completamente de acuerdo con que se realicen visitas de seguimiento");
         adopcion.setFirma("Laura Gómez Pérez");
         adopcion.setFechaFormulario(LocalDate.now());
-        adopcion.setAceptado(true);
 
         adopcion.setUsuario(usuario); // Instancia existente de Usuario
         adopcion.setAnimal(a1);
         adopcionRepository.save(adopcion);
+
+        Adopcion adopcion2 = new Adopcion();
+
+        adopcion2.setOcupacion("Ingeniero de software");
+        adopcion2.setOtrosAnimales("No tengo otros animales en casa");
+        adopcion2.setDeAcuerdo("Sí, estoy de acuerdo con las condiciones de adopción establecidas");
+        adopcion2.setHijos("No tengo hijos");
+        adopcion2.setCaracteristicaMascota("Activo, juguetón y que disfrute de paseos largos");
+        adopcion2.setExperienciaPrevia("Sí, he tenido perros y gatos anteriormente. Me considero responsable y comprometido");
+        adopcion2.setTiempoSolo("Máximo 6 horas al día, ya que trabajo desde casa la mayor parte del tiempo");
+        adopcion2.setDondeVivira("Vivirá dentro de casa, con acceso a un patio cerrado y seguro");
+        adopcion2.setVeterinario("Clínica Veterinaria El Buen Amigo, con el Dr. Carlos López");
+        adopcion2.setVisitasSeguimiento("Sí, estoy completamente de acuerdo con que se realicen visitas de seguimiento");
+        adopcion2.setFirma("Carlos Fernández García");
+        adopcion2.setFechaFormulario(LocalDate.now());
+        adopcion2.setAceptado(true);
+
+        adopcion2.setUsuario(usuario); // Instancia existente de Usuario
+        adopcion2.setAnimal(a2);
+        adopcionRepository.save(adopcion2);
+
     }
 }
