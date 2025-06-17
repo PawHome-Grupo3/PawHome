@@ -259,7 +259,7 @@ public class UsuarioController {
                 perfilAdopcionDto.setAdopcionId(adopcion.getId());
                 perfilAdopcionDto.setRutaImg(adopcion.getAnimal().getRutaImg1());
                 perfilAdopcionDto.setFechaDocumento(String.valueOf(adopcion.getFechaFormulario()));
-                perfilAdopcionDto.setAceptado(false);
+                perfilAdopcionDto.setAceptado(adopcion.getAceptado());
                 perfilAdopcionDtos.add(perfilAdopcionDto);
             }
             model.addAttribute("adopciones", perfilAdopcionDtos);
