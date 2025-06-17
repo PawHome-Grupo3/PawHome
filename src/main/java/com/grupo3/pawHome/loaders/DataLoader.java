@@ -159,6 +159,31 @@ public class DataLoader implements CommandLineRunner {
 
         usuarioRepository.save(u2);
 
+        // Usuario 2
+        Usuario u15 = new Usuario();
+        u15.setNickname("Luisito12");
+        u15.setPassword(passwordEncoder.encode("123456"));
+        u15.setEmail("juanito_de_cai@gmail.com");
+        u15.setFechaRegistro(LocalDate.now());
+        u15.setRol(rolRepository.findByNombre("USER").orElseThrow(() -> new RuntimeException("Rol USER no encontrado")));
+
+        PerfilDatos perfil3 = new PerfilDatos();
+        perfil3.setNombre("Luis");
+        perfil3.setApellidos("Delgado Rodriguez");
+        perfil3.setEdad(35);
+        perfil3.setDni("77395876F");
+        perfil3.setDireccion("Avenida San Severiano 4, 5A");
+        perfil3.setPais("ES");
+        perfil3.setCiudad("Cádiz");
+        perfil3.setCp("11014");
+        perfil3.setTelefono1("638454677");
+        perfil3.setTelefono2("675456344");
+        perfil3.setTelefono3(null); // opcional
+
+        perfil3.setUsuario(u15);
+        u15.setPerfilDatos(perfil3);
+        usuarioRepository.save(u15);
+
         // Usuarios con el rol ADMIN
         Usuario u3 = new Usuario();
         u3.setNickname("Javix");
@@ -311,7 +336,7 @@ public class DataLoader implements CommandLineRunner {
         Producto prodBebedero = new Producto();
         prodBebedero.setNombre("Bebedero portátil para perros");
         prodBebedero.setDescripcion("Botella-bebedero plegable para viajes y paseos largos.");
-        prodBebedero.setRutaImagen1("https://placekitten.com/320/320");
+        prodBebedero.setRutaImagen1("/images/bebedero.png");
         prodBebedero.setRutaImagen2("https://picsum.photos/seed/bebedero-portatil/300/300");
         prodBebedero.setRutaImagen3("https://images.unsplash.com/photo-1617634667033-818846b7ac4f");
         prodBebedero.setCategoria(cat4);
@@ -1220,6 +1245,51 @@ public class DataLoader implements CommandLineRunner {
         especie2.setNombre("Gato");
         especieRepository.save(especie2);
 
+        Especie especieCaballo = new Especie();
+        especieCaballo.setNombre("Caballo");
+        especieRepository.save(especieCaballo);
+
+        Especie especieAgaporni = new Especie();
+        especieAgaporni.setNombre("Agaporni");
+        especieRepository.save(especieAgaporni);
+
+        Especie especieCabra = new Especie();
+        especieCabra.setNombre("Cabra");
+        especieRepository.save(especieCabra);
+
+// Razas de Caballo
+        Raza razaAndaluz = new Raza();
+        razaAndaluz.setNombre("Andaluz");
+        razaAndaluz.setEspecie(especieCaballo);
+        razaRepository.save(razaAndaluz);
+
+        Raza razaFrisón = new Raza();
+        razaFrisón.setNombre("Frisón");
+        razaFrisón.setEspecie(especieCaballo);
+        razaRepository.save(razaFrisón);
+
+// Razas de Agaporni
+        Raza razaPersonata = new Raza();
+        razaPersonata.setNombre("Personata");
+        razaPersonata.setEspecie(especieAgaporni);
+        razaRepository.save(razaPersonata);
+
+        Raza razaFischer = new Raza();
+        razaFischer.setNombre("Fischer");
+        razaFischer.setEspecie(especieAgaporni);
+        razaRepository.save(razaFischer);
+
+// Razas de Cabra
+        Raza razaAlpina = new Raza();
+        razaAlpina.setNombre("Alpina");
+        razaAlpina.setEspecie(especieCabra);
+        razaRepository.save(razaAlpina);
+
+        Raza razaMurciana = new Raza();
+        razaMurciana.setNombre("Murciana-Granadina");
+        razaMurciana.setEspecie(especieCabra);
+        razaRepository.save(razaMurciana);
+
         Raza e1 = new Raza();
         e1.setNombre("Malinois");
         e1.setEspecie(especie1);
@@ -1256,22 +1326,22 @@ public class DataLoader implements CommandLineRunner {
 
 
         Animal a2 = new Animal();
-        a2.setNombre("Michi");
+        a2.setNombre("Limon");
         a2.setChip("CHIP98765");
         a2.setPeso(4f);
         a2.setFechaNacimiento(LocalDate.of(2024, 6, 11));
         a2.setCaracterSocial(false);
-        a2.setDescripcion("Michi es un gato tímido pero dulce, que ha pasado por una situación difícil y está aprendiendo a confiar nuevamente en las personas. Le encanta observar desde la ventana y es muy curioso con los juguetes. Necesita un hogar tranquilo y paciente.");
+        a2.setDescripcion("Limon es un perro tímido pero dulce, que ha pasado por una situación difícil y está aprendiendo a confiar nuevamente en las personas. Le encanta observar desde la ventana y es muy curioso con los juguetes. Necesita un hogar tranquilo y paciente.");
         a2.setGenero(false);
         a2.setOrigen(true);
         a2.setAdoptado(false);
         a2.setFechaLlegada(LocalDate.of(2024, 5, 1));
         a2.setPaseable(false);
         a2.setAnimalServicio(false);
-        a2.setRutaImg1("/images/perro1.png");
+        a2.setRutaImg1("/images/perro12.png");
         a2.setRutaImg2("/images/default-example.png");
         a2.setRutaImg3("/images/default-example.png");
-        a2.setRaza(e2);
+        a2.setRaza(e1);
         animalRepository.save(a2);
 
         Animal a3 = new Animal();
@@ -1368,6 +1438,215 @@ public class DataLoader implements CommandLineRunner {
         a7.setRutaImg3("/images/default-example.png");
         a7.setRaza(e1);
         animalRepository.save(a7);
+
+        Animal a8 = new Animal();
+        a8.setNombre("Toby");
+        a8.setChip("CHIP45678");
+        a8.setPeso(22f);
+        a8.setFechaNacimiento(LocalDate.of(2021, 4, 15));
+        a8.setCaracterSocial(true);
+        a8.setDescripcion("Toby es un perro muy inteligente y obediente. Le encantan los paseos al aire libre y jugar con la pelota. Ideal para familias activas.");
+        a8.setGenero(true);
+        a8.setOrigen(true);
+        a8.setAdoptado(false);
+        a8.setFechaLlegada(LocalDate.of(2024, 6, 5));
+        a8.setPaseable(true);
+        a8.setAnimalServicio(false);
+        a8.setRutaImg1("/images/perro7.png");
+        a8.setRutaImg2("/images/default-example.png");
+        a8.setRutaImg3("/images/default-example.png");
+        a8.setRaza(e3);
+        animalRepository.save(a8);
+
+        Animal a9 = new Animal();
+        a9.setNombre("Pelusa");
+        a9.setChip("CHIP22334");
+        a9.setPeso(3.2f);
+        a9.setFechaNacimiento(LocalDate.of(2023, 9, 23));
+        a9.setCaracterSocial(false);
+        a9.setDescripcion("Pelusa es una gata muy observadora. Aunque al principio es tímida, con paciencia demuestra ser muy cariñosa y tranquila.");
+        a9.setGenero(false);
+        a9.setOrigen(false);
+        a9.setAdoptado(false);
+        a9.setFechaLlegada(LocalDate.of(2024, 5, 20));
+        a9.setPaseable(false);
+        a9.setAnimalServicio(false);
+        a9.setRutaImg1("/images/gato1.png");
+        a9.setRutaImg2("/images/default-example.png");
+        a9.setRutaImg3("/images/default-example.png");
+        a9.setRaza(e2);
+        animalRepository.save(a9);
+
+        Animal a10 = new Animal();
+        a10.setNombre("Simba");
+        a10.setChip("CHIP88776");
+        a10.setPeso(5.5f);
+        a10.setFechaNacimiento(LocalDate.of(2022, 3, 12));
+        a10.setCaracterSocial(true);
+        a10.setDescripcion("Simba es un gato muy activo, juguetón y sociable. Le encanta la compañía humana y sigue a sus cuidadores por toda la casa.");
+        a10.setGenero(true);
+        a10.setOrigen(true);
+        a10.setAdoptado(false);
+        a10.setFechaLlegada(LocalDate.of(2024, 3, 12));
+        a10.setPaseable(false);
+        a10.setAnimalServicio(false);
+        a10.setRutaImg1("/images/gato2.png");
+        a10.setRutaImg2("/images/default-example.png");
+        a10.setRutaImg3("/images/default-example.png");
+        a10.setRaza(e2);
+        animalRepository.save(a10);
+
+        Animal a11 = new Animal();
+        a11.setNombre("Bongo");
+        a11.setChip("CHIP99123");
+        a11.setPeso(28f);
+        a11.setFechaNacimiento(LocalDate.of(2020, 12, 4));
+        a11.setCaracterSocial(true);
+        a11.setDescripcion("Bongo es un dálmata activo, muy cariñoso con los niños y perfecto para hogares con jardín. Se lleva bien con otros perros.");
+        a11.setGenero(true);
+        a11.setOrigen(true);
+        a11.setAdoptado(false);
+        a11.setFechaLlegada(LocalDate.of(2024, 2, 10));
+        a11.setPaseable(true);
+        a11.setAnimalServicio(false);
+        a11.setRutaImg1("/images/perro8.png");
+        a11.setRutaImg2("/images/perro11.png");
+        a11.setRutaImg3("/images/default-example.png");
+        a11.setRaza(e3);
+        animalRepository.save(a11);
+
+        Animal a12 = new Animal();
+        a12.setNombre("Mora");
+        a12.setChip("CHIP66554");
+        a12.setPeso(2.8f);
+        a12.setFechaNacimiento(LocalDate.of(2023, 11, 30));
+        a12.setCaracterSocial(true);
+        a12.setDescripcion("Mora es una gatita juguetona, curiosa y muy afectuosa. Ideal para familias con niños pequeños.");
+        a12.setGenero(false);
+        a12.setOrigen(true);
+        a12.setAdoptado(false);
+        a12.setFechaLlegada(LocalDate.of(2025, 1, 2));
+        a12.setPaseable(false);
+        a12.setAnimalServicio(false);
+        a12.setRutaImg1("/images/gato3.png");
+        a12.setRutaImg2("/images/default-example.png");
+        a12.setRutaImg3("/images/default-example.png");
+        a12.setRaza(e2);
+        animalRepository.save(a12);
+
+        Animal caballo1 = new Animal();
+        caballo1.setNombre("Relámpago");
+        caballo1.setChip("CHIPH001");
+        caballo1.setPeso(480f);
+        caballo1.setFechaNacimiento(LocalDate.of(2017, 3, 10));
+        caballo1.setCaracterSocial(true);
+        caballo1.setDescripcion("Relámpago es un caballo andaluz noble, fuerte y muy dócil. Disfruta de largos paseos y responde bien a las órdenes.");
+        caballo1.setGenero(true);
+        caballo1.setOrigen(false);
+        caballo1.setAdoptado(false);
+        caballo1.setFechaLlegada(LocalDate.of(2024, 1, 12));
+        caballo1.setPaseable(true);
+        caballo1.setAnimalServicio(false);
+        caballo1.setRutaImg1("/images/caballo1.png");
+        caballo1.setRutaImg2("/images/default-example.png");
+        caballo1.setRutaImg3("/images/default-example.png");
+        caballo1.setRaza(razaAndaluz);
+        animalRepository.save(caballo1);
+
+        Animal caballo2 = new Animal();
+        caballo2.setNombre("Estrella");
+        caballo2.setChip("CHIPH002");
+        caballo2.setPeso(520f);
+        caballo2.setFechaNacimiento(LocalDate.of(2019, 6, 5));
+        caballo2.setCaracterSocial(true);
+        caballo2.setDescripcion("Estrella es una yegua frisona elegante y amistosa. Perfecta para doma clásica y apta para jinetes intermedios.");
+        caballo2.setGenero(false);
+        caballo2.setOrigen(true);
+        caballo2.setAdoptado(false);
+        caballo2.setFechaLlegada(LocalDate.of(2024, 3, 8));
+        caballo2.setPaseable(true);
+        caballo2.setAnimalServicio(false);
+        caballo2.setRutaImg1("/images/caballo2.png");
+        caballo2.setRutaImg2("/images/default-example.png");
+        caballo2.setRutaImg3("/images/default-example.png");
+        caballo2.setRaza(razaFrisón);
+        animalRepository.save(caballo2);
+
+        Animal agaporni1 = new Animal();
+        agaporni1.setNombre("Luigi");
+        agaporni1.setChip("CHIPA001");
+        agaporni1.setPeso(0.05f);
+        agaporni1.setFechaNacimiento(LocalDate.of(2023, 9, 10));
+        agaporni1.setCaracterSocial(true);
+        agaporni1.setDescripcion("Luigi es un agaporni Personata, curioso, vivaz y muy afectuoso. Le gusta estar en compañía y cantar por las mañanas.");
+        agaporni1.setGenero(true);
+        agaporni1.setOrigen(true);
+        agaporni1.setAdoptado(false);
+        agaporni1.setFechaLlegada(LocalDate.of(2024, 4, 5));
+        agaporni1.setPaseable(false);
+        agaporni1.setAnimalServicio(false);
+        agaporni1.setRutaImg1("/images/agaporni1.png");
+        agaporni1.setRutaImg2("/images/default-example.png");
+        agaporni1.setRutaImg3("/images/default-example.png");
+        agaporni1.setRaza(razaPersonata);
+        animalRepository.save(agaporni1);
+
+        Animal agaporni2 = new Animal();
+        agaporni2.setNombre("Mango");
+        agaporni2.setChip("CHIPA002");
+        agaporni2.setPeso(0.06f);
+        agaporni2.setFechaNacimiento(LocalDate.of(2023, 11, 15));
+        agaporni2.setCaracterSocial(false);
+        agaporni2.setDescripcion("Mango es un agaporni Fischer tímido al principio pero curioso. Necesita un entorno tranquilo para ganar confianza.");
+        agaporni2.setGenero(false);
+        agaporni2.setOrigen(false);
+        agaporni2.setAdoptado(false);
+        agaporni2.setFechaLlegada(LocalDate.of(2024, 5, 3));
+        agaporni2.setPaseable(false);
+        agaporni2.setAnimalServicio(false);
+        agaporni2.setRutaImg1("/images/agaporni2.png");
+        agaporni2.setRutaImg2("/images/default-example.png");
+        agaporni2.setRutaImg3("/images/default-example.png");
+        agaporni2.setRaza(razaFischer);
+        animalRepository.save(agaporni2);
+
+        Animal cabra1 = new Animal();
+        cabra1.setNombre("Bruma");
+        cabra1.setChip("CHIPCA001");
+        cabra1.setPeso(35f);
+        cabra1.setFechaNacimiento(LocalDate.of(2021, 2, 1));
+        cabra1.setCaracterSocial(true);
+        cabra1.setDescripcion("Bruma es una cabra alpina muy activa y simpática. Le encanta saltar y curiosear todo el día.");
+        cabra1.setGenero(false);
+        cabra1.setOrigen(true);
+        cabra1.setAdoptado(false);
+        cabra1.setFechaLlegada(LocalDate.of(2024, 3, 14));
+        cabra1.setPaseable(true);
+        cabra1.setAnimalServicio(false);
+        cabra1.setRutaImg1("/images/cabra1.png");
+        cabra1.setRutaImg2("/images/default-example.png");
+        cabra1.setRutaImg3("/images/default-example.png");
+        cabra1.setRaza(razaAlpina);
+        animalRepository.save(cabra1);
+
+        Animal cabra2 = new Animal();
+        cabra2.setNombre("Capitán");
+        cabra2.setChip("CHIPCA002");
+        cabra2.setPeso(42f);
+        cabra2.setFechaNacimiento(LocalDate.of(2020, 7, 20));
+        cabra2.setCaracterSocial(false);
+        cabra2.setDescripcion("Capitán es un macho de la raza Murciana-Granadina, independiente pero curioso. Ideal para una granja o entorno amplio.");
+        cabra2.setGenero(true);
+        cabra2.setOrigen(false);
+        cabra2.setAdoptado(false);
+        cabra2.setFechaLlegada(LocalDate.of(2024, 2, 25));
+        cabra2.setPaseable(true);
+        cabra2.setAnimalServicio(false);
+        cabra2.setRutaImg1("/images/cabra2.png");
+        cabra2.setRutaImg2("/images/default-example.png");
+        cabra2.setRutaImg3("/images/default-example.png");
+        cabra2.setRaza(razaMurciana);
+        animalRepository.save(cabra2);
 
         Apadrinar ap1 = new Apadrinar();
         ap1.setAporteMensual(10.0);
