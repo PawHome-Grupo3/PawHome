@@ -1,0 +1,10 @@
+com.grupo3.pawHome
+com.grupo3.pawHome.config
+com.grupo3.pawHome.controllers
+com.grupo3.pawHome.dtos
+com.grupo3.pawHome.entities
+com.grupo3.pawHome.loaders
+com.grupo3.pawHome.repositories
+com.grupo3.pawHome.services
+com.grupo3.pawHome.specifications
+com.grupo3.pawHome.util
