@@ -335,6 +335,14 @@
     animation: iconoSwing 2.5s infinite;
 }
 
+.icono-categoria {
+    color: #ff9800;
+    font-size: 2.1rem;
+    vertical-align: middle;
+    filter: drop-shadow(0 2px 6px rgba(255,152,0,0.15));
+    animation: iconoSwing 2.5s infinite;
+}
+
 @keyframes iconoSwing {
     0%, 100% { transform: rotate(-6deg);}
     50% { transform: rotate(8deg);}
@@ -591,7 +599,7 @@ clamp(10px, 2vw, 40px);
 
 .nombre-precio .icon-animal,
 .nombre-precio .icon-precio {
-    vertical-align: middle;
+    align-self: center;
     display: inline-block;
     line-height: 1;
 }

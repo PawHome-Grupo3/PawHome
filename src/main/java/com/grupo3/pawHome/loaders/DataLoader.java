@@ -15,6 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Component
 public class DataLoader implements CommandLineRunner {
@@ -227,6 +228,185 @@ public class DataLoader implements CommandLineRunner {
         c3.setNombre("tienda-Tazas");
         categoriaRepository.save(c3);
 
+//        Categoria cat2 = new Categoria();
+//        cat2.setNombre("tienda-Camas");
+//        categoriaRepository.save(cat2);
+
+        Categoria cat3 = new Categoria();
+        cat3.setNombre("tienda-Bolsas");
+        categoriaRepository.save(cat3);
+
+        Categoria cat4 = new Categoria();
+        cat4.setNombre("tienda-Bebederos");
+        categoriaRepository.save(cat4);
+
+//        Producto prodCama = new Producto();
+//        prodCama.setNombre("Cama redonda de felpa");
+//        prodCama.setDescripcion("Cama ultrasuave ideal para el descanso de tu peludo amigo.");
+//        prodCama.setRutaImagen1("https://placekitten.com/318/318");
+//        prodCama.setRutaImagen2("https://picsum.photos/seed/cama-felpa/300/300");
+//        prodCama.setRutaImagen3("https://images.unsplash.com/photo-1611080626919-5b0b46e493bd");
+//        prodCama.setCategoria(cat2);
+//        productoRepository.save(prodCama);
+//
+//        Talla tallaCamaS = new Talla(null, "S", 10, prodCama);
+//        Talla tallaCamaM = new Talla(null, "M", 8, prodCama);
+//        Talla tallaCamaL = new Talla(null, "L", 5, prodCama);
+//        tallaRepository.saveAll(List.of(tallaCamaS, tallaCamaM, tallaCamaL));
+//
+//        Tarifa tarifaCama = new Tarifa();
+//        tarifaCama.setNombre("Tarifa vigente");
+//        tarifaCama.setDescripcion("Material antialérgico y lavable.");
+//        tarifaCama.setCantidad(1);
+//        tarifaCama.setPrecioUnitario(29.95);
+//        tarifaCama.setFechaDesde(LocalDate.now());
+//        tarifaCama.setFechaHasta(null);
+//        tarifaCama.setProducto(prodCama);
+//        tarifaRepository.save(tarifaCama);
+
+        Producto prodBolsa = new Producto();
+        prodBolsa.setNombre("Bolsa de tela con diseño animalista");
+        prodBolsa.setDescripcion("Bolsa ecológica reutilizable con mensajes de adopción.");
+        prodBolsa.setRutaImagen1("/images/bolsaTelaPerro1.png");
+        prodBolsa.setRutaImagen2("/images/bolsaTelaPerro2.png");
+        prodBolsa.setRutaImagen3("/images/bolsaTelaPerro3.png");
+        prodBolsa.setCategoria(cat3);
+        productoRepository.save(prodBolsa);
+
+        Talla tallaBolsa = new Talla(null, "unica", 60, prodBolsa);
+        tallaRepository.save(tallaBolsa);
+
+        Tarifa tarifaBolsa = new Tarifa();
+        tarifaBolsa.setNombre("Precio actual");
+        tarifaBolsa.setDescripcion("Diseño impreso por ambos lados.");
+        tarifaBolsa.setCantidad(1);
+        tarifaBolsa.setPrecioUnitario(6.50);
+        tarifaBolsa.setFechaDesde(LocalDate.now());
+        tarifaBolsa.setFechaHasta(null);
+        tarifaBolsa.setProducto(prodBolsa);
+        tarifaRepository.save(tarifaBolsa);
+
+        Producto prodBolsa2 = new Producto();
+        prodBolsa2.setNombre("Bolsa de tela Gato");
+        prodBolsa2.setDescripcion("Bolsa ecológica reutilizable con mensajes de adopción.");
+        prodBolsa2.setRutaImagen1("/images/bolsaTelaGato1.png");
+        prodBolsa2.setRutaImagen2("/images/bolsaTelaGato1.png");
+        prodBolsa2.setRutaImagen3("/images/bolsaTelaGato1.png");
+        prodBolsa2.setCategoria(cat3);
+        productoRepository.save(prodBolsa2);
+
+        Talla tallaBolsa2 = new Talla(null, "unica", 2, prodBolsa2);
+        tallaRepository.save(tallaBolsa2);
+
+        Tarifa tarifaBolsa2 = new Tarifa();
+        tarifaBolsa2.setNombre("Precio actual");
+        tarifaBolsa2.setDescripcion("Diseño impreso por ambos lados.");
+        tarifaBolsa2.setCantidad(1);
+        tarifaBolsa2.setPrecioUnitario(6.50);
+        tarifaBolsa2.setFechaDesde(LocalDate.now());
+        tarifaBolsa2.setFechaHasta(null);
+        tarifaBolsa2.setProducto(prodBolsa2);
+        tarifaRepository.save(tarifaBolsa2);
+
+        Producto prodBebedero = new Producto();
+        prodBebedero.setNombre("Bebedero portátil para perros");
+        prodBebedero.setDescripcion("Botella-bebedero plegable para viajes y paseos largos.");
+        prodBebedero.setRutaImagen1("https://placekitten.com/320/320");
+        prodBebedero.setRutaImagen2("https://picsum.photos/seed/bebedero-portatil/300/300");
+        prodBebedero.setRutaImagen3("https://images.unsplash.com/photo-1617634667033-818846b7ac4f");
+        prodBebedero.setCategoria(cat4);
+        productoRepository.save(prodBebedero);
+
+        Talla tallaBebedero = new Talla(null, "unica", 35, prodBebedero);
+        tallaRepository.save(tallaBebedero);
+
+        Tarifa tarifaBebedero = new Tarifa();
+        tarifaBebedero.setNombre("Tarifa estándar");
+        tarifaBebedero.setDescripcion("Capacidad 500 ml.");
+        tarifaBebedero.setCantidad(1);
+        tarifaBebedero.setPrecioUnitario(8.75);
+        tarifaBebedero.setFechaDesde(LocalDate.now());
+        tarifaBebedero.setFechaHasta(null);
+        tarifaBebedero.setProducto(prodBebedero);
+        tarifaRepository.save(tarifaBebedero);
+
+        // === PRODUCTO COLLAR REFLECTANTE ===
+        Producto productoCollarReflectante = new Producto();
+        productoCollarReflectante.setNombre("Collar Reflectante para Perros");
+        productoCollarReflectante.setDescripcion("Collar ajustable con material reflectante para mayor seguridad nocturna.");
+        productoCollarReflectante.setRutaImagen1("/images/collarPerro3.png");
+        productoCollarReflectante.setRutaImagen2("/images/collarPerro1.png");
+        productoCollarReflectante.setRutaImagen3("/images/collarPerro2.png");
+        productoCollarReflectante.setCategoria(c1);
+        productoRepository.save(productoCollarReflectante);
+
+        Talla tallaCollarS = new Talla(null, "S", 1, productoCollarReflectante);
+        Talla tallaCollarM = new Talla(null, "M", 15, productoCollarReflectante);
+        Talla tallaCollarL = new Talla(null, "L", 10, productoCollarReflectante);
+        tallaRepository.saveAll(List.of(tallaCollarS, tallaCollarM, tallaCollarL));
+
+        Tarifa tarifaCollarReflectante = new Tarifa();
+        tarifaCollarReflectante.setNombre("Precio normal");
+        tarifaCollarReflectante.setDescripcion("Collar reflectante con cierre metálico.");
+        tarifaCollarReflectante.setCantidad(1);
+        tarifaCollarReflectante.setPrecioUnitario(14.50);
+        tarifaCollarReflectante.setFechaDesde(LocalDate.now());
+        tarifaCollarReflectante.setFechaHasta(null);
+        tarifaCollarReflectante.setProducto(productoCollarReflectante);
+        tarifaRepository.save(tarifaCollarReflectante);
+
+// === PRODUCTO CAMISETA "ADOPTA, NO COMPRES" ===
+        Producto productoCamisetaAdopta = new Producto();
+        productoCamisetaAdopta.setNombre("Camiseta 'Adopta, no compres'");
+        productoCamisetaAdopta.setDescripcion("Camiseta de algodón con mensaje de concienciación.");
+        productoCamisetaAdopta.setRutaImagen1("/images/camisetaVerde1.png");
+        productoCamisetaAdopta.setRutaImagen2("/images/camisetaVerde2.png");
+        productoCamisetaAdopta.setRutaImagen3("/images/camisetaVerde3.png");
+        productoCamisetaAdopta.setCategoria(c2);
+        productoRepository.save(productoCamisetaAdopta);
+
+        Talla tallaCamisetaM = new Talla(null, "M", 20, productoCamisetaAdopta);
+        Talla tallaCamisetaL = new Talla(null, "L", 15, productoCamisetaAdopta);
+        Talla tallaCamisetaXL = new Talla(null, "XL", 8, productoCamisetaAdopta);
+        Talla tallaCamisetaXXL = new Talla(null, "XXL", 5, productoCamisetaAdopta);
+        tallaRepository.saveAll(List.of(tallaCamisetaM, tallaCamisetaL, tallaCamisetaXL, tallaCamisetaXXL));
+
+        Tarifa tarifaCamisetaAdopta = new Tarifa();
+        tarifaCamisetaAdopta.setNombre("Campaña adopción");
+        tarifaCamisetaAdopta.setDescripcion("Parte de los ingresos se donan a la protectora.");
+        tarifaCamisetaAdopta.setCantidad(1);
+        tarifaCamisetaAdopta.setPrecioUnitario(13.99);
+        tarifaCamisetaAdopta.setFechaDesde(LocalDate.now());
+        tarifaCamisetaAdopta.setFechaHasta(null);
+        tarifaCamisetaAdopta.setProducto(productoCamisetaAdopta);
+        tarifaRepository.save(tarifaCamisetaAdopta);
+
+// === PRODUCTO TAZA CON HUELLAS ===
+        Producto productoTazaHuellas = new Producto();
+        productoTazaHuellas.setNombre("Taza con Huellas de Perro");
+        productoTazaHuellas.setDescripcion("Taza blanca con diseño de huellas, ideal para amantes de los animales.");
+        productoTazaHuellas.setRutaImagen1("/images/tazaHuella1.png");
+        productoTazaHuellas.setRutaImagen2("/images/tazaHuella2.png");
+        productoTazaHuellas.setRutaImagen3("/images/tazaHuella3.png");
+        productoTazaHuellas.setCategoria(c3);
+        productoRepository.save(productoTazaHuellas);
+
+        Talla tallaTazaUnica = new Talla();
+        tallaTazaUnica.setTallaje("unica");
+        tallaTazaUnica.setStock(40);
+        tallaTazaUnica.setProducto(productoTazaHuellas);
+        tallaRepository.save(tallaTazaUnica);
+
+        Tarifa tarifaTazaHuellas = new Tarifa();
+        tarifaTazaHuellas.setNombre("Taza solidaria");
+        tarifaTazaHuellas.setDescripcion("Incluye caja de regalo.");
+        tarifaTazaHuellas.setCantidad(1);
+        tarifaTazaHuellas.setPrecioUnitario(6.90);
+        tarifaTazaHuellas.setFechaDesde(LocalDate.now());
+        tarifaTazaHuellas.setFechaHasta(null);
+        tarifaTazaHuellas.setProducto(productoTazaHuellas);
+        tarifaRepository.save(tarifaTazaHuellas);
+
         Producto p1 = new Producto();
         p1.setNombre("Collar");
         p1.setDescripcion("Dale a tu peludo amigo el mejor look con nuestro collar para perro, diseñado para brindar seguridad, confort y un toque de estilo único.");
@@ -237,8 +417,8 @@ public class DataLoader implements CommandLineRunner {
 
         Producto p2 = new Producto();
         p2.setNombre("Camiseta Azul");
-        p2.setDescripcion("¿Quieres ser un héroe con estilo? Compra nuestra camiseta para que lo sepa todo el mundo");
-        p2.setRutaImagen1("/images/Camiseta-azul.png");
+        p2.setDescripcion("¿Quieres tener la huella de tu perrito siempre guardada y mostrarla con estilo? Compra nuestra camiseta para que lo sepa todo el mundo");
+        p2.setRutaImagen1("/images/camisetaAzul1.png");
         p2.setCategoria(c2);
         productoRepository.save(p2);
 
@@ -263,6 +443,7 @@ public class DataLoader implements CommandLineRunner {
         p5.setCategoria(c3);
         productoRepository.save(p5);
 
+        // --- SERVICIOS --- //
         // Productos y tarifas de Guarderia
         Categoria c4 = new Categoria();
         c4.setNombre("Guarderia");
@@ -270,6 +451,7 @@ public class DataLoader implements CommandLineRunner {
 
         Producto p6 = new Producto();
         p6.setNombre("ESTANCIA EXPRESS");
+        p6.setDescripcion("Cuidado breve para estancias puntuales.");
         p6.setCategoria(c4);
         productoRepository.save(p6);
 
@@ -283,6 +465,7 @@ public class DataLoader implements CommandLineRunner {
 
         Producto p7 = new Producto();
         p7.setNombre("ESTANCIA RELAX");
+        p7.setDescripcion("Estancia tranquila para desconectar.");
         p7.setCategoria(c4);
         productoRepository.save(p7);
 
@@ -296,6 +479,7 @@ public class DataLoader implements CommandLineRunner {
 
         Producto p8 = new Producto();
         p8.setNombre("ESTANCIA SABÁTICA");
+        p8.setDescripcion("Un descanso semanal perfecto.");
         p8.setCategoria(c4);
         productoRepository.save(p8);
 
@@ -309,6 +493,7 @@ public class DataLoader implements CommandLineRunner {
 
         Producto p9 = new Producto();
         p9.setNombre("BONO LARGA ESTANCIA");
+        p9.setDescripcion("Más días, más comodidad.");
         p9.setCategoria(c4);
         productoRepository.save(p9);
 
@@ -322,6 +507,7 @@ public class DataLoader implements CommandLineRunner {
 
         Producto p10 = new Producto();
         p10.setNombre("BONO ESTANCIA SOLO DÍA");
+        p10.setDescripcion(" Estancia diaria sin pernocta.");
         p10.setCategoria(c4);
         productoRepository.save(p10);
 
@@ -340,6 +526,7 @@ public class DataLoader implements CommandLineRunner {
 
         Producto pBañoBasico = new Producto();
         pBañoBasico.setNombre("BAÑO BÁSICO");
+        pBañoBasico.setDescripcion("Limpieza suave y eficaz.");
         pBañoBasico.setCategoria(cPeluqueria);
         productoRepository.save(pBañoBasico);
 
@@ -353,6 +540,7 @@ public class DataLoader implements CommandLineRunner {
 
         Producto pBañoStripping = new Producto();
         pBañoStripping.setNombre("BAÑO Y STRIPPING");
+        pBañoStripping.setDescripcion("Baño más arreglo de muda.");
         pBañoStripping.setCategoria(cPeluqueria);
         productoRepository.save(pBañoStripping);
 
@@ -366,6 +554,7 @@ public class DataLoader implements CommandLineRunner {
 
         Producto pSoloCorte = new Producto();
         pSoloCorte.setNombre("SOLO CORTE");
+        pSoloCorte.setDescripcion("Corte sin baño, rápido y cómodo.");
         pSoloCorte.setCategoria(cPeluqueria);
         productoRepository.save(pSoloCorte);
 
@@ -379,6 +568,7 @@ public class DataLoader implements CommandLineRunner {
 
         Producto pBañoCorte = new Producto();
         pBañoCorte.setNombre("BAÑO + CORTE");
+        pBañoCorte.setDescripcion("Limpieza y estilo al instante.");
         pBañoCorte.setCategoria(cPeluqueria);
         productoRepository.save(pBañoCorte);
 
@@ -392,6 +582,7 @@ public class DataLoader implements CommandLineRunner {
 
         Producto pCompleto = new Producto();
         pCompleto.setNombre("COMPLETO");
+        pCompleto.setDescripcion("Baño, corte y mimos.");
         pCompleto.setCategoria(cPeluqueria);
         productoRepository.save(pCompleto);
 
@@ -405,6 +596,7 @@ public class DataLoader implements CommandLineRunner {
 
         Producto pBañoAntiparasito = new Producto();
         pBañoAntiparasito.setNombre("Baño antiparásito");
+        pBañoAntiparasito.setDescripcion("Adiós a pulgas y parásitos.");
         pBañoAntiparasito.setCategoria(cPeluqueria);
         productoRepository.save(pBañoAntiparasito);
 
@@ -418,6 +610,7 @@ public class DataLoader implements CommandLineRunner {
 
         Producto pChampuColor = new Producto();
         pChampuColor.setNombre("Champú potenciador de color");
+        pChampuColor.setDescripcion("Realza su color natural.");
         pChampuColor.setCategoria(cPeluqueria);
         productoRepository.save(pChampuColor);
 
@@ -431,6 +624,7 @@ public class DataLoader implements CommandLineRunner {
 
         Producto pBañoMedico = new Producto();
         pBañoMedico.setNombre("Baño medicado o spa para pieles sensibles");
+        pBañoMedico.setDescripcion("Cuidado especial para piel delicada.");
         pBañoMedico.setCategoria(cPeluqueria);
         productoRepository.save(pBañoMedico);
 
@@ -444,6 +638,7 @@ public class DataLoader implements CommandLineRunner {
 
         Producto pNudos = new Producto();
         pNudos.setNombre("Por nudos");
+        pNudos.setDescripcion("Eliminación de enredos difíciles.");
         pNudos.setCategoria(cPeluqueria);
         productoRepository.save(pNudos);
 
@@ -457,6 +652,7 @@ public class DataLoader implements CommandLineRunner {
 
         Producto pDeslanado = new Producto();
         pDeslanado.setNombre("Deslanado");
+        pDeslanado.setDescripcion("Elimina el exceso de pelo muerto.");
         pDeslanado.setCategoria(cPeluqueria);
         productoRepository.save(pDeslanado);
 
@@ -470,6 +666,7 @@ public class DataLoader implements CommandLineRunner {
 
         Producto pRetoqueExtra = new Producto();
         pRetoqueExtra.setNombre("Retoque extra en patas y cara");
+        pRetoqueExtra.setDescripcion("Acabado perfecto y pulido.");
         pRetoqueExtra.setCategoria(cPeluqueria);
         productoRepository.save(pRetoqueExtra);
 
@@ -483,6 +680,7 @@ public class DataLoader implements CommandLineRunner {
 
         Producto pAntiolor = new Producto();
         pAntiolor.setNombre("Tratamiento antiolor con aceites esenciales");
+        pAntiolor.setDescripcion("Aroma fresco y natural.");
         pAntiolor.setCategoria(cPeluqueria);
         productoRepository.save(pAntiolor);
 
@@ -496,6 +694,7 @@ public class DataLoader implements CommandLineRunner {
 
         Producto pHidratacion = new Producto();
         pHidratacion.setNombre("Hidratación de almohadillas");
+        pHidratacion.setDescripcion("Suaves y protegidas.");
         pHidratacion.setCategoria(cPeluqueria);
         productoRepository.save(pHidratacion);
 
@@ -509,6 +708,7 @@ public class DataLoader implements CommandLineRunner {
 
         Producto pPerfumeEspecial = new Producto();
         pPerfumeEspecial.setNombre("Aplicación de perfume especial");
+        pPerfumeEspecial.setDescripcion("Toque final perfumado.");
         pPerfumeEspecial.setCategoria(cPeluqueria);
         productoRepository.save(pPerfumeEspecial);
 
@@ -522,6 +722,7 @@ public class DataLoader implements CommandLineRunner {
 
         Producto pJuguete = new Producto();
         pJuguete.setNombre("Juguete < 5kg");
+        pJuguete.setDescripcion("Servicio para perros mini.");
         pJuguete.setCategoria(cPeluqueria);
         productoRepository.save(pJuguete);
 
@@ -535,6 +736,7 @@ public class DataLoader implements CommandLineRunner {
 
         Producto pPequeño = new Producto();
         pPequeño.setNombre("Pequeño 6 - 10kg");
+        pPequeño.setDescripcion("Ideal para razas pequeñas.");
         pPequeño.setCategoria(cPeluqueria);
         productoRepository.save(pPequeño);
 
@@ -548,6 +750,7 @@ public class DataLoader implements CommandLineRunner {
 
         Producto pMediano = new Producto();
         pMediano.setNombre("Mediano 11 - 25kg");
+        pMediano.setDescripcion("Para tamaños medios.");
         pMediano.setCategoria(cPeluqueria);
         productoRepository.save(pMediano);
 
@@ -561,6 +764,7 @@ public class DataLoader implements CommandLineRunner {
 
         Producto pGrande = new Producto();
         pGrande.setNombre("Grande 26 - 35kg");
+        pGrande.setDescripcion("Perfecto para razas grandes.");
         pGrande.setCategoria(cPeluqueria);
         productoRepository.save(pGrande);
 
@@ -574,6 +778,7 @@ public class DataLoader implements CommandLineRunner {
 
         Producto pGigante = new Producto();
         pGigante.setNombre("Gigante > 35kg");
+        pGigante.setDescripcion("Cuidado XXL para gigantes.");
         pGigante.setCategoria(cPeluqueria);
         productoRepository.save(pGigante);
 
@@ -593,6 +798,7 @@ public class DataLoader implements CommandLineRunner {
 
         Producto pCursoCachorros = new Producto();
         pCursoCachorros.setNombre("Educación y preadiestramiento para cachorros");
+        pCursoCachorros.setDescripcion("Bases para un buen comportamiento.");
         pCursoCachorros.setCategoria(cAdiestramiento);
         productoRepository.save(pCursoCachorros);
 
@@ -606,6 +812,7 @@ public class DataLoader implements CommandLineRunner {
 
         Producto pCursoAdultos = new Producto();
         pCursoAdultos.setNombre("Educación y adiestramiento canino (adultos)");
+        pCursoAdultos.setDescripcion("Mejora su conducta diaria.");
         pCursoAdultos.setCategoria(cAdiestramiento);
         productoRepository.save(pCursoAdultos);
 
@@ -619,6 +826,7 @@ public class DataLoader implements CommandLineRunner {
 
         Producto pAdiestramientoDomicilio = new Producto();
         pAdiestramientoDomicilio.setNombre("Educación y adiestramiento a domicilio");
+        pAdiestramientoDomicilio.setDescripcion("Entrenamiento en su entorno.");
         pAdiestramientoDomicilio.setCategoria(cAdiestramiento);
         productoRepository.save(pAdiestramientoDomicilio);
 
@@ -632,6 +840,7 @@ public class DataLoader implements CommandLineRunner {
 
         Producto pAdiestramientoCentro = new Producto();
         pAdiestramientoCentro.setNombre("Educación y adiestramiento en el centro");
+        pAdiestramientoCentro.setDescripcion("Clases personalizadas con profesionales.");
         pAdiestramientoCentro.setCategoria(cAdiestramiento);
         productoRepository.save(pAdiestramientoCentro);
 
@@ -653,6 +862,7 @@ public class DataLoader implements CommandLineRunner {
         // 1. Consulta Veterinaria
         Producto pConsultaVeterinaria = new Producto();
         pConsultaVeterinaria.setNombre("Consulta Veterinaria: el primer paso hacia la solución");
+        pConsultaVeterinaria.setDescripcion("Primera visita para diagnóstico.");
         pConsultaVeterinaria.setCategoria(cVeterinario);
         productoRepository.save(pConsultaVeterinaria);
 
@@ -667,6 +877,7 @@ public class DataLoader implements CommandLineRunner {
         // 2. Chequeo Preventivo
         Producto pChequeoPreventivo = new Producto();
         pChequeoPreventivo.setNombre("Chequeo Preventivo: mejor prevenir que curar");
+        pChequeoPreventivo.setDescripcion("Control rutinario de salud.");
         pChequeoPreventivo.setCategoria(cVeterinario);
         productoRepository.save(pChequeoPreventivo);
 
@@ -681,6 +892,7 @@ public class DataLoader implements CommandLineRunner {
         // 3. Vacunación
         Producto pVacunacion = new Producto();
         pVacunacion.setNombre("Vacunación: su escudo contra enfermedades");
+        pVacunacion.setDescripcion("Protegido contra enfermedades.");
         pVacunacion.setCategoria(cVeterinario);
         productoRepository.save(pVacunacion);
 
@@ -695,6 +907,7 @@ public class DataLoader implements CommandLineRunner {
         // 4. Desparasitación
         Producto pDesparasitacion = new Producto();
         pDesparasitacion.setNombre("Desparasitación: libre de bichitos molestos");
+        pDesparasitacion.setDescripcion("Adiós a los parásitos internos.");
         pDesparasitacion.setCategoria(cVeterinario);
         productoRepository.save(pDesparasitacion);
 
@@ -709,6 +922,7 @@ public class DataLoader implements CommandLineRunner {
         // 5. Analítica y Test
         Producto pAnalitica = new Producto();
         pAnalitica.setNombre("Analítica y Test: saber es poder (y salud)");
+        pAnalitica.setDescripcion("Revisión completa y precisa.");
         pAnalitica.setCategoria(cVeterinario);
         productoRepository.save(pAnalitica);
 
@@ -723,6 +937,7 @@ public class DataLoader implements CommandLineRunner {
         // 6. Traumatología
         Producto pTraumatologia = new Producto();
         pTraumatologia.setNombre("Traumatología: cuidados para huesos y articulaciones");
+        pTraumatologia.setDescripcion("Cuidado ortopédico experto.");
         pTraumatologia.setCategoria(cVeterinario);
         productoRepository.save(pTraumatologia);
 
@@ -737,6 +952,7 @@ public class DataLoader implements CommandLineRunner {
         // 7. Oftalmología
         Producto pOftalmologia = new Producto();
         pOftalmologia.setNombre("Oftalmología: ver bien es vivir mejor");
+        pOftalmologia.setDescripcion("Atención para sus ojitos.");
         pOftalmologia.setCategoria(cVeterinario);
         productoRepository.save(pOftalmologia);
 
@@ -751,6 +967,7 @@ public class DataLoader implements CommandLineRunner {
         // 8. Radiografía
         Producto pRadiografia = new Producto();
         pRadiografia.setNombre("Radiografía: imágenes que cuentan la verdad");
+        pRadiografia.setDescripcion("Diagnóstico por imagen fiable.");
         pRadiografia.setCategoria(cVeterinario);
         productoRepository.save(pRadiografia);
 
@@ -765,6 +982,7 @@ public class DataLoader implements CommandLineRunner {
         // 9. Ecografía
         Producto pEcografia = new Producto();
         pEcografia.setNombre("Ecografía: exploración con alta precisión");
+        pEcografia.setDescripcion("Estudio interno sin dolor.");
         pEcografia.setCategoria(cVeterinario);
         productoRepository.save(pEcografia);
 
@@ -779,6 +997,7 @@ public class DataLoader implements CommandLineRunner {
         // 10. Cirugía veterinaria
         Producto pCirugia = new Producto();
         pCirugia.setNombre("Cirugía veterinaria: en manos expertas");
+        pCirugia.setDescripcion("Intervención con seguridad.");
         pCirugia.setCategoria(cVeterinario);
         productoRepository.save(pCirugia);
 
@@ -793,6 +1012,7 @@ public class DataLoader implements CommandLineRunner {
         // 11. Limpieza bucodental
         Producto pLimpiezaBucodental = new Producto();
         pLimpiezaBucodental.setNombre("Limpieza bucodental: sonrisa sana, vida larga");
+        pLimpiezaBucodental.setDescripcion("Higiene oral profesional.");
         pLimpiezaBucodental.setCategoria(cVeterinario);
         productoRepository.save(pLimpiezaBucodental);
 
@@ -807,6 +1027,7 @@ public class DataLoader implements CommandLineRunner {
         // 12. Hospitalización
         Producto pHospitalizacion = new Producto();
         pHospitalizacion.setNombre("Hospitalización: atención las 24 horas");
+        pHospitalizacion.setDescripcion("Cuidado veterinario continuo.");
         pHospitalizacion.setCategoria(cVeterinario);
         productoRepository.save(pHospitalizacion);
 
@@ -821,6 +1042,7 @@ public class DataLoader implements CommandLineRunner {
         // 13. Visita a domicilio
         Producto pVisitaDomicilio = new Producto();
         pVisitaDomicilio.setNombre("Visita a domicilio: el veterinario va a ti");
+        pVisitaDomicilio.setDescripcion("Atención sin salir de casa.");
         pVisitaDomicilio.setCategoria(cVeterinario);
         productoRepository.save(pVisitaDomicilio);
 
@@ -835,6 +1057,7 @@ public class DataLoader implements CommandLineRunner {
         // 14. Control de Leishmania
         Producto pLeishmania = new Producto();
         pLeishmania.setNombre("Control de Leishmania: prevención todo el año");
+        pLeishmania.setDescripcion("Prevención y control anual.");
         pLeishmania.setCategoria(cVeterinario);
         productoRepository.save(pLeishmania);
 
@@ -849,6 +1072,7 @@ public class DataLoader implements CommandLineRunner {
         // 15. Control de obesidad
         Producto pObesidad = new Producto();
         pObesidad.setNombre("Control de obesidad: cuerpo sano, vida feliz");
+        pObesidad.setDescripcion("Peso ideal y saludable.");
         pObesidad.setCategoria(cVeterinario);
         productoRepository.save(pObesidad);
 
@@ -863,6 +1087,7 @@ public class DataLoader implements CommandLineRunner {
         // 16. Plan de salud para perros
         Producto pPlanPerros = new Producto();
         pPlanPerros.setNombre("Plan de salud para perros: cuídalo todo el año");
+        pPlanPerros.setDescripcion("Bienestar todo el año.");
         pPlanPerros.setCategoria(cVeterinario);
         productoRepository.save(pPlanPerros);
 
@@ -877,6 +1102,7 @@ public class DataLoader implements CommandLineRunner {
         // 17. Plan de salud para gatos
         Producto pPlanGatos = new Producto();
         pPlanGatos.setNombre("Plan de salud para gatos: bienestar sin estrés");
+        pPlanGatos.setDescripcion("Cuidado sin preocupaciones.");
         pPlanGatos.setCategoria(cVeterinario);
         productoRepository.save(pPlanGatos);
 
@@ -986,28 +1212,28 @@ public class DataLoader implements CommandLineRunner {
         ta5.setFechaHasta(LocalDate.of(2026, 1, 1));
         tarifaRepository.save(ta5);
 
-        Raza raza = new Raza();
-        raza.setNombre("Perro");
-        razaRepository.save(raza);
+        Especie especie1 = new Especie();
+        especie1.setNombre("Perro");
+        especieRepository.save(especie1);
 
-        Raza raza2 = new Raza();
-        raza2.setNombre("Gato");
-        razaRepository.save(raza2);
+        Especie especie2 = new Especie();
+        especie2.setNombre("Gato");
+        especieRepository.save(especie2);
 
-        Especie e1 = new Especie();
+        Raza e1 = new Raza();
         e1.setNombre("Malinois");
-        e1.setRaza(raza);
-        especieRepository.save(e1);
+        e1.setEspecie(especie1);
+        razaRepository.save(e1);
 
-        Especie e3 = new Especie();
+        Raza e3 = new Raza();
         e3.setNombre("Dálmata");
-        e3.setRaza(raza);
-        especieRepository.save(e3);
+        e3.setEspecie(especie1);
+        razaRepository.save(e3);
 
-        Especie e2 = new Especie();
+        Raza e2 = new Raza();
         e2.setNombre("Esfinge");
-        e2.setRaza(raza2);
-        especieRepository.save(e2);
+        e2.setEspecie(especie2);
+        razaRepository.save(e2);
 
         Animal a1 = new Animal();
         a1.setNombre("Comodoro");
@@ -1025,7 +1251,7 @@ public class DataLoader implements CommandLineRunner {
         a1.setRutaImg1("/images/perro1Card.jpg");
         a1.setRutaImg2("/images/default-example.png");
         a1.setRutaImg3("/images/default-example.png");
-        a1.setEspecie(e1);
+        a1.setRaza(e1);
         animalRepository.save(a1);
 
 
@@ -1045,7 +1271,7 @@ public class DataLoader implements CommandLineRunner {
         a2.setRutaImg1("/images/perro1.png");
         a2.setRutaImg2("/images/default-example.png");
         a2.setRutaImg3("/images/default-example.png");
-        a2.setEspecie(e2);
+        a2.setRaza(e2);
         animalRepository.save(a2);
 
         Animal a3 = new Animal();
@@ -1064,7 +1290,7 @@ public class DataLoader implements CommandLineRunner {
         a3.setRutaImg1("/images/perro2.png");
         a3.setRutaImg2("/images/default-example.png");
         a3.setRutaImg3("/images/default-example.png");
-        a3.setEspecie(e2);
+        a3.setRaza(e2);
         animalRepository.save(a3);
 
         Animal a4 = new Animal();
@@ -1083,7 +1309,7 @@ public class DataLoader implements CommandLineRunner {
         a4.setRutaImg1("/images/perro3.png");
         a4.setRutaImg2("/images/default-example.png");
         a4.setRutaImg3("/images/default-example.png");
-        a4.setEspecie(e3);
+        a4.setRaza(e3);
         animalRepository.save(a4);
 
         Animal a5 = new Animal();
@@ -1102,7 +1328,7 @@ public class DataLoader implements CommandLineRunner {
         a5.setRutaImg1("/images/perro4.png");
         a5.setRutaImg2("/images/default-example.png");
         a5.setRutaImg3("/images/default-example.png");
-        a5.setEspecie(e3);
+        a5.setRaza(e3);
         animalRepository.save(a5);
 
         Animal a6 = new Animal();
@@ -1121,7 +1347,7 @@ public class DataLoader implements CommandLineRunner {
         a6.setRutaImg1("images/perro5.png");
         a6.setRutaImg2("/images/default-example.png");
         a6.setRutaImg3("/images/default-example.png");
-        a6.setEspecie(e3);
+        a6.setRaza(e3);
         animalRepository.save(a6);
 
         Animal a7 = new Animal();
@@ -1140,6 +1366,7 @@ public class DataLoader implements CommandLineRunner {
         a7.setRutaImg1("/images/perro6.png");
         a7.setRutaImg2("/images/default-example.png");
         a7.setRutaImg3("/images/default-example.png");
+        a7.setRaza(e1);
         animalRepository.save(a7);
 
         Apadrinar ap1 = new Apadrinar();
@@ -1192,10 +1419,30 @@ public class DataLoader implements CommandLineRunner {
         adopcion.setVisitasSeguimiento("Sí, estoy completamente de acuerdo con que se realicen visitas de seguimiento");
         adopcion.setFirma("Laura Gómez Pérez");
         adopcion.setFechaFormulario(LocalDate.now());
-        adopcion.setAceptado(true);
 
         adopcion.setUsuario(usuario); // Instancia existente de Usuario
         adopcion.setAnimal(a1);
         adopcionRepository.save(adopcion);
+
+        Adopcion adopcion2 = new Adopcion();
+
+        adopcion2.setOcupacion("Ingeniero de software");
+        adopcion2.setOtrosAnimales("No tengo otros animales en casa");
+        adopcion2.setDeAcuerdo("Sí, estoy de acuerdo con las condiciones de adopción establecidas");
+        adopcion2.setHijos("No tengo hijos");
+        adopcion2.setCaracteristicaMascota("Activo, juguetón y que disfrute de paseos largos");
+        adopcion2.setExperienciaPrevia("Sí, he tenido perros y gatos anteriormente. Me considero responsable y comprometido");
+        adopcion2.setTiempoSolo("Máximo 6 horas al día, ya que trabajo desde casa la mayor parte del tiempo");
+        adopcion2.setDondeVivira("Vivirá dentro de casa, con acceso a un patio cerrado y seguro");
+        adopcion2.setVeterinario("Clínica Veterinaria El Buen Amigo, con el Dr. Carlos López");
+        adopcion2.setVisitasSeguimiento("Sí, estoy completamente de acuerdo con que se realicen visitas de seguimiento");
+        adopcion2.setFirma("Carlos Fernández García");
+        adopcion2.setFechaFormulario(LocalDate.now());
+        adopcion2.setAceptado(true);
+
+        adopcion2.setUsuario(usuario); // Instancia existente de Usuario
+        adopcion2.setAnimal(a2);
+        adopcionRepository.save(adopcion2);
+
     }
 }

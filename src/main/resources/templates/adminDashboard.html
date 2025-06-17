@@ -1,10 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es" xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layoutAdmin.html}">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Administración</title>
 </head>
 <body>
-Pruebas
+
+<section layout:fragment="content">
+
+<div class="container">
+    <h1 class="text-center mb-4">Panel de Administración</h1>
+    <p class="text-center text-muted mb-5">Bienvenido al sistema de gestión. Selecciona una categoría para empezar.</p>
+
+    <div class="row g-4 justify-content-center">
+        <div class="col-md-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Animales</h5>
+                    <a th:href="@{/admin/animales}" class="btn btn-primary mt-3">Ver Animales</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Usuarios</h5>
+                    <a th:href="@{/admin/usuarios}" class="btn btn-primary mt-3">Ver Usuarios</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Productos / Servicios</h5>
+                    <a th:href="@{/admin/productos}" class="btn btn-primary mt-3">Ver Productos</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Tarifas</h5>
+                    <a th:href="@{/admin/tarifas}" class="btn btn-primary mt-3">Ver Tarifas</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Adopciones</h5>
+                    <a th:href="@{/admin/adopciones}" class="btn btn-primary mt-3">Ver Adopciones</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
 </body>
 </html>

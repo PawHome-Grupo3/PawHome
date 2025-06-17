@@ -42,7 +42,7 @@ public class Adopcion {
 
     private LocalDate fechaFormulario;
 
-    private boolean aceptado;
+        private Boolean aceptado;
 
     @ManyToOne
     @JoinColumn(name = "usuario_id", referencedColumnName = "id")
@@ -51,4 +51,5 @@ public class Adopcion {
     @ManyToOne
     @JoinColumn(name = "animal_id", referencedColumnName = "id")
     private Animal animal;
+
 }

@@ -217,9 +217,7 @@ public class UsuarioController {
             if (stripeSubscriptionId != null && !stripeSubscriptionId.isEmpty()) {
                 boolean cancelado = stripeService.cancelarSuscripcion(stripeSubscriptionId);
                 if (!cancelado) {
-                    // Opcional: manejar errores de cancelación
-                    // Redireccionar a una página de error o mostrar un mensaje
-                    return "redirect:/perfil/apadrinamientos?errorStripe";
+                    return "redirect:/error";
                 }
             }
 

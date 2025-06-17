@@ -20,13 +20,13 @@
                     <span th:text="#{apadrina.paso1}"></span>
                     <a th:href="@{/nuestrosAnimales(adoptado='apadrinar')}" th:text="#{apadrina.amigosPeludos}"></a>.
                 </li>
-                <li>
-                    <span th:text="#{apadrina.paso2}">Accede al</span>
-                    <a th:href="@{/nuestrosAnimales(adoptado='apadrinar')}" th:text="#{apadrina.formulario}"></a>.
 
+                <li>
+                    <span th:text="#{apadrina.paso2} + ' ' + #{apadrina.formulario}"></span>.
                 </li>
+
                 <li th:text="#{apadrina.paso3}"></li>
-                <li th:text="#{apadrina.paso5}"></li>
+                <li th:text="#{apadrina.paso4}"></li>
             </ol>
         </div>
     </div>

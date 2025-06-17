@@ -51,6 +51,7 @@
 
 				<li> <a class="navbar-brand enlaceNav" href="/horariomapa" th:text="#{header.contacto}"></a> </li>
 				<li> <a class="navbar-brand enlaceNav" href="/finalfeliz" th:text="#{header.finalfeliz}"></a> </li>
+				<li> <a class="navbar-brand enlaceNav" href="/nosotros" th:text="#{header.nosotros}"></a> </li>
 
 
 
@@ -91,7 +92,7 @@
 						</a>
 					</li>
 					<li sec:authorize="isAuthenticated() and hasRole('ADMIN')">
-						<a class="dropdown-item" th:href="@{/admin/animales}">
+						<a class="dropdown-item" th:href="@{/admin}">
 							<i class="fa fa-cogs me-2" aria-hidden="true"></i> Administración
 						</a>
 					</li>

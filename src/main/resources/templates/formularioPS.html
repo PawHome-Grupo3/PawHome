@@ -8,34 +8,36 @@
 <body>
 <section class="mb-5" layout:fragment="content">
     <h2 class="text-success-emphasis fw-bold display-5 my-4 text-center" th:text="#{walk.form.heading}">¡Apúntate a un Paseo Solidario!</h2>
+
+    <div th:if="${formularioEnviado}"
+         style="background:#d4edda; color:#155724; border:1px solid #c3e6cb; padding:16px; border-radius:6px; margin-bottom:20px; text-align:center; font-weight:bold;">
+        ¡Formulario enviado con éxito!
+    </div>
+
     <div class="formContainer">
-        <form class="row g-3" method="post">
+        <form class="row g-3" method="post" th:action="@{/colabora/paseosolidario/formularioPS}">
             <fieldset class="col-md-6">
                 <legend class="fw-bold"><strong th:text="#{walk.form.volunteer.data}">DATOS DEL VOLUNTARIO:</strong></legend>
                 <br>
 
                 <div class="itemSeleccion">
                     <label for="nombreVoluntario" class="form-label" th:text="#{walk.form.volunteer.name}">Nombre completo: <span style="color: red">*</span></label>
-                    <input type="text" id="nombreVoluntario" class="form-control labelForm"
-                           th:placeholder="#{walk.form.volunteer.name.placeholder}" required>
+                    <input type="text" id="nombreVoluntario" class="form-control labelForm" required>
                 </div>
 
                 <div class="itemSeleccion">
                     <label for="direccionVoluntario" class="form-label" th:text="#{walk.form.volunteer.address}">Dirección: <span style="color: red">*</span></label>
-                    <input type="text" id="direccionVoluntario" class="form-control labelForm"
-                           th:placeholder="#{walk.form.volunteer.address.placeholder}" required>
+                    <input type="text" id="direccionVoluntario" class="form-control labelForm" required>
                 </div>
 
                 <div class="itemSeleccion">
                     <label for="telefonoVoluntario" class="form-label" th:text="#{walk.form.volunteer.phone}">Teléfono: <span style="color: red">*</span></label>
-                    <input type="text" id="telefonoVoluntario" class="form-control labelForm"
-                           th:placeholder="#{walk.form.volunteer.phone.placeholder}" required>
+                    <input type="text" id="telefonoVoluntario" class="form-control labelForm" required>
                 </div>
 
                 <div class="itemSeleccion">
                     <label for="correoVoluntario" class="form-label" th:text="#{walk.form.volunteer.email}">Correo electrónico: <span style="color: red">*</span></label>
-                    <input type="email" id="correoVoluntario" class="form-control labelForm"
-                           th:placeholder="#{walk.form.volunteer.email.placeholder}" required>
+                    <input type="email" id="correoVoluntario" class="form-control labelForm" required>
                 </div>
             </fieldset>
 
@@ -49,7 +51,7 @@
                         <option value="" disabled selected th:text="#{form.select.option}">-Elige una opción-</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
-                        <option value="3" th:text="#{walk.form.walk.howmany.max}">3(max)</option>
+                        <option value="3" th:text="#{walk.form.walk.howmany.max}">3 (max)</option>
                     </select>
                 </div>
 
@@ -59,19 +61,18 @@
                         <a href="/nuestrosAnimales" target="_blank" th:text="#{walk.form.walk.available.link}">Ver animales disponibles</a>
                     </div>
                     <br>
-                    <select id="animalesSeleccionados" class="form-select labelForm" multiple required>
-                        <!-- Opciones de ejemplo, deben generarse dinámicamente -->
-                        <option value="perro1" th:text="#{walk.form.walk.animal.dog1}">Perro 1</option>
-                        <option value="gato1" th:text="#{walk.form.walk.animal.cat1}">Gato 1</option>
-                        <option value="perro2" th:text="#{walk.form.walk.animal.dog2}">Perro 2</option>
-                        <!-- ... -->
-                    </select>
-                    <small class="form-text text-muted" th:text="#{walk.form.walk.select.multiple.help}">
-                        Mantén pulsada la tecla Ctrl (Windows) o Cmd (Mac) para seleccionar varios.
-                    </small>
-                </div>
 
-                <div class="itemSeleccion">
+                    <!-- SELECT dinámico con animales -->
+                    <select id="animalesSeleccionados" class="form-select labelForm" multiple required>
+                        <option value="" disabled th:text="#{form.select.option}">-Elige una opción-</option>
+                        <option th:each="animal : ${animales}"
+                                th:value="${animal.id}"
+                                th:text="${animal.nombre}">
+                            Nombre del animal
+                        </option>
+                    </select>
+                </div>
+                    <div class="itemSeleccion">
                     <label for="checkin" class="form-label" th:text="#{walk.form.walk.checkin}">Hora de recogida (Check-in): <span style="color: red">*</span></label>
                     <input type="datetime-local" id="checkin" class="form-control labelForm" required>
                 </div>

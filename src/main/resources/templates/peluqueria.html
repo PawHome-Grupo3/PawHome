@@ -67,7 +67,8 @@
 
 				<div class="modal-body fs-5 px-4" style="color: #155724;font-weight: 500;">
 					<p>
-						¡Antes de realizar una reserva de nuestro servicio de peluqueria, necesita completar sus datos!<br>
+						¡Antes de realizar una reserva de nuestro servicio de peluqueria, necesita completar sus
+						datos!<br>
 					</p>
 					<div class="mt-2">
 						<img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="Huella animal"
@@ -437,145 +438,233 @@
 				<span th:utext="#{servicios.peluqueria.tarifas.perros.titulo}"></span>
 			</h2>
 
-			<div class="row row-cols-1 row-cols-md-5 g-4" data-tipo="perro">
-				<!-- CARD 1: BAÑO BÁSICO -->
-				<article class="col">
-					<div class="card p-3 shadow-sm h-100 cardServicio">
-						<div class="card_image mb-2">
-							<img th:src="@{images/soloBano.jpg}" alt="Baño Básico" class="imagenCard rounded-3">
+			<div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center" data-tipo="perro">
+				<!-- CARD 1: BAÑO BÁSICO NEW-->
+				<article class="col mb-4">
+					<div class="ser-card h-100 d-flex flex-column shadow-lg position-relative rounded-4 overflow-hidden">
+
+						<!-- Imagen del servicio -->
+						<div class="ser-imagen p-0 d-flex align-items-center justify-content-center">
+							<img th:src="@{images/soloBano.jpg}" alt="Baño Básico" class="ser-imagen-servicio">
 						</div>
-						<h3 class="fs-4 fw-bold text-success-emphasis card-title"
-							th:utext="#{servicios.peluqueria.tarifas.banoBasico}">
-						</h3>
-						<p class="fw-bold fs-5">
-							<span th:utext="#{servicios.peluqueria.tarifas.banoBasicoDesde}"></span>
-						</p>
-						<ul class="list-unstyled">
-							<li><i class="fas fa-shower me-2 text-success"></i>
-								<span th:utext="#{servicios.peluqueria.nuestrosServicios.banio}"></span>
-							</li>
-							<li><i class="fas fa-brush me-2 text-success"></i>
-								<span th:utext="#{servicios.peluqueria.nuestrosServicios.cepillado}"></span>
-							</li>
-						</ul>
-						<button class="btn btn-success btnCard mt-auto">
-							<span th:utext="#{servicios.botonSeleccionar}"></span>
-						</button>
+
+						<!-- Contenido del servicio -->
+						<div class="ser-contenido px-4 py-3 d-flex flex-column flex-grow-1 justify-content-between">
+
+							<!-- Título y precio -->
+							<div class="ser-info mb-3 text-center">
+								<div class="ser-nombre-precio d-flex align-items-center justify-content-center gap-2 flex-wrap mb-2">
+									<i class="fas fa-dog ser-icono-verde me-1"></i>
+									<h3 class="ser-titulo fs-5 fw-bold ser-texto-verde-emphasis mb-0"
+										th:utext="#{servicios.peluqueria.tarifas.banoBasico}"></h3>
+									<span class="ser-separador mx-2 ser-texto-muted">|</span>
+									<span class="ser-precio fs-5 fw-semibold ser-texto-muted">
+									<span class="ser-precio"
+										  th:utext="#{servicios.peluqueria.tarifas.banoBasicoDesde}"></span>
+								</span>
+								</div>
+
+								<!-- Servicios incluidos -->
+								<ul class="ser-lista-servicios list-unstyled ser-texto-secundario fs-6 mb-0 ps-0 d-flex flex-column align-items-center gap-1">
+									<li>
+										<i class="fas fa-shower me-2 ser-icono-verde"></i>
+										<span th:utext="#{servicios.peluqueria.nuestrosServicios.banio}"></span>
+									</li>
+									<li>
+										<i class="fas fa-brush me-2 ser-icono-verde"></i>
+										<span th:utext="#{servicios.peluqueria.nuestrosServicios.cepillado}"></span>
+									</li>
+								</ul>
+							</div>
+
+							<!-- Botón seleccionar -->
+							<div class="ser-botonera mt-3 d-flex justify-content-center">
+								<button class="ser-btn-comprar d-flex align-items-center justify-content-center px-4 py-2">
+									<svg xmlns="http://www.w3.org/2000/svg" class="ser-icon me-2" width="20" height="20"
+										 viewBox="0 0 24 24"
+										 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+										 stroke-linejoin="round">
+										<path d="M4 4l6 2l6 -2l4 2v2l-2 1v10h-4v-6h-4v6h-4V9l-2 -1V6z"/>
+									</svg>
+									<span th:utext="#{servicios.botonSeleccionar}">Seleccionar</span>
+								</button>
+							</div>
+						</div>
 					</div>
 				</article>
 
 				<!-- CARD 2: BAÑO + STRIPPING -->
-				<article class="col">
-					<div class="card p-3 shadow-sm h-100 cardServicio">
-						<div class="card_image mb-2">
+				<article class="col mb-4">
+					<div class="ser-card h-100 d-flex flex-column shadow-lg position-relative rounded-4 overflow-hidden">
+
+						<div class="ser-imagen p-0 d-flex align-items-center justify-content-center">
 							<img th:src="@{images/strippingAnimal.jpg}" alt="Baño + Stripping"
-								 class="imagenCard rounded-3">
+								 class="ser-imagen-servicio">
 						</div>
-						<h3 class="fs-4 fw-bold text-success-emphasis card-title"
-							th:utext="#{servicios.peluqueria.tarifas.banoStripping}">
-						</h3>
-						<p class="fw-bold fs-5">
-							<span th:utext="#{servicios.peluqueria.tarifas.banoStrippingDesde}"></span>
-						</p>
-						<ul class="list-unstyled">
-							<li><i class="fas fa-shower me-2 text-success"></i>
-								<span th:utext="#{servicios.peluqueria.nuestrosServicios.banio}"></span>
-							</li>
-							<li><i class="fas fa-cut me-2 text-success"></i>
-								<span th:utext="#{servicios.peluqueria.nuestrosServicios.stripping}"></span>
-							</li>
-							<li><i class="fas fa-brush me-2 text-success"></i>
-								<span th:utext="#{servicios.peluqueria.nuestrosServicios.cepillado}"></span>
-							</li>
-						</ul>
-						<button class="btn btn-success btnCard mt-auto">
-							<span th:utext="#{servicios.botonSeleccionar}"></span>
-						</button>
+
+						<div class="ser-contenido px-4 py-3 d-flex flex-column flex-grow-1 justify-content-between">
+							<div class="ser-info mb-3 text-center">
+								<div class="ser-nombre-precio d-flex align-items-center justify-content-center gap-2 flex-wrap mb-2">
+									<i class="fas fa-dog ser-icono-verde me-1"></i>
+									<h3 class="ser-titulo fs-5 fw-bold ser-texto-verde-emphasis mb-0"
+										th:utext="#{servicios.peluqueria.tarifas.banoStripping}"></h3>
+									<span class="ser-separador mx-2 ser-texto-muted">|</span>
+									<span class="ser-precio fs-5 fw-semibold ser-texto-muted"
+										  th:utext="#{servicios.peluqueria.tarifas.banoStrippingDesde}"></span>
+								</div>
+								<ul class="ser-lista-servicios list-unstyled ser-texto-secundario fs-6 mb-0 ps-0 d-flex flex-column align-items-center gap-1">
+									<li><i class="fas fa-shower me-2 ser-icono-verde"></i>
+										<span th:utext="#{servicios.peluqueria.nuestrosServicios.banio}"></span>
+									</li>
+									<li><i class="fas fa-cut me-2 ser-icono-verde"></i>
+										<span th:utext="#{servicios.peluqueria.nuestrosServicios.stripping}"></span>
+									</li>
+									<li><i class="fas fa-brush me-2 ser-icono-verde"></i>
+										<span th:utext="#{servicios.peluqueria.nuestrosServicios.cepillado}"></span>
+									</li>
+								</ul>
+							</div>
+							<div class="ser-botonera mt-3 d-flex justify-content-center">
+								<button class="ser-btn-comprar d-flex align-items-center justify-content-center px-4 py-2">
+									<svg xmlns="http://www.w3.org/2000/svg" class="ser-icon me-2" width="20" height="20"
+										 fill="none"
+										 stroke="currentColor" stroke-width="2" stroke-linecap="round"
+										 stroke-linejoin="round">
+										<path d="M4 4l6 2l6 -2l4 2v2l-2 1v10h-4v-6h-4v6h-4V9l-2 -1V6z"/>
+									</svg>
+									<span th:utext="#{servicios.botonSeleccionar}">Seleccionar</span>
+								</button>
+							</div>
+						</div>
 					</div>
 				</article>
 
 				<!-- CARD 3: SOLO CORTE -->
-				<article class="col">
-					<div class="card p-3 shadow-sm h-100 cardServicio">
-						<div class="card_image mb-2">
-							<img th:src="@{images/soloCorte.jpg}" alt="Solo Corte" class="imagenCard rounded-3">
+				<article class="col mb-4">
+					<div class="ser-card h-100 d-flex flex-column shadow-lg position-relative rounded-4 overflow-hidden">
+						<div class="ser-imagen p-0 d-flex align-items-center justify-content-center">
+							<img th:src="@{images/soloCorte.jpg}" alt="Solo Corte" class="ser-imagen-servicio">
 						</div>
-						<h3 class="fs-4 fw-bold text-success-emphasis card-title"
-							th:utext="#{servicios.peluqueria.tarifas.soloCorte}">
-						</h3>
-						<p class="fw-bold fs-5">
-							<span th:utext="#{servicios.peluqueria.tarifas.soloCorteDesde}"></span>
-						</p>
-						<ul class="list-unstyled">
-							<li><i class="fas fa-scissors me-2 text-success"></i>
-								<span th:utext="#{servicios.peluqueria.nuestrosServicios.cortePelo}"></span>
-							</li>
-						</ul>
-						<button class="btn btn-success btnCard mt-auto">
-							<span th:utext="#{servicios.botonSeleccionar}"></span>
-						</button>
+						<div class="ser-contenido px-4 py-3 d-flex flex-column flex-grow-1 justify-content-between">
+							<div class="ser-info mb-3 text-center">
+								<div class="ser-nombre-precio d-flex align-items-center justify-content-center gap-2 flex-wrap mb-2">
+									<i class="fas fa-dog ser-icono-verde me-1"></i>
+									<h3 class="ser-titulo fs-5 fw-bold ser-texto-verde-emphasis mb-0"
+										th:utext="#{servicios.peluqueria.tarifas.soloCorte}"></h3>
+									<span class="ser-separador mx-2 ser-texto-muted">|</span>
+									<span class="ser-precio fs-5 fw-semibold ser-texto-muted"
+										  th:utext="#{servicios.peluqueria.tarifas.soloCorteDesde}"></span>
+								</div>
+								<ul class="ser-lista-servicios list-unstyled ser-texto-secundario fs-6 mb-0 ps-0 d-flex flex-column align-items-center gap-1">
+									<li><i class="fas fa-scissors me-2 ser-icono-verde"></i>
+										<span th:utext="#{servicios.peluqueria.nuestrosServicios.cortePelo}"></span>
+									</li>
+								</ul>
+							</div>
+							<div class="ser-botonera mt-3 d-flex justify-content-center">
+								<button class="ser-btn-comprar d-flex align-items-center justify-content-center px-4 py-2">
+									<svg xmlns="http://www.w3.org/2000/svg" class="ser-icon me-2" width="20" height="20"
+										 fill="none"
+										 stroke="currentColor" stroke-width="2" stroke-linecap="round"
+										 stroke-linejoin="round">
+										<path d="M4 4l6 2l6 -2l4 2v2l-2 1v10h-4v-6h-4v6h-4V9l-2 -1V6z"/>
+									</svg>
+									<span th:utext="#{servicios.botonSeleccionar}">Seleccionar</span>
+								</button>
+							</div>
+						</div>
 					</div>
 				</article>
 
 				<!-- CARD 4: BAÑO + CORTE -->
-				<article class="col">
-					<div class="card p-3 shadow-sm h-100 cardServicio">
-						<div class="card_image mb-2">
-							<img th:src="@{images/banoYCorte.jpg}" alt="Baño + Corte" class="imagenCard rounded-3">
+				<article class="col mb-4">
+					<div class="ser-card h-100 d-flex flex-column shadow-lg position-relative rounded-4 overflow-hidden">
+						<div class="ser-imagen p-0 d-flex align-items-center justify-content-center">
+							<img th:src="@{images/banoYCorte.jpg}" alt="Baño + Corte" class="ser-imagen-servicio">
 						</div>
-						<h3 class="fs-4 fw-bold text-success-emphasis card-title"
-							th:utext="#{servicios.peluqueria.tarifas.banoCorte}">
-						</h3>
-						<p class="fw-bold fs-5">
-							<span th:utext="#{servicios.peluqueria.tarifas.banoCorteDesde}"></span>
-						</p>
-						<ul class="list-unstyled">
-							<li><i class="fas fa-shower me-2 text-success"></i>
-								<span th:utext="#{servicios.peluqueria.nuestrosServicios.banio}"></span>
-							</li>
-							<li><i class="fas fa-brush me-2 text-success"></i>
-								<span th:utext="#{servicios.peluqueria.nuestrosServicios.cepillado}"></span>
-							</li>
-							<li><i class="fas fa-scissors me-2 text-success"></i>
-								<span th:utext="#{servicios.peluqueria.nuestrosServicios.cortePelo}"></span>
-							</li>
-						</ul>
-						<button class="btn btn-success btnCard mt-auto">
-							<span th:utext="#{servicios.botonSeleccionar}"></span>
-						</button>
+						<div class="ser-contenido px-4 py-3 d-flex flex-column flex-grow-1 justify-content-between">
+							<div class="ser-info mb-3 text-center">
+								<div class="ser-nombre-precio d-flex align-items-center justify-content-center gap-2 flex-wrap mb-2">
+									<i class="fas fa-dog ser-icono-verde me-1"></i>
+									<h3 class="ser-titulo fs-5 fw-bold ser-texto-verde-emphasis mb-0"
+										th:utext="#{servicios.peluqueria.tarifas.banoCorte}"></h3>
+									<span class="ser-separador mx-2 ser-texto-muted">|</span>
+									<span class="ser-precio fs-5 fw-semibold ser-texto-muted"
+										  th:utext="#{servicios.peluqueria.tarifas.banoCorteDesde}"></span>
+								</div>
+								<ul class="ser-lista-servicios list-unstyled ser-texto-secundario fs-6 mb-0 ps-0 d-flex flex-column align-items-center gap-1">
+									<li><i class="fas fa-shower me-2 ser-icono-verde"></i>
+										<span th:utext="#{servicios.peluqueria.nuestrosServicios.banio}"></span>
+									</li>
+									<li><i class="fas fa-brush me-2 ser-icono-verde"></i>
+										<span th:utext="#{servicios.peluqueria.nuestrosServicios.cepillado}"></span>
+									</li>
+									<li><i class="fas fa-scissors me-2 ser-icono-verde"></i>
+										<span th:utext="#{servicios.peluqueria.nuestrosServicios.cortePelo}"></span>
+									</li>
+								</ul>
+							</div>
+							<div class="ser-botonera mt-3 d-flex justify-content-center">
+								<button class="ser-btn-comprar d-flex align-items-center justify-content-center px-4 py-2">
+									<svg xmlns="http://www.w3.org/2000/svg" class="ser-icon me-2" width="20"
+										 height="20"
+										 fill="none"
+										 stroke="currentColor" stroke-width="2" stroke-linecap="round"
+										 stroke-linejoin="round">
+										<path d="M4 4l6 2l6 -2l4 2v2l-2 1v10h-4v-6h-4v6h-4V9l-2 -1V6z"/>
+									</svg>
+									<span th:utext="#{servicios.botonSeleccionar}">Seleccionar</span>
+								</button>
+							</div>
+						</div>
 					</div>
 				</article>
 
 				<!-- CARD 5: COMPLETO -->
-				<article class="col">
-					<div class="card p-3 shadow-sm h-100 cardServicio">
-						<div class="card_image mb-2">
+				<article class="col mb-4">
+					<div class="ser-card h-100 d-flex flex-column shadow-lg position-relative rounded-4 overflow-hidden">
+						<div class="ser-imagen p-0 d-flex align-items-center justify-content-center">
 							<img th:src="@{images/completoPelu.jpg}" alt="Servicio Completo"
-								 class="imagenCard rounded-3">
+								 class="ser-imagen-servicio">
 						</div>
-						<h3 class="fs-4 fw-bold text-success-emphasis card-title"
-							th:utext="#{servicios.peluqueria.tarifas.completo}">
-						</h3>
-						<p class="fw-bold fs-5">
-							<span th:utext="#{servicios.peluqueria.tarifas.completoDesde}"></span>
-						</p>
-						<ul class="list-unstyled">
-							<li><i class="fas fa-shower me-2 text-success"></i>
-								<span th:utext="#{servicios.peluqueria.nuestrosServicios.banio}"></span>
-							</li>
-							<li><i class="fas fa-cut me-2 text-success"></i>
-								<span th:utext="#{servicios.peluqueria.nuestrosServicios.stripping}"></span>
-							</li>
-							<li><i class="fas fa-brush me-2 text-success"></i>
-								<span th:utext="#{servicios.peluqueria.nuestrosServicios.cepillado}"></span>
-							</li>
-							<li><i class="fas fa-scissors me-2 text-success"></i>
-								<span th:utext="#{servicios.peluqueria.nuestrosServicios.cortePelo}"></span>
-							</li>
-						</ul>
-						<button class="btn btn-success btnCard mt-auto">
-							<span th:utext="#{servicios.botonSeleccionar}"></span>
-						</button>
+						<div class="ser-contenido px-4 py-3 d-flex flex-column flex-grow-1 justify-content-between">
+							<div class="ser-info mb-3 text-center">
+								<div class="ser-nombre-precio d-flex align-items-center justify-content-center gap-2 flex-wrap mb-2">
+									<i class="fas fa-dog ser-icono-verde me-1"></i>
+									<h3 class="ser-titulo fs-5 fw-bold ser-texto-verde-emphasis mb-0"
+										th:utext="#{servicios.peluqueria.tarifas.completo}"></h3>
+									<span class="ser-separador mx-2 ser-texto-muted">|</span>
+									<span class="ser-precio fs-5 fw-semibold ser-texto-muted"
+										  th:utext="#{servicios.peluqueria.tarifas.completoDesde}"></span>
+								</div>
+								<ul class="ser-lista-servicios list-unstyled ser-texto-secundario fs-6 mb-0 ps-0 d-flex flex-column align-items-center gap-1">
+									<li><i class="fas fa-shower me-2 ser-icono-verde"></i>
+										<span th:utext="#{servicios.peluqueria.nuestrosServicios.banio}"></span>
+									</li>
+									<li><i class="fas fa-cut me-2 ser-icono-verde"></i>
+										<span th:utext="#{servicios.peluqueria.nuestrosServicios.stripping}"></span>
+									</li>
+									<li><i class="fas fa-brush me-2 ser-icono-verde"></i>
+										<span th:utext="#{servicios.peluqueria.nuestrosServicios.cepillado}"></span>
+									</li>
+									<li><i class="fas fa-scissors me-2 ser-icono-verde"></i>
+										<span th:utext="#{servicios.peluqueria.nuestrosServicios.cortePelo}"></span>
+									</li>
+								</ul>
+							</div>
+							<div class="ser-botonera mt-3 d-flex justify-content-center">
+								<button class="ser-btn-comprar d-flex align-items-center justify-content-center px-4 py-2">
+									<svg xmlns="http://www.w3.org/2000/svg" class="ser-icon me-2" width="20"
+										 height="20"
+										 fill="none"
+										 stroke="currentColor" stroke-width="2" stroke-linecap="round"
+										 stroke-linejoin="round">
+										<path d="M4 4l6 2l6 -2l4 2v2l-2 1v10h-4v-6h-4v6h-4V9l-2 -1V6z"/>
+									</svg>
+									<span th:utext="#{servicios.botonSeleccionar}">Seleccionar</span>
+								</button>
+							</div>
+						</div>
 					</div>
 				</article>
 			</div>
@@ -988,11 +1077,16 @@
 					</div>
 
 					<div class="itemSeleccion">
-						<input type="checkbox" required>
-						<label class="form-label">He leído y acepto las condiciones de uso de la web, el aviso legal y
-							la política de privacidad</label>
+						<input type="checkbox" class="" required>
+						<label class="form-label">He leído y acepto las condiciones de uso de la web,
+							el aviso legal y la política de privacidad</label>
 					</div>
-					<button type="submit" class="btn btn-primary btnEnviar">RESERVAR</button>
+
+					<div class="row itemSeleccion justify-content-center">
+						<div class="col text-center">
+							<button type="submit" class="btn btn-primary btnEnviar">RESERVAR</button>
+						</div>
+					</div>
 				</form>
 			</div>
 		</section>
@@ -1003,69 +1097,98 @@
 			<h2 class="text-success-emphasis fw-bold display-5 my-4"
 				th:utext="#{servicios.otrosServicios}">
 			</h2>
+
 			<div class="row row-cols-1 row-cols-md-4 g-4">
-				<article class="col">
-					<div class="card p-3 shadow-sm cardServicio">
-						<div class="card_image">
-							<img th:src="@{images/guarderia.jpg}" alt="LogoPeluqueria" class="imagenCard">
+				<!-- Guardería -->
+				<article class="col mb-4">
+					<div class="ser-card h-100 d-flex flex-column shadow-lg position-relative rounded-4 overflow-hidden">
+						<div class="ser-imagen d-flex align-items-center justify-content-center">
+							<img th:src="@{images/guarderia.jpg}" alt="Guardería" class="ser-imagen-servicio">
 						</div>
-						<h3 class="mt-3 fs-3 fw-bold text-success-emphasis"
-							th:utext="#{servicios.guarderia}">
-						</h3>
-						<p class="fs-4"
-						   th:utext="#{servicios.guarderiaApartirDe}">
-						</p>
-						<a th:href="@{/guarderia}" class="btn btn-success"
-						   th:utext="#{servicios.masInfo}">
-						</a>
+						<div class="ser-contenido px-4 py-3 d-flex flex-column flex-grow-1 justify-content-between">
+							<div class="ser-info mb-3 text-center">
+								<h3 class="ser-titulo fs-5 fw-bold ser-texto-verde-emphasis mb-2"
+									th:utext="#{servicios.guarderia}"></h3>
+								<p class="ser-precio fs-5 fw-semibold ser-texto-muted"
+								   th:utext="#{servicios.guarderiaApartirDe}"></p>
+							</div>
+							<div class="ser-botonera mt-3 d-flex justify-content-center">
+								<a th:href="@{/guarderia}"
+								   class="ser-btn-otrosServicios d-flex align-items-center justify-content-center px-4 py-2">
+									<span th:utext="#{servicios.masInfo}">Más info</span>
+								</a>
+							</div>
+						</div>
 					</div>
 				</article>
-				<article class="col">
-					<div class="card p-3 shadow-sm cardServicio">
-						<div class="card_image">
-							<img th:src="@{images/adiestramiento.jpg}" alt="LogoAdiestramiento" class="imagenCard">
+
+				<!-- Adiestramiento -->
+				<article class="col mb-4">
+					<div class="ser-card h-100 d-flex flex-column shadow-lg position-relative rounded-4 overflow-hidden">
+						<div class="ser-imagen d-flex align-items-center justify-content-center">
+							<img th:src="@{images/adiestramiento.jpg}" alt="Adiestramiento" class="ser-imagen-servicio">
 						</div>
-						<h3 class="mt-3 fs-3 fw-bold text-success-emphasis"
-							th:utext="#{servicios.adiestramiento}">
-						</h3>
-						<p class="fs-4"
-						   th:utext="#{servicios.adiestramientoApartirDe}">
-						</p>
-						<a th:href="@{/adiestramiento}" class="btn btn-success"
-						   th:utext="#{servicios.masInfo}">
-						</a>
+						<div class="ser-contenido px-4 py-3 d-flex flex-column flex-grow-1 justify-content-between">
+							<div class="ser-info mb-3 text-center">
+								<h3 class="ser-titulo fs-5 fw-bold ser-texto-verde-emphasis mb-2"
+									th:utext="#{servicios.adiestramiento}"></h3>
+								<p class="ser-precio fs-5 fw-semibold ser-texto-muted"
+								   th:utext="#{servicios.adiestramientoApartirDe}"></p>
+							</div>
+							<div class="ser-botonera mt-3 d-flex justify-content-center">
+								<a th:href="@{/adiestramiento}"
+								   class="ser-btn-otrosServicios d-flex align-items-center justify-content-center px-4 py-2">
+									<span th:utext="#{servicios.masInfo}">Más info</span>
+								</a>
+							</div>
+						</div>
 					</div>
 				</article>
-				<article class="col">
-					<div class="card p-3 shadow-sm cardServicio">
-						<div class="card_image">
-							<img th:src="@{images/veterinario.jpg}" alt="LogoVeterinario" class="imagenCard">
+
+				<!-- Veterinario -->
+				<article class="col mb-4">
+					<div class="ser-card h-100 d-flex flex-column shadow-lg position-relative rounded-4 overflow-hidden">
+						<div class="ser-imagen d-flex align-items-center justify-content-center">
+							<img th:src="@{images/veterinario.jpg}" alt="Veterinario" class="ser-imagen-servicio">
 						</div>
-						<h3 class="mt-3 fs-3 fw-bold text-success-emphasis"
-							th:utext="#{servicios.veterinario}">
-						</h3>
-						<p class="fs-4"
-						   th:utext="#{servicios.veterinarioApartirDe}">
-						</p>
-						<a th:href="@{/veterinario}" class="btn btn-success"
-						   th:utext="#{servicios.masInfo}">
-						</a>
+						<div class="ser-contenido px-4 py-3 d-flex flex-column flex-grow-1 justify-content-between">
+							<div class="ser-info mb-3 text-center">
+								<h3 class="ser-titulo fs-5 fw-bold ser-texto-verde-emphasis mb-2"
+									th:utext="#{servicios.veterinario}"></h3>
+								<p class="ser-precio fs-5 fw-semibold ser-texto-muted"
+								   th:utext="#{servicios.veterinarioApartirDe}"></p>
+							</div>
+							<div class="ser-botonera mt-3 d-flex justify-content-center">
+								<a th:href="@{/veterinario}"
+								   class="ser-btn-otrosServicios d-flex align-items-center justify-content-center px-4 py-2">
+									<span th:utext="#{servicios.masInfo}">Más info</span>
+								</a>
+							</div>
+						</div>
 					</div>
 				</article>
-				<article class="col">
-					<div class="card p-3 shadow-sm cardServicio">
-						<div class="card_image">
-							<img th:src="@{images/asesoramientoLegal.jpg}" alt="LogoLegal" class="imagenCard">
+
+				<!-- Asesoramiento Legal -->
+				<article class="col mb-4">
+					<div class="ser-card h-100 d-flex flex-column shadow-lg position-relative rounded-4 overflow-hidden">
+						<div class="ser-imagen d-flex align-items-center justify-content-center">
+							<img th:src="@{images/asesoramientoLegal.jpg}" alt="Asesoramiento Legal"
+								 class="ser-imagen-servicio">
 						</div>
-						<h3 class="mt-3 fs-3 fw-bold text-success-emphasis"
-							th:utext="#{servicios.asesoramientoLegal}">
-						</h3>
-						<p class="fs-4"
-						   th:utext="#{servicios.asesoramientoApartirDe}">
-						</p>
-						<a th:href="@{/asesoramientoLegal}" class="btn btn-success"
-						   th:utext="#{servicios.masInfo}">
-						</a>
+						<div class="ser-contenido px-4 py-3 d-flex flex-column flex-grow-1 justify-content-between">
+							<div class="ser-info mb-3 text-center">
+								<h3 class="ser-titulo fs-5 fw-bold ser-texto-verde-emphasis mb-2"
+									th:utext="#{servicios.asesoramientoLegal}"></h3>
+								<p class="ser-precio fs-5 fw-semibold ser-texto-muted"
+								   th:utext="#{servicios.asesoramientoApartirDe}"></p>
+							</div>
+							<div class="ser-botonera mt-3 d-flex justify-content-center">
+								<a th:href="@{/asesoramientoLegal}"
+								   class="ser-btn-otrosServicios d-flex align-items-center justify-content-center px-4 py-2">
+									<span th:utext="#{servicios.masInfo}">Más info</span>
+								</a>
+							</div>
+						</div>
 					</div>
 				</article>
 			</div>
@@ -1076,7 +1199,7 @@
 	<script>
         document.addEventListener('DOMContentLoaded', function () {
             // Elementos
-            const btns = document.querySelectorAll('.btnCard');
+            const btns = document.querySelectorAll('.ser-btn-comprar');
             const tarifaSpan = document.getElementById('tarifaSeleccionada');
             const precioTotal = document.getElementById('precioTotal');
             const suplementosCheckboxes = document.getElementById('suplementosCheckboxes');
@@ -1283,7 +1406,7 @@
                 btn.addEventListener('click', function (e) {
                     e.preventDefault();
 
-                    const card = btn.closest('.cardServicio');
+                    const card = btn.closest('.ser-card');
 
                     // Si ya está seleccionada, deselecciona
                     if (card.classList.contains('selected')) {
@@ -1299,12 +1422,12 @@
                     }
 
                     // Deselecciona otras y selecciona esta
-                    document.querySelectorAll('.cardServicio.selected').forEach(c => c.classList.remove('selected'));
+                    document.querySelectorAll('.ser-card.selected').forEach(c => c.classList.remove('selected'));
                     card.classList.add('selected');
 
                     // Obtener datos de la tarifa
-                    const nombre = card.querySelector('.fs-4, .fs-5').textContent.trim();
-                    const precioTexto = card.querySelector('.fw-bold.fs-5').textContent;
+                    const nombre = card.querySelector('.ser-titulo').textContent.trim();
+                    const precioTexto = card.querySelector('.ser-precio').textContent;
                     const precio = parseFloat(precioTexto.match(/\d+/)[0]); // Extraer número del texto
 
                     // Detectar si es perro o gato (ajusta según tu HTML si lo necesitas)
@@ -1406,12 +1529,12 @@
                 alertaModal.show();
 
                 const timerId = setTimeout(() => {
-                    window.location.href = "/login";
+                    window.location.href = "/auth/loginPawHome";
                 }, 4000);
 
                 document.getElementById('btnLogin').addEventListener("click", () => {
                     clearTimeout(timerId);
-                    window.location.href = "/login";
+                    window.location.href = "/auth/loginPawHome";
                 });
             }
 

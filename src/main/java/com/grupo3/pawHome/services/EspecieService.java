@@ -1,6 +1,7 @@
 package com.grupo3.pawHome.services;
 
 import com.grupo3.pawHome.entities.Especie;
+import com.grupo3.pawHome.entities.Raza;
 import com.grupo3.pawHome.repositories.EspecieRepository;
 import org.springframework.stereotype.Service;
 
@@ -14,5 +15,5 @@ public class EspecieService {
         this.especieRepository = especieRepository;
     }
 
-    public List<Especie> findByRazaId(Integer razaId) { return especieRepository.findByRazaId(razaId); }
+    public List<Especie> findAll() { return especieRepository.findAll(); }
 }

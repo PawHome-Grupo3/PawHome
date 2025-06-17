@@ -1588,180 +1588,232 @@
 			<div class="row g-5 d-flex justify-content-center">
 				<!-- Consulta Veterinaria -->
 				<article class="col col-md-4">
-					<div class="card p-3 shadow-sm cardServicio" data-precio="25">
-						<div class="card_image">
-							<img th:src="@{images/consulta.jpg}" alt="Consulta Veterinaria" class="imagenCard">
+					<div class="ser-card h-100 d-flex flex-column shadow-lg position-relative rounded-4 overflow-hidden"
+						 data-precio="25">
+
+						<!-- Imagen -->
+						<div class="ser-imagen p-0 d-flex align-items-center justify-content-center">
+							<img th:src="@{images/consulta.jpg}" alt="Consulta Veterinaria" class="ser-imagen-servicio">
 						</div>
-						<h3 class="fs-4 fw-bold text-success-emphasis card-title"
-							th:utext="#{servicios.veterinario.consulta.titulo}">
-						</h3>
-						<p class="fw-bold fs-5"
-						   th:utext="#{servicios.veterinario.consulta.precio}">
-						</p>
-						<ul class="list-unstyled ps-3">
-							<li><i class="fas fa-check text-success me-1"></i>
-								<span th:utext="#{servicios.veterinario.consulta.item1}"></span>
-							</li>
-							<li><i class="fas fa-calendar text-success me-1"></i>
-								<span th:utext="#{servicios.veterinario.consulta.item2}"></span>
-							</li>
-							<li><i class="fas fa-paw text-success me-1"></i>
-								<span th:utext="#{servicios.veterinario.consulta.item3}"></span>
-							</li>
-						</ul>
-						<div class="d-grid gap-2 mt-auto">
-							<button class="btn btn-success btnCard" data-bs-toggle="modal"
-									data-bs-target="#consultaVeterinariaModal">
-								<i class="fas fa-info-circle me-1"></i>
-								<span th:utext="#{servicios.masInfoModal}"></span>
-							</button>
-							<button class="btn btn-success btnCard">
-								<span th:utext="#{servicios.botonSeleccionar}"></span>
-							</button>
+
+						<!-- Contenido -->
+						<div class="ser-contenido px-4 py-3 d-flex flex-column flex-grow-1 justify-content-between">
+							<div class="ser-info mb-3 text-center">
+								<div class="ser-nombre-precio d-flex align-items-center justify-content-center gap-2 flex-wrap mb-2">
+									<i class="fas fa-stethoscope ser-icono-verde me-1"></i>
+									<h3 class="ser-titulo fs-5 fw-bold ser-texto-verde-emphasis mb-0"
+										th:utext="#{servicios.veterinario.consulta.titulo}"></h3>
+									<span class="ser-separador mx-1 ser-texto-muted">|</span>
+									<span class="ser-precio fs-6 fw-semibold ser-texto-muted"
+										  th:utext="#{servicios.veterinario.consulta.precio}"></span>
+								</div>
+							</div>
+
+							<ul class="ser-lista-servicios list-unstyled ser-texto-secundario fs-6 mb-0 ps-0 d-flex flex-column align-items-center gap-1">
+								<li><i class="fas fa-check ser-icono-verde me-2"></i><span
+										th:utext="#{servicios.veterinario.consulta.item1}"></span></li>
+								<li><i class="fas fa-calendar ser-icono-verde me-2"></i><span
+										th:utext="#{servicios.veterinario.consulta.item2}"></span></li>
+								<li><i class="fas fa-paw ser-icono-verde me-2"></i><span
+										th:utext="#{servicios.veterinario.consulta.item3}"></span></li>
+							</ul>
+
+							<div class="ser-botonera mt-3 d-flex flex-column align-items-center gap-2">
+								<button class="ser-btn-comprar d-flex align-items-center justify-content-center px-4 py-2"
+										data-bs-toggle="modal" data-bs-target="#consultaVeterinariaModal">
+									<i class="fas fa-info-circle me-2"></i>
+									<span th:utext="#{servicios.masInfoModal}"></span>
+								</button>
+								<button class="ser-btn-comprar d-flex align-items-center justify-content-center px-4 py-2 btnSeleccionar">
+									<i class="fas fa-check me-2"></i>
+									<span th:utext="#{servicios.botonSeleccionar}"></span>
+								</button>
+							</div>
 						</div>
 					</div>
 				</article>
 
 				<!-- Chequeo Preventivo -->
 				<article class="col col-md-4">
-					<div class="card p-3 shadow-sm cardServicio" data-precio="35">
-						<div class="card_image">
-							<img th:src="@{images/chequeo.jpg}" alt="Chequeo Preventivo" class="imagenCard">
+					<div class="ser-card h-100 d-flex flex-column shadow-lg position-relative rounded-4 overflow-hidden"
+						 data-precio="35">
+
+						<div class="ser-imagen p-0 d-flex align-items-center justify-content-center">
+							<img th:src="@{images/chequeo.jpg}" alt="Chequeo Preventivo" class="ser-imagen-servicio">
 						</div>
-						<h3 class="fs-4 fw-bold text-success-emphasis card-title"
-							th:utext="#{servicios.veterinario.chequeo.titulo}">
-						</h3>
-						<p class="fw-bold fs-5"
-						   th:utext="#{servicios.veterinario.chequeo.precio}">
-						</p>
-						<ul class="list-unstyled ps-3">
-							<li><i class="fas fa-check text-success me-1"></i>
-								<span th:utext="#{servicios.veterinario.chequeo.item1}"></span>
-							</li>
-							<li><i class="fas fa-calendar-check text-success me-1"></i>
-								<span th:utext="#{servicios.veterinario.chequeo.item2}"></span>
-							</li>
-							<li><i class="fas fa-paw text-success me-1"></i>
-								<span th:utext="#{servicios.veterinario.chequeo.item3}"></span>
-							</li>
-						</ul>
-						<div class="d-grid gap-2 mt-auto">
-							<button class="btn btn-success btnCard" data-bs-toggle="modal"
-									data-bs-target="#chequeoPreventivoModal">
-								<i class="fas fa-info-circle me-1"></i>
-								<span th:utext="#{servicios.masInfoModal}"></span>
-							</button>
-							<button class="btn btn-success btnCard">
-								<span th:utext="#{servicios.botonSeleccionar}"></span>
-							</button>
+
+						<div class="ser-contenido px-4 py-3 d-flex flex-column flex-grow-1 justify-content-between">
+							<div class="ser-info mb-3 text-center">
+								<div class="ser-nombre-precio d-flex align-items-center justify-content-center gap-2 flex-wrap mb-2">
+									<i class="fas fa-heartbeat ser-icono-verde me-1"></i>
+									<h3 class="ser-titulo fs-5 fw-bold ser-texto-verde-emphasis mb-0"
+										th:utext="#{servicios.veterinario.chequeo.titulo}"></h3>
+									<span class="ser-separador mx-1 ser-texto-muted">|</span>
+									<span class="ser-precio fs-6 fw-semibold ser-texto-muted"
+										  th:utext="#{servicios.veterinario.chequeo.precio}"></span>
+								</div>
+							</div>
+
+							<ul class="ser-lista-servicios list-unstyled ser-texto-secundario fs-6 mb-0 ps-0 d-flex flex-column align-items-center gap-1">
+								<li><i class="fas fa-check ser-icono-verde me-2"></i><span
+										th:utext="#{servicios.veterinario.chequeo.item1}"></span></li>
+								<li><i class="fas fa-calendar-check ser-icono-verde me-2"></i><span
+										th:utext="#{servicios.veterinario.chequeo.item2}"></span></li>
+								<li><i class="fas fa-paw ser-icono-verde me-2"></i><span
+										th:utext="#{servicios.veterinario.chequeo.item3}"></span></li>
+							</ul>
+
+							<div class="ser-botonera mt-3 d-flex flex-column align-items-center gap-2">
+								<button class="ser-btn-comprar d-flex align-items-center justify-content-center px-4 py-2"
+										data-bs-toggle="modal" data-bs-target="#chequeoPreventivoModal">
+									<i class="fas fa-info-circle me-2"></i>
+									<span th:utext="#{servicios.masInfoModal}"></span>
+								</button>
+								<button class="ser-btn-comprar d-flex align-items-center justify-content-center px-4 py-2 btnSeleccionar">
+									<i class="fas fa-check me-2"></i>
+									<span th:utext="#{servicios.botonSeleccionar}"></span>
+								</button>
+							</div>
 						</div>
 					</div>
 				</article>
 
 				<!-- Vacunación -->
 				<article class="col col-md-4">
-					<div class="card p-3 shadow-sm cardServicio" data-precio="30">
-						<div class="card_image">
-							<img th:src="@{images/vacunacion.jpg}" alt="Vacunación" class="imagenCard">
+					<div class="ser-card h-100 d-flex flex-column shadow-lg position-relative rounded-4 overflow-hidden"
+						 data-precio="30">
+
+						<div class="ser-imagen p-0 d-flex align-items-center justify-content-center">
+							<img th:src="@{images/vacunacion.jpg}" alt="Vacunación" class="ser-imagen-servicio">
 						</div>
-						<h3 class="fs-4 fw-bold text-success-emphasis card-title"
-							th:utext="#{servicios.veterinario.vacunacion.titulo}">
-						</h3>
-						<p class="fw-bold fs-5"
-						   th:utext="#{servicios.veterinario.vacunacion.precio}">
-						</p>
-						<ul class="list-unstyled ps-3">
-							<li><i class="fas fa-check text-success me-1"></i>
-								<span th:utext="#{servicios.veterinario.vacunacion.item1}"></span>
-							</li>
-							<li><i class="fas fa-calendar text-success me-1"></i>
-								<span th:utext="#{servicios.veterinario.vacunacion.item2}"></span>
-							</li>
-							<li><i class="fas fa-shield text-success me-1"></i>
-								<span th:utext="#{servicios.veterinario.vacunacion.item3}"></span>
-							</li>
-						</ul>
-						<div class="d-grid gap-2 mt-auto">
-							<button class="btn btn-success btnCard" data-bs-toggle="modal"
-									data-bs-target="#vacunacionModal">
-								<i class="fas fa-info-circle me-1"></i>
-								<span th:utext="#{servicios.masInfoModal}"></span>
-							</button>
-							<button class="btn btn-success btnCard">
-								<span th:utext="#{servicios.botonSeleccionar}"></span>
-							</button>
+
+						<div class="ser-contenido px-4 py-3 d-flex flex-column flex-grow-1 justify-content-between">
+							<div class="ser-info mb-3 text-center">
+								<div class="ser-nombre-precio d-flex align-items-center justify-content-center gap-2 flex-wrap mb-2">
+									<i class="fas fa-syringe ser-icono-verde me-1"></i>
+									<h3 class="ser-titulo fs-5 fw-bold ser-texto-verde-emphasis mb-0"
+										th:utext="#{servicios.veterinario.vacunacion.titulo}"></h3>
+									<span class="ser-separador mx-1 ser-texto-muted">|</span>
+									<span class="ser-precio fs-6 fw-semibold ser-texto-muted"
+										  th:utext="#{servicios.veterinario.vacunacion.precio}"></span>
+								</div>
+							</div>
+
+							<ul class="ser-lista-servicios list-unstyled ser-texto-secundario fs-6 mb-0 ps-0 d-flex flex-column align-items-center gap-1">
+								<li><i class="fas fa-check ser-icono-verde me-2"></i><span
+										th:utext="#{servicios.veterinario.vacunacion.item1}"></span></li>
+								<li><i class="fas fa-calendar ser-icono-verde me-2"></i><span
+										th:utext="#{servicios.veterinario.vacunacion.item2}"></span></li>
+								<li><i class="fas fa-shield ser-icono-verde me-2"></i><span
+										th:utext="#{servicios.veterinario.vacunacion.item3}"></span></li>
+							</ul>
+
+							<div class="ser-botonera mt-3 d-flex flex-column align-items-center gap-2">
+								<button class="ser-btn-comprar d-flex align-items-center justify-content-center px-4 py-2"
+										data-bs-toggle="modal" data-bs-target="#vacunacionModal">
+									<i class="fas fa-info-circle me-2"></i>
+									<span th:utext="#{servicios.masInfoModal}"></span>
+								</button>
+								<button class="ser-btn-comprar d-flex align-items-center justify-content-center px-4 py-2 btnSeleccionar">
+									<i class="fas fa-check me-2"></i>
+									<span th:utext="#{servicios.botonSeleccionar}"></span>
+								</button>
+							</div>
 						</div>
 					</div>
 				</article>
 
 				<!-- Desparasitación -->
 				<article class="col col-md-4">
-					<div class="card p-3 shadow-sm cardServicio" data-precio="20">
-						<div class="card_image">
-							<img th:src="@{images/desparasitacion.jpg}" alt="Desparasitación" class="imagenCard">
+					<div class="ser-card h-100 d-flex flex-column shadow-lg position-relative rounded-4 overflow-hidden"
+						 data-precio="20">
+
+						<!-- Imagen -->
+						<div class="ser-imagen p-0 d-flex align-items-center justify-content-center">
+							<img th:src="@{images/desparasitacion.jpg}" alt="Desparasitación"
+								 class="ser-imagen-servicio">
 						</div>
-						<h3 class="fs-4 fw-bold text-success-emphasis card-title"
-							th:utext="#{servicios.veterinario.desparasitacion.titulo}">
-						</h3>
-						<p class="fw-bold fs-5"
-						   th:utext="#{servicios.veterinario.desparasitacion.precio}">
-						</p>
-						<ul class="list-unstyled ps-3">
-							<li><i class="fas fa-check text-success me-1"></i>
-								<span th:utext="#{servicios.veterinario.desparasitacion.item1}"></span>
-							</li>
-							<li><i class="fas fa-sync text-success me-1"></i>
-								<span th:utext="#{servicios.veterinario.desparasitacion.item2}"></span>
-							</li>
-							<li><i class="fas fa-bug text-success me-1"></i>
-								<span th:utext="#{servicios.veterinario.desparasitacion.item3}"></span>
-							</li>
-						</ul>
-						<div class="d-grid gap-2 mt-auto">
-							<button class="btn btn-success btnCard" data-bs-toggle="modal"
-									data-bs-target="#desparasitacionModal">
-								<i class="fas fa-info-circle me-1"></i>
-								<span th:utext="#{servicios.masInfoModal}"></span>
-							</button>
-							<button class="btn btn-success btnCard">
-								<span th:utext="#{servicios.botonSeleccionar}"></span>
-							</button>
+
+						<!-- Contenido -->
+						<div class="ser-contenido px-4 py-3 d-flex flex-column flex-grow-1 justify-content-between">
+							<div class="ser-info mb-3 text-center">
+								<div class="ser-nombre-precio d-flex align-items-center justify-content-center gap-2 flex-wrap mb-2">
+									<i class="fas fa-bug ser-icono-verde me-1"></i>
+									<h3 class="ser-titulo fs-5 fw-bold ser-texto-verde-emphasis mb-0"
+										th:utext="#{servicios.veterinario.desparasitacion.titulo}"></h3>
+									<span class="ser-separador mx-1 ser-texto-muted">|</span>
+									<span class="ser-precio fs-6 fw-semibold ser-texto-muted"
+										  th:utext="#{servicios.veterinario.desparasitacion.precio}"></span>
+								</div>
+							</div>
+
+							<ul class="ser-lista-servicios list-unstyled ser-texto-secundario fs-6 mb-0 ps-0 d-flex flex-column align-items-center gap-1">
+								<li><i class="fas fa-check ser-icono-verde me-2"></i><span
+										th:utext="#{servicios.veterinario.desparasitacion.item1}"></span></li>
+								<li><i class="fas fa-sync ser-icono-verde me-2"></i><span
+										th:utext="#{servicios.veterinario.desparasitacion.item2}"></span></li>
+								<li><i class="fas fa-bug ser-icono-verde me-2"></i><span
+										th:utext="#{servicios.veterinario.desparasitacion.item3}"></span></li>
+							</ul>
+
+							<div class="ser-botonera mt-3 d-flex flex-column align-items-center gap-2">
+								<button class="ser-btn-comprar d-flex align-items-center justify-content-center px-4 py-2"
+										data-bs-toggle="modal" data-bs-target="#desparasitacionModal">
+									<i class="fas fa-info-circle me-2"></i>
+									<span th:utext="#{servicios.masInfoModal}"></span>
+								</button>
+								<button class="ser-btn-comprar d-flex align-items-center justify-content-center px-4 py-2 btnSeleccionar cardUnidad">
+									<i class="fas fa-check me-2"></i>
+									<span th:utext="#{servicios.botonSeleccionar}"></span>
+								</button>
+							</div>
 						</div>
 					</div>
 				</article>
 
 				<!-- Analítica y Test de Enfermedades -->
 				<article class="col col-md-4">
-					<div class="card p-3 shadow-sm cardServicio" data-precio="45">
-						<div class="card_image">
-							<img th:src="@{images/analitica.jpg}" alt="Analítica y Test" class="imagenCard">
+					<div class="ser-card h-100 d-flex flex-column shadow-lg position-relative rounded-4 overflow-hidden"
+						 data-precio="45">
+
+						<!-- Imagen -->
+						<div class="ser-imagen p-0 d-flex align-items-center justify-content-center">
+							<img th:src="@{images/analitica.jpg}" alt="Analítica y Test" class="ser-imagen-servicio">
 						</div>
-						<h3 class="fs-4 fw-bold text-success-emphasis card-title"
-							th:utext="#{servicios.veterinario.analitica.titulo}">
-						</h3>
-						<p class="fw-bold fs-5"
-						   th:utext="#{servicios.veterinario.analitica.precio}">
-						</p>
-						<ul class="list-unstyled ps-3">
-							<li><i class="fas fa-check text-success me-1"></i>
-								<span th:utext="#{servicios.veterinario.analitica.item1}"></span>
-							</li>
-							<li><i class="fas fa-vial text-success me-1"></i>
-								<span th:utext="#{servicios.veterinario.analitica.item2}"></span>
-							</li>
-							<li><i class="fas fa-search text-success me-1"></i>
-								<span th:utext="#{servicios.veterinario.analitica.item3}"></span>
-							</li>
-						</ul>
-						<div class="d-grid gap-2 mt-auto">
-							<button class="btn btn-success btnCard" data-bs-toggle="modal"
-									data-bs-target="#analiticasTestsModal">
-								<i class="fas fa-info-circle me-1"></i>
-								<span th:utext="#{servicios.masInfoModal}"></span>
-							</button>
-							<button class="btn btn-success btnCard">
-								<span th:utext="#{servicios.botonSeleccionar}"></span>
-							</button>
+
+						<!-- Contenido -->
+						<div class="ser-contenido px-4 py-3 d-flex flex-column flex-grow-1 justify-content-between">
+							<div class="ser-info mb-3 text-center">
+								<div class="ser-nombre-precio d-flex align-items-center justify-content-center gap-2 flex-wrap mb-2">
+									<i class="fas fa-vial ser-icono-verde me-1"></i>
+									<h3 class="ser-titulo fs-5 fw-bold ser-texto-verde-emphasis mb-0"
+										th:utext="#{servicios.veterinario.analitica.titulo}"></h3>
+									<span class="ser-separador mx-1 ser-texto-muted">|</span>
+									<span class="ser-precio fs-6 fw-semibold ser-texto-muted"
+										  th:utext="#{servicios.veterinario.analitica.precio}"></span>
+								</div>
+							</div>
+
+							<ul class="ser-lista-servicios list-unstyled ser-texto-secundario fs-6 mb-0 ps-0 d-flex flex-column align-items-center gap-1">
+								<li><i class="fas fa-check ser-icono-verde me-2"></i><span
+										th:utext="#{servicios.veterinario.analitica.item1}"></span></li>
+								<li><i class="fas fa-vial ser-icono-verde me-2"></i><span
+										th:utext="#{servicios.veterinario.analitica.item2}"></span></li>
+								<li><i class="fas fa-search ser-icono-verde me-2"></i><span
+										th:utext="#{servicios.veterinario.analitica.item3}"></span></li>
+							</ul>
+
+							<div class="ser-botonera mt-3 d-flex flex-column align-items-center gap-2">
+								<button class="ser-btn-comprar d-flex align-items-center justify-content-center px-4 py-2"
+										data-bs-toggle="modal" data-bs-target="#analiticasTestsModal">
+									<i class="fas fa-info-circle me-2"></i>
+									<span th:utext="#{servicios.masInfoModal}"></span>
+								</button>
+								<button class="ser-btn-comprar d-flex align-items-center justify-content-center px-4 py-2 btnSeleccionar cardUnidad">
+									<i class="fas fa-check me-2"></i>
+									<span th:utext="#{servicios.botonSeleccionar}"></span>
+								</button>
+							</div>
 						</div>
 					</div>
 				</article>
@@ -1779,144 +1831,150 @@
 
 				<!-- Traumatología -->
 				<article class="col col-md-4">
-					<div class="card p-3 shadow-sm cardServicio" data-precio="50">
-						<div class="card_image">
-							<img th:src="@{images/traumatologia.png}" alt="Traumatología" class="imagenCard">
+					<div class="ser-card h-100 d-flex flex-column shadow-lg position-relative rounded-4 overflow-hidden" data-precio="50">
+						<!-- Imagen -->
+						<div class="ser-imagen p-0 d-flex align-items-center justify-content-center">
+							<img th:src="@{images/traumatologia.png}" alt="Traumatología" class="ser-imagen-servicio">
 						</div>
-						<h3 class="fs-4 fw-bold text-success-emphasis card-title">
-							<span th:utext="#{servicios.veterinario.traumatologia.titulo}"></span>
-						</h3>
-						<p class="fw-bold fs-5">
-							<span th:utext="#{servicios.veterinario.traumatologia.precio}"></span>
-						</p>
-						<ul class="list-unstyled ps-3">
-							<li><i class="fas fa-check text-success me-1"></i>
-								<span th:utext="#{servicios.veterinario.traumatologia.item1}"></span>
-							</li>
-							<li><i class="fas fa-user-md text-success me-1"></i>
-								<span th:utext="#{servicios.veterinario.traumatologia.item2}"></span>
-							</li>
-							<li><i class="fas fa-paw text-success me-1"></i>
-								<span th:utext="#{servicios.veterinario.traumatologia.item3}"></span>
-							</li>
-						</ul>
-						<div class="d-grid gap-2 mt-auto">
-							<button class="btn btn-success btnCard" data-bs-toggle="modal"
-									data-bs-target="#traumatologiaModal">
-								<i class="fas fa-info-circle me-1"></i>
-								<span th:utext="#{servicios.masInfoModal}"></span>
-							</button>
-							<button class="btn btn-success btnCard">
-								<span th:utext="#{servicios.botonSeleccionar}"></span>
-							</button>
+
+						<!-- Contenido -->
+						<div class="ser-contenido px-4 py-3 d-flex flex-column flex-grow-1 justify-content-between">
+							<div class="ser-info mb-3 text-center">
+								<div class="ser-nombre-precio d-flex align-items-center justify-content-center gap-2 flex-wrap mb-2">
+									<i class="fas fa-bone ser-icono-verde me-1"></i>
+									<h3 class="ser-titulo fs-5 fw-bold ser-texto-verde-emphasis mb-0"
+										th:utext="#{servicios.veterinario.traumatologia.titulo}"></h3>
+									<span class="ser-separador mx-1 ser-texto-muted">|</span>
+									<span class="ser-precio fs-6 fw-semibold ser-texto-muted"
+										  th:utext="#{servicios.veterinario.traumatologia.precio}"></span>
+								</div>
+							</div>
+
+							<ul class="ser-lista-servicios list-unstyled ser-texto-secundario fs-6 mb-0 ps-0 d-flex flex-column align-items-center gap-1">
+								<li><i class="fas fa-check ser-icono-verde me-2"></i><span th:utext="#{servicios.veterinario.traumatologia.item1}"></span></li>
+								<li><i class="fas fa-user-md ser-icono-verde me-2"></i><span th:utext="#{servicios.veterinario.traumatologia.item2}"></span></li>
+								<li><i class="fas fa-paw ser-icono-verde me-2"></i><span th:utext="#{servicios.veterinario.traumatologia.item3}"></span></li>
+							</ul>
+
+							<div class="ser-botonera mt-3 d-flex flex-column align-items-center gap-2">
+								<button class="ser-btn-comprar d-flex align-items-center justify-content-center px-4 py-2" data-bs-toggle="modal" data-bs-target="#traumatologiaModal">
+									<i class="fas fa-info-circle me-2"></i><span th:utext="#{servicios.masInfoModal}"></span>
+								</button>
+								<button class="ser-btn-comprar d-flex align-items-center justify-content-center px-4 py-2 btnSeleccionar cardUnidad">
+									<i class="fas fa-check me-2"></i><span th:utext="#{servicios.botonSeleccionar}"></span>
+								</button>
+							</div>
 						</div>
 					</div>
 				</article>
 
 				<!-- Oftalmología -->
 				<article class="col col-md-4">
-					<div class="card p-3 shadow-sm cardServicio" data-precio="50">
-						<div class="card_image">
-							<img th:src="@{images/oftalmologia.jpg}" alt="Oftalmología" class="imagenCard">
+					<div class="ser-card h-100 d-flex flex-column shadow-lg position-relative rounded-4 overflow-hidden" data-precio="50">
+						<div class="ser-imagen p-0 d-flex align-items-center justify-content-center">
+							<img th:src="@{images/oftalmologia.jpg}" alt="Oftalmología" class="ser-imagen-servicio">
 						</div>
-						<h3 class="fs-4 fw-bold text-success-emphasis card-title">
-							<span th:utext="#{servicios.veterinario.oftalmologia.titulo}"></span>
-						</h3>
-						<p class="fw-bold fs-5">
-							<span th:utext="#{servicios.veterinario.oftalmologia.precio}"></span>
-						</p>
-						<ul class="list-unstyled ps-3">
-							<li><i class="fas fa-check text-success me-1"></i>
-								<span th:utext="#{servicios.veterinario.oftalmologia.item1}"></span>
-							</li>
-							<li><i class="fas fa-eye text-success me-1"></i>
-								<span th:utext="#{servicios.veterinario.oftalmologia.item2}"></span>
-							</li>
-							<li><i class="fas fa-paw text-success me-1"></i>
-								<span th:utext="#{servicios.veterinario.oftalmologia.item3}"></span>
-							</li>
-						</ul>
-						<div class="d-grid gap-2 mt-auto">
-							<button class="btn btn-success btnCard" data-bs-toggle="modal"
-									data-bs-target="#oftalmologiaModal">
-								<i class="fas fa-info-circle me-1"></i>
-								<span th:utext="#{servicios.masInfoModal}"></span>
-							</button>
-							<button class="btn btn-success btnCard">
-								<span th:utext="#{servicios.botonSeleccionar}"></span>
-							</button>
+
+						<div class="ser-contenido px-4 py-3 d-flex flex-column flex-grow-1 justify-content-between">
+							<div class="ser-info mb-3 text-center">
+								<div class="ser-nombre-precio d-flex align-items-center justify-content-center gap-2 flex-wrap mb-2">
+									<i class="fas fa-eye ser-icono-verde me-1"></i>
+									<h3 class="ser-titulo fs-5 fw-bold ser-texto-verde-emphasis mb-0"
+										th:utext="#{servicios.veterinario.oftalmologia.titulo}"></h3>
+									<span class="ser-separador mx-1 ser-texto-muted">|</span>
+									<span class="ser-precio fs-6 fw-semibold ser-texto-muted"
+										  th:utext="#{servicios.veterinario.oftalmologia.precio}"></span>
+								</div>
+							</div>
+
+							<ul class="ser-lista-servicios list-unstyled ser-texto-secundario fs-6 mb-0 ps-0 d-flex flex-column align-items-center gap-1">
+								<li><i class="fas fa-check ser-icono-verde me-2"></i><span th:utext="#{servicios.veterinario.oftalmologia.item1}"></span></li>
+								<li><i class="fas fa-eye ser-icono-verde me-2"></i><span th:utext="#{servicios.veterinario.oftalmologia.item2}"></span></li>
+								<li><i class="fas fa-paw ser-icono-verde me-2"></i><span th:utext="#{servicios.veterinario.oftalmologia.item3}"></span></li>
+							</ul>
+
+							<div class="ser-botonera mt-3 d-flex flex-column align-items-center gap-2">
+								<button class="ser-btn-comprar d-flex align-items-center justify-content-center px-4 py-2" data-bs-toggle="modal" data-bs-target="#oftalmologiaModal">
+									<i class="fas fa-info-circle me-2"></i><span th:utext="#{servicios.masInfoModal}"></span>
+								</button>
+								<button class="ser-btn-comprar d-flex align-items-center justify-content-center px-4 py-2 btnSeleccionar cardUnidad">
+									<i class="fas fa-check me-2"></i><span th:utext="#{servicios.botonSeleccionar}"></span>
+								</button>
+							</div>
 						</div>
 					</div>
 				</article>
 
 				<!-- Radiografía -->
 				<article class="col col-md-4">
-					<div class="card p-3 shadow-sm cardServicio" data-precio="40">
-						<div class="card_image">
-							<img th:src="@{images/radiografia.png}" alt="Radiografía" class="imagenCard">
+					<div class="ser-card h-100 d-flex flex-column shadow-lg position-relative rounded-4 overflow-hidden" data-precio="40">
+						<div class="ser-imagen p-0 d-flex align-items-center justify-content-center">
+							<img th:src="@{images/radiografia.png}" alt="Radiografía" class="ser-imagen-servicio">
 						</div>
-						<h3 class="fs-4 fw-bold text-success-emphasis card-title">
-							<span th:utext="#{servicios.veterinario.radiografia.titulo}"></span>
-						</h3>
-						<p class="fw-bold fs-5">
-							<span th:utext="#{servicios.veterinario.radiografia.precio}"></span>
-						</p>
-						<ul class="list-unstyled ps-3">
-							<li><i class="fas fa-check text-success me-1"></i>
-								<span th:utext="#{servicios.veterinario.radiografia.item1}"></span>
-							</li>
-							<li><i class="fas fa-x-ray text-success me-1"></i>
-								<span th:utext="#{servicios.veterinario.radiografia.item2}"></span>
-							</li>
-							<li><i class="fas fa-paw text-success me-1"></i>
-								<span th:utext="#{servicios.veterinario.radiografia.item3}"></span>
-							</li>
-						</ul>
-						<div class="d-grid gap-2 mt-auto">
-							<button class="btn btn-success btnCard" data-bs-toggle="modal"
-									data-bs-target="#imagenModal">
-								<i class="fas fa-info-circle me-1"></i>
-								<span th:utext="#{servicios.masInfoModal}"></span>
-							</button>
-							<button class="btn btn-success btnCard">
-								<span th:utext="#{servicios.botonSeleccionar}"></span>
-							</button>
+
+						<div class="ser-contenido px-4 py-3 d-flex flex-column flex-grow-1 justify-content-between">
+							<div class="ser-info mb-3 text-center">
+								<div class="ser-nombre-precio d-flex align-items-center justify-content-center gap-2 flex-wrap mb-2">
+									<i class="fas fa-x-ray ser-icono-verde me-1"></i>
+									<h3 class="ser-titulo fs-5 fw-bold ser-texto-verde-emphasis mb-0"
+										th:utext="#{servicios.veterinario.radiografia.titulo}"></h3>
+									<span class="ser-separador mx-1 ser-texto-muted">|</span>
+									<span class="ser-precio fs-6 fw-semibold ser-texto-muted"
+										  th:utext="#{servicios.veterinario.radiografia.precio}"></span>
+								</div>
+							</div>
+
+							<ul class="ser-lista-servicios list-unstyled ser-texto-secundario fs-6 mb-0 ps-0 d-flex flex-column align-items-center gap-1">
+								<li><i class="fas fa-check ser-icono-verde me-2"></i><span th:utext="#{servicios.veterinario.radiografia.item1}"></span></li>
+								<li><i class="fas fa-x-ray ser-icono-verde me-2"></i><span th:utext="#{servicios.veterinario.radiografia.item2}"></span></li>
+								<li><i class="fas fa-paw ser-icono-verde me-2"></i><span th:utext="#{servicios.veterinario.radiografia.item3}"></span></li>
+							</ul>
+
+							<div class="ser-botonera mt-3 d-flex flex-column align-items-center gap-2">
+								<button class="ser-btn-comprar d-flex align-items-center justify-content-center px-4 py-2" data-bs-toggle="modal" data-bs-target="#imagenModal">
+									<i class="fas fa-info-circle me-2"></i><span th:utext="#{servicios.masInfoModal}"></span>
+								</button>
+								<button class="ser-btn-comprar d-flex align-items-center justify-content-center px-4 py-2 btnSeleccionar cardUnidad">
+									<i class="fas fa-check me-2"></i><span th:utext="#{servicios.botonSeleccionar}"></span>
+								</button>
+							</div>
 						</div>
 					</div>
 				</article>
 
 				<!-- Ecografía -->
 				<article class="col col-md-4">
-					<div class="card p-3 shadow-sm cardServicio" data-precio="45">
-						<div class="card_image">
-							<img th:src="@{images/ecografia.jpg}" alt="Ecografía" class="imagenCard">
+					<div class="ser-card h-100 d-flex flex-column shadow-lg position-relative rounded-4 overflow-hidden" data-precio="45">
+						<div class="ser-imagen p-0 d-flex align-items-center justify-content-center">
+							<img th:src="@{images/ecografia.jpg}" alt="Ecografía" class="ser-imagen-servicio">
 						</div>
-						<h3 class="fs-4 fw-bold text-success-emphasis card-title">
-							<span th:utext="#{servicios.veterinario.ecografia.titulo}"></span>
-						</h3>
-						<p class="fw-bold fs-5">
-							<span th:utext="#{servicios.veterinario.ecografia.precio}"></span>
-						</p>
-						<ul class="list-unstyled ps-3">
-							<li><i class="fas fa-check text-success me-1"></i>
-								<span th:utext="#{servicios.veterinario.ecografia.item1}"></span>
-							</li>
-							<li><i class="fas fa-heartbeat text-success me-1"></i>
-								<span th:utext="#{servicios.veterinario.ecografia.item2}"></span>
-							</li>
-							<li><i class="fas fa-paw text-success me-1"></i>
-								<span th:utext="#{servicios.veterinario.ecografia.item3}"></span>
-							</li>
-						</ul>
-						<div class="d-grid gap-2 mt-auto">
-							<button class="btn btn-success btnCard" data-bs-toggle="modal"
-									data-bs-target="#ecografiaModal">
-								<i class="fas fa-info-circle me-1"></i>
-								<span th:utext="#{servicios.masInfoModal}"></span>
-							</button>
-							<button class="btn btn-success btnCard">
-								<span th:utext="#{servicios.botonSeleccionar}"></span>
-							</button>
+
+						<div class="ser-contenido px-4 py-3 d-flex flex-column flex-grow-1 justify-content-between">
+							<div class="ser-info mb-3 text-center">
+								<div class="ser-nombre-precio d-flex align-items-center justify-content-center gap-2 flex-wrap mb-2">
+									<i class="fas fa-heartbeat ser-icono-verde me-1"></i>
+									<h3 class="ser-titulo fs-5 fw-bold ser-texto-verde-emphasis mb-0"
+										th:utext="#{servicios.veterinario.ecografia.titulo}"></h3>
+									<span class="ser-separador mx-1 ser-texto-muted">|</span>
+									<span class="ser-precio fs-6 fw-semibold ser-texto-muted"
+										  th:utext="#{servicios.veterinario.ecografia.precio}"></span>
+								</div>
+							</div>
+
+							<ul class="ser-lista-servicios list-unstyled ser-texto-secundario fs-6 mb-0 ps-0 d-flex flex-column align-items-center gap-1">
+								<li><i class="fas fa-check ser-icono-verde me-2"></i><span th:utext="#{servicios.veterinario.ecografia.item1}"></span></li>
+								<li><i class="fas fa-heartbeat ser-icono-verde me-2"></i><span th:utext="#{servicios.veterinario.ecografia.item2}"></span></li>
+								<li><i class="fas fa-paw ser-icono-verde me-2"></i><span th:utext="#{servicios.veterinario.ecografia.item3}"></span></li>
+							</ul>
+
+							<div class="ser-botonera mt-3 d-flex flex-column align-items-center gap-2">
+								<button class="ser-btn-comprar d-flex align-items-center justify-content-center px-4 py-2" data-bs-toggle="modal" data-bs-target="#ecografiaModal">
+									<i class="fas fa-info-circle me-2"></i><span th:utext="#{servicios.masInfoModal}"></span>
+								</button>
+								<button class="ser-btn-comprar d-flex align-items-center justify-content-center px-4 py-2 btnSeleccionar cardUnidad">
+									<i class="fas fa-check me-2"></i><span th:utext="#{servicios.botonSeleccionar}"></span>
+								</button>
+							</div>
 						</div>
 					</div>
 				</article>
@@ -1934,146 +1992,152 @@
 
 				<!-- Cirugía -->
 				<article class="col col-md-4">
-					<div class="card p-3 shadow-sm cardServicio" data-precio="100">
-						<div class="card_image">
-							<img th:src="@{images/cirugia.jpg}" alt="Cirugía veterinaria" class="imagenCard">
+					<div class="ser-card h-100 d-flex flex-column shadow-lg position-relative rounded-4 overflow-hidden" data-precio="100">
+						<div class="ser-imagen p-0 d-flex align-items-center justify-content-center">
+							<img th:src="@{images/cirugia.jpg}" alt="Cirugía veterinaria" class="ser-imagen-servicio">
 						</div>
-						<h3 class="fs-4 fw-bold text-success-emphasis card-title">
-							<span th:utext="#{servicios.veterinario.cirugia.titulo}"></span>
-						</h3>
-						<p class="fw-bold fs-5">
-							<span th:utext="#{servicios.veterinario.cirugia.precio}"></span>
-						</p>
-						<ul class="list-unstyled ps-3">
-							<li><i class="fas fa-check text-success me-1"></i>
-								<span th:utext="#{servicios.veterinario.cirugia.item1}"></span>
-							</li>
-							<li><i class="fas fa-shield text-success me-1"></i>
-								<span th:utext="#{servicios.veterinario.cirugia.item2}"></span>
-							</li>
-							<li><i class="fas fa-paw text-success me-1"></i>
-								<span th:utext="#{servicios.veterinario.cirugia.item3}"></span>
-							</li>
-						</ul>
-						<div class="d-grid gap-2 mt-auto">
-							<button class="btn btn-success btnCard" data-bs-toggle="modal"
-									data-bs-target="#cirugiaModal">
-								<i class="fas fa-info-circle me-1"></i>
-								<span th:utext="#{servicios.masInfoModal}"></span>
-							</button>
-							<button class="btn btn-success btnCard">
-								<span th:utext="#{servicios.botonSeleccionar}"></span>
-							</button>
+
+						<div class="ser-contenido px-4 py-3 d-flex flex-column flex-grow-1 justify-content-between">
+							<div class="ser-info mb-3 text-center">
+								<div class="ser-nombre-precio d-flex align-items-center justify-content-center gap-2 flex-wrap mb-2">
+									<i class="fas fa-scalpel ser-icono-verde me-1"></i>
+									<h3 class="ser-titulo fs-5 fw-bold ser-texto-verde-emphasis mb-0"
+										th:utext="#{servicios.veterinario.cirugia.titulo}"></h3>
+									<span class="ser-separador mx-1 ser-texto-muted">|</span>
+									<span class="ser-precio fs-6 fw-semibold ser-texto-muted"
+										  th:utext="#{servicios.veterinario.cirugia.precio}"></span>
+								</div>
+							</div>
+
+							<ul class="ser-lista-servicios list-unstyled ser-texto-secundario fs-6 mb-0 ps-0 d-flex flex-column align-items-center gap-1">
+								<li><i class="fas fa-check ser-icono-verde me-2"></i><span th:utext="#{servicios.veterinario.cirugia.item1}"></span></li>
+								<li><i class="fas fa-shield ser-icono-verde me-2"></i><span th:utext="#{servicios.veterinario.cirugia.item2}"></span></li>
+								<li><i class="fas fa-paw ser-icono-verde me-2"></i><span th:utext="#{servicios.veterinario.cirugia.item3}"></span></li>
+							</ul>
+
+							<div class="ser-botonera mt-3 d-flex flex-column align-items-center gap-2">
+								<button class="ser-btn-comprar d-flex align-items-center justify-content-center px-4 py-2"
+										data-bs-toggle="modal" data-bs-target="#cirugiaModal">
+									<i class="fas fa-info-circle me-2"></i><span th:utext="#{servicios.masInfoModal}"></span>
+								</button>
+								<button class="ser-btn-comprar d-flex align-items-center justify-content-center px-4 py-2 btnSeleccionar cardUnidad">
+									<i class="fas fa-check me-2"></i><span th:utext="#{servicios.botonSeleccionar}"></span>
+								</button>
+							</div>
 						</div>
 					</div>
 				</article>
 
 				<!-- Limpieza bucodental -->
 				<article class="col col-md-4">
-					<div class="card p-3 shadow-sm cardServicio" data-precio="60">
-						<div class="card_image">
-							<img th:src="@{images/bucodental.jpg}" alt="Limpieza bucodental" class="imagenCard">
+					<div class="ser-card h-100 d-flex flex-column shadow-lg position-relative rounded-4 overflow-hidden" data-precio="60">
+						<div class="ser-imagen p-0 d-flex align-items-center justify-content-center">
+							<img th:src="@{images/bucodental.jpg}" alt="Limpieza bucodental" class="ser-imagen-servicio">
 						</div>
-						<h3 class="fs-4 fw-bold text-success-emphasis card-title">
-							<span th:utext="#{servicios.veterinario.bucodental.titulo}"></span>
-						</h3>
-						<p class="fw-bold fs-5">
-							<span th:utext="#{servicios.veterinario.bucodental.precio}"></span>
-						</p>
-						<ul class="list-unstyled ps-3">
-							<li><i class="fas fa-check text-success me-1"></i>
-								<span th:utext="#{servicios.veterinario.bucodental.item1}"></span>
-							</li>
-							<li><i class="fas fa-smile text-success me-1"></i>
-								<span th:utext="#{servicios.veterinario.bucodental.item2}"></span>
-							</li>
-							<li><i class="fas fa-paw text-success me-1"></i>
-								<span th:utext="#{servicios.veterinario.bucodental.item3}"></span>
-							</li>
-						</ul>
-						<div class="d-grid gap-2 mt-auto">
-							<button class="btn btn-success btnCard" data-bs-toggle="modal"
-									data-bs-target="#limpiezaBucodentalModal">
-								<i class="fas fa-info-circle me-1"></i>
-								<span th:utext="#{servicios.masInfoModal}"></span>
-							</button>
-							<button class="btn btn-success btnCard">
-								<span th:utext="#{servicios.botonSeleccionar}"></span>
-							</button>
+
+						<div class="ser-contenido px-4 py-3 d-flex flex-column flex-grow-1 justify-content-between">
+							<div class="ser-info mb-3 text-center">
+								<div class="ser-nombre-precio d-flex align-items-center justify-content-center gap-2 flex-wrap mb-2">
+									<i class="fas fa-tooth ser-icono-verde me-1"></i>
+									<h3 class="ser-titulo fs-5 fw-bold ser-texto-verde-emphasis mb-0"
+										th:utext="#{servicios.veterinario.bucodental.titulo}"></h3>
+									<span class="ser-separador mx-1 ser-texto-muted">|</span>
+									<span class="ser-precio fs-6 fw-semibold ser-texto-muted"
+										  th:utext="#{servicios.veterinario.bucodental.precio}"></span>
+								</div>
+							</div>
+
+							<ul class="ser-lista-servicios list-unstyled ser-texto-secundario fs-6 mb-0 ps-0 d-flex flex-column align-items-center gap-1">
+								<li><i class="fas fa-check ser-icono-verde me-2"></i><span th:utext="#{servicios.veterinario.bucodental.item1}"></span></li>
+								<li><i class="fas fa-smile ser-icono-verde me-2"></i><span th:utext="#{servicios.veterinario.bucodental.item2}"></span></li>
+								<li><i class="fas fa-paw ser-icono-verde me-2"></i><span th:utext="#{servicios.veterinario.bucodental.item3}"></span></li>
+							</ul>
+
+							<div class="ser-botonera mt-3 d-flex flex-column align-items-center gap-2">
+								<button class="ser-btn-comprar d-flex align-items-center justify-content-center px-4 py-2"
+										data-bs-toggle="modal" data-bs-target="#limpiezaBucodentalModal">
+									<i class="fas fa-info-circle me-2"></i><span th:utext="#{servicios.masInfoModal}"></span>
+								</button>
+								<button class="ser-btn-comprar d-flex align-items-center justify-content-center px-4 py-2 btnSeleccionar cardUnidad">
+									<i class="fas fa-check me-2"></i><span th:utext="#{servicios.botonSeleccionar}"></span>
+								</button>
+							</div>
 						</div>
 					</div>
 				</article>
 
 				<!-- Hospitalización -->
 				<article class="col col-md-4">
-					<div class="card p-3 shadow-sm cardServicio" data-precio="45">
-						<div class="card_image">
-							<img th:src="@{images/hospitalizacion.jpg}" alt="Hospitalización veterinaria"
-								 class="imagenCard">
+					<div class="ser-card h-100 d-flex flex-column shadow-lg position-relative rounded-4 overflow-hidden" data-precio="45">
+						<div class="ser-imagen p-0 d-flex align-items-center justify-content-center">
+							<img th:src="@{images/hospitalizacion.jpg}" alt="Hospitalización veterinaria" class="ser-imagen-servicio">
 						</div>
-						<h3 class="fs-4 fw-bold text-success-emphasis card-title">
-							<span th:utext="#{servicios.veterinario.hospitalizacion.titulo}"></span>
-						</h3>
-						<p class="fw-bold fs-5">
-							<span th:utext="#{servicios.veterinario.hospitalizacion.precio}"></span>
-						</p>
-						<ul class="list-unstyled ps-3">
-							<li><i class="fas fa-check text-success me-1"></i>
-								<span th:utext="#{servicios.veterinario.hospitalizacion.item1}"></span>
-							</li>
-							<li><i class="fas fa-hospital text-success me-1"></i>
-								<span th:utext="#{servicios.veterinario.hospitalizacion.item2}"></span>
-							</li>
-							<li><i class="fas fa-paw text-success me-1"></i>
-								<span th:utext="#{servicios.veterinario.hospitalizacion.item3}"></span>
-							</li>
-						</ul>
-						<div class="d-grid gap-2 mt-auto">
-							<button class="btn btn-success btnCard" data-bs-toggle="modal"
-									data-bs-target="#hospitalizacionModal">
-								<i class="fas fa-info-circle me-1"></i>
-								<span th:utext="#{servicios.masInfoModal}"></span>
-							</button>
-							<button class="btn btn-success btnCard">
-								<span th:utext="#{servicios.botonSeleccionar}"></span>
-							</button>
+
+						<div class="ser-contenido px-4 py-3 d-flex flex-column flex-grow-1 justify-content-between">
+							<div class="ser-info mb-3 text-center">
+								<div class="ser-nombre-precio d-flex align-items-center justify-content-center gap-2 flex-wrap mb-2">
+									<i class="fas fa-hospital ser-icono-verde me-1"></i>
+									<h3 class="ser-titulo fs-5 fw-bold ser-texto-verde-emphasis mb-0"
+										th:utext="#{servicios.veterinario.hospitalizacion.titulo}"></h3>
+									<span class="ser-separador mx-1 ser-texto-muted">|</span>
+									<span class="ser-precio fs-6 fw-semibold ser-texto-muted"
+										  th:utext="#{servicios.veterinario.hospitalizacion.precio}"></span>
+								</div>
+							</div>
+
+							<ul class="ser-lista-servicios list-unstyled ser-texto-secundario fs-6 mb-0 ps-0 d-flex flex-column align-items-center gap-1">
+								<li><i class="fas fa-check ser-icono-verde me-2"></i><span th:utext="#{servicios.veterinario.hospitalizacion.item1}"></span></li>
+								<li><i class="fas fa-hospital ser-icono-verde me-2"></i><span th:utext="#{servicios.veterinario.hospitalizacion.item2}"></span></li>
+								<li><i class="fas fa-paw ser-icono-verde me-2"></i><span th:utext="#{servicios.veterinario.hospitalizacion.item3}"></span></li>
+							</ul>
+
+							<div class="ser-botonera mt-3 d-flex flex-column align-items-center gap-2">
+								<button class="ser-btn-comprar d-flex align-items-center justify-content-center px-4 py-2"
+										data-bs-toggle="modal" data-bs-target="#hospitalizacionModal">
+									<i class="fas fa-info-circle me-2"></i><span th:utext="#{servicios.masInfoModal}"></span>
+								</button>
+								<button class="ser-btn-comprar d-flex align-items-center justify-content-center px-4 py-2 btnSeleccionar cardUnidad">
+									<i class="fas fa-check me-2"></i><span th:utext="#{servicios.botonSeleccionar}"></span>
+								</button>
+							</div>
 						</div>
 					</div>
 				</article>
 
 				<!-- Visita a domicilio -->
 				<article class="col col-md-4">
-					<div class="card p-3 shadow-sm cardServicio" data-precio="30">
-						<div class="card_image">
-							<img th:src="@{images/veterinarioDomicilio.png}" alt="Visita a domicilio"
-								 class="imagenCard">
+					<div class="ser-card h-100 d-flex flex-column shadow-lg position-relative rounded-4 overflow-hidden" data-precio="30">
+						<div class="ser-imagen p-0 d-flex align-items-center justify-content-center">
+							<img th:src="@{images/veterinarioDomicilio.png}" alt="Visita a domicilio" class="ser-imagen-servicio">
 						</div>
-						<h3 class="fs-4 fw-bold text-success-emphasis card-title">
-							<span th:utext="#{servicios.veterinario.domicilio.titulo}"></span>
-						</h3>
-						<p class="fw-bold fs-5">
-							<span th:utext="#{servicios.veterinario.domicilio.precio}"></span>
-						</p>
-						<ul class="list-unstyled ps-3">
-							<li><i class="fas fa-check text-success me-1"></i>
-								<span th:utext="#{servicios.veterinario.domicilio.item1}"></span>
-							</li>
-							<li><i class="fas fa-car-side text-success me-1"></i>
-								<span th:utext="#{servicios.veterinario.domicilio.item2}"></span>
-							</li>
-							<li><i class="fas fa-paw text-success me-1"></i>
-								<span th:utext="#{servicios.veterinario.domicilio.item3}"></span>
-							</li>
-						</ul>
-						<div class="d-grid gap-2 mt-auto">
-							<button class="btn btn-success btnCard" data-bs-toggle="modal"
-									data-bs-target="#visitaDomicilioModal">
-								<i class="fas fa-info-circle me-1"></i>
-								<span th:utext="#{servicios.masInfoModal}"></span>
-							</button>
-							<button class="btn btn-success btnCard">
-								<span th:utext="#{servicios.botonSeleccionar}"></span>
-							</button>
+
+						<div class="ser-contenido px-4 py-3 d-flex flex-column flex-grow-1 justify-content-between">
+							<div class="ser-info mb-3 text-center">
+								<div class="ser-nombre-precio d-flex align-items-center justify-content-center gap-2 flex-wrap mb-2">
+									<i class="fas fa-car-side ser-icono-verde me-1"></i>
+									<h3 class="ser-titulo fs-5 fw-bold ser-texto-verde-emphasis mb-0"
+										th:utext="#{servicios.veterinario.domicilio.titulo}"></h3>
+									<span class="ser-separador mx-1 ser-texto-muted">|</span>
+									<span class="ser-precio fs-6 fw-semibold ser-texto-muted"
+										  th:utext="#{servicios.veterinario.domicilio.precio}"></span>
+								</div>
+							</div>
+
+							<ul class="ser-lista-servicios list-unstyled ser-texto-secundario fs-6 mb-0 ps-0 d-flex flex-column align-items-center gap-1">
+								<li><i class="fas fa-check ser-icono-verde me-2"></i><span th:utext="#{servicios.veterinario.domicilio.item1}"></span></li>
+								<li><i class="fas fa-car-side ser-icono-verde me-2"></i><span th:utext="#{servicios.veterinario.domicilio.item2}"></span></li>
+								<li><i class="fas fa-paw ser-icono-verde me-2"></i><span th:utext="#{servicios.veterinario.domicilio.item3}"></span></li>
+							</ul>
+
+							<div class="ser-botonera mt-3 d-flex flex-column align-items-center gap-2">
+								<button class="ser-btn-comprar d-flex align-items-center justify-content-center px-4 py-2"
+										data-bs-toggle="modal" data-bs-target="#visitaDomicilioModal">
+									<i class="fas fa-info-circle me-2"></i><span th:utext="#{servicios.masInfoModal}"></span>
+								</button>
+								<button class="ser-btn-comprar d-flex align-items-center justify-content-center px-4 py-2 btnSeleccionar cardUnidad">
+									<i class="fas fa-check me-2"></i><span th:utext="#{servicios.botonSeleccionar}"></span>
+								</button>
+							</div>
 						</div>
 					</div>
 				</article>
@@ -2091,145 +2155,152 @@
 
 				<!-- Control Leishmania -->
 				<article class="col col-md-4">
-					<div class="card p-3 shadow-sm cardServicio" data-precio="35">
-						<div class="card_image">
-							<img th:src="@{images/leishmania.jpg}" alt="Control de Leishmania" class="imagenCard">
+					<div class="ser-card h-100 d-flex flex-column shadow-lg position-relative rounded-4 overflow-hidden" data-precio="35">
+						<div class="ser-imagen p-0 d-flex align-items-center justify-content-center">
+							<img th:src="@{images/leishmania.jpg}" alt="Control de Leishmania" class="ser-imagen-servicio">
 						</div>
-						<h3 class="fs-4 fw-bold text-success-emphasis card-title">
-							<span th:utext="#{servicios.veterinario.leishmania.titulo}"></span>
-						</h3>
-						<p class="fw-bold fs-5">
-							<span th:utext="#{servicios.veterinario.leishmania.precio}"></span>
-						</p>
-						<ul class="list-unstyled ps-3">
-							<li><i class="fas fa-vial-circle-check text-success me-1"></i>
-								<span th:utext="#{servicios.veterinario.leishmania.item1}"></span>
-							</li>
-							<li><i class="fas fa-shield-dog text-success me-1"></i>
-								<span th:utext="#{servicios.veterinario.leishmania.item2}"></span>
-							</li>
-							<li><i class="fas fa-location-dot text-success me-1"></i>
-								<span th:utext="#{servicios.veterinario.leishmania.item3}"></span>
-							</li>
-						</ul>
-						<div class="d-grid gap-2 mt-auto">
-							<button class="btn btn-success btnCard" data-bs-toggle="modal"
-									data-bs-target="#controlLeishmaniaModal">
-								<i class="fas fa-info-circle me-1"></i>
-								<span th:utext="#{servicios.masInfoModal}"></span>
-							</button>
-							<button class="btn btn-success btnCard">
-								<span th:utext="#{servicios.botonSeleccionar}"></span>
-							</button>
+
+						<div class="ser-contenido px-4 py-3 d-flex flex-column flex-grow-1 justify-content-between">
+							<div class="ser-info mb-3 text-center">
+								<div class="ser-nombre-precio d-flex align-items-center justify-content-center gap-2 flex-wrap mb-2">
+									<i class="fas fa-vial-circle-check ser-icono-verde me-1"></i>
+									<h3 class="ser-titulo fs-5 fw-bold ser-texto-verde-emphasis mb-0"
+										th:utext="#{servicios.veterinario.leishmania.titulo}"></h3>
+									<span class="ser-separador mx-1 ser-texto-muted">|</span>
+									<span class="ser-precio fs-6 fw-semibold ser-texto-muted"
+										  th:utext="#{servicios.veterinario.leishmania.precio}"></span>
+								</div>
+							</div>
+
+							<ul class="ser-lista-servicios list-unstyled ser-texto-secundario fs-6 mb-0 ps-0 d-flex flex-column align-items-center gap-1">
+								<li><i class="fas fa-vial-circle-check ser-icono-verde me-2"></i><span th:utext="#{servicios.veterinario.leishmania.item1}"></span></li>
+								<li><i class="fas fa-shield-dog ser-icono-verde me-2"></i><span th:utext="#{servicios.veterinario.leishmania.item2}"></span></li>
+								<li><i class="fas fa-location-dot ser-icono-verde me-2"></i><span th:utext="#{servicios.veterinario.leishmania.item3}"></span></li>
+							</ul>
+
+							<div class="ser-botonera mt-3 d-flex flex-column align-items-center gap-2">
+								<button class="ser-btn-comprar d-flex align-items-center justify-content-center px-4 py-2"
+										data-bs-toggle="modal" data-bs-target="#controlLeishmaniaModal">
+									<i class="fas fa-info-circle me-2"></i><span th:utext="#{servicios.masInfoModal}"></span>
+								</button>
+								<button class="ser-btn-comprar d-flex align-items-center justify-content-center px-4 py-2 btnSeleccionar cardUnidad">
+									<i class="fas fa-check me-2"></i><span th:utext="#{servicios.botonSeleccionar}"></span>
+								</button>
+							</div>
 						</div>
 					</div>
 				</article>
 
 				<!-- Control de Obesidad -->
 				<article class="col col-md-4">
-					<div class="card p-3 shadow-sm cardServicio" data-precio="30">
-						<div class="card_image">
-							<img th:src="@{images/obesidad.jpg}" alt="Programa control obesidad" class="imagenCard">
+					<div class="ser-card h-100 d-flex flex-column shadow-lg position-relative rounded-4 overflow-hidden" data-precio="30">
+						<div class="ser-imagen p-0 d-flex align-items-center justify-content-center">
+							<img th:src="@{images/obesidad.jpg}" alt="Control de Obesidad" class="ser-imagen-servicio">
 						</div>
-						<h3 class="fs-4 fw-bold text-success-emphasis card-title">
-							<span th:utext="#{servicios.veterinario.obesidad.titulo}"></span>
-						</h3>
-						<p class="fw-bold fs-5">
-							<span th:utext="#{servicios.veterinario.obesidad.precio}"></span>
-						</p>
-						<ul class="list-unstyled ps-3">
-							<li><i class="fas fa-notes-medical text-success me-1"></i>
-								<span th:utext="#{servicios.veterinario.obesidad.item1}"></span>
-							</li>
-							<li><i class="fas fa-weight-scale text-success me-1"></i>
-								<span th:utext="#{servicios.veterinario.obesidad.item2}"></span>
-							</li>
-							<li><i class="fas fa-heart-pulse text-success me-1"></i>
-								<span th:utext="#{servicios.veterinario.obesidad.item3}"></span>
-							</li>
-						</ul>
-						<div class="d-grid gap-2 mt-auto">
-							<button class="btn btn-success btnCard" data-bs-toggle="modal"
-									data-bs-target="#controlObesidadModal">
-								<i class="fas fa-info-circle me-1"></i>
-								<span th:utext="#{servicios.masInfoModal}"></span>
-							</button>
-							<button class="btn btn-success btnCard">
-								<span th:utext="#{servicios.botonSeleccionar}"></span>
-							</button>
+
+						<div class="ser-contenido px-4 py-3 d-flex flex-column flex-grow-1 justify-content-between">
+							<div class="ser-info mb-3 text-center">
+								<div class="ser-nombre-precio d-flex align-items-center justify-content-center gap-2 flex-wrap mb-2">
+									<i class="fas fa-notes-medical ser-icono-verde me-1"></i>
+									<h3 class="ser-titulo fs-5 fw-bold ser-texto-verde-emphasis mb-0"
+										th:utext="#{servicios.veterinario.obesidad.titulo}"></h3>
+									<span class="ser-separador mx-1 ser-texto-muted">|</span>
+									<span class="ser-precio fs-6 fw-semibold ser-texto-muted"
+										  th:utext="#{servicios.veterinario.obesidad.precio}"></span>
+								</div>
+							</div>
+
+							<ul class="ser-lista-servicios list-unstyled ser-texto-secundario fs-6 mb-0 ps-0 d-flex flex-column align-items-center gap-1">
+								<li><i class="fas fa-notes-medical ser-icono-verde me-2"></i><span th:utext="#{servicios.veterinario.obesidad.item1}"></span></li>
+								<li><i class="fas fa-weight-scale ser-icono-verde me-2"></i><span th:utext="#{servicios.veterinario.obesidad.item2}"></span></li>
+								<li><i class="fas fa-heart-pulse ser-icono-verde me-2"></i><span th:utext="#{servicios.veterinario.obesidad.item3}"></span></li>
+							</ul>
+
+							<div class="ser-botonera mt-3 d-flex flex-column align-items-center gap-2">
+								<button class="ser-btn-comprar d-flex align-items-center justify-content-center px-4 py-2"
+										data-bs-toggle="modal" data-bs-target="#controlObesidadModal">
+									<i class="fas fa-info-circle me-2"></i><span th:utext="#{servicios.masInfoModal}"></span>
+								</button>
+								<button class="ser-btn-comprar d-flex align-items-center justify-content-center px-4 py-2 btnSeleccionar cardUnidad">
+									<i class="fas fa-check me-2"></i><span th:utext="#{servicios.botonSeleccionar}"></span>
+								</button>
+							</div>
 						</div>
 					</div>
 				</article>
 
 				<!-- Plan de Salud para Perros -->
 				<article class="col col-md-4">
-					<div class="card p-3 shadow-sm cardServicio" data-precio="150">
-						<div class="card_image">
-							<img th:src="@{images/planSaludPerro.jpg}" alt="Plan de salud para perros"
-								 class="imagenCard">
+					<div class="ser-card h-100 d-flex flex-column shadow-lg position-relative rounded-4 overflow-hidden" data-precio="150">
+						<div class="ser-imagen p-0 d-flex align-items-center justify-content-center">
+							<img th:src="@{images/planSaludPerro.jpg}" alt="Plan Salud Perros" class="ser-imagen-servicio">
 						</div>
-						<h3 class="fs-4 fw-bold text-success-emphasis card-title">
-							<span th:utext="#{servicios.veterinario.perros.titulo}"></span>
-						</h3>
-						<p class="fw-bold fs-5">
-							<span th:utext="#{servicios.veterinario.perros.precio}"></span>
-						</p>
-						<ul class="list-unstyled ps-3">
-							<li><i class="fas fa-syringe text-success me-1"></i>
-								<span th:utext="#{servicios.veterinario.perros.item1}"></span>
-							</li>
-							<li><i class="fas fa-calendar-check text-success me-1"></i>
-								<span th:utext="#{servicios.veterinario.perros.item2}"></span>
-							</li>
-							<li><i class="fas fa-dog text-success me-1"></i>
-								<span th:utext="#{servicios.veterinario.perros.item3}"></span>
-							</li>
-						</ul>
-						<div class="d-grid gap-2 mt-auto">
-							<button class="btn btn-success btnCard" data-bs-toggle="modal"
-									data-bs-target="#planSaludPerrosModal">
-								<i class="fas fa-info-circle me-1"></i>
-								<span th:utext="#{servicios.masInfoModal}"></span>
-							</button>
-							<button class="btn btn-success btnCard">
-								<span th:utext="#{servicios.botonSeleccionar}"></span>
-							</button>
+
+						<div class="ser-contenido px-4 py-3 d-flex flex-column flex-grow-1 justify-content-between">
+							<div class="ser-info mb-3 text-center">
+								<div class="ser-nombre-precio d-flex align-items-center justify-content-center gap-2 flex-wrap mb-2">
+									<i class="fas fa-dog ser-icono-verde me-1"></i>
+									<h3 class="ser-titulo fs-5 fw-bold ser-texto-verde-emphasis mb-0"
+										th:utext="#{servicios.veterinario.perros.titulo}"></h3>
+									<span class="ser-separador mx-1 ser-texto-muted">|</span>
+									<span class="ser-precio fs-6 fw-semibold ser-texto-muted"
+										  th:utext="#{servicios.veterinario.perros.precio}"></span>
+								</div>
+							</div>
+
+							<ul class="ser-lista-servicios list-unstyled ser-texto-secundario fs-6 mb-0 ps-0 d-flex flex-column align-items-center gap-1">
+								<li><i class="fas fa-syringe ser-icono-verde me-2"></i><span th:utext="#{servicios.veterinario.perros.item1}"></span></li>
+								<li><i class="fas fa-calendar-check ser-icono-verde me-2"></i><span th:utext="#{servicios.veterinario.perros.item2}"></span></li>
+								<li><i class="fas fa-dog ser-icono-verde me-2"></i><span th:utext="#{servicios.veterinario.perros.item3}"></span></li>
+							</ul>
+
+							<div class="ser-botonera mt-3 d-flex flex-column align-items-center gap-2">
+								<button class="ser-btn-comprar d-flex align-items-center justify-content-center px-4 py-2"
+										data-bs-toggle="modal" data-bs-target="#planSaludPerrosModal">
+									<i class="fas fa-info-circle me-2"></i><span th:utext="#{servicios.masInfoModal}"></span>
+								</button>
+								<button class="ser-btn-comprar d-flex align-items-center justify-content-center px-4 py-2 btnSeleccionar cardUnidad">
+									<i class="fas fa-check me-2"></i><span th:utext="#{servicios.botonSeleccionar}"></span>
+								</button>
+							</div>
 						</div>
 					</div>
 				</article>
 
 				<!-- Plan de Salud para Gatos -->
 				<article class="col col-md-4">
-					<div class="card p-3 shadow-sm cardServicio" data-precio="140">
-						<div class="card_image">
-							<img th:src="@{images/planSaludGato.jpg}" alt="Plan de salud para gatos" class="imagenCard">
+					<div class="ser-card h-100 d-flex flex-column shadow-lg position-relative rounded-4 overflow-hidden" data-precio="140">
+						<div class="ser-imagen p-0 d-flex align-items-center justify-content-center">
+							<img th:src="@{images/planSaludGato.jpg}" alt="Plan Salud Gatos" class="ser-imagen-servicio">
 						</div>
-						<h3 class="fs-4 fw-bold text-success-emphasis card-title">
-							<span th:utext="#{servicios.veterinario.gatos.titulo}"></span>
-						</h3>
-						<p class="fw-bold fs-5">
-							<span th:utext="#{servicios.veterinario.gatos.precio}"></span>
-						</p>
-						<ul class="list-unstyled ps-3">
-							<li><i class="fas fa-stethoscope text-success me-1"></i>
-								<span th:utext="#{servicios.veterinario.gatos.item1}"></span>
-							</li>
-							<li><i class="fas fa-cat text-success me-1"></i>
-								<span th:utext="#{servicios.veterinario.gatos.item2}"></span>
-							</li>
-							<li><i class="fas fa-house-chimney text-success me-1"></i>
-								<span th:utext="#{servicios.veterinario.gatos.item3}"></span>
-							</li>
-						</ul>
-						<div class="d-grid gap-2 mt-auto">
-							<button class="btn btn-success btnCard" data-bs-toggle="modal"
-									data-bs-target="#planSaludGatosModal">
-								<i class="fas fa-info-circle me-1"></i>
-								<span th:utext="#{servicios.masInfoModal}"></span>
-							</button>
-							<button class="btn btn-success btnCard">
-								<span th:utext="#{servicios.botonSeleccionar}"></span>
-							</button>
+
+						<div class="ser-contenido px-4 py-3 d-flex flex-column flex-grow-1 justify-content-between">
+							<div class="ser-info mb-3 text-center">
+								<div class="ser-nombre-precio d-flex align-items-center justify-content-center gap-2 flex-wrap mb-2">
+									<i class="fas fa-cat ser-icono-verde me-1"></i>
+									<h3 class="ser-titulo fs-5 fw-bold ser-texto-verde-emphasis mb-0"
+										th:utext="#{servicios.veterinario.gatos.titulo}"></h3>
+									<span class="ser-separador mx-1 ser-texto-muted">|</span>
+									<span class="ser-precio fs-6 fw-semibold ser-texto-muted"
+										  th:utext="#{servicios.veterinario.gatos.precio}"></span>
+								</div>
+							</div>
+
+							<ul class="ser-lista-servicios list-unstyled ser-texto-secundario fs-6 mb-0 ps-0 d-flex flex-column align-items-center gap-1">
+								<li><i class="fas fa-stethoscope ser-icono-verde me-2"></i><span th:utext="#{servicios.veterinario.gatos.item1}"></span></li>
+								<li><i class="fas fa-cat ser-icono-verde me-2"></i><span th:utext="#{servicios.veterinario.gatos.item2}"></span></li>
+								<li><i class="fas fa-house-chimney ser-icono-verde me-2"></i><span th:utext="#{servicios.veterinario.gatos.item3}"></span></li>
+							</ul>
+
+							<div class="ser-botonera mt-3 d-flex flex-column align-items-center gap-2">
+								<button class="ser-btn-comprar d-flex align-items-center justify-content-center px-4 py-2"
+										data-bs-toggle="modal" data-bs-target="#planSaludGatosModal">
+									<i class="fas fa-info-circle me-2"></i><span th:utext="#{servicios.masInfoModal}"></span>
+								</button>
+								<button class="ser-btn-comprar d-flex align-items-center justify-content-center px-4 py-2 btnSeleccionar cardUnidad">
+									<i class="fas fa-check me-2"></i><span th:utext="#{servicios.botonSeleccionar}"></span>
+								</button>
+							</div>
 						</div>
 					</div>
 				</article>
@@ -2241,7 +2312,8 @@
 		<section class="mb-5">
 			<h2 class="text-success-emphasis fw-bold display-5 my-4 text-center">Reserva tu estancia</h2>
 			<div class="formContainer">
-				<form class="row g-3">
+				<form class="row g-3" id="checkoutVeterinario" method="post"
+					  th:action="@{/veterinario/checkoutVeterinario}">
 					<fieldset class="col-md-6">
 						<div class="itemSeleccion">
 							<legend class="fw-bold">Datos de la mascota</legend>
@@ -2335,10 +2407,12 @@
 							el aviso legal y la política de privacidad</label>
 					</div>
 
-				</form>
-				<form id="checkoutVeterinario" method="post" th:action="@{/veterinario/checkoutVeterinario}">
-					<input type="hidden" id="nombreProducto" name="nombreProducto">
-					<button type="submit" class="btn btn-primary btnEnviar">RESERVAR</button>
+					<div class="row itemSeleccion justify-content-center">
+						<div class="col text-center">
+							<input type="hidden" id="nombreProducto" name="nombreProducto">
+							<button type="submit" class="btn btn-primary btnEnviar">RESERVAR</button>
+						</div>
+					</div>
 				</form>
 			</div>
 		</section>
@@ -2350,67 +2424,96 @@
 				th:utext="#{servicios.otrosServicios}">
 			</h2>
 			<div class="row row-cols-1 row-cols-md-4 g-4">
-				<article class="col">
-					<div class="card p-3 shadow-sm cardServicio">
-						<div class="card_image">
-							<img th:src="@{images/guarderia.jpg}" alt="LogoPeluqueria" class="imagenCard">
+				<!-- Guardería -->
+				<article class="col mb-4">
+					<div class="ser-card h-100 d-flex flex-column shadow-lg position-relative rounded-4 overflow-hidden">
+						<div class="ser-imagen d-flex align-items-center justify-content-center">
+							<img th:src="@{images/guarderia.jpg}" alt="Guardería" class="ser-imagen-servicio">
 						</div>
-						<h3 class="mt-3 fs-3 fw-bold text-success-emphasis"
-							th:utext="#{servicios.guarderia}">
-						</h3>
-						<p class="fs-4"
-						   th:utext="#{servicios.guarderiaApartirDe}">
-						</p>
-						<a th:href="@{/guarderia}" class="btn btn-success"
-						   th:utext="#{servicios.masInfo}">
-						</a>
+						<div class="ser-contenido px-4 py-3 d-flex flex-column flex-grow-1 justify-content-between">
+							<div class="ser-info mb-3 text-center">
+								<h3 class="ser-titulo fs-5 fw-bold ser-texto-verde-emphasis mb-2"
+									th:utext="#{servicios.guarderia}"></h3>
+								<p class="ser-precio fs-5 fw-semibold ser-texto-muted"
+								   th:utext="#{servicios.guarderiaApartirDe}"></p>
+							</div>
+							<div class="ser-botonera mt-3 d-flex justify-content-center">
+								<a th:href="@{/guarderia}"
+								   class="ser-btn-otrosServicios d-flex align-items-center justify-content-center px-4 py-2">
+									<span th:utext="#{servicios.masInfo}">Más info</span>
+								</a>
+							</div>
+						</div>
 					</div>
 				</article>
-				<article class="col">
-					<div class="card p-3 shadow-sm cardServicio">
-						<div class="card_image">
-							<img th:src="@{images/peluqueriaCanina.jpg}" alt="LogoPeluqueria" class="imagenCard">
+
+				<!-- Peluqueria -->
+				<article class="col mb-4">
+					<div class="ser-card h-100 d-flex flex-column shadow-lg position-relative rounded-4 overflow-hidden">
+						<div class="ser-imagen d-flex align-items-center justify-content-center">
+							<img th:src="@{images/peluqueriaCanina.jpg}" alt="Peluqueria" class="ser-imagen-servicio">
 						</div>
-						<h3 class="mt-3 fs-3 fw-bold text-success-emphasis"
-							th:utext="#{servicios.peluqueria}"></h3>
-						<p class="fs-4"
-						   th:utext="#{servicios.peluqueriaApartirDe}">
-						</p>
-						<a th:href="@{/peluqueria}" class="btn btn-success"
-						   th:utext="#{servicios.masInfo}">
-						</a>
+						<div class="ser-contenido px-4 py-3 d-flex flex-column flex-grow-1 justify-content-between">
+							<div class="ser-info mb-3 text-center">
+								<h3 class="ser-titulo fs-5 fw-bold ser-texto-verde-emphasis mb-2"
+									th:utext="#{servicios.peluqueria}"></h3>
+								<p class="ser-precio fs-5 fw-semibold ser-texto-muted"
+								   th:utext="#{servicios.peluqueriaApartirDe}"></p>
+							</div>
+							<div class="ser-botonera mt-3 d-flex justify-content-center">
+								<a th:href="@{/peluqueria}"
+								   class="ser-btn-otrosServicios d-flex align-items-center justify-content-center px-4 py-2">
+									<span th:utext="#{servicios.masInfo}">Más info</span>
+								</a>
+							</div>
+						</div>
 					</div>
 				</article>
-				<article class="col">
-					<div class="card p-3 shadow-sm cardServicio">
-						<div class="card_image">
-							<img th:src="@{images/adiestramiento.jpg}" alt="LogoAdiestramiento" class="imagenCard">
+
+				<!-- Adiestramiento -->
+				<article class="col mb-4">
+					<div class="ser-card h-100 d-flex flex-column shadow-lg position-relative rounded-4 overflow-hidden">
+						<div class="ser-imagen d-flex align-items-center justify-content-center">
+							<img th:src="@{images/adiestramiento.jpg}" alt="Adiestramiento" class="ser-imagen-servicio">
 						</div>
-						<h3 class="mt-3 fs-3 fw-bold text-success-emphasis"
-							th:utext="#{servicios.adiestramiento}">
-						</h3>
-						<p class="fs-4"
-						   th:utext="#{servicios.adiestramientoApartirDe}">
-						</p>
-						<a th:href="@{/adiestramiento}" class="btn btn-success"
-						   th:utext="#{servicios.masInfo}">
-						</a>
+						<div class="ser-contenido px-4 py-3 d-flex flex-column flex-grow-1 justify-content-between">
+							<div class="ser-info mb-3 text-center">
+								<h3 class="ser-titulo fs-5 fw-bold ser-texto-verde-emphasis mb-2"
+									th:utext="#{servicios.adiestramiento}"></h3>
+								<p class="ser-precio fs-5 fw-semibold ser-texto-muted"
+								   th:utext="#{servicios.adiestramientoApartirDe}"></p>
+							</div>
+							<div class="ser-botonera mt-3 d-flex justify-content-center">
+								<a th:href="@{/adiestramiento}"
+								   class="ser-btn-otrosServicios d-flex align-items-center justify-content-center px-4 py-2">
+									<span th:utext="#{servicios.masInfo}">Más info</span>
+								</a>
+							</div>
+						</div>
 					</div>
 				</article>
-				<article class="col">
-					<div class="card p-3 shadow-sm cardServicio">
-						<div class="card_image">
-							<img th:src="@{images/asesoramientoLegal.jpg}" alt="LogoLegal" class="imagenCard">
+
+				<!-- Asesoramiento Legal -->
+				<article class="col mb-4">
+					<div class="ser-card h-100 d-flex flex-column shadow-lg position-relative rounded-4 overflow-hidden">
+						<div class="ser-imagen d-flex align-items-center justify-content-center">
+							<img th:src="@{images/asesoramientoLegal.jpg}" alt="Asesoramiento Legal"
+								 class="ser-imagen-servicio">
 						</div>
-						<h3 class="mt-3 fs-3 fw-bold text-success-emphasis"
-							th:utext="#{servicios.asesoramientoLegal}">
-						</h3>
-						<p class="fs-4"
-						   th:utext="#{servicios.asesoramientoApartirDe}">
-						</p>
-						<a th:href="@{/asesoramientoLegal}" class="btn btn-success"
-						   th:utext="#{servicios.masInfo}">
-						</a>
+						<div class="ser-contenido px-4 py-3 d-flex flex-column flex-grow-1 justify-content-between">
+							<div class="ser-info mb-3 text-center">
+								<h3 class="ser-titulo fs-5 fw-bold ser-texto-verde-emphasis mb-2"
+									th:utext="#{servicios.asesoramientoLegal}"></h3>
+								<p class="ser-precio fs-5 fw-semibold ser-texto-muted"
+								   th:utext="#{servicios.asesoramientoApartirDe}"></p>
+							</div>
+							<div class="ser-botonera mt-3 d-flex justify-content-center">
+								<a th:href="@{/asesoramientoLegal}"
+								   class="ser-btn-otrosServicios d-flex align-items-center justify-content-center px-4 py-2">
+									<span th:utext="#{servicios.masInfo}">Más info</span>
+								</a>
+							</div>
+						</div>
 					</div>
 				</article>
 			</div>
@@ -2422,7 +2525,7 @@
 	<!-- Script para controlar la seleccion y gestion de dias -->
 	<script>
         document.addEventListener('DOMContentLoaded', function () {
-            const btns = document.querySelectorAll('.btnCard');
+            const btns = document.querySelectorAll('.ser-btn-comprar');
             const tarifaSpan = document.getElementById('tarifaSeleccionada');
             const precioTotal = document.getElementById('precioTotal');
             const fechaEntrada = document.getElementById('fechaEntrada');
@@ -2448,7 +2551,7 @@
                 btn.addEventListener('click', function (e) {
                     e.preventDefault();
 
-                    const card = btn.closest('.cardServicio');
+                    const card = btn.closest('.ser-card');
 
                     // Si ya está seleccionada, desmarcar y resetear
                     if (card.classList.contains('selected')) {
@@ -2459,11 +2562,11 @@
                     }
 
                     // Desmarcar todas
-                    document.querySelectorAll('.cardServicio.selected').forEach(c => c.classList.remove('selected'));
+                    document.querySelectorAll('.ser-card.selected').forEach(c => c.classList.remove('selected'));
                     card.classList.add('selected');
 
                     // Coge el nombre de la tarifa (mejor usa el h3)
-                    const nombre = card.querySelector('.fs-4, .fs-5').textContent.trim();
+                    const nombre = card.querySelector('.ser-titulo').textContent.trim();
                     const precio = parseFloat(card.dataset.precio);
 
                     tarifaSeleccionada = {nombre, precio};
@@ -2530,12 +2633,12 @@
                 alertaModal.show();
 
                 const timerId = setTimeout(() => {
-                    window.location.href = "/login";
+                    window.location.href = "/auth/loginPawHome";
                 }, 4000);
 
                 document.getElementById('btnLogin').addEventListener("click", () => {
                     clearTimeout(timerId);
-                    window.location.href = "/login";
+                    window.location.href = "/auth/loginPawHome";
                 });
             }
 

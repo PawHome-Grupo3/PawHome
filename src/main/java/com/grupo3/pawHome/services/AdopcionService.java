@@ -7,6 +7,7 @@ import com.grupo3.pawHome.entities.Usuario;
 import com.grupo3.pawHome.repositories.AdopcionRepository;
 import com.grupo3.pawHome.repositories.AnimalRepository;
 import com.grupo3.pawHome.repositories.UsuarioRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -55,4 +56,16 @@ public class AdopcionService {
     public Optional<Adopcion> findById(Integer id) { return adopcionRepository.findById(id); }
 
     public List<Adopcion> findaAllByUsuario(Usuario usuario) { return adopcionRepository.findAllByUsuario(usuario); }
+
+    public List<Adopcion> findAll() {
+        return adopcionRepository.findAll();
+    }
+
+    @Transactional
+    public void cambiarEstadoAdopcion(Integer id, boolean aceptado) {
+        adopcionRepository.findById(id).ifPresent(adopcion -> {
+            adopcion.setAceptado(aceptado);
+            adopcionRepository.save(adopcion);
+        });
+    }
 }
