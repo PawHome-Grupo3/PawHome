@@ -15,7 +15,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class Adopcion {
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     private String ocupacion;
@@ -42,7 +42,7 @@ public class Adopcion {
 
     private LocalDate fechaFormulario;
 
-        private Boolean aceptado;
+    private Boolean aceptado;
 
     @ManyToOne
     @JoinColumn(name = "usuario_id", referencedColumnName = "id")
