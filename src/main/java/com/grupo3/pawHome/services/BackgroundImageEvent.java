@@ -1,22 +1,24 @@
 package com.grupo3.pawHome.services;
 
 import com.itextpdf.text.Document;
-import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.pdf.PdfContentByte;
 import com.itextpdf.text.pdf.PdfPageEventHelper;
 import com.itextpdf.text.pdf.PdfWriter;
 
+import java.io.InputStream;
+
 public class BackgroundImageEvent extends PdfPageEventHelper {
 
-    private Image background;
+    private Image backgroundImage;
 
-    public BackgroundImageEvent(String imagePath) {
+    public BackgroundImageEvent(InputStream imageStream) {
         try {
-            this.background = Image.getInstance(imagePath);
-            this.background.scaleAbsolute(PageSize.A4);
-            this.background.setAbsolutePosition(0, 0);
+            byte[] imageBytes = imageStream.readAllBytes(); // Java 9+
+            this.backgroundImage = Image.getInstance(imageBytes);
+            this.backgroundImage.setAbsolutePosition(0, 0);
+            this.backgroundImage.scaleToFit(PageSize.A4.getWidth(), PageSize.A4.getHeight());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -26,8 +28,8 @@ public class BackgroundImageEvent extends PdfPageEventHelper {
     public void onEndPage(PdfWriter writer, Document document) {
         try {
             PdfContentByte canvas = writer.getDirectContentUnder();
-            canvas.addImage(background);
-        } catch (DocumentException e) {
+            canvas.addImage(backgroundImage);
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

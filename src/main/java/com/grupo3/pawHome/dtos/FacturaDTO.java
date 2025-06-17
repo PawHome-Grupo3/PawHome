@@ -21,6 +21,11 @@ public class FacturaDTO {
     private String descripcion;
     private String nombreUsuario;
     private String apellidosUsuario;
+    private String direccionUsuario;
+    private String ciudadUsuario;
+    private String cpUsuario;
+    private String dniUsuario;
+    private String telefonoUsuario;
     private List<LineaFacturaDTO> lineas;
 }
 

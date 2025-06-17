@@ -51,6 +51,11 @@ public class FacturaService {
                     factura.getDescripcion(),
                     perfil.getNombre(),
                     perfil.getApellidos(),
+                    perfil.getDireccion(),
+                    perfil.getCiudad(),
+                    perfil.getCp(),
+                    perfil.getDni(),
+                    perfil.getTelefono1(),
                     lineasDTO
             );
         }).collect(Collectors.toList());

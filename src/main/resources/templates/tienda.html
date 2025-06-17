@@ -11,10 +11,10 @@
   <div th:replace="~{fragments/navTienda :: navTiendaFragment}"></div>
 
   <!-- Tarjetas -->
-  <section th:each="categoria : ${categorias}" class="section-padding pb-0"
+  <section th:each="categoria : ${categorias}" class="section-padding pb-0 pt-2"
            th:id="${categoriasNavDto.get(categoria.getId()-1).getNombre()}">
     <div class="container">
-      <div class="row contCardsTienda fondoCategoriaTienda justify-content-center pt-3">
+      <div class="row contCardsTienda fondoCategoriaTienda align-items-stretch justify-content-center pt-3">
 
       <div class="col-lg-12 col-12 text-center mb-5">
         <div class="cabeceraCategoriaTienda d-inline-block px-5 py-3">
@@ -42,7 +42,7 @@
             <div class="contenido-producto px-4 py-3 d-flex flex-column flex-grow-1 justify-content-between">
 
               <!-- Título / Precio / Descripción -->
-              <div class="info mb-3">
+              <div class="info mb-3 h-100 align-content-center">
                 <div class="nombre-precio d-flex align-items-center gap-2 mb-2">
                   <i class="fas fa-paw icon-animal me-1"></i>
                   <span class="nombre-producto" th:utext="${producto.getNombre()}"></span>
