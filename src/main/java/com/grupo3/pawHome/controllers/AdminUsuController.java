@@ -27,6 +27,7 @@ public class AdminUsuController {
         this.rolRepository = rolRepository;
     }
 
+    // Listar usuarios
     @GetMapping
     public String listarUsuarios(Model model) {
         List<Usuario> usuarios = usuarioRepository.findAll();
@@ -43,7 +44,7 @@ public class AdminUsuController {
         return "redirect:/admin/usuarios";
     }
 
-    // Editar usuario (rellena el formulario con los datos del usuario)
+    // Editar usuario existente
     @GetMapping("/editar/{id}")
     public String editarUsuario(@PathVariable Integer id, Model model) {
         EditarUsuarioPerfilDTO dto = editarUsuarioPerfilService.obtenerDtoDesdeUsuario(id);
@@ -52,6 +53,7 @@ public class AdminUsuController {
         return "editarAdminUsuarios";
     }
 
+    // Actualizar usuario
     @PostMapping("/actualizar/{id}")
     public String actualizarUsuario(
             @PathVariable Integer id,

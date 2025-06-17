@@ -24,7 +24,7 @@ public class AdminTarifController {
         this.productoRepository = productoRepository;
     }
 
-    // Listar tarifas y mostrar formulario (crear o editar)
+    // Listar tarifas
     @GetMapping
     public String listarTarifas(Model model) {
         List<Tarifa> tarifas = tarifaRepository.findAll();
@@ -41,7 +41,7 @@ public class AdminTarifController {
         return "redirect:/admin/tarifas";
     }
 
-    // Editar tarifa (rellena el formulario con los datos de la tarifa)
+    // Editar tarifa
     @GetMapping("/editar/{id}")
     public String editarTarifa(@PathVariable Integer id, Model model) {
         Tarifa tarifa = tarifaRepository.findById(id)
@@ -51,6 +51,7 @@ public class AdminTarifController {
         return "editarAdminTarifas";
     }
 
+    // Actualizar tarifa
     @PostMapping("/actualizar/{id}")
     public String actualizarTarifa(@ModelAttribute("tarifa") Tarifa tarifa) {
         Producto producto = productoRepository.findById(tarifa.getProducto().getId())
