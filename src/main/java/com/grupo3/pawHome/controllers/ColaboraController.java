@@ -55,27 +55,6 @@ public class ColaboraController {
         this.adopcionRepository = adopcionRepository;
     }
 
-    @GetMapping("/colabora")
-    public String mostrarColabora()
-    {
-        return "Colabora";
-    }
-
-    @GetMapping("/colabora/dona/donarBizum")
-    public String mostrarColaboraDonaDonarBizum()
-    {
-        return "donarBizum";
-    }
-
-    @GetMapping("/colabora/apadrina")
-    public String mostrarColaboraApadrina()
-    {
-        return "Apadrina";
-    }
-
-    @GetMapping("/colabora/Apadrina/formularioApadrina")
-    public String mostrarformularioapadrina() { return "formularioApadrina"; }
-
     @GetMapping("/colabora/donaciones-materiales")
     public String mostrarColaboraDonaMateriales()
     {
@@ -152,8 +131,6 @@ public class ColaboraController {
         // Vuelves a la misma vista del formulario
         return "formularioPS";
     }
-    @GetMapping("/colabora/adopta")
-    public String mostrarColaboraAdopta() { return "Adopta"; }
 
     @GetMapping("/colabora/adopta/formularioAdopta")
     public String mostrarColaboraDona(@AuthenticationPrincipal MyUserDetails userDetails,

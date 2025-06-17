@@ -32,6 +32,13 @@
                             <input type="number" th:field="*{peso}" class="form-control" id="peso" step="0.01" min="0"
                                    required>
                         </div>
+                        <div>
+                            <label for="raza" class="form-label">Raza</label>
+                            <select th:field="*{raza.id}" class="form-select" id="raza" required>
+                                <option th:each="raza : ${razas}" th:value="${raza.id}" th:text="${raza.nombre}"></option>
+                            </select>
+                        </div>
+
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-4">
