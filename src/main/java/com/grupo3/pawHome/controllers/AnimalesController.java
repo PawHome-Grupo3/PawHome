@@ -42,7 +42,7 @@ public class AnimalesController {
                                           @RequestParam(required = false) String keyword,
                                           @RequestParam(required = false) String adoptado,
                                           @RequestParam(defaultValue = "1") int page,
-                                          @RequestParam(defaultValue = "5") int size,
+                                          @RequestParam(defaultValue = "10") int size,
                                           @RequestParam(required = false) Integer especieId,
                                           @RequestParam(required = false) Integer razaId,
                                           @RequestParam(defaultValue = "id,asc") String[] sort) {
