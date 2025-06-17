@@ -7,7 +7,7 @@
 
 <head>
   <meta charset="UTF-8" />
-  <title th:text="#{error.titulo}">Error</title>
+  <title th:text="#{error.titulo}"></title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <style>
     body {
@@ -23,7 +23,7 @@
       align-items: center;
       justify-content: center;
       min-height: 60vh;
-      margin: 40px auto;
+      margin: 100px;
     }
 
     .img-perrito {
@@ -85,10 +85,10 @@
   <div class="contenedor-error">
     <img th:src="@{/images/gator.png}" alt="Gatito travieso" class="img-perrito">
     <div class="caja-mensaje">
-      <h2>ERROR</h2>
-      <p class="mensaje-principal">¡Ups! Parece que algo ha ido mal.</p>
+      <h2>LO SENTIMOS</h2>
+      <p class="mensaje-principal">Esto todavía no está listo.</p>
       <p class="mensaje-secundario">
-        Probablemente un gatito sea el culpable, o quizás somos junior y estamos trabajando para que funcione esta página<br>
+        Probablemente sea un gatito el culpable... o quizás es porque somos juniors y todavía estamos trabajando para que funcione esta página.<br>
       </p>
       <a href="/" class="boton-inicio">Volver al inicio</a>
     </div>
