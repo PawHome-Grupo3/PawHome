@@ -35,7 +35,8 @@ public class StripeService {
                 //.setSuccessUrl("http://localhost:8080/success?session_id={CHECKOUT_SESSION_ID}")
                 //.setSuccessUrl("http://grupo03.serverjava.net/success?session_id={CHECKOUT_SESSION_ID}")
                 .setSuccessUrl("https://grupo03-desarrollo.serverjava.net/success?session_id={CHECKOUT_SESSION_ID}")
-                .setCancelUrl("http://grupo03.serverjava.net/cancel")
+                .setCancelUrl("https://grupo03-desarrollo.serverjava.net/cancel")
+                //.setCancelUrl("http://grupo03.serverjava.net/cancel")
                 .setCustomer(customerId)
                 .setPaymentIntentData(
                         SessionCreateParams.PaymentIntentData.builder()
@@ -115,7 +116,8 @@ public class StripeService {
                 //.setSuccessUrl("http://localhost:8080/apadrinar/success?session_id={CHECKOUT_SESSION_ID}")
                 //.setSuccessUrl("http://grupo03.serverjava.net/success?session_id={CHECKOUT_SESSION_ID}")
                 .setSuccessUrl("https://grupo03-desarrollo.serverjava.net/success?session_id={CHECKOUT_SESSION_ID}")
-                .setCancelUrl("http://grupo03.serverjava.net/apadrinar/cancel")
+                //.setCancelUrl("http://grupo03.serverjava.net/apadrinar/cancel")
+                .setCancelUrl("https://grupo03-desarrollo.serverjava.net/cancel")
                 //.setCancelUrl("http://localhost:8080/apadrinar/cancel")
                 .setCustomer(customerId)
                 .addLineItem(
