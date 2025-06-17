@@ -20,7 +20,6 @@
                 <th>Nombre de usuario</th>
                 <th>Correo electrónico</th>
                 <th>Perfil</th>
-                <th>Rol</th>
                 <th>Acciones</th>
             </tr>
             </thead>
@@ -50,8 +49,6 @@
                 <td th:unless="${usuario.perfilDatos}">
                     <span class="text-muted">Sin perfil</span>
                 </td>
-                <td th:text="${usuario.rol?.nombre}">Sin rol</td>
-
                 <td>
                     <a th:href="@{/admin/usuarios/editar/{id}(id=${usuario.id})}"
                        class="btn btn-success btn-sm">Editar</a>

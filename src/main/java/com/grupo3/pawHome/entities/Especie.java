@@ -17,9 +17,13 @@ public class Especie {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Integer id;
-
     private String nombre;
 
     @OneToMany(mappedBy = "especie", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Raza> razas;
+    private List<Animal> animales;
+
+    @ManyToOne
+    @JoinColumn(name = "raza_id", referencedColumnName = "id")
+    private Raza raza;
 }
