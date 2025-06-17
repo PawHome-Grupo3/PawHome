@@ -44,4 +44,9 @@ public class RegistroController {
             return "loginRegistro";
         }
     }
+
+    @GetMapping("/login")
+    public String mostrarRegistroExistoso() {
+        return "registroExitoso";
+    }
 }
