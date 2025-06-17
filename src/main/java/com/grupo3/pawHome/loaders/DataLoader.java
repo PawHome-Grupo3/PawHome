@@ -228,9 +228,9 @@ public class DataLoader implements CommandLineRunner {
         c3.setNombre("tienda-Tazas");
         categoriaRepository.save(c3);
 
-        Categoria cat2 = new Categoria();
-        cat2.setNombre("tienda-Camas");
-        categoriaRepository.save(cat2);
+//        Categoria cat2 = new Categoria();
+//        cat2.setNombre("tienda-Camas");
+//        categoriaRepository.save(cat2);
 
         Categoria cat3 = new Categoria();
         cat3.setNombre("tienda-Bolsas");
@@ -240,29 +240,29 @@ public class DataLoader implements CommandLineRunner {
         cat4.setNombre("tienda-Bebederos");
         categoriaRepository.save(cat4);
 
-        Producto prodCama = new Producto();
-        prodCama.setNombre("Cama redonda de felpa");
-        prodCama.setDescripcion("Cama ultrasuave ideal para el descanso de tu peludo amigo.");
-        prodCama.setRutaImagen1("https://placekitten.com/318/318");
-        prodCama.setRutaImagen2("https://picsum.photos/seed/cama-felpa/300/300");
-        prodCama.setRutaImagen3("https://images.unsplash.com/photo-1611080626919-5b0b46e493bd");
-        prodCama.setCategoria(cat2);
-        productoRepository.save(prodCama);
-
-        Talla tallaCamaS = new Talla(null, "S", 10, prodCama);
-        Talla tallaCamaM = new Talla(null, "M", 8, prodCama);
-        Talla tallaCamaL = new Talla(null, "L", 5, prodCama);
-        tallaRepository.saveAll(List.of(tallaCamaS, tallaCamaM, tallaCamaL));
-
-        Tarifa tarifaCama = new Tarifa();
-        tarifaCama.setNombre("Tarifa vigente");
-        tarifaCama.setDescripcion("Material antialérgico y lavable.");
-        tarifaCama.setCantidad(1);
-        tarifaCama.setPrecioUnitario(29.95);
-        tarifaCama.setFechaDesde(LocalDate.now());
-        tarifaCama.setFechaHasta(null);
-        tarifaCama.setProducto(prodCama);
-        tarifaRepository.save(tarifaCama);
+//        Producto prodCama = new Producto();
+//        prodCama.setNombre("Cama redonda de felpa");
+//        prodCama.setDescripcion("Cama ultrasuave ideal para el descanso de tu peludo amigo.");
+//        prodCama.setRutaImagen1("https://placekitten.com/318/318");
+//        prodCama.setRutaImagen2("https://picsum.photos/seed/cama-felpa/300/300");
+//        prodCama.setRutaImagen3("https://images.unsplash.com/photo-1611080626919-5b0b46e493bd");
+//        prodCama.setCategoria(cat2);
+//        productoRepository.save(prodCama);
+//
+//        Talla tallaCamaS = new Talla(null, "S", 10, prodCama);
+//        Talla tallaCamaM = new Talla(null, "M", 8, prodCama);
+//        Talla tallaCamaL = new Talla(null, "L", 5, prodCama);
+//        tallaRepository.saveAll(List.of(tallaCamaS, tallaCamaM, tallaCamaL));
+//
+//        Tarifa tarifaCama = new Tarifa();
+//        tarifaCama.setNombre("Tarifa vigente");
+//        tarifaCama.setDescripcion("Material antialérgico y lavable.");
+//        tarifaCama.setCantidad(1);
+//        tarifaCama.setPrecioUnitario(29.95);
+//        tarifaCama.setFechaDesde(LocalDate.now());
+//        tarifaCama.setFechaHasta(null);
+//        tarifaCama.setProducto(prodCama);
+//        tarifaRepository.save(tarifaCama);
 
         Producto prodBolsa = new Producto();
         prodBolsa.setNombre("Bolsa de tela con diseño animalista");
@@ -287,11 +287,11 @@ public class DataLoader implements CommandLineRunner {
         tarifaRepository.save(tarifaBolsa);
 
         Producto prodBolsa2 = new Producto();
-        prodBolsa2.setNombre("Bolsa de tela con diseño animalista");
+        prodBolsa2.setNombre("Bolsa de tela Gato");
         prodBolsa2.setDescripcion("Bolsa ecológica reutilizable con mensajes de adopción.");
         prodBolsa2.setRutaImagen1("/images/bolsaTelaGato1.png");
-        prodBolsa2.setRutaImagen2("/images/bolsaTelaPerro2.png");
-        prodBolsa2.setRutaImagen3("/images/bolsaTelaPerro3.png");
+        prodBolsa2.setRutaImagen2("/images/bolsaTelaGato1.png");
+        prodBolsa2.setRutaImagen3("/images/bolsaTelaGato1.png");
         prodBolsa2.setCategoria(cat3);
         productoRepository.save(prodBolsa2);
 
@@ -305,7 +305,7 @@ public class DataLoader implements CommandLineRunner {
         tarifaBolsa2.setPrecioUnitario(6.50);
         tarifaBolsa2.setFechaDesde(LocalDate.now());
         tarifaBolsa2.setFechaHasta(null);
-        tarifaBolsa2.setProducto(prodBolsa);
+        tarifaBolsa2.setProducto(prodBolsa2);
         tarifaRepository.save(tarifaBolsa2);
 
         Producto prodBebedero = new Producto();
