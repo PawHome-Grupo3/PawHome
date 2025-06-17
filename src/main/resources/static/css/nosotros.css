@@ -46,53 +46,86 @@
     z-index: 1;
 }
 
-.team-header h2{
+.team-header h2 {
     text-align: center;
     font-size: 2.6em;
     font-weight: bold;
+    color: #004400;
 }
 
 .team-header p {
     font-size: 1.7rem;
+    color: #225522;
 }
 
-.team-members .role {
-    font-size: 1.2rem;
-}
-
-.team-members ol, .team-members li {
-    font-size: 1.2rem;
-}
 .team-members {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-rows: repeat(2, auto);
     gap: 40px;
     justify-items: center;
     align-items: center;
 }
 
 .member {
-    flex: 0 1 220px;
-    max-width: 220px;
+    background-color: transparent;
+    border-radius: 15px;
+    padding: 1.5rem;
+    color: #000;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     text-align: center;
+    width: 100%;
+    max-width: 320px;
+    aspect-ratio: 1/1.1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.member:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
 }
 
 .memberImg {
-    width: 160px;
-    height: 160px;
     border-radius: 50%;
+    width: 120px;
+    height: 120px;
     object-fit: cover;
-    border: 3px solid rgb(13, 58, 39);
-    margin-bottom: 12px;
+    margin-bottom: 1rem;
+    border: 3px solid #0e3716;
 }
 
-
-.bird-boss img {
-    border: 3px solid rgb(13, 58, 39);
+.card-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #000;
 }
 
-.bird-boss .role {
-    font-style: italic;
-    margin-top: 6px;
+.card-text a {
+    color: #000;
+}
+
+.card-text a:hover {
+    text-decoration: underline;
+}
+
+.member a.btn {
+    margin-top: 0.5rem;
+    color: #000;
+    border-color: #000;
+}
+
+.member a.btn:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+/* En móvil, 1 columna */
+@media (max-width: 950px) {
+    .team-members {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
 }
