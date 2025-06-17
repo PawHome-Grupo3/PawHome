@@ -11,6 +11,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Comparator;
+import java.util.List;
+
 @Controller
 @RequestMapping("/admin/prodserv")
 public class AdminProdServController {
@@ -26,7 +29,8 @@ public class AdminProdServController {
     // Listar productos y servicios y mostrar formulario (crear o editar)
     @GetMapping
     public String listarProdServ(Model model) {
-
+        List<Producto> productos = productoRepository.findAll();
+        productos.sort(Comparator.comparing(Producto::getId));
         model.addAttribute("productos", productoRepository.findAll());
         model.addAttribute("producto", new Producto()); // Formulario vacío para crear
         return "adminProdServ";

@@ -9,6 +9,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Comparator;
+import java.util.List;
+
 @Controller
 @RequestMapping("/admin/tarifas")
 public class AdminTarifController {
@@ -24,6 +27,8 @@ public class AdminTarifController {
     // Listar tarifas y mostrar formulario (crear o editar)
     @GetMapping
     public String listarTarifas(Model model) {
+        List<Tarifa> tarifas = tarifaRepository.findAll();
+        tarifas.sort(Comparator.comparing(Tarifa::getId));
         model.addAttribute("tarifas", tarifaRepository.findAll());
         model.addAttribute("tarifa", new Tarifa()); // Formulario vacío para crear
         return "adminTarifas";

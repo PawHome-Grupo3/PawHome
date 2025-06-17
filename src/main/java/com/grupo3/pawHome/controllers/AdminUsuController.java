@@ -10,6 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Comparator;
+import java.util.List;
+
 @Controller
 @RequestMapping("/admin/usuarios")
 public class AdminUsuController {
@@ -26,6 +29,8 @@ public class AdminUsuController {
 
     @GetMapping
     public String listarUsuarios(Model model) {
+        List<Usuario> usuarios = usuarioRepository.findAll();
+        usuarios.sort(Comparator.comparing(Usuario::getId));
         model.addAttribute("usuarios", usuarioRepository.findAll());
         model.addAttribute("usuario", new Usuario()); // Formulario vacío para crear
         return "adminUsuarios";

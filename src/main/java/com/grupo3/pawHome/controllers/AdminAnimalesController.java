@@ -11,6 +11,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Comparator;
+import java.util.List;
+
 @Controller
 @RequestMapping("/admin/animales")
 public class AdminAnimalesController {
@@ -26,6 +29,8 @@ public class AdminAnimalesController {
     // Listar animales y mostrar formulario (crear o editar)
     @GetMapping
     public String listarAnimales(Model model) {
+        List<Animal> animales = animalRepository.findAll();
+        animales.sort(Comparator.comparing(Animal::getId));
         model.addAttribute("animales", animalRepository.findAll());
         model.addAttribute("animal", new Animal()); // Formulario vacío para crear
         return "adminAnimales";
