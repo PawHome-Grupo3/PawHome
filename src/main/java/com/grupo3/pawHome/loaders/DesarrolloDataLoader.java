@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Configuration
 @Log4j2
@@ -24,6 +25,10 @@ public class DesarrolloDataLoader {
     private final CategoriaRepository categoriaRepository;
     private final TarifaRepository tarifaRepository;
     private final PasswordEncoder passwordEncoder;
+    private final RolRepository rolRepository;
+    private final EspecieRepository especieRepository;
+    private final RazaRepository razaRepository;
+    private final AdopcionRepository adopcionRepository;
 
 public DesarrolloDataLoader(AnimalRepository animalRepository,
                             ApadrinarRepository apadrinarRepository,
@@ -33,7 +38,7 @@ public DesarrolloDataLoader(AnimalRepository animalRepository,
                             TallaRepository tallaRepository,
                             CategoriaRepository categoriaRepository,
                             TarifaRepository tarifaRepository,
-                            PasswordEncoder passwordEncoder) {
+                            PasswordEncoder passwordEncoder, RolRepository rolRepository, EspecieRepository especieRepository, RazaRepository razaRepository, AdopcionRepository adopcionRepository) {
 
     this.animalRepository = animalRepository;
     this.apadrinarRepository = apadrinarRepository;
@@ -44,24 +49,141 @@ public DesarrolloDataLoader(AnimalRepository animalRepository,
     this.categoriaRepository = categoriaRepository;
     this.tarifaRepository = tarifaRepository;
     this.passwordEncoder = passwordEncoder;
+    this.rolRepository = rolRepository;
+    this.especieRepository = especieRepository;
+    this.razaRepository = razaRepository;
+    this.adopcionRepository = adopcionRepository;
 }
 
     @PostConstruct
     public void loadDataDesarrollo() {
+        // ROLES
+        if (rolRepository.findByNombre("USER").isEmpty()) {
+            Rol rol1 = new Rol();
+            rol1.setNombre("USER");
+            rolRepository.save(rol1);
+        }
+
+        if (rolRepository.findByNombre("ADMIN").isEmpty()) {
+            Rol rol2 = new Rol();
+            rol2.setNombre("ADMIN");
+            rolRepository.save(rol2);
+        }
+
         // Crear Usuarios
+        Usuario usuario = new Usuario();
+        usuario.setNickname("juan1234");
+        usuario.setPassword(passwordEncoder.encode("1234"));
+        usuario.setEmail("juan123@example.com");
+        usuario.setFechaRegistro(LocalDate.now());
+        usuario.setRol(rolRepository.findByNombre("USER").orElseThrow(() -> new RuntimeException("Rol USER no encontrado")));
+
+        // Crear PerfilDatos
+        PerfilDatos perfil = new PerfilDatos();
+        perfil.setNombre("Juan");
+        perfil.setApellidos("Pérez Gómez");
+        perfil.setEdad(30);
+        perfil.setDni("12345678A");
+        perfil.setDireccion("Calle Mayor 123");
+        perfil.setPais("España");
+        perfil.setCiudad("Madrid");
+        perfil.setCp("28001");
+        perfil.setTelefono1("600123456");
+        perfil.setTelefono2("601234567");
+        perfil.setTelefono3(null); // opcional
+
+        // Establecer relación bidireccional
+        perfil.setUsuario(usuario);
+        usuario.setPerfilDatos(perfil);
+
+        // Guardar usuario
+        usuarioRepository.save(usuario);
+
+        // Usuario 1
         Usuario u1 = new Usuario();
-        u1.setNickname("Juan1234");
+        u1.setNickname("Pepe2025");
         u1.setPassword(passwordEncoder.encode("123"));
-        u1.setEmail("a@gmail.com");
+        u1.setEmail("pepin@gmail.com");
         u1.setFechaRegistro(LocalDate.now());
+        u1.setRol(rolRepository.findByNombre("USER").orElseThrow(() -> new RuntimeException("Rol USER no encontrado")));
+
+        PerfilDatos perfil1 = new PerfilDatos();
+        perfil1.setNombre("José");
+        perfil1.setApellidos("García García");
+        perfil1.setEdad(25);
+        perfil1.setDni("12345678B");
+        perfil1.setDireccion("Avenida Alcalde Manuel del Valle 123");
+        perfil1.setPais("España");
+        perfil1.setCiudad("Sevilla");
+        perfil1.setCp("41015");
+        perfil1.setTelefono1("600987654");
+        perfil1.setTelefono2("601234567");
+        perfil1.setTelefono3(null); // opcional
+
+        perfil1.setUsuario(u1);
+        u1.setPerfilDatos(perfil1);
+
         usuarioRepository.save(u1);
 
+        // Usuario 2
         Usuario u2 = new Usuario();
         u2.setNickname("Maria456");
         u2.setPassword(passwordEncoder.encode("123"));
         u2.setEmail("maria@gmail.com");
         u2.setFechaRegistro(LocalDate.now());
+        u2.setRol(rolRepository.findByNombre("USER").orElseThrow(() -> new RuntimeException("Rol USER no encontrado")));
+
+        PerfilDatos perfil2 = new PerfilDatos();
+        perfil2.setNombre("María");
+        perfil2.setApellidos("López Fernández");
+        perfil2.setEdad(28);
+        perfil2.setDni("87654321C");
+        perfil2.setDireccion("Avenida Siempre Viva 456");
+        perfil2.setPais("España");
+        perfil2.setCiudad("Barcelona");
+        perfil2.setCp("08001");
+        perfil2.setTelefono1("600123456");
+        perfil2.setTelefono2("601234567");
+        perfil2.setTelefono3(null); // opcional
+
+        perfil2.setUsuario(u2);
+        u2.setPerfilDatos(perfil2);
+
         usuarioRepository.save(u2);
+
+        // Usuarios con el rol ADMIN
+        Usuario u3 = new Usuario();
+        u3.setNickname("Javix");
+        u3.setPassword(passwordEncoder.encode("JavixAdmin"));
+        u3.setEmail("Javix97@gmail.com");
+        u3.setFechaRegistro(LocalDate.now());
+        u3.setRol(rolRepository.findByNombre("ADMIN").orElseThrow(() -> new RuntimeException("Rol ADMIN no encontrado")));
+        usuarioRepository.save(u3);
+
+        Usuario u4 = new Usuario();
+        u4.setNickname("PauloSH");
+        u4.setPassword(passwordEncoder.encode("PauloSHAdmin"));
+        u4.setEmail("PauloSH@gmail.com");
+        u4.setFechaRegistro(LocalDate.now());
+        u4.setRol(rolRepository.findByNombre("ADMIN").orElseThrow(() -> new RuntimeException("Rol ADMIN no encontrado")));
+        usuarioRepository.save(u4);
+
+        Usuario u5 = new Usuario();
+        u5.setNickname("Lauguirez");
+        u5.setPassword(passwordEncoder.encode("LauguirezAdmin"));
+        u5.setEmail("Lauguirez@gmail.com");
+        u5.setFechaRegistro(LocalDate.now());
+        u5.setRol(rolRepository.findByNombre("ADMIN").orElseThrow(() -> new RuntimeException("Rol ADMIN no encontrado")));
+        usuarioRepository.save(u5);
+
+        Usuario u6 = new Usuario();
+        u6.setNickname("Manueltrmr");
+        u6.setPassword(passwordEncoder.encode("ManueltrmrAdmin"));
+        u6.setEmail("mantormir@gmail.com");
+        u6.setFechaRegistro(LocalDate.now());
+        u6.setRol(rolRepository.findByNombre("ADMIN").orElseThrow(() -> new RuntimeException("Rol ADMIN no encontrado")));
+        usuarioRepository.save(u6);
+
 
         // Crear Facturas para u1
         Factura f1 = new Factura();
@@ -87,20 +209,195 @@ public DesarrolloDataLoader(AnimalRepository animalRepository,
         facturaRepository.save(f3);
 
         Categoria c1 = new Categoria();
-        c1.setNombre("Collares");
+        c1.setNombre("tienda-Collares");
         categoriaRepository.save(c1);
 
         Categoria c2 = new Categoria();
-        c2.setNombre("Camisetas");
+        c2.setNombre("tienda-Camisetas");
         categoriaRepository.save(c2);
 
         Categoria c3 = new Categoria();
-        c3.setNombre("Tazas");
+        c3.setNombre("tienda-Tazas");
         categoriaRepository.save(c3);
 
-        Categoria c4 = new Categoria();
-        c4.setNombre("Guarderia");
-        categoriaRepository.save(c4);
+//        Categoria cat2 = new Categoria();
+//        cat2.setNombre("tienda-Camas");
+//        categoriaRepository.save(cat2);
+
+        Categoria cat3 = new Categoria();
+        cat3.setNombre("tienda-Bolsas");
+        categoriaRepository.save(cat3);
+
+        Categoria cat4 = new Categoria();
+        cat4.setNombre("tienda-Bebederos");
+        categoriaRepository.save(cat4);
+
+//        Producto prodCama = new Producto();
+//        prodCama.setNombre("Cama redonda de felpa");
+//        prodCama.setDescripcion("Cama ultrasuave ideal para el descanso de tu peludo amigo.");
+//        prodCama.setRutaImagen1("https://placekitten.com/318/318");
+//        prodCama.setRutaImagen2("https://picsum.photos/seed/cama-felpa/300/300");
+//        prodCama.setRutaImagen3("https://images.unsplash.com/photo-1611080626919-5b0b46e493bd");
+//        prodCama.setCategoria(cat2);
+//        productoRepository.save(prodCama);
+//
+//        Talla tallaCamaS = new Talla(null, "S", 10, prodCama);
+//        Talla tallaCamaM = new Talla(null, "M", 8, prodCama);
+//        Talla tallaCamaL = new Talla(null, "L", 5, prodCama);
+//        tallaRepository.saveAll(List.of(tallaCamaS, tallaCamaM, tallaCamaL));
+//
+//        Tarifa tarifaCama = new Tarifa();
+//        tarifaCama.setNombre("Tarifa vigente");
+//        tarifaCama.setDescripcion("Material antialérgico y lavable.");
+//        tarifaCama.setCantidad(1);
+//        tarifaCama.setPrecioUnitario(29.95);
+//        tarifaCama.setFechaDesde(LocalDate.now());
+//        tarifaCama.setFechaHasta(null);
+//        tarifaCama.setProducto(prodCama);
+//        tarifaRepository.save(tarifaCama);
+
+        Producto prodBolsa = new Producto();
+        prodBolsa.setNombre("Bolsa de tela con diseño animalista");
+        prodBolsa.setDescripcion("Bolsa ecológica reutilizable con mensajes de adopción.");
+        prodBolsa.setRutaImagen1("/images/bolsaTelaPerro1.png");
+        prodBolsa.setRutaImagen2("/images/bolsaTelaPerro2.png");
+        prodBolsa.setRutaImagen3("/images/bolsaTelaPerro3.png");
+        prodBolsa.setCategoria(cat3);
+        productoRepository.save(prodBolsa);
+
+        Talla tallaBolsa = new Talla(null, "unica", 60, prodBolsa);
+        tallaRepository.save(tallaBolsa);
+
+        Tarifa tarifaBolsa = new Tarifa();
+        tarifaBolsa.setNombre("Precio actual");
+        tarifaBolsa.setDescripcion("Diseño impreso por ambos lados.");
+        tarifaBolsa.setCantidad(1);
+        tarifaBolsa.setPrecioUnitario(6.50);
+        tarifaBolsa.setFechaDesde(LocalDate.now());
+        tarifaBolsa.setFechaHasta(null);
+        tarifaBolsa.setProducto(prodBolsa);
+        tarifaRepository.save(tarifaBolsa);
+
+        Producto prodBolsa2 = new Producto();
+        prodBolsa2.setNombre("Bolsa de tela Gato");
+        prodBolsa2.setDescripcion("Bolsa ecológica reutilizable con mensajes de adopción.");
+        prodBolsa2.setRutaImagen1("/images/bolsaTelaGato1.png");
+        prodBolsa2.setRutaImagen2("/images/bolsaTelaGato1.png");
+        prodBolsa2.setRutaImagen3("/images/bolsaTelaGato1.png");
+        prodBolsa2.setCategoria(cat3);
+        productoRepository.save(prodBolsa2);
+
+        Talla tallaBolsa2 = new Talla(null, "unica", 2, prodBolsa2);
+        tallaRepository.save(tallaBolsa2);
+
+        Tarifa tarifaBolsa2 = new Tarifa();
+        tarifaBolsa2.setNombre("Precio actual");
+        tarifaBolsa2.setDescripcion("Diseño impreso por ambos lados.");
+        tarifaBolsa2.setCantidad(1);
+        tarifaBolsa2.setPrecioUnitario(6.50);
+        tarifaBolsa2.setFechaDesde(LocalDate.now());
+        tarifaBolsa2.setFechaHasta(null);
+        tarifaBolsa2.setProducto(prodBolsa2);
+        tarifaRepository.save(tarifaBolsa2);
+
+        Producto prodBebedero = new Producto();
+        prodBebedero.setNombre("Bebedero portátil para perros");
+        prodBebedero.setDescripcion("Botella-bebedero plegable para viajes y paseos largos.");
+        prodBebedero.setRutaImagen1("https://placekitten.com/320/320");
+        prodBebedero.setRutaImagen2("https://picsum.photos/seed/bebedero-portatil/300/300");
+        prodBebedero.setRutaImagen3("https://images.unsplash.com/photo-1617634667033-818846b7ac4f");
+        prodBebedero.setCategoria(cat4);
+        productoRepository.save(prodBebedero);
+
+        Talla tallaBebedero = new Talla(null, "unica", 35, prodBebedero);
+        tallaRepository.save(tallaBebedero);
+
+        Tarifa tarifaBebedero = new Tarifa();
+        tarifaBebedero.setNombre("Tarifa estándar");
+        tarifaBebedero.setDescripcion("Capacidad 500 ml.");
+        tarifaBebedero.setCantidad(1);
+        tarifaBebedero.setPrecioUnitario(8.75);
+        tarifaBebedero.setFechaDesde(LocalDate.now());
+        tarifaBebedero.setFechaHasta(null);
+        tarifaBebedero.setProducto(prodBebedero);
+        tarifaRepository.save(tarifaBebedero);
+
+        // === PRODUCTO COLLAR REFLECTANTE ===
+        Producto productoCollarReflectante = new Producto();
+        productoCollarReflectante.setNombre("Collar Reflectante para Perros");
+        productoCollarReflectante.setDescripcion("Collar ajustable con material reflectante para mayor seguridad nocturna.");
+        productoCollarReflectante.setRutaImagen1("/images/collarPerro3.png");
+        productoCollarReflectante.setRutaImagen2("/images/collarPerro1.png");
+        productoCollarReflectante.setRutaImagen3("/images/collarPerro2.png");
+        productoCollarReflectante.setCategoria(c1);
+        productoRepository.save(productoCollarReflectante);
+
+        Talla tallaCollarS = new Talla(null, "S", 1, productoCollarReflectante);
+        Talla tallaCollarM = new Talla(null, "M", 15, productoCollarReflectante);
+        Talla tallaCollarL = new Talla(null, "L", 10, productoCollarReflectante);
+        tallaRepository.saveAll(List.of(tallaCollarS, tallaCollarM, tallaCollarL));
+
+        Tarifa tarifaCollarReflectante = new Tarifa();
+        tarifaCollarReflectante.setNombre("Precio normal");
+        tarifaCollarReflectante.setDescripcion("Collar reflectante con cierre metálico.");
+        tarifaCollarReflectante.setCantidad(1);
+        tarifaCollarReflectante.setPrecioUnitario(14.50);
+        tarifaCollarReflectante.setFechaDesde(LocalDate.now());
+        tarifaCollarReflectante.setFechaHasta(null);
+        tarifaCollarReflectante.setProducto(productoCollarReflectante);
+        tarifaRepository.save(tarifaCollarReflectante);
+
+// === PRODUCTO CAMISETA "ADOPTA, NO COMPRES" ===
+        Producto productoCamisetaAdopta = new Producto();
+        productoCamisetaAdopta.setNombre("Camiseta 'Adopta, no compres'");
+        productoCamisetaAdopta.setDescripcion("Camiseta de algodón con mensaje de concienciación.");
+        productoCamisetaAdopta.setRutaImagen1("/images/camisetaVerde1.png");
+        productoCamisetaAdopta.setRutaImagen2("/images/camisetaVerde2.png");
+        productoCamisetaAdopta.setRutaImagen3("/images/camisetaVerde3.png");
+        productoCamisetaAdopta.setCategoria(c2);
+        productoRepository.save(productoCamisetaAdopta);
+
+        Talla tallaCamisetaM = new Talla(null, "M", 20, productoCamisetaAdopta);
+        Talla tallaCamisetaL = new Talla(null, "L", 15, productoCamisetaAdopta);
+        Talla tallaCamisetaXL = new Talla(null, "XL", 8, productoCamisetaAdopta);
+        Talla tallaCamisetaXXL = new Talla(null, "XXL", 5, productoCamisetaAdopta);
+        tallaRepository.saveAll(List.of(tallaCamisetaM, tallaCamisetaL, tallaCamisetaXL, tallaCamisetaXXL));
+
+        Tarifa tarifaCamisetaAdopta = new Tarifa();
+        tarifaCamisetaAdopta.setNombre("Campaña adopción");
+        tarifaCamisetaAdopta.setDescripcion("Parte de los ingresos se donan a la protectora.");
+        tarifaCamisetaAdopta.setCantidad(1);
+        tarifaCamisetaAdopta.setPrecioUnitario(13.99);
+        tarifaCamisetaAdopta.setFechaDesde(LocalDate.now());
+        tarifaCamisetaAdopta.setFechaHasta(null);
+        tarifaCamisetaAdopta.setProducto(productoCamisetaAdopta);
+        tarifaRepository.save(tarifaCamisetaAdopta);
+
+// === PRODUCTO TAZA CON HUELLAS ===
+        Producto productoTazaHuellas = new Producto();
+        productoTazaHuellas.setNombre("Taza con Huellas de Perro");
+        productoTazaHuellas.setDescripcion("Taza blanca con diseño de huellas, ideal para amantes de los animales.");
+        productoTazaHuellas.setRutaImagen1("/images/tazaHuella1.png");
+        productoTazaHuellas.setRutaImagen2("/images/tazaHuella2.png");
+        productoTazaHuellas.setRutaImagen3("/images/tazaHuella3.png");
+        productoTazaHuellas.setCategoria(c3);
+        productoRepository.save(productoTazaHuellas);
+
+        Talla tallaTazaUnica = new Talla();
+        tallaTazaUnica.setTallaje("unica");
+        tallaTazaUnica.setStock(40);
+        tallaTazaUnica.setProducto(productoTazaHuellas);
+        tallaRepository.save(tallaTazaUnica);
+
+        Tarifa tarifaTazaHuellas = new Tarifa();
+        tarifaTazaHuellas.setNombre("Taza solidaria");
+        tarifaTazaHuellas.setDescripcion("Incluye caja de regalo.");
+        tarifaTazaHuellas.setCantidad(1);
+        tarifaTazaHuellas.setPrecioUnitario(6.90);
+        tarifaTazaHuellas.setFechaDesde(LocalDate.now());
+        tarifaTazaHuellas.setFechaHasta(null);
+        tarifaTazaHuellas.setProducto(productoTazaHuellas);
+        tarifaRepository.save(tarifaTazaHuellas);
 
         Producto p1 = new Producto();
         p1.setNombre("Collar");
@@ -112,8 +409,8 @@ public DesarrolloDataLoader(AnimalRepository animalRepository,
 
         Producto p2 = new Producto();
         p2.setNombre("Camiseta Azul");
-        p2.setDescripcion("¿Quieres ser un héroe con estilo? Compra nuestra camiseta para que lo sepa todo el mundo");
-        p2.setRutaImagen1("/images/Camiseta-azul.png");
+        p2.setDescripcion("¿Quieres tener la huella de tu perrito siempre guardada y mostrarla con estilo? Compra nuestra camiseta para que lo sepa todo el mundo");
+        p2.setRutaImagen1("/images/camisetaAzul1.png");
         p2.setCategoria(c2);
         productoRepository.save(p2);
 
@@ -132,14 +429,21 @@ public DesarrolloDataLoader(AnimalRepository animalRepository,
         productoRepository.save(p4);
 
         Producto p5 = new Producto();
-        p5.setNombre("Taza todo es mejor");
-        p5.setDescripcion("Dale a tu peludo amigo el mejor look con nuestro collar para perro, diseñado para brindar seguridad, confort y un toque de estilo único.");
+        p5.setNombre("Taza Perro");
+        p5.setDescripcion("Incluye un cierre de seguridad reforzado y un aro metálico para enganchar la correa de forma rápida y segura. Ideal para perros de todos los tamaños, disponible en varios colores para combinar con su personalidad.");
         p5.setRutaImagen1("/images/taza-prueba.jpg");
         p5.setCategoria(c3);
         productoRepository.save(p5);
 
+        // --- SERVICIOS --- //
+        // Productos y tarifas de Guarderia
+        Categoria c4 = new Categoria();
+        c4.setNombre("Guarderia");
+        categoriaRepository.save(c4);
+
         Producto p6 = new Producto();
         p6.setNombre("ESTANCIA EXPRESS");
+        p6.setDescripcion("Cuidado breve para estancias puntuales.");
         p6.setCategoria(c4);
         productoRepository.save(p6);
 
@@ -153,6 +457,7 @@ public DesarrolloDataLoader(AnimalRepository animalRepository,
 
         Producto p7 = new Producto();
         p7.setNombre("ESTANCIA RELAX");
+        p7.setDescripcion("Estancia tranquila para desconectar.");
         p7.setCategoria(c4);
         productoRepository.save(p7);
 
@@ -166,6 +471,7 @@ public DesarrolloDataLoader(AnimalRepository animalRepository,
 
         Producto p8 = new Producto();
         p8.setNombre("ESTANCIA SABÁTICA");
+        p8.setDescripcion("Un descanso semanal perfecto.");
         p8.setCategoria(c4);
         productoRepository.save(p8);
 
@@ -179,6 +485,7 @@ public DesarrolloDataLoader(AnimalRepository animalRepository,
 
         Producto p9 = new Producto();
         p9.setNombre("BONO LARGA ESTANCIA");
+        p9.setDescripcion("Más días, más comodidad.");
         p9.setCategoria(c4);
         productoRepository.save(p9);
 
@@ -192,6 +499,7 @@ public DesarrolloDataLoader(AnimalRepository animalRepository,
 
         Producto p10 = new Producto();
         p10.setNombre("BONO ESTANCIA SOLO DÍA");
+        p10.setDescripcion(" Estancia diaria sin pernocta.");
         p10.setCategoria(c4);
         productoRepository.save(p10);
 
@@ -202,6 +510,603 @@ public DesarrolloDataLoader(AnimalRepository animalRepository,
         bonoSoloDia.setFechaDesde(LocalDate.now());
         bonoSoloDia.setFechaHasta(LocalDate.of(2026, 1, 1));
         tarifaRepository.save(bonoSoloDia);
+
+        // Productos y tarifas de Peluqueria
+        Categoria cPeluqueria = new Categoria();
+        cPeluqueria.setNombre("Peluqueria");
+        categoriaRepository.save(cPeluqueria);
+
+        Producto pBañoBasico = new Producto();
+        pBañoBasico.setNombre("BAÑO BÁSICO");
+        pBañoBasico.setDescripcion("Limpieza suave y eficaz.");
+        pBañoBasico.setCategoria(cPeluqueria);
+        productoRepository.save(pBañoBasico);
+
+        Tarifa tBañoBasico = new Tarifa();
+        tBañoBasico.setProducto(pBañoBasico);
+        tBañoBasico.setCantidad(1);
+        tBañoBasico.setPrecioUnitario(10.00);
+        tBañoBasico.setFechaDesde(LocalDate.now());
+        tBañoBasico.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tBañoBasico);
+
+        Producto pBañoStripping = new Producto();
+        pBañoStripping.setNombre("BAÑO Y STRIPPING");
+        pBañoStripping.setDescripcion("Baño más arreglo de muda.");
+        pBañoStripping.setCategoria(cPeluqueria);
+        productoRepository.save(pBañoStripping);
+
+        Tarifa tBañoStripping = new Tarifa();
+        tBañoStripping.setProducto(pBañoStripping);
+        tBañoStripping.setCantidad(1);
+        tBañoStripping.setPrecioUnitario(15.00);
+        tBañoStripping.setFechaDesde(LocalDate.now());
+        tBañoStripping.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tBañoStripping);
+
+        Producto pSoloCorte = new Producto();
+        pSoloCorte.setNombre("SOLO CORTE");
+        pSoloCorte.setDescripcion("Corte sin baño, rápido y cómodo.");
+        pSoloCorte.setCategoria(cPeluqueria);
+        productoRepository.save(pSoloCorte);
+
+        Tarifa tSoloCorte = new Tarifa();
+        tSoloCorte.setProducto(pSoloCorte);
+        tSoloCorte.setCantidad(1);
+        tSoloCorte.setPrecioUnitario(15.00);
+        tSoloCorte.setFechaDesde(LocalDate.now());
+        tSoloCorte.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tSoloCorte);
+
+        Producto pBañoCorte = new Producto();
+        pBañoCorte.setNombre("BAÑO + CORTE");
+        pBañoCorte.setDescripcion("Limpieza y estilo al instante.");
+        pBañoCorte.setCategoria(cPeluqueria);
+        productoRepository.save(pBañoCorte);
+
+        Tarifa tBañoCorte = new Tarifa();
+        tBañoCorte.setProducto(pBañoCorte);
+        tBañoCorte.setCantidad(1);
+        tBañoCorte.setPrecioUnitario(20.00);
+        tBañoCorte.setFechaDesde(LocalDate.now());
+        tBañoCorte.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tBañoCorte);
+
+        Producto pCompleto = new Producto();
+        pCompleto.setNombre("COMPLETO");
+        pCompleto.setDescripcion("Baño, corte y mimos.");
+        pCompleto.setCategoria(cPeluqueria);
+        productoRepository.save(pCompleto);
+
+        Tarifa tCompleto = new Tarifa();
+        tCompleto.setProducto(pCompleto);
+        tCompleto.setCantidad(1);
+        tCompleto.setPrecioUnitario(25.00);
+        tCompleto.setFechaDesde(LocalDate.now());
+        tCompleto.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tCompleto);
+
+        Producto pBañoAntiparasito = new Producto();
+        pBañoAntiparasito.setNombre("Baño antiparásito");
+        pBañoAntiparasito.setDescripcion("Adiós a pulgas y parásitos.");
+        pBañoAntiparasito.setCategoria(cPeluqueria);
+        productoRepository.save(pBañoAntiparasito);
+
+        Tarifa tBañoAntiparasito = new Tarifa();
+        tBañoAntiparasito.setProducto(pBañoAntiparasito);
+        tBañoAntiparasito.setCantidad(1);
+        tBañoAntiparasito.setPrecioUnitario(10.00);
+        tBañoAntiparasito.setFechaDesde(LocalDate.now());
+        tBañoAntiparasito.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tBañoAntiparasito);
+
+        Producto pChampuColor = new Producto();
+        pChampuColor.setNombre("Champú potenciador de color");
+        pChampuColor.setDescripcion("Realza su color natural.");
+        pChampuColor.setCategoria(cPeluqueria);
+        productoRepository.save(pChampuColor);
+
+        Tarifa tChampuColor = new Tarifa();
+        tChampuColor.setProducto(pChampuColor);
+        tChampuColor.setCantidad(1);
+        tChampuColor.setPrecioUnitario(10.00);
+        tChampuColor.setFechaDesde(LocalDate.now());
+        tChampuColor.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tChampuColor);
+
+        Producto pBañoMedico = new Producto();
+        pBañoMedico.setNombre("Baño medicado o spa para pieles sensibles");
+        pBañoMedico.setDescripcion("Cuidado especial para piel delicada.");
+        pBañoMedico.setCategoria(cPeluqueria);
+        productoRepository.save(pBañoMedico);
+
+        Tarifa tBañoMedico = new Tarifa();
+        tBañoMedico.setProducto(pBañoMedico);
+        tBañoMedico.setCantidad(1);
+        tBañoMedico.setPrecioUnitario(15.00);
+        tBañoMedico.setFechaDesde(LocalDate.now());
+        tBañoMedico.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tBañoMedico);
+
+        Producto pNudos = new Producto();
+        pNudos.setNombre("Por nudos");
+        pNudos.setDescripcion("Eliminación de enredos difíciles.");
+        pNudos.setCategoria(cPeluqueria);
+        productoRepository.save(pNudos);
+
+        Tarifa tNudos = new Tarifa();
+        tNudos.setProducto(pNudos);
+        tNudos.setCantidad(1);
+        tNudos.setPrecioUnitario(7.00);
+        tNudos.setFechaDesde(LocalDate.now());
+        tNudos.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tNudos);
+
+        Producto pDeslanado = new Producto();
+        pDeslanado.setNombre("Deslanado");
+        pDeslanado.setDescripcion("Elimina el exceso de pelo muerto.");
+        pDeslanado.setCategoria(cPeluqueria);
+        productoRepository.save(pDeslanado);
+
+        Tarifa tDeslanado = new Tarifa();
+        tDeslanado.setProducto(pDeslanado);
+        tDeslanado.setCantidad(1);
+        tDeslanado.setPrecioUnitario(7.00);
+        tDeslanado.setFechaDesde(LocalDate.now());
+        tDeslanado.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tDeslanado);
+
+        Producto pRetoqueExtra = new Producto();
+        pRetoqueExtra.setNombre("Retoque extra en patas y cara");
+        pRetoqueExtra.setDescripcion("Acabado perfecto y pulido.");
+        pRetoqueExtra.setCategoria(cPeluqueria);
+        productoRepository.save(pRetoqueExtra);
+
+        Tarifa tRetoqueExtra = new Tarifa();
+        tRetoqueExtra.setProducto(pRetoqueExtra);
+        tRetoqueExtra.setCantidad(1);
+        tRetoqueExtra.setPrecioUnitario(5.00);
+        tRetoqueExtra.setFechaDesde(LocalDate.now());
+        tRetoqueExtra.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tRetoqueExtra);
+
+        Producto pAntiolor = new Producto();
+        pAntiolor.setNombre("Tratamiento antiolor con aceites esenciales");
+        pAntiolor.setDescripcion("Aroma fresco y natural.");
+        pAntiolor.setCategoria(cPeluqueria);
+        productoRepository.save(pAntiolor);
+
+        Tarifa tAntiolor = new Tarifa();
+        tAntiolor.setProducto(pAntiolor);
+        tAntiolor.setCantidad(1);
+        tAntiolor.setPrecioUnitario(10.00);
+        tAntiolor.setFechaDesde(LocalDate.now());
+        tAntiolor.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tAntiolor);
+
+        Producto pHidratacion = new Producto();
+        pHidratacion.setNombre("Hidratación de almohadillas");
+        pHidratacion.setDescripcion("Suaves y protegidas.");
+        pHidratacion.setCategoria(cPeluqueria);
+        productoRepository.save(pHidratacion);
+
+        Tarifa tHidratacion = new Tarifa();
+        tHidratacion.setProducto(pHidratacion);
+        tHidratacion.setCantidad(1);
+        tHidratacion.setPrecioUnitario(7.00);
+        tHidratacion.setFechaDesde(LocalDate.now());
+        tHidratacion.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tHidratacion);
+
+        Producto pPerfumeEspecial = new Producto();
+        pPerfumeEspecial.setNombre("Aplicación de perfume especial");
+        pPerfumeEspecial.setDescripcion("Toque final perfumado.");
+        pPerfumeEspecial.setCategoria(cPeluqueria);
+        productoRepository.save(pPerfumeEspecial);
+
+        Tarifa tPerfumeEspecial = new Tarifa();
+        tPerfumeEspecial.setProducto(pPerfumeEspecial);
+        tPerfumeEspecial.setCantidad(1);
+        tPerfumeEspecial.setPrecioUnitario(5.00);
+        tPerfumeEspecial.setFechaDesde(LocalDate.now());
+        tPerfumeEspecial.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tPerfumeEspecial);
+
+        Producto pJuguete = new Producto();
+        pJuguete.setNombre("Juguete < 5kg");
+        pJuguete.setDescripcion("Servicio para perros mini.");
+        pJuguete.setCategoria(cPeluqueria);
+        productoRepository.save(pJuguete);
+
+        Tarifa tJuguete = new Tarifa();
+        tJuguete.setProducto(pJuguete);
+        tJuguete.setCantidad(1);
+        tJuguete.setPrecioUnitario(0.00);
+        tJuguete.setFechaDesde(LocalDate.now());
+        tJuguete.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tJuguete);
+
+        Producto pPequeño = new Producto();
+        pPequeño.setNombre("Pequeño 6 - 10kg");
+        pPequeño.setDescripcion("Ideal para razas pequeñas.");
+        pPequeño.setCategoria(cPeluqueria);
+        productoRepository.save(pPequeño);
+
+        Tarifa tPequeño = new Tarifa();
+        tPequeño.setProducto(pPequeño);
+        tPequeño.setCantidad(1);
+        tPequeño.setPrecioUnitario(6.00);
+        tPequeño.setFechaDesde(LocalDate.now());
+        tPequeño.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tPequeño);
+
+        Producto pMediano = new Producto();
+        pMediano.setNombre("Mediano 11 - 25kg");
+        pMediano.setDescripcion("Para tamaños medios.");
+        pMediano.setCategoria(cPeluqueria);
+        productoRepository.save(pMediano);
+
+        Tarifa tMediano = new Tarifa();
+        tMediano.setProducto(pMediano);
+        tMediano.setCantidad(1);
+        tMediano.setPrecioUnitario(9.00);
+        tMediano.setFechaDesde(LocalDate.now());
+        tMediano.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tMediano);
+
+        Producto pGrande = new Producto();
+        pGrande.setNombre("Grande 26 - 35kg");
+        pGrande.setDescripcion("Perfecto para razas grandes.");
+        pGrande.setCategoria(cPeluqueria);
+        productoRepository.save(pGrande);
+
+        Tarifa tGrande = new Tarifa();
+        tGrande.setProducto(pGrande);
+        tGrande.setCantidad(1);
+        tGrande.setPrecioUnitario(12.00);
+        tGrande.setFechaDesde(LocalDate.now());
+        tGrande.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tGrande);
+
+        Producto pGigante = new Producto();
+        pGigante.setNombre("Gigante > 35kg");
+        pGigante.setDescripcion("Cuidado XXL para gigantes.");
+        pGigante.setCategoria(cPeluqueria);
+        productoRepository.save(pGigante);
+
+        Tarifa tGigante = new Tarifa();
+        tGigante.setProducto(pGigante);
+        tGigante.setCantidad(1);
+        tGigante.setPrecioUnitario(15.00);
+        tGigante.setFechaDesde(LocalDate.now());
+        tGigante.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tGigante);
+
+        // Fin productos peluqueria
+        // Productos Adiestramiento
+        Categoria cAdiestramiento = new Categoria();
+        cAdiestramiento.setNombre("Adiestramiento");
+        categoriaRepository.save(cAdiestramiento);
+
+        Producto pCursoCachorros = new Producto();
+        pCursoCachorros.setNombre("Educación y preadiestramiento para cachorros");
+        pCursoCachorros.setDescripcion("Bases para un buen comportamiento.");
+        pCursoCachorros.setCategoria(cAdiestramiento);
+        productoRepository.save(pCursoCachorros);
+
+        Tarifa tCursoCachorros = new Tarifa();
+        tCursoCachorros.setProducto(pCursoCachorros);
+        tCursoCachorros.setCantidad(1);
+        tCursoCachorros.setPrecioUnitario(200.00);
+        tCursoCachorros.setFechaDesde(LocalDate.now());
+        tCursoCachorros.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tCursoCachorros);
+
+        Producto pCursoAdultos = new Producto();
+        pCursoAdultos.setNombre("Educación y adiestramiento canino (adultos)");
+        pCursoAdultos.setDescripcion("Mejora su conducta diaria.");
+        pCursoAdultos.setCategoria(cAdiestramiento);
+        productoRepository.save(pCursoAdultos);
+
+        Tarifa tCursoAdultos = new Tarifa();
+        tCursoAdultos.setProducto(pCursoAdultos);
+        tCursoAdultos.setCantidad(1);
+        tCursoAdultos.setPrecioUnitario(200.00);
+        tCursoAdultos.setFechaDesde(LocalDate.now());
+        tCursoAdultos.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tCursoAdultos);
+
+        Producto pAdiestramientoDomicilio = new Producto();
+        pAdiestramientoDomicilio.setNombre("Educación y adiestramiento a domicilio");
+        pAdiestramientoDomicilio.setDescripcion("Entrenamiento en su entorno.");
+        pAdiestramientoDomicilio.setCategoria(cAdiestramiento);
+        productoRepository.save(pAdiestramientoDomicilio);
+
+        Tarifa tAdiestramientoDomicilio = new Tarifa();
+        tAdiestramientoDomicilio.setProducto(pAdiestramientoDomicilio);
+        tAdiestramientoDomicilio.setCantidad(1);
+        tAdiestramientoDomicilio.setPrecioUnitario(30.00);
+        tAdiestramientoDomicilio.setFechaDesde(LocalDate.now());
+        tAdiestramientoDomicilio.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tAdiestramientoDomicilio);
+
+        Producto pAdiestramientoCentro = new Producto();
+        pAdiestramientoCentro.setNombre("Educación y adiestramiento en el centro");
+        pAdiestramientoCentro.setDescripcion("Clases personalizadas con profesionales.");
+        pAdiestramientoCentro.setCategoria(cAdiestramiento);
+        productoRepository.save(pAdiestramientoCentro);
+
+        Tarifa tAdiestramientoCentro = new Tarifa();
+        tAdiestramientoCentro.setProducto(pAdiestramientoCentro);
+        tAdiestramientoCentro.setCantidad(1);
+        tAdiestramientoCentro.setPrecioUnitario(20.00);
+        tAdiestramientoCentro.setFechaDesde(LocalDate.now());
+        tAdiestramientoCentro.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tAdiestramientoCentro);
+
+        // Fin productos Adiestramiento
+        // Productos Veterinario
+        Categoria cVeterinario = new Categoria();
+        cVeterinario.setNombre("Veterinario");
+        categoriaRepository.save(cVeterinario);
+        // --- PRODUCTOS Y TARIFAS ---
+
+        // 1. Consulta Veterinaria
+        Producto pConsultaVeterinaria = new Producto();
+        pConsultaVeterinaria.setNombre("Consulta Veterinaria: el primer paso hacia la solución");
+        pConsultaVeterinaria.setDescripcion("Primera visita para diagnóstico.");
+        pConsultaVeterinaria.setCategoria(cVeterinario);
+        productoRepository.save(pConsultaVeterinaria);
+
+        Tarifa tConsultaVeterinaria = new Tarifa();
+        tConsultaVeterinaria.setProducto(pConsultaVeterinaria);
+        tConsultaVeterinaria.setCantidad(1);
+        tConsultaVeterinaria.setPrecioUnitario(25.00);
+        tConsultaVeterinaria.setFechaDesde(LocalDate.now());
+        tConsultaVeterinaria.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tConsultaVeterinaria);
+
+        // 2. Chequeo Preventivo
+        Producto pChequeoPreventivo = new Producto();
+        pChequeoPreventivo.setNombre("Chequeo Preventivo: mejor prevenir que curar");
+        pChequeoPreventivo.setDescripcion("Control rutinario de salud.");
+        pChequeoPreventivo.setCategoria(cVeterinario);
+        productoRepository.save(pChequeoPreventivo);
+
+        Tarifa tChequeoPreventivo = new Tarifa();
+        tChequeoPreventivo.setProducto(pChequeoPreventivo);
+        tChequeoPreventivo.setCantidad(1);
+        tChequeoPreventivo.setPrecioUnitario(35.00);
+        tChequeoPreventivo.setFechaDesde(LocalDate.now());
+        tChequeoPreventivo.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tChequeoPreventivo);
+
+        // 3. Vacunación
+        Producto pVacunacion = new Producto();
+        pVacunacion.setNombre("Vacunación: su escudo contra enfermedades");
+        pVacunacion.setDescripcion("Protegido contra enfermedades.");
+        pVacunacion.setCategoria(cVeterinario);
+        productoRepository.save(pVacunacion);
+
+        Tarifa tVacunacion = new Tarifa();
+        tVacunacion.setProducto(pVacunacion);
+        tVacunacion.setCantidad(1);
+        tVacunacion.setPrecioUnitario(30.00);
+        tVacunacion.setFechaDesde(LocalDate.now());
+        tVacunacion.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tVacunacion);
+
+        // 4. Desparasitación
+        Producto pDesparasitacion = new Producto();
+        pDesparasitacion.setNombre("Desparasitación: libre de bichitos molestos");
+        pDesparasitacion.setDescripcion("Adiós a los parásitos internos.");
+        pDesparasitacion.setCategoria(cVeterinario);
+        productoRepository.save(pDesparasitacion);
+
+        Tarifa tDesparasitacion = new Tarifa();
+        tDesparasitacion.setProducto(pDesparasitacion);
+        tDesparasitacion.setCantidad(1);
+        tDesparasitacion.setPrecioUnitario(20.00);
+        tDesparasitacion.setFechaDesde(LocalDate.now());
+        tDesparasitacion.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tDesparasitacion);
+
+        // 5. Analítica y Test
+        Producto pAnalitica = new Producto();
+        pAnalitica.setNombre("Analítica y Test: saber es poder (y salud)");
+        pAnalitica.setDescripcion("Revisión completa y precisa.");
+        pAnalitica.setCategoria(cVeterinario);
+        productoRepository.save(pAnalitica);
+
+        Tarifa tAnalitica = new Tarifa();
+        tAnalitica.setProducto(pAnalitica);
+        tAnalitica.setCantidad(1);
+        tAnalitica.setPrecioUnitario(45.00);
+        tAnalitica.setFechaDesde(LocalDate.now());
+        tAnalitica.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tAnalitica);
+
+        // 6. Traumatología
+        Producto pTraumatologia = new Producto();
+        pTraumatologia.setNombre("Traumatología: cuidados para huesos y articulaciones");
+        pTraumatologia.setDescripcion("Cuidado ortopédico experto.");
+        pTraumatologia.setCategoria(cVeterinario);
+        productoRepository.save(pTraumatologia);
+
+        Tarifa tTraumatologia = new Tarifa();
+        tTraumatologia.setProducto(pTraumatologia);
+        tTraumatologia.setCantidad(1);
+        tTraumatologia.setPrecioUnitario(50.00);
+        tTraumatologia.setFechaDesde(LocalDate.now());
+        tTraumatologia.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tTraumatologia);
+
+        // 7. Oftalmología
+        Producto pOftalmologia = new Producto();
+        pOftalmologia.setNombre("Oftalmología: ver bien es vivir mejor");
+        pOftalmologia.setDescripcion("Atención para sus ojitos.");
+        pOftalmologia.setCategoria(cVeterinario);
+        productoRepository.save(pOftalmologia);
+
+        Tarifa tOftalmologia = new Tarifa();
+        tOftalmologia.setProducto(pOftalmologia);
+        tOftalmologia.setCantidad(1);
+        tOftalmologia.setPrecioUnitario(50.00);
+        tOftalmologia.setFechaDesde(LocalDate.now());
+        tOftalmologia.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tOftalmologia);
+
+        // 8. Radiografía
+        Producto pRadiografia = new Producto();
+        pRadiografia.setNombre("Radiografía: imágenes que cuentan la verdad");
+        pRadiografia.setDescripcion("Diagnóstico por imagen fiable.");
+        pRadiografia.setCategoria(cVeterinario);
+        productoRepository.save(pRadiografia);
+
+        Tarifa tRadiografia = new Tarifa();
+        tRadiografia.setProducto(pRadiografia);
+        tRadiografia.setCantidad(1);
+        tRadiografia.setPrecioUnitario(40.00);
+        tRadiografia.setFechaDesde(LocalDate.now());
+        tRadiografia.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tRadiografia);
+
+        // 9. Ecografía
+        Producto pEcografia = new Producto();
+        pEcografia.setNombre("Ecografía: exploración con alta precisión");
+        pEcografia.setDescripcion("Estudio interno sin dolor.");
+        pEcografia.setCategoria(cVeterinario);
+        productoRepository.save(pEcografia);
+
+        Tarifa tEcografia = new Tarifa();
+        tEcografia.setProducto(pEcografia);
+        tEcografia.setCantidad(1);
+        tEcografia.setPrecioUnitario(45.00);
+        tEcografia.setFechaDesde(LocalDate.now());
+        tEcografia.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tEcografia);
+
+        // 10. Cirugía veterinaria
+        Producto pCirugia = new Producto();
+        pCirugia.setNombre("Cirugía veterinaria: en manos expertas");
+        pCirugia.setDescripcion("Intervención con seguridad.");
+        pCirugia.setCategoria(cVeterinario);
+        productoRepository.save(pCirugia);
+
+        Tarifa tCirugia = new Tarifa();
+        tCirugia.setProducto(pCirugia);
+        tCirugia.setCantidad(1);
+        tCirugia.setPrecioUnitario(100.00);
+        tCirugia.setFechaDesde(LocalDate.now());
+        tCirugia.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tCirugia);
+
+        // 11. Limpieza bucodental
+        Producto pLimpiezaBucodental = new Producto();
+        pLimpiezaBucodental.setNombre("Limpieza bucodental: sonrisa sana, vida larga");
+        pLimpiezaBucodental.setDescripcion("Higiene oral profesional.");
+        pLimpiezaBucodental.setCategoria(cVeterinario);
+        productoRepository.save(pLimpiezaBucodental);
+
+        Tarifa tLimpiezaBucodental = new Tarifa();
+        tLimpiezaBucodental.setProducto(pLimpiezaBucodental);
+        tLimpiezaBucodental.setCantidad(1);
+        tLimpiezaBucodental.setPrecioUnitario(60.00);
+        tLimpiezaBucodental.setFechaDesde(LocalDate.now());
+        tLimpiezaBucodental.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tLimpiezaBucodental);
+
+        // 12. Hospitalización
+        Producto pHospitalizacion = new Producto();
+        pHospitalizacion.setNombre("Hospitalización: atención las 24 horas");
+        pHospitalizacion.setDescripcion("Cuidado veterinario continuo.");
+        pHospitalizacion.setCategoria(cVeterinario);
+        productoRepository.save(pHospitalizacion);
+
+        Tarifa tHospitalizacion = new Tarifa();
+        tHospitalizacion.setProducto(pHospitalizacion);
+        tHospitalizacion.setCantidad(1);
+        tHospitalizacion.setPrecioUnitario(45.00);
+        tHospitalizacion.setFechaDesde(LocalDate.now());
+        tHospitalizacion.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tHospitalizacion);
+
+        // 13. Visita a domicilio
+        Producto pVisitaDomicilio = new Producto();
+        pVisitaDomicilio.setNombre("Visita a domicilio: el veterinario va a ti");
+        pVisitaDomicilio.setDescripcion("Atención sin salir de casa.");
+        pVisitaDomicilio.setCategoria(cVeterinario);
+        productoRepository.save(pVisitaDomicilio);
+
+        Tarifa tVisitaDomicilio = new Tarifa();
+        tVisitaDomicilio.setProducto(pVisitaDomicilio);
+        tVisitaDomicilio.setCantidad(1);
+        tVisitaDomicilio.setPrecioUnitario(30.00);
+        tVisitaDomicilio.setFechaDesde(LocalDate.now());
+        tVisitaDomicilio.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tVisitaDomicilio);
+
+        // 14. Control de Leishmania
+        Producto pLeishmania = new Producto();
+        pLeishmania.setNombre("Control de Leishmania: prevención todo el año");
+        pLeishmania.setDescripcion("Prevención y control anual.");
+        pLeishmania.setCategoria(cVeterinario);
+        productoRepository.save(pLeishmania);
+
+        Tarifa tLeishmania = new Tarifa();
+        tLeishmania.setProducto(pLeishmania);
+        tLeishmania.setCantidad(1);
+        tLeishmania.setPrecioUnitario(35.00);
+        tLeishmania.setFechaDesde(LocalDate.now());
+        tLeishmania.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tLeishmania);
+
+        // 15. Control de obesidad
+        Producto pObesidad = new Producto();
+        pObesidad.setNombre("Control de obesidad: cuerpo sano, vida feliz");
+        pObesidad.setDescripcion("Peso ideal y saludable.");
+        pObesidad.setCategoria(cVeterinario);
+        productoRepository.save(pObesidad);
+
+        Tarifa tObesidad = new Tarifa();
+        tObesidad.setProducto(pObesidad);
+        tObesidad.setCantidad(1);
+        tObesidad.setPrecioUnitario(30.00);
+        tObesidad.setFechaDesde(LocalDate.now());
+        tObesidad.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tObesidad);
+
+        // 16. Plan de salud para perros
+        Producto pPlanPerros = new Producto();
+        pPlanPerros.setNombre("Plan de salud para perros: cuídalo todo el año");
+        pPlanPerros.setDescripcion("Bienestar todo el año.");
+        pPlanPerros.setCategoria(cVeterinario);
+        productoRepository.save(pPlanPerros);
+
+        Tarifa tPlanPerros = new Tarifa();
+        tPlanPerros.setProducto(pPlanPerros);
+        tPlanPerros.setCantidad(1);
+        tPlanPerros.setPrecioUnitario(150.00);
+        tPlanPerros.setFechaDesde(LocalDate.now());
+        tPlanPerros.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tPlanPerros);
+
+        // 17. Plan de salud para gatos
+        Producto pPlanGatos = new Producto();
+        pPlanGatos.setNombre("Plan de salud para gatos: bienestar sin estrés");
+        pPlanGatos.setDescripcion("Cuidado sin preocupaciones.");
+        pPlanGatos.setCategoria(cVeterinario);
+        productoRepository.save(pPlanGatos);
+
+        Tarifa tPlanGatos = new Tarifa();
+        tPlanGatos.setProducto(pPlanGatos);
+        tPlanGatos.setCantidad(1);
+        tPlanGatos.setPrecioUnitario(140.00);
+        tPlanGatos.setFechaDesde(LocalDate.now());
+        tPlanGatos.setFechaHasta(LocalDate.of(2026, 1, 1));
+        tarifaRepository.save(tPlanGatos);
+
+        // Fin productos Veterinario
 
         Talla t1 = new Talla();
         t1.setStock(5);
@@ -238,34 +1143,6 @@ public DesarrolloDataLoader(AnimalRepository animalRepository,
         t6.setTallaje("unica");
         t6.setProducto(p3);
         tallaRepository.save(t6);
-
-        // Crear Usuario
-        Usuario usuario = new Usuario();
-        usuario.setNickname("juan123");
-        usuario.setPassword(passwordEncoder.encode("1234"));
-        usuario.setEmail("juan@example.com");
-        usuario.setFechaRegistro(LocalDate.now());
-
-        // Crear PerfilDatos
-        PerfilDatos perfil = new PerfilDatos();
-        perfil.setNombre("Juan");
-        perfil.setApellidos("Pérez Gómez");
-        perfil.setEdad(30);
-        perfil.setDni("12345678A");
-        perfil.setDireccion("Calle Mayor 123");
-        perfil.setPais("España");
-        perfil.setCiudad("Madrid");
-        perfil.setCp("28001");
-        perfil.setTelefono1("600123456");
-        perfil.setTelefono2("601234567");
-        perfil.setTelefono3(null); // opcional
-
-        // Establecer relación bidireccional
-        perfil.setUsuario(usuario);
-        usuario.setPerfilDatos(perfil);
-
-        // Guardar usuario (gracias a CascadeType.ALL también guarda perfil)
-        usuarioRepository.save(usuario);
 
         Talla t7 = new Talla();
         t7.setStock(12);
@@ -327,8 +1204,31 @@ public DesarrolloDataLoader(AnimalRepository animalRepository,
         ta5.setFechaHasta(LocalDate.of(2026, 1, 1));
         tarifaRepository.save(ta5);
 
+        Especie especie1 = new Especie();
+        especie1.setNombre("Perro");
+        especieRepository.save(especie1);
+
+        Especie especie2 = new Especie();
+        especie2.setNombre("Gato");
+        especieRepository.save(especie2);
+
+        Raza e1 = new Raza();
+        e1.setNombre("Malinois");
+        e1.setEspecie(especie1);
+        razaRepository.save(e1);
+
+        Raza e3 = new Raza();
+        e3.setNombre("Dálmata");
+        e3.setEspecie(especie1);
+        razaRepository.save(e3);
+
+        Raza e2 = new Raza();
+        e2.setNombre("Esfinge");
+        e2.setEspecie(especie2);
+        razaRepository.save(e2);
+
         Animal a1 = new Animal();
-        a1.setNombre("Firulais");
+        a1.setNombre("Comodoro");
         a1.setChip("CHIP9999");
         a1.setPeso(20f);
         a1.setFechaNacimiento(LocalDate.of(2020, 6, 11));
@@ -343,7 +1243,9 @@ public DesarrolloDataLoader(AnimalRepository animalRepository,
         a1.setRutaImg1("/images/perro1Card.jpg");
         a1.setRutaImg2("/images/default-example.png");
         a1.setRutaImg3("/images/default-example.png");
+        a1.setRaza(e1);
         animalRepository.save(a1);
+
 
         Animal a2 = new Animal();
         a2.setNombre("Michi");
@@ -361,6 +1263,7 @@ public DesarrolloDataLoader(AnimalRepository animalRepository,
         a2.setRutaImg1("/images/perro1.png");
         a2.setRutaImg2("/images/default-example.png");
         a2.setRutaImg3("/images/default-example.png");
+        a2.setRaza(e2);
         animalRepository.save(a2);
 
         Animal a3 = new Animal();
@@ -379,6 +1282,7 @@ public DesarrolloDataLoader(AnimalRepository animalRepository,
         a3.setRutaImg1("/images/perro2.png");
         a3.setRutaImg2("/images/default-example.png");
         a3.setRutaImg3("/images/default-example.png");
+        a3.setRaza(e2);
         animalRepository.save(a3);
 
         Animal a4 = new Animal();
@@ -397,6 +1301,7 @@ public DesarrolloDataLoader(AnimalRepository animalRepository,
         a4.setRutaImg1("/images/perro3.png");
         a4.setRutaImg2("/images/default-example.png");
         a4.setRutaImg3("/images/default-example.png");
+        a4.setRaza(e3);
         animalRepository.save(a4);
 
         Animal a5 = new Animal();
@@ -415,6 +1320,7 @@ public DesarrolloDataLoader(AnimalRepository animalRepository,
         a5.setRutaImg1("/images/perro4.png");
         a5.setRutaImg2("/images/default-example.png");
         a5.setRutaImg3("/images/default-example.png");
+        a5.setRaza(e3);
         animalRepository.save(a5);
 
         Animal a6 = new Animal();
@@ -433,6 +1339,7 @@ public DesarrolloDataLoader(AnimalRepository animalRepository,
         a6.setRutaImg1("images/perro5.png");
         a6.setRutaImg2("/images/default-example.png");
         a6.setRutaImg3("/images/default-example.png");
+        a6.setRaza(e3);
         animalRepository.save(a6);
 
         Animal a7 = new Animal();
@@ -451,6 +1358,7 @@ public DesarrolloDataLoader(AnimalRepository animalRepository,
         a7.setRutaImg1("/images/perro6.png");
         a7.setRutaImg2("/images/default-example.png");
         a7.setRutaImg3("/images/default-example.png");
+        a7.setRaza(e1);
         animalRepository.save(a7);
 
         Apadrinar ap1 = new Apadrinar();
@@ -488,6 +1396,26 @@ public DesarrolloDataLoader(AnimalRepository animalRepository,
         ap4.setAnimal(a4);
         ap4.setUsuario(u2);
         apadrinarRepository.save(ap4);
+
+        Adopcion adopcion = new Adopcion();
+
+        adopcion.setOcupacion("Administrativa en una clínica dental");
+        adopcion.setOtrosAnimales("Sí, tengo una gata de 4 años esterilizada");
+        adopcion.setDeAcuerdo("Sí, estoy de acuerdo con las condiciones de adopción establecidas");
+        adopcion.setHijos("No tengo hijos actualmente");
+        adopcion.setCaracteristicaMascota("Cariñosa, tranquila y que se lleve bien con otros animales");
+        adopcion.setExperienciaPrevia("Sí, he tenido perros y gatos anteriormente. Me considero responsable y comprometida");
+        adopcion.setTiempoSolo("Máximo 4 horas al día, ya que trabajo medio tiempo y el resto desde casa");
+        adopcion.setDondeVivira("Vivirá dentro de casa, con acceso a un patio cerrado y seguro");
+        adopcion.setVeterinario("Clínica Veterinaria San Jorge, con la Dra. Laura Martínez");
+        adopcion.setVisitasSeguimiento("Sí, estoy completamente de acuerdo con que se realicen visitas de seguimiento");
+        adopcion.setFirma("Laura Gómez Pérez");
+        adopcion.setFechaFormulario(LocalDate.now());
+        adopcion.setAceptado(true);
+
+        adopcion.setUsuario(usuario); // Instancia existente de Usuario
+        adopcion.setAnimal(a1);
+        adopcionRepository.save(adopcion);
     }
 }
 
