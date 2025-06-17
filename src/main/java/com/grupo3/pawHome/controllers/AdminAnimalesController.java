@@ -26,7 +26,7 @@ public class AdminAnimalesController {
         this.razaRepository = razaRepository;
     }
 
-    // Listar animales y mostrar formulario (crear o editar)
+    // Listar animales
     @GetMapping
     public String listarAnimales(Model model) {
         List<Animal> animales = animalRepository.findAll();
@@ -43,7 +43,7 @@ public class AdminAnimalesController {
         return "redirect:/admin/animales";
     }
 
-    // Editar animal (rellena el formulario con los datos del animal)
+    // Editar animal
     @GetMapping("/editar/{id}")
     public String editarAnimal(@PathVariable Integer id, Model model) {
         Animal animal = animalRepository.findById(id)
@@ -54,6 +54,7 @@ public class AdminAnimalesController {
         return "editarAdminAnimales";
     }
 
+    // Actualizar animal
     @PostMapping("/actualizar/{id}")
     public String actualizarAnimal(@ModelAttribute Animal animal, @PathVariable Integer id) {
         Raza raza = razaRepository.findById(animal.getRaza().getId())

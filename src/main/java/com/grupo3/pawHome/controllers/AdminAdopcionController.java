@@ -22,6 +22,7 @@ public class AdminAdopcionController {
         this.adopcionService = adopcionService;
     }
 
+    // Listar adopciones
     @GetMapping
     public String listarAdopciones(Model model) {
         List<Adopcion> adopciones = adopcionService.findAll();
@@ -30,13 +31,14 @@ public class AdminAdopcionController {
         return "adminAdopciones";
     }
 
-
+    // Aceptar adopción
     @PostMapping("/aceptar/{id}")
     public String aceptarAdopcion(@PathVariable Integer id) {
         adopcionService.cambiarEstadoAdopcion(id, true);
         return "redirect:/admin/adopciones";
     }
 
+    // Denegar adopción
     @PostMapping("/denegar/{id}")
     public String denegarAdopcion(@PathVariable Integer id) {
         adopcionService.cambiarEstadoAdopcion(id, false);

@@ -38,7 +38,11 @@ public DesarrolloDataLoader(AnimalRepository animalRepository,
                             TallaRepository tallaRepository,
                             CategoriaRepository categoriaRepository,
                             TarifaRepository tarifaRepository,
-                            PasswordEncoder passwordEncoder, RolRepository rolRepository, EspecieRepository especieRepository, RazaRepository razaRepository, AdopcionRepository adopcionRepository) {
+                            PasswordEncoder passwordEncoder,
+                            RolRepository rolRepository,
+                            EspecieRepository especieRepository,
+                            RazaRepository razaRepository,
+                            AdopcionRepository adopcionRepository) {
 
     this.animalRepository = animalRepository;
     this.apadrinarRepository = apadrinarRepository;

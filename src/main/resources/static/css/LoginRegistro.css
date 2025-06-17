@@ -33,7 +33,7 @@ body {
     left: 50%;
     transform: translateX(-50%);
     animation: floatingLogo 3s ease-in-out infinite, fadeIn 1.5s ease forwards;
-    opacity: 0; /* para que el fade-in funcione */
+    opacity: 0;
     z-index: 100;
 }
 
@@ -88,7 +88,7 @@ body {
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
     overflow: hidden;
 
-    /* Animación de aparición + flotación */
+    /* Animación de aparición y flotación */
     animation: fadeInFloating 3s ease-in-out forwards, floating 3s ease-in-out infinite;
 }
 
@@ -362,7 +362,7 @@ form {
     }
 }
 
-/* Animación fade-in + floating para container */
+/* Animación fade-in y floating para container */
 @keyframes fadeInFloating {
     0% {
         opacity: 0;
@@ -378,7 +378,6 @@ form {
     }
 }
 
-/* Movimiento de flotación infinito */
 @keyframes floating {
     0%, 100% {
         transform: translateY(0);
