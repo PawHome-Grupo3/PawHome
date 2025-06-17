@@ -31,7 +31,6 @@ body {
     transform: translateY(60px);
     flex: 1 1 100%;
 
-    /* Fade-in separado */
     animation-name: floatIn, levitar;
     animation-duration: 1.2s, 3s;
     animation-timing-function: ease-out, ease-in-out;
@@ -41,7 +40,6 @@ body {
     animation-play-state: running, running;
 }
 
-/* Al hacer hover, solo se pausa levitar */
 .mainContainer:hover .card-box {
     animation-play-state: running, paused;
 }
@@ -118,7 +116,6 @@ body {
     border: none;
 }
 
-/* Animaciones */
 @keyframes floatIn {
     from {
         opacity: 0;

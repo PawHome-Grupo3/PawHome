@@ -61,7 +61,8 @@
             </tr>
             </tbody>
         </table>
-        <!-- Modal único -->
+
+        <!-- Modal -->
         <div class="modal fade" id="perfilModal" tabindex="-1" aria-labelledby="perfilModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-scrollable">
                 <div class="modal-content">
@@ -86,11 +87,12 @@
             </div>
         </div>
     </div>
+
+
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const perfilModal = document.getElementById('perfilModal');
 
-            // Elementos dentro del modal que vas a rellenar
             const nombre = document.getElementById('nombre');
             const apellidos = document.getElementById('apellidos');
             const modalEdad = document.getElementById('modalEdad');
@@ -104,7 +106,7 @@
             const telefono3 = document.getElementById('telefono3');
 
             perfilModal.addEventListener('show.bs.modal', function (event) {
-                // El botón que disparó el modal
+
                 const button = event.relatedTarget;
 
                 nombre.textContent = button.getAttribute('data-nombre');
@@ -120,8 +122,8 @@
                 telefono3.textContent = button.getAttribute('data-telefono3');
             });
         });
-
     </script>
+
 </section>
 </body>
 </html>

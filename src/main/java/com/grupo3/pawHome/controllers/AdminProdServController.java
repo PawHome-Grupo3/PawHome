@@ -26,7 +26,7 @@ public class AdminProdServController {
         this.categoriaRepository = categoriaRepository;
     }
 
-    // Listar productos y servicios y mostrar formulario (crear o editar)
+    // Listar productos
     @GetMapping
     public String listarProdServ(Model model) {
         List<Producto> productos = productoRepository.findAll();
@@ -44,7 +44,7 @@ public class AdminProdServController {
     }
 
 
-    // Editar productos y servicios (rellena el formulario con los datos del producto o de la talla)
+    // Editar productos y servicios
     @GetMapping("/editar/{id}")
     public String editarProducto(@PathVariable Integer id, Model model) {
         Producto producto = productoRepository.findById(id)
@@ -54,6 +54,7 @@ public class AdminProdServController {
         return "editarAdminProdServ";
     }
 
+    // Actualizar producto o servicio
     @PostMapping("/actualizar/{id}")
     public String actualizarProducto(@ModelAttribute("producto") Producto producto) {
         Categoria categoria = categoriaRepository.findById(producto.getCategoria().getId())
