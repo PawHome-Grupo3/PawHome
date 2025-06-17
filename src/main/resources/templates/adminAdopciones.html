@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layoutAdmin.html}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gestión de Usuarios</title>
+</head>
+<body>
+
+<section layout:fragment="content">
+
+    <div class="container">
+        <h1>Gestión de solicitudes de adopción</h1>
+        <table class="table table-striped table-bordered">
+            <thead class="table-success">
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Animal</th>
+                <th>Fecha</th>
+                <th>Aceptado</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="adopcion : ${adopciones}">
+                <td th:text="${adopcion.id}"></td>
+                <td th:text="${adopcion.usuario?.nickname}"></td>
+                <td th:text="${adopcion.animal?.nombre}"></td>
+                <td th:text="${#temporals.format(adopcion.fechaFormulario, 'dd-MM-yyyy')}"></td>
+                <td>
+                    <span th:if="${adopcion.aceptado == null}" class="badge bg-warning text-dark">Pendiente</span>
+                    <span th:if="${adopcion.aceptado == true}" class="badge bg-success">Aceptada</span>
+                    <span th:if="${adopcion.aceptado == false}" class="badge bg-danger">Denegada</span>
+                </td>
+                <td>
+                    <form th:action="@{/admin/adopciones/aceptar/{id}(id=${adopcion.id})}" method="post" style="display:inline;">
+                        <button class="btn btn-success btn-sm" type="submit">Aceptar</button>
+                    </form>
+                    <form th:action="@{/admin/adopciones/denegar/{id}(id=${adopcion.id})}" method="post" style="display:inline;">
+                        <button class="btn btn-danger btn-sm" type="submit">Denegar</button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+</body>
+</html>

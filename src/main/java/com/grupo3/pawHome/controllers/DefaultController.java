@@ -101,6 +101,11 @@ public class DefaultController {
     public String mostrarNosotros() {
         return "nosotros";
     }
+
+    @GetMapping("/admin")
+    public String mostrarAdminDashboard() {
+        return "adminDashboard";
+    }
 }
 
 

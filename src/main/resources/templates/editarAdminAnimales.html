@@ -42,8 +42,13 @@
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-4">
-                            <label for="edad" class="form-label">Edad</label>
-                            <input type="number" th:field="*{fechaNacimiento}" class="form-control" id="edad" min="0" required>
+                            <label for="fechaNacimiento" class="form-label">Fecha nacimiento</label>
+                            <input type="date"
+                                   class="form-control"
+                                   id="fechaNacimiento"
+                                   name="fechaNacimiento"
+                                   th:value="${animal.fechaNacimiento != null ? #temporals.format(animal.fechaNacimiento, 'yyyy-MM-dd') : ''}"
+                                   required />
                         </div>
                         <div class="col-md-4">
                             <label for="caracterSocial" class="form-label">Carácter social</label>
@@ -79,8 +84,12 @@
                         </div>
                         <div class="col-md-4">
                             <label for="fechaLlegada" class="form-label">Fecha llegada</label>
-                            <input type="date" th:field="*{fechaLlegada}" class="form-control" id="fechaLlegada"
-                                   required>
+                            <input type="date"
+                                   class="form-control"
+                                   id="fechaLlegada"
+                                   name="fechaLlegada"
+                                   th:value="${animal.fechaLlegada != null ? #temporals.format(animal.fechaLlegada, 'yyyy-MM-dd') : ''}"
+                                   required />
                         </div>
                     </div>
                     <div class="mb-3 form-check">

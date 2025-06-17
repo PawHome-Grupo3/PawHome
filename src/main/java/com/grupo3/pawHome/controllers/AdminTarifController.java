@@ -1,21 +1,34 @@
 package com.grupo3.pawHome.controllers;
 
+import com.grupo3.pawHome.entities.Producto;
 import com.grupo3.pawHome.entities.Tarifa;
+import com.grupo3.pawHome.repositories.ProductoRepository;
 import com.grupo3.pawHome.repositories.TarifaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Comparator;
+import java.util.List;
+
 @Controller
 @RequestMapping("/admin/tarifas")
 public class AdminTarifController {
-    @Autowired
-    private TarifaRepository tarifaRepository;
+
+    private final TarifaRepository tarifaRepository;
+    private final ProductoRepository productoRepository;
+
+    public AdminTarifController(TarifaRepository tarifaRepository, ProductoRepository productoRepository) {
+        this.tarifaRepository = tarifaRepository;
+        this.productoRepository = productoRepository;
+    }
 
     // Listar tarifas y mostrar formulario (crear o editar)
     @GetMapping
     public String listarTarifas(Model model) {
+        List<Tarifa> tarifas = tarifaRepository.findAll();
+        tarifas.sort(Comparator.comparing(Tarifa::getId));
         model.addAttribute("tarifas", tarifaRepository.findAll());
         model.addAttribute("tarifa", new Tarifa()); // Formulario vacío para crear
         return "adminTarifas";
@@ -34,11 +47,15 @@ public class AdminTarifController {
         Tarifa tarifa = tarifaRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Tarifa no encontrada con ID: " + id));
         model.addAttribute("tarifa", tarifa); // Formulario relleno
+        model.addAttribute("productos", productoRepository.findAll());
         return "editarAdminTarifas";
     }
 
     @PostMapping("/actualizar/{id}")
     public String actualizarTarifa(@ModelAttribute("tarifa") Tarifa tarifa) {
+        Producto producto = productoRepository.findById(tarifa.getProducto().getId())
+                .orElseThrow(() -> new IllegalArgumentException("Producto no encontrado"));
+        tarifa.setProducto(producto);
         tarifaRepository.save(tarifa);
         return "redirect:/admin/tarifas";
     }

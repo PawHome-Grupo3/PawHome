@@ -25,7 +25,7 @@
                 <th>Fecha desde</th>
                 <th>Fecha hasta</th>
                 <th>Producto</th>
-                <th>Línea factura</th>
+                <th>Acciones</th>
             </tr>
             </thead>
             <tbody>
@@ -33,15 +33,18 @@
                 <td th:text="${tarifa.id}"></td>
                 <td th:text="${tarifa.nombre}"></td>
                 <td th:text="${tarifa.descripcion}"></td>
+                <td th:text="${tarifa.cantidad}"></td>
                 <td th:text="${tarifa.precioUnitario}"></td>
                 <td th:text="${tarifa.fechaDesde}"></td>
                 <td th:text="${tarifa.fechaHasta}"></td>
-                <td th:text="${tarifa.producto}"></td>
-                <td th:text="${tarifa.lineaFacturas}"></td>
+                <td th:text="${tarifa.producto.nombre}"></td>
                 <td>
                     <a th:href="@{'/admin/tarifas/editar/' + ${tarifa.id}}" class="btn btn-success btn-sm">Editar</a>
                     <a th:href="@{'/admin/tarifas/eliminar/' + ${tarifa.id}}" class="btn btn-danger btn-sm"
                        onclick="return confirm('¿Eliminar esta tarifa?')">Eliminar</a>
+                    <a class="btn btn-primary mb-3" th:href="@{/admin/tarifas/nueva}">
+                        Crear
+                    </a>
                 </td>
             </tr>
             </tbody>
