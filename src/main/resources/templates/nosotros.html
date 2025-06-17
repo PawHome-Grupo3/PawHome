@@ -1,41 +1,85 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layouts/layout.html}">
+	  layout:decorate="~{layouts/layout.html}">
 <head>
-    <meta charset="UTF-8" />
-    <title th:text="#{nosotros.titulo}">Dona</title>
-    <link rel="stylesheet" th:href="@{/css/nosotros.css}">
+	<meta charset="UTF-8"/>
+	<title th:text="#{nosotros.titulo}">Dona</title>
+	<link rel="stylesheet" th:href="@{/css/nosotros.css}">
 </head>
 
 <body>
 <section layout:fragment="content">
-    <div class="containerImagen">
-        <div class="equipo-overlay">
-            <div class="team-header">
-                <h2 th:text="#{nosotros.titulo}">Sobre Nosotros</h2>
-                <p th:text="#{nosotros.descripcion}">Conoce al equipo detrás de PawHome</p>
-            </div>
-            <br>
-            <div class="team-members">
-                <div class="member">
-                    <img src="/images/Paulo.jpg" alt="Miembro 1">
-                    <div class="role" th:text="#{nosotros.rol1}">Desarrollo Fullstack / Lógica y Debugging</div>
-                </div>
-                <div class="member">
-                    <img src="/images/Javi.jpg" alt="Miembro 2">
-                    <div class="role" th:text="#{nosotros.rol2}">Desarrollo Fullstack / Lógica técnica y funcionalidades</div>
-                </div>
-                <div class="member">
-                    <img src="/images/Laura.jpg" alt="Miembro 3">
-                    <div class="role" th:text="#{nosotros.rol3}">Desarrollo Fullstack / Frontend/UI Designer</div>
-                </div>
-                <div class="member">
-                    <img src="/images/Manue.jpg" alt="Miembro 4">
-                    <div class="role" th:text="#{nosotros.rol4}">Desarrollo Fullstack / Gestor de contenidos y coordinador</div>
-                </div>
-            </div>
-        </div>
-    </div>
+	<div class="containerImagen">
+		<div class="equipo-overlay">
+			<div class="team-header">
+				<h2 th:text="#{nosotros.titulo}">Sobre Nosotros</h2>
+				<p th:text="#{nosotros.descripcion}">Conoce al equipo detrás de PawHome</p>
+			</div>
+			<br>
+			<div class="team-members">
+				<div class="member text-center">
+					<img th:src="@{images/Paulo.jpg}" class="memberImg mb-2" alt="Miembro 1">
+
+					<div class="d-flex justify-content-center align-items-center">
+						<div>
+							<a href="https://www.linkedin.com/in/paulosanchezh/" target="_blank" rel="noopener noreferrer"
+							   aria-label="Visita mi perfil de LinkedIn" class="me-2">
+								<img alt="LinkedIn" th:src="@{images/linkedin.png}" style="width: 28px; height: 28px;">
+							</a>
+							<div class="role fw-bold text-nowrap">
+								Paulo Sánchez Hernández
+							</div>
+						</div>
+						<div>
+							hernandezsanchezpaulo@gmail.com
+						</div>
+					</div>
+				</div>
+
+				<div class="member text-center">
+					<img th:src="@{images/Javi.jpg}" class="memberImg mb-2" alt="Miembro 1">
+
+					<div class="d-flex justify-content-center align-items-center">
+						<a href="https://www.linkedin.com/in/javier-gomez-lopez-desarrollador/" target="_blank" rel="noopener noreferrer"
+						   aria-label="Visita mi perfil de LinkedIn" class="me-2">
+							<img alt="LinkedIn" th:src="@{images/linkedin.png}" style="width: 28px; height: 28px;">
+						</a>
+						<div class="role fw-bold text-nowrap">
+							Javier Gómez López
+						</div>
+					</div>
+				</div>
+
+				<div class="member text-center">
+					<img th:src="@{images/Laura.jpg}" class="memberImg mb-2" alt="Miembro 1">
+
+					<div class="d-flex justify-content-center align-items-center">
+						<a href="https://www.linkedin.com/in/laura-aguilera-ramírez/" target="_blank" rel="noopener noreferrer"
+						   aria-label="Visita mi perfil de LinkedIn" class="me-2">
+							<img alt="LinkedIn" th:src="@{images/linkedin.png}" style="width: 28px; height: 28px;">
+						</a>
+						<div class="role fw-bold text-nowrap">
+							Laura Aguilera Ramírez
+						</div>
+					</div>
+				</div>
+
+				<div class="member text-center">
+					<img th:src="@{images/Manue.jpg}" class="memberImg mb-2" alt="Miembro 1">
+
+					<div class="d-flex justify-content-center align-items-center">
+						<a href="https://www.linkedin.com/in/manueltmiranda/" target="_blank" rel="noopener noreferrer"
+						   aria-label="Visita mi perfil de LinkedIn" class="me-2">
+							<img alt="LinkedIn" th:src="@{images/linkedin.png}" style="width: 28px; height: 28px;">
+						</a>
+						<div class="role fw-bold text-nowrap">
+							Manuel Torres Miranda
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </section>
 </body>
 </html>
