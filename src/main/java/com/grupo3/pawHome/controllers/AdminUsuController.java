@@ -2,6 +2,7 @@ package com.grupo3.pawHome.controllers;
 
 import com.grupo3.pawHome.dtos.EditarUsuarioPerfilDTO;
 import com.grupo3.pawHome.entities.Usuario;
+import com.grupo3.pawHome.repositories.RolRepository;
 import com.grupo3.pawHome.repositories.UsuarioRepository;
 import com.grupo3.pawHome.services.EditarUsuarioPerfilService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,8 @@ public class AdminUsuController {
     private UsuarioRepository usuarioRepository;
     @Autowired
     private EditarUsuarioPerfilService editarUsuarioPerfilService;
+    @Autowired
+    private RolRepository rolRepository;
 
     @GetMapping
     public String listarUsuarios(Model model) {
@@ -37,6 +40,7 @@ public class AdminUsuController {
     public String editarUsuario(@PathVariable Integer id, Model model) {
         EditarUsuarioPerfilDTO dto = editarUsuarioPerfilService.obtenerDtoDesdeUsuario(id);
         model.addAttribute("usuario", dto);
+        model.addAttribute("roles", rolRepository.findAll());
         return "editarAdminUsuarios";
     }
 

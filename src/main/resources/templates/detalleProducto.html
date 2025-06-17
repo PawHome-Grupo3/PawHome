@@ -47,7 +47,7 @@
             <div class="row g-2 mb-3">
               <div class="col-6 col-md-4 d-flex flex-column align-items-center">
                 <label class="mb-2 w-100 text-center" th:text="#{tienda.escogeTalla}"></label>
-                <select id="talla-select" class="form-select border border-secondary text-center" style="height: 35px;">
+                <select id="talla-select" class="form-select border border-secondary text-center">
                   <option th:each="talla : ${producto.getTallas()}"
                           th:if="${talla.getStock() > 0}"
                           th:utext="${talla.getTallaje()}"
