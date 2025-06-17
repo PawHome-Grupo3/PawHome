@@ -443,6 +443,7 @@ public class DataLoader implements CommandLineRunner {
         p5.setCategoria(c3);
         productoRepository.save(p5);
 
+        // --- SERVICIOS --- //
         // Productos y tarifas de Guarderia
         Categoria c4 = new Categoria();
         c4.setNombre("Guarderia");
@@ -450,6 +451,7 @@ public class DataLoader implements CommandLineRunner {
 
         Producto p6 = new Producto();
         p6.setNombre("ESTANCIA EXPRESS");
+        p6.setDescripcion("Cuidado breve para estancias puntuales.");
         p6.setCategoria(c4);
         productoRepository.save(p6);
 
@@ -463,6 +465,7 @@ public class DataLoader implements CommandLineRunner {
 
         Producto p7 = new Producto();
         p7.setNombre("ESTANCIA RELAX");
+        p7.setDescripcion("Estancia tranquila para desconectar.");
         p7.setCategoria(c4);
         productoRepository.save(p7);
 
@@ -476,6 +479,7 @@ public class DataLoader implements CommandLineRunner {
 
         Producto p8 = new Producto();
         p8.setNombre("ESTANCIA SABÁTICA");
+        p8.setDescripcion("Un descanso semanal perfecto.");
         p8.setCategoria(c4);
         productoRepository.save(p8);
 
@@ -489,6 +493,7 @@ public class DataLoader implements CommandLineRunner {
 
         Producto p9 = new Producto();
         p9.setNombre("BONO LARGA ESTANCIA");
+        p9.setDescripcion("Más días, más comodidad.");
         p9.setCategoria(c4);
         productoRepository.save(p9);
 
@@ -502,6 +507,7 @@ public class DataLoader implements CommandLineRunner {
 
         Producto p10 = new Producto();
         p10.setNombre("BONO ESTANCIA SOLO DÍA");
+        p10.setDescripcion(" Estancia diaria sin pernocta.");
         p10.setCategoria(c4);
         productoRepository.save(p10);
 
@@ -520,6 +526,7 @@ public class DataLoader implements CommandLineRunner {
 
         Producto pBañoBasico = new Producto();
         pBañoBasico.setNombre("BAÑO BÁSICO");
+        pBañoBasico.setDescripcion("Limpieza suave y eficaz.");
         pBañoBasico.setCategoria(cPeluqueria);
         productoRepository.save(pBañoBasico);
 
@@ -533,6 +540,7 @@ public class DataLoader implements CommandLineRunner {
 
         Producto pBañoStripping = new Producto();
         pBañoStripping.setNombre("BAÑO Y STRIPPING");
+        pBañoStripping.setDescripcion("Baño más arreglo de muda.");
         pBañoStripping.setCategoria(cPeluqueria);
         productoRepository.save(pBañoStripping);
 
@@ -546,6 +554,7 @@ public class DataLoader implements CommandLineRunner {
 
         Producto pSoloCorte = new Producto();
         pSoloCorte.setNombre("SOLO CORTE");
+        pSoloCorte.setDescripcion("Corte sin baño, rápido y cómodo.");
         pSoloCorte.setCategoria(cPeluqueria);
         productoRepository.save(pSoloCorte);
 
@@ -559,6 +568,7 @@ public class DataLoader implements CommandLineRunner {
 
         Producto pBañoCorte = new Producto();
         pBañoCorte.setNombre("BAÑO + CORTE");
+        pBañoCorte.setDescripcion("Limpieza y estilo al instante.");
         pBañoCorte.setCategoria(cPeluqueria);
         productoRepository.save(pBañoCorte);
 
@@ -572,6 +582,7 @@ public class DataLoader implements CommandLineRunner {
 
         Producto pCompleto = new Producto();
         pCompleto.setNombre("COMPLETO");
+        pCompleto.setDescripcion("Baño, corte y mimos.");
         pCompleto.setCategoria(cPeluqueria);
         productoRepository.save(pCompleto);
 
@@ -585,6 +596,7 @@ public class DataLoader implements CommandLineRunner {
 
         Producto pBañoAntiparasito = new Producto();
         pBañoAntiparasito.setNombre("Baño antiparásito");
+        pBañoAntiparasito.setDescripcion("Adiós a pulgas y parásitos.");
         pBañoAntiparasito.setCategoria(cPeluqueria);
         productoRepository.save(pBañoAntiparasito);
 
@@ -598,6 +610,7 @@ public class DataLoader implements CommandLineRunner {
 
         Producto pChampuColor = new Producto();
         pChampuColor.setNombre("Champú potenciador de color");
+        pChampuColor.setDescripcion("Realza su color natural.");
         pChampuColor.setCategoria(cPeluqueria);
         productoRepository.save(pChampuColor);
 
@@ -611,6 +624,7 @@ public class DataLoader implements CommandLineRunner {
 
         Producto pBañoMedico = new Producto();
         pBañoMedico.setNombre("Baño medicado o spa para pieles sensibles");
+        pBañoMedico.setDescripcion("Cuidado especial para piel delicada.");
         pBañoMedico.setCategoria(cPeluqueria);
         productoRepository.save(pBañoMedico);
 
@@ -624,6 +638,7 @@ public class DataLoader implements CommandLineRunner {
 
         Producto pNudos = new Producto();
         pNudos.setNombre("Por nudos");
+        pNudos.setDescripcion("Eliminación de enredos difíciles.");
         pNudos.setCategoria(cPeluqueria);
         productoRepository.save(pNudos);
 
@@ -637,6 +652,7 @@ public class DataLoader implements CommandLineRunner {
 
         Producto pDeslanado = new Producto();
         pDeslanado.setNombre("Deslanado");
+        pDeslanado.setDescripcion("Elimina el exceso de pelo muerto.");
         pDeslanado.setCategoria(cPeluqueria);
         productoRepository.save(pDeslanado);
 
@@ -650,6 +666,7 @@ public class DataLoader implements CommandLineRunner {
 
         Producto pRetoqueExtra = new Producto();
         pRetoqueExtra.setNombre("Retoque extra en patas y cara");
+        pRetoqueExtra.setDescripcion("Acabado perfecto y pulido.");
         pRetoqueExtra.setCategoria(cPeluqueria);
         productoRepository.save(pRetoqueExtra);
 
@@ -663,6 +680,7 @@ public class DataLoader implements CommandLineRunner {
 
         Producto pAntiolor = new Producto();
         pAntiolor.setNombre("Tratamiento antiolor con aceites esenciales");
+        pAntiolor.setDescripcion("Aroma fresco y natural.");
         pAntiolor.setCategoria(cPeluqueria);
         productoRepository.save(pAntiolor);
 
@@ -676,6 +694,7 @@ public class DataLoader implements CommandLineRunner {
 
         Producto pHidratacion = new Producto();
         pHidratacion.setNombre("Hidratación de almohadillas");
+        pHidratacion.setDescripcion("Suaves y protegidas.");
         pHidratacion.setCategoria(cPeluqueria);
         productoRepository.save(pHidratacion);
 
@@ -689,6 +708,7 @@ public class DataLoader implements CommandLineRunner {
 
         Producto pPerfumeEspecial = new Producto();
         pPerfumeEspecial.setNombre("Aplicación de perfume especial");
+        pPerfumeEspecial.setDescripcion("Toque final perfumado.");
         pPerfumeEspecial.setCategoria(cPeluqueria);
         productoRepository.save(pPerfumeEspecial);
 
@@ -702,6 +722,7 @@ public class DataLoader implements CommandLineRunner {
 
         Producto pJuguete = new Producto();
         pJuguete.setNombre("Juguete < 5kg");
+        pJuguete.setDescripcion("Servicio para perros mini.");
         pJuguete.setCategoria(cPeluqueria);
         productoRepository.save(pJuguete);
 
@@ -715,6 +736,7 @@ public class DataLoader implements CommandLineRunner {
 
         Producto pPequeño = new Producto();
         pPequeño.setNombre("Pequeño 6 - 10kg");
+        pPequeño.setDescripcion("Ideal para razas pequeñas.");
         pPequeño.setCategoria(cPeluqueria);
         productoRepository.save(pPequeño);
 
@@ -728,6 +750,7 @@ public class DataLoader implements CommandLineRunner {
 
         Producto pMediano = new Producto();
         pMediano.setNombre("Mediano 11 - 25kg");
+        pMediano.setDescripcion("Para tamaños medios.");
         pMediano.setCategoria(cPeluqueria);
         productoRepository.save(pMediano);
 
@@ -741,6 +764,7 @@ public class DataLoader implements CommandLineRunner {
 
         Producto pGrande = new Producto();
         pGrande.setNombre("Grande 26 - 35kg");
+        pGrande.setDescripcion("Perfecto para razas grandes.");
         pGrande.setCategoria(cPeluqueria);
         productoRepository.save(pGrande);
 
@@ -754,6 +778,7 @@ public class DataLoader implements CommandLineRunner {
 
         Producto pGigante = new Producto();
         pGigante.setNombre("Gigante > 35kg");
+        pGigante.setDescripcion("Cuidado XXL para gigantes.");
         pGigante.setCategoria(cPeluqueria);
         productoRepository.save(pGigante);
 
@@ -773,6 +798,7 @@ public class DataLoader implements CommandLineRunner {
 
         Producto pCursoCachorros = new Producto();
         pCursoCachorros.setNombre("Educación y preadiestramiento para cachorros");
+        pCursoCachorros.setDescripcion("Bases para un buen comportamiento.");
         pCursoCachorros.setCategoria(cAdiestramiento);
         productoRepository.save(pCursoCachorros);
 
@@ -786,6 +812,7 @@ public class DataLoader implements CommandLineRunner {
 
         Producto pCursoAdultos = new Producto();
         pCursoAdultos.setNombre("Educación y adiestramiento canino (adultos)");
+        pCursoAdultos.setDescripcion("Mejora su conducta diaria.");
         pCursoAdultos.setCategoria(cAdiestramiento);
         productoRepository.save(pCursoAdultos);
 
@@ -799,6 +826,7 @@ public class DataLoader implements CommandLineRunner {
 
         Producto pAdiestramientoDomicilio = new Producto();
         pAdiestramientoDomicilio.setNombre("Educación y adiestramiento a domicilio");
+        pAdiestramientoDomicilio.setDescripcion("Entrenamiento en su entorno.");
         pAdiestramientoDomicilio.setCategoria(cAdiestramiento);
         productoRepository.save(pAdiestramientoDomicilio);
 
@@ -812,6 +840,7 @@ public class DataLoader implements CommandLineRunner {
 
         Producto pAdiestramientoCentro = new Producto();
         pAdiestramientoCentro.setNombre("Educación y adiestramiento en el centro");
+        pAdiestramientoCentro.setDescripcion("Clases personalizadas con profesionales.");
         pAdiestramientoCentro.setCategoria(cAdiestramiento);
         productoRepository.save(pAdiestramientoCentro);
 
@@ -833,6 +862,7 @@ public class DataLoader implements CommandLineRunner {
         // 1. Consulta Veterinaria
         Producto pConsultaVeterinaria = new Producto();
         pConsultaVeterinaria.setNombre("Consulta Veterinaria: el primer paso hacia la solución");
+        pConsultaVeterinaria.setDescripcion("Primera visita para diagnóstico.");
         pConsultaVeterinaria.setCategoria(cVeterinario);
         productoRepository.save(pConsultaVeterinaria);
 
@@ -847,6 +877,7 @@ public class DataLoader implements CommandLineRunner {
         // 2. Chequeo Preventivo
         Producto pChequeoPreventivo = new Producto();
         pChequeoPreventivo.setNombre("Chequeo Preventivo: mejor prevenir que curar");
+        pChequeoPreventivo.setDescripcion("Control rutinario de salud.");
         pChequeoPreventivo.setCategoria(cVeterinario);
         productoRepository.save(pChequeoPreventivo);
 
@@ -861,6 +892,7 @@ public class DataLoader implements CommandLineRunner {
         // 3. Vacunación
         Producto pVacunacion = new Producto();
         pVacunacion.setNombre("Vacunación: su escudo contra enfermedades");
+        pVacunacion.setDescripcion("Protegido contra enfermedades.");
         pVacunacion.setCategoria(cVeterinario);
         productoRepository.save(pVacunacion);
 
@@ -875,6 +907,7 @@ public class DataLoader implements CommandLineRunner {
         // 4. Desparasitación
         Producto pDesparasitacion = new Producto();
         pDesparasitacion.setNombre("Desparasitación: libre de bichitos molestos");
+        pDesparasitacion.setDescripcion("Adiós a los parásitos internos.");
         pDesparasitacion.setCategoria(cVeterinario);
         productoRepository.save(pDesparasitacion);
 
@@ -889,6 +922,7 @@ public class DataLoader implements CommandLineRunner {
         // 5. Analítica y Test
         Producto pAnalitica = new Producto();
         pAnalitica.setNombre("Analítica y Test: saber es poder (y salud)");
+        pAnalitica.setDescripcion("Revisión completa y precisa.");
         pAnalitica.setCategoria(cVeterinario);
         productoRepository.save(pAnalitica);
 
@@ -903,6 +937,7 @@ public class DataLoader implements CommandLineRunner {
         // 6. Traumatología
         Producto pTraumatologia = new Producto();
         pTraumatologia.setNombre("Traumatología: cuidados para huesos y articulaciones");
+        pTraumatologia.setDescripcion("Cuidado ortopédico experto.");
         pTraumatologia.setCategoria(cVeterinario);
         productoRepository.save(pTraumatologia);
 
@@ -917,6 +952,7 @@ public class DataLoader implements CommandLineRunner {
         // 7. Oftalmología
         Producto pOftalmologia = new Producto();
         pOftalmologia.setNombre("Oftalmología: ver bien es vivir mejor");
+        pOftalmologia.setDescripcion("Atención para sus ojitos.");
         pOftalmologia.setCategoria(cVeterinario);
         productoRepository.save(pOftalmologia);
 
@@ -931,6 +967,7 @@ public class DataLoader implements CommandLineRunner {
         // 8. Radiografía
         Producto pRadiografia = new Producto();
         pRadiografia.setNombre("Radiografía: imágenes que cuentan la verdad");
+        pRadiografia.setDescripcion("Diagnóstico por imagen fiable.");
         pRadiografia.setCategoria(cVeterinario);
         productoRepository.save(pRadiografia);
 
@@ -945,6 +982,7 @@ public class DataLoader implements CommandLineRunner {
         // 9. Ecografía
         Producto pEcografia = new Producto();
         pEcografia.setNombre("Ecografía: exploración con alta precisión");
+        pEcografia.setDescripcion("Estudio interno sin dolor.");
         pEcografia.setCategoria(cVeterinario);
         productoRepository.save(pEcografia);
 
@@ -959,6 +997,7 @@ public class DataLoader implements CommandLineRunner {
         // 10. Cirugía veterinaria
         Producto pCirugia = new Producto();
         pCirugia.setNombre("Cirugía veterinaria: en manos expertas");
+        pCirugia.setDescripcion("Intervención con seguridad.");
         pCirugia.setCategoria(cVeterinario);
         productoRepository.save(pCirugia);
 
@@ -973,6 +1012,7 @@ public class DataLoader implements CommandLineRunner {
         // 11. Limpieza bucodental
         Producto pLimpiezaBucodental = new Producto();
         pLimpiezaBucodental.setNombre("Limpieza bucodental: sonrisa sana, vida larga");
+        pLimpiezaBucodental.setDescripcion("Higiene oral profesional.");
         pLimpiezaBucodental.setCategoria(cVeterinario);
         productoRepository.save(pLimpiezaBucodental);
 
@@ -987,6 +1027,7 @@ public class DataLoader implements CommandLineRunner {
         // 12. Hospitalización
         Producto pHospitalizacion = new Producto();
         pHospitalizacion.setNombre("Hospitalización: atención las 24 horas");
+        pHospitalizacion.setDescripcion("Cuidado veterinario continuo.");
         pHospitalizacion.setCategoria(cVeterinario);
         productoRepository.save(pHospitalizacion);
 
@@ -1001,6 +1042,7 @@ public class DataLoader implements CommandLineRunner {
         // 13. Visita a domicilio
         Producto pVisitaDomicilio = new Producto();
         pVisitaDomicilio.setNombre("Visita a domicilio: el veterinario va a ti");
+        pVisitaDomicilio.setDescripcion("Atención sin salir de casa.");
         pVisitaDomicilio.setCategoria(cVeterinario);
         productoRepository.save(pVisitaDomicilio);
 
@@ -1015,6 +1057,7 @@ public class DataLoader implements CommandLineRunner {
         // 14. Control de Leishmania
         Producto pLeishmania = new Producto();
         pLeishmania.setNombre("Control de Leishmania: prevención todo el año");
+        pLeishmania.setDescripcion("Prevención y control anual.");
         pLeishmania.setCategoria(cVeterinario);
         productoRepository.save(pLeishmania);
 
@@ -1029,6 +1072,7 @@ public class DataLoader implements CommandLineRunner {
         // 15. Control de obesidad
         Producto pObesidad = new Producto();
         pObesidad.setNombre("Control de obesidad: cuerpo sano, vida feliz");
+        pObesidad.setDescripcion("Peso ideal y saludable.");
         pObesidad.setCategoria(cVeterinario);
         productoRepository.save(pObesidad);
 
@@ -1043,6 +1087,7 @@ public class DataLoader implements CommandLineRunner {
         // 16. Plan de salud para perros
         Producto pPlanPerros = new Producto();
         pPlanPerros.setNombre("Plan de salud para perros: cuídalo todo el año");
+        pPlanPerros.setDescripcion("Bienestar todo el año.");
         pPlanPerros.setCategoria(cVeterinario);
         productoRepository.save(pPlanPerros);
 
@@ -1057,6 +1102,7 @@ public class DataLoader implements CommandLineRunner {
         // 17. Plan de salud para gatos
         Producto pPlanGatos = new Producto();
         pPlanGatos.setNombre("Plan de salud para gatos: bienestar sin estrés");
+        pPlanGatos.setDescripcion("Cuidado sin preocupaciones.");
         pPlanGatos.setCategoria(cVeterinario);
         productoRepository.save(pPlanGatos);
 
