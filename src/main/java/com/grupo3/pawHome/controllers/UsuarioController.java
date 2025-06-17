@@ -253,14 +253,19 @@ public class UsuarioController {
         if (usuario != null) {
             List<Adopcion> adopciones = adopcionService.findaAllByUsuario(usuario);
             List<PerfilAdopcionDto> perfilAdopcionDtos = new ArrayList<>();
-            PerfilAdopcionDto perfilAdopcionDto = new PerfilAdopcionDto();
+
             for (Adopcion adopcion : adopciones) {
+                PerfilAdopcionDto perfilAdopcionDto = new PerfilAdopcionDto();
                 perfilAdopcionDto.setNombre(adopcion.getAnimal().getNombre());
                 perfilAdopcionDto.setAdopcionId(adopcion.getId());
                 perfilAdopcionDto.setRutaImg(adopcion.getAnimal().getRutaImg1());
                 perfilAdopcionDto.setFechaDocumento(String.valueOf(adopcion.getFechaFormulario()));
                 perfilAdopcionDto.setAceptado(adopcion.getAceptado());
+                //System.out.println(perfilAdopcionDto.getNombre() + "NOMBREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE\n\n\n\n\n");
                 perfilAdopcionDtos.add(perfilAdopcionDto);
+            }
+            for (PerfilAdopcionDto adopcionDto : perfilAdopcionDtos) {
+                System.out.println(adopcionDto.getNombre() + "NOMBREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE\n\n\n\n\n");
             }
             model.addAttribute("adopciones", perfilAdopcionDtos);
         }

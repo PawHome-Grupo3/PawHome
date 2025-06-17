@@ -1698,7 +1698,6 @@ public class DataLoader implements CommandLineRunner {
         adopcion.setVisitasSeguimiento("Sí, estoy completamente de acuerdo con que se realicen visitas de seguimiento");
         adopcion.setFirma("Laura Gómez Pérez");
         adopcion.setFechaFormulario(LocalDate.now());
-
         adopcion.setUsuario(usuario); // Instancia existente de Usuario
         adopcion.setAnimal(a1);
         adopcionRepository.save(adopcion);
