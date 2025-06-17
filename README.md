@@ -10,22 +10,12 @@
 ![Technical Debt](http://eoijava.ddns.net:9000/api/project_badges/measure?project=com.atm.java6%3Abuenaspracticas&metric=software_quality_maintainability_remediation_effort&token=sqb_8d1c607ed4cdf7c9da1227e46d30fdd959d5a9bd)
 ![Lines of Code](http://eoijava.ddns.net:9000/api/project_badges/measure?project=com.atm.java6%3Abuenaspracticas&metric=ncloc&token=sqb_8d1c607ed4cdf7c9da1227e46d30fdd959d5a9bd)
 
-## Introducción
-
-Este documento detalla la utilidad del
-repositorio [BuenasPracticasSpringBoot](https://github.com/ateixeiramunoz/BuenasPracticasSpringBoot), una herramienta
-educativa especialmente diseñada para estudiantes y desarrolladores de Java que desean iniciarse o perfeccionar su
-habilidad en el desarrollo con [Spring Boot](https://spring.io/projects/spring-boot).
-
-El proyecto proporciona un conjunto de prácticas clave y recomendaciones esenciales para desarrollar aplicaciones
-eficientes, limpias y escalables, facilitando la transición desde el entorno de aprendizaje hacia entornos reales de
-trabajo y garantizando un enfoque profesional y moderno.
 
 ## 1. Gestión automática de Diferentes Entornos con Docker Compose
 
 El repositorio gestiona distintos entornos de ejecución mediante [Docker Compose](https://docs.docker.com/compose/).
 
-Desde la versión [Spring Boot 3.1](https://spring.io/blog/2023/06/21/docker-compose-support-in-spring-boot-3-1), lanzada en mayo de 2023, se
+Desde la versión [Spring Boot 3.4](https://spring.io/blog/2023/06/21/docker-compose-support-in-spring-boot-3-1), lanzada en mayo de 2023, se
 introdujo soporte nativo para Docker Compose, lo que permite que las aplicaciones detecten automáticamente un archivo
 `docker-compose.yaml` y gestionen los servicios definidos en él durante el ciclo de vida de la aplicación.
 
@@ -355,9 +345,6 @@ laborales reales mientras promueve la capacidad de adaptarse e innovar en proyec
 - Guía para Principios SOLID: [https://en.wikipedia.org/wiki/SOLID](https://en.wikipedia.org/wiki/SOLID)
 - Guía de Patrones de Diseño Java: [https://refactoring.guru/design-patterns/java](https://refactoring.guru/design-patterns/java)
 
-
-¡Entendido perfectamente! Aquí tienes el flujo ajustado con tu última aclaración, resaltando que el entorno local **se inicia automáticamente al ejecutar la aplicación Spring Boot desde IntelliJ IDEA** (perfil `default`), sin comandos adicionales:
-
 ---
 
 # 📌 **Flujo final de trabajo del alumno (adaptado completamente)**
@@ -375,7 +362,7 @@ laborales reales mientras promueve la capacidad de adaptarse e innovar en proyec
 
 ## 🚩 **1\. Recepción de la tarea en Jira**
 
-La alumna (**Ana**) recibe claramente la tarea asignada en Jira:
+La persona Ana recibe claramente la tarea asignada en Jira:
 
 - **Clave:** `SPR-25`
 - **Título:** Implementar CRUD productos con Spring Boot y MySQL

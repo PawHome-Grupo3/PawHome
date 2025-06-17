@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pago Exitoso</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f4fdf7;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .success-container {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .card-success {
+            background-color: white;
+            border: 1px solid #d4edda;
+            border-radius: 1rem;
+            box-shadow: 0 4px 20px rgba(0, 128, 0, 0.1);
+            padding: 2rem;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+        .card-success .icon-check {
+            font-size: 4rem;
+            color: #28a745;
+        }
+        .btn-success-custom {
+            background-color: #28a745;
+            border: none;
+        }
+        .btn-success-custom:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+<div class="success-container">
+    <div class="card-success">
+        <div class="icon-check mb-3">
+            <i class="bi bi-check-circle-fill"></i>
+        </div>
+        <h1 class="mb-3">¡Registro exitoso!</h1>
+        <p class="mb-4">Gracias por unirte</p>
+        <p> Bienvenido y apoya a nuestros peludos </p>
+        <a th:href="@{/}" class="btn btn-success-custom text-white px-4">Ir a PawHome</a>
+    </div>
+</div>
+</body>
+</html>
