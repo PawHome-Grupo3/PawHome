@@ -228,10 +228,6 @@ public class DataLoader implements CommandLineRunner {
         c3.setNombre("tienda-Tazas");
         categoriaRepository.save(c3);
 
-        Categoria cat1 = new Categoria();
-        cat1.setNombre("tienda-Mantas");
-        categoriaRepository.save(cat1);
-
         Categoria cat2 = new Categoria();
         cat2.setNombre("tienda-Camas");
         categoriaRepository.save(cat2);
@@ -243,28 +239,6 @@ public class DataLoader implements CommandLineRunner {
         Categoria cat4 = new Categoria();
         cat4.setNombre("tienda-Bebederos");
         categoriaRepository.save(cat4);
-
-        Producto prodManta = new Producto();
-        prodManta.setNombre("Manta térmica para mascotas");
-        prodManta.setDescripcion("Manta suave y térmica para mantener abrigados a perros y gatos en invierno.");
-        prodManta.setRutaImagen1("https://placekitten.com/317/317");
-        prodManta.setRutaImagen2("https://picsum.photos/seed/manta-termica/300/300");
-        prodManta.setRutaImagen3("https://images.unsplash.com/photo-1600891964599-f61ba0e24092");
-        prodManta.setCategoria(cat1);
-        productoRepository.save(prodManta);
-
-        Talla tallaManta = new Talla(null, "unica", 40, prodManta);
-        tallaRepository.save(tallaManta);
-
-        Tarifa tarifaManta = new Tarifa();
-        tarifaManta.setNombre("Precio actual");
-        tarifaManta.setDescripcion("Disponible en varios estampados.");
-        tarifaManta.setCantidad(1);
-        tarifaManta.setPrecioUnitario(14.90);
-        tarifaManta.setFechaDesde(LocalDate.now());
-        tarifaManta.setFechaHasta(null);
-        tarifaManta.setProducto(prodManta);
-        tarifaRepository.save(tarifaManta);
 
         Producto prodCama = new Producto();
         prodCama.setNombre("Cama redonda de felpa");
@@ -293,9 +267,9 @@ public class DataLoader implements CommandLineRunner {
         Producto prodBolsa = new Producto();
         prodBolsa.setNombre("Bolsa de tela con diseño animalista");
         prodBolsa.setDescripcion("Bolsa ecológica reutilizable con mensajes de adopción.");
-        prodBolsa.setRutaImagen1("https://placekitten.com/319/319");
-        prodBolsa.setRutaImagen2("https://picsum.photos/seed/bolsa-animalista/300/300");
-        prodBolsa.setRutaImagen3("https://images.unsplash.com/photo-1555529669-e69c86b4c156");
+        prodBolsa.setRutaImagen1("/images/bolsaTelaPerro1.png");
+        prodBolsa.setRutaImagen2("/images/bolsaTelaPerro2.png");
+        prodBolsa.setRutaImagen3("/images/bolsaTelaPerro3.png");
         prodBolsa.setCategoria(cat3);
         productoRepository.save(prodBolsa);
 
@@ -311,6 +285,28 @@ public class DataLoader implements CommandLineRunner {
         tarifaBolsa.setFechaHasta(null);
         tarifaBolsa.setProducto(prodBolsa);
         tarifaRepository.save(tarifaBolsa);
+
+        Producto prodBolsa2 = new Producto();
+        prodBolsa2.setNombre("Bolsa de tela con diseño animalista");
+        prodBolsa2.setDescripcion("Bolsa ecológica reutilizable con mensajes de adopción.");
+        prodBolsa2.setRutaImagen1("/images/bolsaTelaGato1.png");
+        prodBolsa2.setRutaImagen2("/images/bolsaTelaPerro2.png");
+        prodBolsa2.setRutaImagen3("/images/bolsaTelaPerro3.png");
+        prodBolsa2.setCategoria(cat3);
+        productoRepository.save(prodBolsa2);
+
+        Talla tallaBolsa2 = new Talla(null, "unica", 2, prodBolsa2);
+        tallaRepository.save(tallaBolsa2);
+
+        Tarifa tarifaBolsa2 = new Tarifa();
+        tarifaBolsa2.setNombre("Precio actual");
+        tarifaBolsa2.setDescripcion("Diseño impreso por ambos lados.");
+        tarifaBolsa2.setCantidad(1);
+        tarifaBolsa2.setPrecioUnitario(6.50);
+        tarifaBolsa2.setFechaDesde(LocalDate.now());
+        tarifaBolsa2.setFechaHasta(null);
+        tarifaBolsa2.setProducto(prodBolsa);
+        tarifaRepository.save(tarifaBolsa2);
 
         Producto prodBebedero = new Producto();
         prodBebedero.setNombre("Bebedero portátil para perros");
@@ -338,13 +334,13 @@ public class DataLoader implements CommandLineRunner {
         Producto productoCollarReflectante = new Producto();
         productoCollarReflectante.setNombre("Collar Reflectante para Perros");
         productoCollarReflectante.setDescripcion("Collar ajustable con material reflectante para mayor seguridad nocturna.");
-        productoCollarReflectante.setRutaImagen1("https://placekitten.com/310/310");
-        productoCollarReflectante.setRutaImagen2("https://picsum.photos/seed/collar-reflectante/300/300");
-        productoCollarReflectante.setRutaImagen3("https://images.unsplash.com/photo-1608537577928-627c7517ecb1");
+        productoCollarReflectante.setRutaImagen1("/images/collarPerro3.png");
+        productoCollarReflectante.setRutaImagen2("/images/collarPerro1.png");
+        productoCollarReflectante.setRutaImagen3("/images/collarPerro2.png");
         productoCollarReflectante.setCategoria(c1);
         productoRepository.save(productoCollarReflectante);
 
-        Talla tallaCollarS = new Talla(null, "S", 12, productoCollarReflectante);
+        Talla tallaCollarS = new Talla(null, "S", 1, productoCollarReflectante);
         Talla tallaCollarM = new Talla(null, "M", 15, productoCollarReflectante);
         Talla tallaCollarL = new Talla(null, "L", 10, productoCollarReflectante);
         tallaRepository.saveAll(List.of(tallaCollarS, tallaCollarM, tallaCollarL));
@@ -363,9 +359,9 @@ public class DataLoader implements CommandLineRunner {
         Producto productoCamisetaAdopta = new Producto();
         productoCamisetaAdopta.setNombre("Camiseta 'Adopta, no compres'");
         productoCamisetaAdopta.setDescripcion("Camiseta de algodón con mensaje de concienciación.");
-        productoCamisetaAdopta.setRutaImagen1("https://placekitten.com/311/311");
-        productoCamisetaAdopta.setRutaImagen2("https://picsum.photos/seed/camiseta-adopta/300/300");
-        productoCamisetaAdopta.setRutaImagen3("https://images.unsplash.com/photo-1606813902774-083f9935dc4f");
+        productoCamisetaAdopta.setRutaImagen1("/images/camisetaVerde1.png");
+        productoCamisetaAdopta.setRutaImagen2("/images/camisetaVerde2.png");
+        productoCamisetaAdopta.setRutaImagen3("/images/camisetaVerde3.png");
         productoCamisetaAdopta.setCategoria(c2);
         productoRepository.save(productoCamisetaAdopta);
 
@@ -389,9 +385,9 @@ public class DataLoader implements CommandLineRunner {
         Producto productoTazaHuellas = new Producto();
         productoTazaHuellas.setNombre("Taza con Huellas de Perro");
         productoTazaHuellas.setDescripcion("Taza blanca con diseño de huellas, ideal para amantes de los animales.");
-        productoTazaHuellas.setRutaImagen1("https://placekitten.com/312/312");
-        productoTazaHuellas.setRutaImagen2("https://picsum.photos/seed/taza-huellas/300/300");
-        productoTazaHuellas.setRutaImagen3("https://images.unsplash.com/photo-1524069611903-b5e00277ad6b");
+        productoTazaHuellas.setRutaImagen1("/images/tazaHuella1.png");
+        productoTazaHuellas.setRutaImagen2("/images/tazaHuella2.png");
+        productoTazaHuellas.setRutaImagen3("/images/tazaHuella3.png");
         productoTazaHuellas.setCategoria(c3);
         productoRepository.save(productoTazaHuellas);
 
@@ -421,8 +417,8 @@ public class DataLoader implements CommandLineRunner {
 
         Producto p2 = new Producto();
         p2.setNombre("Camiseta Azul");
-        p2.setDescripcion("¿Quieres ser un héroe con estilo? Compra nuestra camiseta para que lo sepa todo el mundo");
-        p2.setRutaImagen1("/images/Camiseta-azul.png");
+        p2.setDescripcion("¿Quieres tener la huella de tu perrito siempre guardada y mostrarla con estilo? Compra nuestra camiseta para que lo sepa todo el mundo");
+        p2.setRutaImagen1("/images/camisetaAzul1.png");
         p2.setCategoria(c2);
         productoRepository.save(p2);
 
