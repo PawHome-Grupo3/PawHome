@@ -11,7 +11,9 @@
 <section layout:fragment="content">
 
     <div class="container">
-        <h1>Gestión de animales</h1>
+        <h1>Gestión de animales <a class="btn btn-primary" th:href="@{/admin/animales/nuevo}">
+            Nuevo animal
+        </a></h1>
         <!-- Tabla de Animales -->
         <table class="table table-striped table-bordered">
             <thead class="table-success">
@@ -57,9 +59,6 @@
                     <a th:href="@{/admin/animales/editar/{id}(id=${animal.id})}" class="btn btn-success btn-sm">Editar</a>
                     <a th:href="@{'/admin/animales/eliminar/' + ${animal.id}}" class="btn btn-danger btn-sm"
                        onclick="return confirm('¿Eliminar este animal?')">Eliminar</a>
-                    <a class="btn btn-primary mb-3" th:href="@{/admin/animales/nuevo}">
-                        Crear
-                    </a>
                 </td>
             </tr>
             </tbody>

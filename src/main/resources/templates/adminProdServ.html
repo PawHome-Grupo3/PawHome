@@ -13,7 +13,9 @@
 <section layout:fragment="content">
 
     <div class="container">
-        <h1>Gestión de productos y servicios</h1>
+        <h1>Gestión de productos y servicios <a class="btn btn-primary" th:href="@{/admin/prodserv/nuevo}">
+            Nuevo producto o servicio
+        </a></h1>
 
         <!-- Tabla de Producto -->
         <table class="table table-striped table-bordered">
@@ -42,9 +44,6 @@
                     <a th:href="@{'/admin/prodserv/editar/' + ${producto.id}}" class="btn btn-success btn-sm">Editar</a>
                     <a th:href="@{'/admin/prodserv/eliminar/' + ${producto.id}}" class="btn btn-danger btn-sm"
                        onclick="return confirm('¿Eliminar esta tarifa?')">Eliminar</a>
-                    <a class="btn btn-primary mb-3" th:href="@{/admin/prodserv/nuevo}">
-                        Crear
-                    </a>
                 </td>
             </tr>
             </tbody>
