@@ -83,6 +83,14 @@
                         <input type="text" th:field="*{telefono3}" class="form-control" id="telefono3">
                     </div>
 
+                    <div class="mb-3">
+                        <label for="rol" class="form-label">Rol</label>
+                        <select class="form-select" th:field="*{rolId}" id="rol" required>
+                            <option th:each="rol : ${roles}" th:value="${rol.id}" th:text="${rol.nombre}"
+                                    th:selected="${rol.id == usuario.rolId}"></option>
+                        </select>
+                    </div>
+
                     <div class="d-flex justify-content-end">
                         <button type="submit" class="btn btn-success me-2">Guardar cambios</button>
                         <input type="hidden" th:field="*{id}" />
