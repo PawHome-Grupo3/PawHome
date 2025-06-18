@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="~{layouts/layout.html}">
+	  layout:decorate="~{layouts/layout.html}">
 <head>
 	<title th:utext="#{page.index.title}"></title>
 	<link rel="stylesheet" th:href="@{/css/general.css}"/>
@@ -50,7 +50,8 @@
 							<div class="col-lg-10 col-md-10 col-12">
 								<div class="custom-text-box mb-lg-0">
 									<h5 class="mb-3 historiaSubTitulo">Nuestra misión</h5>
-									<p class="historiaParrafo">Ser un hogar para todos los animales, ya que todos lo merecen.</p>
+									<p class="historiaParrafo">Ser un hogar para todos los animales, ya que todos lo
+										merecen.</p>
 								</div>
 							</div>
 						</div>
@@ -76,7 +77,8 @@
 							<div class="col-lg-10 col-md-10 col-12">
 								<div class="custom-text-box mb-lg-0">
 									<h5 class="mb-3 historiaSubTitulo">Nuestra misión</h5>
-									<p class="historiaParrafo">Ser un hogar para todos los animales, ya que todos lo merecen.</p>
+									<p class="historiaParrafo">Ser un hogar para todos los animales, ya que todos lo
+										merecen.</p>
 								</div>
 							</div>
 						</div>
@@ -101,7 +103,8 @@
 								<div class="custom-text-box mb-lg-0">
 									<h5 class="mb-3 historiaSubTitulo"></h5>
 									<p class="historiaParrafo">
-										Esta protectora nace de algo muy real: el amor por los animales y las ganas de hacer
+										Esta protectora nace de algo muy real: el amor por los animales y las ganas de
+										hacer
 										las cosas mejor.
 									</p>
 								</div>
@@ -155,12 +158,13 @@
 									<i class="fas fa-paw icon-animal me-1"></i>
 									<span class="nombre-producto">Camiseta Súper Perro</span>
 									<span class="separador-nombre-precio mx-2">|</span>
-									<span class="flex-nowrap precio-producto align-items-center">
+									<span class="precio-producto">
 										<span>10</span>
 										<i class="fas fa-euro-sign icon-precio me-1"></i>
 									</span>
 								</div>
-								<p class="descripcion-producto">¿Quieres ser un héroe con estilo? Compra nuestra camiseta para que lo sepa todo el mundo</p>
+								<p class="descripcion-producto">¿Quieres ser un héroe con estilo? Compra nuestra
+									camiseta para que lo sepa todo el mundo</p>
 							</div>
 
 							<!-- Botonera -->
@@ -169,7 +173,8 @@
 								<!-- Compra directa si talla única -->
 								<form th:action="@{/tienda}" method="get">
 									<button type="submit" class="btn btn-comprar d-flex align-items-center">
-										<svg xmlns="http://www.w3.org/2000/svg" class="icon me-2" width="20" height="20" viewBox="0 0 24 24"
+										<svg xmlns="http://www.w3.org/2000/svg" class="icon me-2" width="20" height="20"
+											 viewBox="0 0 24 24"
 											 fill="none" stroke="currentColor">
 											<circle cx="9" cy="21" r="1"></circle>
 											<circle cx="20" cy="21" r="1"></circle>
@@ -188,7 +193,7 @@
 
 						<!-- Imagen -->
 						<div class="imagen-producto p-3 bg-white d-flex align-items-center justify-content-center">
-							<img th:src="@{/images/Camiseta-azul.png}" alt="Imagen de camiseta azul"
+							<img th:src="@{/images/tazaHuella1.png}" alt="Imagen de camiseta azul"
 								 class="img-fluid imagen-interna">
 						</div>
 
@@ -199,14 +204,15 @@
 							<div class="info mb-3 h-100 align-content-center">
 								<div class="nombre-precio d-flex align-items-center gap-2 mb-2">
 									<i class="fas fa-paw icon-animal me-1"></i>
-									<span class="nombre-producto">Camiseta Súper Perro</span>
+									<span class="nombre-producto">Taza Huella</span>
 									<span class="separador-nombre-precio mx-2">|</span>
-									<span class="flex-nowrap precio-producto align-items-center">
-										<span>8</span>
+									<span class="precio-producto">
+										<span>5</span>
 										<i class="fas fa-euro-sign icon-precio me-1"></i>
 									</span>
 								</div>
-								<p class="descripcion-producto">Quieres desayunar con el mejor look con nuestra taza para perro, diseñado para brindar seguridad, confort y un toque de estilo único.</p>
+								<p class="descripcion-producto">Quieres desayunar con el mejor look con nuestra taza
+									para perro, diseñado para brindar seguridad, confort y un toque de estilo único.</p>
 							</div>
 
 							<!-- Botonera -->
@@ -215,7 +221,8 @@
 								<!-- Compra directa si talla única -->
 								<form th:action="@{/tienda}" method="get">
 									<button type="submit" class="btn btn-comprar d-flex align-items-center">
-										<svg xmlns="http://www.w3.org/2000/svg" class="icon me-2" width="20" height="20" viewBox="0 0 24 24"
+										<svg xmlns="http://www.w3.org/2000/svg" class="icon me-2" width="20" height="20"
+											 viewBox="0 0 24 24"
 											 fill="none" stroke="currentColor">
 											<circle cx="9" cy="21" r="1"></circle>
 											<circle cx="20" cy="21" r="1"></circle>
@@ -234,7 +241,7 @@
 
 						<!-- Imagen -->
 						<div class="imagen-producto p-3 bg-white d-flex align-items-center justify-content-center">
-							<img th:src="@{/images/Camiseta-azul.png}" alt="Imagen de camiseta azul"
+							<img th:src="@{/images/collarPerro2.png}" alt="Imagen de camiseta azul"
 								 class="img-fluid imagen-interna">
 						</div>
 
@@ -248,11 +255,14 @@
 									<span class="nombre-producto">Collar</span>
 									<span class="separador-nombre-precio mx-2">|</span>
 									<span class="flex-nowrap precio-producto align-items-center">
-										<span>5</span>
 										<i class="fas fa-euro-sign icon-precio"></i>
+										<span>5</span>
 									</span>
 								</div>
-								<p class="descripcion-producto">Incluye un cierre de seguridad reforzado y un aro metálico para enganchar la correa de forma rápida y segura. Ideal para perros de todos los tamaños, disponible en varios colores para combinar con su personalidad.</p>
+								<p class="descripcion-producto">Incluye un cierre de seguridad reforzado y un aro
+									metálico para enganchar la correa de forma rápida y segura. Ideal para perros de
+									todos los tamaños, disponible en varios colores para combinar con su
+									personalidad.</p>
 							</div>
 
 							<!-- Botonera -->
@@ -261,7 +271,8 @@
 								<!-- Compra directa si talla única -->
 								<form th:action="@{/tienda}" method="get">
 									<button type="submit" class="btn btn-comprar d-flex align-items-center">
-										<svg xmlns="http://www.w3.org/2000/svg" class="icon me-2" width="20" height="20" viewBox="0 0 24 24"
+										<svg xmlns="http://www.w3.org/2000/svg" class="icon me-2" width="20" height="20"
+											 viewBox="0 0 24 24"
 											 fill="none" stroke="currentColor">
 											<circle cx="9" cy="21" r="1"></circle>
 											<circle cx="20" cy="21" r="1"></circle>
@@ -353,7 +364,8 @@
 			<div class="row justify-content-center align-items-center text-center">
 
 				<div class="col-md-6 col-12">
-					<h2 class="mb-0 esloganDona" th:utext="${#strings.replace(#messages.msg('index.esloganDona'), 'ç', '<br>')}"></h2>
+					<h2 class="mb-0 esloganDona"
+						th:utext="${#strings.replace(#messages.msg('index.esloganDona'), 'ç', '<br>')}"></h2>
 				</div>
 
 				<div class="col-md-6 col-12 flex-nowrap columDona mt-3">
@@ -364,43 +376,43 @@
 			</div>
 		</div>
 	</section>
-<!--FIN DONA Y VOLUNTARIO -->
+	<!--FIN DONA Y VOLUNTARIO -->
 
 	<script>
-		document.addEventListener("DOMContentLoaded", function () {
-			const carousel = document.getElementById('carouselExample');
-			const carouselInner = carousel.querySelector('.carousel-inner');
+        document.addEventListener("DOMContentLoaded", function () {
+            const carousel = document.getElementById('carouselExample');
+            const carouselInner = carousel.querySelector('.carousel-inner');
 
-			carousel.addEventListener('slid.bs.carousel', function () {
-				const activeItem = carouselInner.querySelector('.carousel-item.active');
-				const texts = activeItem.querySelectorAll('.custom-text-box h2, .custom-text-box h5, .custom-text-box p');
+            carousel.addEventListener('slid.bs.carousel', function () {
+                const activeItem = carouselInner.querySelector('.carousel-item.active');
+                const texts = activeItem.querySelectorAll('.custom-text-box h2, .custom-text-box h5, .custom-text-box p');
 
-				texts.forEach(el => {
-					el.classList.remove('animate-text');
-					void el.offsetWidth; // Fuerza reflow
-					el.classList.add('animate-text');
-				});
-			});
+                texts.forEach(el => {
+                    el.classList.remove('animate-text');
+                    void el.offsetWidth; // Fuerza reflow
+                    el.classList.add('animate-text');
+                });
+            });
 
-			// Activar animación en el primer slide
-			const initialItem = carouselInner.querySelector('.carousel-item.active');
-			const initialTexts = initialItem.querySelectorAll('.custom-text-box h2, .custom-text-box h5, .custom-text-box p');
-			initialTexts.forEach(el => el.classList.add('animate-text'));
-		});
+            // Activar animación en el primer slide
+            const initialItem = carouselInner.querySelector('.carousel-item.active');
+            const initialTexts = initialItem.querySelectorAll('.custom-text-box h2, .custom-text-box h5, .custom-text-box p');
+            initialTexts.forEach(el => el.classList.add('animate-text'));
+        });
 	</script>
 
 	<script>
-		document.addEventListener("DOMContentLoaded", function () {
-			const title = document.querySelector(".animate-fadein");
-			const para = document.querySelector(".animate-slideup");
+        document.addEventListener("DOMContentLoaded", function () {
+            const title = document.querySelector(".animate-fadein");
+            const para = document.querySelector(".animate-slideup");
 
-			// Forzar reflow y aplicar animaciones (si no se activan por defecto)
-			void title.offsetWidth;
-			void para.offsetWidth;
+            // Forzar reflow y aplicar animaciones (si no se activan por defecto)
+            void title.offsetWidth;
+            void para.offsetWidth;
 
-			title.classList.add("animate-fadein");
-			para.classList.add("animate-slideup");
-		});
+            title.classList.add("animate-fadein");
+            para.classList.add("animate-slideup");
+        });
 	</script>
 </section>
 </body>
