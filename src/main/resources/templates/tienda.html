@@ -48,8 +48,8 @@
                   <span class="nombre-producto" th:utext="${producto.getNombre()}"></span>
                   <span class="separador-nombre-precio mx-2">|</span>
                   <span class="precio-producto">
-                    <i class="fas fa-euro-sign icon-precio me-1"></i>
                     <span th:text="${producto.getTarifas().getFirst().getPrecioUnitario()}"></span>
+                    <i class="fas fa-euro-sign icon-precio me-1"></i>
                   </span>
                 </div>
                 <p class="descripcion-producto" th:utext="${producto.getDescripcion()}"></p>
