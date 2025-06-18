@@ -16,7 +16,8 @@
                 <h4 class="mb-0">Editar animal</h4>
             </div>
             <div class="card-body">
-                <form th:action="@{/admin/animales/actualizar/{id}(id=${animal.id})}" th:object="${animal}" method="post">
+                <form th:action="@{/admin/animales/actualizar/{id}(id=${animal.id})}" th:object="${animal}"
+                      method="post">
                     <div class="row mb-3">
                         <div class="col-md-4">
                             <label for="nombre" class="form-label">Nombre</label>
@@ -35,7 +36,8 @@
                         <div>
                             <label for="raza" class="form-label">Raza</label>
                             <select th:field="*{raza.id}" class="form-select" id="raza" required>
-                                <option th:each="raza : ${razas}" th:value="${raza.id}" th:text="${raza.nombre}"></option>
+                                <option th:each="raza : ${razas}" th:value="${raza.id}"
+                                        th:text="${raza.nombre}"></option>
                             </select>
                         </div>
 
@@ -48,7 +50,7 @@
                                    id="fechaNacimiento"
                                    name="fechaNacimiento"
                                    th:value="${animal.fechaNacimiento != null ? #temporals.format(animal.fechaNacimiento, 'yyyy-MM-dd') : ''}"
-                                   required />
+                                   required/>
                         </div>
                         <div class="col-md-4">
                             <label for="caracterSocial" class="form-label">Carácter social</label>
@@ -73,7 +75,10 @@
                     <div class="row mb-3">
                         <div class="col-md-4">
                             <label for="origen" class="form-label">Origen</label>
-                            <input type="text" th:field="*{origen}" class="form-control" id="origen" maxlength="100">
+                            <select th:field="*{origen}" class="form-select" id="origen">
+                                <option value="false">Adopción fallida</option>
+                                <option value="true">De la calle</option>
+                            </select>
                         </div>
                         <div class="col-md-4">
                             <label for="adoptado" class="form-label">Estado adopción</label>
@@ -89,7 +94,7 @@
                                    id="fechaLlegada"
                                    name="fechaLlegada"
                                    th:value="${animal.fechaLlegada != null ? #temporals.format(animal.fechaLlegada, 'yyyy-MM-dd') : ''}"
-                                   required />
+                                   required/>
                         </div>
                     </div>
                     <div class="mb-3 form-check">

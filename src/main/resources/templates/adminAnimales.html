@@ -41,7 +41,7 @@
                 <td th:text="${animal.nombre}"></td>
                 <td th:text="${animal.chip}"></td>
                 <td th:text="${animal.peso}"></td>
-                <td th:text="${animal.fechaNacimiento}"></td>
+                <td th:text="${animal.fechaNacimiento != null ? #temporals.format(animal.fechaNacimiento, 'dd-MM-yyyy') : ''}"></td>
                 <td th:if="${animal.genero}"><span>Macho</span></td>
                 <td th:unless="${animal.genero}"><span>Hembra</span></td>
                 <td th:text="${animal.raza.especie.nombre}"></td>
