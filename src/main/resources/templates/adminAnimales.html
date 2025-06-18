@@ -44,12 +44,41 @@
                 <td th:text="${animal.fechaNacimiento}"></td>
                 <td th:if="${animal.genero}"><span>Macho</span></td>
                 <td th:unless="${animal.genero}"><span>Hembra</span></td>
-                <td th:text="${animal.raza.nombre}"></td>
                 <td th:text="${animal.raza.especie.nombre}"></td>
-                <td th:if="${animal.caracterSocial}"><span>Amigable</span></td>
-                <td th:unless="${animal.caracterSocial}"><span>No amigable</span></td>
-                <td th:text="${animal.descripcion}"></td>
-                <td th:text="${animal.origen}"></td>
+                <td th:text="${animal.raza.nombre}"></td>
+                <td th:if="${animal.caracterSocial}">Amigable</td>
+                <td th:unless="${animal.caracterSocial}">No amigable</td>
+                <td>
+                    <button type="button" class="btn btn-success btn-sm"
+                            th:attr="data-bs-toggle='modal', data-bs-target='#descripcionModal__' + ${animal.id}">
+                        Ver descripción
+                    </button>
+
+                    <div class="modal fade"
+                         th:id="'descripcionModal__' + ${animal.id}"
+                         tabindex="-1"
+                         th:attr="aria-labelledby='modalLabel__' + ${animal.id}"
+                         aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-scrollable">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title"
+                                        th:id="'modalLabel__' + ${animal.id}"
+                                        th:text="'Descripción de ' + ${animal.nombre}">Descripción</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p th:text="${animal.descripcion}">Aquí va la descripción del animal</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <td th:if="${animal.origen}">De la calle</td>
+                <td th:unless="${animal.origen}">Adopción fallida</td>
                 <td th:if="${animal.adoptado}"><span>Sí</span></td>
                 <td th:unless="${animal.adoptado}"><span>No</span></td>
                 <td th:text="${animal.fechaLlegada}"></td>
