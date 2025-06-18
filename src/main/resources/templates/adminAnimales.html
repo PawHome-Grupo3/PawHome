@@ -22,7 +22,7 @@
                 <th>Nombre</th>
                 <th>Chip</th>
                 <th>Peso</th>
-                <th>Edad</th>
+                <th class="column-edad">Edad</th>
                 <th>Género</th>
                 <th>Especie</th>
                 <th>Raza</th>
@@ -30,7 +30,7 @@
                 <th>Descripción</th>
                 <th>Origen</th>
                 <th>Estado adopción</th>
-                <th>Fecha llegada</th>
+                <th class="column-llegada">Fecha llegada</th>
                 <th>¿Se puede pasear?</th>
                 <th>Acciones</th>
             </tr>
@@ -41,7 +41,7 @@
                 <td th:text="${animal.nombre}"></td>
                 <td th:text="${animal.chip}"></td>
                 <td th:text="${animal.peso}"></td>
-                <td th:text="${animal.fechaNacimiento != null ? #temporals.format(animal.fechaNacimiento, 'dd-MM-yyyy') : ''}"></td>
+                <td class="column-edad" th:text="${animal.fechaNacimiento != null ? #temporals.format(animal.fechaNacimiento, 'dd-MM-yyyy') : ''}"></td>
                 <td th:if="${animal.genero}"><span>Macho</span></td>
                 <td th:unless="${animal.genero}"><span>Hembra</span></td>
                 <td th:text="${animal.raza.especie.nombre}"></td>
@@ -81,7 +81,7 @@
                 <td th:unless="${animal.origen}">Adopción fallida</td>
                 <td th:if="${animal.adoptado}"><span>Sí</span></td>
                 <td th:unless="${animal.adoptado}"><span>No</span></td>
-                <td th:text="${animal.fechaLlegada}"></td>
+                <td class="column-llegada" th:text="${animal.fechaLlegada != null ? #temporals.format(animal.fechaLlegada, 'dd-MM-yyyy') : ''}"></td>
                 <td th:if="${animal.paseable}"><span>Sí</span></td>
                 <td th:unless="${animal.paseable}"><span>No</span></td>
                 <td>

@@ -164,3 +164,10 @@ h1, h2 {
     margin-bottom: 1rem;
 }
 
+.column-edad {
+    width: 200px;
+}
+
+.column-llegada {
+    width: 200px;
+}
