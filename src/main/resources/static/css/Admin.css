@@ -66,17 +66,32 @@ table {
     overflow: hidden;
     border: 1px solid #ccc;
     table-layout: auto;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
 }
 
 thead {
     background-color: #198754;
     color: white;
     text-align: center;
+    font-weight: bold;
+    font-size: 1rem;
+    border-bottom: 2px solid #dee2e6;
+    border-radius: 10px 10px 0 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1;
 }
 
 th, td {
     padding: 0.75rem 1rem;
     border-bottom: 1px solid #dee2e6;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 0.9rem;
+    color: #333;
 }
 
 tbody tr:hover {
@@ -149,3 +164,10 @@ h1, h2 {
     margin-bottom: 1rem;
 }
 
+.column-edad {
+    width: 200px;
+}
+
+.column-llegada {
+    width: 200px;
+}
