@@ -29,11 +29,13 @@ public class RegistroController {
 
     // Procesa el formulario
     @PostMapping("/registro")
-    public String procesarFormularioRegistro(@ModelAttribute("registroDTO") @Valid RegistroDTO request,
+    public String procesarFormularioRegistro(@Valid @ModelAttribute("registroDTO") RegistroDTO request,
                                              BindingResult result,
                                              Model model) {
+
         if (result.hasErrors()) {
-            return "loginRegistro"; // vuelve a la vista con errores de validación
+            model.addAttribute("registroDTO", request); // opcional, ya lo tiene por @ModelAttribute
+            return "loginRegistro"; // importante: no redirige
         }
 
         try {

@@ -198,6 +198,7 @@ public class ProductCheckoutController {
                 LineaFactura linea = new LineaFactura();
                 linea.setNombre(item.getProducto().getNombre());
                 linea.setCantidad(item.getCantidad());
+                linea.setDescripcion(item.getProducto().getDescripcion());
                 linea.setFactura(factura);
                 linea.setTarifa(item.getProducto().getTarifas().getFirst());
 

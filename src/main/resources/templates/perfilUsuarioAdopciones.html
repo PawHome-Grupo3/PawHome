@@ -2,7 +2,7 @@
 <html lang="es" xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layouts/layout.html}">
 <head>
-    <title>Usuario Adopciones</title>
+    <title>Usuario Citas</title>
     <link rel="stylesheet" th:href="@{/css/general.css}"/>
 </head>
 <body>
@@ -13,47 +13,47 @@
         <div class="row w-100">
             <div th:replace="~{fragments/navbarPerfil :: navPerfilFragment}"></div>
 
-            <div class="col-md-9 col-lg-10 justify-content-start">
-                <h3 class="text-center mb-2 mt-3">Mis Adopciones:</h3>
-                <div th:if="${adopciones != null}" class="row justify-content-start p-3 g-3">
-                    <div class="col-12 col-md-6 col-lg-3" style="justify-items: center">
-                        <!-- Cards -->
-                        <div class="row justify-content-center w-100">
-                            <div th:each="adopcion : ${adopciones}"
-                                 class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4 d-flex justify-content-center w-100">
-                                <div class="card cardAnimal">
-                                    <div class="card_image">
-                                        <img class="imgCardAnimal" th:src="${adopcion.getRutaImg()}"
-                                             alt="foto de perro disponible para adoptar">
-                                    </div>
-                                    <div class="card_content d-flex justify-content-center card_contentAnimal">
-                                        <h2 class="card_title card_titleAnimal pb-3"
-                                            th:utext="${adopcion.getNombre()}"></h2>
-                                        <div class="d-flex flex-wrap justify-content-center gap-2 mb-2 card_badges">
+            <div class="col-md-9 col-lg-10 justify-content-center">
+                <div class="row my-5 justify-content-center">
+                    <h2 class="text-center mb-4">Mis Adopciones</h2>
+
+                    <hr class="mx-auto w-100 border-2 opacity-50">
+
+                    <!-- Cards -->
+                    <div class="row justify-content-center">
+                        <div th:each="adopcion : ${adopciones}"
+                             class="col-md-4">
+                            <div class="card cardAnimal">
+                                <div class="card_image">
+                                    <img class="imgCardAnimal" th:src="${adopcion.getRutaImg()}"
+                                         alt="foto de perro disponible para adoptar">
+                                </div>
+                                <div class="card_content d-flex justify-content-center card_contentAnimal">
+                                    <h2 class="card_title card_titleAnimal pb-3"
+                                        th:utext="${adopcion.getNombre()}"></h2>
+                                    <div class="d-flex flex-wrap justify-content-center gap-2 mb-2 card_badges">
                                             <span class="badgeCard">
                                                 <i class="fas fa-birthday-cake me-1"></i>
                                                 <span th:text="${adopcion.getFechaDocumento()}"></span>
 								            </span>
 
-                                            <span th:if="${adopcion.getAceptado() == true}" class="badgeCard">
+                                        <span th:switch="${adopcion.aceptado}" class="badgeCard">
                                                 <i class="fas fa-weight-hanging me-1"></i>
-                                                <span >Estado: Aceptado</span>
+                                                <span th:case="false">Estado: Rechazado</span>
+                                                <span th:case="true">Estado: Aceptado</span>
+                                                <span th:case="*">Estado: En espera</span>
 								            </span>
-
-                                            <span th:if="${adopcion.getAceptado() == false}" class="badgeCard">
-                                                <i class="fas fa-weight-hanging me-1"></i>
-                                                <span>Estado: No aceptado</span>
-								            </span>
-                                        </div>
-                                        <a th:href="@{|/adopciones/${adopcion.adopcionId}/documento|}"
-                                                 class="btn card_btn botonesCardAnimalApadrina">
-                                        Consultar Documentación
-                                        </a>
                                     </div>
+                                    <a th:href="@{|/adopciones/${adopcion.adopcionId}/documento|}"
+                                       class="btn card_btn botonesCardAnimalApadrina">
+                                        Consultar Documentación
+                                    </a>
                                 </div>
                             </div>
                         </div>
+
                     </div>
+
                 </div>
             </div>
         </div>

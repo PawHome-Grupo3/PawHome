@@ -1,41 +1,88 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layouts/layout.html}">
+	  layout:decorate="~{layouts/layout.html}">
 <head>
-    <meta charset="UTF-8" />
-    <title th:text="#{nosotros.titulo}">Dona</title>
-    <link rel="stylesheet" th:href="@{/css/nosotros.css}">
+	<meta charset="UTF-8"/>
+	<title th:text="#{nosotros.titulo}">Dona</title>
+	<link rel="stylesheet" th:href="@{/css/nosotros.css}">
 </head>
 
 <body>
 <section layout:fragment="content">
-    <div class="containerImagen">
-        <div class="equipo-overlay">
-            <div class="team-header">
-                <h2 th:text="#{nosotros.titulo}">Sobre Nosotros</h2>
-                <p th:text="#{nosotros.descripcion}">Conoce al equipo detrás de PawHome</p>
-            </div>
-            <br>
-            <div class="team-members">
-                <div class="member">
-                    <img src="/images/Paulo.jpg" alt="Miembro 1">
-                    <div class="role" th:text="#{nosotros.rol1}">Desarrollo Fullstack / Lógica y Debugging</div>
-                </div>
-                <div class="member">
-                    <img src="/images/Javi.jpg" alt="Miembro 2">
-                    <div class="role" th:text="#{nosotros.rol2}">Desarrollo Fullstack / Lógica técnica y funcionalidades</div>
-                </div>
-                <div class="member">
-                    <img src="/images/Laura.jpg" alt="Miembro 3">
-                    <div class="role" th:text="#{nosotros.rol3}">Desarrollo Fullstack / Frontend/UI Designer</div>
-                </div>
-                <div class="member">
-                    <img src="/images/Manue.jpg" alt="Miembro 4">
-                    <div class="role" th:text="#{nosotros.rol4}">Desarrollo Fullstack / Gestor de contenidos y coordinador</div>
-                </div>
-            </div>
-        </div>
-    </div>
+	<div class="containerImagen">
+		<div class="equipo-overlay">
+			<div class="team-header">
+				<h2 th:text="#{nosotros.titulo}">Sobre Nosotros</h2>
+				<p th:text="#{nosotros.descripcion}">Conoce al equipo detrás de PawHome</p>
+			</div>
+			<br>
+			<div class="team-members">
+				<div class="member text-center" tabindex="0" aria-label="Perfil de LinkedIn de Paulo Sánchez Hernández">
+					<img th:src="@{images/Paulo.jpg}" class="memberImg" alt="Foto de Paulo Sánchez Hernández">
+					<div class="card-body">
+						<h5 class="card-title">Paulo Sánchez Hernández</h5>
+						<p class="card-text mb-2">
+							<a href="mailto:hernandezsanchezpaulo@gmail.com" class="text-decoration-none">hernandezsanchezpaulo@gmail.com</a>
+						</p>
+						<a href="https://www.linkedin.com/in/usuario" target="_blank" class="btn btn-outline-dark btn-sm me-2" aria-label="LinkedIn de Paulo">
+							<i class="fab fa-linkedin"></i>
+						</a>
+						<a href="https://github.com/usuario" target="_blank" class="btn btn-outline-dark btn-sm" aria-label="GitHub de Paulo">
+							<i class="fab fa-github"></i>
+						</a>
+					</div>
+				</div>
+
+				<div class="member text-center" aria-label="Perfil de LinkedIn de Manuel Torres Miranda">
+					<img th:src="@{images/Manue.jpg}" class="memberImg" alt="Foto de Manuel Torres Miranda">
+					<div class="card-body">
+						<h5 class="card-title">Manuel Torres Miranda</h5>
+						<p class="card-text mb-2">
+							<a href="mailto:manueltmiranda.dev@gmail.com" class="text-decoration-none">manueltmiranda.dev@gmail.com</a>
+						</p>
+						<a href="https://www.linkedin.com/in/manueltmiranda/" target="_blank" class="btn btn-outline-dark btn-sm me-2" aria-label="LinkedIn de Manuel">
+							<i class="fab fa-linkedin"></i>
+						</a>
+						<a href="https://github.com/manueltmiranda" target="_blank" class="btn btn-outline-dark btn-sm" aria-label="GitHub de Manuel">
+							<i class="fab fa-github"></i>
+						</a>
+					</div>
+				</div>
+
+				<div class="member text-center" onclick="window.open('https://www.linkedin.com/in/laura-aguilera-ramírez/', '_blank')" role="button" tabindex="0" aria-label="Perfil de LinkedIn de Laura Aguilera">
+					<img th:src="@{images/Laura.jpg}" class="memberImg" alt="Foto de Laura Aguilera Ramírez">
+					<div class="card-body">
+						<h5 class="card-title">Laura Aguilera Ramírez</h5>
+						<p class="card-text mb-2">
+							<a href="mailto:laura.aguilera97@gmail.com" class="text-decoration-none">laura.aguilera97@gmail.com</a>
+						</p>
+						<a href="https://www.linkedin.com/in/laura-aguilera-ramírez/" target="_blank" class="btn btn-outline-dark btn-sm me-2" aria-label="LinkedIn de Laura">
+							<i class="fab fa-linkedin"></i>
+						</a>
+						<a href="https://github.com/Lauguirez16" target="_blank" class="btn btn-outline-dark btn-sm" aria-label="GitHub de Laura">
+							<i class="fab fa-github"></i>
+						</a>
+					</div>
+				</div>
+
+				<div class="member text-center" onclick="window.open('https://www.linkedin.com/in/javier-gomez-lopez-desarrollador/', '_blank')" role="button" tabindex="0" aria-label="Perfil de LinkedIn de Javier Gómez">
+					<img th:src="@{images/Javi.jpg}" class="memberImg" alt="Foto de Javier Gómez López">
+					<div class="card-body">
+						<h5 class="card-title">Javier Gómez López</h5>
+						<p class="card-text mb-2">
+							<a href="mailto:javiergl.dev@gmail.com" class="text-decoration-none">javiergl.dev@gmail.com</a>
+						</p>
+						<a href="https://www.linkedin.com/in/javier-gomez-lopez-desarrollador/" target="_blank" class="btn btn-outline-dark btn-sm me-2" aria-label="LinkedIn de Javier">
+							<i class="fab fa-linkedin"></i>
+						</a>
+						<a href="https://github.com/TheJavix7" target="_blank" class="btn btn-outline-dark btn-sm" aria-label="GitHub de Javier">
+							<i class="fab fa-github"></i>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </section>
 </body>
 </html>
