@@ -1663,7 +1663,7 @@ public class DataLoader implements CommandLineRunner {
         ap2.setFechaRenovacion(LocalDate.of(2025, 6, 1));
         ap2.setFechaBaja(null);
         ap2.setAnimal(a2);
-        ap2.setUsuario(u1);
+        ap2.setUsuario(u15);
         apadrinarRepository.save(ap2);
 
         Apadrinar ap3 = new Apadrinar();
@@ -1672,7 +1672,7 @@ public class DataLoader implements CommandLineRunner {
         ap3.setFechaRenovacion(null);
         ap3.setFechaBaja(LocalDate.of(2025, 3, 1));
         ap3.setAnimal(a3);
-        ap3.setUsuario(u1);
+        ap3.setUsuario(u15);
         apadrinarRepository.save(ap3);
 
         Apadrinar ap4 = new Apadrinar();
@@ -1681,7 +1681,7 @@ public class DataLoader implements CommandLineRunner {
         ap4.setFechaRenovacion(LocalDate.of(2025, 6, 1));
         ap4.setFechaBaja(null);
         ap4.setAnimal(a4);
-        ap4.setUsuario(u2);
+        ap4.setUsuario(u15);
         apadrinarRepository.save(ap4);
 
         Adopcion adopcion = new Adopcion();
@@ -1698,7 +1698,7 @@ public class DataLoader implements CommandLineRunner {
         adopcion.setVisitasSeguimiento("Sí, estoy completamente de acuerdo con que se realicen visitas de seguimiento");
         adopcion.setFirma("Laura Gómez Pérez");
         adopcion.setFechaFormulario(LocalDate.now());
-        adopcion.setUsuario(usuario); // Instancia existente de Usuario
+        adopcion.setUsuario(u15); // Instancia existente de Usuario
         adopcion.setAnimal(a1);
         adopcionRepository.save(adopcion);
 
@@ -1718,7 +1718,7 @@ public class DataLoader implements CommandLineRunner {
         adopcion2.setFechaFormulario(LocalDate.now());
         adopcion2.setAceptado(true);
 
-        adopcion2.setUsuario(usuario); // Instancia existente de Usuario
+        adopcion2.setUsuario(u15); // Instancia existente de Usuario
         adopcion2.setAnimal(a2);
         adopcionRepository.save(adopcion2);
 
